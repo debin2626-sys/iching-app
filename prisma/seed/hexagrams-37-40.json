@@ -1,0 +1,234 @@
+[
+  {
+    "number": 37,
+    "nameZh": "家人",
+    "nameEn": "The Family",
+    "symbol": "110101",
+    "upperTrigram": "巽/风",
+    "lowerTrigram": "离/火",
+    "judgmentZh": "家人：利女贞。",
+    "judgmentEn": "The Family. The perseverance of the woman furthers.",
+    "imageZh": "风自火出，家人；君子以言有物而行有恒。",
+    "imageEn": "Wind comes forth from fire: the image of the Family. Thus the superior man has substance in his words and duration in his way of life.",
+    "interpretationZh": "家人卦象征家庭，风从火中生出，火旺则风生。治家之道在于言行一致，持之以恒。",
+    "interpretationEn": "Jia Ren symbolizes the family. Wind emerges from fire — when the hearth burns bright, its influence spreads. Governing the family requires consistency in word and deed.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：闲有家，悔亡。",
+        "textEn": "Nine at the beginning: Firm seclusion within the family. Remorse disappears.",
+        "interpretationZh": "治家之初即立规矩，防患于未然，悔恨消失。",
+        "interpretationEn": "Establish firm rules for the family from the start. Prevention removes remorse."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：无攸遂，在中馈，贞吉。",
+        "textEn": "Six in the second place: She should not follow her whims. She must attend within to the food. Perseverance brings good fortune.",
+        "interpretationZh": "不可随心所欲，专注于家中饮食之事，坚守正道则吉。",
+        "interpretationEn": "Do not follow whims. Attend to nourishing the household. Perseverance brings fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：家人嗃嗃，悔厉吉；妇子嘻嘻，终吝。",
+        "textEn": "Nine in the third place: When tempers flare up in the family, too great severity brings remorse. Good fortune nonetheless. When woman and child dally and laugh, it leads in the end to humiliation.",
+        "interpretationZh": "治家严厉虽有悔恨但终究吉利；若妇孺嬉笑无度，终有困窘。",
+        "interpretationEn": "Strictness in the family may cause regret but leads to fortune. Excessive laxity ends in humiliation."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：富家，大吉。",
+        "textEn": "Six in the fourth place: She is the treasure of the house. Great good fortune.",
+        "interpretationZh": "使家庭富裕兴旺，大吉大利。",
+        "interpretationEn": "She enriches the family. Great good fortune."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：王假有家，勿恤，吉。",
+        "textEn": "Nine in the fifth place: As a king he approaches his family. Fear not. Good fortune.",
+        "interpretationZh": "君王以仁爱治家，不必忧虑，吉利。",
+        "interpretationEn": "The king approaches his family with love. No need to worry. Good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：有孚威如，终吉。",
+        "textEn": "Nine at the top: His work commands respect. In the end good fortune comes.",
+        "interpretationZh": "有诚信且有威严，最终吉利。",
+        "interpretationEn": "Sincerity combined with dignity. In the end, good fortune comes."
+      }
+    ]
+  },
+  {
+    "number": 38,
+    "nameZh": "睽",
+    "nameEn": "Opposition",
+    "symbol": "101011",
+    "upperTrigram": "离/火",
+    "lowerTrigram": "兑/泽",
+    "judgmentZh": "睽：小事吉。",
+    "judgmentEn": "Opposition. In small matters, good fortune.",
+    "imageZh": "上火下泽，睽；君子以同而异。",
+    "imageEn": "Above, fire; below, the lake: the image of Opposition. Thus amid all fellowship the superior man retains his individuality.",
+    "interpretationZh": "睽卦象征乖离对立，火向上燃，泽水向下流，方向相背。小事可成，大事宜慎。君子求同存异。",
+    "interpretationEn": "Kui symbolizes opposition. Fire flames upward, the lake seeps downward — they move apart. Small matters succeed. The superior man maintains individuality within fellowship.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：悔亡，丧马勿逐，自复；见恶人，无咎。",
+        "textEn": "Nine at the beginning: Remorse disappears. If you lose your horse, do not run after it; it will come back of its own accord. When you see evil people, guard yourself against mistakes.",
+        "interpretationZh": "悔恨消失。丢失马匹不必追赶，它会自己回来。见到恶人，谨慎应对则无咎。",
+        "interpretationEn": "Remorse vanishes. A lost horse returns on its own. When meeting evil people, guard against error."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：遇主于巷，无咎。",
+        "textEn": "Nine in the second place: One meets his lord in a narrow street. No blame.",
+        "interpretationZh": "在小巷中偶遇主人，不期而遇，无过失。",
+        "interpretationEn": "Meeting one's lord in a narrow lane. An unexpected encounter. No blame."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：见舆曳，其牛掣，其人天且劓，无初有终。",
+        "textEn": "Six in the third place: One sees the wagon dragged back, the oxen halted, a man's hair and nose cut off. Not a good beginning, but a good end.",
+        "interpretationZh": "看到车被拖住，牛被阻止，人受刑罚。开头不好但结局尚可。",
+        "interpretationEn": "The wagon is dragged back, the oxen halted, the man punished. A bad start but a good end."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：睽孤，遇元夫，交孚，厉无咎。",
+        "textEn": "Nine in the fourth place: Isolated through opposition, one meets a like-minded man with whom one can associate in good faith. Despite the danger, no blame.",
+        "interpretationZh": "因乖离而孤独，遇到志同道合之人，以诚信相交，虽有危险但无咎。",
+        "interpretationEn": "Isolated by opposition, one meets a kindred spirit. Sincere fellowship amid danger brings no blame."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：悔亡，厥宗噬肤，往何咎。",
+        "textEn": "Six in the fifth place: Remorse disappears. The companion bites his way through the wrappings. If one goes to him, how could it be a mistake?",
+        "interpretationZh": "悔恨消失，同宗之人穿透阻隔来亲近，前往则无过失。",
+        "interpretationEn": "Remorse vanishes. The companion breaks through barriers. Going to meet him — how could that be wrong?"
+      },
+      {
+        "position": 6,
+        "textZh": "上九：睽孤，见豕负涂，载鬼一车，先张之弧，后说之弧，匪寇婚媾，往遇雨则吉。",
+        "textEn": "Nine at the top: Isolated through opposition, one sees one's companion as a pig covered with dirt, as a wagon full of devils. First one draws a bow against him, then one lays the bow aside. He is not a robber; he will woo at the right time. As one goes, rain falls; then good fortune comes.",
+        "interpretationZh": "因乖离而孤立，误解同伴，先敌视后释然。对方并非敌人而是求婚者，前行遇雨则吉。",
+        "interpretationEn": "Isolated and suspicious, one misjudges a companion. Hostility gives way to understanding. Going forward, rain falls and fortune comes."
+      }
+    ]
+  },
+  {
+    "number": 39,
+    "nameZh": "蹇",
+    "nameEn": "Obstruction",
+    "symbol": "010100",
+    "upperTrigram": "坎/水",
+    "lowerTrigram": "艮/山",
+    "judgmentZh": "蹇：利西南，不利东北。利见大人，贞吉。",
+    "judgmentEn": "Obstruction. The southwest furthers. The northeast does not further. It furthers one to see the great man. Perseverance brings good fortune.",
+    "imageZh": "山上有水，蹇；君子以反身修德。",
+    "imageEn": "Water on the mountain: the image of Obstruction. Thus the superior man turns his attention to himself and molds his character.",
+    "interpretationZh": "蹇卦象征艰难险阻，山上有水，行路艰难。宜向平坦之处（西南）前进，反省自身，修养德行。",
+    "interpretationEn": "Jian symbolizes obstruction. Water on the mountain makes the path treacherous. Move toward the easy ground. Turn inward and cultivate virtue.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：往蹇，来誉。",
+        "textEn": "Six at the beginning: Going leads to obstructions, coming meets with praise.",
+        "interpretationZh": "前往则遇险阻，退回则获赞誉。宜暂时退守。",
+        "interpretationEn": "Going forward meets obstruction; turning back wins praise. Retreat for now."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：王臣蹇蹇，匪躬之故。",
+        "textEn": "Six in the second place: The king's servant is beset by obstruction upon obstruction, but it is not his own fault.",
+        "interpretationZh": "王的臣子历经重重艰难，并非因为自身的缘故，而是为了尽忠职守。",
+        "interpretationEn": "The king's servant faces obstruction after obstruction, not through personal fault but from devotion to duty."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：往蹇，来反。",
+        "textEn": "Nine in the third place: Going leads to obstructions; hence he comes back.",
+        "interpretationZh": "前往则遇阻碍，因此返回。宜退守等待时机。",
+        "interpretationEn": "Going forward meets obstruction, so one turns back. Wait for the right moment."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：往蹇，来连。",
+        "textEn": "Six in the fourth place: Going leads to obstructions, coming leads to union.",
+        "interpretationZh": "前往则遇阻碍，退回则能与人联合。宜团结合作。",
+        "interpretationEn": "Going forward meets obstruction; turning back leads to union. Seek allies."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：大蹇，朋来。",
+        "textEn": "Nine in the fifth place: In the midst of the greatest obstructions, friends come.",
+        "interpretationZh": "身处最大的困难之中，朋友前来相助。",
+        "interpretationEn": "In the greatest obstruction, friends arrive to help."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：往蹇，来硕，吉；利见大人。",
+        "textEn": "Six at the top: Going leads to obstructions, coming leads to great good fortune. It furthers one to see the great man.",
+        "interpretationZh": "前往则遇阻碍，退回则有大收获，吉利。宜拜见大人物。",
+        "interpretationEn": "Going meets obstruction; returning brings great fortune. It furthers one to see the great man."
+      }
+    ]
+  },
+  {
+    "number": 40,
+    "nameZh": "解",
+    "nameEn": "Deliverance",
+    "symbol": "001010",
+    "upperTrigram": "震/雷",
+    "lowerTrigram": "坎/水",
+    "judgmentZh": "解：利西南，无所往，其来复吉。有攸往，夙吉。",
+    "judgmentEn": "Deliverance. The southwest furthers. If there is no longer anything where one has to go, return brings good fortune. If there is still something where one has to go, hastening brings good fortune.",
+    "imageZh": "雷雨作，解；君子以赦过宥罪。",
+    "imageEn": "Thunder and rain set in: the image of Deliverance. Thus the superior man pardons mistakes and forgives misdeeds.",
+    "interpretationZh": "解卦象征解除困难，雷雨交作，阴霾散去。困难已解，宜宽恕过失，迅速回归正常。",
+    "interpretationEn": "Xie symbolizes deliverance from difficulty. Thunder and rain clear the air. With hardship resolved, pardon mistakes and return swiftly to normalcy.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：无咎。",
+        "textEn": "Six at the beginning: Without blame.",
+        "interpretationZh": "困难刚刚解除，安静无为，没有过失。",
+        "interpretationEn": "Difficulty has just been resolved. Remain quiet and blameless."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：田获三狐，得黄矢，贞吉。",
+        "textEn": "Nine in the second place: One kills three foxes in the field and receives a yellow arrow. Perseverance brings good fortune.",
+        "interpretationZh": "在田猎中获得三只狐狸，得到黄色箭矢，坚守正道则吉。",
+        "interpretationEn": "Three foxes are caught in the hunt and a yellow arrow is gained. Perseverance brings fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：负且乘，致寇至，贞吝。",
+        "textEn": "Six in the third place: If a man carries a burden on his back and nonetheless rides in a carriage, he thereby encourages robbers to draw near. Perseverance leads to humiliation.",
+        "interpretationZh": "背着重物却乘坐马车，招致盗贼前来。不当其位，坚持则有困窘。",
+        "interpretationEn": "Carrying a load while riding in a carriage invites robbers. Holding a position one does not deserve brings humiliation."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：解而拇，朋至斯孚。",
+        "textEn": "Nine in the fourth place: Deliver yourself from your great toe. Then the companion comes, and him you can trust.",
+        "interpretationZh": "解除束缚你的小人，志同道合的朋友就会到来，彼此信任。",
+        "interpretationEn": "Free yourself from unworthy ties. Then trustworthy companions will come."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：君子维有解，吉；有孚于小人。",
+        "textEn": "Six in the fifth place: If only the superior man can deliver himself, it brings good fortune. Thus he proves to inferior men that he is in earnest.",
+        "interpretationZh": "君子能自我解脱则吉利，以诚信感化小人。",
+        "interpretationEn": "The superior man delivers himself — good fortune. His sincerity wins over even petty people."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：公用射隼于高墉之上，获之，无不利。",
+        "textEn": "Six at the top: The prince shoots at a hawk on a high wall. He kills it. Everything serves to further.",
+        "interpretationZh": "王公在高墙上射中隼鸟，有所斩获，无往不利。",
+        "interpretationEn": "The prince shoots a hawk upon the high wall and hits it. Everything furthers."
+      }
+    ]
+  }
+]

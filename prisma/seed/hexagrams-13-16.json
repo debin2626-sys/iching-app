@@ -1,0 +1,234 @@
+[
+  {
+    "number": 13,
+    "nameZh": "同人",
+    "nameEn": "Fellowship with Men",
+    "symbol": "111101",
+    "upperTrigram": "乾/天",
+    "lowerTrigram": "离/火",
+    "judgmentZh": "同人于野，亨。利涉大川，利君子贞。",
+    "judgmentEn": "Fellowship with Men in the open. Success. It furthers one to cross the great water. The perseverance of the superior man furthers.",
+    "imageZh": "天与火，同人；君子以类族辨物。",
+    "imageEn": "Heaven together with fire: the image of Fellowship with Men. Thus the superior man organizes the clans and makes distinctions between things.",
+    "interpretationZh": "同人卦象征与人和同，天火同升，志同道合。在旷野中与人和同，光明正大，可成大事。",
+    "interpretationEn": "Tong Ren symbolizes fellowship and harmony among people. Heaven and fire move together upward. Open fellowship in the wilderness leads to great achievements.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：同人于门，无咎。",
+        "textEn": "Nine at the beginning: Fellowship with men at the gate. No blame.",
+        "interpretationZh": "在门口与人和同，刚开始便以开放之心待人，无过失。",
+        "interpretationEn": "Fellowship begins at the gate. An open heart from the start brings no blame."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：同人于宗，吝。",
+        "textEn": "Six in the second place: Fellowship with men in the clan. Humiliation.",
+        "interpretationZh": "只在宗族内部和同，心胸狭隘，有所困窘。",
+        "interpretationEn": "Fellowship limited to the clan is narrow-minded and leads to humiliation."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：伏戎于莽，升其高陵，三岁不兴。",
+        "textEn": "Nine in the third place: He hides weapons in the thicket; he climbs the high hill in front of it. For three years he does not rise.",
+        "interpretationZh": "在草丛中埋伏兵力，登上高丘观望，三年不能兴起，心怀猜忌难成事。",
+        "interpretationEn": "Hiding weapons in the thicket and climbing the hill to spy. For three years nothing is accomplished. Suspicion prevents success."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：乘其墉，弗克攻，吉。",
+        "textEn": "Nine in the fourth place: He climbs up on his wall; he cannot attack. Good fortune.",
+        "interpretationZh": "登上城墙却不进攻，知难而退，反而吉利。",
+        "interpretationEn": "Climbing the wall but refraining from attack. Restraint brings good fortune."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：同人，先号啕而后笑，大师克相遇。",
+        "textEn": "Nine in the fifth place: Men bound in fellowship first weep and lament, but afterward they laugh. After great struggles they succeed in meeting.",
+        "interpretationZh": "同心之人先经历悲泣，后终欢笑，经过艰难斗争终于相聚。",
+        "interpretationEn": "Those in fellowship first weep, then laugh. After great struggles they finally meet."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：同人于郊，无悔。",
+        "textEn": "Nine at the top: Fellowship with men in the meadow. No remorse.",
+        "interpretationZh": "在郊外与人和同，虽未达到旷野般的广阔，但也无悔恨。",
+        "interpretationEn": "Fellowship in the meadow. Though not the widest circle, there is no remorse."
+      }
+    ]
+  },
+  {
+    "number": 14,
+    "nameZh": "大有",
+    "nameEn": "Possession in Great Measure",
+    "symbol": "101111",
+    "upperTrigram": "离/火",
+    "lowerTrigram": "乾/天",
+    "judgmentZh": "大有：元亨。",
+    "judgmentEn": "Possession in Great Measure. Supreme success.",
+    "imageZh": "火在天上，大有；君子以遏恶扬善，顺天休命。",
+    "imageEn": "Fire in heaven above: the image of Possession in Great Measure. Thus the superior man curbs evil and furthers good, and thereby obeys the benevolent will of heaven.",
+    "interpretationZh": "大有卦象征大丰收，火在天上，光明普照。柔居尊位，上下应之，万物亨通。",
+    "interpretationEn": "Da You symbolizes great possession and abundance. Fire shines high in heaven, illuminating all. A yielding line in the place of honor receives support from all, bringing supreme success.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：无交害，匪咎，艰则无咎。",
+        "textEn": "Nine at the beginning: No relationship with what is harmful; there is no blame in this. If one remains conscious of difficulty, one remains without blame.",
+        "interpretationZh": "不与有害之事交往，本身无过。保持警惕艰苦之心，则无咎。",
+        "interpretationEn": "Avoid harmful associations. Remaining aware of difficulties keeps one free of blame."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：大车以载，有攸往，无咎。",
+        "textEn": "Nine in the second place: A big wagon for loading. One may undertake something. No blame.",
+        "interpretationZh": "大车装载货物，有所前往，无过失。才能充足，堪当重任。",
+        "interpretationEn": "A great wagon for loading. One may set forth. Capable of bearing heavy responsibility."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：公用亨于天子，小人弗克。",
+        "textEn": "Nine in the third place: A prince offers it to the Son of Heaven. A petty man cannot do this.",
+        "interpretationZh": "公侯将财富献给天子，小人做不到如此大度。",
+        "interpretationEn": "A prince offers his wealth to the Son of Heaven. A petty man is incapable of such generosity."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：匪其彭，无咎。",
+        "textEn": "Nine in the fourth place: He makes a difference between himself and his neighbor. No blame.",
+        "interpretationZh": "不炫耀自己的丰盛，保持谦逊，无过失。",
+        "interpretationEn": "He does not flaunt his abundance. Modesty brings no blame."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：厥孚交如，威如，吉。",
+        "textEn": "Six in the fifth place: He whose truth is accessible, yet dignified, has good fortune.",
+        "interpretationZh": "以诚信与人交往，又不失威严，吉利。",
+        "interpretationEn": "One whose sincerity is approachable yet dignified has good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：自天祐之，吉无不利。",
+        "textEn": "Nine at the top: He is blessed by heaven. Good fortune. Nothing that does not further.",
+        "interpretationZh": "得到上天的庇佑，吉利，无往不利。",
+        "interpretationEn": "Blessed by heaven. Good fortune in everything undertaken."
+      }
+    ]
+  },
+  {
+    "number": 15,
+    "nameZh": "谦",
+    "nameEn": "Modesty",
+    "symbol": "000100",
+    "upperTrigram": "坤/地",
+    "lowerTrigram": "艮/山",
+    "judgmentZh": "谦：亨，君子有终。",
+    "judgmentEn": "Modesty creates success. The superior man carries things through.",
+    "imageZh": "地中有山，谦；君子以裒多益寡，称物平施。",
+    "imageEn": "Within the earth, a mountain: the image of Modesty. Thus the superior man reduces that which is too much, and augments that which is too little. He weighs things and makes them equal.",
+    "interpretationZh": "谦卦象征谦逊，山在地中，高而不显。谦虚者亨通，君子以谦德善终。",
+    "interpretationEn": "Qian symbolizes modesty. A mountain hidden within the earth — great yet unassuming. The modest person prospers and the superior man achieves a good end.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：谦谦君子，用涉大川，吉。",
+        "textEn": "Six at the beginning: A superior man modest about his modesty may cross the great water. Good fortune.",
+        "interpretationZh": "谦而又谦的君子，可以渡过大河，吉利。",
+        "interpretationEn": "A superior man modest about his modesty. He may cross the great water. Good fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：鸣谦，贞吉。",
+        "textEn": "Six in the second place: Modesty that comes to expression. Perseverance brings good fortune.",
+        "interpretationZh": "谦德之名远播，坚守正道则吉。",
+        "interpretationEn": "Modesty that finds expression. Perseverance brings good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：劳谦，君子有终，吉。",
+        "textEn": "Nine in the third place: A superior man of modesty and merit carries things to conclusion. Good fortune.",
+        "interpretationZh": "勤劳而谦逊，君子有好的结局，吉利。",
+        "interpretationEn": "A superior man with merit yet modest carries things through. Good fortune."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：无不利，撝谦。",
+        "textEn": "Six in the fourth place: Nothing that would not further modesty in movement.",
+        "interpretationZh": "无往不利，发挥谦逊之德。",
+        "interpretationEn": "Nothing that would not further. Modesty expressed in action."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：不富以其邻，利用侵伐，无不利。",
+        "textEn": "Six in the fifth place: Not boasting of wealth before one's neighbor. It is favorable to attack with force. Nothing that would not further.",
+        "interpretationZh": "不以财富在邻人面前炫耀，必要时可用武力征伐，无不利。",
+        "interpretationEn": "Not boasting of wealth before neighbors. When necessary, forceful action is favorable. Nothing unfurthered."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：鸣谦，利用行师，征邑国。",
+        "textEn": "Six at the top: Modesty that comes to expression. It is favorable to set armies marching to chastise one's own city and one's country.",
+        "interpretationZh": "谦德远闻，可以出兵征讨，整顿自己的城邑国家。",
+        "interpretationEn": "Modesty that finds expression. It is favorable to march armies to set one's own domain in order."
+      }
+    ]
+  },
+  {
+    "number": 16,
+    "nameZh": "豫",
+    "nameEn": "Enthusiasm",
+    "symbol": "001000",
+    "upperTrigram": "震/雷",
+    "lowerTrigram": "坤/地",
+    "judgmentZh": "豫：利建侯行师。",
+    "judgmentEn": "Enthusiasm. It furthers one to install helpers and to set armies marching.",
+    "imageZh": "雷出地奋，豫；先王以作乐崇德，殷荐之上帝，以配祖考。",
+    "imageEn": "Thunder comes resounding out of the earth: the image of Enthusiasm. Thus the ancient kings made music in order to honor merit, and offered it with splendor to the Supreme Deity, inviting their ancestors to be present.",
+    "interpretationZh": "豫卦象征欢乐愉悦，雷从地中奋起，万物振奋。顺势而动，利于建功立业。",
+    "interpretationEn": "Yu symbolizes enthusiasm and joyful harmony. Thunder bursts forth from the earth, stirring all things. Moving in accord with the time favors establishing great works.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：鸣豫，凶。",
+        "textEn": "Six at the beginning: Enthusiasm that expresses itself brings misfortune.",
+        "interpretationZh": "得意忘形地宣扬欢乐，凶险。过度张扬招致灾祸。",
+        "interpretationEn": "Boasting of one's enthusiasm brings misfortune. Excessive display invites disaster."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：介于石，不终日，贞吉。",
+        "textEn": "Six in the second place: Firm as a rock. Not a whole day. Perseverance brings good fortune.",
+        "interpretationZh": "坚如磐石，不等一天就能明辨是非，坚守正道则吉。",
+        "interpretationEn": "Firm as a rock. One discerns the truth before the day is over. Perseverance brings good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：盱豫，悔。迟有悔。",
+        "textEn": "Six in the third place: Enthusiasm that looks upward creates remorse. Hesitation brings remorse.",
+        "interpretationZh": "仰望他人而生欢乐，会有悔恨。犹豫不决也会后悔。",
+        "interpretationEn": "Looking upward for enthusiasm creates remorse. Hesitation also brings remorse."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：由豫，大有得。勿疑，朋盍簪。",
+        "textEn": "Nine in the fourth place: The source of enthusiasm. He achieves great things. Doubt not. You gather friends around you as a hair clasp gathers the hair.",
+        "interpretationZh": "作为欢乐的源泉，大有所得。不要疑虑，朋友如簪聚发般汇聚而来。",
+        "interpretationEn": "The source of enthusiasm achieves great things. Have no doubt. Friends gather around you like hair held by a clasp."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：贞疾，恒不死。",
+        "textEn": "Six in the fifth place: Persistently ill, and still does not die.",
+        "interpretationZh": "长期处于困境如同久病，但始终不会灭亡。",
+        "interpretationEn": "Persistently ill yet never dying. Enduring hardship without succumbing."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：冥豫，成有渝，无咎。",
+        "textEn": "Six at the top: Deluded enthusiasm. But if after completion one changes, there is no blame.",
+        "interpretationZh": "沉迷于欢乐而昏昧，但若能及时醒悟改变，则无过失。",
+        "interpretationEn": "Blinded by enthusiasm. But if one changes after realizing the error, there is no blame."
+      }
+    ]
+  }
+]

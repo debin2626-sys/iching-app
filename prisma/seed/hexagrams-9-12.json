@@ -1,0 +1,234 @@
+[
+  {
+    "number": 9,
+    "nameZh": "小畜",
+    "nameEn": "The Taming Power of the Small",
+    "symbol": "110111",
+    "upperTrigram": "巽/风",
+    "lowerTrigram": "乾/天",
+    "judgmentZh": "小畜：亨。密云不雨，自我西郊。",
+    "judgmentEn": "The Taming Power of the Small has success. Dense clouds, no rain from our western region.",
+    "imageZh": "风行天上，小畜；君子以懿文德。",
+    "imageEn": "The wind drives across heaven: the image of The Taming Power of the Small. Thus the superior man refines the outward aspect of his nature.",
+    "interpretationZh": "小畜卦象征以柔蓄刚，风行天上，力量虽小但能积聚。密云未雨，蓄势待发，宜修养文德。",
+    "interpretationEn": "Xiao Xu symbolizes the small restraining the great. Wind blows across heaven, gathering force. Cultivate virtue while awaiting the right moment.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：复自道，何其咎，吉。",
+        "textEn": "Nine at the beginning: Return to the way. How could there be blame in this? Good fortune.",
+        "interpretationZh": "回归正道，有何过失？吉利。",
+        "interpretationEn": "Returning to one's own path. How could this bring blame? Good fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：牵复，吉。",
+        "textEn": "Nine in the second place: He allows himself to be drawn into returning. Good fortune.",
+        "interpretationZh": "被牵引而回归正道，吉利。",
+        "interpretationEn": "Drawn back to the right path by another. Good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：舆说辐，夫妻反目。",
+        "textEn": "Nine in the third place: The spokes burst out of the wagon wheels. Man and wife roll their eyes.",
+        "interpretationZh": "车轮辐条脱落，夫妻反目不和，进退失据。",
+        "interpretationEn": "The wagon breaks down. Husband and wife turn against each other."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：有孚，血去惕出，无咎。",
+        "textEn": "Six in the fourth place: If you are sincere, blood vanishes and fear gives way. No blame.",
+        "interpretationZh": "心怀诚信，忧患消除，恐惧远去，无过失。",
+        "interpretationEn": "With sincerity, bloodshed is averted and anxiety departs. No blame."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：有孚挛如，富以其邻。",
+        "textEn": "Nine in the fifth place: If you are sincere and loyally attached, you are rich in your neighbor.",
+        "interpretationZh": "以诚信紧密相连，与邻里共享富裕。",
+        "interpretationEn": "Bound in sincerity and loyalty, sharing wealth with neighbors."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：既雨既处，尚德载，妇贞厉。月几望，君子征凶。",
+        "textEn": "Nine at the top: The rain comes, there is rest. This is due to the lasting effect of character. Perseverance brings the woman into danger. The moon is nearly full. If the superior man persists, misfortune comes.",
+        "interpretationZh": "雨已降下，蓄积已满。德行已载，妇人守正则有危险。月近满盈，君子此时出征则凶。",
+        "interpretationEn": "Rain falls and rest comes. Virtue has accumulated. The moon is nearly full; the superior man should not press forward now."
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "nameZh": "履",
+    "nameEn": "Treading",
+    "symbol": "111011",
+    "upperTrigram": "乾/天",
+    "lowerTrigram": "兑/泽",
+    "judgmentZh": "履虎尾，不咥人，亨。",
+    "judgmentEn": "Treading upon the tail of the tiger. It does not bite the man. Success.",
+    "imageZh": "上天下泽，履；君子以辨上下，定民志。",
+    "imageEn": "Heaven above, the lake below: the image of Treading. Thus the superior man discriminates between high and low, and thereby fortifies the thinking of the people.",
+    "interpretationZh": "履卦象征行为礼仪，天在上泽在下，尊卑有序。踩到虎尾而不被咬，以礼行事则亨通。",
+    "interpretationEn": "Lü symbolizes proper conduct. Heaven above, lake below — order is maintained. Treading carefully with propriety brings success even in danger.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：素履往，无咎。",
+        "textEn": "Nine at the beginning: Simple conduct. Progress without blame.",
+        "interpretationZh": "以朴素的态度前行，不会有过失。",
+        "interpretationEn": "Simple, unadorned conduct. Moving forward brings no blame."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：履道坦坦，幽人贞吉。",
+        "textEn": "Nine in the second place: Treading a smooth, level course. The perseverance of a dark man brings good fortune.",
+        "interpretationZh": "行走在平坦的大道上，隐逸之人坚守正道则吉。",
+        "interpretationEn": "Walking a smooth and level path. A quiet person's perseverance brings fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：眇能视，跛能履，履虎尾，咥人，凶。武人为于大君。",
+        "textEn": "Six in the third place: A one-eyed man is able to see, a lame man is able to tread. He treads on the tail of the tiger. The tiger bites the man. Misfortune. Thus does a warrior act on behalf of his great prince.",
+        "interpretationZh": "独眼勉强能看，跛足勉强能行，却踩了虎尾被咬，凶险。能力不足而强行冒进。",
+        "interpretationEn": "A one-eyed man tries to see, a lame man tries to walk. Treading on the tiger's tail — it bites. Overreaching brings misfortune."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：履虎尾，愬愬终吉。",
+        "textEn": "Nine in the fourth place: He treads on the tail of the tiger. Caution and circumspection lead ultimately to good fortune.",
+        "interpretationZh": "踩到虎尾，小心翼翼，最终吉利。",
+        "interpretationEn": "Treading on the tiger's tail with utmost caution. In the end, good fortune."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：夬履，贞厉。",
+        "textEn": "Nine in the fifth place: Resolute conduct. Perseverance with awareness of danger.",
+        "interpretationZh": "果断行事，坚守正道但须警惕危险。",
+        "interpretationEn": "Resolute treading. Persevere but remain aware of danger."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：视履考祥，其旋元吉。",
+        "textEn": "Nine at the top: Look to your conduct and weigh the favorable signs. When everything is fulfilled, supreme good fortune comes.",
+        "interpretationZh": "回顾自己的行为，审视吉凶征兆，周全圆满则大吉。",
+        "interpretationEn": "Look back on your conduct and examine the omens. When all is complete, supreme good fortune."
+      }
+    ]
+  },
+  {
+    "number": 11,
+    "nameZh": "泰",
+    "nameEn": "Peace",
+    "symbol": "000111",
+    "upperTrigram": "坤/地",
+    "lowerTrigram": "乾/天",
+    "judgmentZh": "泰：小往大来，吉亨。",
+    "judgmentEn": "Peace. The small departs, the great approaches. Good fortune. Success.",
+    "imageZh": "天地交，泰；后以财成天地之道，辅相天地之宜，以左右民。",
+    "imageEn": "Heaven and earth unite: the image of Peace. Thus the ruler divides and completes the course of heaven and earth; he furthers and regulates the gifts of heaven and earth, and so aids the people.",
+    "interpretationZh": "泰卦象征通泰安宁，天地交感，阴阳和谐。小人退去，君子到来，万事亨通。",
+    "interpretationEn": "Tai symbolizes peace and harmony. Heaven and earth commune, yin and yang are in balance. The petty depart and the great arrive.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：拔茅茹，以其汇，征吉。",
+        "textEn": "Nine at the beginning: When ribbon grass is pulled up, the sod comes with it. Each according to his kind. Undertakings bring good fortune.",
+        "interpretationZh": "拔起茅草连根带土，同类相随，出征则吉。",
+        "interpretationEn": "Pulling up ribbon grass brings the sod with it. Like attracts like. Undertakings bring fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：包荒，用冯河，不遐遗，朋亡，得尚于中行。",
+        "textEn": "Nine in the second place: Bearing with the uncultured in gentleness, fording the river with resolution, not neglecting what is distant, not regarding one's companions: thus one may manage to walk in the middle.",
+        "interpretationZh": "包容荒芜，果断渡河，不遗远方，不结朋党，行中庸之道。",
+        "interpretationEn": "Bear with the uncultured, ford the river boldly, neglect nothing distant, avoid cliques. Walk the middle path."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：无平不陂，无往不复。艰贞无咎。勿恤其孚，于食有福。",
+        "textEn": "Nine in the third place: No plain not followed by a slope. No going not followed by a return. He who remains persevering in danger is without blame. Do not complain about this truth; enjoy the good fortune you still possess.",
+        "interpretationZh": "没有平地不变成斜坡，没有去而不返。艰难中坚守正道则无咎，享受当下的福分。",
+        "interpretationEn": "No plain without a slope, no departure without return. Persevere through hardship without blame. Enjoy present blessings."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：翩翩不富，以其邻，不戒以孚。",
+        "textEn": "Six in the fourth place: He flutters down, not boasting of his wealth, together with his neighbor, guileless and sincere.",
+        "interpretationZh": "翩然而下，不以富有自夸，与邻里坦诚相待，不设防而以诚信相交。",
+        "interpretationEn": "Fluttering down without boasting of wealth. Meeting neighbors with sincerity and without pretense."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：帝乙归妹，以祉元吉。",
+        "textEn": "Six in the fifth place: The sovereign I gives his daughter in marriage. This brings blessing and supreme good fortune.",
+        "interpretationZh": "帝乙嫁女，带来福祉，大吉大利。",
+        "interpretationEn": "The sovereign gives his daughter in marriage. Blessing and supreme good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：城复于隍，勿用师。自邑告命，贞吝。",
+        "textEn": "Six at the top: The wall falls back into the moat. Use no army now. Make your commands known within your own town. Perseverance brings humiliation.",
+        "interpretationZh": "城墙倒塌回填护城河，不可用兵。在自己城邑中发布命令，坚持则有困窘。",
+        "interpretationEn": "The wall falls into the moat. Do not use the army. Issue commands locally. Perseverance brings humiliation."
+      }
+    ]
+  },
+  {
+    "number": 12,
+    "nameZh": "否",
+    "nameEn": "Standstill",
+    "symbol": "111000",
+    "upperTrigram": "乾/天",
+    "lowerTrigram": "坤/地",
+    "judgmentZh": "否之匪人，不利君子贞，大往小来。",
+    "judgmentEn": "Standstill. Evil people do not further the perseverance of the superior man. The great departs, the small approaches.",
+    "imageZh": "天地不交，否；君子以俭德辟难，不可荣以禄。",
+    "imageEn": "Heaven and earth do not unite: the image of Standstill. Thus the superior man falls back upon his inner worth in order to escape the difficulties. He does not permit himself to be honored with revenue.",
+    "interpretationZh": "否卦象征闭塞不通，天地不交，阴阳隔绝。君子退隐，小人当道，宜俭朴避难。",
+    "interpretationEn": "Pi symbolizes stagnation and obstruction. Heaven and earth do not commune. The superior man withdraws and cultivates inner virtue to avoid calamity.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：拔茅茹，以其汇，贞吉亨。",
+        "textEn": "Six at the beginning: When ribbon grass is pulled up, the sod comes with it. Each according to his kind. Perseverance brings good fortune and success.",
+        "interpretationZh": "拔起茅草连根带土，同类相随，坚守正道则吉利亨通。",
+        "interpretationEn": "Pulling up ribbon grass brings the sod. Like attracts like. Perseverance brings fortune and success."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：包承，小人吉，大人否亨。",
+        "textEn": "Six in the second place: They bear and endure; this means good fortune for inferior people. The standstill serves to help the great man to attain success.",
+        "interpretationZh": "包容承受，小人得吉，大人在否塞中反能亨通。",
+        "interpretationEn": "Bearing and enduring. Good fortune for the small. The great man finds success even in standstill."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：包羞。",
+        "textEn": "Six in the third place: They bear shame.",
+        "interpretationZh": "心怀羞愧，所行不正，自取其辱。",
+        "interpretationEn": "They bear shame. Their actions bring disgrace upon themselves."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：有命无咎，畴离祉。",
+        "textEn": "Nine in the fourth place: He who acts at the command of the highest remains without blame. Those of like mind partake of the blessing.",
+        "interpretationZh": "奉天命而行则无咎，同道之人共享福祉。",
+        "interpretationEn": "Acting under heaven's command brings no blame. Like-minded people share in the blessing."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：休否，大人吉。其亡其亡，系于苞桑。",
+        "textEn": "Nine in the fifth place: Standstill is giving way. Good fortune for the great man. 'What if it should fail, what if it should fail?' In this way he ties it to a cluster of mulberry shoots.",
+        "interpretationZh": "否塞将止，大人吉利。常怀危亡之心，如系于坚韧的桑树根，方可稳固。",
+        "interpretationEn": "Standstill begins to wane. Good fortune for the great man. Constant vigilance — 'what if it fails?' — secures stability like tying to mulberry roots."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：倾否，先否后喜。",
+        "textEn": "Nine at the top: The standstill comes to an end. First standstill, then good fortune.",
+        "interpretationZh": "否极泰来，闭塞终将倾覆，先有困顿后有喜悦。",
+        "interpretationEn": "The standstill is overthrown. First obstruction, then joy. After darkness comes light."
+      }
+    ]
+  }
+]

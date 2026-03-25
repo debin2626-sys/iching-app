@@ -1,0 +1,234 @@
+[
+  {
+    "number": 25,
+    "nameZh": "无妄",
+    "nameEn": "Innocence",
+    "symbol": "111001",
+    "upperTrigram": "乾/天",
+    "lowerTrigram": "震/雷",
+    "judgmentZh": "无妄：元亨利贞。其匪正有眚，不利有攸往。",
+    "judgmentEn": "Innocence. Supreme success. Perseverance furthers. If someone is not as he should be, he has misfortune, and it does not further him to undertake anything.",
+    "imageZh": "天下雷行，物与无妄；先王以茂对时，育万物。",
+    "imageEn": "Under heaven thunder rolls: all things attain the natural state of innocence. Thus the kings of old, rich in virtue and in harmony with the time, fostered and nourished all beings.",
+    "interpretationZh": "无妄卦象征天真无妄，天下雷动，万物各得其性。行事应顺应天道，不可妄为。",
+    "interpretationEn": "Wu Wang symbolizes innocence and the unexpected. Thunder rolls beneath heaven, and all things follow their true nature. Act in accord with the natural order.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：无妄，往吉。",
+        "textEn": "Nine at the beginning: Innocent behavior brings good fortune.",
+        "interpretationZh": "以天真无妄之心行事，前往则吉利。",
+        "interpretationEn": "Acting with innocence and sincerity brings good fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：不耕获，不菑畲，则利有攸往。",
+        "textEn": "Six in the second place: If one does not count on the harvest while plowing, nor on the use of the ground while clearing it, then it furthers one to undertake something.",
+        "interpretationZh": "不计较耕耘的收获，不计较开荒的利用，则利于有所前往。",
+        "interpretationEn": "Work without calculating the reward. Selfless effort furthers undertakings."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：无妄之灾，或系之牛，行人之得，邑人之灾。",
+        "textEn": "Six in the third place: Undeserved misfortune. The cow that was tethered by someone is the wanderer's gain and the citizen's loss.",
+        "interpretationZh": "无妄之灾从天而降，如系住的牛被路人牵走，是邑人的灾祸。",
+        "interpretationEn": "Undeserved misfortune strikes. What one person gains, another loses through no fault of their own."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：可贞，无咎。",
+        "textEn": "Nine in the fourth place: He who can be persevering remains without blame.",
+        "interpretationZh": "能够坚守正道，则无过失。",
+        "interpretationEn": "One who can remain steadfast will be without blame."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：无妄之疾，勿药有喜。",
+        "textEn": "Nine in the fifth place: Use no medicine in an illness incurred through no fault of your own. It will pass of itself.",
+        "interpretationZh": "无妄之疾不需用药，自然会痊愈，有喜庆之事。",
+        "interpretationEn": "An illness not caused by one's own fault needs no medicine. It will heal naturally."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：无妄，行有眚，无攸利。",
+        "textEn": "Nine at the top: Innocent action brings misfortune. Nothing furthers.",
+        "interpretationZh": "无妄之时妄行，必有灾祸，无所利益。",
+        "interpretationEn": "Action without proper timing brings misfortune. Nothing is furthered."
+      }
+    ]
+  },
+  {
+    "number": 26,
+    "nameZh": "大畜",
+    "nameEn": "The Taming Power of the Great",
+    "symbol": "100111",
+    "upperTrigram": "艮/山",
+    "lowerTrigram": "乾/天",
+    "judgmentZh": "大畜：利贞，不家食吉，利涉大川。",
+    "judgmentEn": "The Taming Power of the Great. Perseverance furthers. Not eating at home brings good fortune. It furthers one to cross the great water.",
+    "imageZh": "天在山中，大畜；君子以多识前言往行，以畜其德。",
+    "imageEn": "Heaven within the mountain: the image of The Taming Power of the Great. Thus the superior man acquaints himself with many sayings of antiquity and many deeds of the past, in order to strengthen his character thereby.",
+    "interpretationZh": "大畜卦象征大的蓄积，天在山中，蕴藏巨大能量。宜积蓄力量，学习前人智慧，厚积薄发。",
+    "interpretationEn": "Da Xu symbolizes great accumulation. Heaven contained within the mountain stores immense energy. Gather strength and learn from the wisdom of the ancients.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：有厉，利已。",
+        "textEn": "Nine at the beginning: Danger is at hand. It furthers one to desist.",
+        "interpretationZh": "有危险在前，宜停止前进，暂时收敛。",
+        "interpretationEn": "Danger is near. It is wise to halt and restrain oneself."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：舆说輹。",
+        "textEn": "Nine in the second place: The axletrees are taken from the wagon.",
+        "interpretationZh": "车轴脱落，车不能行，被迫停下蓄势。",
+        "interpretationEn": "The axletrees are removed from the wagon. One is compelled to stop and gather strength."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：良马逐，利艰贞。曰闲舆卫，利有攸往。",
+        "textEn": "Nine in the third place: A good horse that follows others. Awareness of danger, with perseverance, furthers. Practice chariot driving and armed defense daily. It furthers one to have somewhere to go.",
+        "interpretationZh": "良马追逐奔驰，宜在艰难中坚守正道。日常练习驾车防卫，利于有所前往。",
+        "interpretationEn": "A fine horse gives chase. Persevere through difficulty. Daily practice in defense furthers one's goals."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：童牛之牿，元吉。",
+        "textEn": "Six in the fourth place: The headboard of a young bull. Great good fortune.",
+        "interpretationZh": "给小牛套上横木防其抵触，防患于未然，大吉。",
+        "interpretationEn": "A headboard on a young bull prevents it from goring. Prevention brings great fortune."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：豮豕之牙，吉。",
+        "textEn": "Six in the fifth place: The tusk of a gelded boar. Good fortune.",
+        "interpretationZh": "阉割的猪虽有獠牙但已无攻击性，化解危险于无形，吉利。",
+        "interpretationEn": "The tusk of a gelded boar. The danger is neutralized at its source. Good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：何天之衢，亨。",
+        "textEn": "Nine at the top: One attains the way of heaven. Success.",
+        "interpretationZh": "通达天道之大路，亨通无阻。",
+        "interpretationEn": "One attains the highway of heaven. Great success and free passage."
+      }
+    ]
+  },
+  {
+    "number": 27,
+    "nameZh": "颐",
+    "nameEn": "Corners of the Mouth",
+    "symbol": "100001",
+    "upperTrigram": "艮/山",
+    "lowerTrigram": "震/雷",
+    "judgmentZh": "颐：贞吉。观颐，自求口实。",
+    "judgmentEn": "The Corners of the Mouth. Perseverance brings good fortune. Pay heed to the providing of nourishment and to what a man seeks to fill his own mouth with.",
+    "imageZh": "山下有雷，颐；君子以慎言语，节饮食。",
+    "imageEn": "At the foot of the mountain, thunder: the image of Providing Nourishment. Thus the superior man is careful of his words and temperate in eating and drinking.",
+    "interpretationZh": "颐卦象征颐养，山下有雷，上止下动如口嚼食物。宜慎言语、节饮食，注重身心修养。",
+    "interpretationEn": "Yi symbolizes nourishment. Thunder at the foot of the mountain resembles the jaw in motion. Be careful with words and moderate in consumption.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：舍尔灵龟，观我朵颐，凶。",
+        "textEn": "Nine at the beginning: You let your magic tortoise go, and look at me with the corners of your mouth drooping. Misfortune.",
+        "interpretationZh": "放弃自己的灵龟之智，却羡慕他人口中之食，凶险。",
+        "interpretationEn": "You abandon your own spiritual treasure and gaze enviously at others. Misfortune."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：颠颐，拂经，于丘颐，征凶。",
+        "textEn": "Six in the second place: Turning to the summit for nourishment, deviating from the path to seek nourishment from the hill. Continuing to do this brings misfortune.",
+        "interpretationZh": "颠倒颐养之道，违背常理向山丘求食，前行则凶。",
+        "interpretationEn": "Seeking nourishment in the wrong way, deviating from the proper path. Continuing brings misfortune."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：拂颐，贞凶，十年勿用，无攸利。",
+        "textEn": "Six in the third place: Turning away from nourishment. Perseverance brings misfortune. Do not act thus for ten years. Nothing serves to further.",
+        "interpretationZh": "违背颐养之道，坚持则凶，十年不可妄动，无所利益。",
+        "interpretationEn": "Turning away from proper nourishment. Persisting brings misfortune for ten years. Nothing furthers."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：颠颐吉，虎视眈眈，其欲逐逐，无咎。",
+        "textEn": "Six in the fourth place: Turning to the summit for provision of nourishment brings good fortune. Spying about with sharp eyes like a tiger with insatiable craving. No blame.",
+        "interpretationZh": "向上求取颐养则吉，如虎视眈眈般专注追求，无过失。",
+        "interpretationEn": "Seeking nourishment from above brings fortune. Watch keenly like a tiger. No blame."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：拂经，居贞吉，不可涉大川。",
+        "textEn": "Six in the fifth place: Turning away from the path. To remain persevering brings good fortune. One should not cross the great water.",
+        "interpretationZh": "虽偏离常道，但安居守正则吉，不可冒险渡大川。",
+        "interpretationEn": "Deviating from the path, yet remaining steadfast brings fortune. Do not cross the great water."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：由颐，厉吉，利涉大川。",
+        "textEn": "Nine at the top: The source of nourishment. Awareness of danger brings good fortune. It furthers one to cross the great water.",
+        "interpretationZh": "作为颐养的源头，虽有危险但终获吉利，利于涉越大川。",
+        "interpretationEn": "The source of nourishment. Danger awareness brings fortune. It furthers one to cross the great water."
+      }
+    ]
+  },
+  {
+    "number": 28,
+    "nameZh": "大过",
+    "nameEn": "Preponderance of the Great",
+    "symbol": "011110",
+    "upperTrigram": "兑/泽",
+    "lowerTrigram": "巽/风",
+    "judgmentZh": "大过：栋桡，利有攸往，亨。",
+    "judgmentEn": "Preponderance of the Great. The ridgepole sags to the breaking point. It furthers one to have somewhere to go. Success.",
+    "imageZh": "泽灭木，大过；君子以独立不惧，遁世无闷。",
+    "imageEn": "The lake rises above the trees: the image of Preponderance of the Great. Thus the superior man, when he stands alone, is unconcerned, and if he has to renounce the world, he is undaunted.",
+    "interpretationZh": "大过卦象征大的过度，泽水淹没树木，形势非常。君子应独立不惧，即使遁世也无忧闷。",
+    "interpretationEn": "Da Guo symbolizes great excess. The lake rises above the trees, an extraordinary situation. The superior man stands alone without fear and renounces the world without melancholy.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：藉用白茅，无咎。",
+        "textEn": "Six at the beginning: To spread white rushes underneath. No blame.",
+        "interpretationZh": "用白茅铺垫于下，小心谨慎，无过失。",
+        "interpretationEn": "Spreading white rushes underneath for protection. Caution brings no blame."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：枯杨生稊，老夫得其女妻，无不利。",
+        "textEn": "Nine in the second place: A dry poplar sprouts at the root. An older man takes a young wife. Everything furthers.",
+        "interpretationZh": "枯杨从根部生出新芽，老夫娶得少妻，无所不利。",
+        "interpretationEn": "A withered poplar sprouts anew. An old man takes a young wife. Everything furthers."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：栋桡，凶。",
+        "textEn": "Nine in the third place: The ridgepole sags to the breaking point. Misfortune.",
+        "interpretationZh": "栋梁弯曲将断，凶险。",
+        "interpretationEn": "The ridgepole sags to the breaking point. Misfortune."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：栋隆，吉；有它吝。",
+        "textEn": "Nine in the fourth place: The ridgepole is braced. Good fortune. If there are ulterior motives, it is humiliating.",
+        "interpretationZh": "栋梁高隆得到支撑，吉利；但若有其他企图则有憾。",
+        "interpretationEn": "The ridgepole is braced and supported. Good fortune. But ulterior motives bring humiliation."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：枯杨生华，老妇得其士夫，无咎无誉。",
+        "textEn": "Nine in the fifth place: A withered poplar puts forth flowers. An older woman takes a young husband. No blame. No praise.",
+        "interpretationZh": "枯杨开花而非生芽，老妇嫁得少夫，无咎但也无荣誉。",
+        "interpretationEn": "A withered poplar puts forth flowers. An older woman takes a young husband. No blame, no praise."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：过涉灭顶，凶，无咎。",
+        "textEn": "Six at the top: One must go through the water. It goes over one's head. Misfortune. No blame.",
+        "interpretationZh": "涉水过深，水没过头顶，凶险，但无可责怪。",
+        "interpretationEn": "Wading through water that goes over one's head. Misfortune, but no blame."
+      }
+    ]
+  }
+]

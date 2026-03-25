@@ -1,0 +1,234 @@
+[
+  {
+    "number": 17,
+    "nameZh": "随",
+    "nameEn": "Following",
+    "symbol": "011001",
+    "upperTrigram": "兑/泽",
+    "lowerTrigram": "震/雷",
+    "judgmentZh": "随：元亨利贞，无咎。",
+    "judgmentEn": "Following has supreme success. Perseverance furthers. No blame.",
+    "imageZh": "泽中有雷，随；君子以向晦入宴息。",
+    "imageEn": "Thunder in the middle of the lake: the image of Following. Thus the superior man at nightfall goes indoors for rest and recuperation.",
+    "interpretationZh": "随卦象征随从、跟随，泽中有雷，雷动而泽随之。顺应时势，随机应变，方能亨通无咎。",
+    "interpretationEn": "Sui symbolizes following and adaptation. Thunder within the lake stirs movement. By adapting to the times and following what is right, one achieves success without blame.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：官有渝，贞吉。出门交有功。",
+        "textEn": "Nine at the beginning: The standard is changing. Perseverance brings good fortune. To go out of the door in company produces deeds.",
+        "interpretationZh": "主管之事有所变化，坚守正道则吉。出门与人交往则有功绩。",
+        "interpretationEn": "Standards are shifting. Stay true and go forth to engage with others for achievement."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：系小子，失丈夫。",
+        "textEn": "Six in the second place: If one clings to the little boy, one loses the strong man.",
+        "interpretationZh": "若依附小人，就会失去贤者。取舍须慎重。",
+        "interpretationEn": "Clinging to the petty causes one to lose the worthy. Choose wisely."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：系丈夫，失小子。随有求得，利居贞。",
+        "textEn": "Six in the third place: If one clings to the strong man, one loses the little boy. Through following one finds what one seeks. It furthers one to remain persevering.",
+        "interpretationZh": "依附贤者则失去小人，随从正道则有所得，宜安居守正。",
+        "interpretationEn": "Clinging to the worthy, one lets go of the petty. Following the right path brings what is sought."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：随有获，贞凶。有孚在道，以明，何咎。",
+        "textEn": "Nine in the fourth place: Following creates success. Perseverance brings misfortune. To go one's way with sincerity brings clarity. How could there be blame in this?",
+        "interpretationZh": "随从而有所获，但固执则凶。以诚信行于正道，光明磊落，何咎之有。",
+        "interpretationEn": "Following brings gain, but stubbornness leads to misfortune. Walk sincerely on the right path and no blame arises."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：孚于嘉，吉。",
+        "textEn": "Nine in the fifth place: Sincere in the good. Good fortune.",
+        "interpretationZh": "诚信于美善之事，吉利。",
+        "interpretationEn": "Sincerity toward what is good and excellent brings good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：拘系之，乃从维之。王用亨于西山。",
+        "textEn": "Six at the top: He meets with firm allegiance and is still further bound. The king introduces him to the Western Mountain.",
+        "interpretationZh": "被牢固地系住追随，王在西山举行祭祀以示诚意。",
+        "interpretationEn": "Firm allegiance binds one closely. The king offers sacrifice at the Western Mountain to honor this devotion."
+      }
+    ]
+  },
+  {
+    "number": 18,
+    "nameZh": "蛊",
+    "nameEn": "Work on What Has Been Spoiled",
+    "symbol": "100110",
+    "upperTrigram": "艮/山",
+    "lowerTrigram": "巽/风",
+    "judgmentZh": "蛊：元亨，利涉大川。先甲三日，后甲三日。",
+    "judgmentEn": "Work on What Has Been Spoiled has supreme success. It furthers one to cross the great water. Before the starting point, three days. After the starting point, three days.",
+    "imageZh": "山下有风，蛊；君子以振民育德。",
+    "imageEn": "The wind blows low on the mountain: the image of Decay. Thus the superior man stirs up the people and strengthens their spirit.",
+    "interpretationZh": "蛊卦象征腐败与整治，山下有风，风被山阻而停滞。事物败坏之后需要整顿革新，拨乱反正。",
+    "interpretationEn": "Gu symbolizes decay and the work of reform. Wind at the foot of the mountain is stagnant. After corruption, renovation and correction are needed.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：干父之蛊，有子，考无咎，厉终吉。",
+        "textEn": "Six at the beginning: Setting right what has been spoiled by the father. If there is a son, no blame rests upon the departed father. Danger. In the end, good fortune.",
+        "interpretationZh": "整治父辈留下的弊病，有能干的儿子承担，先父可免于咎。虽有危险，终获吉利。",
+        "interpretationEn": "Correcting the father's decay. A capable son removes blame from the departed. Danger, but good fortune in the end."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：干母之蛊，不可贞。",
+        "textEn": "Nine in the second place: Setting right what has been spoiled by the mother. One must not be too persevering.",
+        "interpretationZh": "整治母辈留下的弊病，不可过于强硬，宜柔和处理。",
+        "interpretationEn": "Correcting the mother's decay. Do not be too forceful; gentleness is needed."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：干父之蛊，小有悔，无大咎。",
+        "textEn": "Nine in the third place: Setting right what has been spoiled by the father. There will be a little remorse. No great blame.",
+        "interpretationZh": "整治父辈的弊病，虽有小悔恨，但无大过失。",
+        "interpretationEn": "Correcting the father's decay. Some regret, but no great blame."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：裕父之蛊，往见吝。",
+        "textEn": "Six in the fourth place: Tolerating what has been spoiled by the father. In continuing one sees humiliation.",
+        "interpretationZh": "宽容放纵父辈的弊病不加整治，继续下去则有困窘。",
+        "interpretationEn": "Tolerating the father's decay without correction. Continuing this way leads to humiliation."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：干父之蛊，用誉。",
+        "textEn": "Six in the fifth place: Setting right what has been spoiled by the father. One meets with praise.",
+        "interpretationZh": "整治父辈的弊病，因此获得赞誉。",
+        "interpretationEn": "Correcting the father's decay brings praise and honor."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：不事王侯，高尚其事。",
+        "textEn": "Nine at the top: He does not serve kings and princes, sets himself higher goals.",
+        "interpretationZh": "不为王侯效力，追求更高尚的志向，超然物外。",
+        "interpretationEn": "Not serving kings and princes. One sets higher goals and transcends worldly affairs."
+      }
+    ]
+  },
+  {
+    "number": 19,
+    "nameZh": "临",
+    "nameEn": "Approach",
+    "symbol": "000011",
+    "upperTrigram": "坤/地",
+    "lowerTrigram": "兑/泽",
+    "judgmentZh": "临：元亨利贞。至于八月有凶。",
+    "judgmentEn": "Approach has supreme success. Perseverance furthers. When the eighth month comes, there will be misfortune.",
+    "imageZh": "泽上有地，临；君子以教思无穷，容保民无疆。",
+    "imageEn": "The earth above the lake: the image of Approach. Thus the superior man is inexhaustible in his will to teach, and without limits in his tolerance and protection of the people.",
+    "interpretationZh": "临卦象征亲临、治理，地在泽上，居高临下。阳气渐长，万物生发，但盛极必衰，八月有凶。",
+    "interpretationEn": "Lin symbolizes approach and oversight. Earth above the lake looks down. Yang energy grows, but at its peak decline begins — by the eighth month, misfortune comes.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：咸临，贞吉。",
+        "textEn": "Nine at the beginning: Joint approach. Perseverance brings good fortune.",
+        "interpretationZh": "感应而亲临，坚守正道则吉利。",
+        "interpretationEn": "Approaching together in mutual influence. Perseverance brings good fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：咸临，吉无不利。",
+        "textEn": "Nine in the second place: Joint approach. Good fortune. Everything furthers.",
+        "interpretationZh": "感应而亲临，吉利，无所不利。",
+        "interpretationEn": "Approaching together. Good fortune. Nothing that does not further."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：甘临，无攸利。既忧之，无咎。",
+        "textEn": "Six in the third place: Comfortable approach. Nothing that would further. If one is induced to grieve over it, one becomes free of blame.",
+        "interpretationZh": "以甜言蜜语亲临，无所利益。若能忧虑反省，则无过失。",
+        "interpretationEn": "A complacent approach brings no benefit. If one reflects with concern, blame is avoided."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：至临，无咎。",
+        "textEn": "Six in the fourth place: Complete approach. No blame.",
+        "interpretationZh": "亲自到来，诚心亲临，无过失。",
+        "interpretationEn": "Approaching with full commitment. No blame."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：知临，大君之宜，吉。",
+        "textEn": "Six in the fifth place: Wise approach. This is right for a great prince. Good fortune.",
+        "interpretationZh": "以智慧亲临治理，这是大君应有的作为，吉利。",
+        "interpretationEn": "Approaching with wisdom. This befits a great ruler. Good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：敦临，吉无咎。",
+        "textEn": "Six at the top: Great-hearted approach. Good fortune. No blame.",
+        "interpretationZh": "以敦厚之心亲临，吉利无过失。",
+        "interpretationEn": "Approaching with great-heartedness and sincerity. Good fortune. No blame."
+      }
+    ]
+  },
+  {
+    "number": 20,
+    "nameZh": "观",
+    "nameEn": "Contemplation",
+    "symbol": "110000",
+    "upperTrigram": "巽/风",
+    "lowerTrigram": "坤/地",
+    "judgmentZh": "观：盥而不荐，有孚颙若。",
+    "judgmentEn": "Contemplation. The ablution has been made, but not yet the offering. Full of trust they look up to him.",
+    "imageZh": "风行地上，观；先王以省方，观民设教。",
+    "imageEn": "The wind blows over the earth: the image of Contemplation. Thus the kings of old visited the regions of the world, contemplated the people, and gave them instruction.",
+    "interpretationZh": "观卦象征观察与示范，风行地上，无所不至。如祭祀时洗手净心的庄严时刻，以诚敬之心观察天下。",
+    "interpretationEn": "Guan symbolizes contemplation and setting an example. Wind blows across the earth, reaching everywhere. Like the solemn moment of ablution before sacrifice, one observes the world with sincerity and reverence.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：童观，小人无咎，君子吝。",
+        "textEn": "Six at the beginning: Boylike contemplation. For an inferior man, no blame. For a superior man, humiliation.",
+        "interpretationZh": "幼稚浅薄的观察，对小人无妨，但对君子则有愧。",
+        "interpretationEn": "Childish contemplation. Acceptable for the common man, but humiliating for the superior man."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：窥观，利女贞。",
+        "textEn": "Six in the second place: Contemplation through the crack of the door. Furthering for the perseverance of a woman.",
+        "interpretationZh": "从门缝中窥视，视野狭隘，对女子守正有利，但不宜大丈夫。",
+        "interpretationEn": "Peeping through the door crack. A narrow view, suitable for a woman's perseverance but not for a man of action."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：观我生，进退。",
+        "textEn": "Six in the third place: Contemplation of my life decides the choice between advance and retreat.",
+        "interpretationZh": "审视自己的生活行为，以此决定进退取舍。",
+        "interpretationEn": "Contemplating one's own life to decide whether to advance or retreat."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：观国之光，利用宾于王。",
+        "textEn": "Six in the fourth place: Contemplation of the light of the kingdom. It furthers one to exert influence as the guest of a king.",
+        "interpretationZh": "观察国家的风光政教，适宜作为宾客辅佐君王。",
+        "interpretationEn": "Contemplating the glory of the kingdom. It furthers one to serve as a guest of the king."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：观我生，君子无咎。",
+        "textEn": "Nine in the fifth place: Contemplation of my life. The superior man is without blame.",
+        "interpretationZh": "审视自己的德行与影响，君子如此则无过失。",
+        "interpretationEn": "Contemplating one's own life and influence. The superior man finds no blame."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：观其生，君子无咎。",
+        "textEn": "Nine at the top: Contemplation of his life. The superior man is without blame.",
+        "interpretationZh": "观察他人的生活与德行，君子以此自省则无过失。",
+        "interpretationEn": "Contemplating the life of others. The superior man reflects and remains without blame."
+      }
+    ]
+  }
+]

@@ -1,0 +1,466 @@
+[
+  {
+    "number": 1,
+    "nameZh": "乾",
+    "nameEn": "The Creative",
+    "symbol": "111111",
+    "upperTrigram": "乾/天",
+    "lowerTrigram": "乾/天",
+    "judgmentZh": "乾：元，亨，利，贞。",
+    "judgmentEn": "The Creative works sublime success, furthering through perseverance.",
+    "imageZh": "天行健，君子以自强不息。",
+    "imageEn": "The movement of heaven is full of power. Thus the superior man makes himself strong and untiring.",
+    "interpretationZh": "乾卦象征天，代表刚健、创造、进取。六爻皆阳，纯阳至刚，是最具开创力量的卦象。",
+    "interpretationEn": "Qian represents heaven and pure creative power. All six lines are yang, symbolizing strength, initiative, and the primal creative force.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：潜龙勿用。",
+        "textEn": "Nine at the beginning: Hidden dragon. Do not act.",
+        "interpretationZh": "龙潜于深渊，时机未到，宜韬光养晦。",
+        "interpretationEn": "The dragon is hidden. It is not yet time to act."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：见龙在田，利见大人。",
+        "textEn": "Nine in the second place: Dragon appearing in the field. It furthers one to see the great man.",
+        "interpretationZh": "龙出现在田野，开始崭露头角，宜寻求贵人指引。",
+        "interpretationEn": "The dragon shows itself. Seek guidance from a wise mentor."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：君子终日乾乾，夕惕若厉，无咎。",
+        "textEn": "Nine in the third place: All day long the superior man is creatively active. At nightfall his mind is still beset with cares. Danger. No blame.",
+        "interpretationZh": "白天勤勉努力，夜晚保持警惕，虽有危险但无过失。",
+        "interpretationEn": "Be diligent by day and vigilant by night. Danger exists but no blame."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：或跃在渊，无咎。",
+        "textEn": "Nine in the fourth place: Wavering flight over the depths. No blame.",
+        "interpretationZh": "在深渊上方跃动，进退皆可，把握时机则无过失。",
+        "interpretationEn": "Hovering between advance and retreat. Seize the right moment."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：飞龙在天，利见大人。",
+        "textEn": "Nine in the fifth place: Flying dragon in the heavens. It furthers one to see the great man.",
+        "interpretationZh": "龙飞在天，事业达到巅峰，大展宏图之时。",
+        "interpretationEn": "The dragon flies in the heavens. A time of great achievement."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：亢龙有悔。",
+        "textEn": "Nine at the top: Arrogant dragon will have cause to repent.",
+        "interpretationZh": "龙飞得太高，物极必反，过刚则折，宜知进退。",
+        "interpretationEn": "The dragon has flown too high. Excess leads to regret."
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "nameZh": "坤",
+    "nameEn": "The Receptive",
+    "symbol": "000000",
+    "upperTrigram": "坤/地",
+    "lowerTrigram": "坤/地",
+    "judgmentZh": "坤：元，亨，利牝马之贞。君子有攸往，先迷后得主。利西南得朋，东北丧朋。安贞吉。",
+    "judgmentEn": "The Receptive brings about sublime success, furthering through the perseverance of a mare.",
+    "imageZh": "地势坤，君子以厚德载物。",
+    "imageEn": "The earth's condition is receptive devotion. Thus the superior man who has breadth of character carries the outer world.",
+    "interpretationZh": "坤卦象征地，代表柔顺、包容、承载。六爻皆阴，纯阴至柔，是最具承载力量的卦象。",
+    "interpretationEn": "Kun represents earth and pure receptive power. All six lines are yin, symbolizing devotion, nurturing, and the capacity to sustain.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：履霜，坚冰至。",
+        "textEn": "Six at the beginning: When there is hoarfrost underfoot, solid ice is not far off.",
+        "interpretationZh": "踩到薄霜，预示严冬将至，见微知著。",
+        "interpretationEn": "Frost underfoot signals that solid ice is coming. Heed early signs."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：直，方，大，不习无不利。",
+        "textEn": "Six in the second place: Straight, square, great. Without purpose, yet nothing remains unfurthered.",
+        "interpretationZh": "正直、方正、宏大，自然而然，无往不利。",
+        "interpretationEn": "Upright, square, and great. Natural virtue brings success without effort."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：含章可贞，或从王事，无成有终。",
+        "textEn": "Six in the third place: Hidden lines. One is able to remain persevering.",
+        "interpretationZh": "内含文采而不显露，辅佐他人成事，虽无功名但有善终。",
+        "interpretationEn": "Conceal your talents. Serve others faithfully for a good outcome."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：括囊，无咎无誉。",
+        "textEn": "Six in the fourth place: A tied-up sack. No blame, no praise.",
+        "interpretationZh": "扎紧口袋，谨慎收敛，虽无赞誉但也无过失。",
+        "interpretationEn": "A tied sack. Caution brings neither blame nor praise."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：黄裳，元吉。",
+        "textEn": "Six in the fifth place: A yellow lower garment brings supreme good fortune.",
+        "interpretationZh": "黄色下裳，谦逊居中，大吉大利。",
+        "interpretationEn": "Yellow garment symbolizes modesty and centrality. Supreme good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：龙战于野，其血玄黄。",
+        "textEn": "Six at the top: Dragons fight in the meadow. Their blood is black and yellow.",
+        "interpretationZh": "阴极生变，两龙相争，阴阳交战，有所损伤。",
+        "interpretationEn": "Yin reaches its extreme. Conflict arises with inevitable losses."
+      }
+    ]
+  },
+  {
+    "number": 3,
+    "nameZh": "屯",
+    "nameEn": "Difficulty at the Beginning",
+    "symbol": "100010",
+    "upperTrigram": "坎/水",
+    "lowerTrigram": "震/雷",
+    "judgmentZh": "屯：元，亨，利，贞，勿用有攸往，利建侯。",
+    "judgmentEn": "Difficulty at the Beginning works supreme success, furthering through perseverance. Nothing should be undertaken. It furthers one to appoint helpers.",
+    "imageZh": "云雷屯，君子以经纶。",
+    "imageEn": "Clouds and thunder: the image of Difficulty at the Beginning. Thus the superior man brings order out of confusion.",
+    "interpretationZh": "屯卦象征初生的艰难，如草木破土而出。万事开头难，但蕴含生机，宜坚守正道。",
+    "interpretationEn": "Zhun symbolizes the difficulty of new beginnings, like a sprout breaking through earth. Persevere through initial hardship.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：磐桓，利居贞，利建侯。",
+        "textEn": "Nine at the beginning: Hesitation and hindrance. It furthers one to remain persevering. It furthers one to appoint helpers.",
+        "interpretationZh": "徘徊不前，宜坚守正道，寻求帮助。",
+        "interpretationEn": "Hesitation at the start. Stay firm and seek capable helpers."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：屯如邅如，乘马班如。匪寇婚媾，女子贞不字，十年乃字。",
+        "textEn": "Six in the second place: Difficulties pile up. Horse and wagon part. He is not a robber; he wants to woo.",
+        "interpretationZh": "困难重重，但来者并非敌人而是求婚者，耐心等待终有好结果。",
+        "interpretationEn": "Difficulties mount but the stranger comes in peace. Patience brings union."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：即鹿无虞，惟入于林中，君子几不如舍，往吝。",
+        "textEn": "Six in the third place: Whoever hunts deer without the forester only loses his way in the forest.",
+        "interpretationZh": "没有向导就去追鹿，只会迷失在林中，不如放弃。",
+        "interpretationEn": "Hunting without a guide leads to getting lost. Better to let go."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：乘马班如，求婚媾，往吉，无不利。",
+        "textEn": "Six in the fourth place: Horse and wagon part. Strive for union. To go brings good fortune.",
+        "interpretationZh": "虽有阻碍，但主动出击求合作，前往则吉利。",
+        "interpretationEn": "Despite obstacles, actively seek partnership. Going forward brings fortune."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：屯其膏，小贞吉，大贞凶。",
+        "textEn": "Nine in the fifth place: Difficulties in blessing. A little perseverance brings good fortune. Great perseverance brings misfortune.",
+        "interpretationZh": "恩泽难以施展，小事坚持则吉，大事强求则凶。",
+        "interpretationEn": "Blessings are blocked. Small perseverance succeeds; forcing big plans fails."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：乘马班如，泣血涟如。",
+        "textEn": "Six at the top: Horse and wagon part. Bloody tears flow.",
+        "interpretationZh": "进退两难，悲痛流泪，处境极为艰难。",
+        "interpretationEn": "Stuck in despair with tears of blood. An extremely difficult situation."
+      }
+    ]
+  },
+  {
+    "number": 4,
+    "nameZh": "蒙",
+    "nameEn": "Youthful Folly",
+    "symbol": "010001",
+    "upperTrigram": "艮/山",
+    "lowerTrigram": "坎/水",
+    "judgmentZh": "蒙：亨。匪我求童蒙，童蒙求我。初筮告，再三渎，渎则不告。利贞。",
+    "judgmentEn": "Youthful Folly has success. It is not I who seek the young fool; the young fool seeks me. At the first oracle I inform him. If he asks two or three times, it is importunity. I give no information to the importunate. Perseverance furthers.",
+    "imageZh": "山下出泉，蒙；君子以果行育德。",
+    "imageEn": "A spring wells up at the foot of the mountain: the image of Youth. Thus the superior man fosters his character by thoroughness in all that he does.",
+    "interpretationZh": "蒙卦象征蒙昧初开，如山下泉水初涌。启蒙教育需因势利导，学生主动求教方可施教。",
+    "interpretationEn": "Meng symbolizes youthful ignorance, like a spring emerging from a mountain. Education requires the student to seek the teacher.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：发蒙，利用刑人，用说桎梏，以往吝。",
+        "textEn": "Six at the beginning: To make a fool develop, it furthers one to apply discipline.",
+        "interpretationZh": "启发蒙昧，需要适当的纪律约束，但不可过度。",
+        "interpretationEn": "Discipline helps develop the young, but do not overdo it."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：包蒙吉；纳妇吉；子克家。",
+        "textEn": "Nine in the second place: To bear with fools in kindliness brings good fortune. To know how to take women brings good fortune. The son is capable of taking charge of the household.",
+        "interpretationZh": "包容蒙昧者则吉，以宽厚之心教导，如同治家有方。",
+        "interpretationEn": "Bearing with the foolish in kindness brings fortune. Lead with tolerance."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：勿用取女，见金夫，不有躬，无攸利。",
+        "textEn": "Six in the third place: Take not a maiden who loses her composure at the sight of a man of bronze.",
+        "interpretationZh": "不要取没有定力的女子，见利忘义者不可信任。",
+        "interpretationEn": "Do not trust those who lose composure at the sight of wealth."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：困蒙，吝。",
+        "textEn": "Six in the fourth place: Entangled folly brings humiliation.",
+        "interpretationZh": "困于蒙昧之中，闭塞不通，有所困窘。",
+        "interpretationEn": "Trapped in ignorance leads to humiliation. Seek to break free."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：童蒙，吉。",
+        "textEn": "Six in the fifth place: Childlike folly brings good fortune.",
+        "interpretationZh": "保持童真的求学之心，虚心受教则吉。",
+        "interpretationEn": "Childlike openness to learning brings good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：击蒙；不利为寇，利御寇。",
+        "textEn": "Nine at the top: In punishing folly, it does not further one to commit transgressions. The only thing that furthers is to prevent transgressions.",
+        "interpretationZh": "惩戒蒙昧不可过度，防患于未然才是正道。",
+        "interpretationEn": "Punishing ignorance should not go too far. Prevention is better than punishment."
+      }
+    ]
+  },
+  {
+    "number": 5,
+    "nameZh": "需",
+    "nameEn": "Waiting",
+    "symbol": "111010",
+    "upperTrigram": "坎/水",
+    "lowerTrigram": "乾/天",
+    "judgmentZh": "需：有孚，光亨，贞吉。利涉大川。",
+    "judgmentEn": "Waiting. If you are sincere, you have light and success. Perseverance brings good fortune. It furthers one to cross the great water.",
+    "imageZh": "云上于天，需；君子以饮食宴乐。",
+    "imageEn": "Clouds rise up to heaven: the image of Waiting. Thus the superior man eats and drinks, is joyous and of good cheer.",
+    "interpretationZh": "需卦象征等待，云气上升于天尚未成雨。有诚信则前途光明，宜耐心等待时机。",
+    "interpretationEn": "Xu symbolizes waiting. Clouds rise but rain has not yet come. Sincerity and patience lead to success.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：需于郊，利用恒，无咎。",
+        "textEn": "Nine at the beginning: Waiting in the meadow. It furthers one to abide in what endures. No blame.",
+        "interpretationZh": "在郊外等待，保持恒心，不会有过失。",
+        "interpretationEn": "Waiting in the open. Maintain constancy and there will be no blame."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：需于沙，小有言，终吉。",
+        "textEn": "Nine in the second place: Waiting on the sand. There is some gossip. The end brings good fortune.",
+        "interpretationZh": "在沙滩上等待，虽有小口舌，最终吉利。",
+        "interpretationEn": "Waiting on the sand. Minor talk arises but the outcome is fortunate."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：需于泥，致寇至。",
+        "textEn": "Nine in the third place: Waiting in the mud brings about the arrival of the enemy.",
+        "interpretationZh": "在泥泞中等待，招致敌人到来，处境危险。",
+        "interpretationEn": "Waiting in the mud invites danger. The enemy approaches."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：需于血，出自穴。",
+        "textEn": "Six in the fourth place: Waiting in blood. Get out of the pit.",
+        "interpretationZh": "身处血泊之中，需从险境中脱身。",
+        "interpretationEn": "Waiting amid blood. Escape from the dangerous pit."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：需于酒食，贞吉。",
+        "textEn": "Nine in the fifth place: Waiting at meat and drink. Perseverance brings good fortune.",
+        "interpretationZh": "在酒食宴席中等待，安享其成，坚守正道则吉。",
+        "interpretationEn": "Waiting with food and drink. Enjoy and persevere for good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：入于穴，有不速之客三人来，敬之终吉。",
+        "textEn": "Six at the top: One falls into the pit. Three uninvited guests arrive. Honor them, and in the end there will be good fortune.",
+        "interpretationZh": "落入洞穴，有三位不速之客到来，以礼相待则终获吉利。",
+        "interpretationEn": "Falling into the pit. Three unexpected guests arrive. Treat them with respect for good fortune."
+      }
+    ]
+  },
+  {
+    "number": 6,
+    "nameZh": "讼",
+    "nameEn": "Conflict",
+    "symbol": "010111",
+    "upperTrigram": "乾/天",
+    "lowerTrigram": "坎/水",
+    "judgmentZh": "讼：有孚，窒惕，中吉，终凶。利见大人，不利涉大川。",
+    "judgmentEn": "Conflict. You are sincere and are being obstructed. A cautious halt halfway brings good fortune. Going through to the end brings misfortune. It furthers one to see the great man. It does not further one to cross the great water.",
+    "imageZh": "天与水违行，讼；君子以作事谋始。",
+    "imageEn": "Heaven and water go their opposite ways: the image of Conflict. Thus in all his transactions the superior man carefully considers the beginning.",
+    "interpretationZh": "讼卦象征争讼，天水相违背。有诚信但受阻，中途停止则吉，执意到底则凶。",
+    "interpretationEn": "Song symbolizes conflict. Heaven and water move in opposite directions. Stop halfway for fortune; pushing to the end brings misfortune.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：不永所事，小有言，终吉。",
+        "textEn": "Six at the beginning: If one does not perpetuate the affair, there is a little gossip. In the end, good fortune comes.",
+        "interpretationZh": "不要把争讼之事持续下去，虽有小口舌，最终吉利。",
+        "interpretationEn": "Do not prolong the conflict. Despite minor gossip, the end is fortunate."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：不克讼，归而逋，其邑人三百户，无眚。",
+        "textEn": "Nine in the second place: One cannot engage in conflict. One returns home, gives way. The people of his town, three hundred households, remain free of guilt.",
+        "interpretationZh": "争讼不胜，退回家乡避让，可保一方平安。",
+        "interpretationEn": "Unable to win the conflict, retreat home. This protects your community."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：食旧德，贞厉，终吉。或从王事，无成。",
+        "textEn": "Six in the third place: To nourish oneself on ancient virtue induces perseverance. Danger. In the end, good fortune comes.",
+        "interpretationZh": "依靠旧有的德行生活，虽有危险但终获吉利。",
+        "interpretationEn": "Live on past virtues. Danger exists but the end brings fortune."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：不克讼，复即命，渝，安贞吉。",
+        "textEn": "Nine in the fourth place: One cannot engage in conflict. One turns back and submits to fate, changes one's attitude, and finds peace in perseverance. Good fortune.",
+        "interpretationZh": "争讼不胜，回归正命，改变态度，安守正道则吉。",
+        "interpretationEn": "Cannot win the conflict. Return to fate, change attitude, find peace."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：讼，元吉。",
+        "textEn": "Nine in the fifth place: To contend before him brings supreme good fortune.",
+        "interpretationZh": "在公正的裁判面前争讼，大吉大利。",
+        "interpretationEn": "Contending before a just judge brings supreme good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：或锡之鞶带，终朝三褫之。",
+        "textEn": "Nine at the top: Even if by chance a leather belt is bestowed on one, by the end of a morning it will have been snatched away three times.",
+        "interpretationZh": "即使侥幸获赏，也会被反复夺去，争讼到底终无好结果。",
+        "interpretationEn": "Even if rewarded, it will be taken away repeatedly. Conflict to the end fails."
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "nameZh": "师",
+    "nameEn": "The Army",
+    "symbol": "010000",
+    "upperTrigram": "坤/地",
+    "lowerTrigram": "坎/水",
+    "judgmentZh": "师：贞，丈人吉，无咎。",
+    "judgmentEn": "The Army. Perseverance and a strong man bring good fortune and no blame.",
+    "imageZh": "地中有水，师；君子以容民畜众。",
+    "imageEn": "In the middle of the earth is water: the image of the Army. Thus the superior man increases his masses by generosity toward the people.",
+    "interpretationZh": "师卦象征军队，地中有水，蓄势待发。需要德高望重之人统帅，方可无咎。",
+    "interpretationEn": "Shi symbolizes the army. Water within the earth gathers strength. A worthy leader is needed for success.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：师出以律，否臧凶。",
+        "textEn": "Six at the beginning: An army must set forth in proper order. If the order is not good, misfortune threatens.",
+        "interpretationZh": "出师必须有纪律，纪律不严则凶。",
+        "interpretationEn": "The army must march in order. Without discipline, misfortune follows."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：在师中，吉无咎，王三锡命。",
+        "textEn": "Nine in the second place: In the midst of the army. Good fortune. No blame. The king bestows a triple decoration.",
+        "interpretationZh": "身在军中，吉利无咎，得到君王多次嘉奖。",
+        "interpretationEn": "In the midst of the army. Fortune and royal recognition."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：师或舆尸，凶。",
+        "textEn": "Six in the third place: Perchance the army carries corpses in the wagon. Misfortune.",
+        "interpretationZh": "军队可能载着尸体回来，凶险。",
+        "interpretationEn": "The army may carry corpses home. Misfortune."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：师左次，无咎。",
+        "textEn": "Six in the fourth place: The army retreats. No blame.",
+        "interpretationZh": "军队向左后退驻扎，无过失。",
+        "interpretationEn": "The army retreats to camp. No blame in strategic withdrawal."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：田有禽，利执言，无咎。长子帅师，弟子舆尸，贞凶。",
+        "textEn": "Six in the fifth place: There is game in the field. It furthers one to catch it. No blame. Let the eldest lead the army. The younger transports corpses; then perseverance brings misfortune.",
+        "interpretationZh": "田中有猎物可捕获，应让长子统帅军队，若用幼子则凶。",
+        "interpretationEn": "Game in the field may be caught. Let the eldest lead; the young bring misfortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：大君有命，开国承家，小人勿用。",
+        "textEn": "Six at the top: The great prince issues commands, founds states, vests families with fiefs. Inferior people should not be employed.",
+        "interpretationZh": "大君颁布命令，分封建国，但不可任用小人。",
+        "interpretationEn": "The great prince issues commands and founds states. Do not employ petty people."
+      }
+    ]
+  },
+  {
+    "number": 8,
+    "nameZh": "比",
+    "nameEn": "Holding Together",
+    "symbol": "000010",
+    "upperTrigram": "坎/水",
+    "lowerTrigram": "坤/地",
+    "judgmentZh": "比：吉。原筮元永贞，无咎。不宁方来，后夫凶。",
+    "judgmentEn": "Holding Together brings good fortune. Inquire of the oracle once again whether you possess sublimity, constancy, and perseverance; then there is no blame. Those who are uncertain gradually join. Whoever comes too late meets with misfortune.",
+    "imageZh": "地上有水，比；先王以建万国，亲诸侯。",
+    "imageEn": "On the earth is water: the image of Holding Together. Thus the kings of antiquity bestowed the different states as fiefs and cultivated friendly relations with the feudal lords.",
+    "interpretationZh": "比卦象征亲附团结，地上有水，水依附于地。宜寻求团结，但迟来者不利。",
+    "interpretationEn": "Bi symbolizes union and holding together. Water on earth flows together. Seek unity, but latecomers face misfortune.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：有孚比之，无咎。有孚盈缶，终来有它，吉。",
+        "textEn": "Six at the beginning: Hold to him in truth and loyalty; this is without blame. Truth, like a full earthen bowl. Thus in the end good fortune comes from without.",
+        "interpretationZh": "以诚信亲附，无过失。诚信满溢如缶，终有意外之喜。",
+        "interpretationEn": "Hold together with sincerity. Truth overflows like a full bowl, bringing fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：比之自内，贞吉。",
+        "textEn": "Six in the second place: Hold to him inwardly. Perseverance brings good fortune.",
+        "interpretationZh": "从内心亲附，坚守正道则吉。",
+        "interpretationEn": "Hold together from within. Inner perseverance brings good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：比之匪人。",
+        "textEn": "Six in the third place: You hold together with the wrong people.",
+        "interpretationZh": "亲附了不该亲附的人，交友不慎。",
+        "interpretationEn": "Holding together with the wrong people. Be careful in choosing allies."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：外比之，贞吉。",
+        "textEn": "Six in the fourth place: Hold to him outwardly also. Perseverance brings good fortune.",
+        "interpretationZh": "从外部亲附贤者，坚守正道则吉。",
+        "interpretationEn": "Hold together outwardly with the worthy. Perseverance brings fortune."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：显比，王用三驱，失前禽。邑人不诫，吉。",
+        "textEn": "Nine in the fifth place: Manifestation of holding together. In the hunt the king uses beaters on three sides only and forgoes game that runs off in front. The citizens need no warning. Good fortune.",
+        "interpretationZh": "光明正大地团结，如君王狩猎三面围合留一面，不强求，吉利。",
+        "interpretationEn": "Open union. Like the king hunting with three beaters, letting some escape. No coercion brings fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：比之无首，凶。",
+        "textEn": "Six at the top: Holding together without a head. Misfortune.",
+        "interpretationZh": "团结没有领头人，群龙无首，凶险。",
+        "interpretationEn": "Union without a leader. Leaderless groups face misfortune."
+      }
+    ]
+  }
+]

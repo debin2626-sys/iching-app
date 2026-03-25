@@ -1,0 +1,234 @@
+[
+  {
+    "number": 53,
+    "nameZh": "渐",
+    "nameEn": "Development",
+    "symbol": "110100",
+    "upperTrigram": "巽/风",
+    "lowerTrigram": "艮/山",
+    "judgmentZh": "渐：女归吉，利贞。",
+    "judgmentEn": "Development. The maiden is given in marriage. Good fortune. Perseverance furthers.",
+    "imageZh": "山上有木，渐；君子以居贤德善俗。",
+    "imageEn": "On the mountain, a tree: the image of Development. Thus the superior man abides in dignity and virtue, in order to improve the mores.",
+    "interpretationZh": "渐卦象征循序渐进，如山上之木缓慢生长。女子出嫁循礼而行则吉，凡事宜按部就班，不可急躁冒进。",
+    "interpretationEn": "Jian symbolizes gradual progress, like a tree growing slowly on a mountain. Steady advancement following proper order leads to success.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：鸿渐于干，小子厉，有言，无咎。",
+        "textEn": "Six at the beginning: The wild goose gradually draws near the shore. The young son is in danger. There is talk. No blame.",
+        "interpretationZh": "鸿雁渐进到水边，年轻人处境危险，虽有议论但无过失。",
+        "interpretationEn": "The wild goose approaches the shore. The young face danger and gossip, but no blame."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：鸿渐于磐，饮食衎衎，吉。",
+        "textEn": "Six in the second place: The wild goose gradually draws near the cliff. Eating and drinking in peace and concord. Good fortune.",
+        "interpretationZh": "鸿雁渐进到磐石上，安然饮食，和乐融融，吉利。",
+        "interpretationEn": "The wild goose reaches the cliff. Eating and drinking in peace. Good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+        "textEn": "Nine in the third place: The wild goose gradually draws near the plateau. The man goes forth and does not return. The woman carries a child but does not bring it forth. Misfortune. It furthers one to fight off robbers.",
+        "interpretationZh": "鸿雁渐进到高原，丈夫出征不归，妻子怀孕不育，凶险。宜防御外敌。",
+        "interpretationEn": "The wild goose reaches the plateau. The husband departs and does not return. Misfortune. Defend against threats."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：鸿渐于木，或得其桷，无咎。",
+        "textEn": "Six in the fourth place: The wild goose gradually draws near the tree. Perhaps it will find a flat branch. No blame.",
+        "interpretationZh": "鸿雁渐进到树上，或许能找到平坦的枝桠栖息，无过失。",
+        "interpretationEn": "The wild goose draws near the tree. Perhaps it finds a flat branch to rest on. No blame."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：鸿渐于陵，妇三岁不孕，终莫之胜，吉。",
+        "textEn": "Nine in the fifth place: The wild goose gradually draws near the summit. For three years the woman has no child. In the end nothing can hinder her. Good fortune.",
+        "interpretationZh": "鸿雁渐进到山陵，妇人三年不孕，但终究无人能阻挡，吉利。",
+        "interpretationEn": "The wild goose reaches the summit. Three years without child, yet in the end nothing can prevent it. Good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：鸿渐于陆，其羽可用为仪，吉。",
+        "textEn": "Nine at the top: The wild goose gradually draws near the cloud heights. Its feathers can be used as ornaments. Good fortune.",
+        "interpretationZh": "鸿雁渐进到云端高处，其羽毛可用作礼仪装饰，吉利。",
+        "interpretationEn": "The wild goose soars to the cloud heights. Its feathers serve as ornaments. Good fortune."
+      }
+    ]
+  },
+  {
+    "number": 54,
+    "nameZh": "归妹",
+    "nameEn": "The Marrying Maiden",
+    "symbol": "001011",
+    "upperTrigram": "震/雷",
+    "lowerTrigram": "兑/泽",
+    "judgmentZh": "归妹：征凶，无攸利。",
+    "judgmentEn": "The Marrying Maiden. Undertakings bring misfortune. Nothing that would further.",
+    "imageZh": "泽上有雷，归妹；君子以永终知敝。",
+    "imageEn": "Thunder over the lake: the image of the Marrying Maiden. Thus the superior man understands the transitory in the light of the eternity of the end.",
+    "interpretationZh": "归妹卦象征少女出嫁，泽上有雷，以悦而动。但行动冒进则凶，需明白事物终始之理，知晓盛衰之道。",
+    "interpretationEn": "Gui Mei symbolizes the marrying maiden. Thunder over the lake stirs joy into action. But rash undertakings bring misfortune; one must understand the eternal cycle of endings.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：归妹以娣，跛能履，征吉。",
+        "textEn": "Nine at the beginning: The marrying maiden as a concubine. A lame man who is able to tread. Undertakings bring good fortune.",
+        "interpretationZh": "少女作为侧室出嫁，如跛者仍能行走，前行则吉。",
+        "interpretationEn": "The maiden marries as a concubine. Like a lame man who can still walk. Undertakings bring fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：眇能视，利幽人之贞。",
+        "textEn": "Nine in the second place: A one-eyed man who is able to see. The perseverance of a solitary man furthers.",
+        "interpretationZh": "独眼仍能视物，宜如隐士般坚守正道。",
+        "interpretationEn": "A one-eyed man who can still see. The perseverance of a solitary person furthers."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：归妹以须，反归以娣。",
+        "textEn": "Six in the third place: The marrying maiden as a slave. She marries as a concubine.",
+        "interpretationZh": "少女以婢女身份出嫁，后又以侧室身份归来，地位卑微。",
+        "interpretationEn": "The maiden marries as a slave, then returns as a concubine. A lowly position."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：归妹愆期，迟归有时。",
+        "textEn": "Nine in the fourth place: The marrying maiden draws out the allotted time. A late marriage comes in due course.",
+        "interpretationZh": "少女错过婚期，推迟出嫁，但终有适当的时机。",
+        "interpretationEn": "The maiden postpones the marriage. A late union comes in its own time."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：帝乙归妹，其君之袂，不如其娣之袂良，月几望，吉。",
+        "textEn": "Six in the fifth place: The sovereign I gave his daughter in marriage. The embroidered garments of the princess were not as gorgeous as those of the serving maid. The moon that is nearly full brings good fortune.",
+        "interpretationZh": "帝乙嫁女，公主的衣饰不如侍女华丽，谦逊如近满之月，吉利。",
+        "interpretationEn": "The sovereign gives his daughter in marriage. The princess is less adorned than her maid. The nearly full moon brings fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：女承筐无实，士刲羊无血，无攸利。",
+        "textEn": "Six at the top: The woman holds the basket, but there are no fruits in it. The man stabs the sheep, but no blood flows. Nothing that acts to further.",
+        "interpretationZh": "女子捧着空筐，男子杀羊不见血，一切徒有其表，无所利益。",
+        "interpretationEn": "The woman holds an empty basket. The man stabs the sheep but no blood flows. Nothing furthers."
+      }
+    ]
+  },
+  {
+    "number": 55,
+    "nameZh": "丰",
+    "nameEn": "Abundance",
+    "symbol": "001101",
+    "upperTrigram": "震/雷",
+    "lowerTrigram": "离/火",
+    "judgmentZh": "丰：亨，王假之，勿忧，宜日中。",
+    "judgmentEn": "Abundance has success. The king attains abundance. Be not sad. Be like the sun at midday.",
+    "imageZh": "雷电皆至，丰；君子以折狱致刑。",
+    "imageEn": "Both thunder and lightning come: the image of Abundance. Thus the superior man decides lawsuits and carries out punishments.",
+    "interpretationZh": "丰卦象征丰盛，雷电交加，光明与行动并至。王者达到丰盛之时，不必忧虑，宜如日中天般光明正大。",
+    "interpretationEn": "Feng symbolizes abundance. Thunder and lightning arrive together — clarity and action unite. Like the sun at its zenith, act with full brilliance.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：遇其配主，虽旬无咎，往有尚。",
+        "textEn": "Nine at the beginning: When a man meets his destined ruler, they can be together ten days, and it is not a mistake. Going meets with recognition.",
+        "interpretationZh": "遇到相配的主人，即使相处十日也无过失，前往则受到尊重。",
+        "interpretationEn": "Meeting one's destined partner. Even ten days together bring no blame. Going forward wins recognition."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：丰其蔀，日中见斗，往得疑疾，有孚发若，吉。",
+        "textEn": "Six in the second place: The curtain is of such fullness that the polestars can be seen at noon. Through going one meets with mistrust and hate. If one rouses him through truth, good fortune comes.",
+        "interpretationZh": "帷幕遮蔽如此之厚，正午可见北斗。前往会遭猜疑，但以诚信感化则吉。",
+        "interpretationEn": "The curtain is so thick that polestars are seen at noon. Going meets suspicion. Sincerity dispels doubt and brings fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：丰其沛，日中见沫，折其右肱，无咎。",
+        "textEn": "Nine in the third place: The underbrush is of such abundance that the small stars can be seen at noon. He breaks his right arm. No blame.",
+        "interpretationZh": "草木繁茂遮天蔽日，正午可见小星。折断右臂，虽有损伤但无过失。",
+        "interpretationEn": "Such abundance of undergrowth that small stars appear at noon. The right arm is broken. No blame."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：丰其蔀，日中见斗，遇其夷主，吉。",
+        "textEn": "Nine in the fourth place: The curtain is of such fullness that the polestars can be seen at noon. He meets his ruler, who is of like kind. Good fortune.",
+        "interpretationZh": "帷幕遮蔽，正午见北斗，遇到志同道合的主人，吉利。",
+        "interpretationEn": "The curtain is thick; polestars visible at noon. Meeting a like-minded ruler brings good fortune."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：来章，有庆誉，吉。",
+        "textEn": "Six in the fifth place: Lines are coming. Blessing and fame draw near. Good fortune.",
+        "interpretationZh": "光明到来，有喜庆和美誉，吉利。",
+        "interpretationEn": "Brilliance approaches. Blessings and fame draw near. Good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：丰其屋，蔀其家，窥其户，阒其无人，三岁不觌，凶。",
+        "textEn": "Six at the top: His house is in a state of abundance. He screens off his family. He peers through the gate and no longer perceives anyone. For three years he sees nothing. Misfortune.",
+        "interpretationZh": "房屋丰大却遮蔽家人，窥门而不见人影，三年不见人，凶险。",
+        "interpretationEn": "His house is grand but he screens off his family. Peering through the gate, no one is seen for three years. Misfortune."
+      }
+    ]
+  },
+  {
+    "number": 56,
+    "nameZh": "旅",
+    "nameEn": "The Wanderer",
+    "symbol": "101100",
+    "upperTrigram": "离/火",
+    "lowerTrigram": "艮/山",
+    "judgmentZh": "旅：小亨，旅贞吉。",
+    "judgmentEn": "The Wanderer. Success through smallness. Perseverance brings good fortune to the wanderer.",
+    "imageZh": "山上有火，旅；君子以明慎用刑而不留狱。",
+    "imageEn": "Fire on the mountain: the image of the Wanderer. Thus the superior man is clear-minded and cautious in imposing penalties, and protracts no lawsuits.",
+    "interpretationZh": "旅卦象征旅行在外，山上有火，火势不久留。旅途中小事亨通，坚守正道则吉，宜谨慎行事，不可久留一处。",
+    "interpretationEn": "Lü symbolizes the wanderer. Fire on the mountain does not linger. Small matters succeed on the journey. Persevere in what is right and remain cautious.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：旅琐琐，斯其所取灾。",
+        "textEn": "Six at the beginning: If the wanderer busies himself with trivial things, he draws down misfortune upon himself.",
+        "interpretationZh": "旅途中琐碎计较，自招灾祸。",
+        "interpretationEn": "The wanderer busies himself with trifles and draws misfortune upon himself."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：旅即次，怀其资，得童仆贞。",
+        "textEn": "Six in the second place: The wanderer comes to an inn. He has his property with him. He wins the steadfastness of a young servant.",
+        "interpretationZh": "旅人到达客栈，携带资财，得到忠诚的童仆。",
+        "interpretationEn": "The wanderer arrives at an inn with his property. He gains a loyal young servant."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：旅焚其次，丧其童仆，贞厉。",
+        "textEn": "Nine in the third place: The wanderer's inn burns down. He loses the steadfastness of his young servant. Danger.",
+        "interpretationZh": "旅人的客栈被焚毁，失去忠诚的童仆，处境危险。",
+        "interpretationEn": "The wanderer's inn burns down. He loses his servant. Perseverance brings danger."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：旅于处，得其资斧，我心不快。",
+        "textEn": "Nine in the fourth place: The wanderer rests in a shelter. He obtains his property and an axe. My heart is not glad.",
+        "interpretationZh": "旅人暂居一处，虽得到资财和工具，但心中不快。",
+        "interpretationEn": "The wanderer finds shelter and obtains property and an axe. Yet his heart is not glad."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：射雉一矢亡，终以誉命。",
+        "textEn": "Six in the fifth place: He shoots a pheasant. It drops with the first arrow. In the end this brings praise and office.",
+        "interpretationZh": "射中野鸡，一箭命中，最终获得荣誉和官职。",
+        "interpretationEn": "He shoots a pheasant and it falls with one arrow. In the end, praise and office come."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：鸟焚其巢，旅人先笑后号啕。丧牛于易，凶。",
+        "textEn": "Nine at the top: The bird's nest burns up. The wanderer laughs at first, then must needs lament and weep. Through carelessness he loses his cow. Misfortune.",
+        "interpretationZh": "鸟巢被焚毁，旅人先笑后哭。因疏忽失去牛，凶险。",
+        "interpretationEn": "The bird's nest burns. The wanderer laughs first, then weeps. He loses his cow through carelessness. Misfortune."
+      }
+    ]
+  }
+]

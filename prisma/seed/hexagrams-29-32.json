@@ -1,0 +1,234 @@
+[
+  {
+    "number": 29,
+    "nameZh": "坎",
+    "nameEn": "The Abysmal",
+    "symbol": "010010",
+    "upperTrigram": "坎/水",
+    "lowerTrigram": "坎/水",
+    "judgmentZh": "习坎：有孚，维心亨，行有尚。",
+    "judgmentEn": "The Abysmal repeated. If you are sincere, you have success in your heart, and whatever you do succeeds.",
+    "imageZh": "水洊至，习坎；君子以常德行，习教事。",
+    "imageEn": "Water flows on and reaches the goal: the image of the Abysmal repeated. Thus the superior man walks in lasting virtue and carries on the business of teaching.",
+    "interpretationZh": "坎卦象征重重险阻，水流不息，坎上加坎。以诚信之心面对危险，坚持正道则能通达。",
+    "interpretationEn": "Kan symbolizes repeated danger, like water flowing ceaselessly into the abyss. Sincerity and steadfastness carry one through peril.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：习坎，入于坎窞，凶。",
+        "textEn": "Six at the beginning: Repetition of the Abysmal. In the abyss one falls into a pit. Misfortune.",
+        "interpretationZh": "重重险陷，落入深坑，凶险。",
+        "interpretationEn": "Falling deeper into the abyss. Danger compounds upon danger."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：坎有险，求小得。",
+        "textEn": "Nine in the second place: The abyss is dangerous. One should strive to attain small things only.",
+        "interpretationZh": "身处险境，只能求取小的收获，不可贪大。",
+        "interpretationEn": "In danger, seek only small gains. Do not overreach."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：来之坎坎，险且枕，入于坎窞，勿用。",
+        "textEn": "Six in the third place: Forward and backward, abyss on abyss. In danger like this, pause at first and wait. Otherwise you will fall into a pit in the abyss. Do not act this way.",
+        "interpretationZh": "前后皆是险坑，进退两难，不可轻举妄动。",
+        "interpretationEn": "Abyss before and behind. Do not act rashly; pause and wait."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：樽酒簋贰，用缶，纳约自牖，终无咎。",
+        "textEn": "Six in the fourth place: A jug of wine, a bowl of rice with it; earthen vessels simply handed in through the window. There is certainly no blame in this.",
+        "interpretationZh": "以简朴的酒食从窗户递入，诚心相交，终无过失。",
+        "interpretationEn": "Simple offerings passed through the window. Sincerity in humble form brings no blame."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：坎不盈，祗既平，无咎。",
+        "textEn": "Nine in the fifth place: The abyss is not filled to overflowing, it is filled only to the rim. No blame.",
+        "interpretationZh": "水未溢出深坑，刚好填平，无过失。",
+        "interpretationEn": "The abyss is filled only to the rim, not overflowing. No blame."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：系用徽纆，寘于丛棘，三岁不得，凶。",
+        "textEn": "Six at the top: Bound with cords and ropes, shut up between thorn-hedged prison walls. For three years one does not find the way. Misfortune.",
+        "interpretationZh": "被绳索捆绑，囚于荆棘丛中，三年不得脱身，凶险。",
+        "interpretationEn": "Bound and imprisoned among thorns. Three years without escape. Misfortune."
+      }
+    ]
+  },
+  {
+    "number": 30,
+    "nameZh": "离",
+    "nameEn": "The Clinging",
+    "symbol": "101101",
+    "upperTrigram": "离/火",
+    "lowerTrigram": "离/火",
+    "judgmentZh": "离：利贞，亨。畜牝牛，吉。",
+    "judgmentEn": "The Clinging. Perseverance furthers. It brings success. Care of the cow brings good fortune.",
+    "imageZh": "明两作，离；大人以继明照于四方。",
+    "imageEn": "That which is bright rises twice: the image of Fire. Thus the great man, by perpetuating this brightness, illumines the four quarters of the world.",
+    "interpretationZh": "离卦象征附丽光明，火焰重叠，光明相继。柔顺依附正道，如畜养母牛般温顺，则吉利亨通。",
+    "interpretationEn": "Li symbolizes clinging to brightness, like double fire. By nurturing gentle perseverance, like tending a cow, one achieves lasting radiance.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：履错然，敬之无咎。",
+        "textEn": "Nine at the beginning: The footprints run crisscross. If one is serious about it, no blame.",
+        "interpretationZh": "脚步交错纷乱，若能恭敬谨慎，则无过失。",
+        "interpretationEn": "Footprints run crisscross in confusion. Seriousness and respect prevent blame."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：黄离，元吉。",
+        "textEn": "Six in the second place: Yellow light. Supreme good fortune.",
+        "interpretationZh": "黄色的光明，中正柔顺，大吉大利。",
+        "interpretationEn": "Yellow light — the color of the mean. Supreme good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：日昃之离，不鼓缶而歌，则大耋之嗟，凶。",
+        "textEn": "Nine in the third place: In the light of the setting sun, men either beat the pot and sing or loudly bewail the approach of old age. Misfortune.",
+        "interpretationZh": "夕阳西下之时，若不击缶而歌享受当下，便会哀叹衰老，凶。",
+        "interpretationEn": "In the setting sun's light, either sing joyfully or lament old age. Clinging to the past brings misfortune."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：突如其来如，焚如，死如，弃如。",
+        "textEn": "Nine in the fourth place: Its coming is sudden; it flames up, dies down, is thrown away.",
+        "interpretationZh": "突然而来，燃烧、熄灭、被抛弃，来势虽猛但不持久。",
+        "interpretationEn": "It comes suddenly — flares up, dies out, and is discarded. Intensity without endurance."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：出涕沱若，戚嗟若，吉。",
+        "textEn": "Six in the fifth place: Tears in floods, sighing and lamenting. Good fortune.",
+        "interpretationZh": "泪如雨下，忧戚叹息，因忧患而警醒，反得吉利。",
+        "interpretationEn": "Floods of tears, sighs of sorrow. Through grief comes awareness, and thus good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：王用出征，有嘉折首，获匪其丑，无咎。",
+        "textEn": "Nine at the top: The king uses him to march forth and chastise. Then it is best to kill the leaders and take captive the followers. No blame.",
+        "interpretationZh": "君王出征讨伐，斩杀首恶，宽待胁从，无过失。",
+        "interpretationEn": "The king marches forth to punish. Strike the leaders, spare the followers. No blame."
+      }
+    ]
+  },
+  {
+    "number": 31,
+    "nameZh": "咸",
+    "nameEn": "Influence",
+    "symbol": "011100",
+    "upperTrigram": "兑/泽",
+    "lowerTrigram": "艮/山",
+    "judgmentZh": "咸：亨，利贞，取女吉。",
+    "judgmentEn": "Influence. Success. Perseverance furthers. To take a maiden to wife brings good fortune.",
+    "imageZh": "山上有泽，咸；君子以虚受人。",
+    "imageEn": "A lake on the mountain: the image of Influence. Thus the superior man encourages people to approach him by his readiness to receive them.",
+    "interpretationZh": "咸卦象征感应交流，山上有泽，泽水下润山体。以虚怀若谷之心感召他人，则亨通吉利。",
+    "interpretationEn": "Xian symbolizes mutual influence and attraction. A lake atop the mountain moistens it below. Openness and receptivity attract others.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：咸其拇。",
+        "textEn": "Six at the beginning: The influence shows itself in the big toe.",
+        "interpretationZh": "感应在脚趾，刚刚萌动，尚未付诸行动。",
+        "interpretationEn": "Influence begins at the big toe. The impulse stirs but has not yet led to action."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：咸其腓，凶，居吉。",
+        "textEn": "Six in the second place: The influence shows itself in the calves of the legs. Misfortune. Tarrying brings good fortune.",
+        "interpretationZh": "感应在小腿，急于行动则凶，安居不动则吉。",
+        "interpretationEn": "Influence in the calves. Rushing forward brings misfortune; staying still brings fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：咸其股，执其随，往吝。",
+        "textEn": "Nine in the third place: The influence shows itself in the thighs. Holds to that which follows it. To continue is humiliating.",
+        "interpretationZh": "感应在大腿，盲目追随他人，前往则有悔吝。",
+        "interpretationEn": "Influence in the thighs. Blindly following others leads to humiliation."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：贞吉悔亡，憧憧往来，朋从尔思。",
+        "textEn": "Nine in the fourth place: Perseverance brings good fortune. Remorse disappears. If a man is agitated in mind and his thoughts go hither and thither, only those friends on whom he fixes his conscious thought will follow.",
+        "interpretationZh": "坚守正道则吉，悔恨消失。心神不定则朋友也犹豫，专心则朋友追随。",
+        "interpretationEn": "Perseverance brings fortune and remorse vanishes. Focus your thoughts, and friends will follow."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：咸其脢，无悔。",
+        "textEn": "Nine in the fifth place: The influence shows itself in the back of the neck. No remorse.",
+        "interpretationZh": "感应在脊背，坚定不移，无所悔恨。",
+        "interpretationEn": "Influence in the back of the neck. Firm and resolute, no remorse."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：咸其辅颊舌。",
+        "textEn": "Six at the top: The influence shows itself in the jaws, cheeks, and tongue.",
+        "interpretationZh": "感应在口舌面颊，仅停留在言语层面，缺乏真诚。",
+        "interpretationEn": "Influence in the jaws, cheeks, and tongue. Mere words without substance."
+      }
+    ]
+  },
+  {
+    "number": 32,
+    "nameZh": "恒",
+    "nameEn": "Duration",
+    "symbol": "001110",
+    "upperTrigram": "震/雷",
+    "lowerTrigram": "巽/风",
+    "judgmentZh": "恒：亨，无咎，利贞，利有攸往。",
+    "judgmentEn": "Duration. Success. No blame. Perseverance furthers. It furthers one to have somewhere to go.",
+    "imageZh": "雷风，恒；君子以立不易方。",
+    "imageEn": "Thunder and wind: the image of Duration. Thus the superior man stands firm and does not change his direction.",
+    "interpretationZh": "恒卦象征恒久不变，雷风相与，刚柔相应。君子立身处世，坚守正道，始终如一。",
+    "interpretationEn": "Heng symbolizes endurance and constancy. Thunder and wind reinforce each other. The superior man stands firm in his principles without wavering.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：浚恒，贞凶，无攸利。",
+        "textEn": "Six at the beginning: Seeking duration too hastily brings misfortune persistently. Nothing that would further.",
+        "interpretationZh": "急于求取恒久，操之过急，坚持则凶，无所利益。",
+        "interpretationEn": "Seeking duration too hastily. Forcing constancy brings persistent misfortune."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：悔亡。",
+        "textEn": "Nine in the second place: Remorse disappears.",
+        "interpretationZh": "悔恨消失，居中守正，恰到好处。",
+        "interpretationEn": "Remorse disappears. Holding to the middle way brings balance."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：不恒其德，或承之羞，贞吝。",
+        "textEn": "Nine in the third place: He who does not give duration to his character meets with disgrace. Persistent humiliation.",
+        "interpretationZh": "不能持守德行，必遭羞辱，即使坚持也有悔吝。",
+        "interpretationEn": "Failing to maintain one's virtue invites disgrace. Persistent humiliation."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：田无禽。",
+        "textEn": "Nine in the fourth place: No game in the field.",
+        "interpretationZh": "田中无猎物，方向不对，久守无获。",
+        "interpretationEn": "No game in the field. Persisting in the wrong place yields nothing."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：恒其德，贞，妇人吉，夫子凶。",
+        "textEn": "Six in the fifth place: Giving duration to one's character through perseverance. This is good fortune for a woman but misfortune for a man.",
+        "interpretationZh": "恒守其德，对妇人而言吉利，对男子而言则凶。柔顺守恒宜阴不宜阳。",
+        "interpretationEn": "Persevering in one's character. Good fortune for a woman, misfortune for a man. Yielding constancy suits the receptive."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：振恒，凶。",
+        "textEn": "Six at the top: Restlessness as an enduring condition brings misfortune.",
+        "interpretationZh": "躁动不安作为常态，凶险。恒久之道在于安定，非在于躁动。",
+        "interpretationEn": "Restlessness as a permanent state brings misfortune. Duration requires stillness, not agitation."
+      }
+    ]
+  }
+]

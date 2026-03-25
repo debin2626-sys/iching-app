@@ -1,0 +1,234 @@
+[
+  {
+    "number": 41,
+    "nameZh": "损",
+    "nameEn": "Decrease",
+    "symbol": "100011",
+    "upperTrigram": "艮/山",
+    "lowerTrigram": "兑/泽",
+    "judgmentZh": "损：有孚，元吉，无咎，可贞，利有攸往。曷之用，二簋可用享。",
+    "judgmentEn": "Decrease combined with sincerity brings about supreme good fortune without blame. One may be persevering in this. It furthers one to undertake something. How is this to be carried out? One may use two small bowls for the sacrifice.",
+    "imageZh": "山下有泽，损；君子以惩忿窒欲。",
+    "imageEn": "At the foot of the mountain, the lake: the image of Decrease. Thus the superior man controls his anger and restrains his instincts.",
+    "interpretationZh": "损卦象征减损，山下有泽，泽水蒸发润泽山林。减损自己以利他人，诚心则大吉。损下益上，克制私欲，修养德行。",
+    "interpretationEn": "Sun symbolizes decrease and sacrifice. The lake at the foot of the mountain evaporates to nourish it. Sincere self-sacrifice for the greater good brings supreme fortune.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：已事遄往，无咎，酌损之。",
+        "textEn": "Nine at the beginning: Going quickly when one's tasks are finished is without blame. But one must reflect on how much one may decrease others.",
+        "interpretationZh": "办完自己的事赶快前去帮助，无过失，但要斟酌减损的程度。",
+        "interpretationEn": "Finish your own tasks quickly and go to help. Consider how much to give."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：利贞，征凶，弗损益之。",
+        "textEn": "Nine in the second place: Perseverance furthers. To undertake something brings misfortune. Without decreasing oneself, one is able to bring increase to others.",
+        "interpretationZh": "宜坚守正道，冒进则凶。不减损自己也能使他人受益。",
+        "interpretationEn": "Persevere in your position. Rash action brings misfortune. One can benefit others without diminishing oneself."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：三人行则损一人，一人行则得其友。",
+        "textEn": "Six in the third place: When three people journey together, their number decreases by one. When one man journeys alone, he finds a companion.",
+        "interpretationZh": "三人同行必减一人，一人独行则得良友。事物需要配合得当。",
+        "interpretationEn": "Three travelers lose one companion. A lone traveler finds a friend. Proper pairing is essential."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：损其疾，使遄有喜，无咎。",
+        "textEn": "Six in the fourth place: If a man decreases his faults, it makes the other hasten to come and rejoice. No blame.",
+        "interpretationZh": "减损自己的毛病，使人欢喜前来，无过失。",
+        "interpretationEn": "Decrease your faults and others will joyfully come to you. No blame."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：或益之十朋之龟，弗克违，元吉。",
+        "textEn": "Six in the fifth place: Someone does indeed increase him. Ten pairs of tortoises cannot oppose it. Supreme good fortune.",
+        "interpretationZh": "有人赠予价值十朋的神龟，不可违拒，大吉。",
+        "interpretationEn": "Someone bestows increase. Even ten pairs of tortoises cannot oppose this. Supreme good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：弗损益之，无咎，贞吉，利有攸往，得臣无家。",
+        "textEn": "Nine at the top: If one is increased without depriving others, there is no blame. Perseverance brings good fortune. It furthers one to undertake something. One obtains servants but no longer has a separate home.",
+        "interpretationZh": "不减损别人而增益自己，无咎，坚守正道则吉，利于有所作为。",
+        "interpretationEn": "Increase without decreasing others. No blame. Perseverance brings fortune. One gains followers who share a common purpose."
+      }
+    ]
+  },
+  {
+    "number": 42,
+    "nameZh": "益",
+    "nameEn": "Increase",
+    "symbol": "110001",
+    "upperTrigram": "巽/风",
+    "lowerTrigram": "震/雷",
+    "judgmentZh": "益：利有攸往，利涉大川。",
+    "judgmentEn": "Increase. It furthers one to undertake something. It furthers one to cross the great water.",
+    "imageZh": "风雷，益；君子以见善则迁，有过则改。",
+    "imageEn": "Wind and thunder: the image of Increase. Thus the superior man, if he sees good, imitates it; if he has faults, he rids himself of them.",
+    "interpretationZh": "益卦象征增益，风雷激荡，相互助长。损上益下，利于行动和冒险。见贤思齐，有过即改。",
+    "interpretationEn": "Yi symbolizes increase. Wind and thunder strengthen each other. The upper decreases to benefit the lower. A time for action, improvement, and crossing obstacles.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：利用为大作，元吉，无咎。",
+        "textEn": "Nine at the beginning: It furthers one to accomplish great deeds. Supreme good fortune. No blame.",
+        "interpretationZh": "利于做大事，大吉，无过失。得到上方的增益支持。",
+        "interpretationEn": "It furthers one to accomplish great deeds. Supreme good fortune and no blame."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：或益之十朋之龟，弗克违，永贞吉。王用享于帝，吉。",
+        "textEn": "Six in the second place: Someone does indeed increase him; ten pairs of tortoises cannot oppose it. Constant perseverance brings good fortune. The king presents him before God. Good fortune.",
+        "interpretationZh": "有人赠予十朋之龟，不可违拒，永远坚守正道则吉。君王祭祀上帝，吉利。",
+        "interpretationEn": "Someone bestows great increase. Ten pairs of tortoises cannot oppose it. Eternal perseverance brings fortune. The king makes offerings to God."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：益之用凶事，无咎。有孚中行，告公用圭。",
+        "textEn": "Six in the third place: One is enriched through unfortunate events. No blame, if you are sincere and walk in the middle, and report to the prince with a seal.",
+        "interpretationZh": "因凶事而获益，无过失。有诚信行中道，以玉圭禀告公侯。",
+        "interpretationEn": "Increase comes through misfortune. No blame if sincere and following the middle way. Report to authority with proper ceremony."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：中行，告公从。利用为依迁国。",
+        "textEn": "Six in the fourth place: If you walk in the middle and report to the prince, he will follow. It furthers one to be used in the removal of the capital.",
+        "interpretationZh": "行中道禀告公侯，公侯听从。利于作为依靠迁移国都。",
+        "interpretationEn": "Walking the middle way and reporting to the prince, he follows. It furthers one to assist in moving the capital."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：有孚惠心，勿问元吉。有孚惠我德。",
+        "textEn": "Nine in the fifth place: If in truth you have a kind heart, ask not. Supreme good fortune. Truly, kindness will be recognized as your virtue.",
+        "interpretationZh": "有诚信和仁爱之心，不必问，大吉。诚信仁爱就是我的德行。",
+        "interpretationEn": "With a sincere and kind heart, do not ask — supreme good fortune. Your kindness is recognized as true virtue."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：莫益之，或击之，立心勿恒，凶。",
+        "textEn": "Nine at the top: He brings increase to no one. Indeed, someone even strikes him. He does not keep his heart constantly steady. Misfortune.",
+        "interpretationZh": "没有人增益他，反而有人攻击他。心志不坚定，凶险。",
+        "interpretationEn": "No one increases him; indeed he is attacked. An inconstant heart brings misfortune."
+      }
+    ]
+  },
+  {
+    "number": 43,
+    "nameZh": "夬",
+    "nameEn": "Breakthrough",
+    "symbol": "011111",
+    "upperTrigram": "兑/泽",
+    "lowerTrigram": "乾/天",
+    "judgmentZh": "夬：扬于王庭，孚号，有厉，告自邑，不利即戎，利有攸往。",
+    "judgmentEn": "Breakthrough. One must resolutely make the matter known at the court of the king. It must be announced truthfully. Danger. It is necessary to notify one's own city. It does not further to resort to arms. It furthers one to undertake something.",
+    "imageZh": "泽上于天，夬；君子以施禄及下，居德则忌。",
+    "imageEn": "The lake has risen up to heaven: the image of Breakthrough. Thus the superior man dispenses riches downward and refrains from resting on his virtue.",
+    "interpretationZh": "夬卦象征决断突破，泽水升于天上，终将倾泻而下。五阳决一阴，以正除邪，但须光明正大，不可诉诸武力。",
+    "interpretationEn": "Guai symbolizes breakthrough and resolution. The lake rises to heaven and must overflow. Five yang lines resolve one yin. Act openly and justly, not by force.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：壮于前趾，往不胜为咎。",
+        "textEn": "Nine at the beginning: Mighty in the forward-striding toes. When one goes and is not equal to the undertaking, one makes a mistake.",
+        "interpretationZh": "脚趾强壮急于前行，若力不能胜则有过失。",
+        "interpretationEn": "Mighty in the forward-striding toes. Going forward without adequate strength leads to blame."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：惕号，莫夜有戎，勿恤。",
+        "textEn": "Nine in the second place: A cry of alarm. Arms at evening and at night. Fear nothing.",
+        "interpretationZh": "警惕呼号，夜间有兵戎之事，但不必忧虑。",
+        "interpretationEn": "A cry of alarm. Arms in the evening and night. Do not fear."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：壮于頄，有凶。君子夬夬，独行遇雨，若濡有愠，无咎。",
+        "textEn": "Nine in the third place: To be powerful in the cheekbones brings misfortune. The superior man is firmly resolved. He walks alone and is caught in the rain. He is bespattered, and people murmur against him. No blame.",
+        "interpretationZh": "刚强表现在面颊上，有凶险。君子果断决行，独行遇雨被淋湿遭人怨怒，但无过失。",
+        "interpretationEn": "Showing strength in the face brings misfortune. The resolute man walks alone in the rain, bespattered and resented, but bears no blame."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：臀无肤，其行次且。牵羊悔亡，闻言不信。",
+        "textEn": "Nine in the fourth place: There is no skin on his thighs, and walking comes hard. If a man were to let himself be led like a sheep, remorse would disappear. But if these words are heard, they would not be believed.",
+        "interpretationZh": "臀部没有皮肤，行走艰难。若能像羊一样被牵引则悔恨消失，但听到这话却不肯相信。",
+        "interpretationEn": "No skin on the thighs; walking is painful. Let yourself be led like a sheep and remorse vanishes. But these words are not believed."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：苋陆夬夬，中行无咎。",
+        "textEn": "Nine in the fifth place: In dealing with weeds, firm resolution is necessary. Walking in the middle remains free of blame.",
+        "interpretationZh": "像拔除苋陆杂草一样果断决断，行中道则无过失。",
+        "interpretationEn": "Firm resolution in uprooting weeds. Walking the middle path remains free of blame."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：无号，终有凶。",
+        "textEn": "Six at the top: No cry. In the end misfortune comes.",
+        "interpretationZh": "没有号令警示，最终有凶险。阴柔居顶，孤立无援。",
+        "interpretationEn": "No cry of warning. In the end, misfortune comes. The weak at the top stands alone."
+      }
+    ]
+  },
+  {
+    "number": 44,
+    "nameZh": "姤",
+    "nameEn": "Coming to Meet",
+    "symbol": "111110",
+    "upperTrigram": "乾/天",
+    "lowerTrigram": "巽/风",
+    "judgmentZh": "姤：女壮，勿用取女。",
+    "judgmentEn": "Coming to Meet. The maiden is powerful. One should not marry such a maiden.",
+    "imageZh": "天下有风，姤；后以施命诰四方。",
+    "imageEn": "Under heaven, wind: the image of Coming to Meet. Thus does the prince act when disseminating his commands and proclaiming them to the four quarters of heaven.",
+    "interpretationZh": "姤卦象征不期而遇，天下有风，无所不至。一阴初生于五阳之下，阴柔势力渐长，宜警惕防范。",
+    "interpretationEn": "Gou symbolizes unexpected encounter. Wind under heaven reaches everywhere. One yin arises beneath five yang lines — the dark force grows. Be vigilant.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：系于金柅，贞吉，有攸往，见凶，羸豕孚蹢躅。",
+        "textEn": "Six at the beginning: It must be checked with a brake of bronze. Perseverance brings good fortune. If one lets it take its course, one experiences misfortune. Even a lean pig has it in him to rage around.",
+        "interpretationZh": "用金属制动器拴住，坚守正道则吉。若放任则见凶，瘦弱的猪也会躁动不安。",
+        "interpretationEn": "Check it with a bronze brake. Perseverance brings fortune. Left unchecked, even a lean pig rages about. Misfortune."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：包有鱼，无咎，不利宾。",
+        "textEn": "Nine in the second place: There is a fish in the tank. No blame. It does not further guests.",
+        "interpretationZh": "厨房中有鱼，无过失，但不宜招待宾客。",
+        "interpretationEn": "A fish in the tank. No blame. But it does not further one to entertain guests."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：臀无肤，其行次且，厉，无大咎。",
+        "textEn": "Nine in the third place: There is no skin on his thighs, and walking comes hard. If one is mindful of the danger, no great mistake is made.",
+        "interpretationZh": "臀部没有皮肤，行走艰难，有危险，但无大过失。",
+        "interpretationEn": "No skin on the thighs; walking is difficult. Danger, but no great blame if one remains mindful."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：包无鱼，起凶。",
+        "textEn": "Nine in the fourth place: No fish in the tank. This leads to misfortune.",
+        "interpretationZh": "厨房中没有鱼，由此引发凶险。失去了应有的联系。",
+        "interpretationEn": "No fish in the tank. This gives rise to misfortune. The connection is lost."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：以杞包瓜，含章，有陨自天。",
+        "textEn": "Nine in the fifth place: A melon covered with willow leaves. Hidden lines. Then it drops down to one from heaven.",
+        "interpretationZh": "用杞柳包裹甜瓜，内含文采，有从天而降的好运。",
+        "interpretationEn": "A melon wrapped in willow leaves. Hidden brilliance within. Something drops from heaven."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：姤其角，吝，无咎。",
+        "textEn": "Nine at the top: He comes to meet with his horns. Humiliation. But no blame.",
+        "interpretationZh": "用角去迎接，虽有困窘，但无过失。刚强过度，不善交际。",
+        "interpretationEn": "Coming to meet with horns. Humiliation, but no blame. Excessive rigidity in social encounters."
+      }
+    ]
+  }
+]

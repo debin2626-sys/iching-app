@@ -1,0 +1,162 @@
+"use client";
+
+import { useLocale } from "next-intl";
+import { Link, useRouter, usePathname } from "@/i18n/navigation";
+import { motion } from "framer-motion";
+import { type ReactNode } from "react";
+
+export interface NavItem {
+  label: string;
+  href: string;
+  icon?: ReactNode;
+}
+
+interface NavBarProps {
+  items: NavItem[];
+}
+
+function LanguageSwitcher() {
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const toggle = () => {
+    const next = locale === "zh" ? "en" : "zh";
+    router.replace(pathname, { locale: next });
+  };
+
+  return (
+    <button
+      onClick={toggle}
+      className="relative flex h-8 w-16 items-center rounded-full border border-[#d4a574]/30 bg-white/5 px-1 text-xs transition-all duration-300 hover:border-[#d4a574]/60"
+      aria-label="Switch language"
+    >
+      <motion.span
+        layout
+        className="absolute h-6 w-7 rounded-full bg-[#d4a574]/20"
+        animate={{ x: locale === "zh" ? 0 : 28 }}
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      />
+      <span
+        className={`relative z-10 flex-1 text-center transition-colors duration-300 ${
+          locale === "zh" ? "text-[#d4a574]" : "text-gray-500"
+        }`}
+      >
+        中
+      </span>
+      <span
+        className={`relative z-10 flex-1 text-center transition-colors duration-300 ${
+          locale === "en" ? "text-[#d4a574]" : "text-gray-500"
+        }`}
+      >
+        EN
+      </span>
+    </button>
+  );
+}
+
+/* ── Desktop top bar ── */
+function DesktopNav({ items }: NavBarProps) {
+  const pathname = usePathname();
+
+  return (
+    <nav className="fixed inset-x-0 top-0 z-50 hidden h-16 items-center justify-between border-b border-white/5 bg-[#0a0a0f]/80 px-8 backdrop-blur-md md:flex">
+      {/* Logo / brand */}
+      <Link
+        href="/"
+        className="text-lg font-semibold tracking-widest text-[#d4a574] transition-colors duration-300 hover:text-[#e8c96a]"
+      >
+        易经
+      </Link>
+
+      {/* Nav links */}
+      <ul className="flex items-center gap-6">
+        {items.map((item) => {
+          const active = pathname === item.href;
+          return (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className={`relative flex items-center gap-1.5 text-sm tracking-wide transition-all duration-300 ${
+                  active
+                    ? "text-[#d4a574]"
+                    : "text-gray-400 hover:text-[#d4a574] hover:-translate-y-0.5"
+                }`}
+              >
+                {item.icon && (
+                  <span className="text-base">{item.icon}</span>
+                )}
+                {item.label}
+                {active && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute -bottom-1 left-0 h-px w-full bg-[#d4a574]"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+
+      <LanguageSwitcher />
+    </nav>
+  );
+}
+
+/* ── Mobile bottom tab bar ── */
+function MobileTabBar({ items }: NavBarProps) {
+  const pathname = usePathname();
+  // iOS-style bottom tab bar — max 5 items
+  const tabs = items.slice(0, 5);
+
+  return (
+    <nav className="fixed inset-x-0 bottom-0 z-50 flex h-16 items-end justify-around border-t border-white/5 bg-[#0a0a0f]/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
+      {tabs.map((item) => {
+        const active = pathname === item.href;
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`flex flex-1 flex-col items-center gap-0.5 pb-2 pt-2 text-[10px] transition-all duration-300 ${
+              active ? "text-[#d4a574]" : "text-gray-500"
+            }`}
+          >
+            {item.icon ? (
+              <span className="text-xl">{item.icon}</span>
+            ) : (
+              <span
+                className={`h-5 w-5 rounded-full border ${
+                  active ? "border-[#d4a574] bg-[#d4a574]/20" : "border-gray-600"
+                }`}
+              />
+            )}
+            <span>{item.label}</span>
+            {active && (
+              <motion.span
+                layoutId="tab-dot"
+                className="absolute top-1 h-0.5 w-4 rounded-full bg-[#d4a574]"
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            )}
+          </Link>
+        );
+      })}
+
+      {/* Language toggle as last tab-like item on mobile */}
+      <div className="flex flex-1 flex-col items-center justify-center pb-2 pt-2">
+        <LanguageSwitcher />
+      </div>
+    </nav>
+  );
+}
+
+export function NavBar({ items }: NavBarProps) {
+  return (
+    <>
+      <DesktopNav items={items} />
+      <MobileTabBar items={items} />
+    </>
+  );
+}

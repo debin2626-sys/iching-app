@@ -1,0 +1,234 @@
+[
+  {
+    "number": 49,
+    "nameZh": "革",
+    "nameEn": "Revolution",
+    "symbol": "011101",
+    "upperTrigram": "兑/泽",
+    "lowerTrigram": "离/火",
+    "judgmentZh": "革：己日乃孚，元亨利贞，悔亡。",
+    "judgmentEn": "Revolution. On your own day you are believed. Supreme success, furthering through perseverance. Remorse disappears.",
+    "imageZh": "泽中有火，革；君子以治历明时。",
+    "imageEn": "Fire in the lake: the image of Revolution. Thus the superior man sets the calendar in order and makes the seasons clear.",
+    "interpretationZh": "革卦象征变革，泽中有火，水火相激。变革需待时机成熟，方能取信于人，悔恨消亡。",
+    "interpretationEn": "Ge symbolizes revolution. Fire within the lake — water and fire clash. Reform must come at the right time to win trust and eliminate regret.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：巩用黄牛之革。",
+        "textEn": "Nine at the beginning: Wrapped in the hide of a yellow cow.",
+        "interpretationZh": "用黄牛皮革牢牢束缚，时机未到不可轻举妄动。",
+        "interpretationEn": "Bound with the hide of a yellow cow. The time for action has not yet come."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：己日乃革之，征吉，无咎。",
+        "textEn": "Six in the second place: When one's own day comes, one may create revolution. Starting brings good fortune. No blame.",
+        "interpretationZh": "到了适当的时候再进行变革，出征则吉利，无过失。",
+        "interpretationEn": "When the proper day arrives, undertake revolution. Going forward brings fortune and no blame."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：征凶，贞厉，革言三就，有孚。",
+        "textEn": "Nine in the third place: Starting brings misfortune. Perseverance brings danger. When talk of revolution has gone the rounds three times, one may commit himself, and men will believe him.",
+        "interpretationZh": "急于行动则凶，坚持也有危险。变革之议经过三次讨论确认后，方可取信于人。",
+        "interpretationEn": "Hasty action brings misfortune. After revolution is discussed three times, commitment wins trust."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：悔亡，有孚改命，吉。",
+        "textEn": "Nine in the fourth place: Remorse disappears. Men believe in him. Changing the form of government brings good fortune.",
+        "interpretationZh": "悔恨消失，以诚信改变旧制，吉利。",
+        "interpretationEn": "Remorse vanishes. With sincerity, changing the mandate brings good fortune."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：大人虎变，未占有孚。",
+        "textEn": "Nine in the fifth place: The great man changes like a tiger. Even before he questions the oracle he is believed.",
+        "interpretationZh": "大人物如猛虎般果断变革，不必占卜即可取信于人。",
+        "interpretationEn": "The great man transforms like a tiger. He is trusted even before consulting the oracle."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：君子豹变，小人革面，征凶，居贞吉。",
+        "textEn": "Six at the top: The superior man changes like a panther. The inferior man molts in the face. Starting brings misfortune. To remain persevering brings good fortune.",
+        "interpretationZh": "君子如豹般优雅变革，小人只是表面顺从。此时不宜再动，安守正道则吉。",
+        "interpretationEn": "The superior man transforms like a panther. The inferior man changes only his face. Remain still and persevere for fortune."
+      }
+    ]
+  },
+  {
+    "number": 50,
+    "nameZh": "鼎",
+    "nameEn": "The Caldron",
+    "symbol": "101110",
+    "upperTrigram": "离/火",
+    "lowerTrigram": "巽/风",
+    "judgmentZh": "鼎：元吉，亨。",
+    "judgmentEn": "The Caldron. Supreme good fortune. Success.",
+    "imageZh": "木上有火，鼎；君子以正位凝命。",
+    "imageEn": "Fire over wood: the image of the Caldron. Thus the superior man consolidates his fate by making his position correct.",
+    "interpretationZh": "鼎卦象征鼎器，木上有火，烹饪养贤。鼎为国之重器，象征革故鼎新，端正位置以凝聚天命。",
+    "interpretationEn": "Ding symbolizes the caldron. Fire over wood cooks nourishment. The caldron is a vessel of state, representing renewal and consolidating one's destiny.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：鼎颠趾，利出否，得妾以其子，无咎。",
+        "textEn": "Six at the beginning: A caldron with legs upturned. Furthers removal of stagnating stuff. One takes a concubine for the sake of her son. No blame.",
+        "interpretationZh": "鼎翻倒倾出脚，有利于倒出陈旧之物。纳妾得子，无过失。",
+        "interpretationEn": "The caldron is overturned to pour out the old. Taking a concubine for her son brings no blame."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：鼎有实，我仇有疾，不我能即，吉。",
+        "textEn": "Nine in the second place: There is food in the caldron. My comrades are envious, but they cannot harm me. Good fortune.",
+        "interpretationZh": "鼎中有食物，同伴虽然嫉妒但无法伤害我，吉利。",
+        "interpretationEn": "The caldron is full. Envious companions cannot reach me. Good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：鼎耳革，其行塞，雉膏不食，方雨亏悔，终吉。",
+        "textEn": "Nine in the third place: The handle of the caldron is altered. One is impeded in his way of life. The fat of the pheasant is not eaten. Once rain falls, remorse is spent. Good fortune comes in the end.",
+        "interpretationZh": "鼎耳被改变，行动受阻，美味不得享用。待到下雨时悔恨消散，终获吉利。",
+        "interpretationEn": "The caldron's handle is changed; progress is blocked. When rain comes, remorse fades and fortune arrives."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：鼎折足，覆公餗，其形渥，凶。",
+        "textEn": "Nine in the fourth place: The legs of the caldron are broken. The prince's meal is spilled and his person is soiled. Misfortune.",
+        "interpretationZh": "鼎足折断，打翻了王公的食物，弄得一身狼狈，凶险。",
+        "interpretationEn": "The caldron's legs break. The prince's meal is spilled and he is soiled. Misfortune."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：鼎黄耳金铉，利贞。",
+        "textEn": "Six in the fifth place: The caldron has yellow handles, golden carrying rings. Perseverance furthers.",
+        "interpretationZh": "鼎有黄色的耳和金色的铉，坚守正道则有利。",
+        "interpretationEn": "The caldron has yellow handles and golden rings. Perseverance furthers."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：鼎玉铉，大吉，无不利。",
+        "textEn": "Nine at the top: The caldron has rings of jade. Great good fortune. Nothing that would not act to further.",
+        "interpretationZh": "鼎有玉铉，大吉大利，无往不利。",
+        "interpretationEn": "The caldron has jade rings. Great good fortune. Everything furthers."
+      }
+    ]
+  },
+  {
+    "number": 51,
+    "nameZh": "震",
+    "nameEn": "The Arousing",
+    "symbol": "001001",
+    "upperTrigram": "震/雷",
+    "lowerTrigram": "震/雷",
+    "judgmentZh": "震：亨。震来虩虩，笑言哑哑。震惊百里，不丧匕鬯。",
+    "judgmentEn": "The Arousing brings success. Shock comes — oh, oh! Laughing words — ha, ha! The shock terrifies for a hundred miles, and he does not let fall the sacrificial spoon and chalice.",
+    "imageZh": "洊雷，震；君子以恐惧修省。",
+    "imageEn": "Thunder repeated: the image of Shock. Thus in fear and trembling the superior man sets his life in order and examines himself.",
+    "interpretationZh": "震卦象征雷震，重雷叠至，震动惊惧。震后能笑，说明内心镇定。君子因恐惧而反省修身。",
+    "interpretationEn": "Zhen symbolizes thunder and shock. Repeated thunder brings awe. The superior man uses fear as a catalyst for self-examination and inner cultivation.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：震来虩虩，后笑言哑哑，吉。",
+        "textEn": "Nine at the beginning: Shock comes — oh, oh! Then follow laughing words — ha, ha! Good fortune.",
+        "interpretationZh": "雷震到来令人恐惧，之后谈笑自若，吉利。",
+        "interpretationEn": "Shock arrives with terror, then laughter follows. Good fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：震来厉，亿丧贝，跻于九陵，勿逐，七日得。",
+        "textEn": "Six in the second place: Shock comes bringing danger. A hundred thousand times you lose your treasures and must climb the nine hills. Do not go in pursuit of them. After seven days you will get them back again.",
+        "interpretationZh": "雷震带来危险，丧失财宝，登上高山避难。不必追寻，七日后自然失而复得。",
+        "interpretationEn": "Shock brings danger and loss of treasures. Climb to safety. Do not pursue; in seven days they return."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：震苏苏，震行无眚。",
+        "textEn": "Six in the third place: Shock comes and makes one distraught. If shock spurs to action, one remains free of misfortune.",
+        "interpretationZh": "雷震令人心神不安，若因震动而奋起行动，则无灾祸。",
+        "interpretationEn": "Shock causes distress. If it spurs one to action, there will be no misfortune."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：震遂泥。",
+        "textEn": "Nine in the fourth place: Shock is mired.",
+        "interpretationZh": "雷震陷入泥沼，行动受阻，难以振作。",
+        "interpretationEn": "Shock becomes mired. Movement is impeded and one cannot rally."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：震往来厉，亿无丧，有事。",
+        "textEn": "Six in the fifth place: Shock goes hither and thither. Danger. However, nothing at all is lost. Yet there are things to be done.",
+        "interpretationZh": "雷震往来反复，虽有危险但不会有损失，仍有事务需要处理。",
+        "interpretationEn": "Shock comes and goes with danger. Nothing is lost, yet there is work to be done."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：震索索，视矍矍，征凶。震不于其躬，于其邻，无咎。婚媾有言。",
+        "textEn": "Six at the top: Shock brings ruin and terrified gazing around. Going ahead brings misfortune. If it has not yet reached one's own body but has reached one's neighbor first, there is no blame. One's comrades have something to talk about.",
+        "interpretationZh": "雷震令人惊恐不安，四处张望。前行则凶。若雷震尚未及身而先及邻人，则无咎。婚姻之事有口舌。",
+        "interpretationEn": "Shock brings terror and anxious gazing. Going forward is misfortune. If shock strikes the neighbor first, no blame. There will be talk about marriages."
+      }
+    ]
+  },
+  {
+    "number": 52,
+    "nameZh": "艮",
+    "nameEn": "Keeping Still",
+    "symbol": "100100",
+    "upperTrigram": "艮/山",
+    "lowerTrigram": "艮/山",
+    "judgmentZh": "艮其背，不获其身，行其庭，不见其人，无咎。",
+    "judgmentEn": "Keeping Still. Keeping his back so still that he no longer feels his body. He goes into his courtyard and does not see his people. No blame.",
+    "imageZh": "兼山，艮；君子以思不出其位。",
+    "imageEn": "Mountains standing close together: the image of Keeping Still. Thus the superior man does not permit his thoughts to go beyond his situation.",
+    "interpretationZh": "艮卦象征止息，两山重叠，静止不动。止于背则不见身，行于庭则不见人，各安其位则无咎。",
+    "interpretationEn": "Gen symbolizes stillness. Two mountains stand together, motionless. When one keeps still and stays within proper bounds, there is no blame.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：艮其趾，无咎，利永贞。",
+        "textEn": "Six at the beginning: Keeping his toes still. No blame. Continued perseverance furthers.",
+        "interpretationZh": "止于脚趾，在行动之初就停下，无过失，宜长久坚守正道。",
+        "interpretationEn": "Keeping the toes still. Stopping at the very beginning brings no blame. Lasting perseverance furthers."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：艮其腓，不拯其随，其心不快。",
+        "textEn": "Six in the second place: Keeping his calves still. He cannot rescue him whom he follows. His heart is not glad.",
+        "interpretationZh": "止于小腿，无法拯救所追随的人，心中不快。",
+        "interpretationEn": "Keeping the calves still. He cannot save the one he follows. His heart is not glad."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：艮其限，列其夤，厉薰心。",
+        "textEn": "Nine in the third place: Keeping his hips still. Making his sacrum stiff. Dangerous. The heart suffocates.",
+        "interpretationZh": "止于腰部，使脊骨僵硬，危险。心中如被烟熏般窒息。",
+        "interpretationEn": "Keeping the hips still. The sacrum is rigid. Danger — the heart suffocates."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：艮其身，无咎。",
+        "textEn": "Six in the fourth place: Keeping his trunk still. No blame.",
+        "interpretationZh": "止于躯干，全身静止，无过失。",
+        "interpretationEn": "Keeping the trunk still. No blame."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：艮其辅，言有序，悔亡。",
+        "textEn": "Six in the fifth place: Keeping his jaws still. The words have order. Remorse disappears.",
+        "interpretationZh": "止于面颊，说话有条理有分寸，悔恨消失。",
+        "interpretationEn": "Keeping the jaws still. Words are well ordered. Remorse disappears."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：敦艮，吉。",
+        "textEn": "Nine at the top: Noblehearted keeping still. Good fortune.",
+        "interpretationZh": "敦厚地止息，达到止的最高境界，吉利。",
+        "interpretationEn": "Noblehearted stillness. The highest form of keeping still. Good fortune."
+      }
+    ]
+  }
+]

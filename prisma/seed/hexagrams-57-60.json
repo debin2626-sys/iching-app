@@ -1,0 +1,234 @@
+[
+  {
+    "number": 57,
+    "nameZh": "巽",
+    "nameEn": "The Gentle",
+    "symbol": "110110",
+    "upperTrigram": "巽/风",
+    "lowerTrigram": "巽/风",
+    "judgmentZh": "巽：小亨，利有攸往，利见大人。",
+    "judgmentEn": "The Gentle. Success through what is small. It furthers one to have somewhere to go. It furthers one to see the great man.",
+    "imageZh": "随风，巽；君子以申命行事。",
+    "imageEn": "Winds following one upon the other: the image of the Gently Penetrating. Thus the superior man spreads his commands abroad and carries out his undertakings.",
+    "interpretationZh": "巽卦象征风，柔顺而渗透。两风相随，无孔不入，以柔克刚，循序渐进方能成事。",
+    "interpretationEn": "Xun symbolizes wind and gentle penetration. Two winds following each other penetrate everywhere. Gentle persistence achieves what force cannot.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：进退，利武人之贞。",
+        "textEn": "Six at the beginning: In advancing and in retreating, the perseverance of a warrior furthers.",
+        "interpretationZh": "进退犹豫不决，宜以武人般的坚毅果断来行事。",
+        "interpretationEn": "Hesitating between advance and retreat. The resolve of a warrior is needed."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：巽在床下，用史巫纷若，吉无咎。",
+        "textEn": "Nine in the second place: Penetration under the bed. Priests and magicians are used in great number. Good fortune. No blame.",
+        "interpretationZh": "谦卑至极如伏于床下，借助祝史巫觋之力，吉利无咎。",
+        "interpretationEn": "Extreme humility, penetrating beneath the bed. Employing many intermediaries brings fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：频巽，吝。",
+        "textEn": "Nine in the third place: Repeated penetration. Humiliation.",
+        "interpretationZh": "反复屈从，过于卑顺，有所困窘。",
+        "interpretationEn": "Repeated submission becomes humiliating. Excessive yielding brings shame."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：悔亡，田获三品。",
+        "textEn": "Six in the fourth place: Remorse vanishes. During the hunt three kinds of game are caught.",
+        "interpretationZh": "悔恨消失，如田猎获得三种猎物，收获丰厚。",
+        "interpretationEn": "Remorse vanishes. Three kinds of game are caught in the hunt. Rich rewards."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：贞吉悔亡，无不利。无初有终。先庚三日，后庚三日，吉。",
+        "textEn": "Nine in the fifth place: Perseverance brings good fortune. Remorse vanishes. Nothing that does not further. No beginning, but an end. Before the change, three days. After the change, three days. Good fortune.",
+        "interpretationZh": "坚守正道则吉，悔恨消失。虽无好的开始但有好的结局，变革前后各需三日准备。",
+        "interpretationEn": "Perseverance brings fortune and remorse vanishes. No good beginning but a good end. Allow time before and after changes."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：巽在床下，丧其资斧，贞凶。",
+        "textEn": "Nine at the top: Penetration under the bed. He loses his property and his ax. Perseverance brings misfortune.",
+        "interpretationZh": "过度卑顺伏于床下，丧失了财物和权柄，坚持下去则凶。",
+        "interpretationEn": "Excessive submission beneath the bed. Property and authority are lost. Persisting brings misfortune."
+      }
+    ]
+  },
+  {
+    "number": 58,
+    "nameZh": "兑",
+    "nameEn": "The Joyous",
+    "symbol": "011011",
+    "upperTrigram": "兑/泽",
+    "lowerTrigram": "兑/泽",
+    "judgmentZh": "兑：亨，利贞。",
+    "judgmentEn": "The Joyous. Success. Perseverance is favorable.",
+    "imageZh": "丽泽，兑；君子以朋友讲习。",
+    "imageEn": "Lakes resting one on the other: the image of the Joyous. Thus the superior man joins with his friends for discussion and practice.",
+    "interpretationZh": "兑卦象征泽，喜悦而和谐。两泽相连，互相滋润，以喜悦之心待人，朋友切磋共进。",
+    "interpretationEn": "Dui symbolizes the lake and joyousness. Two lakes connected nourish each other. Joy shared with friends through mutual learning and encouragement.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：和兑，吉。",
+        "textEn": "Nine at the beginning: Contented joyousness. Good fortune.",
+        "interpretationZh": "和谐的喜悦，内心平和而快乐，吉利。",
+        "interpretationEn": "Harmonious joy from within. Contentment brings good fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：孚兑，吉，悔亡。",
+        "textEn": "Nine in the second place: Sincere joyousness. Good fortune. Remorse disappears.",
+        "interpretationZh": "以诚信带来的喜悦，吉利，悔恨消失。",
+        "interpretationEn": "Joy grounded in sincerity. Good fortune and remorse vanishes."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：来兑，凶。",
+        "textEn": "Six in the third place: Coming joyousness. Misfortune.",
+        "interpretationZh": "刻意追求外来的快乐，迎合取悦，凶险。",
+        "interpretationEn": "Seeking joy from external sources. Pandering to pleasure brings misfortune."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：商兑未宁，介疾有喜。",
+        "textEn": "Nine in the fourth place: Joyousness that is weighed is not at peace. After ridding himself of faults a man has joy.",
+        "interpretationZh": "权衡取舍尚未安宁，去除弊病之后方有喜悦。",
+        "interpretationEn": "Deliberating over pleasures brings no peace. Joy comes after eliminating faults."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：孚于剥，有厉。",
+        "textEn": "Nine in the fifth place: Sincerity toward disintegrating influences is dangerous.",
+        "interpretationZh": "信任那些有害的事物，有危险。对小人的信任会带来灾祸。",
+        "interpretationEn": "Trusting in destructive influences is dangerous. Beware of misplaced sincerity."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：引兑。",
+        "textEn": "Six at the top: Seductive joyousness.",
+        "interpretationZh": "引诱他人的喜悦，沉溺于享乐，被欲望牵引。",
+        "interpretationEn": "Seductive joy that leads others astray. Drawn along by desire and indulgence."
+      }
+    ]
+  },
+  {
+    "number": 59,
+    "nameZh": "涣",
+    "nameEn": "Dispersion",
+    "symbol": "110010",
+    "upperTrigram": "巽/风",
+    "lowerTrigram": "坎/水",
+    "judgmentZh": "涣：亨。王假有庙，利涉大川，利贞。",
+    "judgmentEn": "Dispersion. Success. The king approaches his temple. It furthers one to cross the great water. Perseverance furthers.",
+    "imageZh": "风行水上，涣；先王以享于帝立庙。",
+    "imageEn": "The wind drives over the water: the image of Dispersion. Thus the kings of old sacrificed to the Lord and built temples.",
+    "interpretationZh": "涣卦象征涣散，风行水上，波浪四散。以祭祀凝聚人心，以大义化解离散，方能重新团结。",
+    "interpretationEn": "Huan symbolizes dispersion. Wind blowing over water scatters it. Unite scattered hearts through shared devotion and higher purpose.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：用拯马壮，吉。",
+        "textEn": "Six at the beginning: He brings help with the strength of a horse. Good fortune.",
+        "interpretationZh": "用壮马之力来拯救，及时施救则吉利。",
+        "interpretationEn": "Rescue comes with the strength of a horse. Swift aid brings good fortune."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：涣奔其机，悔亡。",
+        "textEn": "Nine in the second place: At the dissolution he hurries to that which supports him. Remorse disappears.",
+        "interpretationZh": "涣散之时奔向可依靠之处，悔恨消失。",
+        "interpretationEn": "In times of dispersion, hasten to a place of support. Remorse vanishes."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：涣其躬，无悔。",
+        "textEn": "Six in the third place: He dissolves his self. No remorse.",
+        "interpretationZh": "化解自身的私欲执着，无所悔恨。",
+        "interpretationEn": "Dissolving selfish concerns. No remorse when ego is set aside."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：涣其群，元吉。涣有丘，匪夷所思。",
+        "textEn": "Six in the fourth place: He dissolves his bond with his group. Supreme good fortune. Dispersion leads to accumulation. This is something that ordinary men do not think of.",
+        "interpretationZh": "化解小团体的私利，大吉。涣散之后重新聚合如丘，非常人所能想到。",
+        "interpretationEn": "Dissolving factional bonds brings supreme fortune. Dispersion leads to a higher gathering beyond ordinary thinking."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：涣汗其大号，涣王居，无咎。",
+        "textEn": "Nine in the fifth place: His loud cries are as dissolving as sweat. Dissolution! A king abides without blame.",
+        "interpretationZh": "如汗水般发布重大号令，王者居正位化解涣散，无咎。",
+        "interpretationEn": "Great proclamations dissolve barriers like sweat. The king holds his position without blame."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：涣其血，去逖出，无咎。",
+        "textEn": "Nine at the top: He dissolves his blood. Departing, keeping at a distance, going out, is without blame.",
+        "interpretationZh": "化解血光之灾，远离危险，离去则无咎。",
+        "interpretationEn": "Dissolving bloodshed by departing and keeping distance. No blame in withdrawal."
+      }
+    ]
+  },
+  {
+    "number": 60,
+    "nameZh": "节",
+    "nameEn": "Limitation",
+    "symbol": "010011",
+    "upperTrigram": "坎/水",
+    "lowerTrigram": "兑/泽",
+    "judgmentZh": "节：亨。苦节不可贞。",
+    "judgmentEn": "Limitation. Success. Galling limitation must not be persevered in.",
+    "imageZh": "泽上有水，节；君子以制数度，议德行。",
+    "imageEn": "Water over lake: the image of Limitation. Thus the superior man creates number and measure, and examines the nature of virtue and correct conduct.",
+    "interpretationZh": "节卦象征节制，泽上有水，水量有限。适度节制则亨通，过度苦节则不可持久。",
+    "interpretationEn": "Jie symbolizes limitation. Water over the lake is finite. Moderate restraint brings success, but bitter limitation cannot endure.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：不出户庭，无咎。",
+        "textEn": "Nine at the beginning: Not going out of the door and the courtyard is without blame.",
+        "interpretationZh": "不出门庭，知所节制，无过失。",
+        "interpretationEn": "Not going beyond the door and courtyard. Knowing one's limits brings no blame."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：不出门庭，凶。",
+        "textEn": "Nine in the second place: Not going out of the gate and the courtyard brings misfortune.",
+        "interpretationZh": "不出门庭，错失时机，过度节制反而凶险。",
+        "interpretationEn": "Not going beyond the gate brings misfortune. Excessive restraint at the wrong time."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：不节若，则嗟若，无咎。",
+        "textEn": "Six in the third place: He who knows no limitation will have cause to lament. No blame.",
+        "interpretationZh": "不知节制就会有悲叹，但能自省则无咎。",
+        "interpretationEn": "Without limitation comes lamentation. But self-awareness removes blame."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：安节，亨。",
+        "textEn": "Six in the fourth place: Contented limitation. Success.",
+        "interpretationZh": "安然接受节制，自然而然地守度，亨通。",
+        "interpretationEn": "Contented acceptance of limitation. Natural restraint brings success."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：甘节，吉；往有尚。",
+        "textEn": "Nine in the fifth place: Sweet limitation brings good fortune. Going brings esteem.",
+        "interpretationZh": "甘心节制，吉利；前往行事会受到尊崇。",
+        "interpretationEn": "Sweet limitation brings good fortune. Taking action earns esteem."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：苦节，贞凶，悔亡。",
+        "textEn": "Six at the top: Galling limitation. Perseverance brings misfortune. Remorse disappears.",
+        "interpretationZh": "苦涩的节制，坚持下去则凶，但悔恨终会消失。",
+        "interpretationEn": "Bitter limitation. Persisting brings misfortune, yet remorse eventually disappears."
+      }
+    ]
+  }
+]

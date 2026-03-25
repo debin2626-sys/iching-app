@@ -1,0 +1,234 @@
+[
+  {
+    "number": 33,
+    "nameZh": "遁",
+    "nameEn": "Retreat",
+    "symbol": "111100",
+    "upperTrigram": "乾/天",
+    "lowerTrigram": "艮/山",
+    "judgmentZh": "遁：亨，小利贞。",
+    "judgmentEn": "Retreat. Success. In what is small, perseverance furthers.",
+    "imageZh": "天下有山，遁；君子以远小人，不恶而严。",
+    "imageEn": "Mountain under heaven: the image of Retreat. Thus the superior man keeps the inferior man at a distance, not angrily but with reserve.",
+    "interpretationZh": "遁卦象征退避隐遁，天下有山，山虽高却不及天。小人势力渐长，君子宜适时退让，保全正道。",
+    "interpretationEn": "Dun symbolizes retreat and withdrawal. The mountain under heaven cannot reach the sky. When inferior forces grow, the wise withdraw to preserve integrity.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：遁尾，厉，勿用有攸往。",
+        "textEn": "Six at the beginning: At the tail in retreat. This is dangerous. One must not wish to undertake anything.",
+        "interpretationZh": "退避时落在最后，处境危险，不宜有所行动。",
+        "interpretationEn": "Lagging behind in retreat is dangerous. Do not undertake anything."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：执之用黄牛之革，莫之胜说。",
+        "textEn": "Six in the second place: He holds him fast with yellow oxhide. No one can tear him loose.",
+        "interpretationZh": "用黄牛皮绳牢牢绑住，无人能解开，坚守不退。",
+        "interpretationEn": "Held fast with yellow oxhide. No one can tear him away. Firm resolve."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：系遁，有疾厉，畜臣妾吉。",
+        "textEn": "Nine in the third place: A halted retreat is nerve-wracking and dangerous. To retain people as men- and maidservants brings good fortune.",
+        "interpretationZh": "被牵绊而不能退避，有危险。蓄养仆从则吉。",
+        "interpretationEn": "A halted retreat is dangerous and exhausting. Retaining servants brings fortune."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：好遁，君子吉，小人否。",
+        "textEn": "Nine in the fourth place: Voluntary retreat brings good fortune to the superior man and downfall to the inferior man.",
+        "interpretationZh": "从容退避，君子吉利，小人则不然。",
+        "interpretationEn": "Voluntary retreat. The superior man finds fortune; the inferior man does not."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：嘉遁，贞吉。",
+        "textEn": "Nine in the fifth place: Friendly retreat. Perseverance brings good fortune.",
+        "interpretationZh": "美好的退避，坚守正道则吉利。",
+        "interpretationEn": "A gracious retreat. Perseverance brings good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：肥遁，无不利。",
+        "textEn": "Nine at the top: Cheerful retreat. Everything serves to further.",
+        "interpretationZh": "远走高飞，从容退隐，无往不利。",
+        "interpretationEn": "A cheerful, unencumbered retreat. Everything furthers."
+      }
+    ]
+  },
+  {
+    "number": 34,
+    "nameZh": "大壮",
+    "nameEn": "The Power of the Great",
+    "symbol": "001111",
+    "upperTrigram": "震/雷",
+    "lowerTrigram": "乾/天",
+    "judgmentZh": "大壮：利贞。",
+    "judgmentEn": "The Power of the Great. Perseverance furthers.",
+    "imageZh": "雷在天上，大壮；君子以非礼弗履。",
+    "imageEn": "Thunder in heaven above: the image of the Power of the Great. Thus the superior man does not tread upon paths that do not accord with established order.",
+    "interpretationZh": "大壮卦象征强大的力量，雷在天上，声势浩大。阳刚之力正盛，但须以正道约束，非礼勿行。",
+    "interpretationEn": "Da Zhuang symbolizes great power. Thunder above heaven is mighty. Yang force is at its peak, but must be guided by propriety.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：壮于趾，征凶，有孚。",
+        "textEn": "Nine at the beginning: Power in the toes. Continuing brings misfortune. This is certainly true.",
+        "interpretationZh": "力量在脚趾，急于前进则凶，确实如此。",
+        "interpretationEn": "Power in the toes. Advancing rashly brings misfortune. This is certain."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：贞吉。",
+        "textEn": "Nine in the second place: Perseverance brings good fortune.",
+        "interpretationZh": "坚守正道则吉利。",
+        "interpretationEn": "Perseverance brings good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：小人用壮，君子用罔，贞厉。羝羊触藩，羸其角。",
+        "textEn": "Nine in the third place: The inferior man works through power. The superior man does not act thus. To continue is dangerous. A goat butts against a hedge and gets its horns entangled.",
+        "interpretationZh": "小人逞强用力，君子不这样做。公羊抵篱笆，角被缠住，蛮力行事有危险。",
+        "interpretationEn": "The inferior man uses brute force. The superior man does not. A goat butts a hedge and tangles its horns."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：贞吉悔亡，藩决不羸，壮于大舆之輹。",
+        "textEn": "Nine in the fourth place: Perseverance brings good fortune. Remorse disappears. The hedge opens; there is no entanglement. Power depends upon the axle of a big cart.",
+        "interpretationZh": "坚守正道则吉，悔恨消失。篱笆打开不再缠绕，力量如大车之轴般稳固。",
+        "interpretationEn": "Perseverance brings fortune and remorse vanishes. The hedge opens. Power rests on the axle of a great cart."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：丧羊于易，无悔。",
+        "textEn": "Six in the fifth place: Loses the goat with ease. No remorse.",
+        "interpretationZh": "轻易失去公羊，但无悔恨，放弃刚强反而得安。",
+        "interpretationEn": "The goat is lost with ease. No remorse. Letting go of stubbornness brings peace."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：羝羊触藩，不能退，不能遂，无攸利，艰则吉。",
+        "textEn": "Six at the top: A goat butts against a hedge. It cannot go backward, it cannot go forward. Nothing serves to further. If one notes the difficulty, this brings good fortune.",
+        "interpretationZh": "公羊抵篱笆，进退两难，无所利。认识到困难则吉。",
+        "interpretationEn": "A goat stuck in a hedge, unable to advance or retreat. Recognizing the difficulty brings fortune."
+      }
+    ]
+  },
+  {
+    "number": 35,
+    "nameZh": "晋",
+    "nameEn": "Progress",
+    "symbol": "101000",
+    "upperTrigram": "离/火",
+    "lowerTrigram": "坤/地",
+    "judgmentZh": "晋：康侯用锡马蕃庶，昼日三接。",
+    "judgmentEn": "Progress. The powerful prince is honored with horses in large numbers. In a single day he is granted audience three times.",
+    "imageZh": "明出地上，晋；君子以自昭明德。",
+    "imageEn": "The sun rises over the earth: the image of Progress. Thus the superior man himself brightens his bright virtue.",
+    "interpretationZh": "晋卦象征进步晋升，太阳升出地面，光明普照。如康侯受封赏马匹，一日三次觐见，事业蒸蒸日上。",
+    "interpretationEn": "Jin symbolizes progress and advancement. The sun rises above the earth, spreading light. Like a prince honored with horses and granted triple audience in one day.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：晋如，摧如，贞吉。罔孚，裕无咎。",
+        "textEn": "Six at the beginning: Progressing, but turned back. Perseverance brings good fortune. If one meets with no confidence, one should remain calm. No blame.",
+        "interpretationZh": "前进又受挫，坚守正道则吉。不被信任时保持宽裕从容，无过失。",
+        "interpretationEn": "Advancing but pushed back. Persevere for fortune. If not trusted, remain calm. No blame."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：晋如，愁如，贞吉。受兹介福，于其王母。",
+        "textEn": "Six in the second place: Progressing, but in sorrow. Perseverance brings good fortune. Then one obtains great happiness from one's ancestress.",
+        "interpretationZh": "前进中有忧愁，坚守正道则吉。从祖母处获得大福。",
+        "interpretationEn": "Advancing in sorrow. Perseverance brings fortune. Great happiness comes from the ancestress."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：众允，悔亡。",
+        "textEn": "Six in the third place: All are in accord. Remorse disappears.",
+        "interpretationZh": "众人信任赞同，悔恨消失。",
+        "interpretationEn": "All are in agreement. Remorse vanishes."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：晋如鼫鼠，贞厉。",
+        "textEn": "Nine in the fourth place: Progress like a hamster. Perseverance brings danger.",
+        "interpretationZh": "像鼫鼠一样贪婪地前进，坚持下去有危险。",
+        "interpretationEn": "Advancing like a hamster, hoarding greedily. Perseverance brings danger."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：悔亡，失得勿恤，往吉，无不利。",
+        "textEn": "Six in the fifth place: Remorse disappears. Take not gain and loss to heart. Undertakings bring good fortune. Everything serves to further.",
+        "interpretationZh": "悔恨消失，不必忧虑得失，前往则吉，无往不利。",
+        "interpretationEn": "Remorse vanishes. Do not worry about gain or loss. Going forward brings fortune in all things."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：晋其角，维用伐邑，厉吉无咎，贞吝。",
+        "textEn": "Nine at the top: Making progress with the horns is permissible only for the purpose of punishing one's own city. To be conscious of danger brings good fortune. No blame. Perseverance brings humiliation.",
+        "interpretationZh": "以角猛进，只可用于征伐自己的城邑。知危则吉，无咎，但固执则有憾。",
+        "interpretationEn": "Advancing with horns, only to discipline one's own domain. Awareness of danger brings fortune. Stubbornness brings humiliation."
+      }
+    ]
+  },
+  {
+    "number": 36,
+    "nameZh": "明夷",
+    "nameEn": "Darkening of the Light",
+    "symbol": "000101",
+    "upperTrigram": "坤/地",
+    "lowerTrigram": "离/火",
+    "judgmentZh": "明夷：利艰贞。",
+    "judgmentEn": "Darkening of the Light. In adversity it furthers one to be persevering.",
+    "imageZh": "明入地中，明夷；君子以莅众，用晦而明。",
+    "imageEn": "The light has sunk into the earth: the image of Darkening of the Light. Thus does the superior man live with the great mass: he veils his light, yet still shines.",
+    "interpretationZh": "明夷卦象征光明受损，太阳沉入地下。处于黑暗逆境之中，宜韬光养晦，内心保持光明。",
+    "interpretationEn": "Ming Yi symbolizes the darkening of the light. The sun has sunk beneath the earth. In dark times, conceal your brilliance outwardly while keeping inner light alive.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：明夷于飞，垂其翼。君子于行，三日不食。有攸往，主人有言。",
+        "textEn": "Nine at the beginning: Darkening of the light during flight. He lowers his wings. The superior man does not eat for three days on his wanderings. But he has somewhere to go. The host has occasion to gossip.",
+        "interpretationZh": "光明受损如鸟飞行垂翼，君子出行三日不食，虽有目的地，但主人有闲言。",
+        "interpretationEn": "The light darkens in flight; wings droop. The wanderer goes hungry for three days. He has a destination, but the host gossips."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：明夷，夷于左股，用拯马壮，吉。",
+        "textEn": "Six in the second place: Darkening of the light injures him in the left thigh. He gives aid with the strength of a horse. Good fortune.",
+        "interpretationZh": "光明受损伤及左腿，用壮马之力救援，吉利。",
+        "interpretationEn": "The light is wounded in the left thigh. Rescue comes with the strength of a horse. Good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：明夷于南狩，得其大首，不可疾贞。",
+        "textEn": "Nine in the third place: Darkening of the light during the hunt in the south. Their great leader is captured. One must not expect perseverance too hastily.",
+        "interpretationZh": "在南方狩猎时光明受损，擒获大首领，但不可急于求成。",
+        "interpretationEn": "During the southern hunt, the great leader is captured. Do not expect quick results."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：入于左腹，获明夷之心，出于门庭。",
+        "textEn": "Six in the fourth place: He penetrates the left side of the belly. One gets at the very heart of the darkening of the light, and leaves gate and courtyard.",
+        "interpretationZh": "深入左腹，洞悉明夷的核心，然后离开门庭。",
+        "interpretationEn": "Penetrating the left belly, one grasps the heart of the darkness and departs through the gate."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：箕子之明夷，利贞。",
+        "textEn": "Six in the fifth place: Darkening of the light as with Prince Chi. Perseverance furthers.",
+        "interpretationZh": "如箕子般韬光养晦，坚守正道则有利。",
+        "interpretationEn": "Darkening of the light as with Prince Chi. Conceal your brilliance. Perseverance furthers."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：不明晦，初登于天，后入于地。",
+        "textEn": "Six at the top: Not light but darkness. First he climbed up to heaven, then he plunged into the depths of the earth.",
+        "interpretationZh": "不是光明而是黑暗。先登上天空，后坠入地下，由盛转衰。",
+        "interpretationEn": "Not light but darkness. First ascending to heaven, then plunging into the earth. From height to ruin."
+      }
+    ]
+  }
+]

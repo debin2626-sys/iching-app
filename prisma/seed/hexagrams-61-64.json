@@ -1,0 +1,234 @@
+[
+  {
+    "number": 61,
+    "nameZh": "中孚",
+    "nameEn": "Inner Truth",
+    "symbol": "110011",
+    "upperTrigram": "巽/风",
+    "lowerTrigram": "兑/泽",
+    "judgmentZh": "中孚：豚鱼吉，利涉大川，利贞。",
+    "judgmentEn": "Inner Truth. Pigs and fishes. Good fortune. It furthers one to cross the great water. Perseverance furthers.",
+    "imageZh": "泽上有风，中孚；君子以议狱缓死。",
+    "imageEn": "Wind over lake: the image of Inner Truth. Thus the superior man discusses criminal cases in order to delay executions.",
+    "interpretationZh": "中孚卦象征内心的诚信，风吹泽上，感化万物。以至诚之心待人，即使猪鱼之微也能感通，利于涉险。",
+    "interpretationEn": "Zhong Fu symbolizes inner sincerity. Wind blowing over the lake penetrates all things. With utmost sincerity, even the lowliest creatures are moved.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：虞吉，有它不燕。",
+        "textEn": "Nine at the beginning: Being prepared brings good fortune. If there are secret designs, it is disquieting.",
+        "interpretationZh": "有所准备则吉利，若心有旁骛则不安宁。",
+        "interpretationEn": "Preparedness brings fortune. Hidden agendas bring unease."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：鸣鹤在阴，其子和之。我有好爵，吾与尔靡之。",
+        "textEn": "Nine in the second place: A crane calling in the shade. Its young answers it. I have a good goblet. I will share it with you.",
+        "interpretationZh": "鹤在树荫中鸣叫，幼鹤应声相和。诚信之感应，如同分享美酒。",
+        "interpretationEn": "A crane calls from the shade and its young responds. Sincerity resonates like sharing a fine goblet."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：得敌，或鼓或罢，或泣或歌。",
+        "textEn": "Six in the third place: He finds a comrade. Now he beats the drum, now he stops. Now he sobs, now he sings.",
+        "interpretationZh": "遇到对手，时而击鼓进攻，时而停止；时而哭泣，时而歌唱，情绪不定。",
+        "interpretationEn": "Finding a match, one alternates between drumming and stopping, weeping and singing. Emotions are unstable."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：月几望，马匹亡，无咎。",
+        "textEn": "Six in the fourth place: The moon nearly at the full. The team horse goes astray. No blame.",
+        "interpretationZh": "月亮将满，马匹走失，但无过失。接近圆满时宜舍弃旧伴。",
+        "interpretationEn": "The moon is nearly full. A horse strays from its team. No blame in letting go."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：有孚挛如，无咎。",
+        "textEn": "Nine in the fifth place: He possesses truth, which links together. No blame.",
+        "interpretationZh": "以诚信紧密联结众人，无过失。",
+        "interpretationEn": "Sincerity binds all together. No blame."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：翰音登于天，贞凶。",
+        "textEn": "Nine at the top: Cockcrow penetrating to heaven. Perseverance brings misfortune.",
+        "interpretationZh": "鸡鸣之声传至天际，虚声张扬，坚持则凶。",
+        "interpretationEn": "A cockcrow reaches heaven — empty noise. Persisting in pretense brings misfortune."
+      }
+    ]
+  },
+  {
+    "number": 62,
+    "nameZh": "小过",
+    "nameEn": "Preponderance of the Small",
+    "symbol": "001100",
+    "upperTrigram": "震/雷",
+    "lowerTrigram": "艮/山",
+    "judgmentZh": "小过：亨，利贞，可小事，不可大事。飞鸟遗之音，不宜上宜下，大吉。",
+    "judgmentEn": "Preponderance of the Small. Success. Perseverance furthers. Small things may be done; great things should not be done. The flying bird brings the message: It is not well to strive upward, it is well to remain below. Great good fortune.",
+    "imageZh": "山上有雷，小过；君子以行过乎恭，丧过乎哀，用过乎俭。",
+    "imageEn": "Thunder on the mountain: the image of Preponderance of the Small. Thus in his conduct the superior man gives preponderance to reverence. In bereavement he gives preponderance to grief. In his expenditures he gives preponderance to thrift.",
+    "interpretationZh": "小过卦象征小有过越，山上有雷，雷声虽大但被山阻隔。宜做小事，不宜做大事，谦卑处下则大吉。",
+    "interpretationEn": "Xiao Guo symbolizes slight excess. Thunder on the mountain is loud but contained. Attend to small matters, not great ones. Humility below brings great fortune.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：飞鸟以凶。",
+        "textEn": "Six at the beginning: The bird meets with misfortune through flying.",
+        "interpretationZh": "飞鸟高飞而遭凶险，不宜冒进。",
+        "interpretationEn": "The bird flies too high and meets misfortune. Do not overreach."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：过其祖，遇其妣；不及其君，遇其臣，无咎。",
+        "textEn": "Six in the second place: She passes by her ancestor and meets her ancestress. He does not reach his prince and meets the official. No blame.",
+        "interpretationZh": "越过祖父而遇到祖母，未及君主而遇到臣子，无过失。",
+        "interpretationEn": "Passing the grandfather, meeting the grandmother. Not reaching the prince, meeting the minister. No blame."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：弗过防之，从或戕之，凶。",
+        "textEn": "Nine in the third place: If one is not extraordinarily careful, somebody may come from behind and strike him. Misfortune.",
+        "interpretationZh": "不加倍防备，可能被人从背后伤害，凶险。",
+        "interpretationEn": "Without extraordinary caution, one may be struck from behind. Misfortune."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：无咎，弗过遇之。往厉必戒，勿用永贞。",
+        "textEn": "Nine in the fourth place: No blame. He meets him without passing by. Going brings danger. One must be on guard. Do not act. Be constantly persevering.",
+        "interpretationZh": "无过失，不越过而恰好遇到。前往有危险，必须警戒，不可妄动。",
+        "interpretationEn": "No blame. Meeting without overstepping. Going forward is dangerous — be cautious and do not act rashly."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：密云不雨，自我西郊，公弋取彼在穴。",
+        "textEn": "Six in the fifth place: Dense clouds, no rain from our western territory. The prince shoots and hits him who is in the cave.",
+        "interpretationZh": "密云不雨，来自西郊。公侯射箭取得穴中之物，虽有努力但时机未到。",
+        "interpretationEn": "Dense clouds but no rain from the west. The prince shoots into the cave. Effort is made but the time is not yet ripe."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：弗遇过之，飞鸟离之，凶，是谓灾眚。",
+        "textEn": "Six at the top: He passes him by, not meeting him. The flying bird leaves him. Misfortune. This means bad luck and injury.",
+        "interpretationZh": "错过而不相遇，飞鸟远离，凶险，这就是灾祸。",
+        "interpretationEn": "Missing the encounter entirely. The bird flies away. Misfortune — this is calamity."
+      }
+    ]
+  },
+  {
+    "number": 63,
+    "nameZh": "既济",
+    "nameEn": "After Completion",
+    "symbol": "010101",
+    "upperTrigram": "坎/水",
+    "lowerTrigram": "离/火",
+    "judgmentZh": "既济：亨小，利贞，初吉终乱。",
+    "judgmentEn": "After Completion. Success in small matters. Perseverance furthers. At the beginning good fortune, at the end disorder.",
+    "imageZh": "水在火上，既济；君子以思患而预防之。",
+    "imageEn": "Water over fire: the image of the condition in After Completion. Thus the superior man takes thought of misfortune and arms himself against it in advance.",
+    "interpretationZh": "既济卦象征事已成就，水在火上，阴阳各得其位。虽已完成但须警惕，初始吉利而终将生乱。",
+    "interpretationEn": "Ji Ji symbolizes completion. Water over fire — all lines are in their proper places. Though complete, one must remain vigilant. Good fortune at first, disorder at the end.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初九：曳其轮，濡其尾，无咎。",
+        "textEn": "Nine at the beginning: He brakes his wheels. He gets his tail in the water. No blame.",
+        "interpretationZh": "拖住车轮减速，尾巴沾湿了水，谨慎行事则无过失。",
+        "interpretationEn": "Braking the wheels, the tail gets wet. Caution at the start brings no blame."
+      },
+      {
+        "position": 2,
+        "textZh": "六二：妇丧其茀，勿逐，七日得。",
+        "textEn": "Six in the second place: The woman loses the curtain of her carriage. Do not run after it; on the seventh day you will get it.",
+        "interpretationZh": "妇人丢失了车帘，不必追赶，七日后自然失而复得。",
+        "interpretationEn": "The woman loses her carriage curtain. Do not chase it; in seven days it returns."
+      },
+      {
+        "position": 3,
+        "textZh": "九三：高宗伐鬼方，三年克之，小人勿用。",
+        "textEn": "Nine in the third place: The Illustrious Ancestor disciplines the Devil's Country. After three years he conquers it. Inferior people must not be employed.",
+        "interpretationZh": "高宗讨伐鬼方，三年才征服。大事需要时间，不可用小人。",
+        "interpretationEn": "The Illustrious Ancestor conquers the Devil's Country after three years. Do not employ inferior people."
+      },
+      {
+        "position": 4,
+        "textZh": "六四：繻有衣袽，终日戒。",
+        "textEn": "Six in the fourth place: The finest clothes turn to rags. Be careful all day long.",
+        "interpretationZh": "华丽的衣服下备有破布，整日保持警戒。",
+        "interpretationEn": "Fine garments may become rags. Stay vigilant throughout the day."
+      },
+      {
+        "position": 5,
+        "textZh": "九五：东邻杀牛，不如西邻之禴祭，实受其福。",
+        "textEn": "Nine in the fifth place: The neighbor in the east who slaughters an ox does not attain as much real happiness as the neighbor in the west with his small offering.",
+        "interpretationZh": "东邻杀牛大祭，不如西邻简朴之祭实际受福。诚心胜过排场。",
+        "interpretationEn": "The eastern neighbor's grand sacrifice gains less than the western neighbor's simple offering. Sincerity surpasses display."
+      },
+      {
+        "position": 6,
+        "textZh": "上六：濡其首，厉。",
+        "textEn": "Six at the top: He gets his head in the water. Danger.",
+        "interpretationZh": "头浸入水中，危险。过度冒进，陷入险境。",
+        "interpretationEn": "The head gets into the water. Danger from going too far."
+      }
+    ]
+  },
+  {
+    "number": 64,
+    "nameZh": "未济",
+    "nameEn": "Before Completion",
+    "symbol": "101010",
+    "upperTrigram": "离/火",
+    "lowerTrigram": "坎/水",
+    "judgmentZh": "未济：亨，小狐汔济，濡其尾，无攸利。",
+    "judgmentEn": "Before Completion. Success. But if the little fox, after nearly completing the crossing, gets his tail in the water, there is nothing that would further.",
+    "imageZh": "火在水上，未济；君子以慎辨物居方。",
+    "imageEn": "Fire over water: the image of the condition before transition. Thus the superior man is careful in the differentiation of things, so that each finds its place.",
+    "interpretationZh": "未济卦象征事未完成，火在水上，阴阳不交。如小狐渡河将济而未济，须谨慎辨别事物各安其位。",
+    "interpretationEn": "Wei Ji symbolizes the state before completion. Fire over water — they do not interact. Like a young fox nearly across the stream, caution is needed to place everything properly.",
+    "lines": [
+      {
+        "position": 1,
+        "textZh": "初六：濡其尾，吝。",
+        "textEn": "Six at the beginning: He gets his tail in the water. Humiliating.",
+        "interpretationZh": "尾巴浸入水中，有所困窘。冒进而力不足。",
+        "interpretationEn": "The tail gets in the water. Humiliation from overreaching without sufficient strength."
+      },
+      {
+        "position": 2,
+        "textZh": "九二：曳其轮，贞吉。",
+        "textEn": "Nine in the second place: He brakes his wheels. Perseverance brings good fortune.",
+        "interpretationZh": "拖住车轮不急于前进，坚守正道则吉。",
+        "interpretationEn": "Braking the wheels. Patience and perseverance bring good fortune."
+      },
+      {
+        "position": 3,
+        "textZh": "六三：未济，征凶，利涉大川。",
+        "textEn": "Six in the third place: Before completion, attack brings misfortune. It furthers one to cross the great water.",
+        "interpretationZh": "事未完成就出征则凶，但利于涉越大川，需选择正确方向。",
+        "interpretationEn": "Before completion, attacking brings misfortune. But crossing the great water furthers."
+      },
+      {
+        "position": 4,
+        "textZh": "九四：贞吉，悔亡，震用伐鬼方，三年有赏于大国。",
+        "textEn": "Nine in the fourth place: Perseverance brings good fortune. Remorse disappears. Shock, thus to discipline the Devil's Country. For three years, great realms are rewarded.",
+        "interpretationZh": "坚守正道则吉，悔恨消失。奋力讨伐鬼方，三年后获大国封赏。",
+        "interpretationEn": "Perseverance brings fortune and remorse vanishes. After three years of campaigning, great rewards come."
+      },
+      {
+        "position": 5,
+        "textZh": "六五：贞吉，无悔，君子之光，有孚，吉。",
+        "textEn": "Six in the fifth place: Perseverance brings good fortune. No remorse. The light of the superior man is true. Good fortune.",
+        "interpretationZh": "坚守正道则吉，无悔恨。君子的光辉出于诚信，吉利。",
+        "interpretationEn": "Perseverance brings fortune without remorse. The superior man's radiance shines with sincerity. Good fortune."
+      },
+      {
+        "position": 6,
+        "textZh": "上九：有孚于饮酒，无咎，濡其首，有孚失是。",
+        "textEn": "Nine at the top: There is drinking of wine in genuine confidence. No blame. But if one wets his head, he loses it in truth.",
+        "interpretationZh": "以诚信之心饮酒庆贺，无过失。但若沉溺过度，头浸入水中，则失去诚信。",
+        "interpretationEn": "Drinking wine with genuine confidence — no blame. But excess leads to losing one's truth."
+      }
+    ]
+  }
+]
