@@ -17,9 +17,9 @@ export async function GET() {
     // 返回默认偏好（如果用户尚未设置）
     if (!preferences) {
       return NextResponse.json({
-        locale: "zh",
+        language: "zh",
         theme: "system",
-        interpretDepth: "simple",
+        aiDepth: "simple",
         notifications: true,
       });
     }
@@ -40,12 +40,12 @@ export async function PUT(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { locale, theme, interpretDepth, notifications } = body;
+    const { language, theme, aiDepth, notifications } = body;
 
     const data: Record<string, unknown> = {};
-    if (locale !== undefined) data.locale = locale;
+    if (language !== undefined) data.language = language;
     if (theme !== undefined) data.theme = theme;
-    if (interpretDepth !== undefined) data.interpretDepth = interpretDepth;
+    if (aiDepth !== undefined) data.aiDepth = aiDepth;
     if (notifications !== undefined) data.notifications = notifications;
 
     const preferences = await prisma.userPreference.upsert({
@@ -53,9 +53,9 @@ export async function PUT(request: NextRequest) {
       update: data,
       create: {
         userId: session.user.id,
-        locale: locale || "zh",
+        language: language || "zh",
         theme: theme || "system",
-        interpretDepth: interpretDepth || "simple",
+        aiDepth: aiDepth || "simple",
         notifications: notifications ?? true,
         ...data,
       },

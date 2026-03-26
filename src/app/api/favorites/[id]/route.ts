@@ -18,12 +18,7 @@ export async function GET(
     const favorite = await prisma.favorite.findFirst({
       where: { id, userId: session.user.id },
       include: {
-        divination: {
-          include: {
-            hexagram: true,
-            changedHexagram: true,
-          },
-        },
+        hexagram: true,
       },
     });
 
@@ -63,18 +58,14 @@ export async function PATCH(
     }
 
     const data: Record<string, unknown> = {};
-    if (note !== undefined) data.note = note;
+    if (note !== undefined) data.notes = note;
     if (tags !== undefined) data.tags = Array.isArray(tags) ? tags : [];
 
     const favorite = await prisma.favorite.update({
       where: { id },
       data,
       include: {
-        divination: {
-          include: {
-            hexagram: { select: { number: true, nameZh: true, nameEn: true, symbol: true } },
-          },
-        },
+        hexagram: { select: { number: true, nameZh: true, nameEn: true, symbol: true } },
       },
     });
 

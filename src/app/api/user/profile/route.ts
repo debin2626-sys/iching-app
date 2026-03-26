@@ -16,7 +16,6 @@ export async function GET() {
         id: true,
         name: true,
         email: true,
-        image: true,
         createdAt: true,
         _count: {
           select: {
@@ -47,11 +46,10 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, image } = body;
+    const { name } = body;
 
     const data: Record<string, unknown> = {};
     if (name !== undefined) data.name = name;
-    if (image !== undefined) data.image = image;
 
     if (Object.keys(data).length === 0) {
       return NextResponse.json({ error: "没有需要更新的字段" }, { status: 400 });
@@ -64,7 +62,6 @@ export async function PATCH(request: NextRequest) {
         id: true,
         name: true,
         email: true,
-        image: true,
         createdAt: true,
       },
     });

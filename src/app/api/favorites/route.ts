@@ -14,12 +14,8 @@ export async function GET(request: NextRequest) {
     const page = Math.max(1, Number(searchParams.get("page")) || 1);
     const pageSize = 20;
     const skip = (page - 1) * pageSize;
-    const tag = searchParams.get("tag");
 
-    const where: Record<string, unknown> = { userId: session.user.id };
-    if (tag) {
-      where.tags = { has: tag };
-    }
+    const where = { userId: session.user.id };
 
     const [favorites, total] = await Promise.all([
       prisma.favorite.findMany({
@@ -28,11 +24,7 @@ export async function GET(request: NextRequest) {
         skip,
         take: pageSize,
         include: {
-          divination: {
-            include: {
-              hexagram: { select: { number: true, nameZh: true, nameEn: true, symbol: true } },
-            },
-          },
+          hexagram: { select: { id: true, number: true, nameZh: true, nameEn: true, symbol: true } },
         },
       }),
       prisma.favorite.count({ where }),
@@ -62,43 +54,30 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { divinationId, note, tags } = body;
+    const { hexagramId, notes, tags } = body;
 
-    if (!divinationId) {
-      return NextResponse.json({ error: "缺少占卜记录ID" }, { status: 400 });
+    if (!hexagramId) {
+      return NextResponse.json({ error: "缺少卦象ID" }, { status: 400 });
     }
 
-    // 检查占卜记录是否存在且属于当前用户
-    const divination = await prisma.divination.findFirst({
-      where: { id: divinationId, userId: session.user.id },
-    });
-
-    if (!divination) {
-      return NextResponse.json({ error: "占卜记录不存在" }, { status: 404 });
-    }
-
-    // 检查是否已收藏
-    const existing = await prisma.favorite.findFirst({
-      where: { userId: session.user.id, divinationId },
+    // 检查是否已收藏（联合唯一约束）
+    const existing = await prisma.favorite.findUnique({
+      where: { userId_hexagramId: { userId: session.user.id, hexagramId } },
     });
 
     if (existing) {
-      return NextResponse.json({ error: "已收藏该记录" }, { status: 409 });
+      return NextResponse.json({ error: "已收藏该卦象" }, { status: 409 });
     }
 
     const favorite = await prisma.favorite.create({
       data: {
         userId: session.user.id,
-        divinationId,
-        note: note || null,
-        tags: Array.isArray(tags) ? tags : [],
+        hexagramId,
+        notes: notes || null,
+        tags: tags || null,
       },
       include: {
-        divination: {
-          include: {
-            hexagram: { select: { number: true, nameZh: true, nameEn: true, symbol: true } },
-          },
-        },
+        hexagram: { select: { id: true, number: true, nameZh: true, nameEn: true, symbol: true } },
       },
     });
 
