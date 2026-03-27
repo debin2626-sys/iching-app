@@ -1,0 +1,22 @@
+{
+  "/[locale]/auth/page": "/[locale]/auth",
+  "/[locale]/divination/page": "/[locale]/divination",
+  "/[locale]/hexagrams/page": "/[locale]/hexagrams",
+  "/[locale]/history/page": "/[locale]/history",
+  "/[locale]/page": "/[locale]",
+  "/[locale]/result/page": "/[locale]/result",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/ai-interpret/route": "/api/ai-interpret",
+  "/api/ai/interpret/route": "/api/ai/interpret",
+  "/api/auth/[...nextauth]/route": "/api/auth/[...nextauth]",
+  "/api/auth/register/route": "/api/auth/register",
+  "/api/divination/[id]/route": "/api/divination/[id]",
+  "/api/divination/route": "/api/divination",
+  "/api/favorites/[id]/route": "/api/favorites/[id]",
+  "/api/favorites/route": "/api/favorites",
+  "/api/hexagram/[number]/route": "/api/hexagram/[number]",
+  "/api/user/preferences/route": "/api/user/preferences",
+  "/api/user/profile/route": "/api/user/profile",
+  "/favicon.ico/route": "/favicon.ico"
+}
