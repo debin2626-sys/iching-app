@@ -1,5 +1,8 @@
 "use client";
 
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
+
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";

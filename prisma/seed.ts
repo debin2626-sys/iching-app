@@ -1,10 +1,13 @@
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
-import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaNeon } from "@prisma/adapter-neon";
+import { Pool } from "@neondatabase/serverless";
 import * as fs from "fs";
 import * as path from "path";
 
-const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL! });
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const adapter = new PrismaNeon(pool as any);
 const prisma = new PrismaClient({ adapter });
 
 interface SeedHexagram {
