@@ -1,7 +1,5 @@
 "use client";
 
-export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
 
 import { useState, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";

@@ -41,3 +41,26 @@ export default {
         });
     },
 };
+
+
+// === SECURITY HEADERS INJECTION ===
+const __securityHeaders = {
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+  'X-Frame-Options': 'DENY',
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+  'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cards.iching.workers.dev https://api.deepseek.com https://api.openai.com;",
+};
+
+// Wrap the original fetch to inject security headers
+const __originalFetch = worker_default.fetch.bind(worker_default);
+worker_default.fetch = async function(request, env, ctx) {
+  const response = await __originalFetch(request, env, ctx);
+  const newResponse = new Response(response.body, response);
+  for (const [key, value] of Object.entries(__securityHeaders)) {
+    newResponse.headers.set(key, value);
+  }
+  return newResponse;
+};
+// === END SECURITY HEADERS INJECTION ===

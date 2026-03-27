@@ -1,7 +1,5 @@
 "use client";
 
-export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
