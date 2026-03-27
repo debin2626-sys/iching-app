@@ -1,0 +1,23 @@
+name: Deploy to Tencent Cloud
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: 43.163.4.94
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/ubuntu/iching-app
+            git pull origin main
+            npm install --production=false
+            npm run build
+            pm2 restart iching-app
+            echo "Deploy complete at $(date)"
