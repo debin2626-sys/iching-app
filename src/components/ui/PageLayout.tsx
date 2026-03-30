@@ -24,12 +24,21 @@ export function PageLayout({
       {showNav && <NavBar items={navItems} />}
 
       <main
-        className={`mx-auto w-full px-4 sm:px-6 lg:px-8 ${maxWidth} ${
-          showNav
-            ? /* mobile: pb-24 for bottom tab bar; desktop: pt-20 for top nav */
-              "pt-20 pb-24 md:pb-6"
-            : "py-6"
-        }`}
+        style={{
+          maxWidth: maxWidth === "max-w-lg" ? '32rem'
+            : maxWidth === "max-w-4xl" ? '56rem'
+            : maxWidth === "max-w-6xl" ? '72rem'
+            : maxWidth === "max-w-7xl" ? '80rem'
+            : maxWidth === "max-w-[800px]" ? '800px'
+            : '72rem',
+          margin: '0 auto',
+          width: '100%',
+          paddingLeft: '24px',
+          paddingRight: '24px',
+          ...(showNav
+            ? { paddingTop: '96px', paddingBottom: '96px' }
+            : { paddingTop: '24px', paddingBottom: '24px' }),
+        }}
       >
         {children}
       </main>

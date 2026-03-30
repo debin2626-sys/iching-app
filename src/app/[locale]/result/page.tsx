@@ -97,7 +97,7 @@ function useHexagramData(hexNum: number | null) {
 /* ── 六爻图组件 ── */
 function HexagramDiagram({ lines }: { lines: LineValue[] }) {
   return (
-    <div className="w-[300px] mx-auto flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center gap-3" style={{ width: '300px', margin: '0 auto' }}>
       {[...lines].reverse().map((v, ri) => {
         const i = 5 - ri;
         const isYang = v === 7 || v === 9;

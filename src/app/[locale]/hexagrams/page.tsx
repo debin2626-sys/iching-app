@@ -128,14 +128,14 @@ export default function HexagramsPage() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-7xl">
-      <div className="max-w-[800px] mx-auto">
+      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-3">
           <span className="text-amber-400">{t("title")}</span>{" "}
           <span className="text-gray-400">/ {t("subtitle")}</span>
         </h1>
         <p className="text-center text-gray-500 text-lg mb-8">{t("clickHint")}</p>
 
-        <div className="max-w-[600px] w-full mx-auto mb-10">
+        <div style={{ maxWidth: '600px', width: '100%', margin: '0 auto 40px auto' }}>
           <Input
             type="text"
             size="lg"
