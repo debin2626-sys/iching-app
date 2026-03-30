@@ -70,7 +70,20 @@ function UserButton() {
     return (
       <Link
         href="/auth"
-        className="text-sm text-gray-300 hover:text-gold transition-colors duration-300 tracking-wide border border-gold/30 rounded-lg px-4 py-1.5 hover:border-gold/60 hover:bg-gold/5"
+        style={{
+          padding: '6px 20px',
+          border: '1px solid rgba(201,169,110,0.4)',
+          borderRadius: '20px',
+          color: '#c9a96e',
+          backgroundColor: 'transparent',
+          fontSize: '14px',
+          cursor: 'pointer',
+          transition: 'all 0.3s',
+          letterSpacing: '0.05em',
+          textDecoration: 'none',
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(201,169,110,0.1)')}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
       >
         登录
       </Link>
@@ -104,13 +117,14 @@ function DesktopNav({ items }: NavBarProps) {
   const locale = useLocale();
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 hidden h-20 items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.8)] px-8 backdrop-blur-[12px] md:flex">
+    <nav className="fixed inset-x-0 top-0 z-50 hidden items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.8)] px-8 backdrop-blur-[12px] md:flex" style={{ height: '64px' }}>
       {/* Logo / brand */}
       <Link
         href="/"
-        className="text-xl font-title font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
-        style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)' }}
+        className="text-lg font-title font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
+        style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)', display: 'flex', alignItems: 'center', gap: '6px' }}
       >
+        <span style={{ fontSize: '20px' }}>☯</span>
         {locale === "zh" ? "易经" : "Yi Ching"}
       </Link>
 
@@ -162,9 +176,10 @@ function MobileTopBar() {
     <div className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.9)] px-4 backdrop-blur-[12px] md:hidden">
       <Link
         href="/"
-        className="text-xl font-title font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
-        style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)' }}
+        className="text-lg font-title font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
+        style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)', display: 'flex', alignItems: 'center', gap: '6px' }}
       >
+        <span style={{ fontSize: '20px' }}>☯</span>
         {locale === "zh" ? "易经" : "Yi Ching"}
       </Link>
       <div className="flex items-center gap-3">
