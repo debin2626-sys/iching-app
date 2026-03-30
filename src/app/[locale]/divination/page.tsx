@@ -1,7 +1,7 @@
 "use client";
 
 
-import { useState, useCallback, Suspense } from "react";
+import { useState, useCallback, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -44,7 +44,7 @@ function Coin({ face, delay, flipping }: { face: number; delay: number; flipping
   return (
     <m.div
       className="relative w-16 h-16 sm:w-20 sm:h-20"
-      style={{ perspective: 600 }}
+      style={{ perspective: 800 }}
     >
       <m.div
         className="w-full h-full rounded-full border-2 flex items-center justify-center font-title text-xl sm:text-2xl font-bold select-none"
@@ -53,14 +53,24 @@ function Coin({ face, delay, flipping }: { face: number; delay: number; flipping
           borderColor: "rgba(232,201,106,0.6)",
           boxShadow: "0 0 25px color-mix(in srgb, var(--color-gold) 40%, transparent), inset 0 2px 4px rgba(255,255,255,0.2)",
           color: "#1a1a2e",
+          transformStyle: "preserve-3d",
         }}
-        initial={flipping ? { rotateX: 0, y: 0 } : false}
+        initial={flipping ? { rotateX: 0, rotateY: 0, y: 0, scale: 1 } : false}
         animate={
           flipping
-            ? { rotateX: [0, 360, 720, 1080], y: [0, -80, -40, 0] }
-            : { rotateX: 0, y: 0 }
+            ? {
+                rotateX: [0, 180, 540, 900, 1080],
+                rotateY: [0, 30, -30, 15, 0],
+                y: [0, -100, -60, -30, 0],
+                scale: [1, 1.1, 1.05, 1.02, 1],
+              }
+            : { rotateX: 0, rotateY: 0, y: 0, scale: 1 }
         }
-        transition={flipping ? { duration: 1.2, delay, ease: "easeInOut" } : { duration: 0 }}
+        transition={
+          flipping
+            ? { duration: 1.4, delay, ease: [0.25, 0.46, 0.45, 0.94] }
+            : { duration: 0 }
+        }
       >
         {isFront ? "乾" : "坤"}
       </m.div>
@@ -290,10 +300,13 @@ function DivinationContent() {
   const [currentYao, setCurrentYao] = useState(0);
   const [flipping, setFlipping] = useState(false);
   const [coinFaces, setCoinFaces] = useState<number[]>([2, 3, 2]);
+  const [auraPulse, setAuraPulse] = useState(false);
+  const [showGoldenBurst, setShowGoldenBurst] = useState(false);
 
   const shakeCoin = useCallback(() => {
     if (flipping || currentYao >= 6) return;
     setFlipping(true);
+    setAuraPulse(true);
 
     const coins: number[] = Array.from({ length: 3 }, () => (Math.random() < 0.5 ? 2 : 3));
     const sum = coins.reduce((a: number, b: number) => a + b, 0) as LineValue;
@@ -306,10 +319,15 @@ function DivinationContent() {
       setLines((prev) => [...prev, sum]);
       setCurrentYao((prev) => prev + 1);
       setFlipping(false);
+      setAuraPulse(false);
       if (currentYao + 1 >= 6) {
-        setTimeout(() => setPhase("done"), 800);
+        setShowGoldenBurst(true);
+        setTimeout(() => {
+          setShowGoldenBurst(false);
+          setPhase("done");
+        }, 1200);
       }
-    }, 1500);
+    }, 1700);
   }, [flipping, currentYao]);
 
   const binary = lines.length === 6 ? linesToBinary(lines) : "";
@@ -396,16 +414,44 @@ function DivinationContent() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="w-full text-center"
+              className={`w-full text-center relative ${auraPulse ? "aura-pulse" : ""}`}
             >
+              {/* 金色光芒庆祝效果 */}
+              {showGoldenBurst && (
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                  <div className="w-40 h-40 rounded-full bg-gold-bright/20 golden-burst" />
+                </div>
+              )}
+
               <h1 className="font-title text-2xl sm:text-3xl text-gold-glow mb-1">
                 第{YAO_CN[Math.min(currentYao, 5)]}爻
               </h1>
-              <p className="text-xs opacity-30 mb-6 tracking-wide">
-                {currentYao < 6 ? `${currentYao} / 6 已完成` : "六爻已成"}
+
+              {/* 进度指示 */}
+              <p className="text-xs opacity-30 mb-2 tracking-wide">
+                {currentYao < 6 ? `第 ${currentYao + 1} 次 / 共 6 次` : "六爻已成"}
               </p>
 
-              <div className="divider-gold mb-8" />
+              {/* 进度条 */}
+              <div className="flex justify-center gap-1.5 mb-6">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <m.div
+                    key={i}
+                    className="h-1 rounded-full"
+                    initial={false}
+                    animate={{
+                      width: i < currentYao ? 24 : 12,
+                      backgroundColor:
+                        i < currentYao
+                          ? "var(--color-gold)"
+                          : i === currentYao && flipping
+                            ? "var(--color-gold-dim)"
+                            : "rgba(255,255,255,0.1)",
+                    }}
+                    transition={{ duration: 0.4 }}
+                  />
+                ))}
+              </div>
 
               {/* 铜钱区域 */}
               <Card variant="elevated" className="mb-6">

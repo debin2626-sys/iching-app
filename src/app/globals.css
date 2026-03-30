@@ -203,3 +203,48 @@ body {
 .font-title {
   font-family: var(--font-noto-serif-sc), 'Georgia', 'Times New Roman', serif;
 }
+
+/* ── 触控反馈 ── */
+.touch-feedback {
+  @apply active:scale-[0.97] transition-transform;
+}
+
+/* ── 摇卦背景光晕脉冲 ── */
+@keyframes aura-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 60px rgba(212, 165, 116, 0.05),
+      0 0 120px rgba(45, 27, 78, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 100px rgba(212, 165, 116, 0.18),
+      0 0 200px rgba(45, 27, 78, 0.2);
+  }
+}
+.aura-pulse {
+  animation: aura-pulse 1.5s ease-in-out;
+}
+
+/* ── 完成时金色光芒扩散 ── */
+@keyframes golden-burst {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.5);
+    box-shadow: 0 0 40px rgba(232, 201, 106, 0.6);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+    box-shadow: 0 0 100px rgba(232, 201, 106, 0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+    box-shadow: 0 0 0 rgba(232, 201, 106, 0);
+  }
+}
+.golden-burst {
+  animation: golden-burst 1.2s ease-out forwards;
+  pointer-events: none;
+}

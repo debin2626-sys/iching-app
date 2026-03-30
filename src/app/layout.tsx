@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Serif_SC } from "next/font/google";
 import AuthProvider from "@/components/AuthProvider";
+import { WebVitalsReporter } from "@/components/WebVitalsReporter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -39,6 +40,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerifSC.variable} antialiased`}
       >
+        <WebVitalsReporter />
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>

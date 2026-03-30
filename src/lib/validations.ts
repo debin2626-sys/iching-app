@@ -39,9 +39,10 @@ export const aiInterpretDepthSchema = z.object({
   hexagramNumber: z.number().int().min(1).max(64),
   changingLines: z.array(z.number().int().min(0).max(5)).optional(),
   question: z.string().min(1, "请输入问题").max(500, "问题不能超过500个字符"),
-  depth: z.enum(["simple", "deep", "personalized"]).optional().default("simple"),
+  depth: z.enum(["simple", "detailed", "deep"]).optional().default("detailed"),
   locale: z.string().max(10).optional(),
   birthInfo: birthInfoSchema.optional().nullable(),
+  gender: z.string().max(10).optional(),
 });
 
 // ─── Favorites Schemas ───
@@ -69,7 +70,7 @@ export const updateProfileSchema = z.object({
 export const updatePreferencesSchema = z.object({
   language: z.enum(["zh", "en"]).optional(),
   theme: z.enum(["light", "dark", "system"]).optional(),
-  aiDepth: z.enum(["simple", "deep", "personalized"]).optional(),
+  aiDepth: z.enum(["simple", "detailed", "deep"]).optional(),
   notifications: z.boolean().optional(),
 });
 

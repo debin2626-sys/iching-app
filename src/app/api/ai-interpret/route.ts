@@ -28,18 +28,10 @@ export async function POST(request: NextRequest) {
 
     const { hexagramNumber, changingLines, question, depth, locale, birthInfo } = validation.data;
 
-    // Validate birthInfo for personalized depth
-    if (depth === "personalized" && !birthInfo) {
-      return NextResponse.json(
-        { error: "personalized 深度需要提供完整的 birthInfo" },
-        { status: 400 }
-      );
-    }
-
     // TODO: 根据 depth 构建不同的 prompt 并调用 AI
-    // simple: 简要解读，快速返回
+    // simple: 简要解读
+    // detailed: 详细解读（默认）
     // deep: 深度解读，包含爻辞详解
-    // personalized: 结合八字的个性化解读
 
     const encoder = new TextEncoder();
     const stream = new ReadableStream({

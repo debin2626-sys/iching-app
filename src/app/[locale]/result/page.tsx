@@ -201,6 +201,53 @@ function useTypewriter(fullText: string, streamDone: boolean) {
   return { displayText, showCursor };
 }
 
+/* ── 解读深度类型 ── */
+type InterpretDepth = "simple" | "detailed" | "deep";
+
+const DEPTH_OPTIONS: { value: InterpretDepth; label: string; icon: string }[] = [
+  { value: "simple", label: "简要", icon: "🌙" },
+  { value: "detailed", label: "详细", icon: "⭐" },
+  { value: "deep", label: "深度", icon: "🌟" },
+];
+
+/* ── 深度选择器组件 ── */
+function DepthSelector({
+  value,
+  onChange,
+  disabled,
+}: {
+  value: InterpretDepth;
+  onChange: (d: InterpretDepth) => void;
+  disabled?: boolean;
+}) {
+  return (
+    <div className="flex items-center justify-center gap-2 mb-4">
+      {DEPTH_OPTIONS.map((opt) => {
+        const isActive = value === opt.value;
+        return (
+          <button
+            key={opt.value}
+            onClick={() => onChange(opt.value)}
+            disabled={disabled}
+            className={`
+              flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium
+              transition-all duration-200 border
+              ${isActive
+                ? "border-amber-500/60 bg-amber-500/15 text-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.15)]"
+                : "border-zinc-700/50 bg-zinc-800/40 text-zinc-500 hover:text-zinc-400 hover:border-zinc-600"
+              }
+              ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
+            `}
+          >
+            <span>{opt.icon}</span>
+            <span>{opt.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 /* ── AI 解读区组件 ── */
 function AISection({
   hexagramNumber,
@@ -220,7 +267,8 @@ function AISection({
   const [loading, setLoading] = useState(false);
   const [streamDone, setStreamDone] = useState(false);
   const [error, setError] = useState("");
-  const hasFetched = useRef(false);
+  const [depth, setDepth] = useState<InterpretDepth>("detailed");
+  const fetchIdRef = useRef(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const { displayText, showCursor } = useTypewriter(content, streamDone);
@@ -235,70 +283,87 @@ function AISection({
     }
   }, [displayText]);
 
-  useEffect(() => {
-    if (hasFetched.current) return;
-    hasFetched.current = true;
+  const fetchAI = useCallback(async (selectedDepth: InterpretDepth) => {
+    const id = ++fetchIdRef.current;
+    setLoading(true);
+    setError("");
+    setContent("");
+    setStreamDone(false);
+    try {
+      const res = await fetch("/api/ai/interpret", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          hexagramNumber,
+          changingLines,
+          question,
+          depth: selectedDepth,
+          locale: "zh",
+          birthInfo,
+          gender: gender || undefined,
+        }),
+      });
 
-    const fetchAI = async () => {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch("/api/ai/interpret", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            hexagramNumber,
-            changingLines,
-            question,
-            locale: "zh",
-            birthInfo,
-            gender: gender || undefined,
-          }),
-        });
+      if (!res.ok) throw new Error(`AI 请求失败 (${res.status})`);
 
-        if (!res.ok) throw new Error(`AI 请求失败 (${res.status})`);
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error("无法读取响应流");
 
-        const reader = res.body?.getReader();
-        if (!reader) throw new Error("无法读取响应流");
+      const decoder = new TextDecoder();
+      let buffer = "";
 
-        const decoder = new TextDecoder();
-        let buffer = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        // Abort if a newer request was fired
+        if (fetchIdRef.current !== id) { reader.cancel(); return; }
 
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
 
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop() || "";
-
-          for (const line of lines) {
-            if (!line.startsWith("data: ")) continue;
-            const payload = line.slice(6).trim();
-            if (payload === "[DONE]") break;
-            try {
-              const parsed = JSON.parse(payload);
-              if (parsed.content) {
-                setContent((prev) => prev + parsed.content);
-              }
-              if (parsed.error) {
-                setError(parsed.error);
-              }
-            } catch {
-              // skip malformed chunks
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          const payload = line.slice(6).trim();
+          if (payload === "[DONE]") break;
+          try {
+            const parsed = JSON.parse(payload);
+            if (parsed.content) {
+              setContent((prev) => prev + parsed.content);
             }
+            if (parsed.error) {
+              setError(parsed.error);
+            }
+          } catch {
+            // skip malformed chunks
           }
         }
-      } catch (err) {
+      }
+    } catch (err) {
+      if (fetchIdRef.current === id) {
         setError(err instanceof Error ? err.message : "AI 解读失败");
-      } finally {
+      }
+    } finally {
+      if (fetchIdRef.current === id) {
         setLoading(false);
         setStreamDone(true);
       }
-    };
+    }
+  }, [hexagramNumber, changingLines, question, birthInfo, gender]);
 
-    fetchAI();
-  }, [hexagramNumber, changingLines, question, birthInfo]);
+  // Initial fetch
+  const hasInitialFetch = useRef(false);
+  useEffect(() => {
+    if (hasInitialFetch.current) return;
+    hasInitialFetch.current = true;
+    fetchAI(depth);
+  }, [fetchAI, depth]);
+
+  const handleDepthChange = (newDepth: InterpretDepth) => {
+    if (newDepth === depth) return;
+    setDepth(newDepth);
+    fetchAI(newDepth);
+  };
 
   const title = birthInfo ? t("aiTitleWithBazi") : t("aiTitle");
   const disclaimer = birthInfo ? t("aiDisclaimerWithBazi") : t("aiDisclaimer");
@@ -307,6 +372,8 @@ function AISection({
     <Card variant="default" padding="lg">
       <h3 className="text-lg font-title text-amber-300 mb-2">🤖 {title}</h3>
       <p className="text-xs text-zinc-600 mb-4">{disclaimer}</p>
+
+      <DepthSelector value={depth} onChange={handleDepthChange} disabled={loading} />
 
       {loading && !content && <Skeleton variant="text" lines={3} />}
 

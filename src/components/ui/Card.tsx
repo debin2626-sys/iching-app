@@ -36,6 +36,7 @@ const variantClasses: Record<Variant, string> = {
     "transition-all duration-300 ease-in-out",
     "hover:-translate-y-[2px] hover:border-gold/30",
     "hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]",
+    "active:scale-[0.97]",
     "cursor-pointer",
   ].join(" "),
 };

@@ -1,10 +1,10 @@
 "use client";
 
-
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { PageLayout, Card, Button, Empty, Skeleton } from "@/components/ui";
 
 interface HexagramInfo {
@@ -32,6 +32,8 @@ interface PaginationInfo {
   total: number;
   totalPages: number;
 }
+
+type TimeFilter = "7d" | "30d" | "all";
 
 function formatDate(dateStr: string, locale: string): string {
   const date = new Date(dateStr);
@@ -62,6 +64,22 @@ function buildResultUrl(record: DivinationRecord): string {
   return `/result?${params.toString()}`;
 }
 
+function isWithinDays(dateStr: string, days: number): boolean {
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diff = now.getTime() - date.getTime();
+  return diff <= days * 24 * 60 * 60 * 1000;
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.06, duration: 0.4, ease: "easeOut" as const },
+  }),
+};
+
 export default function HistoryPage() {
   const t = useTranslations("History");
   const tNav = useTranslations("Nav");
@@ -72,6 +90,7 @@ export default function HistoryPage() {
   const [pagination, setPagination] = useState<PaginationInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
+  const [timeFilter, setTimeFilter] = useState<TimeFilter>("all");
 
   const navItems = [
     { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
@@ -111,7 +130,20 @@ export default function HistoryPage() {
     }
   };
 
-  // 初始加载状态
+  // Filter records by time range (client-side)
+  const filteredRecords = useMemo(() => {
+    if (timeFilter === "all") return records;
+    const days = timeFilter === "7d" ? 7 : 30;
+    return records.filter((r) => isWithinDays(r.createdAt, days));
+  }, [records, timeFilter]);
+
+  const timeFilterTabs: { key: TimeFilter; label: string }[] = [
+    { key: "7d", label: locale === "zh" ? "最近7天" : "Last 7 days" },
+    { key: "30d", label: locale === "zh" ? "最近30天" : "Last 30 days" },
+    { key: "all", label: locale === "zh" ? "全部" : "All" },
+  ];
+
+  // Loading state
   if (status === "loading" || (status !== "authenticated" && loading)) {
     return (
       <PageLayout navItems={navItems}>
@@ -122,7 +154,7 @@ export default function HistoryPage() {
     );
   }
 
-  // 未登录状态
+  // Unauthenticated
   if (status === "unauthenticated" || !session) {
     return (
       <PageLayout navItems={navItems}>
@@ -142,8 +174,8 @@ export default function HistoryPage() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-2xl">
-      {/* 标题 */}
-      <div className="text-center mb-12">
+      {/* Title */}
+      <div className="text-center mb-8">
         <h1 className="font-title text-3xl sm:text-4xl text-gold-glow tracking-wider mb-2">
           {t("title")}
         </h1>
@@ -151,94 +183,141 @@ export default function HistoryPage() {
         <div className="divider-gold w-24 mx-auto mt-4" />
       </div>
 
-      {/* 加载中 */}
+      {/* Time filter tabs */}
+      {!loading && records.length > 0 && (
+        <div className="flex justify-center gap-2 mb-8">
+          {timeFilterTabs.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setTimeFilter(tab.key)}
+              className={[
+                "px-4 py-1.5 rounded-full text-sm transition-all duration-300",
+                timeFilter === tab.key
+                  ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-[0_0_10px_rgba(217,169,56,0.1)]"
+                  : "text-zinc-500 border border-zinc-800 hover:text-zinc-300 hover:border-zinc-600",
+              ].join(" ")}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Loading */}
       {loading && (
         <div className="space-y-6">
           <Skeleton variant="card" count={3} />
         </div>
       )}
 
-      {/* 空状态 */}
+      {/* Empty state - no records at all */}
       {!loading && records.length === 0 && (
-        <Empty
-          icon={<span>🔮</span>}
-          title={t("empty")}
-          description={t("emptyHint")}
-          action={
-            <Button href="/divination">
-              {t("startDivination")}
-            </Button>
-          }
-        />
+        <div className="flex flex-col items-center justify-center py-16">
+          <div className="text-6xl mb-6 opacity-30 animate-[spin_20s_linear_infinite]">☯</div>
+          <p className="text-lg text-amber-400/60 font-title mb-2">
+            {t("empty")}
+          </p>
+          <p className="text-sm text-zinc-600 mb-6 text-center max-w-xs">
+            {t("emptyHint")}
+          </p>
+          <Button href="/divination">
+            {t("startDivination")}
+          </Button>
+        </div>
       )}
 
-      {/* 时间线列表 */}
-      {!loading && records.length > 0 && (
+      {/* Empty state - filtered results empty */}
+      {!loading && records.length > 0 && filteredRecords.length === 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-col items-center justify-center py-16"
+        >
+          <div className="text-5xl mb-4 opacity-20">☯</div>
+          <p className="text-zinc-500 text-sm">
+            {locale === "zh" ? "该时间段内暂无记录" : "No records in this period"}
+          </p>
+        </motion.div>
+      )}
+
+      {/* Timeline list */}
+      {!loading && filteredRecords.length > 0 && (
         <div className="relative">
-          {/* 时间线竖线 */}
+          {/* Timeline vertical line */}
           <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-amber-600/40 via-amber-600/20 to-transparent" />
 
           <div className="space-y-6">
-            {records.map((record) => {
-              const hexName = locale === "zh" ? record.hexagram.nameZh : record.hexagram.nameEn;
-              const changedName = record.changedHexagram
-                ? locale === "zh" ? record.changedHexagram.nameZh : record.changedHexagram.nameEn
-                : null;
-              const questionText = record.question
-                ? record.question.length > 40
-                  ? record.question.slice(0, 40) + "..."
-                  : record.question
-                : t("noQuestion");
+            <AnimatePresence mode="popLayout">
+              {filteredRecords.map((record, index) => {
+                const hexName = locale === "zh" ? record.hexagram.nameZh : record.hexagram.nameEn;
+                const changedName = record.changedHexagram
+                  ? locale === "zh" ? record.changedHexagram.nameZh : record.changedHexagram.nameEn
+                  : null;
+                const questionText = record.question
+                  ? record.question.length > 40
+                    ? record.question.slice(0, 40) + "..."
+                    : record.question
+                  : t("noQuestion");
 
-              return (
-                <Link
-                  key={record.id}
-                  href={buildResultUrl(record) as "/result"}
-                  className="block"
-                >
-                  <div className="relative pl-10 group">
-                    {/* 时间线节点 */}
-                    <div className="absolute left-2.5 top-5 w-3 h-3 rounded-full border-2 border-amber-600/60 bg-bg group-hover:bg-amber-600/40 group-hover:shadow-[0_0_10px_color-mix(in_srgb,var(--color-gold)_40%,transparent)] transition-all duration-300" />
+                return (
+                  <motion.div
+                    key={record.id}
+                    custom={index}
+                    variants={itemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
+                    layout
+                  >
+                    <Link
+                      href={buildResultUrl(record) as "/result"}
+                      className="block"
+                    >
+                      <div className="relative pl-10 group">
+                        {/* Timeline node */}
+                        <div className="absolute left-2.5 top-5 w-3 h-3 rounded-full border-2 border-amber-600/60 bg-bg group-hover:bg-amber-600/40 group-hover:shadow-[0_0_10px_color-mix(in_srgb,var(--color-gold)_40%,transparent)] transition-all duration-300" />
 
-                    <Card variant="interactive" padding="md">
-                      {/* 卦名 */}
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <span className="font-title text-xl text-amber-300 group-hover:text-gold-glow transition-colors">
-                            {hexName}
-                          </span>
-                          {changedName && (
-                            <>
-                              <span className="text-amber-600/40 text-sm">{t("changeTo")}</span>
-                              <span className="font-title text-lg text-amber-400/70">
-                                {changedName}
+                        <Card variant="interactive" padding="md">
+                          {/* Hexagram name */}
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center gap-2">
+                              <span className="font-title text-xl text-amber-300 group-hover:text-gold-glow transition-colors">
+                                {hexName}
                               </span>
-                            </>
-                          )}
-                        </div>
-                        <span className="text-xs text-zinc-600">
-                          #{record.hexagram.number}
-                        </span>
+                              {changedName && (
+                                <>
+                                  <span className="text-amber-600/40 text-sm">{t("changeTo")}</span>
+                                  <span className="font-title text-lg text-amber-400/70">
+                                    {changedName}
+                                  </span>
+                                </>
+                              )}
+                            </div>
+                            <span className="text-xs text-zinc-600">
+                              #{record.hexagram.number}
+                            </span>
+                          </div>
+
+                          {/* Question */}
+                          <p className="text-sm text-zinc-400 mb-3 truncate">
+                            {record.question ? t("questionPrefix") : ""}
+                            {questionText}
+                          </p>
+
+                          {/* Time */}
+                          <p className="text-xs text-zinc-600">
+                            {formatDate(record.createdAt, locale)}
+                          </p>
+                        </Card>
                       </div>
-
-                      {/* 问题 */}
-                      <p className="text-sm text-zinc-400 mb-3 truncate">
-                        {record.question ? t("questionPrefix") : ""}
-                        {questionText}
-                      </p>
-
-                      {/* 时间 */}
-                      <p className="text-xs text-zinc-600">
-                        {formatDate(record.createdAt, locale)}
-                      </p>
-                    </Card>
-                  </div>
-                </Link>
-              );
-            })}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
 
-          {/* 加载更多 */}
+          {/* Load more */}
           {pagination && pagination.page < pagination.totalPages && (
             <div className="text-center mt-8">
               <Button

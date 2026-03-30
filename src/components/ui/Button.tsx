@@ -99,7 +99,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const base = [
       "inline-flex items-center justify-center rounded-[9999px] font-medium tracking-wide",
       "transition-all duration-300 ease-out",
-      "hover:-translate-y-0.5 active:translate-y-0",
+      "hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
       "disabled:pointer-events-none disabled:opacity-50",
       variantStyles[variant],

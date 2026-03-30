@@ -11,11 +11,14 @@ const openaiClient = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+export type InterpretDepth = 'simple' | 'detailed' | 'deep';
+
 interface InterpretationParams {
   hexagramNumber: number;
   changingLines: number[];
   question: string;
   locale: string;
+  depth?: InterpretDepth;
   birthInfo?: BirthInfo;
   gender?: string;
 }
@@ -25,7 +28,7 @@ const SYSTEM_PROMPT_ZH = `你是一位精通周易和命理学的国学大师，
 const SYSTEM_PROMPT_EN = `You are a holistic wellness guide who draws upon the ancient wisdom of the I Ching (Book of Changes). Your interpretations focus on personal growth, mindfulness, and well-being. Blend Eastern philosophy with modern wellness practices. Respond with warmth, empathy, and actionable self-care insights.`;
 
 function buildUserPromptZH(params: InterpretationParams): string {
-  const { hexagramNumber, changingLines, question, birthInfo, gender } = params;
+  const { hexagramNumber, changingLines, question, birthInfo, gender, depth = 'detailed' } = params;
   const changingDesc = changingLines.length > 0
     ? `动爻：第 ${changingLines.join('、')} 爻`
     : '无动爻';
@@ -46,10 +49,15 @@ function buildUserPromptZH(params: InterpretationParams): string {
 `;
   }
 
+  // Depth-specific instructions
+  const depthInstructions = getDepthInstructions(depth);
+
   if (birthInfo) {
     return `${baziSection}我求得第 ${hexagramNumber} 卦，${changingDesc}。
 
 我的问题是：${question}
+
+${depthInstructions}
 
 请从以下维度进行综合解读：
 
@@ -66,6 +74,8 @@ function buildUserPromptZH(params: InterpretationParams): string {
 
 我的问题是：${question}
 
+${depthInstructions}
+
 请从以下维度进行解读：
 
 1. **卦象总论**：引用卦辞、彖辞，阐述此卦的核心义理，结合问题给出整体判断
@@ -74,6 +84,19 @@ function buildUserPromptZH(params: InterpretationParams): string {
 4. **行动建议**：结合传统智慧与现代生活，给出具体可行的建议
 
 请保持解读的深度与实用性，体现传统文化底蕴。`;
+}
+
+/** Depth-specific prompt instructions */
+function getDepthInstructions(depth: InterpretDepth): string {
+  switch (depth) {
+    case 'simple':
+      return '【要求】请用100字以内简要回答，只给出核心要点和结论，不需要展开分析。语言精炼，直击要害。';
+    case 'deep':
+      return '【要求】请进行800字以上的深度解读，包含：历史典故引用、五行生克分析、卦象象数详解、古籍原文引用（如《周易正义》《易传》等），以及与当代生活的深层关联。力求全面深入，展现易学精髓。';
+    case 'detailed':
+    default:
+      return '【要求】请用300-500字进行完整分析，涵盖各个维度，给出清晰的判断和建议。';
+  }
 }
 
 function buildUserPromptEN(params: InterpretationParams): string {
@@ -96,11 +119,22 @@ Please interpret from a wellness perspective:
 Keep the interpretation grounded in well-being while honoring the ancient wisdom.`;
 }
 
+/** max_tokens by depth */
+function getMaxTokensForDepth(depth: InterpretDepth): number {
+  switch (depth) {
+    case 'simple': return 500;
+    case 'deep': return 4000;
+    case 'detailed':
+    default: return 2000;
+  }
+}
+
 /** 根据 locale 选择客户端和模型，返回流式响应 */
 export function getAIInterpretation(params: InterpretationParams) {
   const isZH = !params.locale || params.locale.startsWith('zh');
   const systemPrompt = isZH ? SYSTEM_PROMPT_ZH : SYSTEM_PROMPT_EN;
   const userPrompt = isZH ? buildUserPromptZH(params) : buildUserPromptEN(params);
+  const depth = params.depth || 'detailed';
 
   return {
     client: isZH ? deepseekClient : openaiClient,
@@ -111,6 +145,6 @@ export function getAIInterpretation(params: InterpretationParams) {
     ],
     stream: true as const,
     temperature: 0.8,
-    max_tokens: 3000, // 增加 token 上限，八字解读内容更多
+    max_tokens: getMaxTokensForDepth(depth),
   };
 }
