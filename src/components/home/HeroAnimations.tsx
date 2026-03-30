@@ -19,10 +19,11 @@ export function AnimatedTaichi({ children }: { children: ReactNode }) {
 }
 
 /* ── Title: slide up + fade ── */
-export function AnimatedTitle({ children, className }: { children: ReactNode; className?: string }) {
+export function AnimatedTitle({ children, className, style }: { children: ReactNode; className?: string; style?: React.CSSProperties }) {
   return (
     <m.h1
       className={className}
+      style={style}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ ...spring, delay: 0.3 }}

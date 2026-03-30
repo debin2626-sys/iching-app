@@ -216,6 +216,15 @@ body::after {
 .animate-twinkle { animation: twinkle 4s ease-in-out infinite; }
 .animate-twinkle-slow { animation: twinkle 6s ease-in-out infinite; }
 
+/* ── 卦象滚动 ── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
 /* ── 标题衬线字体 ── */
 .font-title {
   font-family: var(--font-noto-serif-sc), 'Georgia', 'Times New Roman', serif;

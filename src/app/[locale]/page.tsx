@@ -5,7 +5,8 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
-import { PageLayout, TextArea, Select, Card, Button } from "@/components/ui";
+import { PageLayout, TextArea, Select, Card } from "@/components/ui";
+import { Coins, Sparkles, BookOpen } from "lucide-react";
 import {
   AnimatedTaichi,
   AnimatedTitle,
@@ -42,19 +43,19 @@ export default function Home() {
 
   const features = [
     {
-      emoji: "🎲",
+      icon: <Coins size={48} className="text-gold" strokeWidth={1.5} />,
       title: t("feature1Title"),
       desc: t("feature1Desc"),
       href: "/divination" as const,
     },
     {
-      emoji: "🤖",
+      icon: <Sparkles size={48} className="text-gold" strokeWidth={1.5} />,
       title: t("feature2Title"),
       desc: t("feature2Desc"),
       href: "/divination" as const,
     },
     {
-      emoji: "📖",
+      icon: <BookOpen size={48} className="text-gold" strokeWidth={1.5} />,
       title: t("feature3Title"),
       desc: t("feature3Desc"),
       href: "/hexagrams" as const,
@@ -96,12 +97,15 @@ export default function Home() {
         </AnimatedTaichi>
 
         {/* 主标题 */}
-        <AnimatedTitle className="font-title text-6xl sm:text-7xl md:text-8xl font-bold tracking-wider text-gold-glow mb-6">
+        <AnimatedTitle
+          className="font-title text-6xl sm:text-7xl md:text-8xl font-bold tracking-wider text-gold-glow mb-6"
+          style={{ textShadow: '0 0 40px rgba(201,169,110,0.3), 0 0 80px rgba(201,169,110,0.15)' }}
+        >
           {t("title")}
         </AnimatedTitle>
 
         {/* 副标题 */}
-        <AnimatedSubtitle className="glow-text text-xl sm:text-2xl tracking-[0.25em] mb-3 font-title opacity-80" delay={0.5}>
+        <AnimatedSubtitle className="glow-text text-xl sm:text-2xl tracking-[0.3em] mb-3 font-title opacity-80" delay={0.5}>
           {t("subtitle")}
         </AnimatedSubtitle>
         <AnimatedSubtitle className="text-gray-400 text-sm sm:text-base tracking-widest mb-14" delay={0.6}>
@@ -212,23 +216,38 @@ export default function Home() {
           </Card>
 
           {/* 开始按钮 */}
-          <Button
-            variant="primary"
-            size="lg"
+          <button
             onClick={handleStart}
             disabled={!question.trim()}
-            className="w-full font-title tracking-wider !h-14 !px-12 !text-lg"
-            style={{ boxShadow: '0 0 30px rgba(212,165,116,0.2), 0 0 60px rgba(212,165,116,0.1)' }}
+            className="w-full font-title tracking-wider h-14 px-12 text-lg rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-40 disabled:cursor-not-allowed"
+            style={{
+              boxShadow: !question.trim()
+                ? undefined
+                : '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)',
+            }}
+            onMouseEnter={(e) => {
+              if (!question.trim()) return;
+              e.currentTarget.style.boxShadow = '0 0 30px rgba(139,37,0,0.4), 0 0 15px rgba(201,169,110,0.2)';
+            }}
+            onMouseLeave={(e) => {
+              if (!question.trim()) return;
+              e.currentTarget.style.boxShadow = '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)';
+            }}
           >
             {t("startButton")}
-          </Button>
+          </button>
         </AnimatedCTA>
 
-        {/* 底部装饰 */}
-        <div className="mt-16 flex items-center gap-3 animate-pulse-glow">
-          <span className="text-amber-600/40 text-xs tracking-[0.5em]">
-            ䷀ ䷁ ䷂ ䷃ ䷄ ䷅
-          </span>
+        {/* 底部装饰 - 滚动卦象 */}
+        <div className="mt-16 overflow-hidden w-full max-w-md opacity-25">
+          <div className="flex whitespace-nowrap animate-marquee">
+            <span className="text-amber-600 text-xs tracking-[0.5em] inline-block">
+              ䷀ ䷁ ䷂ ䷃ ䷄ ䷅ ䷆ ䷇ ䷈ ䷉ ䷊ ䷋&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <span className="text-amber-600 text-xs tracking-[0.5em] inline-block">
+              ䷀ ䷁ ䷂ ䷃ ䷄ ䷅ ䷆ ䷇ ䷈ ䷉ ䷊ ䷋&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+          </div>
         </div>
       </section>
 
@@ -248,8 +267,8 @@ export default function Home() {
                   padding="lg"
                   className="text-center group min-h-[300px] flex flex-col items-center justify-center p-10"
                 >
-                  <div className="text-7xl mb-8 group-hover:scale-110 transition-transform duration-300">
-                    {f.emoji}
+                  <div className="mb-8 group-hover:scale-110 transition-transform duration-300">
+                    {f.icon}
                   </div>
                   <h3 className="font-title text-2xl font-semibold text-gray-100 mb-5 group-hover:text-amber-200 transition-colors">
                     {f.title}
