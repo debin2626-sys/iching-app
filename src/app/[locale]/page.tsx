@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Coins, Sparkles, BookOpen } from "lucide-react";
 import { AnimatedTaichi } from "@/components/home/HeroAnimations";
+import { NavBar } from "@/components/ui";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 
 const YEARS = Array.from({ length: 87 }, (_, i) => 1940 + i);
@@ -13,8 +14,15 @@ const DAYS = Array.from({ length: 31 }, (_, i) => i + 1);
 
 export default function Home() {
   const t = useTranslations("Home");
+  const tNav = useTranslations("Nav");
   const router = useRouter();
   const locale = useLocale();
+
+  const navItems = [
+    { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
+    { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
+    { label: tNav("history"), href: "/history", icon: <span>📜</span> },
+  ];
 
   const [question, setQuestion] = useState("");
   const [showBirth, setShowBirth] = useState(false);
@@ -63,7 +71,10 @@ export default function Home() {
   ];
 
   return (
-    <div className="max-w-[600px] mx-auto px-6 pt-20 pb-20">
+    <>
+      <NavBar items={navItems} />
+      <main className="min-h-screen bg-[#0a0a12]">
+        <div className="max-w-[600px] mx-auto px-6 pt-20 pb-20">
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
@@ -234,8 +245,10 @@ export default function Home() {
 
       {/* 免责声明 */}
       <p className="mt-5 text-xs text-[#555] text-center">
-        {t("disclaimer")}
+                {t("disclaimer")}
       </p>
-    </div>
+        </div>
+      </main>
+    </>
   );
 }
