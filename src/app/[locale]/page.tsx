@@ -74,7 +74,7 @@ export default function Home() {
     <>
       <NavBar items={navItems} />
       <main className="min-h-screen bg-[#0a0a12]">
-        <div className="max-w-xl mx-auto px-6 pt-44 md:pt-48 pb-20">
+        <div style={{ maxWidth: '576px', margin: '0 auto', padding: '176px 24px 80px 24px' }}>
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
@@ -218,24 +218,26 @@ export default function Home() {
       </button>
 
       {/* 三大核心功能标题 */}
-      <h2 className="mt-24 text-xl text-gold font-title text-center">
+      <div style={{ marginTop: '96px' }}>
+      <h2 className="text-xl text-gold font-title text-center">
         {t("featuresSectionTitle")}
       </h2>
 
       {/* 三张功能卡片 */}
-      <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-6">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginTop: '32px' }}>
         {features.map((f) => (
           <div
             key={f.title}
-            className="w-[260px] bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.15)] rounded-2xl py-8 px-5 min-h-[180px] text-center flex flex-col items-center"
+            className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.15)] rounded-2xl py-8 px-5 min-h-[180px] text-center flex flex-col items-center"
           >
             {f.icon}
             <h3 className="text-lg font-bold text-[#f5f0e8] mb-2">{f.title}</h3>
             <p className="text-sm text-[#a0978a] leading-relaxed whitespace-pre-line">
-              {f.desc.split('\\n').join('\n')}
+              {f.desc.replace(/\\n/g, '\n')}
             </p>
           </div>
         ))}
+      </div>
       </div>
 
       {/* 底部引言 */}
