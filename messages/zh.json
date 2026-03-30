@@ -1,8 +1,7 @@
 {
   "Home": {
-    "title": "易 · YiChing",
+    "title": "易",
     "subtitle": "观天之道，执天之行",
-    "subtitleEn": "Ancient Wisdom, Modern Insight",
     "placeholder": "静心凝神，默念所问之事...",
     "startButton": "开始摇卦",
     "birthLabel": "出生时辰",
@@ -26,7 +25,8 @@
     "feature2Desc": "古今融通，智慧解析\n结合八字命理与卦象，给出综合解读",
     "feature3Title": "六十四卦典",
     "feature3Desc": "穷理尽性，以至于命\n完整卦辞爻辞，白话译注，系统学习",
-    "disclaimer": "本站仅供文化学习与娱乐参考，占卜结果不构成任何决策建议。"
+    "disclaimer": "本站仅供文化学习与娱乐参考，占卜结果不构成任何决策建议。",
+    "footerQuote": "一阴一阳之谓道"
   },
   "Nav": {
     "home": "首页",
@@ -83,7 +83,7 @@
     "submit": "提交",
     "cancel": "取消",
     "loading": "加载中...",
-    "copyright": "© {year} 易 · YiChing"
+    "copyright": "© {year} 易经"
   },
   "History": {
     "title": "占卜记录",

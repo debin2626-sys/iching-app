@@ -267,6 +267,55 @@ body::after {
   animation: aura-pulse 1.5s ease-in-out;
 }
 
+/* ── Hero 网格纹理 ── */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(201,169,110,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,169,110,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Hero Spotlight 光效 ── */
+.hero-spotlight {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(201,169,110,0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 卡片边框光效 (Aceternity 风格) ── */
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+.card-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(201,169,110,0.3) 0%, transparent 50%, rgba(201,169,110,0.1) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  opacity: 0.5;
+  z-index: 1;
+}
+.card-glow:hover::before {
+  opacity: 1;
+  background: linear-gradient(135deg, rgba(201,169,110,0.5) 0%, rgba(201,169,110,0.1) 50%, rgba(201,169,110,0.3) 100%);
+}
+
 /* ── 完成时金色光芒扩散 ── */
 @keyframes golden-burst {
   0% {

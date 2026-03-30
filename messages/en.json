@@ -1,8 +1,7 @@
 {
   "Home": {
-    "title": "Yi · YiChing",
-    "subtitle": "Observe the Way of Heaven, Follow Its Course",
-    "subtitleEn": "Ancient Wisdom, Modern Insight",
+    "title": "Yi · Ching",
+    "subtitle": "Ancient Wisdom, Modern Insight",
     "placeholder": "Clear your mind, focus on your question...",
     "startButton": "Start Divination",
     "birthLabel": "Birth Time",
@@ -26,7 +25,8 @@
     "feature2Desc": "Bridging ancient and modern wisdom\nCombining BaZi and hexagram analysis",
     "feature3Title": "64 Hexagrams",
     "feature3Desc": "Explore the nature of all things\nComplete hexagram texts with modern commentary",
-    "disclaimer": "This site is for cultural learning and entertainment only. Divination results do not constitute any decision-making advice."
+    "disclaimer": "This site is for cultural learning and entertainment only. Divination results do not constitute any decision-making advice.",
+    "footerQuote": "The alternation of Yin and Yang is called the Tao"
   },
   "Nav": {
     "home": "Home",
@@ -83,7 +83,7 @@
     "submit": "Submit",
     "cancel": "Cancel",
     "loading": "Loading...",
-    "copyright": "© {year} Yi · YiChing"
+    "copyright": "© {year} Yi · Ching"
   },
   "History": {
     "title": "Divination History",

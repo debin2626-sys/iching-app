@@ -1,8 +1,7 @@
 "use client";
 
-
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import { PageLayout, TextArea, Select, Card } from "@/components/ui";
@@ -25,6 +24,7 @@ export default function Home() {
   const tNav = useTranslations("Nav");
   const tCommon = useTranslations("Common");
   const router = useRouter();
+  const locale = useLocale();
   const [question, setQuestion] = useState("");
   const [birthYear, setBirthYear] = useState("");
   const [birthMonth, setBirthMonth] = useState("");
@@ -80,7 +80,10 @@ export default function Home() {
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-full">
       {/* ═══ Hero 区域 ═══ */}
-      <section className="flex-1 flex flex-col items-center justify-center min-h-screen px-4 text-center relative -mx-4 sm:-mx-6 lg:-mx-8">
+      <section className="hero-grid flex-1 flex flex-col items-center justify-center min-h-screen px-4 text-center relative -mx-4 sm:-mx-6 lg:-mx-8 py-32">
+        {/* Spotlight 光效 */}
+        <div className="hero-spotlight" />
+
         {/* 装饰八卦符号 */}
         <div className="absolute top-32 left-[10%] text-amber-500/10 text-6xl animate-twinkle select-none hidden md:block">
           ☰
@@ -91,36 +94,33 @@ export default function Home() {
 
         {/* 太极符号 */}
         <AnimatedTaichi>
-          <div className="taichi-rotate mb-10">
+          <div className="taichi-rotate mb-12">
             <div className="taichi-symbol" />
           </div>
         </AnimatedTaichi>
 
         {/* 主标题 */}
         <AnimatedTitle
-          className="font-title text-6xl sm:text-7xl md:text-8xl font-bold tracking-wider text-gold-gradient text-gold-breathe mb-6"
+          className="font-title text-7xl sm:text-8xl md:text-9xl font-bold tracking-wider text-gold-gradient text-gold-breathe mb-8 relative z-10"
           style={{ textShadow: '0 0 40px rgba(201,169,110,0.3), 0 0 80px rgba(201,169,110,0.15)' }}
         >
           {t("title")}
         </AnimatedTitle>
 
         {/* 副标题 */}
-        <AnimatedSubtitle className="glow-text text-xl sm:text-2xl tracking-[0.3em] mb-3 font-title opacity-80" delay={0.3}>
+        <AnimatedSubtitle className="glow-text text-xl sm:text-2xl md:text-3xl tracking-[0.3em] mb-16 font-title opacity-80 relative z-10" delay={0.3}>
           {t("subtitle")}
-        </AnimatedSubtitle>
-        <AnimatedSubtitle className="text-gray-400 text-sm sm:text-base tracking-widest mb-14" delay={0.45}>
-          {t("subtitleEn")}
         </AnimatedSubtitle>
 
         {/* 中式分隔线 */}
-        <div className="flex items-center justify-center gap-4 my-8 opacity-30 w-40 mb-10">
+        <div className="flex items-center justify-center gap-4 my-8 opacity-30 w-40 mb-12 relative z-10">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
           <span className="text-gold text-lg">☯</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
         </div>
 
         {/* ═══ 快速占卜区域 ═══ */}
-        <AnimatedCTA className="w-full max-w-2xl">
+        <AnimatedCTA className="w-full max-w-2xl relative z-10">
           {/* 问题输入 */}
           <Card className="mb-5">
             <TextArea
@@ -230,7 +230,7 @@ export default function Home() {
         </AnimatedCTA>
 
         {/* 底部装饰 - 滚动卦象 */}
-        <div className="mt-16 overflow-hidden w-full max-w-md opacity-25">
+        <div className="mt-20 overflow-hidden w-full max-w-md opacity-25 relative z-10">
           <div className="flex whitespace-nowrap animate-marquee">
             <span className="text-amber-600 text-xs tracking-[0.5em] inline-block">
               ䷀ ䷁ ䷂ ䷃ ䷄ ䷅ ䷆ ䷇ ䷈ ䷉ ䷊ ䷋&nbsp;&nbsp;&nbsp;&nbsp;
@@ -243,13 +243,13 @@ export default function Home() {
       </section>
 
       {/* ═══ 特色区域 ═══ */}
-      <section className="px-4 py-40 relative -mx-4 sm:-mx-6 lg:-mx-8">
+      <section className="px-4 py-48 relative -mx-4 sm:-mx-6 lg:-mx-8">
         <div className="flex items-center justify-center gap-4 opacity-30 w-48 mx-auto mb-8">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
           <span className="text-gold text-lg">☯</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
         </div>
-        <p className="text-center text-amber-400/50 text-base tracking-[0.3em] mb-20 font-title">
+        <p className="text-center text-amber-400/50 text-base tracking-[0.3em] mb-24 font-title">
           {t("featuresTitle")}
         </p>
 
@@ -260,7 +260,7 @@ export default function Home() {
                 <Card
                   variant="interactive"
                   padding="lg"
-                  className="text-center group min-h-[300px] flex flex-col items-center justify-center p-10 !bg-[rgba(201,169,110,0.05)]"
+                  className="card-glow text-center group min-h-[300px] flex flex-col items-center justify-center p-10 !bg-[rgba(201,169,110,0.05)]"
                 >
                   <div className="mb-8 group-hover:scale-110 transition-transform duration-300">
                     {f.icon}
@@ -284,14 +284,14 @@ export default function Home() {
       </section>
 
       {/* ═══ 底部 ═══ */}
-      <footer className="py-16 px-4 text-center -mx-4 sm:-mx-6 lg:-mx-8">
+      <footer className="py-20 px-4 text-center -mx-4 sm:-mx-6 lg:-mx-8">
         <div className="flex items-center justify-center gap-4 opacity-30 w-24 mx-auto mb-10">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
           <span className="text-gold text-sm">☯</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
         </div>
         <p className="text-gold/60 text-sm tracking-[0.2em] font-title mb-6">
-          一阴一阳之谓道
+          {t("footerQuote")}
         </p>
         <p className="text-xs text-gray-600 max-w-md mx-auto leading-relaxed opacity-60">
           {t("disclaimer")}
