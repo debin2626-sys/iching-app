@@ -153,6 +153,25 @@ function DesktopNav({ items }: NavBarProps) {
   );
 }
 
+/* ── Mobile top header (language + login) ── */
+function MobileTopBar() {
+  return (
+    <div className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.9)] px-4 backdrop-blur-[12px] md:hidden">
+      <Link
+        href="/"
+        className="text-lg font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
+        style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)' }}
+      >
+        易经
+      </Link>
+      <div className="flex items-center gap-3">
+        <LanguageSwitcher />
+        <UserButton />
+      </div>
+    </div>
+  );
+}
+
 /* ── Mobile bottom tab bar ── */
 function MobileTabBar({ items }: NavBarProps) {
   const pathname = usePathname();
@@ -198,6 +217,7 @@ export function NavBar({ items }: NavBarProps) {
   return (
     <>
       <DesktopNav items={items} />
+      <MobileTopBar />
       <MobileTabBar items={items} />
     </>
   );

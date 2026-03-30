@@ -43,11 +43,11 @@ function Coin({ face, delay, flipping }: { face: number; delay: number; flipping
   const isFront = face === 3;
   return (
     <m.div
-      className="relative w-20 h-20 sm:w-24 sm:h-24"
+      className="relative w-[100px] h-[100px]"
       style={{ perspective: 800 }}
     >
       <m.div
-        className="w-full h-full rounded-full border-2 flex items-center justify-center font-title text-2xl sm:text-3xl font-bold select-none"
+        className="w-full h-full rounded-full border-2 flex items-center justify-center font-title text-3xl font-bold select-none"
         style={{
           background: "linear-gradient(145deg, var(--color-gold), var(--color-gold-bright), var(--color-gold-dim))",
           borderColor: "rgba(232,201,106,0.6)",
@@ -55,20 +55,19 @@ function Coin({ face, delay, flipping }: { face: number; delay: number; flipping
           color: "#1a1a2e",
           transformStyle: "preserve-3d",
         }}
-        initial={flipping ? { rotateX: 0, rotateY: 0, y: 0, scale: 1 } : false}
+        initial={flipping ? { rotateY: 0, y: 0, scale: 1 } : false}
         animate={
           flipping
             ? {
-                rotateX: [0, 180, 540, 900, 1080],
-                rotateY: [0, 30, -30, 15, 0],
-                y: [0, -100, -60, -30, 0],
-                scale: [1, 1.1, 1.05, 1.02, 1],
+                rotateY: [0, 360, 720],
+                y: [0, -80, 0],
+                scale: [1, 1.1, 1],
               }
-            : { rotateX: 0, rotateY: 0, y: 0, scale: 1 }
+            : { rotateY: 0, y: 0, scale: 1 }
         }
         transition={
           flipping
-            ? { duration: 1.4, delay, ease: [0.25, 0.46, 0.45, 0.94] }
+            ? { duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }
             : { duration: 0 }
         }
       >
@@ -84,15 +83,15 @@ function YaoLine({ value, label, isChanging }: { value: LineValue; label: string
   const color = isChanging ? "#ef4444" : "var(--color-gold)";
   return (
     <div className="flex items-center gap-3">
-      <span className="text-xs w-10 text-right opacity-50">{label}</span>
-      <div className="flex items-center gap-1">
+      <span className="text-base w-12 text-right opacity-50">{label}</span>
+      <div className="flex items-center gap-1 w-[200px] justify-center">
         {isYang ? (
-          <span className="block w-20 sm:w-28 h-2.5 rounded-sm" style={{ background: color }} />
+          <span className="block w-[200px] h-2 rounded-sm" style={{ background: color }} />
         ) : (
           <>
-            <span className="block w-8 sm:w-12 h-2.5 rounded-sm" style={{ background: color }} />
-            <span className="block w-4 sm:w-4" />
-            <span className="block w-8 sm:w-12 h-2.5 rounded-sm" style={{ background: color }} />
+            <span className="block w-[90px] h-2 rounded-sm" style={{ background: color }} />
+            <span className="block w-[20px]" />
+            <span className="block w-[90px] h-2 rounded-sm" style={{ background: color }} />
           </>
         )}
       </div>
@@ -311,7 +310,7 @@ function DivinationContent() {
 
     setTimeout(() => {
       setCoinFaces(coins);
-    }, 600);
+    }, 300);
 
     setTimeout(() => {
       setLines((prev) => [...prev, sum]);
@@ -325,7 +324,7 @@ function DivinationContent() {
           setPhase("done");
         }, 1200);
       }
-    }, 1700);
+    }, 900);
   }, [flipping, currentYao]);
 
   const binary = lines.length === 6 ? linesToBinary(lines) : "";
@@ -412,7 +411,7 @@ function DivinationContent() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className={`w-full text-center relative ${auraPulse ? "aura-pulse" : ""}`}
+              className={`w-full max-w-[600px] mx-auto text-center relative ${auraPulse ? "aura-pulse" : ""}`}
             >
               {/* 金色光芒庆祝效果 */}
               {showGoldenBurst && (
@@ -426,12 +425,12 @@ function DivinationContent() {
               </h1>
 
               {/* 进度指示 */}
-              <p className="text-sm text-gold mb-3 tracking-wide">
+              <p className="text-lg font-bold text-gold mb-3 tracking-wide text-center">
                 {currentYao < 6 ? `第 ${currentYao + 1} 次 / 共 6 次` : "六爻已成"}
               </p>
 
               {/* 进度条 */}
-              <div className="flex justify-center gap-2 mb-8">
+              <div className="flex justify-center gap-2 mb-8 max-w-[400px] w-full mx-auto">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <m.div
                     key={i}
@@ -452,8 +451,8 @@ function DivinationContent() {
               </div>
 
               {/* 铜钱区域 */}
-              <Card variant="elevated" className="mb-8">
-                <div className="flex justify-center gap-5 sm:gap-8 mb-8 min-h-[96px] sm:min-h-[112px] items-center">
+              <Card variant="elevated" className="mb-8 my-10">
+                <div className="flex justify-center gap-5 sm:gap-8 mb-8 min-h-[120px] items-center">
                   {[0, 1, 2].map((i) => (
                     <Coin key={i} face={coinFaces[i]} delay={i * 0.15} flipping={flipping} />
                   ))}
@@ -478,7 +477,7 @@ function DivinationContent() {
 
               {/* 已完成的爻（从下往上） */}
               {lines.length > 0 && (
-                <Card className="mb-8">
+                <Card className="mb-8 mt-10">
                   <div className="flex flex-col items-center gap-2">
                     {[...lines].reverse().map((v, ri) => {
                       const i = lines.length - 1 - ri;
@@ -501,7 +500,8 @@ function DivinationContent() {
               <button
                 onClick={shakeCoin}
                 disabled={flipping || currentYao >= 6}
-                className="h-14 px-10 text-lg font-title tracking-wider rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+                className="max-w-[400px] w-full mx-auto h-14 text-xl font-bold font-title tracking-wider rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,169,110,0.5)] disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                style={{ backgroundColor: "#c9a96e", color: "#0a0a12" }}
               >
                 {flipping ? "摇卦中…" : currentYao >= 6 ? "卦象已成" : "摇 卦"}
               </button>

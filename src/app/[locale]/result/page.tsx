@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { calculateBazi, type BirthInfo } from "@/lib/iching/bazi";
-import { PageLayout, Button, Skeleton } from "@/components/ui";
+import { PageLayout, Skeleton } from "@/components/ui";
 import Card from "@/components/ui/Card";
 import type { LineValue } from "@/lib/iching/coins";
 import {
@@ -97,27 +97,31 @@ function useHexagramData(hexNum: number | null) {
 /* ── 六爻图组件 ── */
 function HexagramDiagram({ lines }: { lines: LineValue[] }) {
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="w-[300px] mx-auto flex flex-col items-center gap-3">
       {[...lines].reverse().map((v, ri) => {
         const i = 5 - ri;
         const isYang = v === 7 || v === 9;
         const isChanging = v === 6 || v === 9;
-        const color = isChanging ? "#ef4444" : "var(--color-gold)";
+        const bgColor = isChanging ? "bg-red-500" : "bg-[#c9a96e]";
         return (
-          <div key={i} className="flex items-center gap-4">
-            <span className="text-sm w-12 text-right opacity-50">{YAO_LABELS[i]}</span>
-            <div className="flex items-center gap-1.5">
+          <div key={i} className="flex items-center gap-4 w-full">
+            <span className="text-sm w-12 text-right opacity-50 shrink-0">{YAO_LABELS[i]}</span>
+            <div className="flex items-center justify-center flex-1">
               {isYang ? (
-                <span className="block w-28 sm:w-36 h-3 rounded-sm" style={{ background: color }} />
+                <span className={`block w-full h-[10px] rounded-sm ${bgColor}`} />
               ) : (
-                <>
-                  <span className="block w-12 sm:w-16 h-3 rounded-sm" style={{ background: color }} />
-                  <span className="block w-5" />
-                  <span className="block w-12 sm:w-16 h-3 rounded-sm" style={{ background: color }} />
-                </>
+                <div className="flex w-full items-center">
+                  <span className={`block flex-1 h-[10px] rounded-sm ${bgColor}`} />
+                  <span className="block w-6 shrink-0" />
+                  <span className={`block flex-1 h-[10px] rounded-sm ${bgColor}`} />
+                </div>
               )}
             </div>
-            {isChanging && <span className="text-red-500 text-sm">🔴</span>}
+            {isChanging ? (
+              <span className="text-red-500 text-sm shrink-0">🔴</span>
+            ) : (
+              <span className="text-sm shrink-0 invisible">🔴</span>
+            )}
           </div>
         );
       })}
@@ -136,7 +140,7 @@ function BaziCard({ birthInfo }: { birthInfo: BirthInfo }) {
   ];
 
   return (
-    <Card variant="default" padding="lg">
+    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl">
       <h3 className="text-lg font-title text-amber-300 mb-4">🌙 命主信息</h3>
       <div className="grid grid-cols-4 gap-3 text-center mb-4">
         {pillars.map(({ label, pillar }) => (
@@ -165,7 +169,7 @@ function BaziCard({ birthInfo }: { birthInfo: BirthInfo }) {
       <p className="text-xs text-zinc-500 text-center">
         日主 {bazi.dayMaster}（{bazi.dayMasterElement}）· {bazi.strength}
       </p>
-    </Card>
+    </div>
   );
 }
 
@@ -499,12 +503,12 @@ function ResultContent() {
   /* 无效状态 */
   if (!hexNum) {
     return (
-      <PageLayout navItems={navItems} maxWidth="max-w-3xl">
-        <div className="text-center py-20">
+      <PageLayout navItems={navItems} maxWidth="max-w-[800px]">
+        <div className="text-center py-20 px-6">
           <p className="text-zinc-500 mb-4">未找到有效的卦象信息</p>
           <a
             href="/divination"
-            className="h-10 px-6 text-sm font-title tracking-wider rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
+            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
           >
             去占卜
           </a>
@@ -521,8 +525,8 @@ function ResultContent() {
   const lowerTrigram = lowerTrigramKey ? TRIGRAM_NAMES[lowerTrigramKey] : null;
 
   return (
-    <PageLayout navItems={navItems} maxWidth="max-w-3xl">
-      <div className="py-8 space-y-8">
+    <PageLayout navItems={navItems} maxWidth="max-w-[800px]">
+      <div className="py-8 space-y-8 px-6">
         {/* ── 卦象头部 ── */}
         <motion.div
           className="text-center"
@@ -533,14 +537,14 @@ function ResultContent() {
           <p className="text-sm tracking-[0.3em] text-amber-400/30 mb-3">
             {t("hexagramNumber", { num: hexNum })}
           </p>
-          <h1 className="font-title text-5xl sm:text-6xl text-gold-glow mb-2">
+          <h1 className="font-title text-4xl text-center text-gold mb-2">
             {hexInfo?.cn ?? "未知"}
           </h1>
           <p className="text-base text-zinc-500 tracking-widest mb-3">
             {hexInfo?.en ?? ""}
           </p>
           {upperTrigram && lowerTrigram && (
-            <p className="text-xs text-zinc-600">
+            <p className="text-base text-center text-zinc-400">
               {t("upperTrigram")}：{upperTrigram.cn}　{t("lowerTrigram")}：{lowerTrigram.cn}
             </p>
           )}
@@ -672,23 +676,29 @@ function ResultContent() {
 
         {/* ── 底部操作栏 ── */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
+          className="flex flex-wrap items-center justify-center gap-4 pt-6"
           variants={slideUp(0.7)}
           initial="hidden"
           animate="visible"
         >
           <a
             href="/divination"
-            className="h-12 px-8 text-base font-title tracking-wider rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
+            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
           >
             {t("divinationAgain")}
           </a>
-          <Button variant="secondary" href="/" size="md" className="h-10 px-6">
+          <a
+            href="/"
+            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
+          >
             {t("backHome")}
-          </Button>
-          <Button variant="ghost" onClick={handleShare} size="md" className="h-10 px-6">
+          </a>
+          <button
+            onClick={handleShare}
+            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
+          >
             {t("share")}
-          </Button>
+          </button>
         </motion.div>
       </div>
     </PageLayout>
