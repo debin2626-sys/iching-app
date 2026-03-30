@@ -97,27 +97,27 @@ function useHexagramData(hexNum: number | null) {
 /* ── 六爻图组件 ── */
 function HexagramDiagram({ lines }: { lines: LineValue[] }) {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center gap-3">
       {[...lines].reverse().map((v, ri) => {
         const i = 5 - ri;
         const isYang = v === 7 || v === 9;
         const isChanging = v === 6 || v === 9;
         const color = isChanging ? "#ef4444" : "var(--color-gold)";
         return (
-          <div key={i} className="flex items-center gap-3">
-            <span className="text-xs w-10 text-right opacity-50">{YAO_LABELS[i]}</span>
-            <div className="flex items-center gap-1">
+          <div key={i} className="flex items-center gap-4">
+            <span className="text-sm w-12 text-right opacity-50">{YAO_LABELS[i]}</span>
+            <div className="flex items-center gap-1.5">
               {isYang ? (
-                <span className="block w-20 sm:w-28 h-2.5 rounded-sm" style={{ background: color }} />
+                <span className="block w-28 sm:w-36 h-3 rounded-sm" style={{ background: color }} />
               ) : (
                 <>
-                  <span className="block w-8 sm:w-12 h-2.5 rounded-sm" style={{ background: color }} />
-                  <span className="block w-4" />
-                  <span className="block w-8 sm:w-12 h-2.5 rounded-sm" style={{ background: color }} />
+                  <span className="block w-12 sm:w-16 h-3 rounded-sm" style={{ background: color }} />
+                  <span className="block w-5" />
+                  <span className="block w-12 sm:w-16 h-3 rounded-sm" style={{ background: color }} />
                 </>
               )}
             </div>
-            {isChanging && <span className="text-red-500 text-xs">🔴</span>}
+            {isChanging && <span className="text-red-500 text-sm">🔴</span>}
           </div>
         );
       })}
@@ -221,7 +221,7 @@ function DepthSelector({
   disabled?: boolean;
 }) {
   return (
-    <div className="flex items-center justify-center gap-2 mb-4">
+    <div className="flex items-center justify-center gap-3 mb-6">
       {DEPTH_OPTIONS.map((opt) => {
         const isActive = value === opt.value;
         return (
@@ -230,7 +230,7 @@ function DepthSelector({
             onClick={() => onChange(opt.value)}
             disabled={disabled}
             className={`
-              flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium
+              flex items-center gap-2 px-5 py-2.5 rounded-lg text-base font-medium
               transition-all duration-200 border
               ${isActive
                 ? "border-amber-500/60 bg-amber-500/15 text-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.15)]"
@@ -384,7 +384,7 @@ function AISection({
       {content && (
         <div
           ref={contentRef}
-          className="prose prose-invert prose-sm max-w-none text-zinc-300 whitespace-pre-wrap leading-relaxed max-h-[60vh] overflow-y-auto"
+          className="prose prose-invert prose-base max-w-none text-zinc-300 whitespace-pre-wrap leading-loose max-h-[60vh] overflow-y-auto"
         >
           {displayText}
           {showCursor && (
@@ -499,7 +499,7 @@ function ResultContent() {
   /* 无效状态 */
   if (!hexNum) {
     return (
-      <PageLayout navItems={navItems} maxWidth="max-w-2xl">
+      <PageLayout navItems={navItems} maxWidth="max-w-3xl">
         <div className="text-center py-20">
           <p className="text-zinc-500 mb-4">未找到有效的卦象信息</p>
           <Button variant="primary" href="/divination">去占卜</Button>
@@ -516,7 +516,7 @@ function ResultContent() {
   const lowerTrigram = lowerTrigramKey ? TRIGRAM_NAMES[lowerTrigramKey] : null;
 
   return (
-    <PageLayout navItems={navItems} maxWidth="max-w-2xl">
+    <PageLayout navItems={navItems} maxWidth="max-w-3xl">
       <div className="py-6 space-y-6">
         {/* ── 卦象头部 ── */}
         <motion.div

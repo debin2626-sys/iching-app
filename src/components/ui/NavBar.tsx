@@ -70,7 +70,7 @@ function UserButton() {
     return (
       <Link
         href="/auth"
-        className="text-sm text-gray-400 hover:text-gold transition-colors duration-300 tracking-wide"
+        className="text-sm text-gray-300 hover:text-gold transition-colors duration-300 tracking-wide border border-gold/30 rounded-lg px-4 py-1.5 hover:border-gold/60 hover:bg-gold/5"
       >
         登录
       </Link>
@@ -103,31 +103,31 @@ function DesktopNav({ items }: NavBarProps) {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 hidden h-16 items-center justify-between border-b border-white/5 bg-bg/80 px-8 backdrop-blur-md md:flex">
+    <nav className="fixed inset-x-0 top-0 z-50 hidden h-20 items-center justify-between border-b border-white/5 bg-bg/80 px-8 backdrop-blur-md md:flex">
       {/* Logo / brand */}
       <Link
         href="/"
-        className="text-lg font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
+        className="text-xl font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
       >
         易经
       </Link>
 
       {/* Nav links */}
-      <ul className="flex items-center gap-6">
+      <ul className="flex items-center gap-8">
         {items.map((item) => {
           const active = pathname === item.href;
           return (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className={`relative flex items-center gap-1.5 text-sm tracking-wide transition-all duration-300 ${
+                className={`relative flex items-center gap-1.5 text-base tracking-wide transition-all duration-300 ${
                   active
                     ? "text-gold"
                     : "text-gray-400 hover:text-gold hover:-translate-y-0.5"
                 }`}
               >
                 {item.icon && (
-                  <span className="text-base">{item.icon}</span>
+                  <span className="text-lg">{item.icon}</span>
                 )}
                 {item.label}
                 {active && (
@@ -158,22 +158,22 @@ function MobileTabBar({ items }: NavBarProps) {
   const tabs = items.slice(0, 5);
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 flex h-16 items-end justify-around border-t border-white/5 bg-bg/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-50 flex h-18 items-end justify-around border-t border-white/5 bg-bg/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
       {tabs.map((item) => {
         const active = pathname === item.href;
         return (
           <Link
             key={item.href}
             href={item.href}
-            className={`flex flex-1 flex-col items-center gap-0.5 pb-2 pt-2 text-[10px] transition-all duration-300 ${
+            className={`flex flex-1 flex-col items-center gap-1 pb-2 pt-2 text-xs transition-all duration-300 ${
               active ? "text-gold" : "text-gray-500"
             }`}
           >
             {item.icon ? (
-              <span className="text-xl">{item.icon}</span>
+              <span className="text-2xl">{item.icon}</span>
             ) : (
               <span
-                className={`h-5 w-5 rounded-full border ${
+                className={`h-6 w-6 rounded-full border ${
                   active ? "border-gold bg-gold/20" : "border-gray-600"
                 }`}
               />

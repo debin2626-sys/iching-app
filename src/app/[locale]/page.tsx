@@ -90,42 +90,42 @@ export default function Home() {
 
         {/* 太极符号 */}
         <AnimatedTaichi>
-          <div className="taichi-rotate mb-8">
+          <div className="taichi-rotate mb-10">
             <div className="taichi-symbol" />
           </div>
         </AnimatedTaichi>
 
         {/* 主标题 */}
-        <AnimatedTitle className="font-title text-5xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-glow mb-4">
+        <AnimatedTitle className="font-title text-6xl sm:text-7xl md:text-8xl font-bold tracking-wider text-gold-glow mb-6">
           {t("title")}
         </AnimatedTitle>
 
         {/* 副标题 */}
-        <AnimatedSubtitle className="glow-text text-lg sm:text-xl tracking-[0.25em] mb-2 font-title opacity-80" delay={0.5}>
+        <AnimatedSubtitle className="glow-text text-xl sm:text-2xl tracking-[0.25em] mb-3 font-title opacity-80" delay={0.5}>
           {t("subtitle")}
         </AnimatedSubtitle>
-        <AnimatedSubtitle className="text-gray-500 text-sm tracking-widest mb-10" delay={0.6}>
+        <AnimatedSubtitle className="text-gray-400 text-sm sm:text-base tracking-widest mb-14" delay={0.6}>
           {t("subtitleEn")}
         </AnimatedSubtitle>
 
         {/* 分割线 */}
-        <div className="divider-gold w-32 mb-8" />
+        <div className="divider-gold w-40 mb-10" />
 
         {/* ═══ 快速占卜区域 ═══ */}
-        <AnimatedCTA className="w-full max-w-lg">
+        <AnimatedCTA className="w-full max-w-2xl">
           {/* 问题输入 */}
-          <Card className="mb-4">
+          <Card className="mb-5">
             <TextArea
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder={t("placeholder")}
               rows={3}
-              className="font-title"
+              className="font-title text-base"
             />
           </Card>
 
           {/* 生辰折叠区 */}
-          <Card className="overflow-hidden mb-6" padding="sm">
+          <Card className="overflow-hidden mb-8" padding="sm">
             <button
               onClick={() => setShowBirth(!showBirth)}
               className="w-full flex items-center justify-between px-2 py-2 hover:bg-white/5 transition rounded-lg"
@@ -217,14 +217,15 @@ export default function Home() {
             size="lg"
             onClick={handleStart}
             disabled={!question.trim()}
-            className="w-full font-title tracking-wider"
+            className="w-full font-title tracking-wider !h-14 !px-12 !text-lg"
+            style={{ boxShadow: '0 0 30px rgba(212,165,116,0.2), 0 0 60px rgba(212,165,116,0.1)' }}
           >
             {t("startButton")}
           </Button>
         </AnimatedCTA>
 
         {/* 底部装饰 */}
-        <div className="mt-12 flex items-center gap-3 animate-pulse-glow">
+        <div className="mt-16 flex items-center gap-3 animate-pulse-glow">
           <span className="text-amber-600/40 text-xs tracking-[0.5em]">
             ䷀ ䷁ ䷂ ䷃ ䷄ ䷅
           </span>
@@ -232,28 +233,28 @@ export default function Home() {
       </section>
 
       {/* ═══ 特色区域 ═══ */}
-      <section className="px-4 py-32 relative -mx-4 sm:-mx-6 lg:-mx-8">
-        <div className="divider-gold w-48 mx-auto mb-6" />
-        <p className="text-center text-amber-400/40 text-sm tracking-[0.3em] mb-16 font-title">
+      <section className="px-4 py-40 relative -mx-4 sm:-mx-6 lg:-mx-8">
+        <div className="divider-gold w-48 mx-auto mb-8" />
+        <p className="text-center text-amber-400/50 text-base tracking-[0.3em] mb-20 font-title">
           {t("featuresTitle")}
         </p>
 
-        <AnimatedFeatureGrid className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-12">
+        <AnimatedFeatureGrid className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-14">
           {features.map((f) => (
             <AnimatedFeatureCard key={f.title}>
               <Link href={f.href}>
                 <Card
                   variant="interactive"
                   padding="lg"
-                  className="text-center group min-h-[260px] flex flex-col items-center justify-center"
+                  className="text-center group min-h-[300px] flex flex-col items-center justify-center p-10"
                 >
-                  <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-7xl mb-8 group-hover:scale-110 transition-transform duration-300">
                     {f.emoji}
                   </div>
-                  <h3 className="font-title text-2xl font-semibold text-gray-100 mb-4 group-hover:text-amber-200 transition-colors">
+                  <h3 className="font-title text-2xl font-semibold text-gray-100 mb-5 group-hover:text-amber-200 transition-colors">
                     {f.title}
                   </h3>
-                  <div className="divider-gold w-12 mx-auto mb-4" />
+                  <div className="divider-gold w-14 mx-auto mb-5" />
                   <p className="text-base text-gray-400 tracking-wider leading-relaxed group-hover:text-gray-300 transition-colors whitespace-pre-line">
                     {f.desc}
                   </p>
@@ -265,8 +266,8 @@ export default function Home() {
       </section>
 
       {/* ═══ 底部 ═══ */}
-      <footer className="py-12 px-4 text-center -mx-4 sm:-mx-6 lg:-mx-8">
-        <div className="divider-gold w-24 mx-auto mb-8" />
+      <footer className="py-16 px-4 text-center -mx-4 sm:-mx-6 lg:-mx-8">
+        <div className="divider-gold w-24 mx-auto mb-10" />
         <p className="text-xs text-gray-600 max-w-md mx-auto leading-relaxed opacity-60">
           {t("disclaimer")}
         </p>

@@ -43,11 +43,11 @@ function Coin({ face, delay, flipping }: { face: number; delay: number; flipping
   const isFront = face === 3;
   return (
     <m.div
-      className="relative w-16 h-16 sm:w-20 sm:h-20"
+      className="relative w-20 h-20 sm:w-24 sm:h-24"
       style={{ perspective: 800 }}
     >
       <m.div
-        className="w-full h-full rounded-full border-2 flex items-center justify-center font-title text-xl sm:text-2xl font-bold select-none"
+        className="w-full h-full rounded-full border-2 flex items-center justify-center font-title text-2xl sm:text-3xl font-bold select-none"
         style={{
           background: "linear-gradient(145deg, var(--color-gold), var(--color-gold-bright), var(--color-gold-dim))",
           borderColor: "rgba(232,201,106,0.6)",
@@ -144,14 +144,14 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
         🔮
       </m.div>
 
-      <h1 className="font-title text-2xl sm:text-3xl text-gold-glow mb-2 text-center">
+      <h1 className="font-title text-3xl sm:text-4xl text-gold-glow mb-3 text-center">
         {t("title")}
       </h1>
-      <p className="text-xs opacity-40 mb-6 tracking-wide text-center">
+      <p className="text-sm opacity-40 mb-8 tracking-wide text-center">
         {t("subtitle")}
       </p>
 
-      <div className="divider-gold mb-6" />
+      <div className="divider-gold mb-8" />
 
       {/* 问题输入 */}
       <Card className="mb-4">
@@ -165,7 +165,7 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
       </Card>
 
       {/* 生辰折叠区 */}
-      <Card className="overflow-hidden mb-6" padding="sm">
+      <Card className="overflow-hidden mb-8" padding="sm">
         <button
           onClick={() => setShowBirth(!showBirth)}
           className="w-full flex items-center justify-between px-2 py-2 hover:bg-white/5 transition rounded-lg"
@@ -256,7 +256,7 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
         size="lg"
         onClick={handleSubmit}
         disabled={!question.trim()}
-        className="w-full font-title tracking-wider"
+        className="w-full font-title tracking-wider h-14 text-lg"
       >
         {t("startButton")}
       </Button>
@@ -361,7 +361,7 @@ function DivinationContent() {
   if (!hasStarted) {
     return (
       <PageLayout navItems={navItems} maxWidth="max-w-lg">
-        <div className="flex flex-col items-center py-6 sm:py-10">
+        <div className="flex flex-col items-center py-8 sm:py-14">
           <QuestionForm onSubmit={handleQuestionSubmit} />
         </div>
       </PageLayout>
@@ -370,7 +370,7 @@ function DivinationContent() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-lg">
-      <div className="flex flex-col items-center py-6 sm:py-10">
+      <div className="flex flex-col items-center py-8 sm:py-14">
         {/* 顶部装饰 */}
         <m.div
           className="mb-2 text-4xl opacity-30 animate-pulse-glow"
@@ -381,12 +381,12 @@ function DivinationContent() {
         </m.div>
 
         {/* 问题回显 */}
-        <p className="text-xs text-amber-400/40 mb-6 tracking-wide max-w-md text-center truncate">
+        <p className="text-sm text-amber-400/40 mb-8 tracking-wide max-w-md text-center truncate">
           「{question}」
         </p>
 
         {/* 步骤指示器 */}
-        <div className="flex items-center gap-3 mb-10">
+        <div className="flex items-center gap-3 mb-12">
           {[1, 2].map((s) => (
             <div key={s} className="flex items-center gap-3">
               <div
@@ -423,21 +423,21 @@ function DivinationContent() {
                 </div>
               )}
 
-              <h1 className="font-title text-2xl sm:text-3xl text-gold-glow mb-1">
+              <h1 className="font-title text-3xl sm:text-4xl text-gold-glow mb-2">
                 第{YAO_CN[Math.min(currentYao, 5)]}爻
               </h1>
 
               {/* 进度指示 */}
-              <p className="text-xs opacity-30 mb-2 tracking-wide">
+              <p className="text-sm opacity-40 mb-3 tracking-wide">
                 {currentYao < 6 ? `第 ${currentYao + 1} 次 / 共 6 次` : "六爻已成"}
               </p>
 
               {/* 进度条 */}
-              <div className="flex justify-center gap-1.5 mb-6">
+              <div className="flex justify-center gap-2 mb-8">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <m.div
                     key={i}
-                    className="h-1 rounded-full"
+                    className="h-1.5 rounded-full"
                     initial={false}
                     animate={{
                       width: i < currentYao ? 24 : 12,
@@ -454,8 +454,8 @@ function DivinationContent() {
               </div>
 
               {/* 铜钱区域 */}
-              <Card variant="elevated" className="mb-6">
-                <div className="flex justify-center gap-4 sm:gap-6 mb-6 min-h-[80px] sm:min-h-[96px] items-center">
+              <Card variant="elevated" className="mb-8">
+                <div className="flex justify-center gap-5 sm:gap-8 mb-8 min-h-[96px] sm:min-h-[112px] items-center">
                   {[0, 1, 2].map((i) => (
                     <Coin key={i} face={coinFaces[i]} delay={i * 0.15} flipping={flipping} />
                   ))}
@@ -480,7 +480,7 @@ function DivinationContent() {
 
               {/* 已完成的爻（从下往上） */}
               {lines.length > 0 && (
-                <Card className="mb-6">
+                <Card className="mb-8">
                   <div className="flex flex-col items-center gap-2">
                     {[...lines].reverse().map((v, ri) => {
                       const i = lines.length - 1 - ri;
@@ -506,6 +506,7 @@ function DivinationContent() {
                 onClick={shakeCoin}
                 disabled={flipping || currentYao >= 6}
                 loading={flipping}
+                className="h-14 px-10 text-lg"
               >
                 {flipping ? "摇卦中…" : currentYao >= 6 ? "卦象已成" : "摇 卦"}
               </Button>
@@ -522,7 +523,7 @@ function DivinationContent() {
               className="w-full text-center"
             >
               <m.p
-                className="text-xs tracking-[0.3em] opacity-30 mb-4"
+                className="text-sm tracking-[0.3em] opacity-30 mb-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.3 }}
                 transition={{ delay: 0.3 }}
@@ -536,10 +537,10 @@ function DivinationContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <h1 className="font-title text-5xl sm:text-6xl text-gold-glow mb-2">
+                <h1 className="font-title text-6xl sm:text-7xl text-gold-glow mb-3">
                   {hexInfo?.cn ?? "未知"}
                 </h1>
-                <p className="text-sm opacity-40 tracking-widest mb-1">
+                <p className="text-base opacity-40 tracking-widest mb-2">
                   {hexInfo?.en ?? ""} · 第{hexNum}卦
                 </p>
                 {changingLines.length > 0 && (
@@ -549,11 +550,11 @@ function DivinationContent() {
                 )}
               </m.div>
 
-              <div className="divider-gold my-6" />
+              <div className="divider-gold my-8" />
 
               {/* 六爻图 */}
               <m.div
-                className="inline-block mb-6"
+                className="inline-block mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
