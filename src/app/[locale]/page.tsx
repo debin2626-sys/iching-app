@@ -74,7 +74,7 @@ export default function Home() {
     <>
       <NavBar items={navItems} />
       <main className="min-h-screen bg-[#0a0a12]">
-        <div className="max-w-[600px] mx-auto px-6 pt-[60px] pb-20">
+        <div className="max-w-[600px] mx-auto px-6 pt-[120px] md:pt-[140px] pb-20">
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
