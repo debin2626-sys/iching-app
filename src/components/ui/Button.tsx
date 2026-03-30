@@ -2,14 +2,14 @@
 
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { m, type HTMLMotionProps } from "framer-motion";
 
 /* ── Variants & sizes ── */
 const variantStyles = {
   primary: [
-    "border border-[#d4a574]/60 text-[#d4a574] bg-[#d4a574]/8",
-    "hover:border-[#d4a574] hover:shadow-[0_0_20px_rgba(212,165,116,0.25)] hover:text-[#e8c96a]",
-    "disabled:border-[#d4a574]/20 disabled:text-[#d4a574]/40 disabled:shadow-none",
+    "border border-gold/60 text-gold bg-gold/8",
+    "hover:border-gold hover:shadow-[0_0_20px_color-mix(in_srgb,var(--color-gold)_25%,transparent)] hover:text-gold-bright",
+    "disabled:border-gold/20 disabled:text-gold/40 disabled:shadow-none",
   ].join(" "),
   secondary: [
     "border border-white/20 text-gray-200 bg-white/5",
@@ -18,7 +18,7 @@ const variantStyles = {
   ].join(" "),
   ghost: [
     "border border-transparent text-gray-300 bg-transparent",
-    "hover:text-[#d4a574] hover:bg-white/5",
+    "hover:text-gold hover:bg-white/5",
     "disabled:text-gray-600",
   ].join(" "),
 } as const;
@@ -100,7 +100,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       "inline-flex items-center justify-center rounded-[9999px] font-medium tracking-wide",
       "transition-all duration-300 ease-out",
       "hover:-translate-y-0.5 active:translate-y-0",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d4a574]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f]",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
       "disabled:pointer-events-none disabled:opacity-50",
       variantStyles[variant],
       sizeStyles[size],
@@ -123,7 +123,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     return (
-      <motion.button
+      <m.button
         ref={ref}
         whileTap={{ scale: 0.97 }}
         disabled={disabled || loading}
@@ -131,7 +131,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...(rest as HTMLMotionProps<"button">)}
       >
         {content}
-      </motion.button>
+      </m.button>
     );
   }
 );

@@ -2,6 +2,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { rateLimitGeneral } from "@/lib/rate-limit";
+import { createFavoriteSchema, validateBody } from "@/lib/validations";
 
 // GET: 获取用户收藏列表
 export async function GET(request: NextRequest) {
@@ -49,17 +51,24 @@ export async function GET(request: NextRequest) {
 // POST: 添加收藏
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit
+    const limited = rateLimitGeneral(request);
+    if (limited) return limited;
+
     const session = await auth();
     if (!session?.user?.id) {
       return NextResponse.json({ error: "请先登录" }, { status: 401 });
     }
 
     const body = await request.json();
-    const { hexagramId, notes, tags } = body;
 
-    if (!hexagramId) {
-      return NextResponse.json({ error: "缺少卦象ID" }, { status: 400 });
+    // Input validation
+    const validation = validateBody(createFavoriteSchema, body);
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 });
     }
+
+    const { hexagramId, notes, tags } = validation.data;
 
     // 检查是否已收藏（联合唯一约束）
     const existing = await prisma.favorite.findUnique({

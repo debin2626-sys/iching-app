@@ -26,7 +26,7 @@ export function Empty({
       className={`flex flex-col items-center justify-center gap-4 py-16 text-center ${className}`}
     >
       {icon && (
-        <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#d4a574]/15 bg-[#d4a574]/5 text-3xl text-[#d4a574]/60">
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-gold/15 bg-gold/5 text-3xl text-gold/60">
           {icon}
         </div>
       )}

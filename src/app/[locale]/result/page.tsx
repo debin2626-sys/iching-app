@@ -101,7 +101,7 @@ function HexagramDiagram({ lines }: { lines: LineValue[] }) {
         const i = 5 - ri;
         const isYang = v === 7 || v === 9;
         const isChanging = v === 6 || v === 9;
-        const color = isChanging ? "#ef4444" : "#d4a574";
+        const color = isChanging ? "#ef4444" : "var(--color-gold)";
         return (
           <div key={i} className="flex items-center gap-3">
             <span className="text-xs w-10 text-right opacity-50">{YAO_LABELS[i]}</span>

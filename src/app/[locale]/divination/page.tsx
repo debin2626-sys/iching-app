@@ -3,7 +3,7 @@
 
 import { useState, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { getChangingLines } from "@/lib/iching/coins";
 import type { LineValue } from "@/lib/iching/coins";
@@ -37,16 +37,16 @@ const YAO_CN = ["一", "二", "三", "四", "五", "六"];
 function Coin({ face, delay, flipping }: { face: number; delay: number; flipping: boolean }) {
   const isFront = face === 3;
   return (
-    <motion.div
+    <m.div
       className="relative w-16 h-16 sm:w-20 sm:h-20"
       style={{ perspective: 600 }}
     >
-      <motion.div
+      <m.div
         className="w-full h-full rounded-full border-2 flex items-center justify-center font-title text-xl sm:text-2xl font-bold select-none"
         style={{
-          background: "linear-gradient(145deg, #d4a574, #e8c96a, #a07840)",
+          background: "linear-gradient(145deg, var(--color-gold), var(--color-gold-bright), var(--color-gold-dim))",
           borderColor: "rgba(232,201,106,0.6)",
-          boxShadow: "0 0 25px rgba(212,165,116,0.4), inset 0 2px 4px rgba(255,255,255,0.2)",
+          boxShadow: "0 0 25px color-mix(in srgb, var(--color-gold) 40%, transparent), inset 0 2px 4px rgba(255,255,255,0.2)",
           color: "#1a1a2e",
         }}
         initial={flipping ? { rotateX: 0, y: 0 } : false}
@@ -58,15 +58,15 @@ function Coin({ face, delay, flipping }: { face: number; delay: number; flipping
         transition={flipping ? { duration: 1.2, delay, ease: "easeInOut" } : { duration: 0 }}
       >
         {isFront ? "乾" : "坤"}
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   );
 }
 
 /* 爻线组件 */
 function YaoLine({ value, label, isChanging }: { value: LineValue; label: string; isChanging: boolean }) {
   const isYang = value === 7 || value === 9;
-  const color = isChanging ? "#ef4444" : "#d4a574";
+  const color = isChanging ? "#ef4444" : "var(--color-gold)";
   return (
     <div className="flex items-center gap-3">
       <span className="text-xs w-10 text-right opacity-50">{label}</span>
@@ -177,13 +177,13 @@ function DivinationContent() {
     <PageLayout navItems={navItems} maxWidth="max-w-lg">
       <div className="flex flex-col items-center py-6 sm:py-10">
         {/* 顶部装饰 */}
-        <motion.div
+        <m.div
           className="mb-2 text-4xl opacity-30 animate-pulse-glow"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.3 }}
         >
           ☰
-        </motion.div>
+        </m.div>
 
         {/* 问题回显 */}
         <p className="text-xs text-amber-400/40 mb-6 tracking-wide max-w-md text-center truncate">
@@ -197,7 +197,7 @@ function DivinationContent() {
               <div
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
                   (s === 1 && phase === "shaking") || (s <= 2 && phase === "done")
-                    ? "bg-[var(--gold)] shadow-[0_0_10px_rgba(212,165,116,0.5)]"
+                    ? "bg-[var(--gold)] shadow-[0_0_10px_color-mix(in_srgb,var(--color-gold)_50%,transparent)]"
                     : "bg-white/10"
                 }`}
               />
@@ -213,7 +213,7 @@ function DivinationContent() {
         <AnimatePresence mode="wait">
           {/* ═══ 摇卦阶段 ═══ */}
           {phase === "shaking" && (
-            <motion.div
+            <m.div
               key="shaking"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -240,7 +240,7 @@ function DivinationContent() {
 
                 {/* 当前爻结果提示 */}
                 {lines.length > 0 && !flipping && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-sm opacity-50 mb-2"
@@ -251,7 +251,7 @@ function DivinationContent() {
                       const isChanging = last === 6 || last === 9;
                       return `${isYang ? "阳爻 ▬▬▬" : "阴爻 ▬ ▬"}${isChanging ? "（动爻）" : ""}`;
                     })()}
-                  </motion.div>
+                  </m.div>
                 )}
               </Card>
 
@@ -263,14 +263,14 @@ function DivinationContent() {
                       const i = lines.length - 1 - ri;
                       const isChanging = v === 6 || v === 9;
                       return (
-                        <motion.div
+                        <m.div
                           key={i}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.1 }}
                         >
                           <YaoLine value={v} label={YAO_LABELS[i]} isChanging={isChanging} />
-                        </motion.div>
+                        </m.div>
                       );
                     })}
                   </div>
@@ -286,29 +286,29 @@ function DivinationContent() {
               >
                 {flipping ? "摇卦中…" : currentYao >= 6 ? "卦象已成" : "摇 卦"}
               </Button>
-            </motion.div>
+            </m.div>
           )}
 
           {/* ═══ 卦象生成 ═══ */}
           {phase === "done" && (
-            <motion.div
+            <m.div
               key="done"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
               className="w-full text-center"
             >
-              <motion.p
+              <m.p
                 className="text-xs tracking-[0.3em] opacity-30 mb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.3 }}
                 transition={{ delay: 0.3 }}
               >
                 卦象已成
-              </motion.p>
+              </m.p>
 
               {/* 卦名 */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
@@ -324,12 +324,12 @@ function DivinationContent() {
                     动爻：{changingLines.map((i) => YAO_LABELS[i]).join("、")}
                   </p>
                 )}
-              </motion.div>
+              </m.div>
 
               <div className="divider-gold my-6" />
 
               {/* 六爻图 */}
-              <motion.div
+              <m.div
                 className="inline-block mb-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -341,19 +341,19 @@ function DivinationContent() {
                       const i = 5 - ri;
                       const isChanging = v === 6 || v === 9;
                       return (
-                        <motion.div
+                        <m.div
                           key={i}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.7 + ri * 0.1 }}
                         >
                           <YaoLine value={v} label={YAO_LABELS[i]} isChanging={isChanging} />
-                        </motion.div>
+                        </m.div>
                       );
                     })}
                   </div>
                 </Card>
-              </motion.div>
+              </m.div>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button variant="primary" size="lg" onClick={goToResult}>
@@ -363,7 +363,7 @@ function DivinationContent() {
                   重新占卜
                 </Button>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>

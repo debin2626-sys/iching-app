@@ -2,6 +2,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { rateLimitGeneral } from "@/lib/rate-limit";
+import { updateProfileSchema, validateBody } from "@/lib/validations";
 
 // GET: 获取用户资料
 export async function GET() {
@@ -41,24 +43,28 @@ export async function GET() {
 // PATCH: 更新用户资料
 export async function PATCH(request: NextRequest) {
   try {
+    // Rate limit
+    const limited = rateLimitGeneral(request);
+    if (limited) return limited;
+
     const session = await auth();
     if (!session?.user?.id) {
       return NextResponse.json({ error: "请先登录" }, { status: 401 });
     }
 
     const body = await request.json();
-    const { name } = body;
 
-    const data: Record<string, unknown> = {};
-    if (name !== undefined) data.name = name;
-
-    if (Object.keys(data).length === 0) {
-      return NextResponse.json({ error: "没有需要更新的字段" }, { status: 400 });
+    // Input validation
+    const validation = validateBody(updateProfileSchema, body);
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 });
     }
+
+    const { name } = validation.data;
 
     const user = await prisma.user.update({
       where: { id: session.user.id },
-      data,
+      data: { name },
       select: {
         id: true,
         name: true,

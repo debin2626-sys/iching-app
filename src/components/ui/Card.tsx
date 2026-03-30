@@ -20,21 +20,21 @@ const paddingClasses: Record<Padding, string> = {
 const variantClasses: Record<Variant, string> = {
   default: [
     "bg-[var(--bg-card)]",
-    "border border-[rgba(212,165,116,0.1)]",
+    "border border-gold/10",
     "backdrop-blur-[4px]",
   ].join(" "),
   elevated: [
     "bg-[var(--bg-card)]",
-    "border border-[rgba(212,165,116,0.1)]",
+    "border border-gold/10",
     "backdrop-blur-[4px]",
     "shadow-[0_8px_32px_rgba(0,0,0,0.4)]",
   ].join(" "),
   interactive: [
     "bg-[var(--bg-card)]",
-    "border border-[rgba(212,165,116,0.1)]",
+    "border border-gold/10",
     "backdrop-blur-[4px]",
     "transition-all duration-300 ease-in-out",
-    "hover:-translate-y-[2px] hover:border-[rgba(212,165,116,0.3)]",
+    "hover:-translate-y-[2px] hover:border-gold/30",
     "hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]",
     "cursor-pointer",
   ].join(" "),

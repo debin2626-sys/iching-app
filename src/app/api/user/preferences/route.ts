@@ -2,6 +2,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { rateLimitGeneral } from "@/lib/rate-limit";
+import { updatePreferencesSchema, validateBody } from "@/lib/validations";
 
 // GET: 获取用户偏好
 export async function GET() {
@@ -35,13 +37,24 @@ export async function GET() {
 // PUT: 更新用户偏好
 export async function PUT(request: NextRequest) {
   try {
+    // Rate limit
+    const limited = rateLimitGeneral(request);
+    if (limited) return limited;
+
     const session = await auth();
     if (!session?.user?.id) {
       return NextResponse.json({ error: "请先登录" }, { status: 401 });
     }
 
     const body = await request.json();
-    const { language, theme, aiDepth, notifications } = body;
+
+    // Input validation
+    const validation = validateBody(updatePreferencesSchema, body);
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 });
+    }
+
+    const { language, theme, aiDepth, notifications } = validation.data;
 
     const data: Record<string, unknown> = {};
     if (language !== undefined) data.language = language;

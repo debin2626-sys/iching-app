@@ -42,7 +42,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             "placeholder:text-gray-500",
             error
               ? "border-red-500 focus:border-red-400 focus:shadow-[0_0_20px_rgba(239,68,68,0.1)]"
-              : "border-[var(--gold-dim)]/30 focus:border-[var(--gold)] focus:shadow-[0_0_20px_rgba(212,165,116,0.1)]",
+              : "border-[var(--gold-dim)]/30 focus:border-[var(--gold)] focus:shadow-[0_0_20px_color-mix(in_srgb,var(--color-gold)_10%,transparent)]",
             "text-gray-200",
             sizeClasses[size],
             className,

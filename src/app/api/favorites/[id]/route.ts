@@ -2,6 +2,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { rateLimitGeneral } from "@/lib/rate-limit";
+import { updateFavoriteSchema, validateBody } from "@/lib/validations";
 
 // GET: 获取单个收藏详情
 export async function GET(
@@ -40,6 +42,10 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Rate limit
+    const limited = rateLimitGeneral(request);
+    if (limited) return limited;
+
     const session = await auth();
     if (!session?.user?.id) {
       return NextResponse.json({ error: "请先登录" }, { status: 401 });
@@ -47,7 +53,14 @@ export async function PATCH(
 
     const { id } = await params;
     const body = await request.json();
-    const { note, tags } = body;
+
+    // Input validation
+    const validation = validateBody(updateFavoriteSchema, body);
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 });
+    }
+
+    const { note, tags } = validation.data;
 
     // 确认收藏属于当前用户
     const existing = await prisma.favorite.findFirst({
@@ -60,7 +73,7 @@ export async function PATCH(
 
     const data: Record<string, unknown> = {};
     if (note !== undefined) data.notes = note;
-    if (tags !== undefined) data.tags = Array.isArray(tags) ? tags : [];
+    if (tags !== undefined) data.tags = Array.isArray(tags) ? tags.join(",") : tags;
 
     const favorite = await prisma.favorite.update({
       where: { id },

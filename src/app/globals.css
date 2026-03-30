@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --color-gold: #d4a574;
+  --color-gold-bright: #e8c96a;
+  --color-gold-dim: #a07840;
+  --color-bg: #0a0a0f;
+  --color-bg-card: rgba(255, 255, 255, 0.03);
+  --color-purple-deep: #2d1b4e;
+  --color-red-dark: #6b2030;
+  --color-text-primary: #f0e6d6;
+  --color-text-secondary: #a09080;
+}
+
 /* ═══════════════════════════════════════════
    易经 · YiChing — 东方玄幻主题
    ═══════════════════════════════════════════ */
@@ -189,5 +201,5 @@ body {
 
 /* ── 标题衬线字体 ── */
 .font-title {
-  font-family: 'Noto Serif SC', 'Georgia', 'Times New Roman', serif;
+  font-family: var(--font-noto-serif-sc), 'Georgia', 'Times New Roman', serif;
 }

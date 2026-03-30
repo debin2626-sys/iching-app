@@ -1,18 +1,12 @@
-
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { rateLimitDivination } from "@/lib/rate-limit";
+import { createDivinationSchema, validateBody } from "@/lib/validations";
 
 // POST: 保存占卜记录
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { question, coinResults, hexagramId, changedHexagramId, changingLines } = body;
-
-    if (!coinResults || !hexagramId) {
-      return NextResponse.json({ error: "缺少必要参数" }, { status: 400 });
-    }
-
     // 尝试获取当前用户（未登录则为 null）
     let userId: string | null = null;
     try {
@@ -22,13 +16,30 @@ export async function POST(request: NextRequest) {
       // 未登录，userId 保持 null
     }
 
+    // Rate limit: per-user + per-IP
+    const limited = rateLimitDivination(request, userId);
+    if (limited) return limited;
+
+    const body = await request.json();
+
+    // Input validation
+    const validation = validateBody(createDivinationSchema, body);
+    if (!validation.success) {
+      return NextResponse.json(
+        { error: validation.error },
+        { status: 400 }
+      );
+    }
+
+    const { question, coinResults, hexagramId, changedHexagramId, changingLines } = validation.data;
+
     const divination = await prisma.divination.create({
       data: {
         userId,
         question: question || null,
         coinResults,
-        hexagramId: Number(hexagramId),
-        changedHexagramId: changedHexagramId ? Number(changedHexagramId) : null,
+        hexagramId,
+        changedHexagramId: changedHexagramId ?? null,
         changingLines: changingLines || [],
       },
       include: {

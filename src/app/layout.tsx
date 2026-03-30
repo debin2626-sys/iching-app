@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Serif_SC } from "next/font/google";
 import AuthProvider from "@/components/AuthProvider";
 import "./globals.css";
 
@@ -13,20 +13,31 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const notoSerifSC = Noto_Serif_SC({
+  variable: "--font-noto-serif-sc",
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "易 · YiChing",
   description: "Ancient Wisdom, Modern Insight",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{locale?: string}>;
 }>) {
+  const {locale} = await params;
+  const lang = locale === 'en' ? 'en' : 'zh';
+
   return (
-    <html lang="zh" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${notoSerifSC.variable} antialiased`}
       >
         <AuthProvider>{children}</AuthProvider>
       </body>

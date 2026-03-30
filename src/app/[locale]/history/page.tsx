@@ -199,7 +199,7 @@ export default function HistoryPage() {
                 >
                   <div className="relative pl-10 group">
                     {/* 时间线节点 */}
-                    <div className="absolute left-2.5 top-5 w-3 h-3 rounded-full border-2 border-amber-600/60 bg-[#0a0a0f] group-hover:bg-amber-600/40 group-hover:shadow-[0_0_10px_rgba(212,165,116,0.4)] transition-all duration-300" />
+                    <div className="absolute left-2.5 top-5 w-3 h-3 rounded-full border-2 border-amber-600/60 bg-bg group-hover:bg-amber-600/40 group-hover:shadow-[0_0_10px_color-mix(in_srgb,var(--color-gold)_40%,transparent)] transition-all duration-300" />
 
                     <Card variant="interactive" padding="md">
                       {/* 卦名 */}

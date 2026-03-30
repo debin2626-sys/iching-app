@@ -1,18 +1,27 @@
-
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { rateLimitAuth } from "@/lib/rate-limit";
+import { registerSchema, validateBody } from "@/lib/validations";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const { email, password, name } = await req.json();
+    // Rate limit: per-IP
+    const limited = rateLimitAuth(req);
+    if (limited) return limited;
 
-    if (!email || !password) {
+    const body = await req.json();
+
+    // Input validation
+    const validation = validateBody(registerSchema, body);
+    if (!validation.success) {
       return NextResponse.json(
-        { error: "邮箱和密码为必填项" },
+        { error: validation.error },
         { status: 400 }
       );
     }
+
+    const { email, password, name } = validation.data;
 
     const existing = await prisma.user.findUnique({ where: { email } });
     if (existing) {

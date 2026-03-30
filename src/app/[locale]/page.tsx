@@ -6,6 +6,14 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import { PageLayout, TextArea, Select, Card, Button } from "@/components/ui";
+import {
+  AnimatedTaichi,
+  AnimatedTitle,
+  AnimatedSubtitle,
+  AnimatedCTA,
+  AnimatedFeatureGrid,
+  AnimatedFeatureCard,
+} from "@/components/home/HeroAnimations";
 
 const YEARS = Array.from({ length: 87 }, (_, i) => 1940 + i);
 const MONTHS = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -78,28 +86,30 @@ export default function Home() {
         </div>
 
         {/* 太极符号 */}
-        <div className="taichi-rotate mb-8">
-          <div className="taichi-symbol" />
-        </div>
+        <AnimatedTaichi>
+          <div className="taichi-rotate mb-8">
+            <div className="taichi-symbol" />
+          </div>
+        </AnimatedTaichi>
 
         {/* 主标题 */}
-        <h1 className="font-title text-5xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-glow mb-4">
+        <AnimatedTitle className="font-title text-5xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-glow mb-4">
           {t("title")}
-        </h1>
+        </AnimatedTitle>
 
         {/* 副标题 */}
-        <p className="glow-text text-lg sm:text-xl tracking-[0.25em] mb-2 font-title opacity-80">
+        <AnimatedSubtitle className="glow-text text-lg sm:text-xl tracking-[0.25em] mb-2 font-title opacity-80" delay={0.5}>
           {t("subtitle")}
-        </p>
-        <p className="text-gray-500 text-sm tracking-widest mb-10">
+        </AnimatedSubtitle>
+        <AnimatedSubtitle className="text-gray-500 text-sm tracking-widest mb-10" delay={0.6}>
           {t("subtitleEn")}
-        </p>
+        </AnimatedSubtitle>
 
         {/* 分割线 */}
         <div className="divider-gold w-32 mb-8" />
 
         {/* ═══ 快速占卜区域 ═══ */}
-        <div className="w-full max-w-lg">
+        <AnimatedCTA className="w-full max-w-lg">
           {/* 问题输入 */}
           <Card className="mb-4">
             <TextArea
@@ -178,7 +188,7 @@ export default function Home() {
           >
             {t("startButton")}
           </Button>
-        </div>
+        </AnimatedCTA>
 
         {/* 底部装饰 */}
         <div className="mt-12 flex items-center gap-3 animate-pulse-glow">
@@ -195,28 +205,30 @@ export default function Home() {
           {t("featuresTitle")}
         </p>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-12">
+        <AnimatedFeatureGrid className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-12">
           {features.map((f) => (
-            <Link key={f.title} href={f.href}>
-              <Card
-                variant="interactive"
-                padding="lg"
-                className="text-center group min-h-[260px] flex flex-col items-center justify-center"
-              >
-                <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {f.emoji}
-                </div>
-                <h3 className="font-title text-2xl font-semibold text-gray-100 mb-4 group-hover:text-amber-200 transition-colors">
-                  {f.title}
-                </h3>
-                <div className="divider-gold w-12 mx-auto mb-4" />
-                <p className="text-base text-gray-400 tracking-wider leading-relaxed group-hover:text-gray-300 transition-colors whitespace-pre-line">
-                  {f.desc}
-                </p>
-              </Card>
-            </Link>
+            <AnimatedFeatureCard key={f.title}>
+              <Link href={f.href}>
+                <Card
+                  variant="interactive"
+                  padding="lg"
+                  className="text-center group min-h-[260px] flex flex-col items-center justify-center"
+                >
+                  <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                    {f.emoji}
+                  </div>
+                  <h3 className="font-title text-2xl font-semibold text-gray-100 mb-4 group-hover:text-amber-200 transition-colors">
+                    {f.title}
+                  </h3>
+                  <div className="divider-gold w-12 mx-auto mb-4" />
+                  <p className="text-base text-gray-400 tracking-wider leading-relaxed group-hover:text-gray-300 transition-colors whitespace-pre-line">
+                    {f.desc}
+                  </p>
+                </Card>
+              </Link>
+            </AnimatedFeatureCard>
           ))}
-        </div>
+        </AnimatedFeatureGrid>
       </section>
 
       {/* ═══ 底部 ═══ */}

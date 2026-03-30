@@ -9,3 +9,4 @@ export { default as TextArea, type TextAreaProps } from "./TextArea";
 export { default as Card, type CardProps } from "./Card";
 export { default as Toast } from "./Toast";
 export { ToastProvider, useToast, type ToastType, type ToastItem } from "./useToast";
+export { MotionProvider } from "./MotionProvider";
