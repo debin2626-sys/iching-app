@@ -74,7 +74,7 @@ export default function Home() {
     <>
       <NavBar items={navItems} />
       <main className="min-h-screen bg-[#0a0a12]">
-        <div className="max-w-[600px] mx-auto px-6 pt-32 md:pt-36 pb-20">
+        <div className="max-w-xl mx-auto px-6 pt-44 md:pt-48 pb-20">
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
@@ -232,7 +232,7 @@ export default function Home() {
             {f.icon}
             <h3 className="text-lg font-bold text-[#f5f0e8] mb-2">{f.title}</h3>
             <p className="text-sm text-[#a0978a] leading-relaxed whitespace-pre-line">
-              {f.desc}
+              {f.desc.split('\\n').join('\n')}
             </p>
           </div>
         ))}

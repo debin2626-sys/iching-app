@@ -9,8 +9,8 @@ const spring = { type: "spring" as const, stiffness: 80, damping: 18 };
 export function AnimatedTaichi({ children }: { children: ReactNode }) {
   return (
     <m.div
-      initial={{ opacity: 1, scale: 0.95, rotate: -10 }}
-      animate={{ opacity: 1, scale: 1, rotate: 0 }}
+      initial={{ opacity: 1, scale: 1 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ ...spring, duration: 1.2 }}
     >
       {children}
