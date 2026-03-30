@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
 const intlMiddleware = createMiddleware(routing);
@@ -15,6 +15,15 @@ const securityHeaders: Record<string, string> = {
 };
 
 export default function middleware(request: NextRequest) {
+  // Skip i18n redirect for API routes — they don't need locale prefixes
+  if (request.nextUrl.pathname.startsWith('/api/')) {
+    const response = NextResponse.next();
+    for (const [key, value] of Object.entries(securityHeaders)) {
+      response.headers.set(key, value);
+    }
+    return response;
+  }
+
   const response = intlMiddleware(request);
 
   for (const [key, value] of Object.entries(securityHeaders)) {
