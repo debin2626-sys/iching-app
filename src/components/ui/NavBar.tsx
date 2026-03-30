@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
+import { useSession } from "next-auth/react";
 import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
@@ -55,6 +56,48 @@ function LanguageSwitcher() {
   );
 }
 
+/* ── User Avatar / Login Button ── */
+function UserButton() {
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    return (
+      <div className="h-8 w-8 rounded-full bg-white/5 animate-pulse" />
+    );
+  }
+
+  if (!session?.user) {
+    return (
+      <Link
+        href="/auth"
+        className="text-sm text-gray-400 hover:text-gold transition-colors duration-300 tracking-wide"
+      >
+        登录
+      </Link>
+    );
+  }
+
+  const initial = session.user.name?.charAt(0) || session.user.email?.charAt(0) || "U";
+
+  return (
+    <Link
+      href="/auth"
+      className="flex h-8 w-8 items-center justify-center rounded-full bg-gold/20 border border-gold/30 text-gold text-sm font-semibold hover:bg-gold/30 transition-all duration-300"
+      title={session.user.name || session.user.email || ""}
+    >
+      {session.user.image ? (
+        <img
+          src={session.user.image}
+          alt=""
+          className="h-8 w-8 rounded-full object-cover"
+        />
+      ) : (
+        initial.toUpperCase()
+      )}
+    </Link>
+  );
+}
+
 /* ── Desktop top bar ── */
 function DesktopNav({ items }: NavBarProps) {
   const pathname = usePathname();
@@ -100,7 +143,11 @@ function DesktopNav({ items }: NavBarProps) {
         })}
       </ul>
 
-      <LanguageSwitcher />
+      {/* Right side: Language + User */}
+      <div className="flex items-center gap-4">
+        <LanguageSwitcher />
+        <UserButton />
+      </div>
     </nav>
   );
 }
@@ -108,7 +155,6 @@ function DesktopNav({ items }: NavBarProps) {
 /* ── Mobile bottom tab bar ── */
 function MobileTabBar({ items }: NavBarProps) {
   const pathname = usePathname();
-  // iOS-style bottom tab bar — max 5 items
   const tabs = items.slice(0, 5);
 
   return (
@@ -143,11 +189,6 @@ function MobileTabBar({ items }: NavBarProps) {
           </Link>
         );
       })}
-
-      {/* Language toggle as last tab-like item on mobile */}
-      <div className="flex flex-1 flex-col items-center justify-center pb-2 pt-2">
-        <LanguageSwitcher />
-      </div>
     </nav>
   );
 }

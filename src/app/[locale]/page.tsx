@@ -29,13 +29,13 @@ export default function Home() {
   const [birthMonth, setBirthMonth] = useState("");
   const [birthDay, setBirthDay] = useState("");
   const [birthHour, setBirthHour] = useState("");
+  const [gender, setGender] = useState<"" | "male" | "female">("");
   const [showBirth, setShowBirth] = useState(false);
 
   const hasBirthInfo = birthYear && birthMonth && birthDay && birthHour;
 
   const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divination", icon: <span>🔮</span> },
+    { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
     { label: tNav("history"), href: "/history", icon: <span>📜</span> },
   ];
@@ -69,6 +69,9 @@ export default function Home() {
       params.set("bm", birthMonth);
       params.set("bd", birthDay);
       params.set("bh", birthHour);
+    }
+    if (gender) {
+      params.set("gender", gender);
     }
     router.push(`/divination?${params.toString()}`);
   };
@@ -169,6 +172,36 @@ export default function Home() {
                     size="sm"
                   />
                 </div>
+
+                {/* 性别选择 */}
+                <div className="mt-3">
+                  <p className="text-xs text-gray-500 mb-2">{t("genderLabel")}</p>
+                  <div className="flex gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setGender(gender === "male" ? "" : "male")}
+                      className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
+                        gender === "male"
+                          ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
+                          : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
+                      }`}
+                    >
+                      ♂ {t("genderMale")}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setGender(gender === "female" ? "" : "female")}
+                      className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
+                        gender === "female"
+                          ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
+                          : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
+                      }`}
+                    >
+                      ♀ {t("genderFemale")}
+                    </button>
+                  </div>
+                </div>
+
                 {hasBirthInfo && (
                   <p className="text-xs text-amber-400/50 mt-3 tracking-wide">
                     {t("birthRecorded")}

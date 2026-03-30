@@ -17,6 +17,7 @@ interface InterpretationParams {
   question: string;
   locale: string;
   birthInfo?: BirthInfo;
+  gender?: string;
 }
 
 const SYSTEM_PROMPT_ZH = `你是一位精通周易和命理学的国学大师，深谙传统文化精髓，擅长将八字命理与卦象解读相结合。你的解读植根于经典易学，引用古籍原文，语言典雅古朴而不晦涩。请以传统文化传承者的身份，用温和而庄重的语气回答，注重义理与象数的结合，给出全面深入的综合分析。`;
@@ -24,10 +25,12 @@ const SYSTEM_PROMPT_ZH = `你是一位精通周易和命理学的国学大师，
 const SYSTEM_PROMPT_EN = `You are a holistic wellness guide who draws upon the ancient wisdom of the I Ching (Book of Changes). Your interpretations focus on personal growth, mindfulness, and well-being. Blend Eastern philosophy with modern wellness practices. Respond with warmth, empathy, and actionable self-care insights.`;
 
 function buildUserPromptZH(params: InterpretationParams): string {
-  const { hexagramNumber, changingLines, question, birthInfo } = params;
+  const { hexagramNumber, changingLines, question, birthInfo, gender } = params;
   const changingDesc = changingLines.length > 0
     ? `动爻：第 ${changingLines.join('、')} 爻`
     : '无动爻';
+
+  const genderDesc = gender === 'male' ? '男' : gender === 'female' ? '女' : '';
 
   let baziSection = '';
   if (birthInfo) {
@@ -38,7 +41,7 @@ function buildUserPromptZH(params: InterpretationParams): string {
 - 日主：${bazi.dayMaster}（${bazi.dayMasterElement}）
 - 日主强弱：${bazi.strength}
 - 五行分布：金${bazi.wuxing['金']} 木${bazi.wuxing['木']} 水${bazi.wuxing['水']} 火${bazi.wuxing['火']} 土${bazi.wuxing['土']}
-- 出生年份：${birthInfo.year}年
+- 出生年份：${birthInfo.year}年${genderDesc ? `\n- 性别：${genderDesc}` : ''}
 
 `;
   }

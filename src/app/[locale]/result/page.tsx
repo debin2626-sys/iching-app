@@ -3,6 +3,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { calculateBazi, type BirthInfo } from "@/lib/iching/bazi";
 import { PageLayout, Button, Skeleton } from "@/components/ui";
@@ -168,23 +169,71 @@ function BaziCard({ birthInfo }: { birthInfo: BirthInfo }) {
   );
 }
 
+/* ── 打字机 hook ── */
+function useTypewriter(fullText: string, streamDone: boolean) {
+  const [displayCount, setDisplayCount] = useState(0);
+  const prevLenRef = useRef(0);
+
+  useEffect(() => {
+    if (displayCount >= fullText.length) return;
+    const id = setInterval(() => {
+      setDisplayCount((c) => {
+        const next = c + 1;
+        if (next >= fullText.length) clearInterval(id);
+        return next;
+      });
+    }, 35);
+    return () => clearInterval(id);
+  }, [fullText, displayCount]);
+
+  // When new streaming content arrives, keep displayCount behind to create typewriter gap
+  useEffect(() => {
+    if (fullText.length > prevLenRef.current && displayCount >= prevLenRef.current) {
+      // new chunk arrived — typewriter interval will catch up naturally
+    }
+    prevLenRef.current = fullText.length;
+  }, [fullText.length, displayCount]);
+
+  const displayText = fullText.slice(0, displayCount);
+  const isTyping = displayCount < fullText.length;
+  const showCursor = isTyping || (!streamDone && fullText.length > 0);
+
+  return { displayText, showCursor };
+}
+
 /* ── AI 解读区组件 ── */
 function AISection({
   hexagramNumber,
   changingLines,
   question,
   birthInfo,
+  gender,
 }: {
   hexagramNumber: number;
   changingLines: number[];
   question: string;
   birthInfo: BirthInfo | null;
+  gender: string;
 }) {
   const t = useTranslations("Result");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
+  const [streamDone, setStreamDone] = useState(false);
   const [error, setError] = useState("");
   const hasFetched = useRef(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const { displayText, showCursor } = useTypewriter(content, streamDone);
+
+  // Auto-scroll to bottom while typing
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const el = contentRef.current;
+    const isNearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    if (isNearBottom) {
+      el.scrollTop = el.scrollHeight;
+    }
+  }, [displayText]);
 
   useEffect(() => {
     if (hasFetched.current) return;
@@ -203,6 +252,7 @@ function AISection({
             question,
             locale: "zh",
             birthInfo,
+            gender: gender || undefined,
           }),
         });
 
@@ -243,6 +293,7 @@ function AISection({
         setError(err instanceof Error ? err.message : "AI 解读失败");
       } finally {
         setLoading(false);
+        setStreamDone(true);
       }
     };
 
@@ -264,8 +315,14 @@ function AISection({
       )}
 
       {content && (
-        <div className="prose prose-invert prose-sm max-w-none text-zinc-300 whitespace-pre-wrap leading-relaxed">
-          {content}
+        <div
+          ref={contentRef}
+          className="prose prose-invert prose-sm max-w-none text-zinc-300 whitespace-pre-wrap leading-relaxed max-h-[60vh] overflow-y-auto"
+        >
+          {displayText}
+          {showCursor && (
+            <span className="inline-block animate-pulse text-amber-400 ml-0.5">▌</span>
+          )}
         </div>
       )}
     </Card>
@@ -279,8 +336,7 @@ function ResultContent() {
   const tNav = useTranslations("Nav");
 
   const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divination", icon: <span>🔮</span> },
+    { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
     { label: tNav("history"), href: "/history", icon: <span>📜</span> },
   ];
@@ -293,6 +349,7 @@ function ResultContent() {
   const birthMonth = searchParams.get("bm");
   const birthDay = searchParams.get("bd");
   const birthHour = searchParams.get("bh");
+  const gender = searchParams.get("gender") || "";
 
   /* 解析爻值 */
   const lines: LineValue[] = linesParam
@@ -362,6 +419,16 @@ function ResultContent() {
     }
   };
 
+  /* 动画变体 */
+  const fadeScale = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
+  };
+  const slideUp = (delay: number) => ({
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay } },
+  });
+
   /* 无效状态 */
   if (!hexNum) {
     return (
@@ -385,7 +452,12 @@ function ResultContent() {
     <PageLayout navItems={navItems} maxWidth="max-w-2xl">
       <div className="py-6 space-y-6">
         {/* ── 卦象头部 ── */}
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          variants={fadeScale}
+          initial="hidden"
+          animate="visible"
+        >
           <p className="text-xs tracking-[0.3em] text-amber-400/30 mb-2">
             {t("hexagramNumber", { num: hexNum })}
           </p>
@@ -416,21 +488,31 @@ function ResultContent() {
             </p>
           )}
           <div className="divider-gold w-24 mx-auto mt-4" />
-        </div>
+        </motion.div>
 
         {/* ── 六爻图 ── */}
         {lines.length === 6 && (
-          <div className="flex justify-center">
+          <motion.div
+            className="flex justify-center"
+            variants={fadeScale}
+            initial="hidden"
+            animate="visible"
+          >
             <Card variant="elevated" padding="lg">
               <HexagramDiagram lines={lines} />
             </Card>
-          </div>
+          </motion.div>
         )}
 
         {/* ── 八字信息卡 ── */}
         {birthInfo && <BaziCard birthInfo={birthInfo} />}
 
         {/* ── 经典解读区 ── */}
+        <motion.div
+          variants={slideUp(0.3)}
+          initial="hidden"
+          animate="visible"
+        >
         <Card variant="elevated" padding="lg">
           <h3 className="text-lg font-title text-amber-300 mb-4">📜 {t("classicTitle")}</h3>
 
@@ -497,19 +579,32 @@ function ResultContent() {
             </div>
           )}
         </Card>
+        </motion.div>
 
         {/* ── AI 解读区 ── */}
         {hexNum && question && (
+          <motion.div
+            variants={slideUp(0.5)}
+            initial="hidden"
+            animate="visible"
+          >
           <AISection
             hexagramNumber={hexNum}
             changingLines={changingLines}
             question={question}
             birthInfo={birthInfo}
+            gender={gender}
           />
+          </motion.div>
         )}
 
         {/* ── 底部操作栏 ── */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4"
+          variants={slideUp(0.7)}
+          initial="hidden"
+          animate="visible"
+        >
           <Button variant="primary" href="/divination">
             {t("divinationAgain")}
           </Button>
@@ -519,7 +614,7 @@ function ResultContent() {
           <Button variant="ghost" onClick={handleShare}>
             {t("share")}
           </Button>
-        </div>
+        </motion.div>
       </div>
     </PageLayout>
   );

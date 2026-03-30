@@ -7,6 +7,9 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { hexagramNumber, changingLines, question, locale, birthInfo } = body;
 
+    // 校验 gender
+    const gender = typeof body.gender === 'string' ? body.gender : undefined;
+
     if (!hexagramNumber || !question) {
       return NextResponse.json(
         { error: 'hexagramNumber and question are required' },
@@ -31,6 +34,7 @@ export async function POST(req: NextRequest) {
       question: String(question),
       locale: locale || 'zh',
       birthInfo: validBirthInfo,
+      gender,
     });
 
     const controller = new AbortController();

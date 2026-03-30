@@ -68,8 +68,7 @@ export default function HexagramsPage() {
   });
 
   const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divination", icon: <span>🔮</span> },
+    { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
     { label: tNav("history"), href: "/history", icon: <span>📜</span> },
   ];

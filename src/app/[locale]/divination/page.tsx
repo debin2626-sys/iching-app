@@ -5,10 +5,11 @@ import { useState, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import { getChangingLines } from "@/lib/iching/coins";
 import type { LineValue } from "@/lib/iching/coins";
 import { linesToBinary, getHexagramNumber } from "@/lib/iching/hexagram";
-import { PageLayout, Button, Empty } from "@/components/ui";
+import { PageLayout, Button, TextArea, Select } from "@/components/ui";
 import Card from "@/components/ui/Card";
 
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
@@ -29,6 +30,10 @@ const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
   57:{cn:"巽",en:"Xun"},58:{cn:"兑",en:"Dui"},59:{cn:"涣",en:"Huan"},60:{cn:"节",en:"Jie"},
   61:{cn:"中孚",en:"Zhong Fu"},62:{cn:"小过",en:"Xiao Guo"},63:{cn:"既济",en:"Ji Ji"},64:{cn:"未济",en:"Wei Ji"},
 };
+
+const YEARS = Array.from({ length: 87 }, (_, i) => 1940 + i);
+const MONTHS = Array.from({ length: 12 }, (_, i) => i + 1);
+const DAYS = Array.from({ length: 31 }, (_, i) => i + 1);
 
 const YAO_LABELS = ["初爻", "二爻", "三爻", "四爻", "五爻", "上爻"];
 const YAO_CN = ["一", "二", "三", "四", "五", "六"];
@@ -86,27 +91,199 @@ function YaoLine({ value, label, isChanging }: { value: LineValue; label: string
   );
 }
 
+/* 问题输入表单 */
+function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => void }) {
+  const t = useTranslations("Home");
+  const [question, setQuestion] = useState("");
+  const [birthYear, setBirthYear] = useState("");
+  const [birthMonth, setBirthMonth] = useState("");
+  const [birthDay, setBirthDay] = useState("");
+  const [birthHour, setBirthHour] = useState("");
+  const [gender, setGender] = useState<"" | "male" | "female">("");
+  const [showBirth, setShowBirth] = useState(false);
+
+  const hasBirthInfo = birthYear && birthMonth && birthDay && birthHour;
+
+  const handleSubmit = () => {
+    if (!question.trim()) return;
+    const params = new URLSearchParams({ question });
+    if (hasBirthInfo) {
+      params.set("by", birthYear);
+      params.set("bm", birthMonth);
+      params.set("bd", birthDay);
+      params.set("bh", birthHour);
+    }
+    if (gender) {
+      params.set("gender", gender);
+    }
+    onSubmit(params);
+  };
+
+  return (
+    <m.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="w-full"
+    >
+      <m.div
+        className="mb-4 text-4xl opacity-30 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+      >
+        🔮
+      </m.div>
+
+      <h1 className="font-title text-2xl sm:text-3xl text-gold-glow mb-2 text-center">
+        {t("title")}
+      </h1>
+      <p className="text-xs opacity-40 mb-6 tracking-wide text-center">
+        {t("subtitle")}
+      </p>
+
+      <div className="divider-gold mb-6" />
+
+      {/* 问题输入 */}
+      <Card className="mb-4">
+        <TextArea
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          placeholder={t("placeholder")}
+          rows={3}
+          className="font-title"
+        />
+      </Card>
+
+      {/* 生辰折叠区 */}
+      <Card className="overflow-hidden mb-6" padding="sm">
+        <button
+          onClick={() => setShowBirth(!showBirth)}
+          className="w-full flex items-center justify-between px-2 py-2 hover:bg-white/5 transition rounded-lg"
+        >
+          <span className="flex items-center gap-2 text-sm text-amber-400/70 font-title">
+            🌙 {t("birthLabel")}
+            <span className="text-xs text-gray-500">{t("birthHint")}</span>
+          </span>
+          <span className={`text-amber-400/40 text-xs transition-transform duration-300 ${showBirth ? "rotate-180" : ""}`}>▼</span>
+        </button>
+        {showBirth && (
+          <div className="px-2 pb-3 pt-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <Select
+                label={t("year")}
+                value={birthYear}
+                onChange={(e) => setBirthYear(e.target.value)}
+                options={YEARS.map((y) => ({ value: String(y), label: `${y}` }))}
+                placeholder={t("yearPlaceholder")}
+                size="sm"
+              />
+              <Select
+                label={t("month")}
+                value={birthMonth}
+                onChange={(e) => setBirthMonth(e.target.value)}
+                options={MONTHS.map((m) => ({ value: String(m), label: `${m}` }))}
+                placeholder={t("monthPlaceholder")}
+                size="sm"
+              />
+              <Select
+                label={t("day")}
+                value={birthDay}
+                onChange={(e) => setBirthDay(e.target.value)}
+                options={DAYS.map((d) => ({ value: String(d), label: `${d}` }))}
+                placeholder={t("dayPlaceholder")}
+                size="sm"
+              />
+              <Select
+                label={t("hour")}
+                value={birthHour}
+                onChange={(e) => setBirthHour(e.target.value)}
+                options={SHI_CHEN_LABELS.map((label, i) => ({ value: String(i), label }))}
+                placeholder={t("hourPlaceholder")}
+                size="sm"
+              />
+            </div>
+
+            {/* 性别选择 */}
+            <div className="mt-3">
+              <p className="text-xs text-gray-500 mb-2">{t("genderLabel")}</p>
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setGender(gender === "male" ? "" : "male")}
+                  className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
+                    gender === "male"
+                      ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
+                      : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
+                  }`}
+                >
+                  ♂ {t("genderMale")}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setGender(gender === "female" ? "" : "female")}
+                  className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
+                    gender === "female"
+                      ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
+                      : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
+                  }`}
+                >
+                  ♀ {t("genderFemale")}
+                </button>
+              </div>
+            </div>
+
+            {hasBirthInfo && (
+              <p className="text-xs text-amber-400/50 mt-3 tracking-wide">
+                {t("birthRecorded")}
+              </p>
+            )}
+          </div>
+        )}
+      </Card>
+
+      <Button
+        variant="primary"
+        size="lg"
+        onClick={handleSubmit}
+        disabled={!question.trim()}
+        className="w-full font-title tracking-wider"
+      >
+        {t("startButton")}
+      </Button>
+    </m.div>
+  );
+}
+
 function DivinationContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const tNav = useTranslations("Nav");
 
   const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divination", icon: <span>🔮</span> },
+    { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
     { label: tNav("history"), href: "/history", icon: <span>📜</span> },
   ];
 
   // 从 URL 读取首页传来的参数
-  const question = searchParams.get("question") || "";
+  const questionParam = searchParams.get("question") || "";
   const birthYear = searchParams.get("by") || "";
   const birthMonth = searchParams.get("bm") || "";
   const birthDay = searchParams.get("bd") || "";
   const birthHour = searchParams.get("bh") || "";
+  const genderParam = searchParams.get("gender") || "";
 
-  // 如果没有问题，引导回首页
-  const noQuestion = !question.trim();
+  // 内部状态：如果 URL 没有 question，显示输入表单
+  const [question, setQuestion] = useState(questionParam);
+  const [hasStarted, setHasStarted] = useState(!!questionParam.trim());
+
+  const handleQuestionSubmit = (params: URLSearchParams) => {
+    setQuestion(params.get("question") || "");
+    setHasStarted(true);
+    // Update URL without full navigation
+    const newUrl = `/divination?${params.toString()}`;
+    window.history.replaceState(null, "", newUrl);
+  };
 
   const [phase, setPhase] = useState<"shaking" | "done">("shaking");
   const [lines, setLines] = useState<LineValue[]>([]);
@@ -152,6 +329,9 @@ function DivinationContent() {
       params.set("bd", birthDay);
       params.set("bh", birthHour);
     }
+    if (genderParam) {
+      params.set("gender", genderParam);
+    }
     router.push(`/result?${params.toString()}`);
   };
 
@@ -159,16 +339,13 @@ function DivinationContent() {
     router.push("/");
   };
 
-  // 没有问题时，用 Empty 组件提示
-  if (noQuestion) {
+  // 没有问题时，显示输入表单而不是错误提示
+  if (!hasStarted) {
     return (
       <PageLayout navItems={navItems} maxWidth="max-w-lg">
-        <Empty
-          icon={<span>🔮</span>}
-          title="请先输入您的问题"
-          description="在首页输入您想占卜的问题后，再来此页摇卦"
-          action={<Button variant="primary" href="/">返回首页</Button>}
-        />
+        <div className="flex flex-col items-center py-6 sm:py-10">
+          <QuestionForm onSubmit={handleQuestionSubmit} />
+        </div>
       </PageLayout>
     );
   }
