@@ -173,25 +173,25 @@ export default function HistoryPage() {
   }
 
   return (
-    <PageLayout navItems={navItems} maxWidth="max-w-2xl">
+    <PageLayout navItems={navItems} maxWidth="max-w-4xl">
       {/* Title */}
-      <div className="text-center mb-8">
-        <h1 className="font-title text-3xl sm:text-4xl text-gold-glow tracking-wider mb-2">
+      <div className="text-center mb-10">
+        <h1 className="font-title text-4xl sm:text-5xl text-gold-glow tracking-wider mb-3">
           {t("title")}
         </h1>
-        <p className="text-amber-400/40 text-sm tracking-[0.3em]">{t("subtitle")}</p>
-        <div className="divider-gold w-24 mx-auto mt-4" />
+        <p className="text-amber-400/40 text-base tracking-[0.3em]">{t("subtitle")}</p>
+        <div className="divider-gold w-24 mx-auto mt-5" />
       </div>
 
       {/* Time filter tabs */}
       {!loading && records.length > 0 && (
-        <div className="flex justify-center gap-2 mb-8">
+        <div className="flex justify-center gap-3 mb-10">
           {timeFilterTabs.map((tab) => (
             <button
               key={tab.key}
               onClick={() => setTimeFilter(tab.key)}
               className={[
-                "px-4 py-1.5 rounded-full text-sm transition-all duration-300",
+                "px-6 py-2.5 rounded-full text-base font-medium transition-all duration-300",
                 timeFilter === tab.key
                   ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-[0_0_10px_rgba(217,169,56,0.1)]"
                   : "text-zinc-500 border border-zinc-800 hover:text-zinc-300 hover:border-zinc-600",
@@ -212,15 +212,15 @@ export default function HistoryPage() {
 
       {/* Empty state - no records at all */}
       {!loading && records.length === 0 && (
-        <div className="flex flex-col items-center justify-center py-16">
-          <div className="text-6xl mb-6 opacity-30 animate-[spin_20s_linear_infinite]">☯</div>
-          <p className="text-lg text-amber-400/60 font-title mb-2">
+        <div className="flex flex-col items-center justify-center py-20">
+          <div className="text-8xl mb-8 opacity-30 animate-[spin_20s_linear_infinite]">☯</div>
+          <p className="text-xl text-amber-400/60 font-title mb-3">
             {t("empty")}
           </p>
-          <p className="text-sm text-zinc-600 mb-6 text-center max-w-xs">
+          <p className="text-base text-zinc-600 mb-8 text-center max-w-sm">
             {t("emptyHint")}
           </p>
-          <Button href="/divination">
+          <Button href="/divination" size="lg" className="h-12 px-8">
             {t("startDivination")}
           </Button>
         </div>
@@ -231,10 +231,10 @@ export default function HistoryPage() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col items-center justify-center py-16"
+          className="flex flex-col items-center justify-center py-20"
         >
-          <div className="text-5xl mb-4 opacity-20">☯</div>
-          <p className="text-zinc-500 text-sm">
+          <div className="text-6xl mb-5 opacity-20">☯</div>
+          <p className="text-zinc-500 text-base">
             {locale === "zh" ? "该时间段内暂无记录" : "No records in this period"}
           </p>
         </motion.div>
@@ -277,17 +277,17 @@ export default function HistoryPage() {
                         {/* Timeline node */}
                         <div className="absolute left-2.5 top-5 w-3 h-3 rounded-full border-2 border-amber-600/60 bg-bg group-hover:bg-amber-600/40 group-hover:shadow-[0_0_10px_color-mix(in_srgb,var(--color-gold)_40%,transparent)] transition-all duration-300" />
 
-                        <Card variant="interactive" padding="md">
+                        <Card variant="interactive" padding="md" className="!p-6 sm:!p-7">
                           {/* Hexagram name */}
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <span className="font-title text-xl text-amber-300 group-hover:text-gold-glow transition-colors">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-3">
+                              <span className="font-title text-2xl text-amber-300 group-hover:text-gold-glow transition-colors">
                                 {hexName}
                               </span>
                               {changedName && (
                                 <>
-                                  <span className="text-amber-600/40 text-sm">{t("changeTo")}</span>
-                                  <span className="font-title text-lg text-amber-400/70">
+                                  <span className="text-amber-600/40 text-base">{t("changeTo")}</span>
+                                  <span className="font-title text-xl text-amber-400/70">
                                     {changedName}
                                   </span>
                                 </>
@@ -299,13 +299,13 @@ export default function HistoryPage() {
                           </div>
 
                           {/* Question */}
-                          <p className="text-sm text-zinc-400 mb-3 truncate">
+                          <p className="text-base text-zinc-400 mb-3 truncate">
                             {record.question ? t("questionPrefix") : ""}
                             {questionText}
                           </p>
 
                           {/* Time */}
-                          <p className="text-xs text-zinc-600">
+                          <p className="text-sm text-zinc-600">
                             {formatDate(record.createdAt, locale)}
                           </p>
                         </Card>

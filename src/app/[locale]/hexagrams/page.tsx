@@ -64,15 +64,15 @@ function getTrigrams(sym: string): { upper: string; lower: string } {
 
 function Lines({ s }: { s: string }) {
   return (
-    <div className="flex flex-col gap-[2px] items-center my-1">
+    <div className="flex flex-col gap-[3px] items-center my-1.5">
       {s.split("").reverse().map((b, i) => (
-        <div key={i} className="flex gap-[2px] justify-center w-6">
+        <div key={i} className="flex gap-[3px] justify-center w-8">
           {b === "1" ? (
-            <div className="h-[3px] w-6 bg-amber-400 rounded-sm" />
+            <div className="h-[4px] w-8 bg-amber-400 rounded-sm" />
           ) : (
             <>
-              <div className="h-[3px] w-[10px] bg-amber-400 rounded-sm" />
-              <div className="h-[3px] w-[10px] bg-amber-400 rounded-sm" />
+              <div className="h-[4px] w-[14px] bg-amber-400 rounded-sm" />
+              <div className="h-[4px] w-[14px] bg-amber-400 rounded-sm" />
             </>
           )}
         </div>
@@ -107,15 +107,16 @@ export default function HexagramsPage() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-7xl">
-      <h1 className="text-2xl md:text-3xl font-bold text-center mb-2">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center mb-3">
         <span className="text-amber-400">六十四卦典</span>{" "}
         <span className="text-gray-400">/ 64 Hexagrams</span>
       </h1>
-      <p className="text-center text-gray-500 text-sm mb-6">点击卦象查看详情</p>
+      <p className="text-center text-gray-500 text-lg mb-8">点击卦象查看详情</p>
 
-      <div className="max-w-md mx-auto mb-8">
+      <div className="max-w-lg mx-auto mb-10">
         <Input
           type="text"
+          size="lg"
           placeholder="搜索卦名 / Search hexagram..."
           value={q}
           onChange={(e) => setQ(e.target.value)}
@@ -123,7 +124,7 @@ export default function HexagramsPage() {
       </div>
 
       {/* Grid: 2 cols mobile, 3 cols sm, 4 cols lg */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
         <AnimatePresence mode="popLayout">
           {filtered.map(([num, zh, py, en, sym]) => {
             const { upper, lower } = getTrigrams(sym);
@@ -139,12 +140,12 @@ export default function HexagramsPage() {
               >
                 <div
                   onClick={() => alert(`${num}. ${zh} (${en})\n即将跳转到 /hexagrams/${num}`)}
-                  className="group relative flex flex-col items-center rounded-[12px] bg-[var(--bg-card)] border border-gold/10 backdrop-blur-[4px] p-4 sm:p-5 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:border-amber-400/50 hover:shadow-[0_0_20px_rgba(217,169,56,0.15),0_8px_24px_rgba(0,0,0,0.3)]"
+                  className="group relative flex flex-col items-center rounded-[12px] bg-[var(--bg-card)] border border-gold/10 backdrop-blur-[4px] p-6 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:border-amber-400/50 hover:shadow-[0_0_20px_rgba(217,169,56,0.15),0_8px_24px_rgba(0,0,0,0.3)]"
                 >
-                  <span className="text-[10px] text-gray-600 mb-1">#{num}</span>
+                  <span className="text-xs text-gray-600 mb-1.5">#{num}</span>
 
                   {/* Trigram icons */}
-                  <div className="flex items-center gap-1 text-amber-500/60 text-xs mb-1">
+                  <div className="flex items-center gap-1.5 text-amber-500/60 text-base mb-1.5">
                     <span>{upper}</span>
                     <span>{lower}</span>
                   </div>
@@ -154,10 +155,10 @@ export default function HexagramsPage() {
                     <Lines s={sym} />
                   </div>
 
-                  <span className="text-sm font-semibold text-amber-400 mt-1 group-hover:text-amber-300 transition-colors duration-300">
+                  <span className="text-xl font-semibold text-amber-400 mt-2 group-hover:text-amber-300 transition-colors duration-300">
                     {zh}
                   </span>
-                  <span className="text-[10px] text-gray-500 leading-tight">{en}</span>
+                  <span className="text-sm text-gray-500 leading-tight mt-0.5">{en}</span>
                 </div>
               </motion.div>
             );

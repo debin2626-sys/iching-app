@@ -114,23 +114,24 @@ export default function AuthPage() {
         </Link>
 
         {/* Logo */}
-        <div className="mb-8 text-center">
-          <h1 className="font-title text-3xl font-bold text-gold-glow tracking-wider">
+        <div className="mb-10 text-center">
+          <div className="text-5xl mb-3 animate-pulse-glow">☯</div>
+          <h1 className="font-title text-3xl sm:text-4xl font-bold text-gold-glow tracking-wider">
             易 · YiChing
           </h1>
-          <p className="text-gray-500 text-xs tracking-[0.3em] mt-2">
+          <p className="text-gray-500 text-sm tracking-[0.3em] mt-3">
             {tab === "login" ? "欢迎回来，继续问道" : "注册账号，开启问道之旅"}
           </p>
         </div>
 
         {/* Card */}
-        <div className="card-mystic rounded-2xl w-full max-w-md p-8">
+        <div className="card-mystic rounded-2xl w-full max-w-md p-8 sm:p-10">
           {/* Google Login Button - Primary */}
           <button
             type="button"
             onClick={handleGoogleLogin}
             disabled={googleLoading}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white hover:bg-gray-50 text-gray-700 font-medium text-sm rounded-xl border border-gray-200 transition-all duration-200 shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-3 px-4 h-12 bg-white hover:bg-gray-50 text-gray-700 font-medium text-base rounded-xl border border-gray-200 transition-all duration-200 shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {googleLoading ? (
               <div className="w-[18px] h-[18px] border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -141,7 +142,7 @@ export default function AuthPage() {
           </button>
 
           {/* Divider */}
-          <div className="flex items-center gap-4 my-6">
+          <div className="flex items-center gap-4 my-8">
             <div className="flex-1 h-px bg-white/10" />
             <span className="text-xs text-gray-500 tracking-wider">或</span>
             <div className="flex-1 h-px bg-white/10" />
@@ -151,7 +152,7 @@ export default function AuthPage() {
           <div className="flex mb-8 border-b border-white/5">
             <button
               onClick={() => { setTab("login"); setError(""); }}
-              className={`flex-1 pb-3 text-sm tracking-wider font-title transition-all duration-300 ${
+              className={`flex-1 pb-3 text-base tracking-wider font-title transition-all duration-300 ${
                 tab === "login"
                   ? "text-amber-400 border-b-2 border-amber-400/60"
                   : "text-gray-500 hover:text-gray-400"
@@ -161,7 +162,7 @@ export default function AuthPage() {
             </button>
             <button
               onClick={() => { setTab("register"); setError(""); }}
-              className={`flex-1 pb-3 text-sm tracking-wider font-title transition-all duration-300 ${
+              className={`flex-1 pb-3 text-base tracking-wider font-title transition-all duration-300 ${
                 tab === "register"
                   ? "text-amber-400 border-b-2 border-amber-400/60"
                   : "text-gray-500 hover:text-gray-400"
@@ -180,10 +181,11 @@ export default function AuthPage() {
 
           {/* Login form */}
           {tab === "login" && (
-            <form onSubmit={handleLogin} className="flex flex-col gap-5">
+            <form onSubmit={handleLogin} className="flex flex-col gap-6">
               <Input
                 type="email"
                 label="邮箱"
+                size="lg"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
@@ -192,6 +194,7 @@ export default function AuthPage() {
               <Input
                 type="password"
                 label="密码"
+                size="lg"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
@@ -200,6 +203,7 @@ export default function AuthPage() {
               <Button
                 type="submit"
                 variant="primary"
+                size="lg"
                 loading={loading}
                 disabled={loading}
                 className="mt-2 w-full font-title tracking-wider"
@@ -211,10 +215,11 @@ export default function AuthPage() {
 
           {/* Register form */}
           {tab === "register" && (
-            <form onSubmit={handleRegister} className="flex flex-col gap-5">
+            <form onSubmit={handleRegister} className="flex flex-col gap-6">
               <Input
                 type="text"
                 label="称呼"
+                size="lg"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="如何称呼您"
@@ -222,6 +227,7 @@ export default function AuthPage() {
               <Input
                 type="email"
                 label="邮箱"
+                size="lg"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
@@ -230,6 +236,7 @@ export default function AuthPage() {
               <Input
                 type="password"
                 label="密码"
+                size="lg"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="至少6个字符"
@@ -239,6 +246,7 @@ export default function AuthPage() {
               <Button
                 type="submit"
                 variant="primary"
+                size="lg"
                 loading={loading}
                 disabled={loading}
                 className="mt-2 w-full font-title tracking-wider"

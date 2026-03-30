@@ -370,8 +370,8 @@ function AISection({
 
   return (
     <Card variant="default" padding="lg">
-      <h3 className="text-lg font-title text-amber-300 mb-2">🤖 {title}</h3>
-      <p className="text-xs text-zinc-600 mb-4">{disclaimer}</p>
+      <h3 className="text-xl font-title text-amber-300 mb-4">🤖 {title}</h3>
+      <p className="text-sm text-zinc-600 mb-6">{disclaimer}</p>
 
       <DepthSelector value={depth} onChange={handleDepthChange} disabled={loading} />
 
@@ -517,7 +517,7 @@ function ResultContent() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-3xl">
-      <div className="py-6 space-y-6">
+      <div className="py-8 space-y-8">
         {/* ── 卦象头部 ── */}
         <motion.div
           className="text-center"
@@ -525,13 +525,13 @@ function ResultContent() {
           initial="hidden"
           animate="visible"
         >
-          <p className="text-xs tracking-[0.3em] text-amber-400/30 mb-2">
+          <p className="text-sm tracking-[0.3em] text-amber-400/30 mb-3">
             {t("hexagramNumber", { num: hexNum })}
           </p>
-          <h1 className="font-title text-4xl sm:text-5xl text-gold-glow mb-1">
+          <h1 className="font-title text-5xl sm:text-6xl text-gold-glow mb-2">
             {hexInfo?.cn ?? "未知"}
           </h1>
-          <p className="text-sm text-zinc-500 tracking-widest mb-2">
+          <p className="text-base text-zinc-500 tracking-widest mb-3">
             {hexInfo?.en ?? ""}
           </p>
           {upperTrigram && lowerTrigram && (
@@ -581,7 +581,7 @@ function ResultContent() {
           animate="visible"
         >
         <Card variant="elevated" padding="lg">
-          <h3 className="text-lg font-title text-amber-300 mb-4">📜 {t("classicTitle")}</h3>
+          <h3 className="text-xl font-title text-amber-300 mb-5">📜 {t("classicTitle")}</h3>
 
           {hexLoading && <Skeleton variant="text" lines={3} />}
 
@@ -594,14 +594,14 @@ function ResultContent() {
               {/* 卦辞 */}
               <div>
                 <h4 className="text-sm font-semibold text-amber-400/70 mb-1">{t("guaCi")}</h4>
-                <p className="text-sm text-zinc-300 leading-relaxed">{hexData.judgmentZh}</p>
+                <p className="text-base text-zinc-300 leading-relaxed">{hexData.judgmentZh}</p>
               </div>
 
               {/* 象辞 */}
               {hexData.imageZh && (
                 <div>
                   <h4 className="text-sm font-semibold text-amber-400/70 mb-1">象曰</h4>
-                  <p className="text-sm text-zinc-300 leading-relaxed">{hexData.imageZh}</p>
+                  <p className="text-base text-zinc-300 leading-relaxed">{hexData.imageZh}</p>
                 </div>
               )}
 
@@ -667,18 +667,18 @@ function ResultContent() {
 
         {/* ── 底部操作栏 ── */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
           variants={slideUp(0.7)}
           initial="hidden"
           animate="visible"
         >
-          <Button variant="primary" href="/divination">
+          <Button variant="primary" href="/divination" size="lg" className="h-12 px-8">
             {t("divinationAgain")}
           </Button>
-          <Button variant="secondary" href="/">
+          <Button variant="secondary" href="/" size="md" className="h-10 px-6">
             {t("backHome")}
           </Button>
-          <Button variant="ghost" onClick={handleShare}>
+          <Button variant="ghost" onClick={handleShare} size="md" className="h-10 px-6">
             {t("share")}
           </Button>
         </motion.div>
