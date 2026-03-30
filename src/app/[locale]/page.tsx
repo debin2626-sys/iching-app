@@ -55,18 +55,18 @@ export default function Home() {
   const features = [
     {
       icon: <Coins size={36} strokeWidth={1.5} className="text-gold mb-4" />,
-      title: locale === "zh" ? "在线摇卦" : "Online Divination",
-      desc: locale === "zh" ? "三币古法\n六爻成卦" : "Ancient three-coin method\nSix lines form a hexagram",
+      title: t("feature1Title"),
+      desc: t("feature1Desc"),
     },
     {
       icon: <Sparkles size={36} strokeWidth={1.5} className="text-gold mb-4" />,
-      title: locale === "zh" ? "AI智能解读" : "AI Interpretation",
-      desc: locale === "zh" ? "古今融通\n智慧解析" : "Bridging ancient and modern\nWisdom analysis",
+      title: t("feature2Title"),
+      desc: t("feature2Desc"),
     },
     {
       icon: <BookOpen size={36} strokeWidth={1.5} className="text-gold mb-4" />,
-      title: locale === "zh" ? "六十四卦典" : "64 Hexagrams",
-      desc: locale === "zh" ? "穷理尽性\n以至于命" : "Explore the nature of all things\nTo fulfill one's destiny",
+      title: t("feature3Title"),
+      desc: t("feature3Desc"),
     },
   ];
 
@@ -74,7 +74,7 @@ export default function Home() {
     <>
       <NavBar items={navItems} />
       <main className="min-h-screen bg-[#0a0a12]">
-        <div className="max-w-[600px] mx-auto px-6 pt-[120px] md:pt-[140px] pb-20">
+        <div className="max-w-[600px] mx-auto px-6 pt-32 md:pt-36 pb-20">
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
@@ -99,7 +99,7 @@ export default function Home() {
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
         placeholder={t("questionPlaceholder")}
-        className={`mt-[60px] w-full h-[100px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
+        className={`mt-16 w-full h-[100px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
       />
 
       {/* 出生时辰选择器 */}
@@ -218,7 +218,7 @@ export default function Home() {
       </button>
 
       {/* 三大核心功能标题 */}
-      <h2 className="mt-[100px] text-xl text-gold font-title text-center">
+      <h2 className="mt-24 text-xl text-gold font-title text-center">
         {t("featuresSectionTitle")}
       </h2>
 
@@ -239,7 +239,7 @@ export default function Home() {
       </div>
 
       {/* 底部引言 */}
-      <p className="mt-[60px] text-xl text-[#a0978a] text-center">
+      <p className="mt-16 text-xl text-[#a0978a] text-center">
         {t("footerQuote")}
       </p>
 
