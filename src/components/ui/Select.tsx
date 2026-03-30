@@ -48,7 +48,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             ref={ref}
             id={selectId}
             className={[
-              "w-full bg-transparent rounded-[8px] border outline-none appearance-none",
+              "w-full bg-transparent rounded-[8px] border outline-none appearance-none min-h-[48px]",
               "transition-all duration-300 ease-in-out",
               "pr-10",
               error

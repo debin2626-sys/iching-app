@@ -24,9 +24,9 @@ const variantStyles = {
 } as const;
 
 const sizeStyles = {
-  sm: "h-8 px-4 text-xs gap-1.5",
-  md: "h-10 px-6 text-sm gap-2",
-  lg: "h-12 px-8 text-base gap-2.5",
+  sm: "min-h-[48px] min-w-[200px] px-4 text-base gap-1.5",
+  md: "min-h-[48px] min-w-[200px] px-6 text-base gap-2",
+  lg: "min-h-[48px] min-w-[200px] px-8 text-lg gap-2.5",
 } as const;
 
 export type ButtonVariant = keyof typeof variantStyles;

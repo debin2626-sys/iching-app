@@ -72,7 +72,7 @@
   "Hexagrams": {
     "title": "六十四卦典",
     "subtitle": "64 Hexagrams",
-    "searchPlaceholder": "搜索卦名 / Search hexagram...",
+    "searchPlaceholder": "搜索卦名...",
     "clickHint": "点击卦象查看详情",
     "noResult": "无匹配结果 / No results found"
   },

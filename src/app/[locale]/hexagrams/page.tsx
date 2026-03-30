@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageLayout, Input, Empty } from "@/components/ui";
 
@@ -40,22 +40,35 @@ const H = [
   [63,"既济","Jì Jì","After Completion","101010"],[64,"未济","Wèi Jì","Before Completion","010101"],
 ] as const;
 
+// Chinese traditional hexagram names (传统卦名)
+const ZH_TRADITIONAL_NAMES: Record<number, string> = {
+  1: "乾为天", 2: "坤为地", 3: "水雷屯", 4: "山水蒙",
+  5: "水天需", 6: "天水讼", 7: "地水师", 8: "水地比",
+  9: "风天小畜", 10: "天泽履", 11: "地天泰", 12: "天地否",
+  13: "天火同人", 14: "火天大有", 15: "地山谦", 16: "雷地豫",
+  17: "泽雷随", 18: "山风蛊", 19: "地泽临", 20: "风地观",
+  21: "火雷噬嗑", 22: "山火贲", 23: "山地剥", 24: "地雷复",
+  25: "天雷无妄", 26: "山天大畜", 27: "山雷颐", 28: "泽风大过",
+  29: "坎为水", 30: "离为火", 31: "泽山咸", 32: "雷风恒",
+  33: "天山遁", 34: "雷天大壮", 35: "火地晋", 36: "地火明夷",
+  37: "风火家人", 38: "火泽睽", 39: "水山蹇", 40: "雷水解",
+  41: "山泽损", 42: "风雷益", 43: "泽天夬", 44: "天风姤",
+  45: "泽地萃", 46: "地风升", 47: "泽水困", 48: "水风井",
+  49: "泽火革", 50: "火风鼎", 51: "震为雷", 52: "艮为山",
+  53: "风山渐", 54: "雷泽归妹", 55: "雷火丰", 56: "火山旅",
+  57: "巽为风", 58: "兑为泽", 59: "风水涣", 60: "水泽节",
+  61: "风泽中孚", 62: "雷山小过", 63: "水火既济", 64: "火水未济",
+};
+
 // Map 3-bit trigram binary to Unicode trigram symbol
-// ☰ 乾(111) ☱ 兑(110) ☲ 离(101) ☳ 震(100) ☴ 巽(011) ☵ 坎(010) ☶ 艮(001) ☷ 坤(000)
 const TRIGRAM_MAP: Record<string, string> = {
-  "111": "☰",
-  "110": "☱",
-  "101": "☲",
-  "100": "☳",
-  "011": "☴",
-  "010": "☵",
-  "001": "☶",
-  "000": "☷",
+  "111": "☰", "110": "☱", "101": "☲", "100": "☳",
+  "011": "☴", "010": "☵", "001": "☶", "000": "☷",
 };
 
 function getTrigrams(sym: string): { upper: string; lower: string } {
-  const lower = sym.slice(0, 3); // lines 1-3 (bottom)
-  const upper = sym.slice(3, 6); // lines 4-6 (top)
+  const lower = sym.slice(0, 3);
+  const upper = sym.slice(3, 6);
   return {
     lower: TRIGRAM_MAP[lower] || "?",
     upper: TRIGRAM_MAP[upper] || "?",
@@ -88,15 +101,23 @@ const cardVariants = {
 };
 
 export default function HexagramsPage() {
+  const t = useTranslations("Hexagrams");
   const tNav = useTranslations("Nav");
+  const locale = useLocale();
   const [q, setQ] = useState("");
 
   const filtered = useMemo(() => {
     const s = q.toLowerCase().trim();
     if (!s) return [...H];
-    return H.filter(([, zh, py, en]) =>
-      zh.includes(s) || py.toLowerCase().includes(s) || en.toLowerCase().includes(s)
-    );
+    return H.filter(([num, zh, py, en]) => {
+      const traditionalName = ZH_TRADITIONAL_NAMES[num] || "";
+      return (
+        zh.includes(s) ||
+        py.toLowerCase().includes(s) ||
+        en.toLowerCase().includes(s) ||
+        traditionalName.includes(s)
+      );
+    });
   }, [q]);
 
   const navItems = [
@@ -107,81 +128,88 @@ export default function HexagramsPage() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-7xl">
-      <h1 className="text-3xl sm:text-4xl font-bold text-center mb-3">
-        <span className="text-amber-400">六十四卦典</span>{" "}
-        <span className="text-gray-400">/ 64 Hexagrams</span>
-      </h1>
-      <p className="text-center text-gray-500 text-lg mb-8">点击卦象查看详情</p>
+      <div className="max-w-[800px] mx-auto">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-3">
+          <span className="text-amber-400">{t("title")}</span>{" "}
+          <span className="text-gray-400">/ {t("subtitle")}</span>
+        </h1>
+        <p className="text-center text-gray-500 text-lg mb-8">{t("clickHint")}</p>
 
-      <div className="max-w-lg mx-auto mb-10">
-        <Input
-          type="text"
-          size="lg"
-          placeholder="搜索卦名 / Search hexagram..."
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          className="border-gold/30"
-        />
-      </div>
+        <div className="max-w-[600px] w-full mx-auto mb-10">
+          <Input
+            type="text"
+            size="lg"
+            placeholder={t("searchPlaceholder")}
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            className="h-12 border-[rgba(201,169,110,0.3)]"
+          />
+        </div>
 
-      {/* Grid: 2 cols mobile, 3 cols sm, 4 cols lg */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
-        <AnimatePresence mode="popLayout">
-          {filtered.map(([num, zh, py, en, sym]) => {
-            const { upper, lower } = getTrigrams(sym);
-            return (
-              <motion.div
-                key={num}
-                layout
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                transition={{ duration: 0.25, ease: "easeOut" }}
-              >
-                <div
-                  onClick={() => alert(`${num}. ${zh} (${en})\n即将跳转到 /hexagrams/${num}`)}
-                  className="group relative flex flex-col items-center rounded-[12px] bg-[var(--bg-card)] border border-gold/15 backdrop-blur-[12px] p-6 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:border-amber-400/50 hover:shadow-[0_0_24px_rgba(201,169,110,0.18),0_8px_24px_rgba(0,0,0,0.3)]"
+        {/* Grid: 2 cols mobile, 3 cols sm, 4 cols lg */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+          <AnimatePresence mode="popLayout">
+            {filtered.map(([num, zh, , en, sym]) => {
+              const { upper, lower } = getTrigrams(sym);
+              const displayName = locale === "zh"
+                ? (ZH_TRADITIONAL_NAMES[num] || zh)
+                : en;
+              return (
+                <motion.div
+                  key={num}
+                  layout
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                 >
-                  <span className="text-xs text-gray-600 mb-1.5">#{num}</span>
+                  <div
+                    onClick={() => alert(`${num}. ${zh} (${en})\n即将跳转到 /hexagrams/${num}`)}
+                    className="group relative flex flex-col items-center rounded-[12px] bg-[var(--bg-card)] border border-gold/15 backdrop-blur-[12px] p-6 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:border-amber-400/50 hover:shadow-[0_0_24px_rgba(201,169,110,0.18),0_8px_24px_rgba(0,0,0,0.3)]"
+                  >
+                    <span className="text-xs text-gray-600 mb-1.5">#{num}</span>
 
-                  {/* Trigram icons */}
-                  <div className="flex items-center gap-1.5 text-amber-500/60 text-base mb-1.5">
-                    <span>{upper}</span>
-                    <span>{lower}</span>
+                    {/* Trigram icons */}
+                    <div className="flex items-center gap-1.5 text-amber-500/60 text-base mb-1.5">
+                      <span>{upper}</span>
+                      <span>{lower}</span>
+                    </div>
+
+                    {/* Hexagram lines */}
+                    <div className="transition-transform duration-300 group-hover:scale-110">
+                      <Lines s={sym} />
+                    </div>
+
+                    <span className="text-xl font-semibold text-amber-400 mt-2 group-hover:text-amber-300 transition-colors duration-300">
+                      {zh}
+                    </span>
+                    <span className="text-sm text-gray-500 leading-tight mt-0.5 text-center">
+                      {displayName}
+                    </span>
                   </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
 
-                  {/* Hexagram lines - scale on hover */}
-                  <div className="transition-transform duration-300 group-hover:scale-110">
-                    <Lines s={sym} />
-                  </div>
-
-                  <span className="text-xl font-semibold text-amber-400 mt-2 group-hover:text-amber-300 transition-colors duration-300">
-                    {zh}
-                  </span>
-                  <span className="text-sm text-gray-500 leading-tight mt-0.5">{en}</span>
-                </div>
-              </motion.div>
-            );
-          })}
+        <AnimatePresence>
+          {filtered.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Empty
+                icon={<span>🔍</span>}
+                title={t("noResult")}
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
-
-      <AnimatePresence>
-        {filtered.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Empty
-              icon={<span>🔍</span>}
-              title="无匹配结果 / No results found"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </PageLayout>
   );
 }

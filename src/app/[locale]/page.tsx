@@ -80,37 +80,37 @@ export default function Home() {
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-full">
       {/* ═══ Hero 区域 ═══ */}
-      <section className="hero-grid flex-1 flex flex-col items-center justify-center min-h-screen px-4 text-center relative -mx-4 sm:-mx-6 lg:-mx-8 py-32">
+      <section className="hero-grid flex-1 flex flex-col items-center min-h-screen px-4 text-center relative -mx-4 sm:-mx-6 lg:-mx-8">
         {/* Spotlight 光效 */}
         <div className="hero-spotlight" />
 
         {/* 装饰八卦符号 */}
-        <div className="absolute top-32 left-[10%] text-amber-500/10 text-6xl animate-twinkle select-none hidden md:block">
-          ☰
-        </div>
         <div className="absolute bottom-32 right-[10%] text-amber-500/10 text-6xl animate-twinkle-slow select-none hidden md:block">
           ☷
         </div>
 
-        {/* 太极符号 */}
-        <AnimatedTaichi>
-          <div className="taichi-rotate mb-12">
-            <div className="taichi-symbol" />
-          </div>
-        </AnimatedTaichi>
+        {/* 上半部分：太极 + 标题 + 副标题 垂直居中 */}
+        <div className="flex-1 flex flex-col items-center justify-center min-h-[50vh]">
+          {/* 太极符号 */}
+          <AnimatedTaichi>
+            <div className="taichi-rotate mb-12">
+              <div className="taichi-symbol" />
+            </div>
+          </AnimatedTaichi>
 
-        {/* 主标题 */}
-        <AnimatedTitle
-          className="font-title text-7xl sm:text-8xl md:text-9xl font-bold tracking-wider text-gold-gradient text-gold-breathe mb-8 relative z-10"
-          style={{ textShadow: '0 0 40px rgba(201,169,110,0.3), 0 0 80px rgba(201,169,110,0.15)' }}
-        >
-          {t("title")}
-        </AnimatedTitle>
+          {/* 主标题 */}
+          <AnimatedTitle
+            className="font-title text-7xl sm:text-8xl md:text-9xl font-bold tracking-wider text-gold-gradient text-gold-breathe mb-8 relative z-10"
+            style={{ textShadow: '0 0 40px rgba(201,169,110,0.3), 0 0 80px rgba(201,169,110,0.15)' }}
+          >
+            {t("title")}
+          </AnimatedTitle>
 
-        {/* 副标题 */}
-        <AnimatedSubtitle className="glow-text text-xl sm:text-2xl md:text-3xl tracking-[0.3em] mb-16 font-title opacity-80 relative z-10" delay={0.3}>
-          {t("subtitle")}
-        </AnimatedSubtitle>
+          {/* 副标题 */}
+          <AnimatedSubtitle className="glow-text text-xl sm:text-2xl md:text-3xl tracking-[0.3em] mb-16 font-title opacity-80 relative z-10" delay={0.3}>
+            {t("subtitle")}
+          </AnimatedSubtitle>
+        </div>
 
         {/* 中式分隔线 */}
         <div className="flex items-center justify-center gap-4 my-8 opacity-30 w-40 mb-12 relative z-10">
@@ -120,110 +120,110 @@ export default function Home() {
         </div>
 
         {/* ═══ 快速占卜区域 ═══ */}
-        <AnimatedCTA className="w-full max-w-2xl relative z-10">
+        <AnimatedCTA className="w-full max-w-[600px] mx-auto relative z-10 flex flex-col gap-4 items-center">
           {/* 问题输入 */}
-          <Card className="mb-5">
-            <TextArea
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              placeholder={t("placeholder")}
-              rows={3}
-              className="font-title text-base"
-            />
-          </Card>
+          <TextArea
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            placeholder={t("placeholder")}
+            rows={4}
+            className="font-title text-lg !h-[120px] !p-5 !rounded-xl !max-w-[600px] w-full"
+          />
 
           {/* 生辰折叠区 */}
-          <Card className="overflow-hidden mb-8" padding="sm">
-            <button
-              onClick={() => setShowBirth(!showBirth)}
-              className="w-full flex items-center justify-between px-2 py-2 hover:bg-white/5 transition rounded-lg"
-            >
-              <span className="flex items-center gap-2 text-sm text-amber-400/70 font-title">
-                🌙 {t("birthLabel")}
-                <span className="text-xs text-gray-500">{t("birthHint")}</span>
-              </span>
-              <span className={`text-amber-400/40 text-xs transition-transform duration-300 ${showBirth ? "rotate-180" : ""}`}>▼</span>
-            </button>
-            {showBirth && (
-              <div className="px-2 pb-3 pt-2">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <Select
-                    label={t("year")}
-                    value={birthYear}
-                    onChange={(e) => setBirthYear(e.target.value)}
-                    options={YEARS.map((y) => ({ value: String(y), label: `${y}` }))}
-                    placeholder={t("yearPlaceholder")}
-                    size="sm"
-                  />
-                  <Select
-                    label={t("month")}
-                    value={birthMonth}
-                    onChange={(e) => setBirthMonth(e.target.value)}
-                    options={MONTHS.map((m) => ({ value: String(m), label: `${m}` }))}
-                    placeholder={t("monthPlaceholder")}
-                    size="sm"
-                  />
-                  <Select
-                    label={t("day")}
-                    value={birthDay}
-                    onChange={(e) => setBirthDay(e.target.value)}
-                    options={DAYS.map((d) => ({ value: String(d), label: `${d}` }))}
-                    placeholder={t("dayPlaceholder")}
-                    size="sm"
-                  />
-                  <Select
-                    label={t("hour")}
-                    value={birthHour}
-                    onChange={(e) => setBirthHour(e.target.value)}
-                    options={SHI_CHEN_LABELS.map((label, i) => ({ value: String(i), label }))}
-                    placeholder={t("hourPlaceholder")}
-                    size="sm"
-                  />
-                </div>
-
-                {/* 性别选择 */}
-                <div className="mt-3">
-                  <p className="text-xs text-gray-500 mb-2">{t("genderLabel")}</p>
-                  <div className="flex gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setGender(gender === "male" ? "" : "male")}
-                      className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
-                        gender === "male"
-                          ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
-                          : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
-                      }`}
-                    >
-                      ♂ {t("genderMale")}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setGender(gender === "female" ? "" : "female")}
-                      className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
-                        gender === "female"
-                          ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
-                          : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
-                      }`}
-                    >
-                      ♀ {t("genderFemale")}
-                    </button>
+          <div className="w-full max-w-[600px]">
+            <Card className="overflow-hidden" padding="sm">
+              <button
+                onClick={() => setShowBirth(!showBirth)}
+                className="w-full flex items-center justify-between px-2 py-2 hover:bg-white/5 transition rounded-lg"
+              >
+                <span className="flex items-center gap-2 text-sm text-amber-400/70 font-title">
+                  🌙 {t("birthLabel")}
+                  <span className="text-xs text-gray-500">{t("birthHint")}</span>
+                </span>
+                <span className={`text-amber-400/40 text-xs transition-transform duration-300 ${showBirth ? "rotate-180" : ""}`}>▼</span>
+              </button>
+              {showBirth && (
+                <div className="px-2 pb-3 pt-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <Select
+                      label={t("year")}
+                      value={birthYear}
+                      onChange={(e) => setBirthYear(e.target.value)}
+                      options={YEARS.map((y) => ({ value: String(y), label: `${y}` }))}
+                      placeholder={t("yearPlaceholder")}
+                      size="sm"
+                    />
+                    <Select
+                      label={t("month")}
+                      value={birthMonth}
+                      onChange={(e) => setBirthMonth(e.target.value)}
+                      options={MONTHS.map((m) => ({ value: String(m), label: `${m}` }))}
+                      placeholder={t("monthPlaceholder")}
+                      size="sm"
+                    />
+                    <Select
+                      label={t("day")}
+                      value={birthDay}
+                      onChange={(e) => setBirthDay(e.target.value)}
+                      options={DAYS.map((d) => ({ value: String(d), label: `${d}` }))}
+                      placeholder={t("dayPlaceholder")}
+                      size="sm"
+                    />
+                    <Select
+                      label={t("hour")}
+                      value={birthHour}
+                      onChange={(e) => setBirthHour(e.target.value)}
+                      options={SHI_CHEN_LABELS.map((label, i) => ({ value: String(i), label }))}
+                      placeholder={t("hourPlaceholder")}
+                      size="sm"
+                    />
                   </div>
+
+                  {/* 性别选择 */}
+                  <div className="mt-3">
+                    <p className="text-xs text-gray-500 mb-2">{t("genderLabel")}</p>
+                    <div className="flex gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setGender(gender === "male" ? "" : "male")}
+                        className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
+                          gender === "male"
+                            ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
+                            : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
+                        }`}
+                      >
+                        ♂ {t("genderMale")}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setGender(gender === "female" ? "" : "female")}
+                        className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
+                          gender === "female"
+                            ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
+                            : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
+                        }`}
+                      >
+                        ♀ {t("genderFemale")}
+                      </button>
+                    </div>
+                  </div>
+
+                  {hasBirthInfo && (
+                    <p className="text-xs text-amber-400/50 mt-3 tracking-wide">
+                      {t("birthRecorded")}
+                    </p>
+                  )}
                 </div>
+              )}
+            </Card>
+          </div>
 
-                {hasBirthInfo && (
-                  <p className="text-xs text-amber-400/50 mt-3 tracking-wide">
-                    {t("birthRecorded")}
-                  </p>
-                )}
-              </div>
-            )}
-          </Card>
-
-          {/* 开始按钮 */}
+          {/* 开始按钮 - 金色实心填充 */}
           <button
             onClick={handleStart}
             disabled={!question.trim()}
-            className="w-full font-title tracking-wider h-14 px-12 text-lg rounded-lg bg-transparent text-[#c9a96e] border border-[rgba(201,169,110,0.5)] transition-all duration-[400ms] ease-in-out hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-[#e8d5a3] active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full max-w-[600px] mx-auto font-title tracking-wider h-14 text-lg rounded-xl bg-[#c9a96e] text-[#0a0a12] font-bold transition-all duration-[400ms] ease-in-out hover:shadow-[0_0_20px_rgba(201,169,110,0.5)] active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {t("startButton")}
           </button>
@@ -249,23 +249,23 @@ export default function Home() {
           <span className="text-gold text-lg">☯</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
         </div>
-        <p className="text-center text-amber-400/50 text-base tracking-[0.3em] mb-24 font-title">
+        <p className="text-center text-amber-400/50 text-xl tracking-[0.3em] mt-20 mb-24 font-title">
           {t("featuresTitle")}
         </p>
 
-        <AnimatedFeatureGrid className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-14">
+        <AnimatedFeatureGrid className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-6">
           {features.map((f) => (
             <AnimatedFeatureCard key={f.title}>
               <Link href={f.href}>
                 <Card
                   variant="interactive"
                   padding="lg"
-                  className="card-glow text-center group min-h-[300px] flex flex-col items-center justify-center p-10 !bg-[rgba(201,169,110,0.05)]"
+                  className="card-glow text-center group min-w-[280px] max-w-[320px] flex flex-col items-center justify-center p-10 !bg-[rgba(201,169,110,0.05)]"
                 >
                   <div className="mb-8 group-hover:scale-110 transition-transform duration-300">
                     {f.icon}
                   </div>
-                  <h3 className="font-title text-2xl font-semibold text-gray-100 mb-5 group-hover:text-amber-200 transition-colors">
+                  <h3 className="font-title text-[22px] font-semibold text-gray-100 mb-5 group-hover:text-amber-200 transition-colors">
                     {f.title}
                   </h3>
                   <div className="flex items-center justify-center gap-3 opacity-30 w-14 mx-auto mb-5">
@@ -273,7 +273,7 @@ export default function Home() {
                     <span className="text-gold text-xs">✦</span>
                     <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
                   </div>
-                  <p className="text-base text-gray-400 tracking-wider leading-relaxed group-hover:text-gray-300 transition-colors whitespace-pre-line">
+                  <p className="text-[15px] text-gray-400 tracking-wider leading-relaxed group-hover:text-gray-300 transition-colors whitespace-pre-line">
                     {f.desc}
                   </p>
                 </Card>

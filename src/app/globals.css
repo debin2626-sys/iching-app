@@ -338,3 +338,10 @@ body::after {
   animation: golden-burst 1.2s ease-out forwards;
   pointer-events: none;
 }
+
+/* ── 内容区约束 ── */
+.content-area {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

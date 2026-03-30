@@ -37,7 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={[
-            "bg-[rgba(255,255,255,0.02)] rounded-[8px] border outline-none",
+            "bg-[rgba(255,255,255,0.02)] rounded-[8px] border outline-none w-full min-h-[48px]",
             "transition-all duration-[400ms] ease-in-out",
             "placeholder:text-[#a0978a]/50",
             error

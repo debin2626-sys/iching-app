@@ -158,22 +158,25 @@ export default function HistoryPage() {
   if (status === "unauthenticated" || !session) {
     return (
       <PageLayout navItems={navItems}>
-        <Empty
-          icon={<span>📜</span>}
-          title={t("title")}
-          description={t("loginRequired")}
-          action={
-            <Button href="/auth">
-              {t("loginButton")}
-            </Button>
-          }
-        />
+        <div className="flex flex-col items-center justify-center min-h-[60vh] max-w-[800px] mx-auto">
+          <div className="text-gold/10 text-[120px] mb-8">☯</div>
+          <h2 className="text-2xl font-title text-amber-300 mb-3">{t("title")}</h2>
+          <p className="text-zinc-500 text-base mb-8">{t("loginRequired")}</p>
+          <Button
+            href="/auth"
+            variant="ghost"
+            className="w-[200px] h-12 border border-gold/40 hover:border-gold/70 text-gold"
+          >
+            {t("loginButton")}
+          </Button>
+        </div>
       </PageLayout>
     );
   }
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-4xl">
+      <div className="max-w-[800px] mx-auto">
       {/* Title */}
       <div className="text-center mb-10">
         <h1 className="font-title text-4xl sm:text-5xl text-gold-glow tracking-wider mb-3">
@@ -335,6 +338,7 @@ export default function HistoryPage() {
           )}
         </div>
       )}
+      </div>
     </PageLayout>
   );
 }
