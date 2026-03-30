@@ -74,7 +74,7 @@ export default function Home() {
     <>
       <NavBar items={navItems} />
       <main className="min-h-screen bg-[#0a0a12]">
-        <div className="max-w-[600px] mx-auto px-6 pt-20 pb-20">
+        <div className="max-w-[600px] mx-auto px-6 pt-[60px] pb-20">
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
@@ -99,7 +99,7 @@ export default function Home() {
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
         placeholder={t("questionPlaceholder")}
-        className={`mt-20 w-full h-[100px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
+        className={`mt-[60px] w-full h-[100px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
       />
 
       {/* 出生时辰选择器 */}
@@ -218,16 +218,16 @@ export default function Home() {
       </button>
 
       {/* 三大核心功能标题 */}
-      <h2 className="mt-[120px] text-xl text-gold font-title text-center">
+      <h2 className="mt-[100px] text-xl text-gold font-title text-center">
         {t("featuresSectionTitle")}
       </h2>
 
       {/* 三张功能卡片 */}
-      <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6">
+      <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-6">
         {features.map((f) => (
           <div
             key={f.title}
-            className="w-[260px] bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.15)] rounded-2xl py-9 px-6 text-center flex flex-col items-center"
+            className="w-[260px] bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.15)] rounded-2xl py-8 px-5 min-h-[180px] text-center flex flex-col items-center"
           >
             {f.icon}
             <h3 className="text-lg font-bold text-[#f5f0e8] mb-2">{f.title}</h3>
@@ -239,7 +239,7 @@ export default function Home() {
       </div>
 
       {/* 底部引言 */}
-      <p className="mt-20 text-xl text-[#a0978a] text-center">
+      <p className="mt-[60px] text-xl text-[#a0978a] text-center">
         {t("footerQuote")}
       </p>
 
