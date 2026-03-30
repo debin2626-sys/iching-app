@@ -203,8 +203,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{ boxShadow: '0 0 20px rgba(139,37,0,0.3), 0 0 10px rgba(201,169,110,0.1)' }}
+                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-gold-bright disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? "登录中..." : "登录"}
               </button>
@@ -244,8 +243,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{ boxShadow: '0 0 20px rgba(139,37,0,0.3), 0 0 10px rgba(201,169,110,0.1)' }}
+                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-gold-bright disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? "注册中..." : "注册"}
               </button>

@@ -98,22 +98,26 @@ export default function Home() {
 
         {/* 主标题 */}
         <AnimatedTitle
-          className="font-title text-6xl sm:text-7xl md:text-8xl font-bold tracking-wider text-gold-glow mb-6"
+          className="font-title text-6xl sm:text-7xl md:text-8xl font-bold tracking-wider text-gold-gradient text-gold-breathe mb-6"
           style={{ textShadow: '0 0 40px rgba(201,169,110,0.3), 0 0 80px rgba(201,169,110,0.15)' }}
         >
           {t("title")}
         </AnimatedTitle>
 
         {/* 副标题 */}
-        <AnimatedSubtitle className="glow-text text-xl sm:text-2xl tracking-[0.3em] mb-3 font-title opacity-80" delay={0.5}>
+        <AnimatedSubtitle className="glow-text text-xl sm:text-2xl tracking-[0.3em] mb-3 font-title opacity-80" delay={0.3}>
           {t("subtitle")}
         </AnimatedSubtitle>
-        <AnimatedSubtitle className="text-gray-400 text-sm sm:text-base tracking-widest mb-14" delay={0.6}>
+        <AnimatedSubtitle className="text-gray-400 text-sm sm:text-base tracking-widest mb-14" delay={0.45}>
           {t("subtitleEn")}
         </AnimatedSubtitle>
 
-        {/* 分割线 */}
-        <div className="divider-gold w-40 mb-10" />
+        {/* 中式分隔线 */}
+        <div className="flex items-center justify-center gap-4 my-8 opacity-30 w-40 mb-10">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+          <span className="text-gold text-lg">☯</span>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
+        </div>
 
         {/* ═══ 快速占卜区域 ═══ */}
         <AnimatedCTA className="w-full max-w-2xl">
@@ -219,20 +223,7 @@ export default function Home() {
           <button
             onClick={handleStart}
             disabled={!question.trim()}
-            className="w-full font-title tracking-wider h-14 px-12 text-lg rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-40 disabled:cursor-not-allowed"
-            style={{
-              boxShadow: !question.trim()
-                ? undefined
-                : '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)',
-            }}
-            onMouseEnter={(e) => {
-              if (!question.trim()) return;
-              e.currentTarget.style.boxShadow = '0 0 30px rgba(139,37,0,0.4), 0 0 15px rgba(201,169,110,0.2)';
-            }}
-            onMouseLeave={(e) => {
-              if (!question.trim()) return;
-              e.currentTarget.style.boxShadow = '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)';
-            }}
+            className="w-full font-title tracking-wider h-14 px-12 text-lg rounded-lg bg-transparent text-[#c9a96e] border border-[rgba(201,169,110,0.5)] transition-all duration-[400ms] ease-in-out hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-[#e8d5a3] active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {t("startButton")}
           </button>
@@ -253,7 +244,11 @@ export default function Home() {
 
       {/* ═══ 特色区域 ═══ */}
       <section className="px-4 py-40 relative -mx-4 sm:-mx-6 lg:-mx-8">
-        <div className="divider-gold w-48 mx-auto mb-8" />
+        <div className="flex items-center justify-center gap-4 opacity-30 w-48 mx-auto mb-8">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+          <span className="text-gold text-lg">☯</span>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
+        </div>
         <p className="text-center text-amber-400/50 text-base tracking-[0.3em] mb-20 font-title">
           {t("featuresTitle")}
         </p>
@@ -265,7 +260,7 @@ export default function Home() {
                 <Card
                   variant="interactive"
                   padding="lg"
-                  className="text-center group min-h-[300px] flex flex-col items-center justify-center p-10"
+                  className="text-center group min-h-[300px] flex flex-col items-center justify-center p-10 !bg-[rgba(201,169,110,0.05)]"
                 >
                   <div className="mb-8 group-hover:scale-110 transition-transform duration-300">
                     {f.icon}
@@ -273,7 +268,11 @@ export default function Home() {
                   <h3 className="font-title text-2xl font-semibold text-gray-100 mb-5 group-hover:text-amber-200 transition-colors">
                     {f.title}
                   </h3>
-                  <div className="divider-gold w-14 mx-auto mb-5" />
+                  <div className="flex items-center justify-center gap-3 opacity-30 w-14 mx-auto mb-5">
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+                    <span className="text-gold text-xs">✦</span>
+                    <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
+                  </div>
                   <p className="text-base text-gray-400 tracking-wider leading-relaxed group-hover:text-gray-300 transition-colors whitespace-pre-line">
                     {f.desc}
                   </p>
@@ -286,7 +285,11 @@ export default function Home() {
 
       {/* ═══ 底部 ═══ */}
       <footer className="py-16 px-4 text-center -mx-4 sm:-mx-6 lg:-mx-8">
-        <div className="divider-gold w-24 mx-auto mb-10" />
+        <div className="flex items-center justify-center gap-4 opacity-30 w-24 mx-auto mb-10">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+          <span className="text-gold text-sm">☯</span>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
+        </div>
         <p className="text-gold/60 text-sm tracking-[0.2em] font-title mb-6">
           一阴一阳之谓道
         </p>

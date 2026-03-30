@@ -103,7 +103,7 @@ function DesktopNav({ items }: NavBarProps) {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 hidden h-20 items-center justify-between border-b border-white/5 bg-bg/80 px-8 backdrop-blur-md md:flex">
+    <nav className="fixed inset-x-0 top-0 z-50 hidden h-20 items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.8)] px-8 backdrop-blur-[12px] md:flex">
       {/* Logo / brand */}
       <Link
         href="/"
@@ -159,7 +159,7 @@ function MobileTabBar({ items }: NavBarProps) {
   const tabs = items.slice(0, 5);
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 flex h-18 items-end justify-around border-t border-white/5 bg-bg/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-50 flex h-18 items-end justify-around border-t border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.9)] pb-[env(safe-area-inset-bottom)] backdrop-blur-[12px] md:hidden">
       {tabs.map((item) => {
         const active = pathname === item.href;
         return (

@@ -3,7 +3,7 @@
 import { m, useInView } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
-const spring = { type: "spring" as const, stiffness: 100, damping: 15 };
+const spring = { type: "spring" as const, stiffness: 80, damping: 18 };
 
 /* ── Taichi: fade-in + scale + slow rotate ── */
 export function AnimatedTaichi({ children }: { children: ReactNode }) {
@@ -11,7 +11,7 @@ export function AnimatedTaichi({ children }: { children: ReactNode }) {
     <m.div
       initial={{ opacity: 0, scale: 0.8, rotate: -60 }}
       animate={{ opacity: 1, scale: 1, rotate: 0 }}
-      transition={{ ...spring, duration: 1 }}
+      transition={{ ...spring, duration: 1.2 }}
     >
       {children}
     </m.div>
@@ -26,7 +26,7 @@ export function AnimatedTitle({ children, className, style }: { children: ReactN
       style={style}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ ...spring, delay: 0.3 }}
+      transition={{ ...spring, delay: 0.15, duration: 1 }}
     >
       {children}
     </m.h1>
@@ -34,13 +34,13 @@ export function AnimatedTitle({ children, className, style }: { children: ReactN
 }
 
 /* ── Subtitle: fade in ── */
-export function AnimatedSubtitle({ children, className, delay = 0.5 }: { children: ReactNode; className?: string; delay?: number }) {
+export function AnimatedSubtitle({ children, className, delay = 0.3 }: { children: ReactNode; className?: string; delay?: number }) {
   return (
     <m.p
       className={className}
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ ...spring, delay }}
+      transition={{ ...spring, delay, duration: 0.8 }}
     >
       {children}
     </m.p>
@@ -54,7 +54,7 @@ export function AnimatedCTA({ children, className }: { children: ReactNode; clas
       className={className}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ ...spring, delay: 0.7 }}
+      transition={{ ...spring, delay: 0.6, duration: 0.8 }}
     >
       {children}
     </m.div>
@@ -74,7 +74,7 @@ export function AnimatedFeatureGrid({ children, className }: { children: ReactNo
       animate={inView ? "visible" : "hidden"}
       variants={{
         hidden: {},
-        visible: { transition: { staggerChildren: 0.1 } },
+        visible: { transition: { staggerChildren: 0.15 } },
       }}
     >
       {children}
@@ -87,7 +87,7 @@ export function AnimatedFeatureCard({ children }: { children: ReactNode }) {
     <m.div
       variants={{
         hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: spring },
+        visible: { opacity: 1, y: 0, transition: { ...spring, duration: 1 } },
       }}
     >
       {children}

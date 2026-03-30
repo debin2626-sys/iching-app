@@ -233,8 +233,8 @@ function DepthSelector({
               flex items-center gap-2 px-5 py-2.5 rounded-lg text-base font-medium
               transition-all duration-200 border
               ${isActive
-                ? "border-[#c9a96e]/40 bg-[#8b2500] text-[#f5f0e8] shadow-[0_0_12px_rgba(139,37,0,0.3)]"
-                : "border-zinc-700/50 bg-zinc-800/40 text-zinc-500 hover:text-zinc-400 hover:border-zinc-600"
+                ? "border-gold/60 bg-gold/10 text-gold"
+                : "border-gold/20 bg-transparent text-gold/50 hover:text-gold/70 hover:border-gold/40"
               }
               ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
             `}
@@ -504,7 +504,7 @@ function ResultContent() {
           <p className="text-zinc-500 mb-4">未找到有效的卦象信息</p>
           <a
             href="/divination"
-            className="h-10 px-6 text-sm font-title tracking-wider rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] inline-flex items-center justify-center"
+            className="h-10 px-6 text-sm font-title tracking-wider rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
           >
             去占卜
           </a>
@@ -679,8 +679,7 @@ function ResultContent() {
         >
           <a
             href="/divination"
-            className="h-12 px-8 text-base font-title tracking-wider rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] inline-flex items-center justify-center"
-            style={{ boxShadow: '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)' }}
+            className="h-12 px-8 text-base font-title tracking-wider rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
           >
             {t("divinationAgain")}
           </a>

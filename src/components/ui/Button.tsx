@@ -7,19 +7,19 @@ import { m, type HTMLMotionProps } from "framer-motion";
 /* ── Variants & sizes ── */
 const variantStyles = {
   primary: [
-    "border border-gold/60 text-gold bg-gold/8",
-    "hover:border-gold hover:shadow-[0_0_20px_color-mix(in_srgb,var(--color-gold)_25%,transparent)] hover:text-gold-bright",
-    "disabled:border-gold/20 disabled:text-gold/40 disabled:shadow-none",
+    "border border-[rgba(201,169,110,0.5)] text-[#c9a96e] bg-transparent",
+    "hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-[#e8d5a3]",
+    "disabled:border-[rgba(201,169,110,0.2)] disabled:text-[rgba(201,169,110,0.4)] disabled:shadow-none",
   ].join(" "),
   secondary: [
-    "border border-white/20 text-gray-200 bg-white/5",
-    "hover:border-white/40 hover:text-white",
-    "disabled:border-white/10 disabled:text-gray-500",
+    "border border-[rgba(201,169,110,0.3)] text-[#a0978a] bg-transparent",
+    "hover:border-[rgba(201,169,110,0.6)] hover:text-[#c9a96e] hover:shadow-[0_0_12px_rgba(201,169,110,0.25)]",
+    "disabled:border-[rgba(201,169,110,0.15)] disabled:text-[rgba(160,151,138,0.4)]",
   ].join(" "),
   ghost: [
-    "border border-transparent text-gray-300 bg-transparent",
-    "hover:text-gold hover:bg-white/5",
-    "disabled:text-gray-600",
+    "border border-transparent text-[#a0978a] bg-transparent",
+    "hover:text-[#c9a96e] hover:border-[rgba(201,169,110,0.3)]",
+    "disabled:text-[rgba(160,151,138,0.3)]",
   ].join(" "),
 } as const;
 
@@ -97,10 +97,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     } = props as AsButton & { href?: string };
 
     const base = [
-      "inline-flex items-center justify-center rounded-[9999px] font-medium tracking-wide",
-      "transition-all duration-300 ease-out",
+      "inline-flex items-center justify-center rounded-lg font-medium tracking-wide",
+      "transition-all duration-[400ms] ease-in-out",
       "hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(201,169,110,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a12]",
       "disabled:pointer-events-none disabled:opacity-50",
       variantStyles[variant],
       sizeStyles[size],

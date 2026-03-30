@@ -254,12 +254,7 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
       <button
         onClick={handleSubmit}
         disabled={!question.trim()}
-        className="w-full font-title tracking-wider h-14 px-12 text-lg rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-40 disabled:cursor-not-allowed"
-        style={{
-          boxShadow: !question.trim()
-            ? undefined
-            : '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)',
-        }}
+        className="w-full font-title tracking-wider h-14 px-12 text-lg rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {t("startButton")}
       </button>
@@ -506,12 +501,7 @@ function DivinationContent() {
               <button
                 onClick={shakeCoin}
                 disabled={flipping || currentYao >= 6}
-                className="h-14 px-10 text-lg font-title tracking-wider rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
-                style={{
-                  boxShadow: (flipping || currentYao >= 6)
-                    ? undefined
-                    : '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)',
-                }}
+                className="h-14 px-10 text-lg font-title tracking-wider rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
               >
                 {flipping ? "摇卦中…" : currentYao >= 6 ? "卦象已成" : "摇 卦"}
               </button>
@@ -587,8 +577,7 @@ function DivinationContent() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button
                   onClick={goToResult}
-                  className="h-12 px-8 text-lg font-title tracking-wider rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] inline-flex items-center justify-center"
-                  style={{ boxShadow: '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)' }}
+                  className="h-12 px-8 text-lg font-title tracking-wider rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
                 >
                   查看解读
                 </button>
