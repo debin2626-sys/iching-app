@@ -79,8 +79,7 @@ export default function Home() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-full">
-      {/* ═══ Hero 区域 ═══ */}
-      <section className="hero-grid flex-1 flex flex-col items-center min-h-screen px-4 text-center relative -mx-4 sm:-mx-6 lg:-mx-8">
+      <section className="px-[10%] relative">
         {/* Spotlight 光效 */}
         <div className="hero-spotlight" />
 
@@ -89,49 +88,50 @@ export default function Home() {
           ☷
         </div>
 
-        {/* 上半部分：太极 + 标题 + 副标题 垂直居中 */}
-        <div className="flex-1 flex flex-col items-center justify-center min-h-[50vh]">
+        {/* ═══ 区域一：品牌展示区 ═══ */}
+        <div className="min-h-[50vh] flex flex-col items-center justify-center text-center">
           {/* 太极符号 */}
           <AnimatedTaichi>
-            <div className="taichi-rotate mb-12">
-              <div className="taichi-symbol" />
+            <div className="taichi-rotate">
+              <div className="taichi-symbol w-[120px] h-[120px]" />
             </div>
           </AnimatedTaichi>
 
-          {/* 主标题 */}
+          {/* 主标题 "易" */}
           <AnimatedTitle
-            className="font-title text-7xl sm:text-8xl md:text-9xl font-bold tracking-wider text-gold-gradient text-gold-breathe mb-8 relative z-10"
+            className="font-title text-[64px] font-bold tracking-wider text-gold-gradient text-gold-breathe mt-6 relative z-10"
             style={{ textShadow: '0 0 40px rgba(201,169,110,0.3), 0 0 80px rgba(201,169,110,0.15)' }}
           >
             {t("title")}
           </AnimatedTitle>
 
           {/* 副标题 */}
-          <AnimatedSubtitle className="glow-text text-xl sm:text-2xl md:text-3xl tracking-[0.3em] mb-16 font-title opacity-80 relative z-10" delay={0.3}>
+          <AnimatedSubtitle className="text-[22px] tracking-[0.3em] mt-4 font-title text-[#a0978a] relative z-10" delay={0.3}>
             {t("subtitle")}
           </AnimatedSubtitle>
         </div>
 
-        {/* 中式分隔线 */}
-        <div className="flex items-center justify-center gap-4 my-8 opacity-30 w-40 mb-12 relative z-10">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
-          <span className="text-gold text-lg">☯</span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-transparent" />
-        </div>
+        {/* ═══ 留白过渡 ═══ */}
+        <div className="mt-20" />
 
-        {/* ═══ 快速占卜区域 ═══ */}
-        <AnimatedCTA className="w-full max-w-[600px] mx-auto relative z-10 flex flex-col gap-4 items-center">
+        {/* ═══ 区域二：操作区 ═══ */}
+        <div className="max-w-[520px] w-full mx-auto relative z-10 flex flex-col items-center pb-16">
           {/* 问题输入 */}
           <TextArea
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             placeholder={t("placeholder")}
             rows={4}
-            className="font-title text-lg !h-[120px] !p-5 !rounded-xl !max-w-[600px] w-full"
+            className="font-title text-base !h-[100px] !p-4 !rounded-xl w-full !bg-white/5 !border-[rgba(201,169,110,0.3)]"
           />
 
+          {/* 出生时辰说明文字 */}
+          <p className="text-xs text-[#a0978a] mt-3 w-full text-left">
+            {t("birthDateNote")}
+          </p>
+
           {/* 生辰折叠区 */}
-          <div className="w-full max-w-[600px]">
+          <div className="w-full mt-3">
             <Card className="overflow-hidden" padding="sm">
               <button
                 onClick={() => setShowBirth(!showBirth)}
@@ -219,18 +219,18 @@ export default function Home() {
             </Card>
           </div>
 
-          {/* 开始按钮 - 金色实心填充 */}
+          {/* 开始按钮 - 金色描边透明背景 */}
           <button
             onClick={handleStart}
             disabled={!question.trim()}
-            className="w-full max-w-[600px] mx-auto font-title tracking-wider h-14 text-lg rounded-xl bg-[#c9a96e] text-[#0a0a12] font-bold transition-all duration-[400ms] ease-in-out hover:shadow-[0_0_20px_rgba(201,169,110,0.5)] active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full font-title tracking-wider h-[52px] text-lg rounded-xl border-[1.5px] border-[#c9a96e] bg-transparent text-[#c9a96e] font-bold transition-all duration-[400ms] ease-in-out hover:bg-[#c9a96e] hover:text-[#0a0a12] hover:shadow-[0_0_20px_rgba(201,169,110,0.5)] active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed mt-4"
           >
             {t("startButton")}
           </button>
-        </AnimatedCTA>
+        </div>
 
         {/* 底部装饰 - 滚动卦象 */}
-        <div className="mt-20 overflow-hidden w-full max-w-md opacity-25 relative z-10">
+        <div className="mt-12 overflow-hidden w-full max-w-md mx-auto opacity-25 relative z-10">
           <div className="flex whitespace-nowrap animate-marquee">
             <span className="text-amber-600 text-xs tracking-[0.5em] inline-block">
               ䷀ ䷁ ䷂ ䷃ ䷄ ䷅ ䷆ ䷇ ䷈ ䷉ ䷊ ䷋&nbsp;&nbsp;&nbsp;&nbsp;

@@ -6,6 +6,7 @@
     "startButton": "Start Divination",
     "birthLabel": "Birth Time",
     "birthHint": "(Optional, for fortune analysis)",
+    "birthDateNote": "Please enter your date of birth (Gregorian calendar)",
     "birthRecorded": "✓ Birth info recorded. AI will combine BaZi analysis with hexagram reading.",
     "year": "Year",
     "month": "Month",

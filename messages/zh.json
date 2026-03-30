@@ -6,6 +6,7 @@
     "startButton": "开始摇卦",
     "birthLabel": "出生时辰",
     "birthHint": "（可选，用于运势分析）",
+    "birthDateNote": "请填写阳历（公历）出生日期",
     "birthRecorded": "✓ 已录入生辰，AI 将结合八字运势进行综合解读",
     "year": "年",
     "month": "月",
