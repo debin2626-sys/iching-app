@@ -108,6 +108,7 @@ function DesktopNav({ items }: NavBarProps) {
       <Link
         href="/"
         className="text-xl font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
+        style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)' }}
       >
         易经
       </Link>
