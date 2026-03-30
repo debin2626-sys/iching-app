@@ -251,15 +251,18 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
         )}
       </Card>
 
-      <Button
-        variant="primary"
-        size="lg"
+      <button
         onClick={handleSubmit}
         disabled={!question.trim()}
-        className="w-full font-title tracking-wider h-14 text-lg"
+        className="w-full font-title tracking-wider h-14 px-12 text-lg rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-40 disabled:cursor-not-allowed"
+        style={{
+          boxShadow: !question.trim()
+            ? undefined
+            : '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)',
+        }}
       >
         {t("startButton")}
-      </Button>
+      </button>
     </m.div>
   );
 }
@@ -428,7 +431,7 @@ function DivinationContent() {
               </h1>
 
               {/* 进度指示 */}
-              <p className="text-sm opacity-40 mb-3 tracking-wide">
+              <p className="text-sm text-gold mb-3 tracking-wide">
                 {currentYao < 6 ? `第 ${currentYao + 1} 次 / 共 6 次` : "六爻已成"}
               </p>
 
@@ -500,16 +503,18 @@ function DivinationContent() {
                 </Card>
               )}
 
-              <Button
-                variant="primary"
-                size="lg"
+              <button
                 onClick={shakeCoin}
                 disabled={flipping || currentYao >= 6}
-                loading={flipping}
-                className="h-14 px-10 text-lg"
+                className="h-14 px-10 text-lg font-title tracking-wider rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+                style={{
+                  boxShadow: (flipping || currentYao >= 6)
+                    ? undefined
+                    : '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)',
+                }}
               >
                 {flipping ? "摇卦中…" : currentYao >= 6 ? "卦象已成" : "摇 卦"}
-              </Button>
+              </button>
             </m.div>
           )}
 
@@ -580,9 +585,13 @@ function DivinationContent() {
               </m.div>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button variant="primary" size="lg" onClick={goToResult}>
+                <button
+                  onClick={goToResult}
+                  className="h-12 px-8 text-lg font-title tracking-wider rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] inline-flex items-center justify-center"
+                  style={{ boxShadow: '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)' }}
+                >
                   查看解读
-                </Button>
+                </button>
                 <Button variant="secondary" onClick={resetAndGoHome}>
                   重新占卜
                 </Button>

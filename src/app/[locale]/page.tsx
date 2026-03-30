@@ -287,6 +287,9 @@ export default function Home() {
       {/* ═══ 底部 ═══ */}
       <footer className="py-16 px-4 text-center -mx-4 sm:-mx-6 lg:-mx-8">
         <div className="divider-gold w-24 mx-auto mb-10" />
+        <p className="text-gold/60 text-sm tracking-[0.2em] font-title mb-6">
+          一阴一阳之谓道
+        </p>
         <p className="text-xs text-gray-600 max-w-md mx-auto leading-relaxed opacity-60">
           {t("disclaimer")}
         </p>

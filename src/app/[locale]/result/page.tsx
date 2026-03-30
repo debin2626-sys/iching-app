@@ -233,7 +233,7 @@ function DepthSelector({
               flex items-center gap-2 px-5 py-2.5 rounded-lg text-base font-medium
               transition-all duration-200 border
               ${isActive
-                ? "border-amber-500/60 bg-amber-500/15 text-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.15)]"
+                ? "border-[#c9a96e]/40 bg-[#8b2500] text-[#f5f0e8] shadow-[0_0_12px_rgba(139,37,0,0.3)]"
                 : "border-zinc-700/50 bg-zinc-800/40 text-zinc-500 hover:text-zinc-400 hover:border-zinc-600"
               }
               ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
@@ -502,7 +502,12 @@ function ResultContent() {
       <PageLayout navItems={navItems} maxWidth="max-w-3xl">
         <div className="text-center py-20">
           <p className="text-zinc-500 mb-4">未找到有效的卦象信息</p>
-          <Button variant="primary" href="/divination">去占卜</Button>
+          <a
+            href="/divination"
+            className="h-10 px-6 text-sm font-title tracking-wider rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] inline-flex items-center justify-center"
+          >
+            去占卜
+          </a>
         </div>
       </PageLayout>
     );
@@ -672,9 +677,13 @@ function ResultContent() {
           initial="hidden"
           animate="visible"
         >
-          <Button variant="primary" href="/divination" size="lg" className="h-12 px-8">
+          <a
+            href="/divination"
+            className="h-12 px-8 text-base font-title tracking-wider rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] inline-flex items-center justify-center"
+            style={{ boxShadow: '0 0 30px rgba(139,37,0,0.3), 0 0 15px rgba(201,169,110,0.15)' }}
+          >
             {t("divinationAgain")}
-          </Button>
+          </a>
           <Button variant="secondary" href="/" size="md" className="h-10 px-6">
             {t("backHome")}
           </Button>

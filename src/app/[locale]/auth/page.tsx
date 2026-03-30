@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, Link } from "@/i18n/navigation";
-import { PageLayout, Input, Button } from "@/components/ui";
+import { PageLayout, Input } from "@/components/ui";
 
 function GoogleIcon() {
   return (
@@ -154,7 +154,7 @@ export default function AuthPage() {
               onClick={() => { setTab("login"); setError(""); }}
               className={`flex-1 pb-3 text-base tracking-wider font-title transition-all duration-300 ${
                 tab === "login"
-                  ? "text-amber-400 border-b-2 border-amber-400/60"
+                  ? "text-gold border-b-2 border-gold/60"
                   : "text-gray-500 hover:text-gray-400"
               }`}
             >
@@ -164,7 +164,7 @@ export default function AuthPage() {
               onClick={() => { setTab("register"); setError(""); }}
               className={`flex-1 pb-3 text-base tracking-wider font-title transition-all duration-300 ${
                 tab === "register"
-                  ? "text-amber-400 border-b-2 border-amber-400/60"
+                  ? "text-gold border-b-2 border-gold/60"
                   : "text-gray-500 hover:text-gray-400"
               }`}
             >
@@ -200,16 +200,14 @@ export default function AuthPage() {
                 placeholder="••••••••"
                 required
               />
-              <Button
+              <button
                 type="submit"
-                variant="primary"
-                size="lg"
-                loading={loading}
                 disabled={loading}
-                className="mt-2 w-full font-title tracking-wider"
+                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ boxShadow: '0 0 20px rgba(139,37,0,0.3), 0 0 10px rgba(201,169,110,0.1)' }}
               >
                 {loading ? "登录中..." : "登录"}
-              </Button>
+              </button>
             </form>
           )}
 
@@ -243,16 +241,14 @@ export default function AuthPage() {
                 required
                 minLength={6}
               />
-              <Button
+              <button
                 type="submit"
-                variant="primary"
-                size="lg"
-                loading={loading}
                 disabled={loading}
-                className="mt-2 w-full font-title tracking-wider"
+                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 transition-all duration-300 hover:bg-[#a63000] disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ boxShadow: '0 0 20px rgba(139,37,0,0.3), 0 0 10px rgba(201,169,110,0.1)' }}
               >
                 {loading ? "注册中..." : "注册"}
-              </Button>
+              </button>
             </form>
           )}
         </div>

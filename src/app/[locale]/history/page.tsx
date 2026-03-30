@@ -193,7 +193,7 @@ export default function HistoryPage() {
               className={[
                 "px-6 py-2.5 rounded-full text-base font-medium transition-all duration-300",
                 timeFilter === tab.key
-                  ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-[0_0_10px_rgba(217,169,56,0.1)]"
+                  ? "bg-[#8b2500] text-[#f5f0e8] border border-[#c9a96e]/40 shadow-[0_0_12px_rgba(139,37,0,0.3)]"
                   : "text-zinc-500 border border-zinc-800 hover:text-zinc-300 hover:border-zinc-600",
               ].join(" ")}
             >
