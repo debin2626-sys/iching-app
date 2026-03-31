@@ -345,3 +345,12 @@ body::after {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* ── Hide scrollbar for scenario cards ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

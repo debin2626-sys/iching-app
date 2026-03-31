@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Coins, Sparkles, BookOpen } from "lucide-react";
 import { AnimatedTaichi } from "@/components/home/HeroAnimations";
 import { NavBar } from "@/components/ui";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
+import ScenarioSelector from "@/components/divination/ScenarioSelector";
 
 const YEARS = Array.from({ length: 87 }, (_, i) => 1940 + i);
 const MONTHS = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -31,8 +32,39 @@ export default function Home() {
   const [birthDay, setBirthDay] = useState("");
   const [birthHour, setBirthHour] = useState("");
   const [gender, setGender] = useState<"" | "male" | "female">("");
+  const [isTyping, setIsTyping] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const typingRef = useRef(false);
 
   const hasBirthInfo = birthYear && birthMonth && birthDay && birthHour;
+
+  /* Typewriter effect for scenario template */
+  const typewriterFill = useCallback((text: string) => {
+    if (typingRef.current) return;
+    typingRef.current = true;
+    setIsTyping(true);
+    setQuestion("");
+    let i = 0;
+    const tick = () => {
+      if (i < text.length) {
+        setQuestion(text.slice(0, i + 1));
+        i++;
+        requestAnimationFrame(() => setTimeout(tick, 30));
+      } else {
+        typingRef.current = false;
+        setIsTyping(false);
+        textareaRef.current?.focus();
+      }
+    };
+    tick();
+  }, []);
+
+  const handleScenarioSelect = useCallback(
+    (template: string) => {
+      typewriterFill(template);
+    },
+    [typewriterFill]
+  );
 
   const handleStart = () => {
     if (!question.trim()) return;
@@ -94,13 +126,43 @@ export default function Home() {
         {t("subtitle")}
       </p>
 
-      {/* 输入框 */}
-      <textarea
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-        placeholder={t("questionPlaceholder")}
-        className={`mt-16 w-full h-[100px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
-      />
+      {/* 场景化入口 */}
+      <div className="mt-12">
+        <h2 className="text-lg md:text-xl text-[#c9a96e] font-bold text-center mb-5">
+          {t("scenarioTitle")}
+        </h2>
+        <ScenarioSelector onSelect={handleScenarioSelect} />
+      </div>
+
+      {/* 输入框 — with bracket highlighting overlay */}
+      <div className="mt-10 relative">
+        {/* Highlight overlay for brackets */}
+        <div
+          aria-hidden
+          className="absolute inset-0 p-5 text-base pointer-events-none whitespace-pre-wrap break-words overflow-hidden"
+          style={{ lineHeight: "1.5" }}
+        >
+          {question.split(/(\[[^\]]*\])/).map((part, idx) =>
+            /^\[.*\]$/.test(part) ? (
+              <span key={idx} className="text-[#c9a96e] font-semibold">
+                {part}
+              </span>
+            ) : (
+              <span key={idx} className="text-transparent">{part}</span>
+            )
+          )}
+        </div>
+        <textarea
+          ref={textareaRef}
+          value={question}
+          onChange={(e) => {
+            if (!isTyping) setQuestion(e.target.value);
+          }}
+          placeholder={t("questionPlaceholder")}
+          className={`w-full h-[100px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
+          style={{ caretColor: "#c9a96e" }}
+        />
+      </div>
 
       {/* 出生时辰选择器 */}
       <div className="mt-3 w-full">

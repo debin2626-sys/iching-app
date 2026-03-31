@@ -29,7 +29,10 @@
     "feature3Title": "六十四卦典",
     "feature3Desc": "穷理尽性，以至于命\n完整卦辞爻辞，白话译注，系统学习",
     "disclaimer": "本站仅供文化学习与娱乐参考，占卜结果不构成任何决策建议。",
-    "footerQuote": "一阴一阳之谓道"
+    "footerQuote": "一阴一阳之谓道",
+    "scenarioTitle": "选择你的问卦方向",
+    "scenarioHint": "选择场景获取引导问题，或直接输入你的问题",
+    "freeInputHint": "也可以直接输入你想问的问题 ↓"
   },
   "Nav": {
     "home": "首页",

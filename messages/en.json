@@ -29,7 +29,10 @@
     "feature3Title": "64 Hexagrams",
     "feature3Desc": "Explore the nature of all things\nComplete hexagram texts with modern commentary",
     "disclaimer": "This site is for cultural learning and entertainment only. Divination results do not constitute any decision-making advice.",
-    "footerQuote": "The alternation of Yin and Yang is called the Tao"
+    "footerQuote": "The alternation of Yin and Yang is called the Tao",
+    "scenarioTitle": "Choose Your Divination Path",
+    "scenarioHint": "Select a scenario for guided questions, or type your own below",
+    "freeInputHint": "Or type your own question below ↓"
   },
   "Nav": {
     "home": "Home",
