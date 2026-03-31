@@ -16,6 +16,7 @@ import {
   TRIGRAM_NAMES,
 } from "@/lib/iching/hexagram";
 import { getChangingLines } from "@/lib/iching/coins";
+import HexagramReveal from "@/components/divination/HexagramReveal";
 
 /* ── 卦象名称映射 ── */
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
@@ -92,41 +93,6 @@ function useHexagramData(hexNum: number | null) {
   }, [hexNum, fetchData]);
 
   return { data, loading, error };
-}
-
-/* ── 六爻图组件 ── */
-function HexagramDiagram({ lines }: { lines: LineValue[] }) {
-  return (
-    <div className="flex flex-col items-center gap-3" style={{ width: '300px', margin: '0 auto' }}>
-      {[...lines].reverse().map((v, ri) => {
-        const i = 5 - ri;
-        const isYang = v === 7 || v === 9;
-        const isChanging = v === 6 || v === 9;
-        const bgColor = isChanging ? "bg-red-500" : "bg-[#c9a96e]";
-        return (
-          <div key={i} className="flex items-center gap-4 w-full">
-            <span className="text-sm w-12 text-right opacity-50 shrink-0">{YAO_LABELS[i]}</span>
-            <div className="flex items-center justify-center flex-1">
-              {isYang ? (
-                <span className={`block w-full h-[10px] rounded-sm ${bgColor}`} />
-              ) : (
-                <div className="flex w-full items-center">
-                  <span className={`block flex-1 h-[10px] rounded-sm ${bgColor}`} />
-                  <span className="block w-6 shrink-0" />
-                  <span className={`block flex-1 h-[10px] rounded-sm ${bgColor}`} />
-                </div>
-              )}
-            </div>
-            {isChanging ? (
-              <span className="text-red-500 text-sm shrink-0">🔴</span>
-            ) : (
-              <span className="text-sm shrink-0 invisible">🔴</span>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
 }
 
 /* ── 八字信息卡组件 ── */
@@ -566,7 +532,7 @@ function ResultContent() {
           <div className="divider-gold w-24 mx-auto mt-4" />
         </motion.div>
 
-        {/* ── 六爻图 ── */}
+        {/* ── 六爻图（逐爻显现动画） ── */}
         {lines.length === 6 && (
           <motion.div
             className="flex justify-center"
@@ -575,7 +541,7 @@ function ResultContent() {
             animate="visible"
           >
             <Card variant="elevated" padding="lg">
-              <HexagramDiagram lines={lines} />
+              <HexagramReveal lines={lines} animated={true} />
             </Card>
           </motion.div>
         )}
