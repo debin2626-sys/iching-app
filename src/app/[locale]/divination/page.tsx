@@ -279,6 +279,8 @@ function DivinationContent() {
   const birthDay = searchParams.get("bd") || "";
   const birthHour = searchParams.get("bh") || "";
   const genderParam = searchParams.get("gender") || "";
+  const scenarioParam = searchParams.get("scenario") || "";
+  const subParam = searchParams.get("sub") || "";
 
   // 内部状态：如果 URL 没有 question，显示输入表单
   const [question, setQuestion] = useState(questionParam);
@@ -346,6 +348,12 @@ function DivinationContent() {
     }
     if (genderParam) {
       params.set("gender", genderParam);
+    }
+    if (scenarioParam) {
+      params.set("scenario", scenarioParam);
+    }
+    if (subParam) {
+      params.set("sub", subParam);
     }
     router.push(`/result?${params.toString()}`);
   };

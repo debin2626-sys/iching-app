@@ -33,6 +33,8 @@ export default function Home() {
   const [birthHour, setBirthHour] = useState("");
   const [gender, setGender] = useState<"" | "male" | "female">("");
   const [isTyping, setIsTyping] = useState(false);
+  const [scenarioId, setScenarioId] = useState("");
+  const [subScenarioId, setSubScenarioId] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const typingRef = useRef(false);
 
@@ -60,7 +62,9 @@ export default function Home() {
   }, []);
 
   const handleScenarioSelect = useCallback(
-    (template: string) => {
+    (template: string, sId: string, subId: string) => {
+      setScenarioId(sId);
+      setSubScenarioId(subId);
       typewriterFill(template);
     },
     [typewriterFill]
@@ -77,6 +81,12 @@ export default function Home() {
     }
     if (gender) {
       params.set("gender", gender);
+    }
+    if (scenarioId) {
+      params.set("scenario", scenarioId);
+    }
+    if (subScenarioId) {
+      params.set("sub", subScenarioId);
     }
     router.push(`/divination?${params.toString()}`);
   };
@@ -156,7 +166,14 @@ export default function Home() {
           ref={textareaRef}
           value={question}
           onChange={(e) => {
-            if (!isTyping) setQuestion(e.target.value);
+            if (!isTyping) {
+              setQuestion(e.target.value);
+              // 用户手动输入时清除场景选择
+              if (scenarioId) {
+                setScenarioId("");
+                setSubScenarioId("");
+              }
+            }
           }}
           placeholder={t("questionPlaceholder")}
           className={`w-full h-[100px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}

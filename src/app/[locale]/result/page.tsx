@@ -225,12 +225,16 @@ function AISection({
   question,
   birthInfo,
   gender,
+  scenarioId,
+  subScenarioId,
 }: {
   hexagramNumber: number;
   changingLines: number[];
   question: string;
   birthInfo: BirthInfo | null;
   gender: string;
+  scenarioId: string;
+  subScenarioId: string;
 }) {
   const t = useTranslations("Result");
   const [content, setContent] = useState("");
@@ -271,6 +275,8 @@ function AISection({
           locale: "zh",
           birthInfo,
           gender: gender || undefined,
+          scenarioId: scenarioId || undefined,
+          subScenarioId: subScenarioId || undefined,
         }),
       });
 
@@ -319,7 +325,7 @@ function AISection({
         setStreamDone(true);
       }
     }
-  }, [hexagramNumber, changingLines, question, birthInfo, gender]);
+  }, [hexagramNumber, changingLines, question, birthInfo, gender, scenarioId, subScenarioId]);
 
   // Initial fetch
   const hasInitialFetch = useRef(false);
@@ -387,6 +393,8 @@ function ResultContent() {
   const birthDay = searchParams.get("bd");
   const birthHour = searchParams.get("bh");
   const gender = searchParams.get("gender") || "";
+  const scenarioId = searchParams.get("scenario") || "";
+  const subScenarioId = searchParams.get("sub") || "";
 
   /* 解析爻值 */
   const lines: LineValue[] = linesParam
@@ -636,6 +644,8 @@ function ResultContent() {
             question={question}
             birthInfo={birthInfo}
             gender={gender}
+            scenarioId={scenarioId}
+            subScenarioId={subScenarioId}
           />
           </motion.div>
         )}

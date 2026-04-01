@@ -43,6 +43,8 @@ export const aiInterpretDepthSchema = z.object({
   locale: z.string().max(10).optional(),
   birthInfo: birthInfoSchema.optional().nullable(),
   gender: z.string().max(10).optional(),
+  scenarioId: z.string().max(30).optional(),
+  subScenarioId: z.string().max(30).optional(),
 });
 
 // ─── Favorites Schemas ───

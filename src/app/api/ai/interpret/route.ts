@@ -11,6 +11,10 @@ export async function POST(req: NextRequest) {
     // 校验 gender
     const gender = typeof body.gender === 'string' ? body.gender : undefined;
 
+    // 场景信息
+    const scenarioId = typeof body.scenarioId === 'string' ? body.scenarioId : undefined;
+    const subScenarioId = typeof body.subScenarioId === 'string' ? body.subScenarioId : undefined;
+
     if (!hexagramNumber || !question) {
       return NextResponse.json(
         { error: 'hexagramNumber and question are required' },
@@ -35,7 +39,8 @@ export async function POST(req: NextRequest) {
 
     // ── 缓存逻辑：通用解读（无个性化 birthInfo）走缓存 ──
     const isGeneric = !validBirthInfo;
-    const cacheKey = isGeneric ? buildCacheKey(Number(hexagramNumber), lines, validDepth) : '';
+    const scenarioSuffix = scenarioId ? `:s:${scenarioId}` : '';
+    const cacheKey = isGeneric ? buildCacheKey(Number(hexagramNumber), lines, validDepth) + scenarioSuffix : '';
 
     if (isGeneric) {
       const cached = getFromCache(cacheKey);
@@ -67,6 +72,8 @@ export async function POST(req: NextRequest) {
       depth: validDepth,
       birthInfo: validBirthInfo,
       gender,
+      scenarioId,
+      subScenarioId,
     });
 
     const controller = new AbortController();

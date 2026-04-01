@@ -7,7 +7,7 @@ import { scenarios, type Scenario, type SubScenario } from "@/data/scenarios";
 import SubScenarioPanel from "./SubScenarioPanel";
 
 interface ScenarioSelectorProps {
-  onSelect: (template: string) => void;
+  onSelect: (template: string, scenarioId: string, subScenarioId: string) => void;
 }
 
 export default function ScenarioSelector({ onSelect }: ScenarioSelectorProps) {
@@ -20,7 +20,7 @@ export default function ScenarioSelector({ onSelect }: ScenarioSelectorProps) {
   };
 
   const handleSubSelect = (sub: SubScenario) => {
-    onSelect(sub.template[locale]);
+    onSelect(sub.template[locale], activeScenario!.id, sub.id);
     setActiveId(null);
   };
 

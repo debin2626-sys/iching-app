@@ -55,6 +55,7 @@ model Hexagram {
   divinations        Divination[] @relation("PrimaryHexagram")
   changedDivinations Divination[] @relation("ChangedHexagram")
   favorites          Favorite[]
+  knowledgeChunks    KnowledgeChunk[]
 }
 
 model Divination {
@@ -125,4 +126,22 @@ model UserPreference {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model KnowledgeChunk {
+  id          String   @id @default(cuid())
+  hexagramId  Int
+  level       String   // "hexagram" | "yao" | "paragraph"
+  title       String?
+  content     String
+  embedding   Unsupported("vector(384)")?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  hexagram    Hexagram @relation(fields: [hexagramId], references: [number])
+
+  @@index([hexagramId])
+  @@index([level])
+  @@map("knowledge_chunk")
 }
