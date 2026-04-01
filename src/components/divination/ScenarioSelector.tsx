@@ -11,16 +11,23 @@ interface ScenarioSelectorProps {
 }
 
 export default function ScenarioSelector({ onSelect }: ScenarioSelectorProps) {
-  const locale = useLocale() as "zh" | "en";
+  const rawLocale = useLocale();
+  const locale = (rawLocale === "zh" || rawLocale === "en" ? rawLocale : "zh") as "zh" | "en";
+  const localeKey = rawLocale as string;
   const [activeId, setActiveId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const getText = (obj: { zh: string; en: string; "zh-TW"?: string }) => {
+    if (localeKey === "zh-TW" && obj["zh-TW"]) return obj["zh-TW"];
+    return obj[locale];
+  };
 
   const handleCardClick = (scenario: Scenario) => {
     setActiveId(activeId === scenario.id ? null : scenario.id);
   };
 
   const handleSubSelect = (sub: SubScenario) => {
-    onSelect(sub.template[locale], activeScenario!.id, sub.id);
+    onSelect(getText(sub.template), activeScenario!.id, sub.id);
     setActiveId(null);
   };
 
@@ -58,10 +65,10 @@ export default function ScenarioSelector({ onSelect }: ScenarioSelectorProps) {
               {scenario.emoji}
             </span>
             <span className="mt-2 text-sm md:text-base font-semibold text-[#f5f0e8]">
-              {scenario.name[locale]}
+              {getText(scenario.name)}
             </span>
             <span className="mt-1 text-[11px] md:text-xs text-[#a08050] truncate max-w-[120px] md:max-w-[160px] px-2 text-center">
-              {scenario.description[locale]}
+              {getText(scenario.description)}
             </span>
           </m.button>
         ))}

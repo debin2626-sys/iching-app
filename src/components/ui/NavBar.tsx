@@ -4,7 +4,7 @@ import { useLocale } from "next-intl";
 import { useSession } from "next-auth/react";
 import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import { motion } from "framer-motion";
-import { type ReactNode } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import { trackLanguageSwitch } from "@/lib/analytics";
 
 export interface NavItem {
@@ -17,44 +17,82 @@ interface NavBarProps {
   items: NavItem[];
 }
 
+const LOCALE_LABELS: Record<string, string> = {
+  zh: "简体",
+  "zh-TW": "繁體",
+  en: "EN",
+};
+
+const LOCALE_OPTIONS = [
+  { value: "zh", label: "简体中文" },
+  { value: "zh-TW", label: "繁體中文" },
+  { value: "en", label: "English" },
+];
+
 function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  const toggle = () => {
-    const next = locale === "zh" ? "en" : "zh";
-    trackLanguageSwitch(locale, next);
-    router.replace(pathname, { locale: next });
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  const switchTo = (next: string) => {
+    if (next !== locale) {
+      trackLanguageSwitch(locale, next);
+      router.replace(pathname, { locale: next });
+    }
+    setOpen(false);
   };
 
   return (
-    <button
-      onClick={toggle}
-      className="relative flex h-8 w-16 items-center rounded-full border border-gold/30 bg-white/5 px-1 text-xs transition-all duration-300 hover:border-gold/60"
-      aria-label="Switch language"
-    >
-      <motion.span
-        layout
-        className="absolute h-6 w-7 rounded-full bg-gold/20"
-        animate={{ x: locale === "zh" ? 0 : 28 }}
-        transition={{ type: "spring", stiffness: 500, damping: 30 }}
-      />
-      <span
-        className={`relative z-10 flex-1 text-center transition-colors duration-300 ${
-          locale === "zh" ? "text-gold" : "text-gray-500"
-        }`}
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex h-8 items-center gap-1 rounded-full border border-gold/30 bg-white/5 px-3 text-xs text-gold transition-all duration-300 hover:border-gold/60"
+        aria-label="Switch language"
       >
-        中
-      </span>
-      <span
-        className={`relative z-10 flex-1 text-center transition-colors duration-300 ${
-          locale === "en" ? "text-gold" : "text-gray-500"
-        }`}
-      >
-        EN
-      </span>
-    </button>
+        <span>{LOCALE_LABELS[locale] || locale}</span>
+        <svg
+          className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute right-0 top-full mt-1 min-w-[120px] overflow-hidden rounded-lg border border-gold/20 bg-[rgba(10,10,18,0.95)] shadow-lg backdrop-blur-xl z-[100]">
+          {LOCALE_OPTIONS.map((opt) => (
+            <button
+              key={opt.value}
+              onClick={() => switchTo(opt.value)}
+              className={`flex w-full items-center px-4 py-2.5 text-sm transition-colors duration-200 ${
+                locale === opt.value
+                  ? "bg-gold/10 text-gold"
+                  : "text-gray-400 hover:bg-white/5 hover:text-gold"
+              }`}
+            >
+              {locale === opt.value && (
+                <span className="mr-2 text-xs">✓</span>
+              )}
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -118,6 +156,8 @@ function DesktopNav({ items }: NavBarProps) {
   const pathname = usePathname();
   const locale = useLocale();
 
+  const brandName = locale === "en" ? "Yi Ching" : "易經";
+
   return (
     <nav className="fixed inset-x-0 top-0 z-50 hidden items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.8)] px-8 backdrop-blur-[12px] md:flex" style={{ height: '64px' }}>
       {/* Logo / brand */}
@@ -127,7 +167,7 @@ function DesktopNav({ items }: NavBarProps) {
         style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)', display: 'flex', alignItems: 'center', gap: '6px' }}
       >
         <span style={{ fontSize: '20px' }}>☯</span>
-        {locale === "zh" ? "易经" : "Yi Ching"}
+        {brandName}
       </Link>
 
       {/* Nav links */}
@@ -174,6 +214,8 @@ function DesktopNav({ items }: NavBarProps) {
 function MobileTopBar() {
   const locale = useLocale();
 
+  const brandName = locale === "en" ? "Yi Ching" : "易經";
+
   return (
     <div className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.9)] px-4 backdrop-blur-[12px] md:hidden">
       <Link
@@ -182,7 +224,7 @@ function MobileTopBar() {
         style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)', display: 'flex', alignItems: 'center', gap: '6px' }}
       >
         <span style={{ fontSize: '20px' }}>☯</span>
-        {locale === "zh" ? "易经" : "Yi Ching"}
+        {brandName}
       </Link>
       <div className="flex items-center gap-3">
         <LanguageSwitcher />

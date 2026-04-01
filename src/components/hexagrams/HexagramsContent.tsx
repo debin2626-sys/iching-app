@@ -76,9 +76,12 @@ function getTrigrams(sym: string): { upper: string; lower: string } {
   };
 }
 
-function Lines({ s }: { s: string }) {
+function Lines({ s, nameZh, nameEn, number }: { s: string; nameZh?: string; nameEn?: string; number?: number }) {
+  const label = nameZh && number
+    ? `${nameZh}卦 - 第${number}卦 / Hexagram ${number} ${nameEn || ''}`
+    : "卦象";
   return (
-    <div className="flex flex-col gap-[3px] items-center my-1.5">
+    <div className="flex flex-col gap-[3px] items-center my-1.5" role="img" aria-label={label}>
       {s.split("").reverse().map((b, i) => (
         <div key={i} className="flex gap-[3px] justify-center w-8">
           {b === "1" ? (
@@ -152,9 +155,9 @@ export default function HexagramsContent() {
           <AnimatePresence mode="popLayout">
             {filtered.map(([num, zh, , en, sym]) => {
               const { upper, lower } = getTrigrams(sym);
-              const displayName = locale === "zh"
-                ? (ZH_TRADITIONAL_NAMES[num] || zh)
-                : en;
+              const displayName = locale === "en"
+                ? en
+                : (ZH_TRADITIONAL_NAMES[num] || zh);
               return (
                 <motion.div
                   key={num}
@@ -179,7 +182,7 @@ export default function HexagramsContent() {
 
                     {/* Hexagram lines */}
                     <div className="transition-transform duration-300 group-hover:scale-110">
-                      <Lines s={sym} />
+                      <Lines s={sym} nameZh={zh} nameEn={en} number={num} />
                     </div>
 
                     <span className="text-xl font-semibold text-amber-400 mt-2 group-hover:text-amber-300 transition-colors duration-300">

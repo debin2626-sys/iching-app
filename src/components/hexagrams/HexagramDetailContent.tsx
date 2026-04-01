@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { PageLayout } from "@/components/ui";
+import RelatedHexagrams from "@/components/hexagrams/RelatedHexagrams";
 
 interface HexagramLine {
   position: number;
@@ -35,9 +36,15 @@ const TRIGRAM_MAP: Record<string, string> = {
   "011": "☴", "010": "☵", "001": "☶", "000": "☷",
 };
 
-function HexagramLines({ symbol }: { symbol: string }) {
+function HexagramLines({ symbol, nameZh, nameEn, number }: { symbol: string; nameZh?: string; nameEn?: string; number?: number }) {
+  const altZh = nameZh && number ? `${nameZh}卦卦象 - 第${number}卦` : "卦象";
+  const altEn = nameEn && number ? `Hexagram ${number} ${nameEn} - I Ching symbol` : "Hexagram symbol";
   return (
-    <div className="flex flex-col gap-[5px] items-center my-3">
+    <div
+      className="flex flex-col gap-[5px] items-center my-3"
+      role="img"
+      aria-label={`${altZh} / ${altEn}`}
+    >
       {symbol.split("").reverse().map((b, i) => (
         <div key={i} className="flex gap-[4px] justify-center w-16">
           {b === "1" ? (
@@ -57,7 +64,7 @@ function HexagramLines({ symbol }: { symbol: string }) {
 export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumber: number }) {
   const tNav = useTranslations("Nav");
   const locale = useLocale();
-  const isZh = locale === "zh";
+  const isZh = locale === "zh" || locale === "zh-TW";
   const [data, setData] = useState<HexagramData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -101,8 +108,6 @@ export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumb
 
   const upper = TRIGRAM_MAP[data.symbol.slice(3, 6)] || "?";
   const lower = TRIGRAM_MAP[data.symbol.slice(0, 3)] || "?";
-  const prevNum = hexagramNumber > 1 ? hexagramNumber - 1 : 64;
-  const nextNum = hexagramNumber < 64 ? hexagramNumber + 1 : 1;
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-4xl">
@@ -125,7 +130,7 @@ export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumb
             <span>{upper}</span>
             <span>{lower}</span>
           </div>
-          <HexagramLines symbol={data.symbol} />
+          <HexagramLines symbol={data.symbol} nameZh={data.nameZh} nameEn={data.nameEn} number={data.number} />
           <h1 className="text-4xl font-bold text-amber-400 mt-3">
             {data.nameZh}
           </h1>
@@ -193,23 +198,8 @@ export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumb
           </section>
         )}
 
-        {/* Prev / Next navigation */}
-        <div className="flex justify-between items-center pt-6 border-t border-gray-800">
-          <Link
-            href={`/hexagrams/${prevNum}`}
-            className="flex items-center gap-1 text-sm text-gray-500 hover:text-amber-400 transition-colors"
-          >
-            <ChevronLeft size={16} />
-            {isZh ? `第${prevNum}卦` : `Hexagram ${prevNum}`}
-          </Link>
-          <Link
-            href={`/hexagrams/${nextNum}`}
-            className="flex items-center gap-1 text-sm text-gray-500 hover:text-amber-400 transition-colors"
-          >
-            {isZh ? `第${nextNum}卦` : `Hexagram ${nextNum}`}
-            <ChevronRight size={16} />
-          </Link>
-        </div>
+        {/* Related hexagrams + Prev/Next navigation */}
+        <RelatedHexagrams hexagramNumber={hexagramNumber} symbol={data.symbol} />
       </div>
     </PageLayout>
   );

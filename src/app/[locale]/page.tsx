@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import HomeContent from '@/components/home/HomeContent';
 import { HomeJsonLd } from '@/components/seo/JsonLd';
-import { SITE_URL, SITE_DESC_ZH, SITE_DESC_EN } from '@/lib/seo';
+import { SITE_URL, SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW, getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -10,35 +10,35 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isZh = locale === 'zh';
+  const canonical = getBaseUrl(locale);
+
+  const title = getLocalizedText(
+    locale,
+    '易经在线占卜 | AI智能解读 - 51yijing.com',
+    'I Ching Online Divination | AI Interpretation - 51yijing.com',
+    '易經線上占卜 | AI智慧解讀 - 51yijing.com'
+  );
+
+  const description = getLocalizedText(locale, SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW);
 
   return {
-    title: isZh
-      ? '易经在线占卜 | AI智能解读 - 51yijing.com'
-      : 'I Ching Online Divination | AI Interpretation - 51yijing.com',
-    description: isZh ? SITE_DESC_ZH : SITE_DESC_EN,
+    title,
+    description,
     alternates: {
-      canonical: isZh ? SITE_URL : `${SITE_URL}/en`,
-      languages: {
-        zh: SITE_URL,
-        en: `${SITE_URL}/en`,
-      },
+      canonical,
+      languages: getAlternateLanguages(),
     },
     openGraph: {
-      title: isZh
-        ? '易经在线占卜 | AI智能解读 - 51yijing.com'
-        : 'I Ching Online Divination | AI Interpretation - 51yijing.com',
-      description: isZh ? SITE_DESC_ZH : SITE_DESC_EN,
-      url: isZh ? SITE_URL : `${SITE_URL}/en`,
+      title,
+      description,
+      url: canonical,
       type: 'website',
       images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: isZh
-        ? '易经在线占卜 | AI智能解读 - 51yijing.com'
-        : 'I Ching Online Divination | AI Interpretation - 51yijing.com',
-      description: isZh ? SITE_DESC_ZH : SITE_DESC_EN,
+      title,
+      description,
       images: ['/og-image.png'],
     },
   };

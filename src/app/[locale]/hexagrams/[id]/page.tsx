@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { HEXAGRAM_DATA, getHexagramByNumber } from '@/data/hexagrams';
 import { HexagramArticleJsonLd } from '@/components/seo/JsonLd';
-import { SITE_URL } from '@/lib/seo';
+import { SITE_URL, getLocalePrefix, getAlternateLanguages } from '@/lib/seo';
 import HexagramDetailContent from '@/components/hexagrams/HexagramDetailContent';
 
 export function generateStaticParams() {
@@ -21,22 +21,33 @@ export async function generateMetadata({
 
   if (!hex) return { title: 'Not Found' };
 
-  const isZh = locale === 'zh';
-  const canonical = isZh
-    ? `${SITE_URL}/hexagrams/${num}`
-    : `${SITE_URL}/en/hexagrams/${num}`;
+  const isEn = locale === 'en';
+  const isZhTW = locale === 'zh-TW';
+  const prefix = getLocalePrefix(locale);
+  const canonical = `${SITE_URL}${prefix}/hexagrams/${num}`;
 
-  const title = isZh
-    ? `${hex.nameZh}卦 - 第${num}卦 | 易经在线占卜 51yijing.com`
-    : `Hexagram ${num}: ${hex.nameEn} | I Ching 51yijing.com`;
+  let title: string;
+  let description: string;
+  let keywords: string;
 
-  const description = isZh
-    ? `${hex.traditionalName}（第${num}卦）：${hex.judgmentZh} ${hex.interpretationZh}`
-    : `Hexagram ${num} - ${hex.nameEn}: ${hex.judgmentEn} ${hex.interpretationEn}`;
-
-  const keywords = isZh
-    ? `${hex.nameZh}卦,${hex.traditionalName},第${num}卦,易经,周易,卦辞,爻辞,${hex.imageZh.slice(0, 10)}`
-    : `hexagram ${num},${hex.nameEn},I Ching,Yi Jing,divination,judgment,image`;
+  if (isEn) {
+    title = `Hexagram ${num}: ${hex.nameEn} | I Ching 51yijing.com`;
+    description = `Hexagram ${num} - ${hex.nameEn}: ${hex.judgmentEn} ${hex.interpretationEn}`;
+    keywords = `hexagram ${num},${hex.nameEn},I Ching,Yi Jing,divination,judgment,image`;
+  } else if (isZhTW) {
+    const nameZhTW = hex.nameZhTW || hex.nameZh;
+    const traditionalNameTW = hex.traditionalNameTW || hex.traditionalName;
+    const judgmentTW = hex.judgmentZhTW || hex.judgmentZh;
+    const interpretationTW = hex.interpretationZhTW || hex.interpretationZh;
+    const imageTW = hex.imageZhTW || hex.imageZh;
+    title = `${nameZhTW}卦 - 第${num}卦 | 易經線上占卜 51yijing.com`;
+    description = `${traditionalNameTW}（第${num}卦）：${judgmentTW} ${interpretationTW}`;
+    keywords = `${nameZhTW}卦,${traditionalNameTW},第${num}卦,易經,周易,卦辭,爻辭,${imageTW.slice(0, 10)}`;
+  } else {
+    title = `${hex.nameZh}卦 - 第${num}卦 | 易经在线占卜 51yijing.com`;
+    description = `${hex.traditionalName}（第${num}卦）：${hex.judgmentZh} ${hex.interpretationZh}`;
+    keywords = `${hex.nameZh}卦,${hex.traditionalName},第${num}卦,易经,周易,卦辞,爻辞,${hex.imageZh.slice(0, 10)}`;
+  }
 
   return {
     title,
@@ -44,10 +55,7 @@ export async function generateMetadata({
     keywords,
     alternates: {
       canonical,
-      languages: {
-        zh: `${SITE_URL}/hexagrams/${num}`,
-        en: `${SITE_URL}/en/hexagrams/${num}`,
-      },
+      languages: getAlternateLanguages(`/hexagrams/${num}`),
     },
     openGraph: {
       title,

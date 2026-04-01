@@ -16,9 +16,15 @@ function useIsMobile() {
   return window.innerWidth < 768;
 }
 
+function getScenarioText(obj: { zh: string; en: string; "zh-TW"?: string }, locale: string): string {
+  if (locale === "zh-TW" && obj["zh-TW"]) return obj["zh-TW"];
+  if (locale === "en") return obj.en;
+  return obj.zh;
+}
+
 /* ── Desktop: dropdown panel ── */
 function DesktopPanel({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
-  const locale = useLocale() as "zh" | "en";
+  const locale = useLocale();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -47,7 +53,7 @@ function DesktopPanel({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
             onClick={() => onSelect(sub)}
             className="px-4 py-2 rounded-full text-sm text-[#f5f0e8] bg-[#1a1a2e] border border-[rgba(201,169,110,0.4)] transition-all duration-200 hover:bg-[#2a2035] hover:border-[#c9a96e] hover:text-[#c9a96e] active:scale-95"
           >
-            {sub.name[locale]}
+            {getScenarioText(sub.name, locale)}
           </button>
         ))}
       </div>
@@ -57,7 +63,7 @@ function DesktopPanel({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
 
 /* ── Mobile: bottom sheet ── */
 function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
-  const locale = useLocale() as "zh" | "en";
+  const locale = useLocale();
   const dragControls = useDragControls();
   const sheetRef = useRef<HTMLDivElement>(null);
 
@@ -105,7 +111,7 @@ function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
         {/* Title */}
         <div className="px-4 pb-3 border-b border-[#2a2a3a]">
           <h3 className="text-base font-semibold text-[#f5f0e8]">
-            {scenario.emoji} {scenario.name[locale]}
+            {scenario.emoji} {getScenarioText(scenario.name, locale)}
           </h3>
         </div>
 
@@ -121,7 +127,7 @@ function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
                 i < scenario.subScenarios.length - 1 ? "border-b border-[#2a2a3a]" : "",
               ].join(" ")}
             >
-              <span className="text-sm">{sub.name[locale]}</span>
+              <span className="text-sm">{getScenarioText(sub.name, locale)}</span>
               <span className="text-[#a08050] text-xs">›</span>
             </button>
           ))}

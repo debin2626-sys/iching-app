@@ -130,7 +130,7 @@ export default function HomeContent() {
 
       {/* 主标题 */}
       <h1 className="mt-5 text-[56px] text-gold-gradient font-title font-bold text-center">
-        {locale === "zh" ? "易" : "Yi Ching"}
+        {locale === "en" ? "Yi Ching" : "易"}
       </h1>
 
       {/* 副标题 */}

@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { HEXAGRAM_DATA } from '@/data/hexagrams';
 
 const SITE_URL = 'https://51yijing.com';
-const locales = ['zh', 'en'];
+const locales = ['zh', 'zh-TW', 'en'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

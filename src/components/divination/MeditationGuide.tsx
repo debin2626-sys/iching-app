@@ -191,7 +191,7 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
             }}
           >
             {/* Ring border with gradient */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200">
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200" role="img" aria-label="太极图 / Taiji symbol">
               <defs>
                 <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#c9a96e" />

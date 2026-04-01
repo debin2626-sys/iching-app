@@ -37,7 +37,7 @@ type TimeFilter = "7d" | "30d" | "all";
 
 function formatDate(dateStr: string, locale: string): string {
   const date = new Date(dateStr);
-  if (locale === "zh") {
+  if (locale === "zh" || locale === "zh-TW") {
     const y = date.getFullYear();
     const m = date.getMonth() + 1;
     const d = date.getDate();
@@ -137,10 +137,12 @@ export default function HistoryContent() {
     return records.filter((r) => isWithinDays(r.createdAt, days));
   }, [records, timeFilter]);
 
+  const isZh = locale === "zh" || locale === "zh-TW";
+
   const timeFilterTabs: { key: TimeFilter; label: string }[] = [
-    { key: "7d", label: locale === "zh" ? "最近7天" : "Last 7 days" },
-    { key: "30d", label: locale === "zh" ? "最近30天" : "Last 30 days" },
-    { key: "all", label: locale === "zh" ? "全部" : "All" },
+    { key: "7d", label: isZh ? "最近7天" : "Last 7 days" },
+    { key: "30d", label: isZh ? "最近30天" : "Last 30 days" },
+    { key: "all", label: isZh ? "全部" : "All" },
   ];
 
   // Loading state
@@ -238,7 +240,7 @@ export default function HistoryContent() {
         >
           <div className="text-6xl mb-5 opacity-20">☯</div>
           <p className="text-zinc-500 text-base">
-            {locale === "zh" ? "该时间段内暂无记录" : "No records in this period"}
+            {isZh ? "该时间段内暂无记录" : "No records in this period"}
           </p>
         </motion.div>
       )}
@@ -252,9 +254,9 @@ export default function HistoryContent() {
           <div className="space-y-6">
             <AnimatePresence mode="popLayout">
               {filteredRecords.map((record, index) => {
-                const hexName = locale === "zh" ? record.hexagram.nameZh : record.hexagram.nameEn;
+                const hexName = isZh ? record.hexagram.nameZh : record.hexagram.nameEn;
                 const changedName = record.changedHexagram
-                  ? locale === "zh" ? record.changedHexagram.nameZh : record.changedHexagram.nameEn
+                  ? isZh ? record.changedHexagram.nameZh : record.changedHexagram.nameEn
                   : null;
                 const questionText = record.question
                   ? record.question.length > 40
