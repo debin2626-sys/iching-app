@@ -1,6 +1,7 @@
 import OpenAI from 'openai';
 import { calculateBazi, type BirthInfo } from './iching/bazi';
 import { getScenarioPrompt } from './prompts/scenarios';
+import { searchKnowledgeWithTimeout, formatRAGContext } from './rag';
 
 // 双客户端：国内走 DeepSeek，海外走 OpenAI
 const deepseekClient = new OpenAI({
@@ -140,8 +141,8 @@ function getMaxTokensForDepth(depth: InterpretDepth): number {
   }
 }
 
-/** 根据 locale 选择客户端和模型，返回流式响应 */
-export function getAIInterpretation(params: InterpretationParams) {
+/** 根据 locale 选择客户端和模型，返回流式响应（含 RAG 知识注入） */
+export async function getAIInterpretation(params: InterpretationParams) {
   const isZH = !params.locale || params.locale.startsWith('zh');
   const depth = params.depth || 'detailed';
 
@@ -156,12 +157,33 @@ export function getAIInterpretation(params: InterpretationParams) {
 
   const userPrompt = isZH ? buildUserPromptZH(params) : buildUserPromptEN(params);
 
+  // RAG 知识检索（3秒超时，失败则跳过）
+  let ragContext = '';
+  if (isZH && params.question) {
+    try {
+      const ragResult = await searchKnowledgeWithTimeout(
+        params.question,
+        params.hexagramNumber,
+        5,
+        3000
+      );
+      ragContext = formatRAGContext(ragResult);
+    } catch {
+      // RAG 失败不影响主流程
+    }
+  }
+
+  // 将 RAG 知识注入到用户 prompt 前面
+  const finalUserPrompt = ragContext
+    ? `${ragContext}\n\n---\n\n${userPrompt}`
+    : userPrompt;
+
   return {
     client: isZH ? deepseekClient : openaiClient,
     model: isZH ? 'deepseek-chat' : 'gpt-4o',
     messages: [
       { role: 'system' as const, content: systemPrompt },
-      { role: 'user' as const, content: userPrompt },
+      { role: 'user' as const, content: finalUserPrompt },
     ],
     stream: true as const,
     temperature: 0.8,

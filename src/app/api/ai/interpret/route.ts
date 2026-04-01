@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const { client, ...chatParams } = getAIInterpretation({
+    const { client, ...chatParams } = await getAIInterpretation({
       hexagramNumber: Number(hexagramNumber),
       changingLines: lines,
       question: String(question),
