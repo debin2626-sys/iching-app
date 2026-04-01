@@ -1,8 +1,8 @@
 "use client";
 
-
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import { useRouter, Link } from "@/i18n/navigation";
 import { PageLayout, Input } from "@/components/ui";
 
@@ -18,6 +18,7 @@ function GoogleIcon() {
 }
 
 export default function AuthPage() {
+  const t = useTranslations("Auth");
   const router = useRouter();
   const [tab, setTab] = useState<"login" | "register">("login");
   const [email, setEmail] = useState("");
@@ -43,13 +44,13 @@ export default function AuthPage() {
         redirect: false,
       });
       if (res?.error) {
-        setError("邮箱或密码错误");
+        setError(t("errorInvalidCredentials"));
       } else {
         router.push("/");
         router.refresh();
       }
     } catch {
-      setError("登录失败，请稍后重试");
+      setError(t("errorLoginFailed"));
     } finally {
       setLoading(false);
     }
@@ -59,7 +60,7 @@ export default function AuthPage() {
     e.preventDefault();
     setError("");
     if (password.length < 6) {
-      setError("密码至少需要6个字符");
+      setError(t("errorPasswordTooShort"));
       return;
     }
     setLoading(true);
@@ -71,10 +72,9 @@ export default function AuthPage() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "注册失败");
+        setError(data.error || t("errorRegisterFailed"));
         return;
       }
-      // Auto login after register
       const loginRes = await signIn("credentials", {
         email,
         password,
@@ -82,13 +82,13 @@ export default function AuthPage() {
       });
       if (loginRes?.error) {
         setTab("login");
-        setError("注册成功，请登录");
+        setError(t("errorRegisterSuccessLogin"));
       } else {
         router.push("/");
         router.refresh();
       }
     } catch {
-      setError("注册失败，请稍后重试");
+      setError(t("errorRegisterFailed"));
     } finally {
       setLoading(false);
     }
@@ -110,7 +110,7 @@ export default function AuthPage() {
           href="/"
           className="absolute top-6 left-6 text-sm text-amber-400/50 hover:text-amber-400 transition-colors tracking-wider"
         >
-          ← 返回首页
+          {t("backHome")}
         </Link>
 
         {/* Logo */}
@@ -120,13 +120,13 @@ export default function AuthPage() {
             易 · YiChing
           </h1>
           <p className="text-gray-500 text-sm tracking-[0.3em] mt-3">
-            {tab === "login" ? "欢迎回来，继续问道" : "注册账号，开启问道之旅"}
+            {tab === "login" ? t("welcomeBack") : t("registerWelcome")}
           </p>
         </div>
 
         {/* Card */}
         <div className="card-mystic rounded-2xl w-full max-w-md p-8 sm:p-10">
-          {/* Google Login Button - Primary */}
+          {/* Google Login Button */}
           <button
             type="button"
             onClick={handleGoogleLogin}
@@ -138,13 +138,13 @@ export default function AuthPage() {
             ) : (
               <GoogleIcon />
             )}
-            {googleLoading ? "跳转中..." : "使用 Google 登录"}
+            {googleLoading ? t("redirecting") : t("signInWithGoogle")}
           </button>
 
           {/* Divider */}
           <div className="flex items-center gap-4 my-8">
             <div className="flex-1 h-px bg-white/10" />
-            <span className="text-xs text-gray-500 tracking-wider">或</span>
+            <span className="text-xs text-gray-500 tracking-wider">{t("or")}</span>
             <div className="flex-1 h-px bg-white/10" />
           </div>
 
@@ -158,7 +158,7 @@ export default function AuthPage() {
                   : "text-gray-500 hover:text-gray-400"
               }`}
             >
-              邮箱登录
+              {t("emailLogin")}
             </button>
             <button
               onClick={() => { setTab("register"); setError(""); }}
@@ -168,7 +168,7 @@ export default function AuthPage() {
                   : "text-gray-500 hover:text-gray-400"
               }`}
             >
-              邮箱注册
+              {t("emailRegister")}
             </button>
           </div>
 
@@ -184,20 +184,20 @@ export default function AuthPage() {
             <form onSubmit={handleLogin} className="flex flex-col gap-6">
               <Input
                 type="email"
-                label="邮箱"
+                label={t("emailLabel")}
                 size="lg"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
+                placeholder={t("emailPlaceholder")}
                 required
               />
               <Input
                 type="password"
-                label="密码"
+                label={t("passwordLabel")}
                 size="lg"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder={t("passwordPlaceholder")}
                 required
               />
               <button
@@ -205,7 +205,7 @@ export default function AuthPage() {
                 disabled={loading}
                 className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-gold-bright disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? "登录中..." : "登录"}
+                {loading ? t("loggingIn") : t("loginButton")}
               </button>
             </form>
           )}
@@ -215,28 +215,28 @@ export default function AuthPage() {
             <form onSubmit={handleRegister} className="flex flex-col gap-6">
               <Input
                 type="text"
-                label="称呼"
+                label={t("nameLabel")}
                 size="lg"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="如何称呼您"
+                placeholder={t("namePlaceholder")}
               />
               <Input
                 type="email"
-                label="邮箱"
+                label={t("emailLabel")}
                 size="lg"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
+                placeholder={t("emailPlaceholder")}
                 required
               />
               <Input
                 type="password"
-                label="密码"
+                label={t("passwordLabel")}
                 size="lg"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="至少6个字符"
+                placeholder={t("passwordMinLength")}
                 required
                 minLength={6}
               />
@@ -245,7 +245,7 @@ export default function AuthPage() {
                 disabled={loading}
                 className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-gold-bright disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? "注册中..." : "注册"}
+                {loading ? t("registering") : t("registerButton")}
               </button>
             </form>
           )}

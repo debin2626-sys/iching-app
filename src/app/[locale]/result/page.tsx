@@ -17,6 +17,7 @@ import {
 } from "@/lib/iching/hexagram";
 import { getChangingLines } from "@/lib/iching/coins";
 import HexagramReveal from "@/components/divination/HexagramReveal";
+import { trackAIInterpretStart, trackAIInterpretComplete } from "@/lib/analytics";
 
 /* ── 卦象名称映射 ── */
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
@@ -263,6 +264,7 @@ function AISection({
     setError("");
     setContent("");
     setStreamDone(false);
+    trackAIInterpretStart(hexagramNumber, selectedDepth);
     try {
       const res = await fetch("/api/ai/interpret", {
         method: "POST",
@@ -323,6 +325,7 @@ function AISection({
       if (fetchIdRef.current === id) {
         setLoading(false);
         setStreamDone(true);
+        trackAIInterpretComplete(hexagramNumber, selectedDepth);
       }
     }
   }, [hexagramNumber, changingLines, question, birthInfo, gender, scenarioId, subScenarioId]);

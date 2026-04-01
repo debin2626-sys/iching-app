@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { trackMeditationComplete, trackMeditationSkip } from "@/lib/analytics";
 
 // Breathing cycle: 4s inhale + 2s hold + 4s exhale = 10s per cycle, 3 cycles = 30s
 const INHALE_DURATION = 4000;
@@ -54,6 +55,7 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
       if (ms >= TOTAL_DURATION) {
         if (!completedRef.current) {
           completedRef.current = true;
+          trackMeditationComplete();
           onComplete();
         }
         return;
@@ -116,6 +118,7 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
     if (!completedRef.current) {
       completedRef.current = true;
       cancelAnimationFrame(rafRef.current);
+      trackMeditationSkip();
       onComplete();
     }
   }, [onComplete]);

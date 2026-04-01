@@ -8,6 +8,7 @@ import { AnimatedTaichi } from "@/components/home/HeroAnimations";
 import { NavBar } from "@/components/ui";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import ScenarioSelector from "@/components/divination/ScenarioSelector";
+import { trackScenarioSelect } from "@/lib/analytics";
 
 const YEARS = Array.from({ length: 87 }, (_, i) => 1940 + i);
 const MONTHS = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -65,6 +66,7 @@ export default function Home() {
     (template: string, sId: string, subId: string) => {
       setScenarioId(sId);
       setSubScenarioId(subId);
+      trackScenarioSelect(sId, subId);
       typewriterFill(template);
     },
     [typewriterFill]

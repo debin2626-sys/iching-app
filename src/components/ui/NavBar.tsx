@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
+import { trackLanguageSwitch } from "@/lib/analytics";
 
 export interface NavItem {
   label: string;
@@ -23,6 +24,7 @@ function LanguageSwitcher() {
 
   const toggle = () => {
     const next = locale === "zh" ? "en" : "zh";
+    trackLanguageSwitch(locale, next);
     router.replace(pathname, { locale: next });
   };
 

@@ -1,7 +1,7 @@
 "use client";
 
 
-import { useState, useCallback, Suspense } from "react";
+import { useState, useCallback, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -13,6 +13,7 @@ import { PageLayout, Button, TextArea, Select } from "@/components/ui";
 import Card from "@/components/ui/Card";
 import MeditationGuide from "@/components/divination/MeditationGuide";
 import CoinToss from "@/components/divination/CoinToss";
+import { trackDivinationStart, trackCoinToss, trackDivinationComplete } from "@/lib/analytics";
 
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
   1:{cn:"乾",en:"Qian"},2:{cn:"坤",en:"Kun"},3:{cn:"屯",en:"Zhun"},4:{cn:"蒙",en:"Meng"},
@@ -249,9 +250,20 @@ function DivinationContent() {
   const [question, setQuestion] = useState(questionParam);
   const [hasStarted, setHasStarted] = useState(!!questionParam.trim());
 
+  // Track divination_start when arriving with a question from home page
+  const hasTrackedStart = useRef(false);
+  useEffect(() => {
+    if (questionParam.trim() && !hasTrackedStart.current) {
+      hasTrackedStart.current = true;
+      trackDivinationStart(questionParam);
+    }
+  }, [questionParam]);
+
   const handleQuestionSubmit = (params: URLSearchParams) => {
-    setQuestion(params.get("question") || "");
+    const q = params.get("question") || "";
+    setQuestion(q);
     setHasStarted(true);
+    trackDivinationStart(q);
     // Update URL without full navigation
     const newUrl = `/divination?${params.toString()}`;
     window.history.replaceState(null, "", newUrl);
@@ -267,7 +279,10 @@ function DivinationContent() {
   }, []);
 
   const handleTossComplete = useCallback((_coins: (2 | 3)[], lineValue: LineValue) => {
-    setLines((prev) => [...prev, lineValue]);
+    setLines((prev) => {
+      trackCoinToss(prev.length, lineValue);
+      return [...prev, lineValue];
+    });
     setCurrentYao((prev) => prev + 1);
   }, []);
 
@@ -283,6 +298,15 @@ function DivinationContent() {
   const hexNum = binary ? getHexagramNumber(binary) : undefined;
   const hexInfo = hexNum ? HEXAGRAM_NAMES[hexNum] : null;
   const changingLines = lines.length === 6 ? getChangingLines(lines) : [];
+
+  // Track divination_complete when hexagram is determined
+  const hasTrackedComplete = useRef(false);
+  useEffect(() => {
+    if (hexNum && hexInfo && !hasTrackedComplete.current) {
+      hasTrackedComplete.current = true;
+      trackDivinationComplete(hexNum, hexInfo.cn);
+    }
+  }, [hexNum, hexInfo]);
 
   const goToResult = () => {
     // Increment divination count for skip button logic
