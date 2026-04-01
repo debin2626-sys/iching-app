@@ -21,9 +21,56 @@ const notoSerifSC = Noto_Serif_SC({
   subsets: ["latin"],
 });
 
+const SITE_URL = 'https://51yijing.com';
+
 export const metadata: Metadata = {
-  title: "易 · YiChing",
-  description: "Ancient Wisdom, Modern Insight",
+  title: {
+    default: '易经在线占卜 | AI智能解读 - 51yijing.com',
+    template: '%s | 易经在线占卜 51yijing.com',
+  },
+  description: '在线易经占卜，AI智能解读卦象。三币古法摇卦，结合八字命理，给出专业解读建议。',
+  keywords: ['易经', '占卜', 'AI解读', '周易', '六十四卦', '摇卦', '八字', 'I Ching', 'divination'],
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      'zh': SITE_URL,
+      'en': `${SITE_URL}/en`,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    siteName: '51yijing.com',
+    title: '易经在线占卜 | AI智能解读 - 51yijing.com',
+    description: '在线易经占卜，AI智能解读卦象。三币古法摇卦，结合八字命理，给出专业解读建议。',
+    url: SITE_URL,
+    locale: 'zh_CN',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: '易经在线占卜 - 51yijing.com',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '易经在线占卜 | AI智能解读 - 51yijing.com',
+    description: '在线易经占卜，AI智能解读卦象。三币古法摇卦，结合八字命理，给出专业解读建议。',
+    images: ['/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default async function RootLayout({
