@@ -1,6 +1,6 @@
 {
   "Home": {
-    "title": "易",
+    "title": "AI智能易經占卜 · 古法三幣搖卦",
     "subtitle": "觀天之道，執天之行",
     "placeholder": "靜心凝神，默念所問之事...",
     "questionPlaceholder": "靜心凝神，默念所問之事...",
@@ -32,7 +32,12 @@
     "footerQuote": "一陰一陽之謂道",
     "scenarioTitle": "選擇你的問卦方向",
     "scenarioHint": "選擇場景獲取引導問題，或直接輸入你的問題",
-    "freeInputHint": "也可以直接輸入你想問的問題 ↓"
+    "freeInputHint": "也可以直接輸入你想問的問題 ↓",
+    "seoSection1Title": "什麼是易經？",
+    "seoSection1Content": "易經，又稱《周易》，是中國最古老、最深邃的哲學經典之一，擁有超過三千年的悠久歷史。它起源於周朝，最初作為占卜典籍使用，後逐漸發展成為儒家和道家思想的重要基石。易經的核心是六十四卦——由六條爻線組成的象徵符號，每條爻線或為陰（斷線）或為陽（實線）。這六十四卦描繪了陰陽兩種基本力量的動態交互，揭示了宇宙萬物變化的規律。數千年來，無數學者、帝王和求道者都從易經中尋求人生決策的指引、修身養性的智慧，以及對天地自然運行法則的深刻理解。",
+    "seoSection2Title": "AI占卜如何運作？",
+    "seoSection2Content": "我們的平台忠實還原了傳統的三幣占卜法，將千年古法融入現代數位體驗。每次占卜時，您將虛擬拋擲三枚銅錢六次以生成卦象——這與歷代占卜者的做法完全一致。我們的獨特之處在於將先進的AI技術與古老智慧深度融合。卦象生成後，AI引擎會結合您的具體問題，深入分析卦辭、爻辭和動爻的含義。AI系統參考了歷代經典注疏和全面的易經知識庫，為您提供個性化的解讀，在古老智慧與現代生活之間架起橋樑。最終呈現的解讀既尊重傳統方法論，又為當代求道者提供更深入、更易理解的指引。",
+    "loginButton": "登入"
   },
   "Nav": {
     "home": "首頁",
@@ -53,7 +58,31 @@
     "restart": "重新占卜",
     "yangLine": "陽爻 ▬▬▬",
     "yinLine": "陰爻 ▬ ▬",
-    "changingLine": "（動爻）"
+    "changingLine": "（動爻）",
+    "tossCount1": "第一次拋擲",
+    "tossCount2": "第二次拋擲",
+    "tossCount3": "第三次拋擲",
+    "tossCount4": "第四次拋擲",
+    "tossCount5": "第五次拋擲",
+    "tossCount6": "第六次拋擲",
+    "tossing": "拋擲中",
+    "tossComplete": "拋擲完成",
+    "tapToToss": "點擊螢幕拋擲銅錢",
+    "coinHeads": "正",
+    "coinTails": "反",
+    "oldYang": "老陽",
+    "oldYin": "老陰",
+    "youngYang": "少陽",
+    "youngYin": "少陰",
+    "oldYangSub": "三正 · 動爻",
+    "oldYinSub": "三反 · 動爻",
+    "youngYangSub": "二正一反",
+    "youngYinSub": "一正二反",
+    "hexagramFormed": "卦象已成",
+    "unknown": "未知",
+    "tossProgress": "第 {current} 次 / 共 6 次",
+    "changingLinesLabel": "動爻：{lines}",
+    "yaoNames": "初爻,二爻,三爻,四爻,五爻,上爻"
   },
   "Result": {
     "hexagramNumber": "第{num}卦",
@@ -73,14 +102,38 @@
     "share": "分享卦象",
     "divinationAgain": "再占一卦",
     "backHome": "返回首頁",
-    "loading": "卦象解析中..."
+    "loading": "卦象解析中...",
+    "yearPillar": "年柱",
+    "monthPillar": "月柱",
+    "dayPillar": "日柱",
+    "hourPillar": "時柱",
+    "baziTitle": "命主資訊",
+    "dayMasterLabel": "日主",
+    "depthSimple": "簡要",
+    "depthDetailed": "詳細",
+    "depthDeep": "深度",
+    "yaoLabel0": "初爻",
+    "yaoLabel1": "二爻",
+    "yaoLabel2": "三爻",
+    "yaoLabel3": "四爻",
+    "yaoLabel4": "五爻",
+    "yaoLabel5": "上爻",
+    "imageText": "象曰",
+    "noHexagram": "未找到有效的卦象資訊",
+    "goToDivination": "去占卜",
+    "fetchError": "獲取卦辭失敗",
+    "aiRequestError": "AI 請求失敗",
+    "aiStreamError": "無法讀取回應流",
+    "aiInterpretError": "AI 解讀失敗",
+    "shareTitle": "易經占卜",
+    "copiedToClipboard": "已複製到剪貼簿"
   },
   "Hexagrams": {
     "title": "六十四卦典",
-    "subtitle": "64 Hexagrams",
+    "subtitle": "周易六十四卦",
     "searchPlaceholder": "搜尋卦名...",
     "clickHint": "點擊卦象查看詳情",
-    "noResult": "無符合結果 / No results found"
+    "noResult": "無符合結果"
   },
   "Common": {
     "back": "返回",
@@ -139,6 +192,26 @@
     "noQuestion": "隨心一卦",
     "changeTo": "→",
     "loadMore": "載入更多",
-    "noMore": "已無更多紀錄"
+    "noMore": "已無更多紀錄",
+    "filter7d": "最近7天",
+    "filter30d": "最近30天",
+    "filterAll": "全部",
+    "noRecordsInPeriod": "該時間段內暫無紀錄"
+  },
+  "Error": {
+    "title": "天機不可洩露",
+    "subtitle": "卦象推演中遭遇異變，陰陽失衡",
+    "subtitleEn": "Something went wrong during divination",
+    "retry": "🔄 重新推演"
+  },
+  "Loading": {
+    "text": "正在推演天機..."
+  },
+  "Footer": {
+    "disclaimer": "本站占卜結果由 AI 生成，僅供娛樂與心理啟迪參考，不構成醫療、投資、法律等專業建議。如需專業幫助，請諮詢相關領域專家。",
+    "about": "關於我們",
+    "privacy": "隱私政策",
+    "terms": "服務條款",
+    "contact": "聯繫我們"
   }
 }

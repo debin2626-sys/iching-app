@@ -4,7 +4,7 @@
 import { useState, useCallback, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import { getChangingLines } from "@/lib/iching/coins";
 import type { LineValue } from "@/lib/iching/coins";
@@ -229,6 +229,10 @@ function DivinationInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const tNav = useTranslations("Nav");
+  const tDiv = useTranslations("Divination");
+  const locale = useLocale();
+  const isEn = locale === "en";
+  const yaoLabels = tDiv("yaoNames").split(",");
 
   const navItems = [
     { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
@@ -416,7 +420,7 @@ function DivinationInner() {
 
               {/* 进度指示 */}
               <p className="text-lg font-bold text-gold mb-3 tracking-wide text-center">
-                {currentYao < 6 ? `第 ${currentYao + 1} 次 / 共 6 次` : "六爻已成"}
+                {currentYao < 6 ? tDiv("tossProgress", { current: currentYao + 1 }) : tDiv("allDone")}
               </p>
 
               {/* 进度条 */}
@@ -463,7 +467,7 @@ function DivinationInner() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.1 }}
                         >
-                          <YaoLine value={v} label={YAO_LABELS[i]} isChanging={isChanging} />
+                          <YaoLine value={v} label={yaoLabels[i]} isChanging={isChanging} />
                         </m.div>
                       );
                     })}
@@ -488,7 +492,7 @@ function DivinationInner() {
                 animate={{ opacity: 0.3 }}
                 transition={{ delay: 0.3 }}
               >
-                卦象已成
+                {tDiv("hexagramFormed")}
               </m.p>
 
               {/* 卦名 */}
@@ -498,14 +502,14 @@ function DivinationInner() {
                 transition={{ delay: 0.4 }}
               >
                 <h1 className="font-title text-6xl sm:text-7xl text-gold-glow mb-3">
-                  {hexInfo?.cn ?? "未知"}
+                  {isEn ? (hexInfo?.en ?? tDiv("unknown")) : (hexInfo?.cn ?? tDiv("unknown"))}
                 </h1>
                 <p className="text-base opacity-40 tracking-widest mb-2">
-                  {hexInfo?.en ?? ""} · 第{hexNum}卦
+                  {isEn ? `Hexagram ${hexNum}` : `${hexInfo?.en ?? ""} · 第${hexNum}卦`}
                 </p>
                 {changingLines.length > 0 && (
                   <p className="text-red-400/80 text-sm mt-2">
-                    动爻：{changingLines.map((i) => YAO_LABELS[i]).join("、")}
+                    {tDiv("changingLinesLabel", { lines: changingLines.map((i) => yaoLabels[i]).join(isEn ? ", " : "、") })}
                   </p>
                 )}
               </m.div>
@@ -531,7 +535,7 @@ function DivinationInner() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.7 + ri * 0.1 }}
                         >
-                          <YaoLine value={v} label={YAO_LABELS[i]} isChanging={isChanging} />
+                          <YaoLine value={v} label={yaoLabels[i]} isChanging={isChanging} />
                         </m.div>
                       );
                     })}
@@ -544,10 +548,10 @@ function DivinationInner() {
                   onClick={goToResult}
                   className="h-12 px-8 text-lg font-title tracking-wider rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
                 >
-                  查看解读
+                  {tDiv("viewResult")}
                 </button>
                 <Button variant="secondary" onClick={resetAndGoHome}>
-                  重新占卜
+                  {tDiv("restart")}
                 </Button>
               </div>
             </m.div>

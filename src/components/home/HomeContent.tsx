@@ -8,6 +8,7 @@ import { AnimatedTaichi } from "@/components/home/HeroAnimations";
 import { NavBar } from "@/components/ui";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import ScenarioSelector from "@/components/divination/ScenarioSelector";
+import SampleReading from "@/components/home/SampleReading";
 import { trackScenarioSelect } from "@/lib/analytics";
 
 const YEARS = Array.from({ length: 87 }, (_, i) => 1940 + i);
@@ -129,8 +130,8 @@ export default function HomeContent() {
       </div>
 
       {/* 主标题 */}
-      <h1 className="mt-5 text-[56px] text-gold-gradient font-title font-bold text-center">
-        {locale === "en" ? "Yi Ching" : "易"}
+      <h1 className="mt-5 text-2xl md:text-3xl text-gold-gradient font-title font-bold text-center leading-tight">
+        {t("title")}
       </h1>
 
       {/* 副标题 */}
@@ -321,6 +322,9 @@ export default function HomeContent() {
       </div>
       </div>
 
+      {/* 占卜结果示例 */}
+      <SampleReading />
+
       {/* 底部引言 */}
       <p className="mt-16 text-xl text-[#a0978a] text-center">
         {t("footerQuote")}
@@ -330,6 +334,26 @@ export default function HomeContent() {
       <p className="mt-5 text-xs text-[#555] text-center">
                 {t("disclaimer")}
       </p>
+
+      {/* SEO Content Sections */}
+      <div className="mt-20 space-y-12">
+        <section>
+          <h2 className="text-lg text-[#a08050] font-title font-semibold mb-4">
+            {t("seoSection1Title")}
+          </h2>
+          <p className="text-sm text-[#706860] leading-relaxed">
+            {t("seoSection1Content")}
+          </p>
+        </section>
+        <section>
+          <h2 className="text-lg text-[#a08050] font-title font-semibold mb-4">
+            {t("seoSection2Title")}
+          </h2>
+          <p className="text-sm text-[#706860] leading-relaxed">
+            {t("seoSection2Content")}
+          </p>
+        </section>
+      </div>
         </div>
       </main>
     </>

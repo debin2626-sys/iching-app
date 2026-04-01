@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
 import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import { motion } from "framer-motion";
@@ -99,6 +99,7 @@ function LanguageSwitcher() {
 /* ── User Avatar / Login Button ── */
 function UserButton() {
   const { data: session, status } = useSession();
+  const tHome = useTranslations("Home");
 
   if (status === "loading") {
     return (
@@ -125,7 +126,7 @@ function UserButton() {
         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(201,169,110,0.1)')}
         onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
       >
-        登录
+        {tHome("loginButton")}
       </Link>
     );
   }

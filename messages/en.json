@@ -1,6 +1,6 @@
 {
   "Home": {
-    "title": "Yi · Ching",
+    "title": "Free AI I Ching Reading & Online Divination",
     "subtitle": "Ancient Wisdom, Modern Insight",
     "placeholder": "Clear your mind, focus on your question...",
     "questionPlaceholder": "Clear your mind, focus on your question...",
@@ -32,7 +32,12 @@
     "footerQuote": "The alternation of Yin and Yang is called the Tao",
     "scenarioTitle": "Choose Your Divination Path",
     "scenarioHint": "Select a scenario for guided questions, or type your own below",
-    "freeInputHint": "Or type your own question below ↓"
+    "freeInputHint": "Or type your own question below ↓",
+    "seoSection1Title": "What is the I Ching?",
+    "seoSection1Content": "The I Ching, also known as the Book of Changes, is one of the oldest and most profound texts in Chinese philosophy, with a history spanning over 3,000 years. Originating in the Zhou Dynasty, it was initially used as a divination manual and gradually evolved into a foundational work of Confucian and Taoist thought. At its core, the I Ching describes the universe through 64 hexagrams — symbolic figures composed of six lines, each either broken (yin) or unbroken (yang). These hexagrams represent the dynamic interplay of yin and yang, the two fundamental forces that shape all existence. For millennia, scholars, rulers, and seekers have turned to the I Ching for guidance on life decisions, self-cultivation, and understanding the patterns of change that govern the natural world.",
+    "seoSection2Title": "How Does Our AI Divination Work?",
+    "seoSection2Content": "Our platform faithfully recreates the traditional three-coin method of I Ching divination in a modern digital experience. In each reading, you virtually toss three coins six times to generate a hexagram — exactly as practitioners have done for centuries. What sets us apart is the integration of advanced AI technology with this ancient wisdom. After your hexagram is cast, our AI engine analyzes the hexagram texts, line judgments, and changing lines in the context of your specific question. Drawing from classical commentaries and a comprehensive knowledge base of I Ching scholarship, the AI delivers a personalized interpretation that bridges ancient insight with modern relevance. The result is a reading that honors traditional methodology while offering deeper, more accessible understanding for today's seekers.",
+    "loginButton": "Sign In"
   },
   "Nav": {
     "home": "Home",
@@ -53,7 +58,31 @@
     "restart": "Start Over",
     "yangLine": "Yang ▬▬▬",
     "yinLine": "Yin ▬ ▬",
-    "changingLine": "(Changing)"
+    "changingLine": "(Changing)",
+    "tossCount1": "1st Toss",
+    "tossCount2": "2nd Toss",
+    "tossCount3": "3rd Toss",
+    "tossCount4": "4th Toss",
+    "tossCount5": "5th Toss",
+    "tossCount6": "6th Toss",
+    "tossing": "Tossing...",
+    "tossComplete": "Toss complete",
+    "tapToToss": "Tap to toss coins",
+    "coinHeads": "H",
+    "coinTails": "T",
+    "oldYang": "Old Yang",
+    "oldYin": "Old Yin",
+    "youngYang": "Young Yang",
+    "youngYin": "Young Yin",
+    "oldYangSub": "3 heads · changing",
+    "oldYinSub": "3 tails · changing",
+    "youngYangSub": "2 heads 1 tail",
+    "youngYinSub": "1 head 2 tails",
+    "hexagramFormed": "Hexagram Formed",
+    "unknown": "Unknown",
+    "tossProgress": "Toss {current} / 6",
+    "changingLinesLabel": "Changing: {lines}",
+    "yaoNames": "1st,2nd,3rd,4th,5th,6th"
   },
   "Result": {
     "hexagramNumber": "Hexagram #{num}",
@@ -73,7 +102,31 @@
     "share": "Share Reading",
     "divinationAgain": "Cast Again",
     "backHome": "Home",
-    "loading": "Analyzing hexagram..."
+    "loading": "Analyzing hexagram...",
+    "yearPillar": "Year",
+    "monthPillar": "Month",
+    "dayPillar": "Day",
+    "hourPillar": "Hour",
+    "baziTitle": "Birth Chart",
+    "dayMasterLabel": "Day Master",
+    "depthSimple": "Brief",
+    "depthDetailed": "Detailed",
+    "depthDeep": "In-depth",
+    "yaoLabel0": "1st",
+    "yaoLabel1": "2nd",
+    "yaoLabel2": "3rd",
+    "yaoLabel3": "4th",
+    "yaoLabel4": "5th",
+    "yaoLabel5": "6th",
+    "imageText": "Image",
+    "noHexagram": "No valid hexagram found",
+    "goToDivination": "Go Divinate",
+    "fetchError": "Failed to load hexagram data",
+    "aiRequestError": "AI request failed",
+    "aiStreamError": "Unable to read response stream",
+    "aiInterpretError": "AI interpretation failed",
+    "shareTitle": "I Ching Divination",
+    "copiedToClipboard": "Copied to clipboard"
   },
   "Hexagrams": {
     "title": "64 Hexagrams",
@@ -127,6 +180,22 @@
     "errorRegisterSuccessLogin": "Registered successfully, please sign in",
     "backHome": "← Back to Home"
   },
+  "Error": {
+    "title": "The Oracle is Silent",
+    "subtitle": "An unexpected disturbance occurred during divination",
+    "subtitleEn": "Something went wrong during divination",
+    "retry": "🔄 Try Again"
+  },
+  "Loading": {
+    "text": "Consulting the Oracle..."
+  },
+  "Footer": {
+    "disclaimer": "Divination results are AI-generated and intended for entertainment and personal reflection only. They do not constitute medical, financial, legal, or other professional advice. Please consult qualified professionals for specific guidance.",
+    "about": "About Us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us"
+  },
   "History": {
     "title": "Divination History",
     "subtitle": "Traces of Inquiry",
@@ -139,6 +208,10 @@
     "noQuestion": "Spontaneous cast",
     "changeTo": "→",
     "loadMore": "Load More",
-    "noMore": "No more records"
+    "noMore": "No more records",
+    "filter7d": "Last 7 days",
+    "filter30d": "Last 30 days",
+    "filterAll": "All",
+    "noRecordsInPeriod": "No records in this period"
   }
 }

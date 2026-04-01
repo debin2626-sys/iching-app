@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     // Rate limit: per-user + per-IP

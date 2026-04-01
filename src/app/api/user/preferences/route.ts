@@ -10,7 +10,7 @@ export async function GET() {
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const preferences = await prisma.userPreference.findUnique({
@@ -30,7 +30,7 @@ export async function GET() {
     return NextResponse.json(preferences);
   } catch (error) {
     console.error("获取用户偏好失败:", error);
-    return NextResponse.json({ error: "获取失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }
 
@@ -43,7 +43,7 @@ export async function PUT(request: NextRequest) {
 
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const body = await request.json();
@@ -78,6 +78,6 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json(preferences);
   } catch (error) {
     console.error("更新用户偏好失败:", error);
-    return NextResponse.json({ error: "更新失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to update" }, { status: 500 });
   }
 }

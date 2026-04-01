@@ -13,7 +13,7 @@ export async function GET(
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const { id } = await params;
@@ -26,13 +26,13 @@ export async function GET(
     });
 
     if (!favorite) {
-      return NextResponse.json({ error: "收藏不存在" }, { status: 404 });
+      return NextResponse.json({ error: "Favorite not found" }, { status: 404 });
     }
 
     return NextResponse.json(favorite);
   } catch (error) {
     console.error("获取收藏详情失败:", error);
-    return NextResponse.json({ error: "获取失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }
 
@@ -48,7 +48,7 @@ export async function PATCH(
 
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const { id } = await params;
@@ -68,7 +68,7 @@ export async function PATCH(
     });
 
     if (!existing) {
-      return NextResponse.json({ error: "收藏不存在" }, { status: 404 });
+      return NextResponse.json({ error: "Favorite not found" }, { status: 404 });
     }
 
     const data: Record<string, unknown> = {};
@@ -86,7 +86,7 @@ export async function PATCH(
     return NextResponse.json(favorite);
   } catch (error) {
     console.error("更新收藏失败:", error);
-    return NextResponse.json({ error: "更新失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to update" }, { status: 500 });
   }
 }
 
@@ -98,7 +98,7 @@ export async function DELETE(
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const { id } = await params;
@@ -109,14 +109,14 @@ export async function DELETE(
     });
 
     if (!existing) {
-      return NextResponse.json({ error: "收藏不存在" }, { status: 404 });
+      return NextResponse.json({ error: "Favorite not found" }, { status: 404 });
     }
 
     await prisma.favorite.delete({ where: { id } });
 
-    return NextResponse.json({ message: "已取消收藏" });
+    return NextResponse.json({ message: "Unfavorited" });
   } catch (error) {
     console.error("删除收藏失败:", error);
-    return NextResponse.json({ error: "删除失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to delete" }, { status: 500 });
   }
 }

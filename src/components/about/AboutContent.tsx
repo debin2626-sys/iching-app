@@ -31,6 +31,33 @@ const SECTIONS_ZH = [
   },
 ];
 
+const SECTIONS_ZH_TW = [
+  {
+    icon: "🏛️",
+    title: "我們是誰",
+    content:
+      "51yijing.com 由資深國學研究者與 AI 工程師聯合打造。我們的團隊深耕易經研究多年，致力於將三千年易經智慧與現代 AI 技術相結合，讓古老的東方智慧煥發新的生命力。",
+  },
+  {
+    icon: "📜",
+    title: "算法與學術基礎",
+    content:
+      "我們的占卜算法嚴格基於《易經》原文，參考朱熹《周易本義》、孔穎達《周易正義》、王弼《周易注》等歷代大儒注解，確保每一卦的解讀都有深厚的學術根基。三幣起卦法遵循傳統古法，六爻成卦，忠實還原千年占卜儀式。",
+  },
+  {
+    icon: "🤖",
+    title: "AI 智能解讀",
+    content:
+      "我們的 AI 解讀系統結合傳統卦辭爻辭、RAG 知識庫與場景化分析，能夠根據您的具體問題給出個性化的解讀。AI 不是替代傳統智慧，而是幫助您更好地理解卦象中蘊含的深意。",
+  },
+  {
+    icon: "🎯",
+    title: "我們的使命",
+    content:
+      "讓每個人都能輕鬆獲得易經智慧的指引。無論您是易經愛好者、國學研究者，還是初次接觸易經的朋友，我們都希望為您提供一個專業、便捷、美觀的線上占卜體驗。",
+  },
+];
+
 const SECTIONS_EN = [
   {
     icon: "🏛️",
@@ -58,11 +85,17 @@ const SECTIONS_EN = [
   },
 ];
 
+const ABOUT_TEXT = {
+  zh: { heading: "关于 51yijing.com", sub: "古老智慧，现代传承", cta: "开始占卜" },
+  "zh-TW": { heading: "關於 51yijing.com", sub: "古老智慧，現代傳承", cta: "開始占卜" },
+  en: { heading: "About 51yijing.com", sub: "Ancient Wisdom, Modern Legacy", cta: "Start Divination" },
+};
+
 export default function AboutContent() {
   const tNav = useTranslations("Nav");
   const locale = useLocale();
-  const isZh = locale === "zh" || locale === "zh-TW";
-  const sections = isZh ? SECTIONS_ZH : SECTIONS_EN;
+  const sections = locale === "en" ? SECTIONS_EN : locale === "zh-TW" ? SECTIONS_ZH_TW : SECTIONS_ZH;
+  const text = ABOUT_TEXT[locale as keyof typeof ABOUT_TEXT] || ABOUT_TEXT.en;
 
   const navItems = [
     { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
@@ -78,12 +111,10 @@ export default function AboutContent() {
         <div className="text-center mb-12">
           <span className="text-4xl mb-4 block">☯</span>
           <h1 className="text-3xl sm:text-4xl font-bold text-amber-400 mb-3">
-            {isZh ? "关于 51yijing.com" : "About 51yijing.com"}
+            {text.heading}
           </h1>
           <p className="text-gray-400 text-lg">
-            {isZh
-              ? "古老智慧，现代传承"
-              : "Ancient Wisdom, Modern Legacy"}
+            {text.sub}
           </p>
         </div>
 
@@ -111,7 +142,7 @@ export default function AboutContent() {
             href="/"
             className="inline-block px-8 py-3 rounded-full border border-amber-400/40 text-amber-400 hover:bg-amber-400/10 transition-all duration-300"
           >
-            {isZh ? "开始占卜" : "Start Divination"}
+            {text.cta}
           </Link>
         </div>
       </div>

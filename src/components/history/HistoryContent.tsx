@@ -140,9 +140,9 @@ export default function HistoryContent() {
   const isZh = locale === "zh" || locale === "zh-TW";
 
   const timeFilterTabs: { key: TimeFilter; label: string }[] = [
-    { key: "7d", label: isZh ? "最近7天" : "Last 7 days" },
-    { key: "30d", label: isZh ? "最近30天" : "Last 30 days" },
-    { key: "all", label: isZh ? "全部" : "All" },
+    { key: "7d", label: t("filter7d") },
+    { key: "30d", label: t("filter30d") },
+    { key: "all", label: t("filterAll") },
   ];
 
   // Loading state
@@ -240,7 +240,7 @@ export default function HistoryContent() {
         >
           <div className="text-6xl mb-5 opacity-20">☯</div>
           <p className="text-zinc-500 text-base">
-            {isZh ? "该时间段内暂无记录" : "No records in this period"}
+            {t("noRecordsInPeriod")}
           </p>
         </motion.div>
       )}

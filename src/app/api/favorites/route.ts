@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const { searchParams } = new URL(request.url);
@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error("获取收藏列表失败:", error);
-    return NextResponse.json({ error: "获取失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }
 
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
 
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const body = await request.json();
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (existing) {
-      return NextResponse.json({ error: "已收藏该卦象" }, { status: 409 });
+      return NextResponse.json({ error: "Already favorited" }, { status: 409 });
     }
 
     const favorite = await prisma.favorite.create({
@@ -94,6 +94,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(favorite, { status: 201 });
   } catch (error) {
     console.error("添加收藏失败:", error);
-    return NextResponse.json({ error: "添加失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to add" }, { status: 500 });
   }
 }

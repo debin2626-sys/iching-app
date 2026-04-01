@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(divination, { status: 201 });
   } catch (error) {
     console.error("保存占卜记录失败:", error);
-    return NextResponse.json({ error: "保存失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to save" }, { status: 500 });
   }
 }
 
@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const { searchParams } = new URL(request.url);
@@ -92,6 +92,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error("获取占卜历史失败:", error);
-    return NextResponse.json({ error: "获取失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }

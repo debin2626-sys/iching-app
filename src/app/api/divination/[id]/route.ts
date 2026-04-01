@@ -18,12 +18,12 @@ export async function GET(
     });
 
     if (!divination) {
-      return NextResponse.json({ error: "记录不存在" }, { status: 404 });
+      return NextResponse.json({ error: "Record not found" }, { status: 404 });
     }
 
     return NextResponse.json(divination);
   } catch (error) {
     console.error("获取占卜详情失败:", error);
-    return NextResponse.json({ error: "获取失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }

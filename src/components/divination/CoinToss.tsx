@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { m, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import type { LineValue } from "@/lib/iching/coins";
 
 /* ── 常量 ── */
@@ -279,11 +280,12 @@ function AnimatedCoin({
 
 /* ── 结果标签 ── */
 function ResultLabel({ lineValue }: { lineValue: LineValue }) {
+  const tDiv = useTranslations("Divination");
   const labels: Record<LineValue, { text: string; sub: string; isChanging: boolean }> = {
-    9: { text: "老阳", sub: "三正 · 动爻", isChanging: true },
-    6: { text: "老阴", sub: "三反 · 动爻", isChanging: true },
-    7: { text: "少阳", sub: "二正一反", isChanging: false },
-    8: { text: "少阴", sub: "一正二反", isChanging: false },
+    9: { text: tDiv("oldYang"), sub: tDiv("oldYangSub"), isChanging: true },
+    6: { text: tDiv("oldYin"), sub: tDiv("oldYinSub"), isChanging: true },
+    7: { text: tDiv("youngYang"), sub: tDiv("youngYangSub"), isChanging: false },
+    8: { text: tDiv("youngYin"), sub: tDiv("youngYinSub"), isChanging: false },
   };
   const info = labels[lineValue];
   const color = info.isChanging ? "#a63000" : "var(--color-gold)";
@@ -313,6 +315,7 @@ export default function CoinToss({
   onTossComplete,
   onAllComplete,
 }: CoinTossProps) {
+  const tDiv = useTranslations("Divination");
   const [isTossing, setIsTossing] = useState(false);
   const [coinFaces, setCoinFaces] = useState<CoinFace[]>([3, 3, 3]);
   const [lastResult, setLastResult] = useState<LineValue | null>(null);
@@ -394,7 +397,7 @@ export default function CoinToss({
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3 }}
           >
-            第{YAO_CN[Math.min(currentYao, 5)]}次抛掷
+            {tDiv(`tossCount${Math.min(currentYao, 5) + 1}` as any)}
           </m.p>
         )}
       </AnimatePresence>
@@ -411,7 +414,7 @@ export default function CoinToss({
         whileTap={!isTossing && !isComplete ? { scale: 0.97 } : undefined}
         role="button"
         tabIndex={0}
-        aria-label={isTossing ? "抛掷中" : isComplete ? "抛掷完成" : "点击抛掷铜钱"}
+        aria-label={isTossing ? tDiv("tossing") : isComplete ? tDiv("tossComplete") : tDiv("tapToToss")}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
@@ -437,7 +440,7 @@ export default function CoinToss({
             animate={{ opacity: [0.2, 0.5, 0.2] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            点击屏幕抛掷铜钱
+            {tDiv("tapToToss")}
           </m.div>
         )}
       </m.div>
@@ -459,7 +462,7 @@ export default function CoinToss({
         >
           {coinFaces.map((face, i) => (
             <span key={i} className="text-xs">
-              {face === 3 ? "正" : "反"}
+              {face === 3 ? tDiv("coinHeads") : tDiv("coinTails")}
             </span>
           ))}
         </m.div>

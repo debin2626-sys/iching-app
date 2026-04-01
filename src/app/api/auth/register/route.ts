@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     const existing = await prisma.user.findUnique({ where: { email } });
     if (existing) {
       return NextResponse.json(
-        { error: "该邮箱已注册" },
+        { error: "Email already registered" },
         { status: 409 }
       );
     }
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     );
   } catch {
     return NextResponse.json(
-      { error: "注册失败，请稍后重试" },
+      { error: "Registration failed, please try again later" },
       { status: 500 }
     );
   }

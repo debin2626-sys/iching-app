@@ -10,7 +10,7 @@ export async function GET() {
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const user = await prisma.user.findUnique({
@@ -30,13 +30,13 @@ export async function GET() {
     });
 
     if (!user) {
-      return NextResponse.json({ error: "用户不存在" }, { status: 404 });
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
     return NextResponse.json(user);
   } catch (error) {
     console.error("获取用户资料失败:", error);
-    return NextResponse.json({ error: "获取失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }
 
@@ -49,7 +49,7 @@ export async function PATCH(request: NextRequest) {
 
     const session = await auth();
     if (!session?.user?.id) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
     const body = await request.json();
@@ -76,6 +76,6 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json(user);
   } catch (error) {
     console.error("更新用户资料失败:", error);
-    return NextResponse.json({ error: "更新失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to update" }, { status: 500 });
   }
 }

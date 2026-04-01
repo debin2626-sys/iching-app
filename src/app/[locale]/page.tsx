@@ -15,8 +15,8 @@ export async function generateMetadata({
   const title = getLocalizedText(
     locale,
     '易经在线占卜 | AI智能解读 - 51yijing.com',
-    'I Ching Online Divination | AI Interpretation - 51yijing.com',
-    '易經線上占卜 | AI智慧解讀 - 51yijing.com'
+    'Free I Ching Online Divination & AI Reading - 51yijing.com',
+    '易經線上占卜 | AI智能解讀 - 51yijing.com'
   );
 
   const description = getLocalizedText(locale, SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW);

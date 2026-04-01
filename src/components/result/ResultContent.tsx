@@ -39,7 +39,7 @@ const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
   61:{cn:"中孚",en:"Zhong Fu"},62:{cn:"小过",en:"Xiao Guo"},63:{cn:"既济",en:"Ji Ji"},64:{cn:"未济",en:"Wei Ji"},
 };
 
-const YAO_LABELS = ["初爻", "二爻", "三爻", "四爻", "五爻", "上爻"];
+/* YAO_LABELS removed — now using i18n keys via t("yaoLabel0")..t("yaoLabel5") */
 
 /* ── 数据库卦象数据类型 ── */
 interface HexagramLine {
@@ -77,11 +77,11 @@ function useHexagramData(hexNum: number | null) {
     setError("");
     try {
       const res = await fetch(`/api/hexagram/${num}`);
-      if (!res.ok) throw new Error(`获取卦辞失败 (${res.status})`);
+      if (!res.ok) throw new Error(`Failed to load hexagram (${res.status})`);
       const json = await res.json();
       setData(json);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "获取卦辞失败");
+      setError(err instanceof Error ? err.message : "Failed to load hexagram data");
     } finally {
       setLoading(false);
     }
@@ -98,17 +98,18 @@ function useHexagramData(hexNum: number | null) {
 
 /* ── 八字信息卡组件 ── */
 function BaziCard({ birthInfo }: { birthInfo: BirthInfo }) {
+  const t = useTranslations("Result");
   const bazi = calculateBazi(birthInfo);
   const pillars = [
-    { label: "年柱", pillar: bazi.yearPillar },
-    { label: "月柱", pillar: bazi.monthPillar },
-    { label: "日柱", pillar: bazi.dayPillar },
-    { label: "时柱", pillar: bazi.hourPillar },
+    { label: t("yearPillar"), pillar: bazi.yearPillar },
+    { label: t("monthPillar"), pillar: bazi.monthPillar },
+    { label: t("dayPillar"), pillar: bazi.dayPillar },
+    { label: t("hourPillar"), pillar: bazi.hourPillar },
   ];
 
   return (
     <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl">
-      <h3 className="text-lg font-title text-amber-300 mb-4">🌙 命主信息</h3>
+      <h3 className="text-lg font-title text-amber-300 mb-4">🌙 {t("baziTitle")}</h3>
       <div className="grid grid-cols-4 gap-3 text-center mb-4">
         {pillars.map(({ label, pillar }) => (
           <div key={label}>
@@ -134,7 +135,7 @@ function BaziCard({ birthInfo }: { birthInfo: BirthInfo }) {
         ))}
       </div>
       <p className="text-xs text-zinc-500 text-center">
-        日主 {bazi.dayMaster}（{bazi.dayMasterElement}）· {bazi.strength}
+        {t("dayMasterLabel")} {bazi.dayMaster}（{bazi.dayMasterElement}）· {bazi.strength}
       </p>
     </div>
   );
@@ -175,10 +176,10 @@ function useTypewriter(fullText: string, streamDone: boolean) {
 /* ── 解读深度类型 ── */
 type InterpretDepth = "simple" | "detailed" | "deep";
 
-const DEPTH_OPTIONS: { value: InterpretDepth; label: string; icon: string }[] = [
-  { value: "simple", label: "简要", icon: "🌙" },
-  { value: "detailed", label: "详细", icon: "⭐" },
-  { value: "deep", label: "深度", icon: "🌟" },
+const DEPTH_OPTIONS: { value: InterpretDepth; labelKey: string; icon: string }[] = [
+  { value: "simple", labelKey: "depthSimple", icon: "🌙" },
+  { value: "detailed", labelKey: "depthDetailed", icon: "⭐" },
+  { value: "deep", labelKey: "depthDeep", icon: "🌟" },
 ];
 
 /* ── 深度选择器组件 ── */
@@ -191,6 +192,7 @@ function DepthSelector({
   onChange: (d: InterpretDepth) => void;
   disabled?: boolean;
 }) {
+  const t = useTranslations("Result");
   return (
     <div className="flex items-center justify-center gap-3 mb-6">
       {DEPTH_OPTIONS.map((opt) => {
@@ -211,7 +213,7 @@ function DepthSelector({
             `}
           >
             <span>{opt.icon}</span>
-            <span>{opt.label}</span>
+            <span>{t(opt.labelKey)}</span>
           </button>
         );
       })}
@@ -282,10 +284,10 @@ function AISection({
         }),
       });
 
-      if (!res.ok) throw new Error(`AI 请求失败 (${res.status})`);
+      if (!res.ok) throw new Error(`AI request failed (${res.status})`);
 
       const reader = res.body?.getReader();
-      if (!reader) throw new Error("无法读取响应流");
+      if (!reader) throw new Error("Unable to read response stream");
 
       const decoder = new TextDecoder();
       let buffer = "";
@@ -319,7 +321,7 @@ function AISection({
       }
     } catch (err) {
       if (fetchIdRef.current === id) {
-        setError(err instanceof Error ? err.message : "AI 解读失败");
+        setError(err instanceof Error ? err.message : "AI interpretation failed");
       }
     } finally {
       if (fetchIdRef.current === id) {
@@ -454,16 +456,17 @@ function ResultInner() {
 
   /* 分享功能 */
   const handleShare = async () => {
-    const text = `易经占卜 — ${hexInfo?.cn ?? ""}卦（第${hexNum}卦）\n所问：${question}\n${window.location.href}`;
+    const hexName = hexInfo?.cn ?? "";
+    const text = `${t("shareTitle")} — ${hexName}（${t("hexagramNumber", { num: hexNum ?? 0 })}）\n${t("question", { q: question })}\n${window.location.href}`;
     if (navigator.share) {
       try {
-        await navigator.share({ title: `${hexInfo?.cn}卦`, text, url: window.location.href });
+        await navigator.share({ title: `${hexName}`, text, url: window.location.href });
       } catch {
-        // 用户取消
+        // user cancelled
       }
     } else {
       await navigator.clipboard.writeText(text);
-      alert("已复制到剪贴板");
+      alert(t("copiedToClipboard"));
     }
   };
 
@@ -482,12 +485,12 @@ function ResultInner() {
     return (
       <PageLayout navItems={navItems} maxWidth="max-w-[800px]">
         <div className="text-center py-20 px-6">
-          <p className="text-zinc-500 mb-4">未找到有效的卦象信息</p>
+          <p className="text-zinc-500 mb-4">{t("noHexagram")}</p>
           <a
             href="/divination"
             className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
           >
-            去占卜
+            {t("goToDivination")}
           </a>
         </div>
       </PageLayout>
@@ -515,7 +518,7 @@ function ResultInner() {
             {t("hexagramNumber", { num: hexNum })}
           </p>
           <h1 className="font-title text-4xl text-center text-gold mb-2">
-            {hexInfo?.cn ?? "未知"}
+            {hexInfo?.cn ?? t("noHexagram")}
           </h1>
           <p className="text-base text-zinc-500 tracking-widest mb-3">
             {hexInfo?.en ?? ""}
@@ -527,7 +530,7 @@ function ResultInner() {
           )}
           {changingLines.length > 0 && (
             <p className="text-red-400/80 text-sm mt-2">
-              {t("changingYao")}：{changingLines.map((i) => YAO_LABELS[i]).join("、")}
+              {t("changingYao")}：{changingLines.map((i) => t(`yaoLabel${i}` as any)).join("、")}
             </p>
           )}
           {changedHexInfo && (
@@ -586,7 +589,7 @@ function ResultInner() {
               {/* 象辞 */}
               {hexData.imageZh && (
                 <div>
-                  <h4 className="text-sm font-semibold text-amber-400/70 mb-1">象曰</h4>
+                  <h4 className="text-sm font-semibold text-amber-400/70 mb-1">{t("imageText")}</h4>
                   <p className="text-base text-zinc-300 leading-relaxed">{hexData.imageZh}</p>
                 </div>
               )}
@@ -613,7 +616,7 @@ function ResultInner() {
                               <span className={`text-xs font-mono shrink-0 mt-0.5 ${
                                 isChanging ? "text-red-400" : "text-amber-400/60"
                               }`}>
-                                {YAO_LABELS[line.position - 1]}
+                                {t(`yaoLabel${line.position - 1}` as any)}
                                 {isChanging && " 🔴"}
                               </span>
                               <div className="min-w-0">
