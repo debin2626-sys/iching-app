@@ -91,6 +91,16 @@
     "loading": "加载中...",
     "copyright": "© {year} 易经"
   },
+  "Meditation": {
+    "line1": "静心凝神，诚心所问",
+    "line2": "呼吸吐纳，天人合一",
+    "line3": "心念既定，卦象自显",
+    "inhale": "深吸气...",
+    "hold": "屏住...",
+    "exhale": "缓缓呼出...",
+    "skip": "跳过",
+    "tapToSkip": "轻触跳过"
+  },
   "History": {
     "title": "占卜记录",
     "subtitle": "问道之迹",

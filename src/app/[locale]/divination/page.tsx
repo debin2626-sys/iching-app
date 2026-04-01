@@ -1,7 +1,7 @@
 "use client";
 
 
-import { useState, useCallback, useEffect, Suspense } from "react";
+import { useState, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -11,6 +11,8 @@ import type { LineValue } from "@/lib/iching/coins";
 import { linesToBinary, getHexagramNumber } from "@/lib/iching/hexagram";
 import { PageLayout, Button, TextArea, Select } from "@/components/ui";
 import Card from "@/components/ui/Card";
+import MeditationGuide from "@/components/divination/MeditationGuide";
+import CoinToss from "@/components/divination/CoinToss";
 
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
   1:{cn:"乾",en:"Qian"},2:{cn:"坤",en:"Kun"},3:{cn:"屯",en:"Zhun"},4:{cn:"蒙",en:"Meng"},
@@ -36,46 +38,7 @@ const MONTHS = Array.from({ length: 12 }, (_, i) => i + 1);
 const DAYS = Array.from({ length: 31 }, (_, i) => i + 1);
 
 const YAO_LABELS = ["初爻", "二爻", "三爻", "四爻", "五爻", "上爻"];
-const YAO_CN = ["一", "二", "三", "四", "五", "六"];
 
-/* 铜钱组件 */
-function Coin({ face, delay, flipping }: { face: number; delay: number; flipping: boolean }) {
-  const isFront = face === 3;
-  return (
-    <m.div
-      className="relative w-[100px] h-[100px]"
-      style={{ perspective: 800 }}
-    >
-      <m.div
-        className="w-full h-full rounded-full border-2 flex items-center justify-center font-title text-3xl font-bold select-none"
-        style={{
-          background: "linear-gradient(145deg, var(--color-gold), var(--color-gold-bright), var(--color-gold-dim))",
-          borderColor: "rgba(232,201,106,0.6)",
-          boxShadow: "0 0 25px color-mix(in srgb, var(--color-gold) 40%, transparent), inset 0 2px 4px rgba(255,255,255,0.2)",
-          color: "#1a1a2e",
-          transformStyle: "preserve-3d",
-        }}
-        initial={flipping ? { rotateY: 0, y: 0, scale: 1 } : false}
-        animate={
-          flipping
-            ? {
-                rotateY: [0, 360, 720],
-                y: [0, -80, 0],
-                scale: [1, 1.1, 1],
-              }
-            : { rotateY: 0, y: 0, scale: 1 }
-        }
-        transition={
-          flipping
-            ? { duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }
-            : { duration: 0 }
-        }
-      >
-        {isFront ? "乾" : "坤"}
-      </m.div>
-    </m.div>
-  );
-}
 
 /* 爻线组件 */
 function YaoLine({ value, label, isChanging }: { value: LineValue; label: string; isChanging: boolean }) {
@@ -294,40 +257,27 @@ function DivinationContent() {
     window.history.replaceState(null, "", newUrl);
   };
 
-  const [phase, setPhase] = useState<"shaking" | "done">("shaking");
+  const [phase, setPhase] = useState<"meditation" | "shaking" | "done">("meditation");
   const [lines, setLines] = useState<LineValue[]>([]);
   const [currentYao, setCurrentYao] = useState(0);
-  const [flipping, setFlipping] = useState(false);
-  const [coinFaces, setCoinFaces] = useState<number[]>([2, 3, 2]);
-  const [auraPulse, setAuraPulse] = useState(false);
   const [showGoldenBurst, setShowGoldenBurst] = useState(false);
 
-  const shakeCoin = useCallback(() => {
-    if (flipping || currentYao >= 6) return;
-    setFlipping(true);
-    setAuraPulse(true);
+  const handleMeditationComplete = useCallback(() => {
+    setPhase("shaking");
+  }, []);
 
-    const coins: number[] = Array.from({ length: 3 }, () => (Math.random() < 0.5 ? 2 : 3));
-    const sum = coins.reduce((a: number, b: number) => a + b, 0) as LineValue;
+  const handleTossComplete = useCallback((_coins: (2 | 3)[], lineValue: LineValue) => {
+    setLines((prev) => [...prev, lineValue]);
+    setCurrentYao((prev) => prev + 1);
+  }, []);
 
+  const handleAllTossComplete = useCallback(() => {
+    setShowGoldenBurst(true);
     setTimeout(() => {
-      setCoinFaces(coins);
-    }, 300);
-
-    setTimeout(() => {
-      setLines((prev) => [...prev, sum]);
-      setCurrentYao((prev) => prev + 1);
-      setFlipping(false);
-      setAuraPulse(false);
-      if (currentYao + 1 >= 6) {
-        setShowGoldenBurst(true);
-        setTimeout(() => {
-          setShowGoldenBurst(false);
-          setPhase("done");
-        }, 1200);
-      }
-    }, 900);
-  }, [flipping, currentYao]);
+      setShowGoldenBurst(false);
+      setPhase("done");
+    }, 1200);
+  }, []);
 
   const binary = lines.length === 6 ? linesToBinary(lines) : "";
   const hexNum = binary ? getHexagramNumber(binary) : undefined;
@@ -335,6 +285,13 @@ function DivinationContent() {
   const changingLines = lines.length === 6 ? getChangingLines(lines) : [];
 
   const goToResult = () => {
+    // Increment divination count for skip button logic
+    try {
+      const key = "iching_divination_count";
+      const count = parseInt(localStorage.getItem(key) || "0", 10);
+      localStorage.setItem(key, String(count + 1));
+    } catch { /* ignore */ }
+
     const params = new URLSearchParams({
       lines: lines.join(","),
       question,
@@ -411,6 +368,11 @@ function DivinationContent() {
         </div>
 
         <AnimatePresence mode="wait">
+          {/* ═══ 静心引导阶段 ═══ */}
+          {phase === "meditation" && (
+            <MeditationGuide onComplete={handleMeditationComplete} />
+          )}
+
           {/* ═══ 摇卦阶段 ═══ */}
           {phase === "shaking" && (
             <m.div
@@ -419,7 +381,7 @@ function DivinationContent() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className={`w-full max-w-[600px] mx-auto text-center relative ${auraPulse ? "aura-pulse" : ""}`}
+              className="w-full max-w-[600px] mx-auto text-center relative"
             >
               {/* 金色光芒庆祝效果 */}
               {showGoldenBurst && (
@@ -427,10 +389,6 @@ function DivinationContent() {
                   <div className="w-40 h-40 rounded-full bg-gold-bright/20 golden-burst" />
                 </div>
               )}
-
-              <h1 className="font-title text-3xl sm:text-4xl text-gold-glow mb-2">
-                第{YAO_CN[Math.min(currentYao, 5)]}爻
-              </h1>
 
               {/* 进度指示 */}
               <p className="text-lg font-bold text-gold mb-3 tracking-wide text-center">
@@ -449,38 +407,22 @@ function DivinationContent() {
                       backgroundColor:
                         i < currentYao
                           ? "var(--color-gold)"
-                          : i === currentYao && flipping
-                            ? "var(--color-gold-dim)"
-                            : "rgba(255,255,255,0.1)",
+                          : "rgba(255,255,255,0.1)",
                     }}
                     transition={{ duration: 0.4 }}
                   />
                 ))}
               </div>
 
-              {/* 铜钱区域 */}
-              <Card variant="elevated" className="mb-8 my-10">
-                <div className="flex justify-center gap-5 sm:gap-8 mb-8 min-h-[120px] items-center">
-                  {[0, 1, 2].map((i) => (
-                    <Coin key={i} face={coinFaces[i]} delay={i * 0.15} flipping={flipping} />
-                  ))}
+              {/* 铜钱抛掷动画 */}
+              <Card variant="elevated" className="mb-8 my-10 overflow-visible">
+                <div className="py-8">
+                  <CoinToss
+                    currentYao={currentYao}
+                    onTossComplete={handleTossComplete}
+                    onAllComplete={handleAllTossComplete}
+                  />
                 </div>
-
-                {/* 当前爻结果提示 */}
-                {lines.length > 0 && !flipping && (
-                  <m.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-sm opacity-50 mb-2"
-                  >
-                    {(() => {
-                      const last = lines[lines.length - 1];
-                      const isYang = last === 7 || last === 9;
-                      const isChanging = last === 6 || last === 9;
-                      return `${isYang ? "阳爻 ▬▬▬" : "阴爻 ▬ ▬"}${isChanging ? "（动爻）" : ""}`;
-                    })()}
-                  </m.div>
-                )}
               </Card>
 
               {/* 已完成的爻（从下往上） */}
@@ -504,15 +446,6 @@ function DivinationContent() {
                   </div>
                 </Card>
               )}
-
-              <button
-                onClick={shakeCoin}
-                disabled={flipping || currentYao >= 6}
-                className="max-w-[400px] w-full mx-auto h-14 text-xl font-bold font-title tracking-wider rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,169,110,0.5)] disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                style={{ backgroundColor: "#c9a96e", color: "#0a0a12" }}
-              >
-                {flipping ? "摇卦中…" : currentYao >= 6 ? "卦象已成" : "摇 卦"}
-              </button>
             </m.div>
           )}
 

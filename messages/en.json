@@ -91,6 +91,16 @@
     "loading": "Loading...",
     "copyright": "© {year} Yi · Ching"
   },
+  "Meditation": {
+    "line1": "Calm your mind, focus your intent",
+    "line2": "Breathe in harmony with heaven and earth",
+    "line3": "When the heart is set, the hexagram reveals itself",
+    "inhale": "Breathe in...",
+    "hold": "Hold...",
+    "exhale": "Breathe out...",
+    "skip": "Skip",
+    "tapToSkip": "Tap to skip"
+  },
   "History": {
     "title": "Divination History",
     "subtitle": "Traces of Inquiry",
