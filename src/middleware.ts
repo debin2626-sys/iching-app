@@ -15,8 +15,9 @@ const securityHeaders: Record<string, string> = {
 };
 
 export default function middleware(request: NextRequest) {
-  // Skip i18n redirect for API routes — they don't need locale prefixes
-  if (request.nextUrl.pathname.startsWith('/api/')) {
+  // Skip i18n redirect for API routes and SEO files — they don't need locale prefixes
+  const pathname = request.nextUrl.pathname;
+  if (pathname.startsWith('/api/') || pathname === '/sitemap.xml' || pathname === '/robots.txt') {
     const response = NextResponse.next();
     for (const [key, value] of Object.entries(securityHeaders)) {
       response.headers.set(key, value);
