@@ -1,6 +1,7 @@
 import OpenAI from 'openai';
 import { calculateBazi, type BirthInfo } from './iching/bazi';
 import { getScenarioPrompt } from './prompts/scenarios';
+import { buildMultiDimensionPrompt, getHexagramName } from './prompts/multi-dimension';
 import { searchKnowledgeWithTimeout, formatRAGContext } from './rag';
 
 // 双客户端：国内走 DeepSeek，海外走 OpenAI
@@ -14,6 +15,7 @@ const openaiClient = new OpenAI({
 });
 
 export type InterpretDepth = 'simple' | 'detailed' | 'deep';
+export type InterpretMode = 'simple' | 'multi-dimension';
 
 interface InterpretationParams {
   hexagramNumber: number;
@@ -21,6 +23,7 @@ interface InterpretationParams {
   question: string;
   locale: string;
   depth?: InterpretDepth;
+  mode?: InterpretMode;
   birthInfo?: BirthInfo;
   gender?: string;
   scenarioId?: string;
@@ -156,17 +159,7 @@ function getMaxTokensForDepth(depth: InterpretDepth): number {
 export async function getAIInterpretation(params: InterpretationParams) {
   const isZH = !params.locale || params.locale.startsWith('zh');
   const depth = params.depth || 'detailed';
-
-  // 场景化系统提示词：如果有场景，使用场景专属的系统提示词
-  const scenarioPrompt = getScenarioPrompt(params.scenarioId);
-  let systemPrompt: string;
-  if (scenarioPrompt) {
-    systemPrompt = isZH ? scenarioPrompt.system.zh : scenarioPrompt.system.en;
-  } else {
-    systemPrompt = isZH ? SYSTEM_PROMPT_ZH : SYSTEM_PROMPT_EN;
-  }
-
-  const userPrompt = isZH ? buildUserPromptZH(params) : buildUserPromptEN(params);
+  const mode = params.mode || 'multi-dimension';
 
   // RAG 知识检索（3秒超时，失败则跳过）
   let ragContext = '';
@@ -183,6 +176,44 @@ export async function getAIInterpretation(params: InterpretationParams) {
       // RAG 失败不影响主流程
     }
   }
+
+  // ── 多维解读模式（仅中文） ──
+  if (mode === 'multi-dimension' && isZH) {
+    const hexagramName = getHexagramName(params.hexagramNumber);
+    const { systemPrompt, userPrompt } = buildMultiDimensionPrompt({
+      hexagramName,
+      hexagramNumber: params.hexagramNumber,
+      changingLines: params.changingLines,
+      question: params.question,
+      scenario: params.scenarioId,
+      ragContext,
+    });
+
+    return {
+      client: deepseekClient,
+      model: 'deepseek-chat',
+      messages: [
+        { role: 'system' as const, content: systemPrompt },
+        { role: 'user' as const, content: userPrompt },
+      ],
+      stream: true as const,
+      temperature: 0.8,
+      max_tokens: 4000,
+    };
+  }
+
+  // ── 简单模式 / 英文：使用原有逻辑 ──
+
+  // 场景化系统提示词：如果有场景，使用场景专属的系统提示词
+  const scenarioPrompt = getScenarioPrompt(params.scenarioId);
+  let systemPrompt: string;
+  if (scenarioPrompt) {
+    systemPrompt = isZH ? scenarioPrompt.system.zh : scenarioPrompt.system.en;
+  } else {
+    systemPrompt = isZH ? SYSTEM_PROMPT_ZH : SYSTEM_PROMPT_EN;
+  }
+
+  const userPrompt = isZH ? buildUserPromptZH(params) : buildUserPromptEN(params);
 
   // 将 RAG 知识注入到用户 prompt 前面
   const finalUserPrompt = ragContext

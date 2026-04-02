@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAIInterpretation, type InterpretDepth } from '@/lib/ai';
+import { getAIInterpretation, type InterpretDepth, type InterpretMode } from '@/lib/ai';
 import { buildCacheKey, getFromCache, setInCache } from '@/lib/ai-cache';
 
 
@@ -14,6 +14,9 @@ export async function POST(req: NextRequest) {
     // 场景信息
     const scenarioId = typeof body.scenarioId === 'string' ? body.scenarioId : undefined;
     const subScenarioId = typeof body.subScenarioId === 'string' ? body.subScenarioId : undefined;
+
+    // 解读模式：simple（原有简单模式）/ multi-dimension（多维解读，默认）
+    const mode: InterpretMode = body.mode === 'simple' ? 'simple' : 'multi-dimension';
 
     if (!hexagramNumber || !question) {
       return NextResponse.json(
@@ -40,7 +43,8 @@ export async function POST(req: NextRequest) {
     // ── 缓存逻辑：通用解读（无个性化 birthInfo）走缓存 ──
     const isGeneric = !validBirthInfo;
     const scenarioSuffix = scenarioId ? `:s:${scenarioId}` : '';
-    const cacheKey = isGeneric ? buildCacheKey(Number(hexagramNumber), lines, validDepth) + scenarioSuffix : '';
+    const modeSuffix = mode === 'multi-dimension' ? ':md' : '';
+    const cacheKey = isGeneric ? buildCacheKey(Number(hexagramNumber), lines, validDepth) + scenarioSuffix + modeSuffix : '';
 
     if (isGeneric) {
       const cached = getFromCache(cacheKey);
@@ -70,6 +74,7 @@ export async function POST(req: NextRequest) {
       question: String(question),
       locale: locale || 'zh',
       depth: validDepth,
+      mode,
       birthInfo: validBirthInfo,
       gender,
       scenarioId,

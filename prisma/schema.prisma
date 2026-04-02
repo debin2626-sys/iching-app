@@ -130,7 +130,7 @@ model UserPreference {
 
 model KnowledgeChunk {
   id          String   @id @default(cuid())
-  hexagramId  Int
+  hexagramId  Int?
   level       String   // "hexagram" | "yao" | "paragraph"
   title       String?
   content     String
@@ -139,7 +139,7 @@ model KnowledgeChunk {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  hexagram    Hexagram @relation(fields: [hexagramId], references: [number])
+  hexagram    Hexagram? @relation(fields: [hexagramId], references: [number])
 
   @@index([hexagramId])
   @@index([level])

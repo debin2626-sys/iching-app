@@ -101,11 +101,12 @@ async function main() {
       const embedding = await generatePassageEmbedding(content);
       const vecStr = `[${embedding.join(",")}]`;
 
-      // Insert into knowledge_chunk
+      // Insert into knowledge_chunk (hexagram_number 0 → NULL for general philosophy entries)
+      const hexId = entry.hexagram_number === 0 ? null : entry.hexagram_number;
       await prisma.$executeRawUnsafe(
         `INSERT INTO knowledge_chunk (id, "hexagramId", level, title, content, embedding, metadata, "createdAt", "updatedAt")
          VALUES (gen_random_uuid(), $1, $2, $3, $4, $5::vector, $6::jsonb, NOW(), NOW())`,
-        entry.hexagram_number,
+        hexId,
         "paragraph",
         `${entry.source}`,
         content,
