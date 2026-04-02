@@ -9,10 +9,37 @@ import type { LineValue } from "@/lib/iching/coins";
 const COIN_SIZE_DESKTOP = 100;
 const COIN_SIZE_MOBILE = 80;
 const TOSS_DURATION = 2.5; // 总动画时长
-const COIN_STAGGER = 0.1; // 铜钱间隔
 const AUTO_INTERVAL = 1000; // 自动模式间隔
 
 const YAO_CN = ["一", "二", "三", "四", "五", "六"];
+
+/* ── 随机性工具函数 ── */
+/** 在 [min, max] 范围内生成随机数 */
+function randRange(min: number, max: number): number {
+  return min + Math.random() * (max - min);
+}
+
+/** 为每枚铜钱生成独立的随机运动参数 */
+function generateCoinRandomParams() {
+  return {
+    /** 随机延迟 50-150ms */
+    delay: randRange(0.05, 0.15),
+    /** 抛起高度随机偏移 -30 ~ +20 */
+    peakOffset: randRange(-30, 20),
+    /** 弹跳高度随机 -25 ~ -8 */
+    bounceHeight: randRange(-25, -8),
+    /** 水平散开随机偏移 ±15 */
+    xJitter: randRange(-15, 15),
+    /** 额外旋转角度随机 ±45° */
+    extraRotateX: randRange(-45, 45),
+    /** 额外 Z 轴旋转 ±30° */
+    extraRotateZ: randRange(-30, 30),
+    /** 落地微小偏移 */
+    landingY: randRange(-3, 3),
+    /** 缩放微调 */
+    scaleJitter: randRange(-0.03, 0.03),
+  };
+}
 
 /** 单枚铜钱正反面 */
 type CoinFace = 2 | 3; // 2=反面(花), 3=正面(字)
@@ -154,22 +181,37 @@ function AnimatedCoin({
   isTossing,
   size,
   isLanded,
+  randomParams,
 }: {
   face: CoinFace;
   index: number;
   isTossing: boolean;
   size: number;
   isLanded: boolean;
+  randomParams: ReturnType<typeof generateCoinRandomParams>;
 }) {
-  const delay = index * COIN_STAGGER;
   const isFront = face === 3;
 
-  // 抛物线关键帧 - 每枚铜钱略有不同的水平偏移
-  const xOffsets = [-30, 0, 30]; // 三枚铜钱的水平散开
-  const xOffset = xOffsets[index];
+  // 基础水平散开 + 随机抖动
+  const baseXOffsets = [-30, 0, 30];
+  const xOffset = baseXOffsets[index] + randomParams.xJitter;
 
-  // 最终旋转角度：正面=偶数圈(0°)，反面=奇数圈(180°)
+  // 随机延迟让铜钱不同时落地
+  const delay = randomParams.delay;
+
+  // 随机抛起高度
+  const peakY = -120 + randomParams.peakOffset;
+  const midY = -100 + randomParams.peakOffset * 0.5;
+  const bounceY = randomParams.bounceHeight;
+  const landY = randomParams.landingY;
+
+  // 最终旋转角度：正面=偶数圈(0°)，反面=奇数圈(180°) + 随机额外旋转
   const finalRotateY = isFront ? 1080 : 1080 + 180;
+  const extraRX = randomParams.extraRotateX;
+  const extraRZ = randomParams.extraRotateZ;
+
+  // 缩放微调
+  const sj = randomParams.scaleJitter;
 
   return (
     <m.div
@@ -184,13 +226,13 @@ function AnimatedCoin({
       animate={
         isTossing
           ? {
-              // 抛物线轨迹：上抛 → 最高点 → 落下 → 弹跳
-              y: [120, -100, -120, 0, -15, 0],
+              // 抛物线轨迹：上抛 → 最高点 → 落下 → 弹跳（每枚独立随机）
+              y: [120, midY, peakY, landY, bounceY, landY],
               x: [0, xOffset * 0.5, xOffset, xOffset, xOffset, xOffset],
-              scale: [0.8, 1.1, 1.05, 1, 1.02, 1],
+              scale: [0.8, 1.1 + sj, 1.05 + sj, 1, 1.02 + sj, 1],
             }
           : isLanded
-            ? { y: 0, x: xOffset, scale: 1 }
+            ? { y: landY, x: xOffset, scale: 1 }
             : { y: 0, x: 0, scale: 1 }
       }
       transition={
@@ -215,9 +257,9 @@ function AnimatedCoin({
         animate={
           isTossing
             ? {
-                rotateX: [0, 720, 720],
+                rotateX: [0, 720 + extraRX, 720 + extraRX],
                 rotateY: [0, finalRotateY, finalRotateY],
-                rotateZ: [0, 360, 360],
+                rotateZ: [0, 360 + extraRZ, 360 + extraRZ],
               }
             : isLanded
               ? {
@@ -324,6 +366,11 @@ export default function CoinToss({
   const tossCompleteRef = useRef(onTossComplete);
   tossCompleteRef.current = onTossComplete;
 
+  // 每次抛掷生成新的随机参数（3 枚铜钱各自独立）
+  const [coinRandomParams, setCoinRandomParams] = useState(() =>
+    [0, 1, 2].map(() => generateCoinRandomParams())
+  );
+
   // 响应式铜钱尺寸
   useEffect(() => {
     const updateSize = () => {
@@ -336,6 +383,9 @@ export default function CoinToss({
 
   const doToss = useCallback(() => {
     if (isTossing || currentYao >= 6) return;
+
+    // 每次抛掷重新生成随机参数，确保轨迹不同
+    setCoinRandomParams([0, 1, 2].map(() => generateCoinRandomParams()));
 
     setIsTossing(true);
     setLastResult(null);
@@ -355,8 +405,9 @@ export default function CoinToss({
     // 在旋转阶段中途设置面值（不影响动画）
     setCoinFaces(coins);
 
-    // 动画结束
-    const totalDuration = (TOSS_DURATION + 2 * COIN_STAGGER) * 1000;
+    // 动画结束 - 使用最大延迟来计算总时长
+    const maxDelay = Math.max(...coinRandomParams.map(p => p.delay));
+    const totalDuration = (TOSS_DURATION + maxDelay) * 1000 + 100; // +100ms buffer
     setTimeout(() => {
       setIsTossing(false);
       setIsLanded(true);
@@ -367,7 +418,7 @@ export default function CoinToss({
         setTimeout(() => onAllComplete?.(), 600);
       }
     }, totalDuration);
-  }, [isTossing, currentYao, onAllComplete]);
+  }, [isTossing, currentYao, onAllComplete, coinRandomParams]);
 
   // 自动模式
   useEffect(() => {
@@ -430,6 +481,7 @@ export default function CoinToss({
             isTossing={isTossing}
             size={coinSize}
             isLanded={isLanded}
+            randomParams={coinRandomParams[i]}
           />
         ))}
 

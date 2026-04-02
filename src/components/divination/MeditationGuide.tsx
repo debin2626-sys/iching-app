@@ -5,38 +5,46 @@ import { m, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { trackMeditationComplete, trackMeditationSkip } from "@/lib/analytics";
 
-// Breathing cycle: 4s inhale + 2s hold + 4s exhale = 10s per cycle, 3 cycles = 30s
+// Breathing cycle: 4s inhale + 2s hold + 4s exhale = 10s per cycle
 const INHALE_DURATION = 4000;
 const HOLD_DURATION = 2000;
 const EXHALE_DURATION = 4000;
 const CYCLE_DURATION = INHALE_DURATION + HOLD_DURATION + EXHALE_DURATION; // 10s
-const TOTAL_CYCLES = 3;
-const TOTAL_DURATION = CYCLE_DURATION * TOTAL_CYCLES; // 30s
-const SKIP_DELAY = 3000;
+const SKIP_BUTTON_FADE_DELAY = 3000; // 首次使用时，3 秒后才淡入跳过按钮
 const DIVINATION_COUNT_KEY = "iching_divination_count";
 
 type BreathPhase = "inhale" | "hold" | "exhale";
 
 interface MeditationGuideProps {
   onComplete: () => void;
+  /** 呼吸引导总时长（秒），默认 15 秒 */
+  duration?: number;
 }
 
-export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
+export default function MeditationGuide({ onComplete, duration = 15 }: MeditationGuideProps) {
   const t = useTranslations("Meditation");
   const [elapsed, setElapsed] = useState(0);
   const [canSkip, setCanSkip] = useState(false);
-  const [showSkip, setShowSkip] = useState(false);
+  const [isReturningUser, setIsReturningUser] = useState(false);
   const startTimeRef = useRef<number>(0);
   const rafRef = useRef<number>(0);
   const completedRef = useRef(false);
 
-  // Check if user has completed 3+ divinations
+  // 根据 duration 计算总时长和周期数
+  const totalDuration = duration * 1000;
+  const totalCycles = Math.max(1, Math.ceil(totalDuration / CYCLE_DURATION));
+  const actualTotalDuration = totalCycles * CYCLE_DURATION;
+
+  // Check if user has completed divinations before (returning user)
   useEffect(() => {
     try {
       const count = parseInt(localStorage.getItem(DIVINATION_COUNT_KEY) || "0", 10);
-      setShowSkip(count >= 3);
+      if (count > 0) {
+        setIsReturningUser(true);
+        setCanSkip(true); // 老用户直接显示跳过按钮
+      }
     } catch {
-      setShowSkip(false);
+      // ignore
     }
   }, []);
 
@@ -48,11 +56,12 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
       const ms = now - startTimeRef.current;
       setElapsed(ms);
 
-      if (ms >= SKIP_DELAY && !canSkip) {
+      // 新用户：3 秒后才允许跳过
+      if (!isReturningUser && ms >= SKIP_BUTTON_FADE_DELAY && !canSkip) {
         setCanSkip(true);
       }
 
-      if (ms >= TOTAL_DURATION) {
+      if (ms >= actualTotalDuration) {
         if (!completedRef.current) {
           completedRef.current = true;
           trackMeditationComplete();
@@ -66,11 +75,11 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
 
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [onComplete, canSkip]);
+  }, [onComplete, canSkip, isReturningUser, actualTotalDuration]);
 
   // Derive current state from elapsed time
   const cycleMs = elapsed % CYCLE_DURATION;
-  const currentCycle = Math.min(Math.floor(elapsed / CYCLE_DURATION), TOTAL_CYCLES - 1);
+  const currentCycle = Math.min(Math.floor(elapsed / CYCLE_DURATION), totalCycles - 1);
 
   let breathPhase: BreathPhase;
   if (cycleMs < INHALE_DURATION) {
@@ -102,8 +111,8 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
     ringScale = MAX_SCALE - (MAX_SCALE - MIN_SCALE) * eased;
   }
 
-  // Progress bar: 0 → 1 over 30s
-  const progress = Math.min(elapsed / TOTAL_DURATION, 1);
+  // Progress bar: 0 → 1 over total duration
+  const progress = Math.min(elapsed / actualTotalDuration, 1);
 
   // Breath prompt text
   const breathText =
@@ -111,8 +120,9 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
     breathPhase === "hold" ? t("hold") :
     t("exhale");
 
-  // Guidance lines
+  // Guidance lines - cycle through available lines
   const lines = [t("line1"), t("line2"), t("line3")];
+  const currentLine = lines[currentCycle % lines.length];
 
   const handleSkip = useCallback(() => {
     if (!completedRef.current) {
@@ -126,22 +136,21 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0a0a12] overflow-hidden">
       {/* Skip button - desktop: top-right, mobile: bottom */}
-      {showSkip && (
-        <AnimatePresence>
-          {canSkip && (
-            <m.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
-              exit={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              onClick={handleSkip}
-              className="hidden sm:block fixed top-6 right-6 text-sm text-[#a0978a] hover:text-[#c9a96e] transition-colors z-50 font-title tracking-wider"
-            >
-              {t("skip")}
-            </m.button>
-          )}
-        </AnimatePresence>
-      )}
+      <AnimatePresence>
+        {canSkip && (
+          <m.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ opacity: 1 }}
+            onClick={handleSkip}
+            className="hidden sm:block fixed top-6 right-6 text-sm text-[#a0978a] hover:text-[#c9a96e] transition-colors z-50 font-title tracking-wider"
+          >
+            {t("skip")}
+          </m.button>
+        )}
+      </AnimatePresence>
 
       {/* Main content area */}
       <div className="flex flex-col items-center justify-center flex-1 px-6">
@@ -156,7 +165,7 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="text-lg sm:text-xl text-[#f5f0e8] font-title tracking-[0.15em] text-center"
             >
-              {lines[currentCycle]}
+              {currentLine}
             </m.p>
           </AnimatePresence>
         </div>
@@ -254,10 +263,11 @@ export default function MeditationGuide({ onComplete }: MeditationGuideProps) {
         </div>
 
         {/* Mobile skip button */}
-        {showSkip && canSkip && (
+        {canSkip && (
           <m.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
+            transition={{ duration: 0.5 }}
             onClick={handleSkip}
             className="sm:hidden text-sm text-[#a0978a] font-title tracking-wider active:text-[#c9a96e] transition-colors"
           >

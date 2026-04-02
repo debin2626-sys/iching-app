@@ -422,7 +422,7 @@ function DivinationInner() {
         <AnimatePresence mode="wait">
           {/* ═══ 静心引导阶段 ═══ */}
           {phase === "meditation" && (
-            <MeditationGuide onComplete={handleMeditationComplete} />
+            <MeditationGuide onComplete={handleMeditationComplete} duration={15} />
           )}
 
           {/* ═══ 摇卦阶段 ═══ */}
