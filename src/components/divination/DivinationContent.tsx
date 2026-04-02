@@ -13,6 +13,8 @@ import { PageLayout, Button, TextArea, Select } from "@/components/ui";
 import Card from "@/components/ui/Card";
 import MeditationGuide from "@/components/divination/MeditationGuide";
 import CoinToss from "@/components/divination/CoinToss";
+import SoundSettings from "@/components/divination/SoundSettings";
+import { useSoundEffect } from "@/hooks/useSoundEffect";
 import { trackDivinationStart, trackCoinToss, trackDivinationComplete } from "@/lib/analytics";
 
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
@@ -234,6 +236,8 @@ function DivinationInner() {
   const isEn = locale === "en";
   const yaoLabels = tDiv("yaoNames").split(",");
 
+  const sound = useSoundEffect();
+
   const navItems = [
     { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
@@ -282,12 +286,26 @@ function DivinationInner() {
     setPhase("shaking");
   }, []);
 
+  // 静心引导开始时播放背景音
+  useEffect(() => {
+    if (hasStarted && phase === "meditation") {
+      sound.playBackground();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasStarted, phase]);
+
   const handleTossComplete = useCallback((_coins: (2 | 3)[], lineValue: LineValue) => {
+    sound.playCoin();
     setLines((prev) => {
       trackCoinToss(prev.length, lineValue);
       return [...prev, lineValue];
     });
     setCurrentYao((prev) => prev + 1);
+    // 爻显现音效（稍延迟，配合动画）
+    setTimeout(() => {
+      sound.playYao();
+    }, 200);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAllTossComplete = useCallback(() => {
@@ -295,7 +313,9 @@ function DivinationInner() {
     setTimeout(() => {
       setShowGoldenBurst(false);
       setPhase("done");
+      sound.stopBackground();
     }, 1200);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const binary = lines.length === 6 ? linesToBinary(lines) : "";
@@ -313,6 +333,7 @@ function DivinationInner() {
   }, [hexNum, hexInfo]);
 
   const goToResult = () => {
+    sound.stopBackground();
     // Increment divination count for skip button logic
     try {
       const key = "iching_divination_count";
@@ -344,6 +365,7 @@ function DivinationInner() {
   };
 
   const resetAndGoHome = () => {
+    sound.stopBackground();
     router.push("/");
   };
 
@@ -351,6 +373,7 @@ function DivinationInner() {
   if (!hasStarted) {
     return (
       <PageLayout navItems={navItems} maxWidth="max-w-lg">
+        <SoundSettings sound={sound} />
         <div className="flex flex-col items-center py-8 sm:py-14">
           <QuestionForm onSubmit={handleQuestionSubmit} />
         </div>
@@ -360,6 +383,7 @@ function DivinationInner() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-lg">
+      <SoundSettings sound={sound} />
       <div className="flex flex-col items-center py-8 sm:py-14">
         {/* 顶部装饰 */}
         <m.div
