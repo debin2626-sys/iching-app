@@ -17,7 +17,7 @@ import {
 } from "@/lib/iching/hexagram";
 import { getChangingLines } from "@/lib/iching/coins";
 import HexagramReveal from "@/components/divination/HexagramReveal";
-import { trackAIInterpretStart, trackAIInterpretComplete } from "@/lib/analytics";
+import { trackAIInterpretStart, trackAIInterpretComplete, trackFunnelResultView, trackFunnelAIInterpretStart, trackFunnelAIInterpretComplete } from "@/lib/analytics";
 
 /* ── 卦象名称映射 ── */
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
@@ -267,6 +267,12 @@ function AISection({
     setContent("");
     setStreamDone(false);
     trackAIInterpretStart(hexagramNumber, selectedDepth);
+    trackFunnelAIInterpretStart({
+      hexagram_number: hexagramNumber,
+      interpret_mode: selectedDepth,
+    });
+    const aiStartTime = Date.now();
+    let aiSuccess = true;
     try {
       const res = await fetch("/api/ai/interpret", {
         method: "POST",
@@ -322,12 +328,20 @@ function AISection({
     } catch (err) {
       if (fetchIdRef.current === id) {
         setError(err instanceof Error ? err.message : "AI interpretation failed");
+        aiSuccess = false;
       }
     } finally {
       if (fetchIdRef.current === id) {
         setLoading(false);
         setStreamDone(true);
         trackAIInterpretComplete(hexagramNumber, selectedDepth);
+        const durationSeconds = Math.round((Date.now() - aiStartTime) / 1000);
+        trackFunnelAIInterpretComplete({
+          hexagram_number: hexagramNumber,
+          interpret_mode: selectedDepth,
+          duration_seconds: durationSeconds,
+          success: aiSuccess,
+        });
       }
     }
   }, [hexagramNumber, changingLines, question, birthInfo, gender, scenarioId, subScenarioId]);
@@ -453,6 +467,19 @@ function ResultInner() {
       // 保存失败静默处理
     });
   }, [hexNum, lines, question, changedHex, changingLines]);
+
+  // ── funnel_result_view: 结果页曝光（最终转化） ──
+  useEffect(() => {
+    if (!hexNum || !hexInfo) return;
+    trackFunnelResultView({
+      hexagram_number: hexNum,
+      hexagram_name: hexInfo.cn,
+      question_length: question.length,
+      has_birth_info: !!birthInfo,
+      scenario: scenarioId || undefined,
+      interpret_mode: birthInfo ? "multi-dimension" : "simple",
+    });
+  }, [hexNum, hexInfo, question.length, birthInfo, scenarioId]);
 
   /* 分享功能 */
   const handleShare = async () => {

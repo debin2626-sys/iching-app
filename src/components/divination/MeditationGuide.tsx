@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { trackMeditationComplete, trackMeditationSkip } from "@/lib/analytics";
+import { trackMeditationComplete, trackMeditationSkip, trackFunnelMeditationStart, trackFunnelMeditationSkip, trackFunnelMeditationComplete } from "@/lib/analytics";
 
 // Breathing cycle: 4s inhale + 2s hold + 4s exhale = 10s per cycle
 const INHALE_DURATION = 4000;
@@ -37,6 +37,9 @@ export default function MeditationGuide({ onComplete, duration = 15 }: Meditatio
 
   // Check if user has completed divinations before (returning user)
   useEffect(() => {
+    // ── funnel_meditation_start ──
+    trackFunnelMeditationStart();
+
     try {
       const count = parseInt(localStorage.getItem(DIVINATION_COUNT_KEY) || "0", 10);
       if (count > 0) {
@@ -65,6 +68,7 @@ export default function MeditationGuide({ onComplete, duration = 15 }: Meditatio
         if (!completedRef.current) {
           completedRef.current = true;
           trackMeditationComplete();
+          trackFunnelMeditationComplete({ duration_seconds: Math.round(ms / 1000) });
           onComplete();
         }
         return;
@@ -128,7 +132,9 @@ export default function MeditationGuide({ onComplete, duration = 15 }: Meditatio
     if (!completedRef.current) {
       completedRef.current = true;
       cancelAnimationFrame(rafRef.current);
+      const skipTimeSeconds = Math.round((performance.now() - startTimeRef.current) / 1000);
       trackMeditationSkip();
+      trackFunnelMeditationSkip({ skip_time_seconds: skipTimeSeconds });
       onComplete();
     }
   }, [onComplete]);

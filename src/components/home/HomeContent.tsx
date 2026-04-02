@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Coins, Sparkles, BookOpen } from "lucide-react";
@@ -9,7 +9,7 @@ import { NavBar } from "@/components/ui";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import ScenarioSelector from "@/components/divination/ScenarioSelector";
 import SampleReading from "@/components/home/SampleReading";
-import { trackScenarioSelect } from "@/lib/analytics";
+import { trackScenarioSelect, trackFunnelHomeView, trackFunnelStartClick, trackFunnelQuestionSubmit, trackFunnelBirthFill } from "@/lib/analytics";
 
 const YEARS = Array.from({ length: 87 }, (_, i) => 1940 + i);
 const MONTHS = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -26,6 +26,16 @@ export default function HomeContent() {
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
     { label: tNav("history"), href: "/history", icon: <span>📜</span> },
   ];
+
+  // ── funnel_home_view: 首页曝光 ──
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    trackFunnelHomeView({
+      referrer: document.referrer || undefined,
+      utm_source: url.searchParams.get("utm_source") || undefined,
+      utm_medium: url.searchParams.get("utm_medium") || undefined,
+    });
+  }, []);
 
   const [question, setQuestion] = useState("");
   const [showBirth, setShowBirth] = useState(false);
@@ -75,6 +85,32 @@ export default function HomeContent() {
 
   const handleStart = () => {
     if (!question.trim()) return;
+
+    // ── funnel_start_click ──
+    trackFunnelStartClick({
+      entry_type: scenarioId ? "scenario_select" : "direct_click",
+      scenario: scenarioId || undefined,
+      sub_scenario: subScenarioId || undefined,
+    });
+
+    // ── funnel_question_submit ──
+    trackFunnelQuestionSubmit({
+      question_length: question.trim().length,
+      has_birth_info: !!hasBirthInfo,
+      has_gender: !!gender,
+      scenario: scenarioId || undefined,
+      sub_scenario: subScenarioId || undefined,
+    });
+
+    // ── funnel_birth_fill（如有生辰信息） ──
+    if (hasBirthInfo) {
+      trackFunnelBirthFill({
+        birth_year: birthYear,
+        birth_hour: birthHour,
+        gender: gender || "unknown",
+      });
+    }
+
     const params = new URLSearchParams({ question });
     if (hasBirthInfo) {
       params.set("by", birthYear);

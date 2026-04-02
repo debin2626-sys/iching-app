@@ -15,7 +15,7 @@ import MeditationGuide from "@/components/divination/MeditationGuide";
 import CoinToss from "@/components/divination/CoinToss";
 import SoundSettings from "@/components/divination/SoundSettings";
 import { useSoundEffect } from "@/hooks/useSoundEffect";
-import { trackDivinationStart, trackCoinToss, trackDivinationComplete } from "@/lib/analytics";
+import { trackDivinationStart, trackCoinToss, trackDivinationComplete, trackFunnelCoinToss, trackFunnelHexagramFormed, trackFunnelQuestionSubmit, trackFunnelBirthFill, trackFunnelStartClick } from "@/lib/analytics";
 
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
   1:{cn:"乾",en:"Qian"},2:{cn:"坤",en:"Kun"},3:{cn:"屯",en:"Zhun"},4:{cn:"蒙",en:"Meng"},
@@ -272,6 +272,31 @@ function DivinationInner() {
     setQuestion(q);
     setHasStarted(true);
     trackDivinationStart(q);
+
+    // ── funnel_start_click（从占卜页直接提交） ──
+    trackFunnelStartClick({
+      entry_type: "direct_click",
+    });
+
+    // ── funnel_question_submit ──
+    const by = params.get("by") || "";
+    const bh = params.get("bh") || "";
+    const g = params.get("gender") || "";
+    trackFunnelQuestionSubmit({
+      question_length: q.trim().length,
+      has_birth_info: !!(params.get("by") && params.get("bm") && params.get("bd") && params.get("bh")),
+      has_gender: !!g,
+    });
+
+    // ── funnel_birth_fill（如有） ──
+    if (by && bh) {
+      trackFunnelBirthFill({
+        birth_year: by,
+        birth_hour: bh,
+        gender: g || "unknown",
+      });
+    }
+
     // Update URL without full navigation
     const newUrl = `/divination?${params.toString()}`;
     window.history.replaceState(null, "", newUrl);
@@ -281,9 +306,11 @@ function DivinationInner() {
   const [lines, setLines] = useState<LineValue[]>([]);
   const [currentYao, setCurrentYao] = useState(0);
   const [showGoldenBurst, setShowGoldenBurst] = useState(false);
+  const tossStartTimeRef = useRef<number>(0);
 
   const handleMeditationComplete = useCallback(() => {
     setPhase("shaking");
+    tossStartTimeRef.current = Date.now();
   }, []);
 
   // 静心引导开始时播放背景音
@@ -297,7 +324,13 @@ function DivinationInner() {
   const handleTossComplete = useCallback((_coins: (2 | 3)[], lineValue: LineValue) => {
     sound.playCoin();
     setLines((prev) => {
+      const yaoIndex = prev.length + 1; // 1-based
       trackCoinToss(prev.length, lineValue);
+      trackFunnelCoinToss({
+        yao_index: yaoIndex,
+        line_value: lineValue,
+        is_changing: lineValue === 6 || lineValue === 9,
+      });
       return [...prev, lineValue];
     });
     setCurrentYao((prev) => prev + 1);
@@ -329,8 +362,19 @@ function DivinationInner() {
     if (hexNum && hexInfo && !hasTrackedComplete.current) {
       hasTrackedComplete.current = true;
       trackDivinationComplete(hexNum, hexInfo.cn);
+
+      // ── funnel_hexagram_formed ──
+      const totalTossDuration = tossStartTimeRef.current
+        ? Math.round((Date.now() - tossStartTimeRef.current) / 1000)
+        : 0;
+      trackFunnelHexagramFormed({
+        hexagram_number: hexNum,
+        hexagram_name: hexInfo.cn,
+        changing_lines_count: changingLines.length,
+        total_toss_duration_seconds: totalTossDuration,
+      });
     }
-  }, [hexNum, hexInfo]);
+  }, [hexNum, hexInfo, changingLines.length]);
 
   const goToResult = () => {
     sound.stopBackground();
