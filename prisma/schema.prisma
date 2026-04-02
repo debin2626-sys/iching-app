@@ -51,6 +51,18 @@ model Hexagram {
   imageEn            String
   interpretationZh   String
   interpretationEn   String
+  overviewZh         String?
+  overviewEn         String?
+  judgmentDetailZh   String?
+  judgmentDetailEn   String?
+  imageDetailZh      String?
+  imageDetailEn      String?
+  modernApplicationZh String?
+  modernApplicationEn String?
+  historicalStoryZh  String?
+  historicalStoryEn  String?
+  relatedHexagramsNote String?
+  references         Json?
   lines              Json
   divinations        Divination[] @relation("PrimaryHexagram")
   changedDivinations Divination[] @relation("ChangedHexagram")

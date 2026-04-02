@@ -13,6 +13,8 @@ interface HexagramLine {
   textEn: string;
   interpretationZh: string;
   interpretationEn: string;
+  detailZh?: string;
+  detailEn?: string;
 }
 
 interface HexagramData {
@@ -29,6 +31,43 @@ interface HexagramData {
   interpretationZh: string;
   interpretationEn: string;
   lines: HexagramLine[];
+  overviewZh?: string;
+  overviewEn?: string;
+  judgmentDetailZh?: string;
+  judgmentDetailEn?: string;
+  imageDetailZh?: string;
+  imageDetailEn?: string;
+  modernApplicationZh?: string;
+  modernApplicationEn?: string;
+  historicalStoryZh?: string;
+  historicalStoryEn?: string;
+  relatedHexagramsNote?: string;
+  references?: string[];
+}
+
+interface ModernAppCard {
+  icon: string;
+  title: string;
+  content: string;
+}
+
+function parseModernApplication(text: string): ModernAppCard[] {
+  const iconMap: Record<string, string> = {
+    "事业": "💼",
+    "感情": "❤️",
+    "财运": "💰",
+    "健康": "🏥",
+  };
+  const parts = text.split(/【(事业|感情|财运|健康)】/).filter(Boolean);
+  const cards: ModernAppCard[] = [];
+  for (let i = 0; i < parts.length - 1; i += 2) {
+    const title = parts[i];
+    const content = parts[i + 1]?.trim();
+    if (title && content && iconMap[title]) {
+      cards.push({ icon: iconMap[title], title, content });
+    }
+  }
+  return cards;
 }
 
 const TRIGRAM_MAP: Record<string, string> = {
@@ -144,6 +183,18 @@ export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumb
           </p>
         </div>
 
+        {/* Overview */}
+        {(data.overviewZh || data.overviewEn) && (
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+              {isZh ? "卦象概述" : "Overview"}
+            </h2>
+            <p className="text-gray-300 leading-relaxed">
+              {isZh ? data.overviewZh : data.overviewEn}
+            </p>
+          </section>
+        )}
+
         {/* Judgment */}
         <section className="mb-8">
           <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
@@ -154,6 +205,18 @@ export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumb
           </p>
         </section>
 
+        {/* Judgment Detail */}
+        {(data.judgmentDetailZh || data.judgmentDetailEn) && (
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+              {isZh ? "卦辞详解" : "Judgment Commentary"}
+            </h2>
+            <p className="text-gray-300 leading-relaxed">
+              {isZh ? data.judgmentDetailZh : data.judgmentDetailEn}
+            </p>
+          </section>
+        )}
+
         {/* Image */}
         <section className="mb-8">
           <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
@@ -163,6 +226,18 @@ export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumb
             {isZh ? data.imageZh : data.imageEn}
           </p>
         </section>
+
+        {/* Image Detail */}
+        {(data.imageDetailZh || data.imageDetailEn) && (
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+              {isZh ? "象辞详解" : "Image Commentary"}
+            </h2>
+            <p className="text-gray-300 leading-relaxed">
+              {isZh ? data.imageDetailZh : data.imageDetailEn}
+            </p>
+          </section>
+        )}
 
         {/* Interpretation */}
         <section className="mb-8">
@@ -181,18 +256,104 @@ export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumb
               {isZh ? "爻辞" : "Line Texts"}
             </h2>
             <div className="space-y-4">
-              {data.lines.map((line) => (
-                <div
-                  key={line.position}
-                  className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.12)] rounded-xl p-4"
-                >
-                  <p className="text-[#f5f0e8] font-medium">
-                    {isZh ? line.textZh : line.textEn}
-                  </p>
-                  <p className="text-gray-500 text-sm mt-2">
-                    {isZh ? line.interpretationZh : line.interpretationEn}
-                  </p>
+              {data.lines.map((line) => {
+                const detail = isZh ? line.detailZh : line.detailEn;
+                return (
+                  <div
+                    key={line.position}
+                    className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.12)] rounded-xl p-4"
+                  >
+                    <p className="text-[#f5f0e8] font-medium">
+                      {isZh ? line.textZh : line.textEn}
+                    </p>
+                    <p className="text-gray-500 text-sm mt-2">
+                      {isZh ? line.interpretationZh : line.interpretationEn}
+                    </p>
+                    {detail && (
+                      <div className="mt-3 pt-3 border-t border-[rgba(201,169,110,0.08)]">
+                        <p className="text-sm text-gray-400 leading-relaxed">
+                          {detail}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* Modern Application */}
+        {(data.modernApplicationZh || data.modernApplicationEn) && (() => {
+          const text = (isZh ? data.modernApplicationZh : data.modernApplicationEn) || "";
+          const cards = parseModernApplication(text);
+          return (
+            <section className="mb-8">
+              <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+                {isZh ? "现代应用" : "Modern Application"}
+              </h2>
+              {cards.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {cards.map((card) => (
+                    <div
+                      key={card.title}
+                      className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.12)] rounded-xl p-4"
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-lg">{card.icon}</span>
+                        <span className="text-amber-400/80 font-medium">{card.title}</span>
+                      </div>
+                      <p className="text-gray-300 leading-relaxed text-sm">
+                        {card.content}
+                      </p>
+                    </div>
+                  ))}
                 </div>
+              ) : (
+                <p className="text-gray-300 leading-relaxed">{text}</p>
+              )}
+            </section>
+          );
+        })()}
+
+        {/* Historical Story */}
+        {(data.historicalStoryZh || data.historicalStoryEn) && (
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+              {isZh ? "历史典故" : "Historical Story"}
+            </h2>
+            <p className="text-gray-300 leading-relaxed">
+              {isZh ? data.historicalStoryZh : data.historicalStoryEn}
+            </p>
+          </section>
+        )}
+
+        {/* Related Hexagrams Note */}
+        {data.relatedHexagramsNote && (
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+              {isZh ? "互卦·综卦·错卦" : "Related Trigrams"}
+            </h2>
+            <p className="text-gray-300 leading-relaxed">
+              {data.relatedHexagramsNote}
+            </p>
+          </section>
+        )}
+
+        {/* References */}
+        {data.references && data.references.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+              {isZh ? "引用来源" : "References"}
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {data.references.map((ref, i) => (
+                <span
+                  key={i}
+                  className="text-sm text-gray-500 bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.08)] rounded-lg px-3 py-1"
+                >
+                  {ref}
+                </span>
               ))}
             </div>
           </section>

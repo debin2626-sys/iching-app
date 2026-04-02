@@ -23,6 +23,18 @@ interface SeedHexagram {
   imageEn: string;
   interpretationZh: string;
   interpretationEn: string;
+  overviewZh?: string;
+  overviewEn?: string;
+  judgmentDetailZh?: string;
+  judgmentDetailEn?: string;
+  imageDetailZh?: string;
+  imageDetailEn?: string;
+  modernApplicationZh?: string;
+  modernApplicationEn?: string;
+  historicalStoryZh?: string;
+  historicalStoryEn?: string;
+  relatedHexagramsNote?: string;
+  references?: string[];
   lines: unknown[];
 }
 
