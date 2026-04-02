@@ -1,15 +1,15 @@
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
-import { Pool } from "@neondatabase/serverless";
+import { PrismaPg } from "@prisma/adapter-pg";
+import pg from "pg";
 import * as fs from "fs";
 import * as path from "path";
 
-// ─── DB setup (same as seed.ts) ───
+// ─── DB setup (use @prisma/adapter-pg for Node.js compatibility) ───
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL! });
+const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL! });
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const adapter = new PrismaNeon(pool as any);
+const adapter = new PrismaPg(pool as any);
 const prisma = new PrismaClient({ adapter });
 
 // ─── Types ───
