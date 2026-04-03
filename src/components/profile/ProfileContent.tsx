@@ -45,6 +45,7 @@ function formatDate(dateStr: string, locale: string): string {
 export default function ProfileContent() {
   const t = useTranslations("Profile");
   const tNav = useTranslations("Nav");
+  const tReport = useTranslations("Report");
   const locale = useLocale();
   const { data: session, status, update: updateSession } = useSession();
 
@@ -335,18 +336,21 @@ export default function ProfileContent() {
 
         {/* Actions */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }}>
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-3 mb-3">
+            <Button href="/report" variant="ghost" className="flex-1 border border-gold/30 text-gold hover:border-gold/60">
+              📊 {tReport("title")}
+            </Button>
             <Button href="/settings" variant="secondary" className="flex-1">
               ⚙️ {t("settingsEntry")}
             </Button>
-            <button
-              onClick={handleLogout}
-              disabled={loggingOut}
-              className="flex-1 min-h-[48px] px-6 rounded-lg border border-red-900/40 text-red-400/70 hover:border-red-700/60 hover:text-red-400 transition-all duration-300 text-base font-medium disabled:opacity-50"
-            >
-              {loggingOut ? t("loggingOut") : t("logout")}
-            </button>
           </div>
+          <button
+            onClick={handleLogout}
+            disabled={loggingOut}
+            className="w-full min-h-[48px] px-6 rounded-lg border border-red-900/40 text-red-400/70 hover:border-red-700/60 hover:text-red-400 transition-all duration-300 text-base font-medium disabled:opacity-50"
+          >
+            {loggingOut ? t("loggingOut") : t("logout")}
+          </button>
         </motion.div>
       </div>
     </PageLayout>

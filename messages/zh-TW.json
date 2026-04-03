@@ -249,7 +249,11 @@
     "saveFailed": "儲存失敗，請重試",
     "loginRequired": "登入後可設定偏好",
     "loginButton": "前往登入",
-    "backToProfile": "返回個人中心"
+    "backToProfile": "返回個人中心",
+    "theme": "主題",
+    "dark": "深色",
+    "light": "淺色",
+    "system": "跟隨系統"
   },
   "DailyLimit": {
     "title": "今日占卜次數已達上限",
@@ -275,5 +279,49 @@
     "privacy": "隱私政策",
     "terms": "服務條款",
     "contact": "聯繫我們"
+  },
+  "Review": {
+    "title": "復盤",
+    "accuracyLabel": "準確度",
+    "noteLabel": "復盤筆記",
+    "notePlaceholder": "記錄事情的發展，卦象是否準確...",
+    "fulfillLabel": "還願",
+    "fulfillDesc": "事情已有結果，感謝卦象指引",
+    "submitButton": "提交復盤",
+    "submitSuccess": "復盤已儲存",
+    "reviewed": "已復盤",
+    "fulfilled": "已還願",
+    "pending": "待復盤",
+    "editButton": "修改",
+    "cancelButton": "取消",
+    "stars": "星",
+    "accuracyHint": "卦象解讀的準確程度"
+  },
+  "Report": {
+    "title": "月度運勢",
+    "subtitle": "洞見變化，把握時機",
+    "monthSelector": "選擇月份",
+    "totalReadings": "本月占卜",
+    "topHexagrams": "主導卦象",
+    "scenarioBreakdown": "問題分佈",
+    "weeklyTrend": "占卜趨勢",
+    "aiSummary": "AI 月度總結",
+    "generating": "正在推演...",
+    "noData": "本月暫無占卜記錄",
+    "noDataHint": "開始占卜，月底查看你的運勢報告",
+    "share": "分享報告",
+    "copied": "已複製到剪貼板",
+    "loginRequired": "登入後查看月度報告",
+    "loginButton": "立即登入",
+    "times": "次",
+    "week": "第{n}週",
+    "scenarioCareer": "事業",
+    "scenarioLove": "感情",
+    "scenarioWealth": "財運",
+    "scenarioHealth": "健康",
+    "scenarioStudy": "學業",
+    "scenarioOther": "其他",
+    "prevMonth": "上月",
+    "currentMonth": "本月"
   }
 }

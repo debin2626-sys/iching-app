@@ -279,5 +279,35 @@
     "filter30d": "Last 30 days",
     "filterAll": "All",
     "noRecordsInPeriod": "No records in this period"
+  },
+  "Review": {
+    "title": "Reflection",
+    "accuracyLabel": "Accuracy",
+    "noteLabel": "Reflection Notes",
+    "notePlaceholder": "Record how events unfolded — did the hexagram prove accurate?",
+    "fulfillLabel": "Gratitude Offering",
+    "fulfillDesc": "The matter has resolved. I offer thanks for the hexagram's guidance.",
+    "submitButton": "Submit Reflection",
+    "submitSuccess": "Reflection saved",
+    "reviewed": "Reflected",
+    "fulfilled": "Fulfilled",
+    "pending": "Pending"
+  },
+  "Report": {
+    "title": "Monthly Outlook",
+    "subtitle": "Perceive the Shifts, Seize the Moment",
+    "monthSelector": "Select Month",
+    "totalReadings": "Readings This Month",
+    "topHexagrams": "Dominant Hexagrams",
+    "scenarioBreakdown": "Topics Consulted",
+    "weeklyTrend": "Weekly Trend",
+    "aiSummary": "AI Monthly Insight",
+    "generating": "Consulting the oracle...",
+    "noData": "No readings recorded this month",
+    "noDataHint": "Cast a hexagram — your monthly outlook awaits at month's end",
+    "share": "Share Report",
+    "copied": "Copied to clipboard",
+    "loginRequired": "Sign in to view your monthly outlook",
+    "loginButton": "Sign In"
   }
 }

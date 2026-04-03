@@ -81,6 +81,11 @@ model Divination {
   aiInterpretation    String?
   locale              String             @default("zh")
   createdAt           DateTime           @default(now())
+  reviewNote          String?
+  accuracyScore       Int?
+  reviewedAt          DateTime?
+  fulfilled           Boolean?
+  fulfilledAt         DateTime?
   user                User?              @relation(fields: [userId], references: [id])
   hexagram            Hexagram           @relation("PrimaryHexagram", fields: [hexagramId], references: [id])
   changedHexagram     Hexagram?          @relation("ChangedHexagram", fields: [changedHexagramId], references: [id])

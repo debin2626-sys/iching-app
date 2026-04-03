@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageLayout, Card, Button, Empty, Skeleton } from "@/components/ui";
 import { HistoryListSkeleton } from "@/components/ui/PageSkeletons";
+import ReviewPanel from "@/components/divination/ReviewPanel";
 
 interface HexagramInfo {
   number: number;
@@ -22,9 +23,15 @@ interface DivinationRecord {
   hexagramId: number;
   changedHexagramId: number | null;
   changingLines: number[];
+  aiInterpretation: string | null;
   createdAt: string;
   hexagram: HexagramInfo;
   changedHexagram: HexagramInfo | null;
+  reviewNote: string | null;
+  accuracyScore: number | null;
+  reviewedAt: string | null;
+  fulfilled: boolean | null;
+  fulfilledAt: string | null;
 }
 
 interface PaginationInfo {
@@ -81,8 +88,47 @@ const itemVariants = {
   }),
 };
 
+function ReviewStatusBadge({ record, tReview }: { record: DivinationRecord; tReview: ReturnType<typeof useTranslations> }) {
+  if (record.fulfilled) {
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs border border-amber-600/40 bg-amber-600/10 text-amber-400">
+        🙏 {tReview("fulfilled")}
+      </span>
+    );
+  }
+  if (record.reviewedAt) {
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs border border-emerald-600/40 bg-emerald-600/10 text-emerald-400">
+        ✓ {tReview("reviewed")}
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs border border-zinc-700 bg-zinc-800/50 text-zinc-500">
+      {tReview("pending")}
+    </span>
+  );
+}
+
+function StarDisplay({ score }: { score: number }) {
+  return (
+    <div className="flex gap-0.5">
+      {[1, 2, 3, 4, 5].map((s) => (
+        <svg key={s} width="14" height="14" viewBox="0 0 24 24"
+          fill={s <= score ? "#c9a96e" : "none"}
+          stroke={s <= score ? "#c9a96e" : "#3f3f46"}
+          strokeWidth="1.5"
+        >
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 export default function HistoryContent() {
   const t = useTranslations("History");
+  const tReview = useTranslations("Review");
   const tNav = useTranslations("Nav");
   const locale = useLocale();
   const { data: session, status } = useSession();
@@ -92,6 +138,8 @@ export default function HistoryContent() {
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [timeFilter, setTimeFilter] = useState<TimeFilter>("all");
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [reviewingId, setReviewingId] = useState<string | null>(null);
 
   const navItems = [
     { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
@@ -129,6 +177,17 @@ export default function HistoryContent() {
     if (pagination && pagination.page < pagination.totalPages) {
       fetchRecords(pagination.page + 1, true);
     }
+  };
+
+  const handleToggleExpand = (id: string) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+    if (reviewingId === id) setReviewingId(null);
+  };
+
+  const handleReviewSuccess = (id: string) => {
+    setReviewingId(null);
+    // Refresh records to show updated status
+    fetchRecords(1);
   };
 
   // Filter records by time range (client-side)
@@ -262,6 +321,8 @@ export default function HistoryContent() {
                     ? record.question.slice(0, 40) + "..."
                     : record.question
                   : t("noQuestion");
+                const isExpanded = expandedId === record.id;
+                const isReviewing = reviewingId === record.id;
 
                 return (
                   <motion.div
@@ -273,18 +334,19 @@ export default function HistoryContent() {
                     exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
                     layout
                   >
-                    <Link
-                      href={buildResultUrl(record) as "/result"}
-                      className="block"
-                    >
-                      <div className="relative pl-10 group">
-                        {/* Timeline node */}
-                        <div className="absolute left-2.5 top-5 w-3 h-3 rounded-full border-2 border-amber-600/60 bg-bg group-hover:bg-amber-600/40 group-hover:shadow-[0_0_10px_color-mix(in_srgb,var(--color-gold)_40%,transparent)] transition-all duration-300" />
+                    <div className="relative pl-10 group">
+                      {/* Timeline node */}
+                      <div className="absolute left-2.5 top-5 w-3 h-3 rounded-full border-2 border-amber-600/60 bg-bg group-hover:bg-amber-600/40 group-hover:shadow-[0_0_10px_color-mix(in_srgb,var(--color-gold)_40%,transparent)] transition-all duration-300" />
 
-                        <Card variant="interactive" padding="md" className="!p-6 sm:!p-7">
-                          {/* Hexagram name */}
+                      <Card variant="interactive" padding="md" className="!p-6 sm:!p-7">
+                        {/* Clickable header area */}
+                        <button
+                          className="w-full text-left"
+                          onClick={() => handleToggleExpand(record.id)}
+                        >
+                          {/* Hexagram name + status badge */}
                           <div className="flex items-center justify-between mb-3">
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3 flex-wrap">
                               <span className="font-title text-2xl text-amber-300 group-hover:text-gold-glow transition-colors">
                                 {hexName}
                               </span>
@@ -296,10 +358,17 @@ export default function HistoryContent() {
                                   </span>
                                 </>
                               )}
+                              <ReviewStatusBadge record={record} tReview={tReview} />
                             </div>
-                            <span className="text-xs text-zinc-600">
-                              #{record.hexagram.number}
-                            </span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs text-zinc-600">
+                                #{record.hexagram.number}
+                              </span>
+                              <span className={[
+                                "text-zinc-600 transition-transform duration-300 text-xs",
+                                isExpanded ? "rotate-180" : "",
+                              ].join(" ")}>▼</span>
+                            </div>
                           </div>
 
                           {/* Question */}
@@ -308,13 +377,95 @@ export default function HistoryContent() {
                             {questionText}
                           </p>
 
-                          {/* Time */}
-                          <p className="text-sm text-zinc-600">
-                            {formatDate(record.createdAt, locale)}
-                          </p>
-                        </Card>
-                      </div>
-                    </Link>
+                          {/* Time + score */}
+                          <div className="flex items-center justify-between">
+                            <p className="text-sm text-zinc-600">
+                              {formatDate(record.createdAt, locale)}
+                            </p>
+                            {record.accuracyScore && (
+                              <StarDisplay score={record.accuracyScore} />
+                            )}
+                          </div>
+                        </button>
+
+                        {/* Expanded detail */}
+                        <AnimatePresence>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                              className="overflow-hidden"
+                            >
+                              <div className="mt-5 pt-5 border-t border-zinc-800/60">
+                                {/* AI interpretation summary */}
+                                {record.aiInterpretation && (
+                                  <div className="mb-5">
+                                    <p className="text-xs text-zinc-600 mb-2 tracking-wider uppercase">AI 解读摘要</p>
+                                    <p className="text-sm text-zinc-400 leading-relaxed line-clamp-4">
+                                      {record.aiInterpretation.slice(0, 300)}
+                                      {record.aiInterpretation.length > 300 ? "..." : ""}
+                                    </p>
+                                  </div>
+                                )}
+
+                                {/* Existing review note */}
+                                {record.reviewNote && (
+                                  <div className="mb-5 p-3 rounded-xl bg-amber-600/5 border border-amber-600/15">
+                                    <p className="text-xs text-amber-600/60 mb-1">{tReview("noteLabel")}</p>
+                                    <p className="text-sm text-zinc-400">{record.reviewNote}</p>
+                                  </div>
+                                )}
+
+                                {/* Action buttons */}
+                                <div className="flex items-center gap-3 flex-wrap">
+                                  <Link
+                                    href={buildResultUrl(record) as "/result"}
+                                    className="text-sm text-amber-600/70 hover:text-amber-400 transition-colors"
+                                  >
+                                    查看完整解读 →
+                                  </Link>
+                                  <button
+                                    onClick={() => setReviewingId(isReviewing ? null : record.id)}
+                                    className={[
+                                      "text-sm px-4 py-1.5 rounded-full border transition-all duration-200",
+                                      isReviewing
+                                        ? "border-zinc-700 text-zinc-500"
+                                        : "border-amber-600/40 text-amber-500 hover:border-amber-600/70 hover:bg-amber-600/10",
+                                    ].join(" ")}
+                                  >
+                                    {isReviewing ? "收起" : tReview("title")}
+                                  </button>
+                                </div>
+
+                                {/* Review panel */}
+                                <AnimatePresence>
+                                  {isReviewing && (
+                                    <motion.div
+                                      initial={{ opacity: 0, height: 0 }}
+                                      animate={{ opacity: 1, height: "auto" }}
+                                      exit={{ opacity: 0, height: 0 }}
+                                      transition={{ duration: 0.25 }}
+                                      className="overflow-hidden mt-4"
+                                    >
+                                      <ReviewPanel
+                                        divinationId={record.id}
+                                        initialScore={record.accuracyScore}
+                                        initialNote={record.reviewNote}
+                                        initialFulfilled={record.fulfilled}
+                                        onSuccess={() => handleReviewSuccess(record.id)}
+                                        onClose={() => setReviewingId(null)}
+                                      />
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </Card>
+                    </div>
                   </motion.div>
                 );
               })}

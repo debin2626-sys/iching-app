@@ -198,6 +198,19 @@
     "filterAll": "全部",
     "noRecordsInPeriod": "该时间段内暂无记录"
   },
+  "Review": {
+    "title": "复盘",
+    "accuracyLabel": "准确度",
+    "noteLabel": "复盘笔记",
+    "notePlaceholder": "记录事情的发展，卦象是否准确...",
+    "fulfillLabel": "还愿",
+    "fulfillDesc": "事情已有结果，感谢卦象指引",
+    "submitButton": "提交复盘",
+    "submitSuccess": "复盘已保存",
+    "reviewed": "已复盘",
+    "fulfilled": "已还愿",
+    "pending": "待复盘"
+  },
   "Profile": {
     "title": "个人中心",
     "subtitle": "问道之人",
@@ -272,6 +285,23 @@
   },
   "Loading": {
     "text": "正在推演天机..."
+  },
+  "Report": {
+    "title": "月度运势",
+    "subtitle": "洞见变化，把握时机",
+    "monthSelector": "选择月份",
+    "totalReadings": "本月占卜",
+    "topHexagrams": "主导卦象",
+    "scenarioBreakdown": "问题分布",
+    "weeklyTrend": "占卜趋势",
+    "aiSummary": "AI 月度总结",
+    "generating": "正在推演...",
+    "noData": "本月暂无占卜记录",
+    "noDataHint": "开始占卜，月底查看你的运势报告",
+    "share": "分享报告",
+    "copied": "已复制到剪贴板",
+    "loginRequired": "登录后查看月度报告",
+    "loginButton": "立即登录"
   },
   "Footer": {
     "disclaimer": "本站占卜结果由 AI 生成，仅供娱乐与心理启迪参考，不构成医疗、投资、法律等专业建议。如需专业帮助，请咨询相关领域专家。",

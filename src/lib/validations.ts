@@ -76,6 +76,17 @@ export const updatePreferencesSchema = z.object({
   notifications: z.boolean().optional(),
 });
 
+// ─── Review Schemas ───
+
+export const reviewDivinationSchema = z.object({
+  reviewNote: z.string().max(500, "复盘笔记不能超过500个字符").optional(),
+  accuracyScore: z.number().int().min(1).max(5),
+});
+
+export const fulfillDivinationSchema = z.object({
+  fulfilled: z.boolean(),
+});
+
 // ─── Helper ───
 
 /**
