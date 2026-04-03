@@ -26,7 +26,7 @@ const SITE_URL = 'https://51yijing.com';
 export const metadata: Metadata = {
   title: {
     default: '易经在线占卜 | AI智能解读 - 51yijing.com',
-    template: '%s | 易经在线占卜 51yijing.com',
+    template: '%s',
   },
   description: '在线易经占卜，AI智能解读卦象。三币古法摇卦，结合八字命理，给出专业解读建议。',
   keywords: ['易经', '占卜', 'AI解读', '周易', '六十四卦', '摇卦', '八字', 'I Ching', 'divination'],

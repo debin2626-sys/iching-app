@@ -31,7 +31,7 @@ export async function generateMetadata({
   let keywords: string;
 
   if (isEn) {
-    title = `Hexagram ${num}: ${hex.nameEn} | I Ching 51yijing.com`;
+    title = `Hexagram ${num}: ${hex.nameEn} (${hex.symbol}) — I Ching | 51yijing.com`;
     description = `Hexagram ${num} - ${hex.nameEn}: ${hex.judgmentEn} ${hex.interpretationEn}`;
     keywords = `hexagram ${num},${hex.nameEn},I Ching,Yi Jing,divination,judgment,image`;
   } else if (isZhTW) {
@@ -40,11 +40,11 @@ export async function generateMetadata({
     const judgmentTW = hex.judgmentZhTW || hex.judgmentZh;
     const interpretationTW = hex.interpretationZhTW || hex.interpretationZh;
     const imageTW = hex.imageZhTW || hex.imageZh;
-    title = `${nameZhTW}卦 - 第${num}卦 | 易經線上占卜 51yijing.com`;
+    title = `${nameZhTW}卦 第${num}卦 | 易經線上占卜 51yijing.com`;
     description = `${traditionalNameTW}（第${num}卦）：${judgmentTW} ${interpretationTW}`;
     keywords = `${nameZhTW}卦,${traditionalNameTW},第${num}卦,易經,周易,卦辭,爻辭,${imageTW.slice(0, 10)}`;
   } else {
-    title = `${hex.nameZh}卦 - 第${num}卦 | 易经在线占卜 51yijing.com`;
+    title = `${hex.nameZh}卦 第${num}卦 | 易经在线占卜 51yijing.com`;
     description = `${hex.traditionalName}（第${num}卦）：${hex.judgmentZh} ${hex.interpretationZh}`;
     keywords = `${hex.nameZh}卦,${hex.traditionalName},第${num}卦,易经,周易,卦辞,爻辞,${hex.imageZh.slice(0, 10)}`;
   }
