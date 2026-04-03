@@ -6,6 +6,7 @@ import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect, type ReactNode } from "react";
 import { trackLanguageSwitch } from "@/lib/analytics";
+import { ThemeToggle } from "./ThemeToggle";
 
 export interface NavItem {
   label: string;
@@ -135,7 +136,7 @@ function UserButton() {
 
   return (
     <Link
-      href="/auth"
+      href="/profile"
       className="flex h-8 w-8 items-center justify-center rounded-full bg-gold/20 border border-gold/30 text-gold text-sm font-semibold hover:bg-gold/30 transition-all duration-300"
       title={session.user.name || session.user.email || ""}
     >
@@ -202,8 +203,9 @@ function DesktopNav({ items }: NavBarProps) {
         })}
       </ul>
 
-      {/* Right side: Language + User */}
-      <div className="flex items-center gap-4">
+      {/* Right side: Theme + Language + User */}
+      <div className="flex items-center gap-3">
+        <ThemeToggle />
         <LanguageSwitcher />
         <UserButton />
       </div>
@@ -227,7 +229,8 @@ function MobileTopBar() {
         <span style={{ fontSize: '20px' }}>☯</span>
         {brandName}
       </Link>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
+        <ThemeToggle />
         <LanguageSwitcher />
         <UserButton />
       </div>

@@ -28,6 +28,73 @@
   --bg-card: rgba(255, 255, 255, 0.03);
   --cinnabar: #8b2500;
   --cinnabar-bright: #a63000;
+
+  /* ── Theme-aware tokens (dark default) ── */
+  --theme-bg: #0a0a12;
+  --theme-bg-card: rgba(255, 255, 255, 0.03);
+  --theme-bg-card-solid: #111120;
+  --theme-text-primary: #f5f0e8;
+  --theme-text-secondary: #a0978a;
+  --theme-border: rgba(201, 169, 110, 0.15);
+  --theme-border-hover: rgba(201, 169, 110, 0.35);
+  --theme-nav-bg: rgba(10, 10, 18, 0.85);
+  --theme-dropdown-bg: rgba(10, 10, 18, 0.95);
+  --theme-skeleton-base: #1a1a2e;
+  --theme-skeleton-shine: #2a2a3e;
+}
+
+/* ── Light theme overrides ── */
+[data-theme="light"] {
+  --theme-bg: #faf8f5;
+  --theme-bg-card: rgba(255, 255, 255, 0.8);
+  --theme-bg-card-solid: #ffffff;
+  --theme-text-primary: #2c2c2c;
+  --theme-text-secondary: #6b6560;
+  --theme-border: rgba(139, 37, 0, 0.15);
+  --theme-border-hover: rgba(201, 169, 110, 0.5);
+  --theme-nav-bg: rgba(250, 248, 245, 0.92);
+  --theme-dropdown-bg: rgba(255, 255, 255, 0.98);
+  --theme-skeleton-base: #ede8e0;
+  --theme-skeleton-shine: #f5f0e8;
+}
+
+/* ── Light theme body ── */
+[data-theme="light"] body {
+  background-color: #faf8f5;
+  color: #2c2c2c;
+  background-image:
+    radial-gradient(ellipse 800px 600px at 15% 25%, rgba(201,169,110,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 600px at 80% 55%, rgba(139,37,0,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.08) 0%, transparent 60%);
+}
+
+[data-theme="light"] body::after {
+  background: radial-gradient(ellipse at center, rgba(201,169,110,0.04) 0%, transparent 70%);
+}
+
+/* ── Light theme nav ── */
+[data-theme="light"] nav,
+[data-theme="light"] .mobile-top-bar {
+  background-color: var(--theme-nav-bg) !important;
+  border-color: rgba(201, 169, 110, 0.2) !important;
+}
+
+/* ── Light theme text ── */
+[data-theme="light"] .text-gray-400,
+[data-theme="light"] .text-gray-500 {
+  color: #6b6560 !important;
+}
+
+/* ── Light theme cards ── */
+[data-theme="light"] .card-mystic {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(201, 169, 110, 0.2);
+}
+
+/* ── Light theme dropdown ── */
+[data-theme="light"] .theme-dropdown {
+  background: var(--theme-dropdown-bg) !important;
+  border-color: rgba(201, 169, 110, 0.25) !important;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -353,4 +420,68 @@ body::after {
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* ═══════════════════════════════════════════
+   骨架屏 Shimmer 动画
+   ═══════════════════════════════════════════ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--theme-skeleton-base) 25%,
+    var(--theme-skeleton-shine) 50%,
+    var(--theme-skeleton-base) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════
+   微交互增强
+   ═══════════════════════════════════════════ */
+
+/* 按钮 hover 放大 + 金色光晕 */
+.btn-micro {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-micro:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 16px rgba(201, 169, 110, 0.3);
+}
+
+/* 卡片 hover 浮起 */
+.card-hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), 0 0 12px rgba(201, 169, 110, 0.08);
+}
+
+/* 列表项淡入 */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stagger-item {
+  animation: fade-in-up 0.4s ease both;
+}
+
+/* ═══════════════════════════════════════════
+   主题感知工具类
+   ═══════════════════════════════════════════ */
+.theme-bg { background-color: var(--theme-bg); }
+.theme-text { color: var(--theme-text-primary); }
+.theme-text-secondary { color: var(--theme-text-secondary); }
+.theme-card {
+  background: var(--theme-bg-card);
+  border-color: var(--theme-border);
+}
+.theme-card:hover {
+  border-color: var(--theme-border-hover);
 }

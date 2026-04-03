@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageLayout, Card, Button, Empty, Skeleton } from "@/components/ui";
+import { HistoryListSkeleton } from "@/components/ui/PageSkeletons";
 
 interface HexagramInfo {
   number: number;
@@ -149,8 +150,8 @@ export default function HistoryContent() {
   if (status === "loading" || (status !== "authenticated" && loading)) {
     return (
       <PageLayout navItems={navItems}>
-        <div className="pt-8">
-          <Skeleton variant="card" count={3} />
+        <div className="pt-8" style={{ maxWidth: '800px', margin: '0 auto', padding: '0 20px' }}>
+          <HistoryListSkeleton count={5} />
         </div>
       </PageLayout>
     );
@@ -210,9 +211,7 @@ export default function HistoryContent() {
 
       {/* Loading */}
       {loading && (
-        <div className="space-y-6">
-          <Skeleton variant="card" count={3} />
-        </div>
+        <HistoryListSkeleton count={5} />
       )}
 
       {/* Empty state - no records at all */}

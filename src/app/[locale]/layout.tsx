@@ -3,7 +3,9 @@ import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {setRequestLocale} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {ToastProvider, Toast, MotionProvider} from '@/components/ui';
+import {PageTransition} from '@/components/ui/PageTransition';
 import Footer from '@/components/ui/Footer';
+import {ThemeProvider} from '@/contexts/ThemeContext';
 import type {Metadata} from 'next';
 import {SITE_URL, getAlternateLanguages} from '@/lib/seo';
 
@@ -42,17 +44,21 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider>
-      <MotionProvider>
-        <ToastProvider>
-          <div className="flex flex-col min-h-screen">
-            <div className="flex-1">
-              {children}
+      <ThemeProvider>
+        <MotionProvider>
+          <ToastProvider>
+            <div className="flex flex-col min-h-screen">
+              <div className="flex-1">
+                <PageTransition>
+                  {children}
+                </PageTransition>
+              </div>
+              <Footer />
             </div>
-            <Footer />
-          </div>
-          <Toast />
-        </ToastProvider>
-      </MotionProvider>
+            <Toast />
+          </ToastProvider>
+        </MotionProvider>
+      </ThemeProvider>
     </NextIntlClientProvider>
   );
 }

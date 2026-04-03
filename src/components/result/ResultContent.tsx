@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { calculateBazi, type BirthInfo } from "@/lib/iching/bazi";
 import { PageLayout, Skeleton } from "@/components/ui";
+import { ResultSkeleton } from "@/components/ui/PageSkeletons";
 import Card from "@/components/ui/Card";
 import type { LineValue } from "@/lib/iching/coins";
 import {
@@ -17,6 +18,8 @@ import {
 } from "@/lib/iching/hexagram";
 import { getChangingLines } from "@/lib/iching/coins";
 import HexagramReveal from "@/components/divination/HexagramReveal";
+import { DailyLimitBanner, incrementLocalDivinationCount } from "@/components/divination/DailyLimitBanner";
+import { useSession } from "next-auth/react";
 import { trackAIInterpretStart, trackAIInterpretComplete, trackFunnelResultView, trackFunnelAIInterpretStart, trackFunnelAIInterpretComplete } from "@/lib/analytics";
 
 /* ── 卦象名称映射 ── */
@@ -447,6 +450,10 @@ function ResultInner() {
   /* 获取卦辞数据 */
   const { data: hexData, loading: hexLoading, error: hexError } = useHexagramData(hexNum);
 
+  /* 每日限制 banner */
+  const { data: session } = useSession();
+  const [showLimitBanner, setShowLimitBanner] = useState(false);
+
   /* 保存占卜记录 */
   const hasSaved = useRef(false);
   useEffect(() => {
@@ -463,6 +470,16 @@ function ResultInner() {
         changedHexagramId: changedHex?.number ?? null,
         changingLines,
       }),
+    }).then(async (res) => {
+      if (res.status === 429) {
+        const data = await res.json().catch(() => ({}));
+        if (data.error === "daily_limit_reached") {
+          setShowLimitBanner(true);
+        }
+      } else if (res.ok && !session?.user) {
+        // Track local count for unauthenticated users
+        incrementLocalDivinationCount();
+      }
     }).catch(() => {
       // 保存失败静默处理
     });
@@ -533,6 +550,11 @@ function ResultInner() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-[800px]">
+      <DailyLimitBanner
+        show={showLimitBanner}
+        onClose={() => setShowLimitBanner(false)}
+        isLoggedIn={!!session?.user}
+      />
       <div className="py-8 space-y-8 px-6">
         {/* ── 卦象头部 ── */}
         <motion.div
@@ -599,7 +621,7 @@ function ResultInner() {
         <Card variant="elevated" padding="lg">
           <h3 className="text-xl font-title text-amber-300 mb-5">📜 {t("classicTitle")}</h3>
 
-          {hexLoading && <Skeleton variant="text" lines={3} />}
+          {hexLoading && <ResultSkeleton />}
 
           {hexError && (
             <p className="text-sm text-red-400">{hexError}</p>

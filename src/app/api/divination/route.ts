@@ -4,11 +4,14 @@ import { prisma } from "@/lib/prisma";
 import { rateLimitDivination } from "@/lib/rate-limit";
 import { createDivinationSchema, validateBody } from "@/lib/validations";
 
+const FREE_DAILY_LIMIT = 3;
+
 // POST: 保存占卜记录
 export async function POST(request: NextRequest) {
   try {
     // 尝试获取当前用户（未登录则为 null）
     let userId: string | null = null;
+    let isPaidUser = false;
     try {
       const session = await auth();
       userId = session?.user?.id ?? null;
@@ -19,6 +22,33 @@ export async function POST(request: NextRequest) {
     // Rate limit: per-user + per-IP
     const limited = rateLimitDivination(request, userId);
     if (limited) return limited;
+
+    // Daily divination count check for logged-in free users
+    if (userId) {
+      const sub = await prisma.subscription.findUnique({
+        where: { userId },
+        select: { plan: true, status: true },
+      });
+      isPaidUser = sub?.plan !== "free" && sub?.status === "active";
+
+      if (!isPaidUser) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const todayCount = await prisma.divination.count({
+          where: { userId, createdAt: { gte: today } },
+        });
+        if (todayCount >= FREE_DAILY_LIMIT) {
+          return NextResponse.json(
+            {
+              error: "daily_limit_reached",
+              limit: FREE_DAILY_LIMIT,
+              used: todayCount,
+            },
+            { status: 429 }
+          );
+        }
+      }
+    }
 
     const body = await request.json();
 

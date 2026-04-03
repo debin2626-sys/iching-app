@@ -1,11 +1,10 @@
-
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { rateLimitGeneral } from "@/lib/rate-limit";
 import { updateProfileSchema, validateBody } from "@/lib/validations";
 
-// GET: 获取用户资料
+// GET /api/user/profile
 export async function GET() {
   try {
     const session = await auth();
@@ -13,19 +12,17 @@ export async function GET() {
       return NextResponse.json({ error: "Please sign in first" }, { status: 401 });
     }
 
+    const userId = session.user.id;
+
+    // Get user + counts
     const user = await prisma.user.findUnique({
-      where: { id: session.user.id },
+      where: { id: userId },
       select: {
         id: true,
         name: true,
         email: true,
         createdAt: true,
-        _count: {
-          select: {
-            divinations: true,
-            favorites: true,
-          },
-        },
+        _count: { select: { divinations: true, favorites: true } },
       },
     });
 
@@ -33,17 +30,32 @@ export async function GET() {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    return NextResponse.json(user);
+    // Monthly divination count
+    const now = new Date();
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+    const monthlyCount = await prisma.divination.count({
+      where: { userId, createdAt: { gte: monthStart } },
+    });
+
+    // Most common scenario (from question field — best effort)
+    // We'll just return total + monthly for now; scenario analysis is optional
+    return NextResponse.json({
+      ...user,
+      stats: {
+        totalDivinations: user._count.divinations,
+        monthlyDivinations: monthlyCount,
+        totalFavorites: user._count.favorites,
+      },
+    });
   } catch (error) {
     console.error("获取用户资料失败:", error);
     return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }
 
-// PATCH: 更新用户资料
-export async function PATCH(request: NextRequest) {
+// PUT /api/user/profile
+export async function PUT(request: NextRequest) {
   try {
-    // Rate limit
     const limited = rateLimitGeneral(request);
     if (limited) return limited;
 
@@ -53,8 +65,6 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json();
-
-    // Input validation
     const validation = validateBody(updateProfileSchema, body);
     if (!validation.success) {
       return NextResponse.json({ error: validation.error }, { status: 400 });
@@ -65,12 +75,7 @@ export async function PATCH(request: NextRequest) {
     const user = await prisma.user.update({
       where: { id: session.user.id },
       data: { name },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        createdAt: true,
-      },
+      select: { id: true, name: true, email: true, createdAt: true },
     });
 
     return NextResponse.json(user);
@@ -78,4 +83,9 @@ export async function PATCH(request: NextRequest) {
     console.error("更新用户资料失败:", error);
     return NextResponse.json({ error: "Failed to update" }, { status: 500 });
   }
+}
+
+// Keep PATCH for backward compat
+export async function PATCH(request: NextRequest) {
+  return PUT(request);
 }
