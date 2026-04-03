@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Noto_Serif_SC } from "next/font/google";
 import AuthProvider from "@/components/AuthProvider";
 import { WebVitalsReporter } from "@/components/WebVitalsReporter";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -75,12 +76,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{locale?: string}>;
 }>) {
-  const {locale} = await params;
+  const locale = await getLocale();
   const lang = locale === 'en' ? 'en' : locale === 'zh-TW' ? 'zh-TW' : 'zh';
 
   return (
