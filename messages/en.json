@@ -5,6 +5,8 @@
     "placeholder": "Clear your mind, focus on your question...",
     "questionPlaceholder": "Clear your mind, focus on your question...",
     "startButton": "Start Divination",
+    "startHint": "Enter your question above ↑",
+    "tossingHint": "✨ 6 coin tosses · ~2 min · Instant AI reading",
     "birthLabel": "Birth Time",
     "birthHint": "(Optional, for fortune analysis)",
     "birthDateNote": "",

@@ -7,8 +7,8 @@ const locales = ['zh', 'zh-TW', 'en'];
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
-  // Static pages
-  const staticPages = ['', '/hexagrams', '/divination', '/history', '/auth'];
+  // Static pages (exclude auth/login/signup pages to save crawl budget)
+  const staticPages = ['', '/hexagrams', '/divination', '/history'];
 
   for (const page of staticPages) {
     for (const locale of locales) {

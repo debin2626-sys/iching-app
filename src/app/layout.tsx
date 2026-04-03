@@ -81,7 +81,7 @@ export default async function RootLayout({
   params: Promise<{locale?: string}>;
 }>) {
   const {locale} = await params;
-  const lang = locale === 'en' ? 'en' : 'zh';
+  const lang = locale === 'en' ? 'en' : locale === 'zh-TW' ? 'zh-TW' : 'zh';
 
   return (
     <html lang={lang} suppressHydrationWarning>

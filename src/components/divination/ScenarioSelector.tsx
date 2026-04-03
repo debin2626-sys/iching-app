@@ -35,11 +35,60 @@ export default function ScenarioSelector({ onSelect }: ScenarioSelectorProps) {
 
   return (
     <div className="w-full">
-      {/* Desktop: 5 cards in a row; Mobile: horizontal scroll */}
+      {/* Desktop: 5 cards in a row; Mobile: horizontal scroll with gradient fade hint */}
+      <div className="relative md:hidden">
+        <div
+          ref={scrollRef}
+          className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
+          {scenarios.map((scenario, i) => (
+            <m.button
+              key={scenario.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: i * 0.1,
+                duration: 0.4,
+                ease: "easeOut",
+              }}
+              onClick={() => handleCardClick(scenario)}
+              className={[
+                "flex-shrink-0 snap-center flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all duration-200",
+                "w-[140px] h-[100px]",
+                "bg-[#1a1a2e]",
+                activeId === scenario.id
+                  ? "border border-[#c9a96e] bg-gradient-to-b from-[#1a1a2e] to-[#2a2035] shadow-[0_4px_20px_rgba(201,169,110,0.3)]"
+                  : "border border-[rgba(201,169,110,0.3)] hover:border-[#c9a96e] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(201,169,110,0.3)]",
+              ].join(" ")}
+            >
+              <span className="text-[28px] leading-none">
+                {scenario.emoji}
+              </span>
+              <span className="mt-2 text-sm font-semibold text-[#f5f0e8]">
+                {getText(scenario.name)}
+              </span>
+              <span className="mt-1 text-[11px] text-[#a08050] truncate max-w-[120px] px-2 text-center">
+                {getText(scenario.description)}
+              </span>
+            </m.button>
+          ))}
+        </div>
+        {/* Right gradient fade hint for horizontal scroll */}
+        <div
+          className="pointer-events-none absolute right-0 top-0 h-full w-16"
+          style={{
+            background: "linear-gradient(to right, transparent, #0a0a12)",
+          }}
+        />
+        {/* "More" text hint */}
+        <div className="absolute right-1 top-1/2 -translate-y-1/2 text-[#c9a96e]/60 text-xs font-semibold pointer-events-none">
+          More →
+        </div>
+      </div>
+      {/* Desktop: 5 cards in a row */}
       <div
-        ref={scrollRef}
-        className="flex gap-3 md:gap-4 md:justify-center overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 snap-x snap-mandatory scrollbar-hide"
-        style={{ WebkitOverflowScrolling: "touch" }}
+        className="hidden md:flex gap-4 md:justify-center"
       >
         {scenarios.map((scenario, i) => (
           <m.button

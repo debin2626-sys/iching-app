@@ -327,13 +327,23 @@ export default function HomeContent() {
       </div>
 
       {/* 开始摇卦按钮 */}
-      <button
-        onClick={handleStart}
-        disabled={!question.trim()}
-        className="mt-4 w-full h-[52px] border-[1.5px] border-[#c9a96e] bg-transparent text-[#c9a96e] text-[17px] rounded-xl font-bold font-title tracking-wider transition-all duration-300 hover:bg-[#c9a96e] hover:text-[#0a0a12] disabled:opacity-40 disabled:cursor-not-allowed"
-      >
-        {t("startButton")}
-      </button>
+      <div className="mt-4 relative">
+        <p className="text-center text-xs text-[#c9a96e]/50 mb-2">
+          {t("tossingHint")}
+        </p>
+        <button
+          onClick={handleStart}
+          disabled={!question.trim()}
+          className="w-full h-[52px] border-[1.5px] border-[#c9a96e] bg-transparent text-[#c9a96e] text-[17px] rounded-xl font-bold font-title tracking-wider transition-all duration-300 hover:bg-[#c9a96e] hover:text-[#0a0a12] disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          {t("startButton")}
+        </button>
+        {!question.trim() && (
+          <p className="mt-2 text-center text-xs text-[#c9a96e]/50">
+            {t("startHint")}
+          </p>
+        )}
+      </div>
 
       {/* 三大核心功能标题 */}
       <div style={{ marginTop: '96px' }}>

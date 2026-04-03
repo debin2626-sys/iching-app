@@ -5,6 +5,8 @@
     "placeholder": "靜心凝神，默念所問之事...",
     "questionPlaceholder": "靜心凝神，默念所問之事...",
     "startButton": "開始搖卦",
+    "startHint": "請先在上方輸入您的問題 ↑",
+    "tossingHint": "✨ 搖卦6次 · 約2分鐘 · 即時AI解讀",
     "birthLabel": "出生時辰",
     "birthHint": "（可選，用於運勢分析）",
     "birthDateNote": "",

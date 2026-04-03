@@ -158,7 +158,7 @@ function DesktopNav({ items }: NavBarProps) {
   const pathname = usePathname();
   const locale = useLocale();
 
-  const brandName = locale === "en" ? "Yi Ching" : "易經";
+  const brandName = locale === "en" ? "I Ching" : "易經";
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50 hidden items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.8)] px-8 backdrop-blur-[12px] md:flex" style={{ height: '64px' }}>
@@ -217,7 +217,7 @@ function DesktopNav({ items }: NavBarProps) {
 function MobileTopBar() {
   const locale = useLocale();
 
-  const brandName = locale === "en" ? "Yi Ching" : "易經";
+  const brandName = locale === "en" ? "I Ching" : "易經";
 
   return (
     <div className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.9)] px-4 backdrop-blur-[12px] md:hidden">
