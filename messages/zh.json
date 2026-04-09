@@ -44,7 +44,8 @@
     "reviewsTitle": "用户评价",
     "loadingStats": "正在加载统计数据...",
     "loadingReviews": "正在加载评价...",
-    "todayCounterText": "今日已有 <highlight>{count}</highlight> 人完成占卜"
+    "todayCounterPrefix": "今日已有",
+    "todayCounterSuffix": "人完成占卜"
   },
   "Nav": {
     "home": "首页",

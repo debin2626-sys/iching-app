@@ -44,7 +44,8 @@
     "reviewsTitle": "User Reviews",
     "loadingStats": "Loading statistics...",
     "loadingReviews": "Loading reviews...",
-    "todayCounterText": "<highlight>{count}</highlight> people consulted today"
+    "todayCounterPrefix": "",
+    "todayCounterSuffix": "people consulted today"
   },
   "Nav": {
     "home": "Home",

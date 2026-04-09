@@ -55,12 +55,7 @@ export default function TodayCounter() {
 
   return (
     <p className="text-center text-sm text-[#a0978a]">
-      🔮 {t("todayCounterText", {
-        count: String(count),
-        highlight: (chunks: React.ReactNode) => (
-          <span className="text-[#c9a96e] font-bold">{chunks}</span>
-        ),
-      })}
+      🔮 {t("todayCounterPrefix")}<span className="text-[#c9a96e] font-bold"> {count} </span>{t("todayCounterSuffix")}
     </p>
   );
 }
