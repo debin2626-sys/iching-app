@@ -10,7 +10,6 @@ import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import ScenarioSelector from "@/components/divination/ScenarioSelector";
 import SampleReading from "@/components/home/SampleReading";
 import TodayCounter from "@/components/home/TodayCounter";
-import UserReviews from "@/components/home/UserReviews";
 import { DailyLimitBanner, useLocalDailyLimit } from "@/components/divination/DailyLimitBanner";
 import { trackScenarioSelect, trackFunnelHomeView, trackFunnelStartClick, trackFunnelQuestionSubmit, trackFunnelBirthFill } from "@/lib/analytics";
 
@@ -163,7 +162,7 @@ export default function HomeContent() {
     <>
       <NavBar items={navItems} />
       <main className="min-h-screen bg-[#0a0a12]">
-        <div style={{ maxWidth: '576px', margin: '0 auto', padding: '176px 24px 80px 24px' }}>
+        <div className="max-w-xl md:max-w-2xl mx-auto pt-24 md:pt-44 px-6 pb-20">
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
@@ -183,17 +182,8 @@ export default function HomeContent() {
         {t("subtitle")}
       </p>
 
-      {/* 社会证明系统 */}
-      <div className="mt-8 space-y-4">
-        {/* 今日咨询计数器 */}
-        <TodayCounter />
-        
-        {/* 用户评价展示区 */}
-        <UserReviews />
-      </div>
-
-      {/* 场景化入口 */}
-      <div className="mt-12">
+      {/* 场景化入口 — 紧跟副标题，核心转化路径 */}
+      <div className="mt-8">
         <h2 className="text-lg md:text-xl text-[#c9a96e] font-bold text-center mb-5">
           {t("scenarioTitle")}
         </h2>
@@ -201,7 +191,7 @@ export default function HomeContent() {
       </div>
 
       {/* 输入框 — with bracket highlighting overlay */}
-      <div className="mt-10 relative">
+      <div className="mt-8 relative">
         {/* Highlight overlay for brackets */}
         <div
           aria-hidden
@@ -232,7 +222,7 @@ export default function HomeContent() {
             }
           }}
           placeholder={t("questionPlaceholder")}
-          className={`w-full h-[100px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
+          className={`w-full h-[120px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
           style={{ caretColor: "#c9a96e" }}
         />
       </div>
@@ -343,7 +333,7 @@ export default function HomeContent() {
         )}
       </div>
 
-      {/* 开始摇卦按钮 */}
+      {/* 开始摇卦按钮 — 实心金色CTA */}
       <div className="mt-4 relative">
         <p className="text-center text-xs text-[#c9a96e]/50 mb-2">
           {t("tossingHint")}
@@ -351,7 +341,7 @@ export default function HomeContent() {
         <button
           onClick={handleStart}
           disabled={!question.trim()}
-          className="w-full h-[52px] border-[1.5px] border-[#c9a96e] bg-transparent text-[#c9a96e] text-[17px] rounded-xl font-bold font-title tracking-wider transition-all duration-300 hover:bg-[#c9a96e] hover:text-[#0a0a12] disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full h-[52px] bg-[#c9a96e] text-[#0a0a12] text-[17px] rounded-xl font-bold font-title tracking-wider transition-all duration-300 hover:bg-[#e8d5a3] hover:shadow-[0_0_24px_rgba(201,169,110,0.35)] disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {t("startButton")}
         </button>
@@ -362,14 +352,19 @@ export default function HomeContent() {
         )}
       </div>
 
+      {/* 社会证明 — 按钮下方，一行文字 */}
+      <div className="mt-6">
+        <TodayCounter />
+      </div>
+
       {/* 三大核心功能标题 */}
-      <div style={{ marginTop: '96px' }}>
+      <div className="mt-24">
       <h2 className="text-xl text-gold font-title text-center">
         {t("featuresSectionTitle")}
       </h2>
 
-      {/* 三张功能卡片 */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginTop: '32px' }}>
+      {/* 三张功能卡片 — 移动端单列，桌面端三列 */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
         {features.map((f) => (
           <div
             key={f.title}

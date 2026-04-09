@@ -43,7 +43,8 @@
     "todayCounterTitle": "Today's Consultations",
     "reviewsTitle": "User Reviews",
     "loadingStats": "Loading statistics...",
-    "loadingReviews": "Loading reviews..."
+    "loadingReviews": "Loading reviews...",
+    "todayCounterText": "<highlight>{count}</highlight> people consulted today"
   },
   "Nav": {
     "home": "Home",

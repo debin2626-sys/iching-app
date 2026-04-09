@@ -43,7 +43,8 @@
     "todayCounterTitle": "今日諮詢",
     "reviewsTitle": "用戶評價",
     "loadingStats": "正在載入統計數據...",
-    "loadingReviews": "正在載入評價..."
+    "loadingReviews": "正在載入評價...",
+    "todayCounterText": "今日已有 <highlight>{count}</highlight> 人完成占卜"
   },
   "Nav": {
     "home": "首頁",
