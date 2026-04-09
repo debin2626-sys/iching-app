@@ -43,9 +43,7 @@
     "todayCounterTitle": "Today's Consultations",
     "reviewsTitle": "User Reviews",
     "loadingStats": "Loading statistics...",
-    "loadingReviews": "Loading reviews...",
-    "todayCounterPrefix": "",
-    "todayCounterSuffix": "people consulted today"
+    "loadingReviews": "Loading reviews..."
   },
   "Nav": {
     "home": "Home",

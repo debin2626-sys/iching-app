@@ -43,9 +43,7 @@
     "todayCounterTitle": "今日咨询",
     "reviewsTitle": "用户评价",
     "loadingStats": "正在加载统计数据...",
-    "loadingReviews": "正在加载评价...",
-    "todayCounterPrefix": "今日已有",
-    "todayCounterSuffix": "人完成占卜"
+    "loadingReviews": "正在加载评价..."
   },
   "Nav": {
     "home": "首页",
