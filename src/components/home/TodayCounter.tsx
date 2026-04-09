@@ -24,7 +24,7 @@ export default function TodayCounter() {
           throw new Error('Failed to fetch today stats');
         }
         
-        const data = await response.json();
+        const data: any = await response.json();
         
         if (data.success) {
           setStats(data.data);
@@ -62,7 +62,7 @@ export default function TodayCounter() {
     return (
       <div className="p-4 bg-[rgba(201,169,110,0.05)] border border-[rgba(201,169,110,0.15)] rounded-xl">
         <p className="text-sm text-[#a0978a] text-center">
-          {stats?.todayCount || 42} people consulted today
+          42 people consulted today
         </p>
       </div>
     );
