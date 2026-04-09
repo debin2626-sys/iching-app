@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { HEXAGRAM_DATA, getHexagramByNumber } from '@/data/hexagrams';
+import { getHexagramFullData } from '@/lib/hexagram-data';
 import { HexagramArticleJsonLd } from '@/components/seo/JsonLd';
 import { SITE_URL, getLocalePrefix, getAlternateLanguages } from '@/lib/seo';
 import HexagramDetailContent from '@/components/hexagrams/HexagramDetailContent';
@@ -90,10 +91,13 @@ export default async function HexagramDetailPage({
   const hex = getHexagramByNumber(num);
   if (!hex) notFound();
 
+  // Load full hexagram data from seed files at build time (SSG)
+  const fullData = getHexagramFullData(num);
+
   return (
     <>
       <HexagramArticleJsonLd hexagram={hex} locale={locale} />
-      <HexagramDetailContent hexagramNumber={num} />
+      <HexagramDetailContent hexagramNumber={num} initialData={fullData ?? null} />
     </>
   );
 }

@@ -29,6 +29,7 @@ export function getAlternateLanguages(path: string = '') {
     'zh': `${SITE_URL}${path}`,
     'zh-TW': `${SITE_URL}/zh-TW${path}`,
     'en': `${SITE_URL}/en${path}`,
+    'x-default': `${SITE_URL}${path}`,
   };
 }
 

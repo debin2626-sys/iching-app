@@ -100,14 +100,16 @@ function HexagramLines({ symbol, nameZh, nameEn, number }: { symbol: string; nam
   );
 }
 
-export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumber: number }) {
+export default function HexagramDetailContent({ hexagramNumber, initialData }: { hexagramNumber: number; initialData?: HexagramData | null }) {
   const tNav = useTranslations("Nav");
   const locale = useLocale();
   const isZh = locale === "zh" || locale === "zh-TW";
-  const [data, setData] = useState<HexagramData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<HexagramData | null>(initialData ?? null);
+  const [loading, setLoading] = useState(!initialData);
 
   useEffect(() => {
+    // Skip fetch if we already have server-provided data
+    if (initialData) return;
     fetch(`/api/hexagram/${hexagramNumber}`)
       .then((r) => r.json())
       .then((d) => {
@@ -115,7 +117,7 @@ export default function HexagramDetailContent({ hexagramNumber }: { hexagramNumb
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [hexagramNumber]);
+  }, [hexagramNumber, initialData]);
 
   const navItems = [
     { label: tNav("divination"), href: "/", icon: <span>🔮</span> },

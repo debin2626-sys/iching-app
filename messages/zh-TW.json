@@ -296,7 +296,8 @@
     "about": "關於我們",
     "privacy": "隱私政策",
     "terms": "服務條款",
-    "contact": "聯繫我們"
+    "contact": "聯繫我們",
+    "kofiSupport": "☕ 打賞支持"
   },
   "Review": {
     "title": "復盤",
@@ -341,5 +342,80 @@
     "scenarioOther": "其他",
     "prevMonth": "上月",
     "currentMonth": "本月"
+  },
+  "Pricing": {
+    "title": "選擇你的問道之路",
+    "subtitle": "解鎖無限占卜 · 深度解讀",
+    "popular": "最受歡迎",
+    "buyButton": "前往支付",
+    "note": "所有付費方案均透過 Ko-fi 安全支付。完成支付後，請使用相同信箱登入以自動啟用會員權益。",
+    "paymentNote": "支付遇到問題？請聯繫我們獲取幫助。",
+    "tiers": {
+      "BASIC": {
+        "icon": "🔮",
+        "name": "單次占卜",
+        "period": "/ 次",
+        "description": "解鎖一次深度 AI 占卜解讀",
+        "features": [
+          "一次完整占卜體驗",
+          "AI 深度解讀",
+          "卦象詳細分析"
+        ]
+      },
+      "MONTHLY": {
+        "icon": "🌙",
+        "name": "月度會員",
+        "period": "/ 月",
+        "description": "無限次占卜 + 優先解讀",
+        "features": [
+          "無限次占卜",
+          "AI 優先解讀",
+          "歷史記錄保存",
+          "專屬會員標識"
+        ]
+      },
+      "QUARTERLY": {
+        "icon": "⭐",
+        "name": "季度會員",
+        "period": "/ 季",
+        "description": "3個月無限占卜，更划算",
+        "features": [
+          "無限次占卜",
+          "AI 優先解讀",
+          "歷史記錄保存",
+          "專屬會員標識",
+          "節省 $5"
+        ]
+      },
+      "ANNUAL": {
+        "icon": "👑",
+        "name": "年度會員",
+        "period": "/ 年",
+        "description": "全年無限占卜，最超值",
+        "features": [
+          "無限次占卜",
+          "AI 優先解讀",
+          "歷史記錄保存",
+          "專屬會員標識",
+          "節省 $60",
+          "優先客服支持"
+        ]
+      }
+    }
+  },
+  "Subscription": {
+    "title": "會員狀態",
+    "freeUser": "免費用戶",
+    "freeDesc": "每日 3 次免費占卜",
+    "upgradeButton": "升級會員",
+    "tier": "當前方案",
+    "expiresAt": "到期時間",
+    "renewButton": "續費",
+    "active": "生效中",
+    "tierNames": {
+      "MONTHLY": "月度會員",
+      "QUARTERLY": "季度會員",
+      "ANNUAL": "年度會員"
+    }
   }
 }

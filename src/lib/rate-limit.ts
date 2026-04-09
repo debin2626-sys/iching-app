@@ -61,12 +61,33 @@ function checkLimit(
 }
 
 /**
+ * Check if a user has a valid (active, non-expired) subscription.
+ */
+export async function hasValidSubscription(userId: string): Promise<boolean> {
+  const subscription = await prisma.subscription.findFirst({
+    where: {
+      userId,
+      status: 'ACTIVE',
+      endDate: { gt: new Date() },
+    },
+  });
+  return !!subscription;
+}
+
+/**
  * Check daily divination limit for a given user.
+ * Users with an active subscription bypass the daily limit.
  */
 export async function checkDailyDivinationLimit(
   userId?: string | null,
   anonymousSessionId?: string | null
 ): Promise<boolean> {
+  // Subscribed users skip the daily limit entirely
+  if (userId) {
+    const subscribed = await hasValidSubscription(userId);
+    if (subscribed) return false;
+  }
+
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
 
@@ -82,9 +103,7 @@ export async function checkDailyDivinationLimit(
     return false; // Cannot limit if no identity
   }
 
-const DAILY_LIMIT = 3;
-
-// ...
+  const DAILY_LIMIT = 3;
 
   const count = await prisma.divination.count({ where });
   return count >= DAILY_LIMIT;

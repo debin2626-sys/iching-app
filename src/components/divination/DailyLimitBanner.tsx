@@ -15,7 +15,7 @@ const STORAGE_KEY = "iching_daily_count";
 export const FREE_LIMIT = 3;
 
 // Ko-fi link (to be updated when finalized)
-const KOFI_URL = "https://ko-fi.com/iching";
+const KOFI_URL = "https://ko-fi.com/51yijing";
 // Pro upgrade link (to be updated when finalized)
 const PRO_UPGRADE_URL = "/pricing";
 
@@ -164,11 +164,12 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
   );
 }
 
-/** Hook to track local (unauthenticated) daily count */
+/** Hook to track local (unauthenticated) daily count, subscription-aware */
 export function useLocalDailyLimit() {
   const { data: session, status } = useSession();
   const [count, setCount] = useState(0);
   const [showBanner, setShowBanner] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const userId = session?.user?.id ?? null;
 
   useEffect(() => {
@@ -177,7 +178,23 @@ export function useLocalDailyLimit() {
     }
   }, [status]);
 
+  // Check subscription status for authenticated users
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetch("/api/user/subscription")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.subscription) {
+            setIsSubscribed(true);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [status]);
+
   const checkAndIncrement = (): boolean => {
+    // Subscribed users always pass
+    if (isSubscribed) return true;
     if (status !== "unauthenticated") return true; // logged-in users handled server-side
     const current = getLocalDivinationCount();
     if (current >= FREE_LIMIT) {
@@ -190,5 +207,5 @@ export function useLocalDailyLimit() {
     return true;
   };
 
-  return { count, limit: FREE_LIMIT, showBanner, setShowBanner, checkAndIncrement, userId };
+  return { count, limit: FREE_LIMIT, showBanner, setShowBanner, checkAndIncrement, userId, isSubscribed };
 }

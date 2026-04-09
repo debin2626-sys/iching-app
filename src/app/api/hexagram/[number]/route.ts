@@ -1,8 +1,6 @@
-
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import fs from "fs";
-import path from "path";
+import { getHexagramFullData } from "@/lib/hexagram-data";
 
 export async function GET(
   _request: Request,
@@ -15,28 +13,24 @@ export async function GET(
     return NextResponse.json({ error: "Invalid hexagram number" }, { status: 400 });
   }
 
-  let hexagram = await prisma.hexagram.findUnique({
-    where: { number: num },
-  });
+  try {
+    // Try DB first
+    const hexagram = await prisma.hexagram.findUnique({
+      where: { number: num },
+    });
 
-  // Fallback: If not found or incomplete, try to load from seed
-  if (!hexagram || !hexagram.judgmentZh) {
-    const seedDir = path.join(process.cwd(), "prisma/seed");
-    const files = fs.readdirSync(seedDir).filter((f) => f.startsWith("hexagrams-") && f.endsWith(".json"));
-    
-    for (const file of files) {
-        const data = JSON.parse(fs.readFileSync(path.join(seedDir, file), "utf-8"));
-        const found = data.find((h: any) => h.number === num);
-        if (found) {
-            hexagram = { ...hexagram, ...found, id: hexagram?.id || -1 };
-            break;
-        }
+    if (hexagram && hexagram.judgmentZh) {
+      return NextResponse.json(hexagram);
     }
+  } catch {
+    // DB unavailable — fall through to seed data
   }
 
-  if (!hexagram || !hexagram.judgmentZh) {
-    return NextResponse.json({ error: "Hexagram not found" }, { status: 404 });
+  // Fallback: load from seed JSON files
+  const seedData = getHexagramFullData(num);
+  if (seedData) {
+    return NextResponse.json(seedData);
   }
 
-  return NextResponse.json(hexagram);
+  return NextResponse.json({ error: "Hexagram not found" }, { status: 404 });
 }

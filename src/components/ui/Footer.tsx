@@ -3,6 +3,8 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
+const KOFI_URL = "https://ko-fi.com/" + (process.env.NEXT_PUBLIC_KOFI_USERNAME || "51yijing");
+
 export default function Footer() {
   const t = useTranslations("Footer");
   const year = new Date().getFullYear();
@@ -27,11 +29,18 @@ export default function Footer() {
               >
                 {link.label}
               </Link>
-              {i < links.length - 1 && (
-                <span className="text-gray-700 text-[11px] mx-2">|</span>
-              )}
+              <span className="text-gray-700 text-[11px] mx-2">|</span>
             </span>
           ))}
+          {/* Ko-fi support link */}
+          <a
+            href={KOFI_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] text-[#c9a96e]/70 hover:text-[#c9a96e] transition-colors"
+          >
+            {t("kofiSupport")}
+          </a>
         </nav>
 
         <p className="text-[11px] leading-relaxed text-gray-600 mb-2">

@@ -21,6 +21,15 @@ interface UserProfile {
   stats: UserStats;
 }
 
+interface SubscriptionInfo {
+  id: string;
+  tier: string;
+  status: string;
+  startDate: string | null;
+  endDate: string | null;
+  nextBillingDate: string | null;
+}
+
 interface FavoriteHexagram {
   id: string;
   hexagramId: number;
@@ -46,6 +55,7 @@ export default function ProfileContent() {
   const t = useTranslations("Profile");
   const tNav = useTranslations("Nav");
   const tReport = useTranslations("Report");
+  const tSub = useTranslations("Subscription");
   const locale = useLocale();
   const { data: session, status, update: updateSession } = useSession();
 
@@ -58,6 +68,7 @@ export default function ProfileContent() {
   const [nameMsg, setNameMsg] = useState<string | null>(null);
   const [loggingOut, setLoggingOut] = useState(false);
   const [removingId, setRemovingId] = useState<string | null>(null);
+  const [subscription, setSubscription] = useState<SubscriptionInfo | null>(null);
 
   const navItems = [
     { label: tNav("home"), href: "/", icon: <span>☯</span> },
@@ -69,9 +80,10 @@ export default function ProfileContent() {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const [profileRes, favRes] = await Promise.all([
+      const [profileRes, favRes, subRes] = await Promise.all([
         fetch("/api/user/profile"),
         fetch("/api/user/favorites?page=1"),
+        fetch("/api/user/subscription"),
       ]);
       if (profileRes.ok) {
         const data = await profileRes.json();
@@ -81,6 +93,10 @@ export default function ProfileContent() {
       if (favRes.ok) {
         const data = await favRes.json();
         setFavorites(data.favorites || []);
+      }
+      if (subRes.ok) {
+        const data = await subRes.json();
+        setSubscription(data.subscription || null);
       }
     } catch {
       // silent
@@ -260,6 +276,51 @@ export default function ProfileContent() {
                 )}
               </div>
             </div>
+          </Card>
+        </motion.div>
+
+        {/* Subscription Status Card */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 }}>
+          <Card variant="elevated" padding="lg" className="mb-6">
+            <h2 className="text-base text-amber-400/60 tracking-widest mb-4 uppercase">{tSub("title")}</h2>
+            {subscription ? (
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-lg font-title text-amber-200">
+                      {tSub(`tierNames.${subscription.tier}`)}
+                    </span>
+                    <span className="px-2 py-0.5 rounded-full bg-green-900/40 text-green-400 text-xs border border-green-700/40">
+                      {tSub("active")}
+                    </span>
+                  </div>
+                  {subscription.endDate && (
+                    <p className="text-sm text-zinc-500">
+                      {tSub("expiresAt")}: {formatDate(subscription.endDate, locale)}
+                    </p>
+                  )}
+                </div>
+                <Link
+                  href={"/pricing" as any}
+                  className="px-4 py-2 rounded-lg border border-[#c9a96e]/40 text-[#c9a96e] text-sm hover:border-[#c9a96e]/70 hover:bg-[#c9a96e]/10 transition-all"
+                >
+                  {tSub("renewButton")}
+                </Link>
+              </div>
+            ) : (
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-lg font-title text-zinc-400 mb-1">{tSub("freeUser")}</p>
+                  <p className="text-sm text-zinc-600">{tSub("freeDesc")}</p>
+                </div>
+                <Link
+                  href={"/pricing" as any}
+                  className="px-4 py-2 rounded-lg bg-[#c9a96e] text-[#0a0a12] text-sm font-bold hover:bg-[#d4b87e] transition-all"
+                >
+                  {tSub("upgradeButton")}
+                </Link>
+              </div>
+            )}
           </Card>
         </motion.div>
 

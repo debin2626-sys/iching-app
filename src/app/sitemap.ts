@@ -6,29 +6,39 @@ const locales = ['zh', 'zh-TW', 'en'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
+  const now = new Date().toISOString();
 
-  // Static pages (exclude auth/login/signup pages to save crawl budget)
-  const staticPages = ['', '/hexagrams', '/divination', '/history'];
+  // Static pages
+  const staticPages = [
+    { path: '', changeFrequency: 'daily' as const, priority: 1.0 },
+    { path: '/hexagrams', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/divination', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/history', changeFrequency: 'weekly' as const, priority: 0.5 },
+    { path: '/about', changeFrequency: 'monthly' as const, priority: 0.4 },
+    { path: '/contact', changeFrequency: 'monthly' as const, priority: 0.3 },
+    { path: '/privacy', changeFrequency: 'monthly' as const, priority: 0.2 },
+    { path: '/terms', changeFrequency: 'monthly' as const, priority: 0.2 },
+  ];
 
   for (const page of staticPages) {
     for (const locale of locales) {
       const prefix = locale === 'zh' ? '' : `/${locale}`;
       entries.push({
-        url: `${SITE_URL}${prefix}${page}`,
-        lastModified: new Date(),
-        changeFrequency: page === '' ? 'daily' : 'weekly',
-        priority: page === '' ? 1.0 : page === '/hexagrams' ? 0.9 : 0.7,
+        url: `${SITE_URL}${prefix}${page.path}`,
+        lastModified: now,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
       });
     }
   }
 
-  // 64 hexagram pages
+  // 64 hexagram detail pages × 3 locales = 192 entries
   for (const hex of HEXAGRAM_DATA) {
     for (const locale of locales) {
       const prefix = locale === 'zh' ? '' : `/${locale}`;
       entries.push({
         url: `${SITE_URL}${prefix}/hexagrams/${hex.number}`,
-        lastModified: new Date(),
+        lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.8,
       });

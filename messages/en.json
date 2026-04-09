@@ -278,7 +278,8 @@
     "about": "About Us",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "kofiSupport": "☕ Support Us"
   },
   "History": {
     "title": "Divination History",
@@ -327,5 +328,80 @@
     "copied": "Copied to clipboard",
     "loginRequired": "Sign in to view your monthly outlook",
     "loginButton": "Sign In"
+  },
+  "Pricing": {
+    "title": "Choose Your Path",
+    "subtitle": "Unlock Unlimited Divination · Deep Insights",
+    "popular": "Most Popular",
+    "buyButton": "Get Started",
+    "note": "All payments are securely processed through Ko-fi. After payment, sign in with the same email to activate your membership automatically.",
+    "paymentNote": "Having trouble with payment? Contact us for help.",
+    "tiers": {
+      "BASIC": {
+        "icon": "🔮",
+        "name": "Single Reading",
+        "period": "/ reading",
+        "description": "Unlock one deep AI divination reading",
+        "features": [
+          "One complete reading",
+          "AI deep interpretation",
+          "Detailed hexagram analysis"
+        ]
+      },
+      "MONTHLY": {
+        "icon": "🌙",
+        "name": "Monthly",
+        "period": "/ month",
+        "description": "Unlimited readings + priority interpretation",
+        "features": [
+          "Unlimited readings",
+          "Priority AI interpretation",
+          "History saved",
+          "Member badge"
+        ]
+      },
+      "QUARTERLY": {
+        "icon": "⭐",
+        "name": "Quarterly",
+        "period": "/ quarter",
+        "description": "3 months unlimited, better value",
+        "features": [
+          "Unlimited readings",
+          "Priority AI interpretation",
+          "History saved",
+          "Member badge",
+          "Save $5"
+        ]
+      },
+      "ANNUAL": {
+        "icon": "👑",
+        "name": "Annual",
+        "period": "/ year",
+        "description": "Full year unlimited, best value",
+        "features": [
+          "Unlimited readings",
+          "Priority AI interpretation",
+          "History saved",
+          "Member badge",
+          "Save $60",
+          "Priority support"
+        ]
+      }
+    }
+  },
+  "Subscription": {
+    "title": "Membership",
+    "freeUser": "Free User",
+    "freeDesc": "3 free readings per day",
+    "upgradeButton": "Upgrade",
+    "tier": "Current Plan",
+    "expiresAt": "Expires",
+    "renewButton": "Renew",
+    "active": "Active",
+    "tierNames": {
+      "MONTHLY": "Monthly",
+      "QUARTERLY": "Quarterly",
+      "ANNUAL": "Annual"
+    }
   }
 }
