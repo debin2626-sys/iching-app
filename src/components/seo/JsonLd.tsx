@@ -48,7 +48,7 @@ export function HomeJsonLd({ locale }: { locale: string }) {
     url: SITE_URL,
     logo: `${SITE_URL}/icon.png`,
     description,
-    sameAs: [],
+    sameAs: ['https://github.com/debin2626-sys/iching-app'],
   };
 
   return (
