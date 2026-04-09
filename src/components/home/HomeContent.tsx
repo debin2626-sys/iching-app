@@ -163,12 +163,12 @@ export default function HomeContent() {
     <>
       <NavBar items={navItems} />
       <main className="min-h-screen bg-[#0a0a12]">
-        <div style={{ maxWidth: '576px', margin: '0 auto', padding: '176px 24px 80px 24px' }}>
+        <div className="w-full max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-4 md:px-6 pt-[100px] md:pt-[110px] lg:pt-[120px] pb-20">
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
           <div className="taichi-rotate">
-            <div className="taichi-symbol w-[120px] h-[120px]" />
+            <div className="taichi-symbol w-[80px] h-[80px] md:w-[100px] md:h-[100px]" />
           </div>
         </AnimatedTaichi>
       </div>
@@ -183,25 +183,19 @@ export default function HomeContent() {
         {t("subtitle")}
       </p>
 
-      {/* 社会证明系统 */}
-      <div className="mt-8 space-y-4">
-        {/* 今日咨询计数器 */}
+      {/* 今日咨询计数器 */}
+      <div className="mt-2">
         <TodayCounter />
-        
-        {/* 用户评价展示区 */}
-        <UserReviews />
       </div>
 
       {/* 场景化入口 */}
-      <div className="mt-12">
-        <h2 className="text-lg md:text-xl text-[#c9a96e] font-bold text-center mb-5">
-          {t("scenarioTitle")}
-        </h2>
+      <div className="mt-8">
+        <p className="text-sm text-[#a0978a] text-center mb-3">{t("scenarioGuide")}</p>
         <ScenarioSelector onSelect={handleScenarioSelect} />
       </div>
 
       {/* 输入框 — with bracket highlighting overlay */}
-      <div className="mt-10 relative">
+      <div className="mt-6 md:mt-8 relative">
         {/* Highlight overlay for brackets */}
         <div
           aria-hidden
@@ -232,7 +226,7 @@ export default function HomeContent() {
             }
           }}
           placeholder={t("questionPlaceholder")}
-          className={`w-full h-[100px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
+          className={`w-full h-[120px] md:h-[140px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
           style={{ caretColor: "#c9a96e" }}
         />
       </div>
@@ -351,25 +345,21 @@ export default function HomeContent() {
         <button
           onClick={handleStart}
           disabled={!question.trim()}
-          className="w-full h-[52px] border-[1.5px] border-[#c9a96e] bg-transparent text-[#c9a96e] text-[17px] rounded-xl font-bold font-title tracking-wider transition-all duration-300 hover:bg-[#c9a96e] hover:text-[#0a0a12] disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full h-[56px] bg-gradient-to-br from-[#c9a96e] to-[#b8943d] text-[#0a0a12] text-lg rounded-[14px] font-bold font-title tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(201,169,110,0.3)] hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(201,169,110,0.4)] disabled:opacity-35 disabled:shadow-none disabled:cursor-not-allowed"
+          style={question.trim() ? { animation: 'pulse-glow 2.5s ease-in-out infinite' } : undefined}
         >
           {t("startButton")}
         </button>
-        {!question.trim() && (
-          <p className="mt-2 text-center text-xs text-[#c9a96e]/50">
-            {t("startHint")}
-          </p>
-        )}
       </div>
 
       {/* 三大核心功能标题 */}
-      <div style={{ marginTop: '96px' }}>
+      <div className="mt-24">
       <h2 className="text-xl text-gold font-title text-center">
         {t("featuresSectionTitle")}
       </h2>
 
       {/* 三张功能卡片 */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginTop: '32px' }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mt-8">
         {features.map((f) => (
           <div
             key={f.title}
@@ -387,6 +377,9 @@ export default function HomeContent() {
 
       {/* 占卜结果示例 */}
       <SampleReading />
+
+      {/* 用户评价展示区 */}
+      <UserReviews />
 
       {/* 底部引言 */}
       <p className="mt-16 text-xl text-[#a0978a] text-center">
