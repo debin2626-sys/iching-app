@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { auth } from '@/lib/auth';
 import { KofiService } from '@/lib/kofi';
 import { PaymentService } from '@/lib/payment-service';
 
@@ -9,7 +8,7 @@ export const dynamic = 'force-dynamic';
 export async function POST(request: NextRequest) {
   try {
     // 验证用户会话
-    const session = await getServerSession(authOptions);
+    const session = await auth();
     
     if (!session?.user?.email) {
       return NextResponse.json(
@@ -127,7 +126,7 @@ export async function GET(request: NextRequest) {
     const paymentItems = kofiService.getPaymentItems();
     
     // 获取当前用户信息（如果有）
-    const session = await getServerSession(authOptions);
+    const session = await auth();
     let userSubscription = null;
     
     if (session?.user?.email) {

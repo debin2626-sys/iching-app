@@ -137,7 +137,7 @@ export class PaymentService {
         status: 'COMPLETED',
         completedAt: new Date(timestamp),
         metadata: {
-          ...(await prisma.payment.findUnique({ where: { providerId: kofiId } }))?.metadata,
+          ...((await prisma.payment.findUnique({ where: { providerId: kofiId } }))?.metadata as Record<string, unknown> ?? {}),
           rawWebhookData: data,
           fromName: from_name,
           isPublic: is_public,

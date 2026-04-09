@@ -268,7 +268,7 @@ export default function HistoryContent() {
                 </Button>
                 <Button
                   href="/"
-                  variant="outline"
+                  variant="ghost"
                   className="w-[200px] h-12 border border-zinc-700 hover:border-zinc-600 text-zinc-400"
                 >
                   返回首页
