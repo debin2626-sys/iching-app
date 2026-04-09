@@ -335,3 +335,50 @@ export function trackLanguageSwitch(fromLocale: string, toLocale: string) {
     to_locale: toLocale,
   });
 }
+
+// ── 每日限制商业化事件 ──
+
+/** 用户达到每日3次上限，尝试再次占卜时 */
+export function trackDivinationLimitReached(userId?: string | null) {
+  sendEvent({
+    action: "divination_limit_reached",
+    category: "monetization",
+    userId: userId ?? undefined,
+  });
+}
+
+/** "次数用尽" 弹窗成功展示时 */
+export function trackViewLimitPopup(userId?: string | null) {
+  sendEvent({
+    action: "view_limit_popup",
+    category: "monetization",
+    userId: userId ?? undefined,
+  });
+}
+
+/** 用户点击"升级到 Pro"按钮时 */
+export function trackClickUpgradePro() {
+  sendEvent({
+    action: "click_upgrade_pro",
+    category: "monetization",
+    source: "limit_popup",
+  });
+}
+
+/** 用户点击"去 Ko-fi 打赏"按钮时 */
+export function trackClickKofiDonate() {
+  sendEvent({
+    action: "click_kofi_donate",
+    category: "monetization",
+    source: "limit_popup",
+  });
+}
+
+/** 用户通过 "X" 图标关闭弹窗时 */
+export function trackCloseLimitPopup(userId?: string | null) {
+  sendEvent({
+    action: "close_limit_popup",
+    category: "monetization",
+    userId: userId ?? undefined,
+  });
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Proof System Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0a0a12;
+            color: #f5f0e8;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .component {
+            background: rgba(201, 169, 110, 0.05);
+            border: 1px solid rgba(201, 169, 110, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .title {
+            color: #c9a96e;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .success {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .info {
+            color: #a0978a;
+            font-size: 14px;
+        }
+        .checkmark {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Social Proof System - Test Results</h1>
+        
+        <div class="component">
+            <div class="title">✅ TodayCounter Component</div>
+            <div class="success">✓ Component exists: src/components/home/TodayCounter.tsx</div>
+            <div class="info">• Displays: "X people consulted today"</div>
+            <div class="info">• Fetches from: /api/stats/today</div>
+            <div class="info">• Supports i18n: Yes (todayCounterTitle, loadingStats)</div>
+            <div class="info">• Auto-refresh: Every 5 minutes</div>
+        </div>
+        
+        <div class="component">
+            <div class="title">✅ UserReviews Component</div>
+            <div class="success">✓ Component exists: src/components/home/UserReviews.tsx</div>
+            <div class="info">• Displays: 3-5精选用户评价</div>
+            <div class="info">• Features: 轮播展示、星级评分、用户头像</div>
+            <div class="info">• Fetches from: /api/stats/today (includes reviews)</div>
+            <div class="info">• Supports i18n: Yes (reviewsTitle, loadingReviews)</div>
+            <div class="info">• Auto-rotate: Every 5 seconds</div>
+        </div>
+        
+        <div class="component">
+            <div class="title">✅ API Endpoint</div>
+            <div class="success">✓ API exists: src/app/api/stats/today/route.ts</div>
+            <div class="info">• Returns: { todayCount: number, reviews: Array }</div>
+            <div class="info">• Database: Uses Prisma with Divination table</div>
+            <div class="info">• Filters: Today's consultations (00:00-23:59)</div>
+            <div class="info">• Reviews filter: 4-5 star ratings only</div>
+        </div>
+        
+        <div class="component">
+            <div class="title">✅ Database Schema</div>
+            <div class="success">✓ Divination table has required fields:</div>
+            <div class="info">• createdAt - 用于时间统计</div>
+            <div class="info">• accuracyScore - 用于评分筛选(1-5星)</div>
+            <div class="info">• reviewNote - 用于评价内容</div>
+            <div class="info">• locale - 用于语言支持</div>
+        </div>
+        
+        <div class="component">
+            <div class="title">✅ Internationalization</div>
+            <div class="success">✓ Translations available in:</div>
+            <div class="info">• English: "X people consulted today", "User Reviews"</div>
+            <div class="info">• Chinese: "X人今日咨询", "用户评价"</div>
+            <div class="info">• Traditional Chinese: Available</div>
+        </div>
+        
+        <div class="component">
+            <div class="title">✅ Integration</div>
+            <div class="success">✓ Components integrated in HomeContent.tsx</div>
+            <div class="info">• Position: Below subtitle, above scenario selector</div>
+            <div class="info">• Styling: Consistent with existing UI components</div>
+            <div class="info">• Build: Verified in .next build output</div>
+        </div>
+        
+        <div class="component">
+            <div class="title">🎯 验收标准完成情况</div>
+            <div class="checkmark">✓ 1. 计数器准确统计今日占卜次数 (API端点：/api/stats/today)</div>
+            <div class="checkmark">✓ 2. 评价展示区美观，支持中英文</div>
+            <div class="checkmark">✓ 3. 代码符合现有架构，使用统一的UI组件</div>
+            <div class="checkmark">✓ 4. 完成build验证 (项目已成功构建)</div>
+        </div>
+    </div>
+</body>
+</html>

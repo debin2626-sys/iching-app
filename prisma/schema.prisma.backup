@@ -13,17 +13,10 @@ model User {
   name          String?
   locale        String          @default("zh")
   createdAt     DateTime        @default(now())
-  
-  // Relations
   accounts      Account[]
   divinations   Divination[]
   favorites     Favorite[]
   preference    UserPreference?
-  payments      Payment[]
-  subscriptions Subscription[]
-  
-  // Payment stats
-  totalDonated  Decimal         @default(0)
 }
 
 model Account {
@@ -162,115 +155,3 @@ model KnowledgeChunk {
   @@index([level])
   @@map("knowledge_chunk")
 }
-
-// ========== Payment Models ==========
-
-enum PaymentStatus {
-  PENDING
-  COMPLETED
-  FAILED
-  REFUNDED
-  CANCELLED
-}
-
-enum PaymentProvider {
-  KOFI
-  STRIPE
-  PAYPAL
-}
-
-model Payment {
-  id           String         @id @default(cuid())
-  userId       String?
-  user         User?          @relation(fields: [userId], references: [id])
-  
-  // Payment details
-  provider     PaymentProvider
-  providerId   String?        @unique  // External payment ID (e.g., Ko-fi payment ID)
-  amount       Decimal
-  currency     String         @default("USD")
-  status       PaymentStatus  @default(PENDING)
-  description  String?
-  
-  // Ko-fi specific fields
-  kofiUsername String?
-  paymentUrl   String?
-  webhookId    String?
-  
-  // Metadata
-  metadata     Json?
-  
-  // Timestamps
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  completedAt  DateTime?
-  refundedAt   DateTime?
-  
-  // Relations
-  subscription Subscription?
-  
-  @@index([userId])
-  @@index([provider, providerId])
-  @@index([status])
-  @@index([createdAt])
-}
-
-enum SubscriptionTier {
-  BASIC       // 单次占卜
-  MONTHLY     // 月度会员
-  QUARTERLY   // 季度会员
-  ANNUAL      // 年度会员
-}
-
-enum SubscriptionStatus {
-  ACTIVE
-  CANCELLED
-  EXPIRED
-  PENDING
-}
-
-model Subscription {
-  id              String            @id @default(cuid())
-  userId          String
-  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  // Subscription details
-  tier            SubscriptionTier
-  status          SubscriptionStatus @default(PENDING)
-  
-  // Payment details
-  paymentId       String?           @unique
-  payment         Payment?          @relation(fields: [paymentId], references: [id])
-  
-  // Ko-fi specific fields
-  kofiSubscriptionId String?        @unique
-  kofiUsername       String?
-  
-  // Period
-  startDate      DateTime?
-  endDate        DateTime?
-  nextBillingDate DateTime?
-  
-  // Metadata
-  metadata       Json?
-  
-  // Timestamps
-  createdAt      DateTime          @default(now())
-  updatedAt      DateTime          @updatedAt
-  cancelledAt    DateTime?
-  
-  @@unique([userId, tier])
-  @@index([userId])
-  @@index([status])
-  @@index([tier])
-  @@index([endDate])
-}
-
-// Add payment fields to User model
-// (Adding to existing User model)
-// model User {
-//   // ... existing fields ...
-//   payments     Payment[]
-//   subscriptions Subscription[]
-//   totalDonated Decimal  @default(0)
-// }

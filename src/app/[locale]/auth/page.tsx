@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useRouter, Link } from "@/i18n/navigation";
 import { PageLayout, Input } from "@/components/ui";
+import { hasAnonymousDivinations, migrateAnonymousDivinations } from "@/lib/anonymous-session";
 
 function GoogleIcon() {
   return (
@@ -28,9 +29,15 @@ export default function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async () => {
     setGoogleLoading(true);
-    signIn("google", { callbackUrl: "/" });
+    // 检查是否有匿名记录需要迁移
+    const hasAnonymousRecords = hasAnonymousDivinations();
+    
+    // 设置回调URL，如果有匿名记录，则跳转到迁移页面
+    const callbackUrl = hasAnonymousRecords ? "/auth/migrate" : "/";
+    
+    await signIn("google", { callbackUrl });
   };
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -46,6 +53,22 @@ export default function AuthPage() {
       if (res?.error) {
         setError(t("errorInvalidCredentials"));
       } else {
+        // 检查并迁移匿名记录
+        if (hasAnonymousDivinations()) {
+          try {
+            // 获取用户ID
+            const userRes = await fetch("/api/user/profile");
+            if (userRes.ok) {
+              const userData = await userRes.json();
+              if (userData.id) {
+                await migrateAnonymousDivinations(userData.id);
+              }
+            }
+          } catch (migrateError) {
+            console.error("迁移匿名记录失败:", migrateError);
+            // 不阻止登录，只是静默失败
+          }
+        }
         router.push("/");
         router.refresh();
       }

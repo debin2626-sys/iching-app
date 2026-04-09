@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PageLayout, Card, Button, Empty, Skeleton } from "@/components/ui";
 import { HistoryListSkeleton } from "@/components/ui/PageSkeletons";
 import ReviewPanel from "@/components/divination/ReviewPanel";
+import { getAnonymousDivinations, hasAnonymousDivinations, migrateAnonymousDivinations } from "@/lib/anonymous-session";
 
 interface HexagramInfo {
   number: number;
@@ -216,21 +217,65 @@ export default function HistoryContent() {
     );
   }
 
-  // Unauthenticated
+  // Unauthenticated - 显示匿名用户界面
   if (status === "unauthenticated" || !session) {
+    const anonymousDivinations = getAnonymousDivinations();
+    const hasLocalRecords = anonymousDivinations.length > 0;
+    
     return (
       <PageLayout navItems={navItems}>
         <div className="flex flex-col items-center justify-center" style={{ minHeight: '60vh', maxWidth: '800px', margin: '0 auto' }}>
           <div className="text-gold/10 text-[120px] mb-8">☯</div>
           <h2 className="text-2xl font-title text-amber-300 mb-3">{t("title")}</h2>
-          <p className="text-zinc-500 text-base mb-8">{t("loginRequired")}</p>
-          <Button
-            href="/auth"
-            variant="ghost"
-            className="w-[200px] h-12 border border-gold/40 hover:border-gold/70 text-gold"
-          >
-            {t("loginButton")}
-          </Button>
+          
+          {hasLocalRecords ? (
+            <>
+              <p className="text-zinc-500 text-base mb-4 text-center">
+                您有 {anonymousDivinations.length} 条本地占卜记录
+              </p>
+              <p className="text-zinc-600 text-sm mb-8 text-center">
+                登录后可以将这些记录永久保存到您的账户
+              </p>
+              <div className="flex gap-4">
+                <Button
+                  href="/auth"
+                  variant="ghost"
+                  className="w-[200px] h-12 border border-gold/40 hover:border-gold/70 text-gold"
+                >
+                  登录保存记录
+                </Button>
+                <Button
+                  href="/"
+                  variant="secondary"
+                  className="w-[200px] h-12 border border-zinc-700 hover:border-zinc-600 text-zinc-400"
+                >
+                  返回首页
+                </Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="text-zinc-500 text-base mb-8 text-center">
+                {t("anonymousHistoryHint") || "登录后可以永久保存您的占卜记录，并在不同设备间同步。"}
+              </p>
+              <div className="flex gap-4">
+                <Button
+                  href="/auth"
+                  variant="ghost"
+                  className="w-[200px] h-12 border border-gold/40 hover:border-gold/70 text-gold"
+                >
+                  {t("loginButton")}
+                </Button>
+                <Button
+                  href="/"
+                  variant="outline"
+                  className="w-[200px] h-12 border border-zinc-700 hover:border-zinc-600 text-zinc-400"
+                >
+                  返回首页
+                </Button>
+              </div>
+            </>
+          )}
         </div>
       </PageLayout>
     );

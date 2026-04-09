@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 interface RateLimitEntry {
   timestamps: number[];
@@ -57,6 +58,36 @@ function checkLimit(
 
   entry.timestamps.push(now);
   return { limited: false, remaining: config.max - entry.timestamps.length };
+}
+
+/**
+ * Check daily divination limit for a given user.
+ */
+export async function checkDailyDivinationLimit(
+  userId?: string | null,
+  anonymousSessionId?: string | null
+): Promise<boolean> {
+  const startOfDay = new Date();
+  startOfDay.setHours(0, 0, 0, 0);
+
+  const where: any = {
+    createdAt: { gte: startOfDay },
+  };
+
+  if (userId) {
+    where.userId = userId;
+  } else if (anonymousSessionId) {
+    where.anonymousSessionId = anonymousSessionId;
+  } else {
+    return false; // Cannot limit if no identity
+  }
+
+const DAILY_LIMIT = 3;
+
+// ...
+
+  const count = await prisma.divination.count({ where });
+  return count >= DAILY_LIMIT;
 }
 
 /**

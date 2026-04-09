@@ -9,6 +9,9 @@ import { NavBar } from "@/components/ui";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import ScenarioSelector from "@/components/divination/ScenarioSelector";
 import SampleReading from "@/components/home/SampleReading";
+import TodayCounter from "@/components/home/TodayCounter";
+import UserReviews from "@/components/home/UserReviews";
+import { DailyLimitBanner, useLocalDailyLimit } from "@/components/divination/DailyLimitBanner";
 import { trackScenarioSelect, trackFunnelHomeView, trackFunnelStartClick, trackFunnelQuestionSubmit, trackFunnelBirthFill } from "@/lib/analytics";
 
 const YEARS = Array.from({ length: 87 }, (_, i) => 1940 + i);
@@ -20,6 +23,7 @@ export default function HomeContent() {
   const tNav = useTranslations("Nav");
   const router = useRouter();
   const locale = useLocale();
+  const { showBanner, setShowBanner, checkAndIncrement, userId } = useLocalDailyLimit();
 
   const navItems = [
     { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
@@ -85,6 +89,10 @@ export default function HomeContent() {
 
   const handleStart = () => {
     if (!question.trim()) return;
+
+    if (!checkAndIncrement()) {
+        return;
+    }
 
     // ── funnel_start_click ──
     trackFunnelStartClick({
@@ -174,6 +182,15 @@ export default function HomeContent() {
       <p className="mt-3 text-xl text-[#a0978a] text-center">
         {t("subtitle")}
       </p>
+
+      {/* 社会证明系统 */}
+      <div className="mt-8 space-y-4">
+        {/* 今日咨询计数器 */}
+        <TodayCounter />
+        
+        {/* 用户评价展示区 */}
+        <UserReviews />
+      </div>
 
       {/* 场景化入口 */}
       <div className="mt-12">
@@ -375,6 +392,13 @@ export default function HomeContent() {
       <p className="mt-16 text-xl text-[#a0978a] text-center">
         {t("footerQuote")}
       </p>
+
+      {/* 限制弹窗 */}
+      <DailyLimitBanner 
+        show={showBanner} 
+        onClose={() => setShowBanner(false)} 
+        userId={userId}
+      />
 
       {/* 免责声明 */}
       <p className="mt-5 text-xs text-[#555] text-center">

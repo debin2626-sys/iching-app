@@ -2,16 +2,29 @@
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  trackDivinationLimitReached,
+  trackViewLimitPopup,
+  trackClickUpgradePro,
+  trackClickKofiDonate,
+  trackCloseLimitPopup,
+} from "@/lib/analytics";
 
 const STORAGE_KEY = "iching_daily_count";
-const FREE_LIMIT = 3;
+export const FREE_LIMIT = 3;
+
+// Ko-fi link (to be updated when finalized)
+const KOFI_URL = "https://ko-fi.com/iching";
+// Pro upgrade link (to be updated when finalized)
+const PRO_UPGRADE_URL = "/pricing";
 
 function getTodayKey(): string {
   const d = new Date();
-  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 export function getLocalDivinationCount(): number {
@@ -43,59 +56,109 @@ export function incrementLocalDivinationCount(): void {
   }
 }
 
-interface DailyLimitBannerProps {
+interface DailyLimitModalProps {
   show: boolean;
   onClose: () => void;
-  isLoggedIn?: boolean;
+  userId?: string | null;
 }
 
-export function DailyLimitBanner({ show, onClose, isLoggedIn }: DailyLimitBannerProps) {
-  const t = useTranslations("DailyLimit");
+/**
+ * 每日限制模态对话框
+ * PRD: 居中显示，背景半透明置灰，X 图标关闭，升级到 Pro + Ko-fi 打赏两个按钮
+ */
+export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps) {
+  // Track popup view when shown
+  useEffect(() => {
+    if (show) {
+      trackViewLimitPopup(userId);
+    }
+  }, [show, userId]);
+
+  const handleClose = () => {
+    trackCloseLimitPopup(userId);
+    onClose();
+  };
+
+  const handleUpgradePro = () => {
+    trackClickUpgradePro();
+    window.location.href = PRO_UPGRADE_URL;
+  };
+
+  const handleKofiDonate = () => {
+    trackClickKofiDonate();
+    window.open(KOFI_URL, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <AnimatePresence>
       {show && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-x-0 top-20 z-50 flex justify-center px-4"
-        >
-          <div
-            className="w-full max-w-md rounded-xl border border-amber-700/40 p-5 shadow-2xl backdrop-blur-xl"
-            style={{ background: "rgba(10,10,18,0.95)" }}
-          >
-            <div className="flex items-start gap-3">
-              <span className="text-2xl flex-shrink-0">🔮</span>
-              <div className="flex-1">
-                <h3 className="text-base font-title text-amber-300 mb-1">{t("title")}</h3>
-                <p className="text-sm text-zinc-400 mb-3">
-                  {t("message", { limit: FREE_LIMIT })}
+        <>
+          {/* 半透明背景遮罩 */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+            onClick={handleClose}
+          />
+
+          {/* 居中模态对话框 */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-4 pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="relative w-full max-w-md rounded-2xl border border-amber-700/40 p-6 shadow-2xl pointer-events-auto"
+              style={{ background: "rgba(10,10,18,0.97)" }}
+            >
+              {/* X 关闭按钮 */}
+              <button
+                onClick={handleClose}
+                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-zinc-400 hover:text-zinc-200 hover:bg-white/10 transition-colors text-lg"
+                aria-label="关闭"
+              >
+                ✕
+              </button>
+
+              {/* 标题 */}
+              <div className="text-center mb-4">
+                <div className="text-3xl mb-3">🔮</div>
+                <h3 className="text-xl font-title text-amber-300 mb-3">
+                  今日免费次数已用尽
+                </h3>
+
+                {/* 内容说明 */}
+                <p className="text-sm text-zinc-400 leading-relaxed">
+                  感谢你的使用！我们为每位用户提供每日 {FREE_LIMIT} 次的免费占卜体验。
                 </p>
-                {!isLoggedIn && (
-                  <p className="text-xs text-zinc-500 mb-3">{t("loginHint")}</p>
-                )}
-                <div className="flex gap-2">
-                  {!isLoggedIn && (
-                    <Link
-                      href="/auth"
-                      className="px-4 py-1.5 rounded-lg border border-gold/40 text-gold text-sm hover:bg-gold/10 transition-colors"
-                    >
-                      {t("loginButton")}
-                    </Link>
-                  )}
-                  <button
-                    onClick={onClose}
-                    className="px-4 py-1.5 rounded-lg border border-zinc-700 text-zinc-400 text-sm hover:text-zinc-200 transition-colors"
-                  >
-                    {t("understood")}
-                  </button>
-                </div>
+                <p className="text-sm text-zinc-400 leading-relaxed mt-2">
+                  如果你觉得这个工具对你有帮助，并希望获得无限次占卜机会，可以考虑升级到 Pro 版本。你的支持是我们持续改进的最大动力！
+                </p>
               </div>
-            </div>
+
+              {/* 操作按钮 */}
+              <div className="flex flex-col gap-3 mt-5">
+                {/* 主按钮：升级到 Pro */}
+                <button
+                  onClick={handleUpgradePro}
+                  className="w-full h-12 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-amber-900/30"
+                >
+                  ✨ 升级到 Pro (无限次)
+                </button>
+
+                {/* 次按钮：Ko-fi 打赏 */}
+                <button
+                  onClick={handleKofiDonate}
+                  className="w-full h-12 rounded-xl border border-amber-600/40 text-amber-400 hover:border-amber-500/60 hover:text-amber-300 font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2"
+                >
+                  ☕️ 去 Ko-fi 打赏
+                </button>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </>
       )}
     </AnimatePresence>
   );
@@ -103,9 +166,10 @@ export function DailyLimitBanner({ show, onClose, isLoggedIn }: DailyLimitBanner
 
 /** Hook to track local (unauthenticated) daily count */
 export function useLocalDailyLimit() {
-  const { status } = useSession();
+  const { data: session, status } = useSession();
   const [count, setCount] = useState(0);
   const [showBanner, setShowBanner] = useState(false);
+  const userId = session?.user?.id ?? null;
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -117,6 +181,7 @@ export function useLocalDailyLimit() {
     if (status !== "unauthenticated") return true; // logged-in users handled server-side
     const current = getLocalDivinationCount();
     if (current >= FREE_LIMIT) {
+      trackDivinationLimitReached(null);
       setShowBanner(true);
       return false;
     }
@@ -125,5 +190,5 @@ export function useLocalDailyLimit() {
     return true;
   };
 
-  return { count, limit: FREE_LIMIT, showBanner, setShowBanner, checkAndIncrement };
+  return { count, limit: FREE_LIMIT, showBanner, setShowBanner, checkAndIncrement, userId };
 }

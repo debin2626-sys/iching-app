@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
+import { createPortal } from "react-dom";
 import { m, useDragControls } from "framer-motion";
 import { useLocale } from "next-intl";
 import type { Scenario, SubScenario } from "@/data/scenarios";
@@ -9,11 +10,6 @@ interface SubScenarioPanelProps {
   scenario: Scenario;
   onSelect: (sub: SubScenario) => void;
   onClose: () => void;
-}
-
-function useIsMobile() {
-  if (typeof window === "undefined") return false;
-  return window.innerWidth < 768;
 }
 
 function getScenarioText(obj: { zh: string; en: string; "zh-TW"?: string }, locale: string): string {
@@ -76,15 +72,24 @@ function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
     [onClose]
   );
 
-  return (
+  const handleSubSelect = useCallback(
+    (sub: SubScenario) => {
+      // 先关闭面板，再触发选择，避免事件冲突
+      onSelect(sub);
+    },
+    [onSelect]
+  );
+
+  return createPortal(
     <>
       {/* Backdrop */}
       <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        onClick={onClose}
+        onTap={onClose}
         className="fixed inset-0 bg-black/50 z-40"
+        style={{ touchAction: "none" }}
       />
 
       {/* Sheet */}
@@ -100,10 +105,13 @@ function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
         dragElastic={0.2}
         onDragEnd={handleDragEnd}
         className="fixed bottom-0 left-0 right-0 z-50 bg-[#12121e] rounded-t-2xl max-h-[60vh] flex flex-col"
+        style={{ touchAction: "pan-x" }}
       >
-        {/* Drag handle */}
-        <div className="flex justify-center pt-3 pb-2 cursor-grab active:cursor-grabbing"
+        {/* Drag handle — only this area triggers drag */}
+        <div
+          className="flex justify-center pt-3 pb-2 cursor-grab active:cursor-grabbing"
           onPointerDown={(e) => dragControls.start(e)}
+          style={{ touchAction: "none" }}
         >
           <div className="w-10 h-1 rounded-full bg-[rgba(201,169,110,0.4)]" />
         </div>
@@ -115,12 +123,24 @@ function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
           </h3>
         </div>
 
-        {/* List */}
-        <div className="flex-1 overflow-y-auto overscroll-contain">
+        {/* List — touch-action: pan-y so vertical scroll works */}
+        <div
+          className="flex-1 overflow-y-auto overscroll-contain"
+          style={{ touchAction: "pan-y" }}
+          onPointerDown={(e) => e.stopPropagation()}
+        >
           {scenario.subScenarios.map((sub, i) => (
             <button
               key={sub.id}
-              onClick={() => onSelect(sub)}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleSubSelect(sub);
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleSubSelect(sub);
+              }}
               className={[
                 "w-full flex items-center justify-between px-4 h-14 text-left transition-colors",
                 "text-[#f5f0e8] hover:bg-[rgba(201,169,110,0.08)] active:bg-[rgba(201,169,110,0.12)]",
@@ -133,11 +153,23 @@ function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
           ))}
         </div>
       </m.div>
-    </>
+    </>,
+    document.body
   );
 }
 
+/* ── 用 useState+useEffect 检测是否移动端，避免 SSR 水合不匹配 ── */
 export default function SubScenarioPanel(props: SubScenarioPanelProps) {
-  const isMobile = useIsMobile();
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile === null) return null;
+
   return isMobile ? <MobileSheet {...props} /> : <DesktopPanel {...props} />;
 }

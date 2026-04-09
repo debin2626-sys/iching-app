@@ -1,17 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { rateLimitDivination } from "@/lib/rate-limit";
+import { rateLimitDivination, checkDailyDivinationLimit } from "@/lib/rate-limit";
 import { createDivinationSchema, validateBody } from "@/lib/validations";
 
-const FREE_DAILY_LIMIT = 3;
-
-// POST: 保存占卜记录
+// POST: 保存占卜记录（支持匿名用户）
 export async function POST(request: NextRequest) {
   try {
     // 尝试获取当前用户（未登录则为 null）
     let userId: string | null = null;
-    let isPaidUser = false;
     try {
       const session = await auth();
       userId = session?.user?.id ?? null;
@@ -23,34 +20,23 @@ export async function POST(request: NextRequest) {
     const limited = rateLimitDivination(request, userId);
     if (limited) return limited;
 
-    // Daily divination count check for logged-in free users
-    if (userId) {
-      const sub = await prisma.subscription.findUnique({
-        where: { userId },
-        select: { plan: true, status: true },
-      });
-      isPaidUser = sub?.plan !== "free" && sub?.status === "active";
-
-      if (!isPaidUser) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const todayCount = await prisma.divination.count({
-          where: { userId, createdAt: { gte: today } },
-        });
-        if (todayCount >= FREE_DAILY_LIMIT) {
-          return NextResponse.json(
-            {
-              error: "daily_limit_reached",
-              limit: FREE_DAILY_LIMIT,
-              used: todayCount,
-            },
-            { status: 429 }
-          );
-        }
-      }
-    }
-
     const body = await request.json();
+
+    // ── 每日占卜次数校验（服务端防绕过）──
+    const anonymousSessionId = typeof body?.anonymousSessionId === "string" ? body.anonymousSessionId : null;
+    const isDailyLimitReached = await checkDailyDivinationLimit(userId, anonymousSessionId);
+    if (isDailyLimitReached) {
+      return NextResponse.json(
+        {
+          error: "今日占卜次数已达上限（每日最多3次），请明日再来",
+          code: "DAILY_LIMIT_EXCEEDED",
+        },
+        {
+          status: 429,
+          headers: { "Retry-After": "86400" },
+        }
+      );
+    }
 
     // Input validation
     const validation = validateBody(createDivinationSchema, body);
@@ -63,6 +49,24 @@ export async function POST(request: NextRequest) {
 
     const { question, coinResults, hexagramId, changedHexagramId, changingLines } = validation.data;
 
+    // 获取卦象信息
+    const hexagram = await prisma.hexagram.findUnique({
+      where: { id: hexagramId },
+      select: { number: true, nameZh: true, nameEn: true, symbol: true },
+    });
+
+    if (!hexagram) {
+      return NextResponse.json({ error: "卦象不存在" }, { status: 404 });
+    }
+
+    let changedHexagram = null;
+    if (changedHexagramId) {
+      changedHexagram = await prisma.hexagram.findUnique({
+        where: { id: changedHexagramId },
+        select: { number: true, nameZh: true, nameEn: true, symbol: true },
+      });
+    }
+
     const divination = await prisma.divination.create({
       data: {
         userId,
@@ -74,6 +78,7 @@ export async function POST(request: NextRequest) {
       },
       include: {
         hexagram: { select: { number: true, nameZh: true, nameEn: true, symbol: true } },
+        changedHexagram: { select: { number: true, nameZh: true, nameEn: true, symbol: true } },
       },
     });
 

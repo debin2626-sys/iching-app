@@ -1,0 +1,386 @@
+[
+  {
+    "number": 1,
+    "nameZh": "卦象_1",
+    "nameEn": "Hexagram_1",
+    "symbol": "---"
+  },
+  {
+    "number": 2,
+    "nameZh": "卦象_2",
+    "nameEn": "Hexagram_2",
+    "symbol": "---"
+  },
+  {
+    "number": 3,
+    "nameZh": "卦象_3",
+    "nameEn": "Hexagram_3",
+    "symbol": "---"
+  },
+  {
+    "number": 4,
+    "nameZh": "卦象_4",
+    "nameEn": "Hexagram_4",
+    "symbol": "---"
+  },
+  {
+    "number": 5,
+    "nameZh": "卦象_5",
+    "nameEn": "Hexagram_5",
+    "symbol": "---"
+  },
+  {
+    "number": 6,
+    "nameZh": "卦象_6",
+    "nameEn": "Hexagram_6",
+    "symbol": "---"
+  },
+  {
+    "number": 7,
+    "nameZh": "卦象_7",
+    "nameEn": "Hexagram_7",
+    "symbol": "---"
+  },
+  {
+    "number": 8,
+    "nameZh": "卦象_8",
+    "nameEn": "Hexagram_8",
+    "symbol": "---"
+  },
+  {
+    "number": 9,
+    "nameZh": "卦象_9",
+    "nameEn": "Hexagram_9",
+    "symbol": "---"
+  },
+  {
+    "number": 10,
+    "nameZh": "卦象_10",
+    "nameEn": "Hexagram_10",
+    "symbol": "---"
+  },
+  {
+    "number": 11,
+    "nameZh": "卦象_11",
+    "nameEn": "Hexagram_11",
+    "symbol": "---"
+  },
+  {
+    "number": 12,
+    "nameZh": "卦象_12",
+    "nameEn": "Hexagram_12",
+    "symbol": "---"
+  },
+  {
+    "number": 13,
+    "nameZh": "卦象_13",
+    "nameEn": "Hexagram_13",
+    "symbol": "---"
+  },
+  {
+    "number": 14,
+    "nameZh": "卦象_14",
+    "nameEn": "Hexagram_14",
+    "symbol": "---"
+  },
+  {
+    "number": 15,
+    "nameZh": "卦象_15",
+    "nameEn": "Hexagram_15",
+    "symbol": "---"
+  },
+  {
+    "number": 16,
+    "nameZh": "卦象_16",
+    "nameEn": "Hexagram_16",
+    "symbol": "---"
+  },
+  {
+    "number": 17,
+    "nameZh": "卦象_17",
+    "nameEn": "Hexagram_17",
+    "symbol": "---"
+  },
+  {
+    "number": 18,
+    "nameZh": "卦象_18",
+    "nameEn": "Hexagram_18",
+    "symbol": "---"
+  },
+  {
+    "number": 19,
+    "nameZh": "卦象_19",
+    "nameEn": "Hexagram_19",
+    "symbol": "---"
+  },
+  {
+    "number": 20,
+    "nameZh": "卦象_20",
+    "nameEn": "Hexagram_20",
+    "symbol": "---"
+  },
+  {
+    "number": 21,
+    "nameZh": "卦象_21",
+    "nameEn": "Hexagram_21",
+    "symbol": "---"
+  },
+  {
+    "number": 22,
+    "nameZh": "卦象_22",
+    "nameEn": "Hexagram_22",
+    "symbol": "---"
+  },
+  {
+    "number": 23,
+    "nameZh": "卦象_23",
+    "nameEn": "Hexagram_23",
+    "symbol": "---"
+  },
+  {
+    "number": 24,
+    "nameZh": "卦象_24",
+    "nameEn": "Hexagram_24",
+    "symbol": "---"
+  },
+  {
+    "number": 25,
+    "nameZh": "卦象_25",
+    "nameEn": "Hexagram_25",
+    "symbol": "---"
+  },
+  {
+    "number": 26,
+    "nameZh": "卦象_26",
+    "nameEn": "Hexagram_26",
+    "symbol": "---"
+  },
+  {
+    "number": 27,
+    "nameZh": "卦象_27",
+    "nameEn": "Hexagram_27",
+    "symbol": "---"
+  },
+  {
+    "number": 28,
+    "nameZh": "卦象_28",
+    "nameEn": "Hexagram_28",
+    "symbol": "---"
+  },
+  {
+    "number": 29,
+    "nameZh": "卦象_29",
+    "nameEn": "Hexagram_29",
+    "symbol": "---"
+  },
+  {
+    "number": 30,
+    "nameZh": "卦象_30",
+    "nameEn": "Hexagram_30",
+    "symbol": "---"
+  },
+  {
+    "number": 31,
+    "nameZh": "卦象_31",
+    "nameEn": "Hexagram_31",
+    "symbol": "---"
+  },
+  {
+    "number": 32,
+    "nameZh": "卦象_32",
+    "nameEn": "Hexagram_32",
+    "symbol": "---"
+  },
+  {
+    "number": 33,
+    "nameZh": "卦象_33",
+    "nameEn": "Hexagram_33",
+    "symbol": "---"
+  },
+  {
+    "number": 34,
+    "nameZh": "卦象_34",
+    "nameEn": "Hexagram_34",
+    "symbol": "---"
+  },
+  {
+    "number": 35,
+    "nameZh": "卦象_35",
+    "nameEn": "Hexagram_35",
+    "symbol": "---"
+  },
+  {
+    "number": 36,
+    "nameZh": "卦象_36",
+    "nameEn": "Hexagram_36",
+    "symbol": "---"
+  },
+  {
+    "number": 37,
+    "nameZh": "卦象_37",
+    "nameEn": "Hexagram_37",
+    "symbol": "---"
+  },
+  {
+    "number": 38,
+    "nameZh": "卦象_38",
+    "nameEn": "Hexagram_38",
+    "symbol": "---"
+  },
+  {
+    "number": 39,
+    "nameZh": "卦象_39",
+    "nameEn": "Hexagram_39",
+    "symbol": "---"
+  },
+  {
+    "number": 40,
+    "nameZh": "卦象_40",
+    "nameEn": "Hexagram_40",
+    "symbol": "---"
+  },
+  {
+    "number": 41,
+    "nameZh": "卦象_41",
+    "nameEn": "Hexagram_41",
+    "symbol": "---"
+  },
+  {
+    "number": 42,
+    "nameZh": "卦象_42",
+    "nameEn": "Hexagram_42",
+    "symbol": "---"
+  },
+  {
+    "number": 43,
+    "nameZh": "卦象_43",
+    "nameEn": "Hexagram_43",
+    "symbol": "---"
+  },
+  {
+    "number": 44,
+    "nameZh": "卦象_44",
+    "nameEn": "Hexagram_44",
+    "symbol": "---"
+  },
+  {
+    "number": 45,
+    "nameZh": "卦象_45",
+    "nameEn": "Hexagram_45",
+    "symbol": "---"
+  },
+  {
+    "number": 46,
+    "nameZh": "卦象_46",
+    "nameEn": "Hexagram_46",
+    "symbol": "---"
+  },
+  {
+    "number": 47,
+    "nameZh": "卦象_47",
+    "nameEn": "Hexagram_47",
+    "symbol": "---"
+  },
+  {
+    "number": 48,
+    "nameZh": "卦象_48",
+    "nameEn": "Hexagram_48",
+    "symbol": "---"
+  },
+  {
+    "number": 49,
+    "nameZh": "卦象_49",
+    "nameEn": "Hexagram_49",
+    "symbol": "---"
+  },
+  {
+    "number": 50,
+    "nameZh": "卦象_50",
+    "nameEn": "Hexagram_50",
+    "symbol": "---"
+  },
+  {
+    "number": 51,
+    "nameZh": "卦象_51",
+    "nameEn": "Hexagram_51",
+    "symbol": "---"
+  },
+  {
+    "number": 52,
+    "nameZh": "卦象_52",
+    "nameEn": "Hexagram_52",
+    "symbol": "---"
+  },
+  {
+    "number": 53,
+    "nameZh": "卦象_53",
+    "nameEn": "Hexagram_53",
+    "symbol": "---"
+  },
+  {
+    "number": 54,
+    "nameZh": "卦象_54",
+    "nameEn": "Hexagram_54",
+    "symbol": "---"
+  },
+  {
+    "number": 55,
+    "nameZh": "卦象_55",
+    "nameEn": "Hexagram_55",
+    "symbol": "---"
+  },
+  {
+    "number": 56,
+    "nameZh": "卦象_56",
+    "nameEn": "Hexagram_56",
+    "symbol": "---"
+  },
+  {
+    "number": 57,
+    "nameZh": "卦象_57",
+    "nameEn": "Hexagram_57",
+    "symbol": "---"
+  },
+  {
+    "number": 58,
+    "nameZh": "卦象_58",
+    "nameEn": "Hexagram_58",
+    "symbol": "---"
+  },
+  {
+    "number": 59,
+    "nameZh": "卦象_59",
+    "nameEn": "Hexagram_59",
+    "symbol": "---"
+  },
+  {
+    "number": 60,
+    "nameZh": "卦象_60",
+    "nameEn": "Hexagram_60",
+    "symbol": "---"
+  },
+  {
+    "number": 61,
+    "nameZh": "卦象_61",
+    "nameEn": "Hexagram_61",
+    "symbol": "---"
+  },
+  {
+    "number": 62,
+    "nameZh": "卦象_62",
+    "nameEn": "Hexagram_62",
+    "symbol": "---"
+  },
+  {
+    "number": 63,
+    "nameZh": "卦象_63",
+    "nameEn": "Hexagram_63",
+    "symbol": "---"
+  },
+  {
+    "number": 64,
+    "nameZh": "卦象_64",
+    "nameEn": "Hexagram_64",
+    "symbol": "---"
+  }
+]

@@ -39,7 +39,11 @@
     "seoSection1Content": "易經，又稱《周易》，是中國最古老、最深邃的哲學經典之一，擁有超過三千年的悠久歷史。它起源於周朝，最初作為占卜典籍使用，後逐漸發展成為儒家和道家思想的重要基石。易經的核心是六十四卦——由六條爻線組成的象徵符號，每條爻線或為陰（斷線）或為陽（實線）。這六十四卦描繪了陰陽兩種基本力量的動態交互，揭示了宇宙萬物變化的規律。數千年來，無數學者、帝王和求道者都從易經中尋求人生決策的指引、修身養性的智慧，以及對天地自然運行法則的深刻理解。",
     "seoSection2Title": "AI占卜如何運作？",
     "seoSection2Content": "我們的平台忠實還原了傳統的三幣占卜法，將千年古法融入現代數位體驗。每次占卜時，您將虛擬拋擲三枚銅錢六次以生成卦象——這與歷代占卜者的做法完全一致。我們的獨特之處在於將先進的AI技術與古老智慧深度融合。卦象生成後，AI引擎會結合您的具體問題，深入分析卦辭、爻辭和動爻的含義。AI系統參考了歷代經典注疏和全面的易經知識庫，為您提供個性化的解讀，在古老智慧與現代生活之間架起橋樑。最終呈現的解讀既尊重傳統方法論，又為當代求道者提供更深入、更易理解的指引。",
-    "loginButton": "登入"
+    "loginButton": "登入",
+    "todayCounterTitle": "今日諮詢",
+    "reviewsTitle": "用戶評價",
+    "loadingStats": "正在載入統計數據...",
+    "loadingReviews": "正在載入評價..."
   },
   "Nav": {
     "home": "首頁",
@@ -128,7 +132,19 @@
     "aiStreamError": "無法讀取回應流",
     "aiInterpretError": "AI 解讀失敗",
     "shareTitle": "易經占卜",
-    "copiedToClipboard": "已複製到剪貼簿"
+    "copiedToClipboard": "已複製到剪貼簿",
+    "saveHistory": "保存歷史",
+    "saveHistoryLogin": "登入保存",
+    "saving": "保存中...",
+    "saveSuccess": "保存成功",
+    "saveFailed": "保存失敗",
+    "dailyLimitReached": "今日保存次數已達上限",
+    "loginToSave": "登入以保存記錄",
+    "loginToSaveDescription": "登入後可以將占卜記錄永久保存到您的帳戶，並在不同裝置間同步",
+    "signInWithGoogle": "使用 Google 登入",
+    "emailLogin": "郵箱登入",
+    "continueAnonymous": "繼續匿名體驗",
+    "continueAnonymousMessage": "記錄已保存在本地，登入後可同步到雲端"
   },
   "Hexagrams": {
     "title": "六十四卦典",

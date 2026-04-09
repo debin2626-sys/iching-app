@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { calculateBazi, type BirthInfo } from "@/lib/iching/bazi";
-import { PageLayout, Skeleton } from "@/components/ui";
+import { PageLayout, Skeleton, Button, useToast } from "@/components/ui";
 import { ResultSkeleton } from "@/components/ui/PageSkeletons";
 import Card from "@/components/ui/Card";
 import type { LineValue } from "@/lib/iching/coins";
@@ -19,8 +19,10 @@ import {
 import { getChangingLines } from "@/lib/iching/coins";
 import HexagramReveal from "@/components/divination/HexagramReveal";
 import { DailyLimitBanner, incrementLocalDivinationCount } from "@/components/divination/DailyLimitBanner";
-import { useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { trackAIInterpretStart, trackAIInterpretComplete, trackFunnelResultView, trackFunnelAIInterpretStart, trackFunnelAIInterpretComplete } from "@/lib/analytics";
+import { getOrCreateAnonymousSession, saveAnonymousDivination, hasAnonymousDivinations, migrateAnonymousDivinations } from "@/lib/anonymous-session";
+import { useRouter } from "@/i18n/navigation";
 
 /* ── 卦象名称映射 ── */
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
@@ -453,6 +455,12 @@ function ResultInner() {
   /* 每日限制 banner */
   const { data: session } = useSession();
   const [showLimitBanner, setShowLimitBanner] = useState(false);
+  
+  /* 保存和登录相关 */
+  const router = useRouter();
+  const { toast } = useToast();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   /* 保存占卜记录 */
   const hasSaved = useRef(false);
@@ -460,30 +468,120 @@ function ResultInner() {
     if (hasSaved.current || !hexNum || lines.length !== 6) return;
     hasSaved.current = true;
 
-    fetch("/api/divination", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        question,
-        coinResults: lines,
-        hexagramId: hexNum,
-        changedHexagramId: changedHex?.number ?? null,
-        changingLines,
-      }),
-    }).then(async (res) => {
-      if (res.status === 429) {
-        const data = await res.json().catch(() => ({}));
-        if (data.error === "daily_limit_reached") {
-          setShowLimitBanner(true);
+    const saveData = {
+      question,
+      coinResults: lines,
+      hexagramId: hexNum,
+      changedHexagramId: changedHex?.number ?? null,
+      changingLines,
+    };
+
+    // 如果用户已登录，保存到服务器
+    if (session?.user) {
+      fetch("/api/divination", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(saveData),
+      }).then(async (res) => {
+        if (res.status === 429) {
+          const data = await res.json().catch(() => ({}));
+          if (data.code === "DAILY_LIMIT_EXCEEDED") {
+            setShowLimitBanner(true);
+          }
         }
-      } else if (res.ok && !session?.user) {
-        // Track local count for unauthenticated users
-        incrementLocalDivinationCount();
+      }).catch(() => {
+        // 保存失败静默处理
+      });
+    } else {
+      // 匿名用户：保存到本地存储
+      const anonymousDivination = {
+        id: `local_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+        ...saveData,
+        aiInterpretation: null,
+        createdAt: new Date().toISOString(),
+        hexagram: {
+          number: hexNum,
+          nameZh: hexInfo?.cn || "",
+          nameEn: hexInfo?.en || "",
+          symbol: hexData?.symbol || "",
+        },
+        changedHexagram: changedHex?.number ? {
+          number: changedHex.number,
+          nameZh: changedHexInfo?.cn || "",
+          nameEn: changedHexInfo?.en || "",
+          symbol: "",
+        } : null,
+      };
+      
+      saveAnonymousDivination(anonymousDivination);
+      // Track local count for unauthenticated users
+      incrementLocalDivinationCount();
+    }
+  }, [hexNum, lines, question, changedHex, changingLines, session, hexInfo, hexData, changedHexInfo]);
+
+  /* 手动保存记录函数 */
+  const handleSaveHistory = async () => {
+    if (!hexNum || lines.length !== 6) return;
+    
+    // 如果用户已登录，直接保存
+    if (session?.user) {
+      setIsSaving(true);
+      try {
+        const saveData = {
+          question,
+          coinResults: lines,
+          hexagramId: hexNum,
+          changedHexagramId: changedHex?.number ?? null,
+          changingLines,
+        };
+        
+        const res = await fetch("/api/divination", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(saveData),
+        });
+        
+        if (res.ok) {
+          toast(t("saveSuccess"), "success");
+        } else if (res.status === 429) {
+          const data = await res.json().catch(() => ({}));
+          if (data.code === "DAILY_LIMIT_EXCEEDED") {
+            setShowLimitBanner(true);
+            toast(t("dailyLimitReached"), "warning");
+          } else {
+            toast(t("saveFailed"), "error");
+          }
+        } else {
+          toast(t("saveFailed"), "error");
+        }
+      } catch (error) {
+        toast(t("saveFailed"), "error");
+      } finally {
+        setIsSaving(false);
       }
-    }).catch(() => {
-      // 保存失败静默处理
-    });
-  }, [hexNum, lines, question, changedHex, changingLines]);
+    } else {
+      // 匿名用户：显示登录提示
+      setShowLoginModal(true);
+    }
+  };
+
+  /* 处理登录 */
+  const handleLogin = async (provider: "google" | "credentials") => {
+    if (provider === "google") {
+      // 检查是否有匿名记录需要迁移
+      const hasAnonymousRecords = hasAnonymousDivinations();
+      const callbackUrl = hasAnonymousRecords ? "/auth/migrate" : "/";
+      await signIn("google", { callbackUrl });
+    } else {
+      router.push("/auth");
+    }
+  };
+
+  /* 继续匿名体验 */
+  const handleContinueAnonymous = () => {
+    setShowLoginModal(false);
+    toast(t("continueAnonymousMessage"), "info");
+  };
 
   // ── funnel_result_view: 结果页曝光（最终转化） ──
   useEffect(() => {
@@ -553,7 +651,7 @@ function ResultInner() {
       <DailyLimitBanner
         show={showLimitBanner}
         onClose={() => setShowLimitBanner(false)}
-        isLoggedIn={!!session?.user}
+        userId={session?.user?.id ?? null}
       />
       <div className="py-8 space-y-8 px-6">
         {/* ── 卦象头部 ── */}
@@ -725,12 +823,70 @@ function ResultInner() {
             {t("backHome")}
           </a>
           <button
+            onClick={handleSaveHistory}
+            disabled={isSaving}
+            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSaving ? t("saving") : (session?.user ? t("saveHistory") : t("saveHistoryLogin"))}
+          </button>
+          <button
             onClick={handleShare}
             className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
           >
             {t("share")}
           </button>
         </motion.div>
+
+        {/* ── 登录提示模态框 ── */}
+        {showLoginModal && (
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="card-mystic rounded-2xl w-full max-w-md p-8"
+            >
+              <div className="text-center mb-6">
+                <div className="text-4xl mb-3">🔐</div>
+                <h3 className="text-xl font-title text-gold mb-2">
+                  {t("loginToSave")}
+                </h3>
+                <p className="text-gray-400 text-sm">
+                  {t("loginToSaveDescription")}
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <button
+                  onClick={() => handleLogin("google")}
+                  className="w-full flex items-center justify-center gap-3 px-4 h-12 bg-white hover:bg-gray-50 text-gray-700 font-medium text-base rounded-xl border border-gray-200 transition-all duration-200 shadow-sm hover:shadow"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+                    <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+                    <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.997 8.997 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+                    <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 2.58 9 3.58z" fill="#EA4335"/>
+                  </svg>
+                  {t("signInWithGoogle")}
+                </button>
+
+                <button
+                  onClick={() => handleLogin("credentials")}
+                  className="w-full h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)]"
+                >
+                  {t("emailLogin")}
+                </button>
+
+                <button
+                  onClick={handleContinueAnonymous}
+                  className="w-full h-10 text-sm text-gray-400 hover:text-gray-300 transition-colors"
+                >
+                  {t("continueAnonymous")}
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </div>
     </PageLayout>
   );
