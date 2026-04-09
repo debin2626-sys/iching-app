@@ -163,7 +163,7 @@ export default function HomeContent() {
     <>
       <NavBar items={navItems} />
       <main className="min-h-screen w-full bg-[#0a0a12]">
-        <div className="w-full px-4 md:px-6 pt-[200px] pb-20" style={{ maxWidth: '768px', margin: '0 auto' }}>
+        <div className="w-full px-6" style={{ maxWidth: '768px', margin: '0 auto', paddingTop: '220px', paddingBottom: '80px' }}>
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
@@ -179,23 +179,23 @@ export default function HomeContent() {
       </h1>
 
       {/* 副标题 */}
-      <p className="mt-3 text-xl text-[#a0978a] text-center">
+      <p className="mt-4 text-xl text-[#a0978a] text-center">
         {t("subtitle")}
       </p>
 
       {/* 今日咨询计数器 */}
-      <div className="mt-2">
+      <div className="mt-8">
         <TodayCounter />
       </div>
 
       {/* 场景化入口 */}
-      <div className="mt-8">
+      <div className="mt-10">
         <p className="text-sm text-[#a0978a] text-center mb-3">{t("scenarioGuide")}</p>
         <ScenarioSelector onSelect={handleScenarioSelect} />
       </div>
 
       {/* 输入框 — with bracket highlighting overlay */}
-      <div className="mt-6 md:mt-8 relative">
+      <div className="mt-8 relative">
         {/* Highlight overlay for brackets */}
         <div
           aria-hidden
@@ -232,7 +232,7 @@ export default function HomeContent() {
       </div>
 
       {/* 出生时辰选择器 */}
-      <div className="mt-3 w-full">
+      <div className="mt-4 w-full">
         <button
           type="button"
           onClick={() => setShowBirth(!showBirth)}
@@ -338,7 +338,7 @@ export default function HomeContent() {
       </div>
 
       {/* 开始摇卦按钮 */}
-      <div className="mt-4 relative">
+      <div className="mt-6 relative">
         <p className="text-center text-xs text-[#c9a96e]/50 mb-2">
           {t("tossingHint")}
         </p>
@@ -353,7 +353,7 @@ export default function HomeContent() {
       </div>
 
       {/* 三大核心功能标题 */}
-      <div className="mt-24">
+      <div className="mt-32">
       <h2 className="text-xl text-gold font-title text-center">
         {t("featuresSectionTitle")}
       </h2>
