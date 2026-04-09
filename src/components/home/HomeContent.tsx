@@ -163,7 +163,7 @@ export default function HomeContent() {
     <>
       <NavBar items={navItems} />
       <main className="min-h-screen w-full bg-[#0a0a12]">
-        <div className="w-full max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-4 md:px-6 pt-[140px] pb-20">
+        <div className="w-full max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-4 md:px-6 pt-[200px] pb-20">
       {/* 太极图 */}
       <div className="flex justify-center">
         <AnimatedTaichi>
