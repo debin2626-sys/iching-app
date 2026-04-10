@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Users } from 'lucide-react';
 
 interface TodayStats {
   todayCount: number;
@@ -12,7 +11,7 @@ export default function TodayCounter() {
   const t = useTranslations("Home");
   const [stats, setStats] = useState<TodayStats | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchTodayStats = async () => {
@@ -33,9 +32,7 @@ export default function TodayCounter() {
         }
       } catch (err) {
         console.error('Error fetching today stats:', err);
-        setError(err instanceof Error ? err.message : 'Failed to load stats');
-        // 设置默认值
-        setStats({ todayCount: 42 });
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -49,32 +46,16 @@ export default function TodayCounter() {
     return () => clearInterval(interval);
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center gap-2 p-4 bg-[rgba(201,169,110,0.05)] border border-[rgba(201,169,110,0.15)] rounded-xl">
-        <div className="w-5 h-5 border-2 border-[#c9a96e] border-t-transparent rounded-full animate-spin"></div>
-        <span className="text-sm text-[#a0978a]">Loading...</span>
-      </div>
-    );
-  }
-
-  if (error && !stats) {
-    return (
-      <div className="p-4 bg-[rgba(201,169,110,0.05)] border border-[rgba(201,169,110,0.15)] rounded-xl">
-        <p className="text-sm text-[#a0978a] text-center">
-          42 people consulted today
-        </p>
-      </div>
-    );
+  // Loading or error or no data → don't render
+  if (loading || error || !stats) {
+    return null;
   }
 
   return (
-    <div className="flex items-center justify-center gap-2 p-4 bg-[rgba(201,169,110,0.05)] border border-[rgba(201,169,110,0.15)] rounded-xl">
-      <Users size={18} className="text-[#c9a96e]" />
-      <span className="text-sm text-[#f5f0e8] font-medium">
-        <span className="text-[#c9a96e] font-bold">{stats?.todayCount || 42}</span>
-        <span className="text-[#a0978a] ml-1">people consulted today</span>
-      </span>
-    </div>
+    <p className="text-xs text-[#a0978a] text-center mt-2">
+      {t("todayCounterPrefix")}
+      <span className="text-[#c9a96e] font-bold">{stats.todayCount}</span>
+      {t("todayCounterSuffix")}
+    </p>
   );
 }
