@@ -7,7 +7,8 @@ import { AnimatedTaichi } from '@/components/home/HeroAnimations';
 import HomeNavBar from '@/components/home/HomeNavBar';
 import TodayCounter from '@/components/home/TodayCounter';
 import StartDivinationButton from '@/components/home/StartDivinationButton';
-import SampleReading from '@/components/home/SampleReading';
+import SampleReadingClient from '@/components/home/SampleReading';
+import { SampleReadingSectionHeader, SampleReadingCardContent } from '@/components/home/SampleReadingContent';
 import UserReviews from '@/components/home/UserReviews';
 
 export async function generateMetadata({
@@ -134,8 +135,13 @@ export default async function HomePage({
             </div>
           </div>
 
-          {/* 占卜结果示例 (client) */}
-          <SampleReading />
+          {/* 占卜结果示例: server content + client interactivity */}
+          <SampleReadingClient
+            locale={locale}
+            header={<SampleReadingSectionHeader locale={locale} />}
+          >
+            <SampleReadingCardContent locale={locale} />
+          </SampleReadingClient>
 
           {/* 用户评价展示区 (client) */}
           <UserReviews />

@@ -9,6 +9,7 @@ import { NavBar } from "@/components/ui";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import ScenarioSelector from "@/components/divination/ScenarioSelector";
 import SampleReading from "@/components/home/SampleReading";
+import { SampleReadingCardContent } from "@/components/home/SampleReadingContent";
 import TodayCounter from "@/components/home/TodayCounter";
 import UserReviews from "@/components/home/UserReviews";
 import { DailyLimitBanner, useLocalDailyLimit } from "@/components/divination/DailyLimitBanner";
@@ -376,7 +377,9 @@ export default function HomeContent() {
       </div>
 
       {/* 占卜结果示例 */}
-      <SampleReading />
+      <SampleReading locale={locale} header={null}>
+        <SampleReadingCardContent locale={locale} />
+      </SampleReading>
 
       {/* 用户评价展示区 */}
       <UserReviews />
