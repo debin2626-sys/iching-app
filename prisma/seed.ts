@@ -1,13 +1,12 @@
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
-import { Pool } from "@neondatabase/serverless";
+import { PrismaPg } from "@prisma/adapter-pg";
+import pg from "pg";
 import * as fs from "fs";
 import * as path from "path";
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL! });
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const adapter = new PrismaNeon(pool as any);
+const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL! });
+const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 interface SeedHexagram {
@@ -29,13 +28,20 @@ interface SeedHexagram {
   judgmentDetailEn?: string;
   imageDetailZh?: string;
   imageDetailEn?: string;
-  modernApplicationZh?: string;
-  modernApplicationEn?: string;
+  modernApplicationZh?: string | Record<string, string>;
+  modernApplicationEn?: string | Record<string, string>;
   historicalStoryZh?: string;
   historicalStoryEn?: string;
   relatedHexagramsNote?: string;
   references?: string[];
   lines: unknown[];
+}
+
+// Helper: if value is an object, stringify it; if string, keep as-is; otherwise null
+function toStringOrNull(val: unknown): string | null {
+  if (val === undefined || val === null) return null;
+  if (typeof val === "string") return val;
+  return JSON.stringify(val, null, 2);
 }
 
 async function main() {
@@ -63,6 +69,18 @@ async function main() {
           imageEn: hex.imageEn,
           interpretationZh: hex.interpretationZh,
           interpretationEn: hex.interpretationEn,
+          overviewZh: toStringOrNull(hex.overviewZh),
+          overviewEn: toStringOrNull(hex.overviewEn),
+          judgmentDetailZh: toStringOrNull(hex.judgmentDetailZh),
+          judgmentDetailEn: toStringOrNull(hex.judgmentDetailEn),
+          imageDetailZh: toStringOrNull(hex.imageDetailZh),
+          imageDetailEn: toStringOrNull(hex.imageDetailEn),
+          modernApplicationZh: toStringOrNull(hex.modernApplicationZh),
+          modernApplicationEn: toStringOrNull(hex.modernApplicationEn),
+          historicalStoryZh: toStringOrNull(hex.historicalStoryZh),
+          historicalStoryEn: toStringOrNull(hex.historicalStoryEn),
+          relatedHexagramsNote: toStringOrNull(hex.relatedHexagramsNote),
+          references: (hex.references as unknown as import("@prisma/client").Prisma.InputJsonValue) ?? undefined,
           lines: hex.lines as unknown as import("@prisma/client").Prisma.InputJsonValue,
         },
         create: {
@@ -78,6 +96,18 @@ async function main() {
           imageEn: hex.imageEn,
           interpretationZh: hex.interpretationZh,
           interpretationEn: hex.interpretationEn,
+          overviewZh: toStringOrNull(hex.overviewZh),
+          overviewEn: toStringOrNull(hex.overviewEn),
+          judgmentDetailZh: toStringOrNull(hex.judgmentDetailZh),
+          judgmentDetailEn: toStringOrNull(hex.judgmentDetailEn),
+          imageDetailZh: toStringOrNull(hex.imageDetailZh),
+          imageDetailEn: toStringOrNull(hex.imageDetailEn),
+          modernApplicationZh: toStringOrNull(hex.modernApplicationZh),
+          modernApplicationEn: toStringOrNull(hex.modernApplicationEn),
+          historicalStoryZh: toStringOrNull(hex.historicalStoryZh),
+          historicalStoryEn: toStringOrNull(hex.historicalStoryEn),
+          relatedHexagramsNote: toStringOrNull(hex.relatedHexagramsNote),
+          references: (hex.references as unknown as import("@prisma/client").Prisma.InputJsonValue) ?? undefined,
           lines: hex.lines as unknown as import("@prisma/client").Prisma.InputJsonValue,
         },
       });

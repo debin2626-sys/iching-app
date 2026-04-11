@@ -19,8 +19,8 @@
         "textEn": "Nine at the beginning: Wrapped in the hide of a yellow cow.",
         "interpretationZh": "用黄牛皮革牢牢束缚，时机未到不可轻举妄动。",
         "interpretationEn": "Bound with the hide of a yellow cow. The time for action has not yet come.",
-        "detailZh": "初九“巩用黄牛之革”——用黄牛皮牢牢捆绑。初爻是变革的最初阶段，此时不宜轻举妄动。“黄牛”象征中庸稳健（黄为中色），“巩”意为巩固。变革之初，最重要的是稳固现有基础、做好充分准备，而不是急于打破现状。就像建筑改造前必须先加固地基一样。",
-        "detailEn": "The first nine—'Wrapped in the hide of a yellow cow'—advises firm restraint at revolution's earliest stage. Yellow symbolizes moderation; 'wrapped firmly' means consolidating foundations before acting. Like reinforcing a building's foundation before renovation, prepare thoroughly before breaking the status quo."
+        "detailZh": "“巩用黄牛之革。”初九处变革之始，局势虽有更新之意，但时机未足，不可轻举妄动。黄牛之革象征坚韧、稳固、约束，意为此时宜先自我约束，巩固根基，如以坚实皮革束物，使其不散。改革初期最怕激情先行、准备不足，因此本爻强调守、忍、固本。",
+        "detailEn": "“Bound with the hide of a yellow ox.” At the beginning of revolution, the impulse to change is present, but the time is not yet ripe for bold movement. The hide of the yellow ox symbolizes strength, steadiness, and restraint. One should secure the situation, discipline oneself, and consolidate the foundation before taking action. Early reform fails when emotion outruns preparation."
       },
       {
         "position": 2,
@@ -28,8 +28,8 @@
         "textEn": "Six in the second place: When one's own day comes, one may create revolution. Starting brings good fortune. No blame.",
         "interpretationZh": "到了适当的时候再进行变革，出征则吉利，无过失。",
         "interpretationEn": "When the proper day arrives, undertake revolution. Going forward brings fortune and no blame.",
-        "detailZh": "六二“巳日乃革之，征吉，无咎”——时机成熟之日才进行变革，出征吉祥，没有过失。六二居中得位，是发动变革的最佳时机。“巳日”强调时机的重要性——不是不变，而是要在对的时间变。这一爻告诉我们：变革的成功不仅取决于方向是否正确，更取决于时机是否恰当。太早则准备不足，太晚则积重难返。",
-        "detailEn": "The second six—'When one's own day comes, one may create revolution. Starting brings good fortune. No blame'—identifies the optimal moment for change. Success depends not only on correct direction but on proper timing. Too early means insufficient preparation; too late means problems become intractable."
+        "detailZh": "“己日乃革之，征吉，无咎。”六二居中得正，能把握适当时机，是革卦中较为理想的行动位。到了成熟之日再推行变革，则师出有名，前行可吉。此爻说明改革不能只问勇气，更要问时机与正当性；一旦时机成熟，则不必迟疑，果断而行，便可无咎。",
+        "detailEn": "“On the proper day, then make the change. Going forward brings good fortune. No blame.” This line occupies a balanced and correct place, showing the ideal posture for reform. Change should not be forced before its time, but once the proper moment arrives, decisive action is justified. Courage must be joined to timing and legitimacy; when these align, forward movement is auspicious."
       },
       {
         "position": 3,
@@ -37,8 +37,8 @@
         "textEn": "Nine in the third place: Starting brings misfortune. Perseverance brings danger. When talk of revolution has gone the rounds three times, one may commit himself, and men will believe him.",
         "interpretationZh": "急于行动则凶，坚持也有危险。变革之议经过三次讨论确认后，方可取信于人。",
         "interpretationEn": "Hasty action brings misfortune. After revolution is discussed three times, commitment wins trust.",
-        "detailZh": "九三“征凶，贞厉。革言三就，有孚”——贸然出征是凶险的，坚守正道也有危险。“革言三就”意为变革的方案经过三次讨论和修改才最终确定。这一爻强调变革决策的审慎性——重大变革不能一拍脑袋就决定，必须反复论证、广泛征求意见、多次修改方案。经过“三就”的充分讨论，才能获得“有孚”（众人的信任）。",
-        "detailEn": "The third nine warns that hasty action is dangerous. 'When talk of revolution has gone the round three times, one may commit oneself, and men will believe'—major changes cannot be decided impulsively. Plans must be debated, revised, and refined through multiple rounds of discussion before earning collective trust."
+        "detailZh": "“征凶，贞厉，革言三就，有孚。”九三阳刚过盛，易躁进，因此若贸然前征则有凶险。虽守正仍觉危厉，说明局势尚未完全稳妥。所谓“革言三就”，表示改革主张需反复讨论、三番斟酌，在多次确认后才能建立公信。此爻警示：重大变动必须充分沟通，不能凭个人意志硬推。",
+        "detailEn": "“Advance brings misfortune. Perseverance brings danger. Words of revolution are considered three times, and then confidence arises.” This line warns against aggressive haste. Even with sincere intent, the situation remains perilous if action outruns consensus. Reform proposals must be tested, repeated, and examined carefully before trust is won. Major change needs communication and verification, not personal force alone."
       },
       {
         "position": 4,
@@ -46,8 +46,8 @@
         "textEn": "Nine in the fourth place: Remorse disappears. Men believe in him. Changing the form of government brings good fortune.",
         "interpretationZh": "悔恨消失，以诚信改变旧制，吉利。",
         "interpretationEn": "Remorse vanishes. With sincerity, changing the mandate brings good fortune.",
-        "detailZh": "九四“悔亡，有孚改命，吉”——后悔消失，以诚信改变天命，吉祥。九四已进入上卦，变革进入实质性阶段。“有孚改命”是革卦最核心的理念——变革必须建立在诚信的基础上，以正义之名改变旧的秩序。“改命”不是随意妄为，而是顺应天命的正当行为。当变革者的诚意被认可，一切后悔和阻力都会消失。",
-        "detailEn": "The fourth nine—'Remorse disappears. Men believe in the revolution. Changing the form of government brings good fortune'—marks revolution's substantive phase. 'Changing the mandate with sincerity' is Ge's core principle: revolution must be built on integrity, changing old order in the name of justice. When the reformer's sincerity is recognized, all resistance dissolves."
+        "detailZh": "“悔亡，有孚改命，吉。”九四进入上卦，已近变革完成的关键阶段。此前的疑虑与后悔到此可消，因为诚信已经建立，可以正式“改命”——改变制度、角色、方向或使命。此爻之吉，在于变革不再停留在言辞，而已落实为新的秩序。要点是以信服人，以实绩定新局。",
+        "detailEn": "“Regret vanishes. With trust, one changes the mandate. Good fortune.” Here reform moves from discussion into institutional reality. Doubts fade because credibility has been established, making it possible to alter the mandate, direction, or governing order. The line is auspicious because transformation becomes concrete. Trust and demonstrated legitimacy now support the new arrangement."
       },
       {
         "position": 5,
@@ -55,8 +55,8 @@
         "textEn": "Nine in the fifth place: The great man changes like a tiger. Even before he questions the oracle he is believed.",
         "interpretationZh": "大人物如猛虎般果断变革，不必占卜即可取信于人。",
         "interpretationEn": "The great man transforms like a tiger. He is trusted even before consulting the oracle.",
-        "detailZh": "九五“大人虎变，未占有孚”——伟大的人物像老虎换毛一样进行变革，不需要占卜就能获得信任。“虎变”形容变革的威猛和彻底——老虎换毛后花纹更加鲜明美丽，象征变革后的新秩序更加清晰有力。九五居尊位，代表变革的领导者。真正伟大的变革者，其正义性和必要性不言自明（未占有孚），天下人自然信服。",
-        "detailEn": "The fifth nine—'The great man changes like a tiger. Even before he questions the oracle, he is believed'—describes revolution's leader. 'Tiger change' symbolizes bold, thorough transformation—like a tiger's stripes becoming more vivid after molting, the new order emerges clearer and more powerful. A truly great reformer's righteousness is self-evident; people naturally believe without needing proof."
+        "detailZh": "“大人虎变，未占有孚。”九五为君位，是革卦最尊的一爻。虎变象征威仪炳然、文采昭著，如虎纹焕然一新，不必占问，众人自然信服。真正的领导者在改革中所呈现的，不只是权力更替，而是人格、气象与制度愿景的整体更新。此爻主大格局的成功转型。",
+        "detailEn": "“The great person changes like a tiger. Even before divination, there is confidence.” In the ruling place, this is the highest expression of revolution. The tiger’s change suggests a powerful, unmistakable transformation whose authority is visible to all. The true leader does not merely replace personnel; he embodies a renewed vision, character, and order so convincingly that trust arises naturally."
       },
       {
         "position": 6,
@@ -64,27 +64,27 @@
         "textEn": "Six at the top: The superior man changes like a panther. The inferior man molts in the face. Starting brings misfortune. To remain persevering brings good fortune.",
         "interpretationZh": "君子如豹般优雅变革，小人只是表面顺从。此时不宜再动，安守正道则吉。",
         "interpretationEn": "The superior man transforms like a panther. The inferior man changes only his face. Remain still and persevere for fortune.",
-        "detailZh": "上六“君子豹变，小人革面，征凶，居贞吉”——君子像豹子换毛一样优雅地完成转变，小人则只是表面改变（革面）。变革完成后，不宜继续激进（征凶），应该安定下来巩固成果（居贞吉）。“豹变”比“虎变”更为细腻优雅，象征变革后期的精细调整。这一爻告诉我们：变革不能永远处于激烈状态，适时收手、巩固成果才是智慧。",
-        "detailEn": "The top six—'The superior man changes like a panther. The inferior man molts in the face. Starting brings misfortune. To remain persevering brings good fortune'—describes revolution's completion. The panther's change is more refined than the tiger's, symbolizing fine-tuning after major reform. Revolution cannot remain in a perpetual state of upheaval; knowing when to stop and consolidate is wisdom."
+        "detailZh": "“君子豹变，小人革面，征凶，居贞吉。”上六为变革之终，外在变化已经完成，但内在层次高下有别。君子如豹变，纹理清明，是由内而外的真实更新；小人只是“革面”，仅改外表，不改本质。此时若再继续躁进，反而有凶；安居守正，方能得吉。改革完成后，最重要的是定局守成。",
+        "detailEn": "“The noble one changes like a leopard; the petty one merely changes his face. Advancing brings misfortune. Remaining correct brings good fortune.” At the end of revolution, the visible transition is complete, but not all change is equal. The noble person is transformed in pattern and substance, while the petty person only alters appearances. Further aggressive action now becomes harmful. Once reform is complete, stability and principled maintenance are the path to good fortune."
       }
     ],
-    "overviewZh": "革卦是《周易》第四十九卦，由上兑（泽）下离（火）组成，泽中有火，火热蒸发泽水，象征变革与更新。“革”的本义是兽皮，引申为去旧换新、变革改制。水火本不相容，在革卦中却相互作用——火蒸发水、水灭火，旧的秩序在冲突中被打破，新的秩序在变革中诞生。革卦是《周易》中最具革命性的卦象，它告诉我们：当旧制度已经不适应时代，变革不仅是必要的，而且是天命所归。",
-    "overviewEn": "Ge (Revolution/Molting) is the 49th hexagram, composed of Dui (lake) above and Li (fire) below—fire within the lake, heat evaporating water, symbolizing transformation and renewal. 'Ge' originally means animal hide, extended to mean shedding the old for the new. Water and fire are naturally incompatible, yet in Ge they interact—fire evaporates water, water extinguishes fire—old order breaks down through conflict while new order emerges through revolution. Ge is the I Ching's most revolutionary hexagram, teaching that when old systems no longer serve the times, change is not only necessary but mandated by heaven.",
-    "judgmentDetailZh": "革卦卦辞“革：巳日乃孚，元亨利贞，悔亡”中“巳日乃孚”是关键——变革不能操之过急，要等到“巳日”（时机成熟之日）才能获得人们的信任（孚）。《彖传》进一步阐释：“天地革而四时成，汤武革命，顺乎天而应乎人”——天地的变革造就了四季更替，商汤和周武王的革命顺应天意、回应民心。这是《周易》对“革命”最经典的论述：真正的变革必须同时满足两个条件——顺乎天（符合历史规律）和应乎人（得到民众支持）。缺少任何一个，变革都不会成功。",
-    "judgmentDetailEn": "The judgment 'Revolution. On your own day you are believed. Supreme success, furthering through perseverance. Remorse disappears' emphasizes that revolution cannot be rushed—trust comes only when the time is ripe. The Commentary elaborates: 'Heaven and earth bring about revolution, and the four seasons complete themselves. Tang and Wu brought about political revolution in conformity with heaven and in accord with men.' True revolution must satisfy two conditions simultaneously: conforming to heaven (historical necessity) and according with people (popular support). Without either, revolution fails.",
-    "imageDetailZh": "象辞“泽中有火，革。君子以治历明时”将变革与历法联系起来。“治历明时”意为修订历法以明确时令——这是古代最重要的“变革”之一，因为历法关系到农业生产和社会秩序。每当旧历法不再准确，就必须进行改革。这个比喻告诉我们：变革的目的不是为了破坏，而是为了让事物重新与时代同步。就像调整时钟一样，当旧的标准不再准确时，必须勇于更新。",
-    "imageDetailEn": "The Image 'Fire in the lake: Revolution. The superior man sets the calendar in order and makes the seasons clear' connects revolution to calendar reform—one of antiquity's most important changes, as the calendar governed agriculture and social order. When the old calendar became inaccurate, reform was essential. This metaphor teaches that revolution's purpose is not destruction but resynchronization—like adjusting a clock when old standards no longer serve.",
-    "modernApplicationZh": "【事业】革卦是转型变革的最佳时机。如果公司的旧模式已经不适应市场，革卦鼓励大胆改革——但要注意“巳日乃孚”，变革需要充分准备和团队共识，不能独断专行。成功的变革需要“顺天应人”——既符合行业趋势，又得到团队支持。【感情】革卦在感情中代表关系的重大转变——可能是从朋友变为恋人，也可能是关系模式的根本改变。如果旧的相处方式已经产生问题，革卦鼓励坦诚沟通、共同改变。【财运】革卦象征投资策略的转型。如果旧的投资组合表现不佳，是时候大胆调整了。但变革要有依据，不能盲目跟风。【健康】革卦提示改变不良的生活习惯。如果长期的作息、饮食模式已经影响健康，现在是下定决心改变的好时机。“革”就是去旧换新，从根本上改善生活方式。",
-    "modernApplicationEn": "【Career】Ge signals the optimal time for transformation. If old business models no longer fit the market, Ge encourages bold reform—but remember 'trust comes when the time is ripe.' Successful change requires both industry alignment and team consensus.【Love】Ge represents major relationship transitions—perhaps from friends to lovers, or fundamental changes in how you relate. If old patterns cause problems, Ge encourages honest communication and mutual change.【Wealth】Ge symbolizes portfolio transformation. If old investments underperform, it's time for bold adjustment—but changes must be evidence-based, not trend-following.【Health】Ge prompts changing unhealthy habits. If long-standing lifestyle patterns harm your health, now is the time for decisive change. 'Revolution' means fundamentally improving your way of life.",
-    "historicalStoryZh": "革卦最经典的历史典故就是“汤武革命”。商汤推翻夏桀、周武王推翻商纣，这两次改朝换代被《周易》称为“革命”的典范——“顺乎天而应乎人”。商汤在伐夏之前发表了著名的《汤誓》，历数夏桀的罪行，争取民心；周武王在牧野之战前发表《牧誓》，同样以正义之名号召天下。两次革命都不是一时冲动，而是经过长期准备、等待时机成熟后的果断行动。近代的“戊戌变法”则是反面教材——变革操之过急、未获广泛支持，最终以失败告终，正应了“巳日乃孚”的警示。",
-    "historicalStoryEn": "The classic historical examples are the revolutions of Tang and Wu. King Tang overthrew the tyrant Jie of Xia, and King Wu overthrew the tyrant Zhou of Shang—both cited by the I Ching as model revolutions 'in conformity with heaven and in accord with men.' Both leaders prepared extensively and waited for the right moment before acting decisively. The failed Hundred Days' Reform of 1898 serves as a counterexample—rushed without broad support, it collapsed, perfectly illustrating the warning that trust comes only when timing is right.",
-    "relatedHexagramsNote": "革卦的综卦为鼎卦（第50卦），革为破旧、鼎为立新，先革后鼎，破旧立新是完整的变革过程；错卦为蒙卦（第4卦）。革与鼎的关系揭示了变革的完整逻辑：不能只破不立，革除旧制之后必须建立新制。",
+    "overviewZh": "第49卦为革卦，上兑下离，泽在上而火在下，呈现水火相遇、旧象将变之势。革的核心不是一时冲动的推翻，而是在时机成熟之后，顺应人心与天时所进行的正当变革。卦辞说“己日乃孚”，强调改革必须等到条件具备、信用建立、众意可从，才能真正获得支持。此卦既有锐意更新的魄力，也有审时度势的克制，说明凡事之变，最忌躁进与空喊口号。革不是为变而变，而是因旧制已弊、局势已移，不改则难以继续。对个人而言，革卦提醒人在成长中要敢于脱旧习、改旧路，但必须立足正道，先正其心，再动其行。对组织与时代而言，此卦象征制度更新、战略调整、身份转型与价值重塑，成败关键在于是否守正出新、以诚服众。",
+    "overviewEn": "Hexagram 49, Ge, is Revolution or Molting. With Lake above and Fire below, it depicts a tense but transformative meeting of forces in which the old form can no longer remain unchanged. The hexagram does not celebrate rebellion for its own sake; rather, it speaks of legitimate change carried out at the right time, with moral clarity and public trust. The phrase “when the day comes, there is confidence” suggests that true reform succeeds only when conditions ripen and people are ready to follow. Ge therefore combines courage with restraint. It teaches that change is necessary when an old order has become exhausted, but reckless action brings danger. For individuals, this hexagram points to inner renewal: abandoning stale habits, outdated identities, and inherited limitations. For leaders, it concerns structural reform, strategic transition, and the redefinition of roles and principles. The central lesson is that meaningful transformation must be rooted in integrity, timing, and credibility. When change is aligned with truth rather than vanity, regret disappears and renewal becomes auspicious.",
+    "judgmentDetailZh": "革卦卦辞曰：“革：己日乃孚，元亨利贞，悔亡。”所谓“己日”，并非随意指定某一天，而是指变革所需的时机已经成熟，旧有秩序到了非改不可的时候。《彖传》说：“革，水火相息，二女同居，其志不相得，曰革。己日乃孚，革而信之。文明以说，大亨以正，革而当，其悔乃亡。天地革而四时成，汤武革命，顺乎天而应乎人，革之时大矣哉。”这段话点出革卦的精义：一是矛盾积累到相息相克，变已不可避免；二是改革必须“文明以说”，既有理性判断，又能使人乐从；三是“革而当”，变得其时、得其位、得其道，才能消除后悔。故革不是暴烈的破坏，而是合乎天理人情的更新。只有守正，才能大亨；只有诚信，才能服众；只有顺时，才能使变革从动荡走向新生。",
+    "judgmentDetailEn": "The Judgment says: “Revolution. On one’s own day, there is confidence. Supreme success. Perseverance furthers. Regret vanishes.” The phrase does not merely refer to a calendar date; it means that reform must wait until its proper moment has truly arrived. The Tuan Commentary explains: “Ge means that water and fire extinguish each other; two daughters dwell together, but their intentions do not accord, therefore it is called Revolution. ‘On the proper day there is confidence’ means that through change one wins trust. Clarity joined with joy brings great success through correctness; when the revolution is timely, regret disappears. Heaven and earth transform, and the four seasons are completed. Tang and Wu carried out revolution, following Heaven and answering humanity. Great indeed is the time of Revolution.” This commentary reveals the structure of the hexagram. Change becomes necessary when contradictions can no longer coexist. Yet successful reform requires lucidity, legitimacy, and the ability to win willing support. Revolution is not blind destruction but rightful renewal. When change is ethically grounded, correctly timed, and openly communicated, it aligns with both higher principle and human need. Then what first appears dangerous becomes the path to lasting order.",
+    "imageDetailZh": "《象传》曰：“泽中有火，革；君子以治历明时。”泽中藏火，表面柔和，内里炽烈，象征旧局之中已孕育新机，变化正在酝酿。火在下而欲上，泽在上而能润下，两者相遇，既不安定，也促成转换，正如社会秩序、人生阶段或内在信念在临界点时，常出现外表平静、内部翻涌的状态。君子观此卦象，不是仓促求变，而是“治历明时”，即校正历法、辨明时序，懂得何时守成、何时更新。革卦之象告诉人，真正高明的变革者首先是懂节律的人，能看见旧周期的终点，也能识别新周期的起点。若不明时，改革就容易沦为折腾；若能明时，则变化会像四时更替一样自然有序，虽有震动，终归成章。",
+    "imageDetailEn": "The Image says: “Fire in the lake: the image of Revolution. Thus the noble one sets the calendar in order and makes the seasons clear.” Fire hidden within the lake suggests intense transformation concealed beneath a composed surface. Outwardly things may still appear stable, yet inwardly the old arrangement is already becoming unsustainable. This is the psychology of transition: a new order is forming before it is visible. The noble person does not rush into dramatic gestures. Instead, he “orders the calendar and clarifies the seasons,” meaning that he studies timing, cycles, sequence, and ripeness. Revolution is therefore not only about action but about discernment. One must know when a phase has ended and when a new one may rightly begin. The image teaches that wise reform follows rhythm rather than impulse. When timing is ignored, change turns into agitation. When timing is understood, transformation becomes as natural and necessary as the turning of the seasons. The old gives way not through chaos alone, but through a clear recognition that the moment for renewal has genuinely arrived.",
+    "modernApplicationZh": "事业：革卦在事业上主调整与转型，适合组织改制、品牌升级、岗位切换、战略重订，但前提是问题已经看清、共识已经逐步形成。若只因焦虑而频繁变动，反而会失信于团队。感情：此卦提示关系进入旧模式难以维系的阶段，若双方愿意坦诚沟通、更新相处方式，则可重获新生；若只停留在表面妥协，则只是“革面”而非革心。财运：财务上适合优化结构、止损旧项目、淘汰低效投入，重整资源配置，不利盲目追逐风口。真正的获利来自看准趋势后的果断换轨。健康：多与内分泌、情绪压力、炎症反复及作息失衡有关，关键在改变旧生活习惯，如饮食、睡眠、运动与压力管理。总体而言，革卦在现代生活中代表主动更新、断舍离和系统升级。它要求人既有改变的勇气，也有承担后果的成熟。最好的变化不是情绪化地推翻一切，而是在深思熟虑后，让旧我、旧局、旧法自然退场，为更合时宜的新秩序腾出空间。",
+    "modernApplicationEn": "In modern life, Hexagram 49 often points to transition, restructuring, and deliberate reinvention. In career matters, it favors reform: changing roles, redesigning a business model, updating a brand, or replacing ineffective systems. But success depends on preparation and credibility. Sudden shifts driven by panic can damage trust, while well-timed reform can revive a stagnant organization. In relationships, Ge suggests that an old pattern no longer works. Honest conversation, new agreements, and emotional maturity can renew the bond; superficial adjustment, however, only changes appearances. In finances, this hexagram supports cutting losses, reallocating resources, and leaving outdated ventures behind. It is not a sign for impulsive speculation, but for strategic repositioning based on clear insight. In health, it often indicates that recovery requires lifestyle reform rather than temporary fixes: changing sleep, diet, stress habits, and emotional patterns. Overall, Ge speaks to courageous but disciplined renewal. It asks a person not merely to destroy the old, but to replace it with something more truthful, sustainable, and timely. Real transformation is not performance. It is the hard, honest work of becoming aligned with a new reality.",
+    "historicalStoryZh": "革卦常被联系到商汤伐桀、周武王伐纣之“革命”意义。《彖传》明言：“汤武革命，顺乎天而应乎人。”这里的革命不是现代意义上无限扩张的斗争，而是当旧王朝失德失道、民心尽失时，以合乎天命与民意的方式完成政治更新。商汤并非轻率起兵，而是在夏桀暴虐无道、天下离心后，方才举义；武王亦是在纣王荒淫残酷、诸侯归心之后，才会师牧野，一举定周。革卦借此说明，真正能够成功的变革，不靠一时血气，而靠长久的德行积累、时机判断与民众信任。若名分未正、人心未附，纵然口号响亮，也只是妄动。故历史中的“革”，其本质是去旧弊、立新命，以正当性取代蛮力，以更新秩序回应时代呼唤。",
+    "historicalStoryEn": "Hexagram 49 is traditionally associated with the great dynastic changes of Chinese history, especially the overthrow of Xia by Tang and of Shang by King Wu of Zhou. The Tuan Commentary explicitly says: “Tang and Wu carried out revolution, following Heaven and responding to the people.” In this classical sense, revolution does not mean endless upheaval. It means the rightful replacement of a corrupt order once virtue has collapsed and public trust is gone. Tang did not rise carelessly; he acted only after Jie of Xia had become tyrannical and widely despised. Likewise, King Wu moved against Zhou only when the Shang ruler had lost legitimacy and the hearts of the people had turned away. The hexagram uses these examples to show that successful change requires moral basis, favorable timing, and human support. Without legitimacy, bold action becomes mere recklessness. With legitimacy, change becomes restoration. Thus Ge teaches that true revolution is not fueled by rage alone, but by the disciplined replacement of decay with a more just and living order.",
+    "relatedHexagramsNote": "革与鼎常相对观。革重在破旧更新，是改变旧制度、旧关系、旧身份；鼎则重在变后建立新秩序、养成新文明。若说革是“改命”，鼎便是“定命”。又与随卦可参，随讲顺势而从，革讲时至而变，先能随时，后能革新。",
     "references": [
-      "《周易》",
-      "《易传·彖传》",
-      "《易传·象传》",
-      "《尚书·汤誓》",
-      "《尚书·牧誓》"
+      "《周易·革卦》",
+      "《彖传·革》",
+      "《象传·革》",
+      "王弼《周易注》",
+      "孔颖达《周易正义》"
     ]
   },
   {
@@ -106,43 +106,74 @@
         "textZh": "初六：鼎颠趾，利出否，得妾以其子，无咎。",
         "textEn": "Six at the beginning: A caldron with legs upturned. Furthers removal of stagnating stuff. One takes a concubine for the sake of her son. No blame.",
         "interpretationZh": "鼎翻倒倾出脚，有利于倒出陈旧之物。纳妾得子，无过失。",
-        "interpretationEn": "The caldron is overturned to pour out the old. Taking a concubine for her son brings no blame."
+        "interpretationEn": "The caldron is overturned to pour out the old. Taking a concubine for her son brings no blame.",
+        "detailZh": "‘鼎颠趾，利出否，得妾以其子，无咎。’初六居下，为鼎足之象。鼎翻其趾，看似失常，实则有利于倒出腐败污秽之物，属于先乱后治、先清后用。‘得妾以其子’喻地位虽卑，却因所成之功而被接纳。此爻提示：开局阶段不怕暴露问题，关键是借调整清除积弊。只要动机端正，方法得当，暂时的失序不是过错，反而是更新所必经。",
+        "detailEn": "‘The caldron is overturned by its feet. It is favorable to remove what is stagnant. One gains a concubine for the sake of her son. No blame.’ At the beginning, the vessel is not yet in stable use. The overturning seems improper, yet it serves the necessary purpose of emptying out corruption and residue. This is the logic of cleansing before refinement. The secondary image suggests that even one of low status may be accepted because of the value brought forth. The line teaches that early disorder is not always failure. If problems are exposed in order to remove what is rotten, the disruption is justified and can become the first step toward renewal."
       },
       {
         "position": 2,
         "textZh": "九二：鼎有实，我仇有疾，不我能即，吉。",
         "textEn": "Nine in the second place: There is food in the caldron. My comrades are envious, but they cannot harm me. Good fortune.",
         "interpretationZh": "鼎中有食物，同伴虽然嫉妒但无法伤害我，吉利。",
-        "interpretationEn": "The caldron is full. Envious companions cannot reach me. Good fortune."
+        "interpretationEn": "The caldron is full. Envious companions cannot reach me. Good fortune.",
+        "detailZh": "‘鼎有实，我仇有疾，不我能即，吉。’九二刚中而应六五，是鼎中有实之象，说明内容充实、才德可信。虽有嫉妒者、敌对者，但对方自有病弱，不能近害于我。此爻最重要的是‘有实’：真正的实力会形成保护，不必急于争辩或反击。做人做事只要内在扎实、位置得当，小人虽忌，也难撼动根本，因此终归吉利。",
+        "detailEn": "‘The caldron contains substance. My rivals are ill and cannot approach me. Good fortune.’ This line is firm, centered, and in proper correspondence with the fifth line. The vessel is filled with real content: capability, integrity, and value. Because there is substance, hostility from rivals cannot effectively harm it. The line’s key phrase is ‘contains substance.’ Genuine merit becomes its own defense. One need not waste energy on every opponent. When inner worth is real and one’s place is correctly held, envy may exist, but it cannot truly come near."
       },
       {
         "position": 3,
         "textZh": "九三：鼎耳革，其行塞，雉膏不食，方雨亏悔，终吉。",
         "textEn": "Nine in the third place: The handle of the caldron is altered. One is impeded in his way of life. The fat of the pheasant is not eaten. Once rain falls, remorse is spent. Good fortune comes in the end.",
         "interpretationZh": "鼎耳被改变，行动受阻，美味不得享用。待到下雨时悔恨消散，终获吉利。",
-        "interpretationEn": "The caldron's handle is changed; progress is blocked. When rain comes, remorse fades and fortune arrives."
+        "interpretationEn": "The caldron's handle is changed; progress is blocked. When rain comes, remorse fades and fortune arrives.",
+        "detailZh": "‘鼎耳革，其行塞，雉膏不食，方雨亏悔，终吉。’鼎耳为提挈之处，今被改变，故运转受阻，好东西一时也不能享用。九三处下卦之上，阳刚过急，常有才而未得其用。‘方雨’象征阴阳调和的契机，一旦时机转化，悔意便减，最终仍吉。此爻说明：怀才不遇、流程卡顿、计划暂缓，并非终局；要耐心等待条件成熟，不可因暂时受阻而自毁其器。",
+        "detailEn": "‘The ears of the caldron are altered, so its carrying is obstructed. The pheasant fat is not eaten. When rain comes, regret diminishes. In the end, good fortune.’ The handles by which the vessel is lifted are impaired, so movement is blocked and what is fine within cannot yet be enjoyed. This often describes a person of real ability whose use is temporarily frustrated by timing, structure, or access. Yet the coming rain signals relief, harmony, and release from dryness. Thus the obstruction is not final. The line advises patience when talent is delayed by circumstance. Do not ruin the vessel through frustration; when conditions shift, value can still be realized."
       },
       {
         "position": 4,
         "textZh": "九四：鼎折足，覆公餗，其形渥，凶。",
         "textEn": "Nine in the fourth place: The legs of the caldron are broken. The prince's meal is spilled and his person is soiled. Misfortune.",
         "interpretationZh": "鼎足折断，打翻了王公的食物，弄得一身狼狈，凶险。",
-        "interpretationEn": "The caldron's legs break. The prince's meal is spilled and he is soiled. Misfortune."
+        "interpretationEn": "The caldron's legs break. The prince's meal is spilled and he is soiled. Misfortune.",
+        "detailZh": "‘鼎折足，覆公餗，其形渥，凶。’九四近君而失中，像鼎足断裂，承载不住，以致倾覆贵重之食，自身亦狼狈蒙羞。此爻是鼎卦中最凶之处，警告德薄位高、能力不足而任重，终必坏事。无论在组织、家庭还是事业中，若基础不稳却强行担大任，后果往往不仅是失败，还会连累整体。故此爻强调承重之前先固根基，名位不可僭越。",
+        "detailEn": "‘The caldron’s legs are broken. The prince’s meal is spilled, and one’s person is soiled. Misfortune.’ This is the most dangerous line of the hexagram. The vessel can no longer bear weight, so what is valuable is overturned and disgrace follows. It portrays someone too weak for the burden carried, too unstable for the position held, or too close to power without the balance required. The warning is severe: when responsibility exceeds capacity, collapse harms not only oneself but also what has been entrusted. Structure must be strengthened before heavy duties are assumed."
       },
       {
         "position": 5,
         "textZh": "六五：鼎黄耳金铉，利贞。",
         "textEn": "Six in the fifth place: The caldron has yellow handles, golden carrying rings. Perseverance furthers.",
         "interpretationZh": "鼎有黄色的耳和金色的铉，坚守正道则有利。",
-        "interpretationEn": "The caldron has yellow handles and golden rings. Perseverance furthers."
+        "interpretationEn": "The caldron has yellow handles and golden rings. Perseverance furthers.",
+        "detailZh": "‘鼎黄耳金铉，利贞。’六五柔中居尊，为鼎卦主爻。黄为中和之色，金铉为坚固而华美的提系之具，象征以柔居尊而得中道，能任贤使能，故鼎器完善。此爻之吉，不在刚强压人，而在中正有度、虚心纳贤。对现实而言，这是领导者最好的状态：自己不必样样逞强，但要有判断力、容人度和正当性。守正则利，偏私则损。",
+        "detailEn": "‘The caldron has yellow handles and golden carrying rings. Perseverance is favorable.’ This is the ruling line of the hexagram. Yellow signifies centrality and balance; golden rings suggest strength joined with refinement. A yielding ruler in the proper place succeeds by moderation, legitimacy, and the wise use of capable people. The beauty of this line lies not in force, but in centered authority. It describes leadership that is dignified, receptive, and correctly ordered. Such a person does not need harshness to sustain power; steadfast correctness is enough."
       },
       {
         "position": 6,
         "textZh": "上九：鼎玉铉，大吉，无不利。",
         "textEn": "Nine at the top: The caldron has rings of jade. Great good fortune. Nothing that would not act to further.",
         "interpretationZh": "鼎有玉铉，大吉大利，无往不利。",
-        "interpretationEn": "The caldron has jade rings. Great good fortune. Everything furthers."
+        "interpretationEn": "The caldron has jade rings. Great good fortune. Everything furthers.",
+        "detailZh": "‘鼎玉铉，大吉，无不利。’上九居鼎之终，象征器用之道已达成熟完成。玉铉比金更温润高洁，表示在坚固之外，更添德性与文采，故为大吉。此爻意味着一个人或一件事不但可用，而且达到上乘境界：有能力，也有风度；有成果，也有品格。鼎至此，已不仅是功能性的器具，更成为文明与德行的载体。故无所不利。",
+        "detailEn": "‘The caldron has jade carrying rings. Great good fortune. Nothing is unfavorable.’ At the top, the vessel reaches its fullest refinement. Jade surpasses metal in symbolic nobility, suggesting that utility has been elevated by virtue, elegance, and moral finish. This line represents consummation: not merely being effective, but being excellent in both function and character. What is carried is secure, and the manner of carrying it is beautiful. Thus the cauldron becomes more than a tool; it becomes a bearer of culture and worth. Hence great good fortune, with advantage in all directions."
       }
+    ],
+    "overviewZh": "鼎卦，上离下巽，木上有火，正是烹饪祭享之象。鼎在古代不仅是炊器，更是礼器、重器，象征文化、制度、权柄与文明之更新。此卦的核心，不只是‘煮成一锅东西’，而是把杂乱之材转化为可供众人共享的成果，把个人之才升华为可承担使命的器用。鼎卦因此常被视为革故之后的成器之卦：经历震荡与调整后，进入整理资源、安顿位置、凝聚人心的阶段。其义在于以正位承载天命，以德行容纳众力，使内容充实、结构稳固、用途高贵。对人而言，鼎卦提醒我们：真正的成长不在炫耀锋芒，而在能否成为承载价值、转化价值、分配价值的‘器’。器正则事成，位正则名立，火候得当，则吉亨可期。",
+    "overviewEn": "Hexagram 50, The Caldron, is formed by Fire above and Wind/Wood below. The image is wood feeding fire beneath a ritual vessel, suggesting not merely cooking, but transformation, refinement, and sacred offering. In early Chinese culture, the ding was both a practical pot and a ceremonial bronze vessel, tied to authority, legitimacy, and civilization itself. Thus this hexagram speaks of becoming a worthy vessel: taking raw materials, mixed conditions, or unformed talent and turning them into something nourishing, ordered, and fit for collective use. It often follows a time of change, when old structures have been broken and a new order must be established. The emphasis is not on disruption but on proper placement, inner substance, and cultivated form. For a person, The Caldron asks whether one can hold responsibility, refine one’s gifts, and serve something larger than private desire. When the vessel is sound, the contents are real, and the fire is rightly tended, transformation becomes blessing, and both honor and usefulness can endure.",
+    "judgmentDetailZh": "卦辞曰：‘鼎：元吉，亨。’所谓元吉，不是轻易得福，而是因器成、位正、德备，故有根本性的吉祥。鼎为养贤、享帝、化生之器，表示一切事务到了可以凝聚成果、提升层次的阶段。《彖传》说：‘鼎，象也。以木巽火，亨饪也。圣人亨以享上帝，而大亨以养圣贤。巽而耳目聪明，柔进而上行，得中而应乎刚，是以元亨。’这段话点出三层意义：其一，鼎的本质在于烹饪与转化，把生涩之物化为可用之物；其二，鼎之大用在于祭祀与养贤，意味着事业若要长久，必须服务更高秩序，而非一己私利；其三，六五柔居尊位，下应九二刚实，正是中和配合、上下相应之象，因此能够亨通。鼎卦之吉，来自制度、德行、能力三者相配，提醒人不可徒有形式，也不可仅有内容而失其秩序。",
+    "judgmentDetailEn": "The Judgment says, ‘The Caldron. Supreme good fortune. Success.’ This good fortune is not accidental ease, but the blessing that arises when form, position, and substance come properly together. The ding is the vessel of refinement, offering, and nourishment, so the hexagram marks a stage when scattered effort can be gathered into meaningful achievement. The Tuan Commentary explains: ‘The Caldron is an image. Wood enters beneath fire: this is the image of cooking. The sage cooks to offer sacrifice to the Supreme Deity, and makes great feasts to nourish the worthy and the able. Gentle penetration, with ears and eyes clear; the yielding advances and moves upward, obtaining the center and responding to the firm. Therefore there is great success.’ This points to three layers of meaning. First, the essence of the hexagram is transformation: raw material is refined into something fit for use. Second, its highest function is service to what is above and nourishment of what is best in society, so true success requires alignment with a larger order, not mere self-interest. Third, the structure of the hexagram shows proper correspondence between softness and firmness, ruler and minister, giving rise to stable success. The promise of The Caldron rests on worthy content held in rightful form.",
+    "imageDetailZh": "《象传》曰：‘木上有火，鼎；君子以正位凝命。’木在下而生火，火在上而成熟万物，这不是瞬间爆发，而是持续加温、渐次成就的过程。鼎的关键不在火猛，而在器稳、位正、承载有度。君子观此象，明白自身若要承担使命，先要把位置摆正：什么身份说什么话，居什么位尽什么责。‘凝命’不是宿命，而是将分散的才能、机缘与责任凝成一条清晰道路。鼎象也说明，文明与组织并非天然形成，而是靠长期调和：下面有人供材，上面有人掌火，中间有器承之，方能化生可用之物。因此此卦既讲个人修养，也讲团队治理，强调秩序中的创造、定力中的更新。",
+    "imageDetailEn": "The Image says, ‘Fire over wood: The Caldron. Thus the noble one corrects his position and consolidates his mandate.’ Wood below feeds the fire above, creating a steady process of heating and transformation. This is not the violence of sudden flame, but the disciplined, sustained work by which raw material becomes nourishment. The lesson of the cauldron is not simply intensity; it is stability of vessel, correctness of placement, and fitness of purpose. To “correct one’s position” means to stand in the role one truly occupies and fulfill its responsibilities without confusion or vanity. To “consolidate the mandate” means to gather scattered talent, opportunity, and duty into coherent direction. The image also suggests that culture and order do not arise by accident: there must be material below, guiding fire above, and a vessel in the middle strong enough to hold the whole process. So this hexagram applies both to self-cultivation and to leadership. It teaches renewal through order, creativity within form, and transformation that depends on disciplined structure rather than impulse alone.",
+    "modernApplicationZh": "事业上，鼎卦主‘成器’与‘升格’。适合做品牌升级、组织重整、制度优化、人才培养，也利于把零散经验整理成方法论。若你正被委以重任，此卦提醒先充实内容，再稳住结构，切忌虚名大于实质。感情上，鼎象征关系进入可共同经营、彼此滋养的阶段，不宜只谈热情而无承担；若双方愿意调整角色、建立稳定边界，关系可由吸引转为长久。财运上，财不在偏门突进，而在凭专业、信誉、资源整合获得持续收益，尤其有利餐饮、教育、文化、咨询、管理等重服务与口碑的领域。健康上，鼎与脾胃、消化、代谢、内分泌调理相关，提示生活节律、饮食结构和情绪管理都需‘文火慢养’，不可急进。总体来说，鼎卦适合做深做稳，把自己从‘可用之人’炼成‘不可替代之器’。",
+    "modernApplicationEn": "In modern life, The Caldron speaks strongly to maturation, refinement, and elevation of function. In career matters, it favors organizational improvement, professional upgrading, brand building, systems work, leadership development, and turning scattered experience into a coherent method. If someone is being entrusted with greater responsibility, this hexagram advises them to strengthen substance before displaying status. In relationships, it suggests a phase in which mutual nourishment matters more than excitement alone. A bond becomes durable when both people are willing to assume roles responsibly, create healthy structure, and transform attraction into shared life. Financially, this is not a sign of reckless speculation, but of steady gains through expertise, credibility, service quality, and wise integration of resources. It is especially favorable for fields linked to culture, education, hospitality, consulting, management, and any work where reputation and refinement matter. In health, The Caldron points toward digestion, metabolism, and the need for steady regulation rather than extremes. Good food, sustainable routines, emotional balance, and gradual care are emphasized. Overall, this hexagram encourages becoming not just useful, but deeply reliable: a person or structure able to hold value, transform it, and pass it on well.",
+    "historicalStoryZh": "鼎在中国古代政治文化中意义极重，夏禹铸九鼎的传说最能说明其象征。九鼎本为镇国重器，代表天下九州与王权正统，不只是器物，更是‘天命有所归’的象征。后世问鼎中原，便是争天下、争正统之意。鼎卦的精神正与此相通：真正重要的，不是夺器，而是配不配承载那只鼎。若德薄而位尊，便如九四‘鼎折足’；若中正有实，则如六五、上九，器美而用大。也因此，鼎卦常被用来比喻贤才居位、制度成熟、国家文化由乱而治的过程。它告诉人，重器不可轻举，荣耀必须由德行与内容来支撑，否则外表再华美，也难逃倾覆之忧。",
+    "historicalStoryEn": "In classical Chinese political culture, the ding carried immense symbolic weight. The legend of Yu the Great casting the Nine Tripods best illustrates this. These vessels were said to represent the nine provinces of the realm and the legitimacy of royal authority. They were not merely objects, but embodiments of where Heaven’s mandate resided. This is why later generations used the phrase “to inquire after the tripods” as a metaphor for contesting imperial power. The spirit of Hexagram 50 closely matches this symbolism. The true issue is not seizing the vessel, but whether one is worthy to bear it. If virtue is thin and position too high, one meets the danger of the fourth line, where the cauldron’s legs break. If one is centered, substantial, and properly aligned, one reaches the promise of the fifth and top lines, where the vessel becomes both beautiful and greatly useful. Thus The Caldron has long served as a metaphor for capable ministers in office, mature institutions, and the cultural stabilization of a state after disorder.",
+    "relatedHexagramsNote": "鼎卦常与49卦革并观：革是变革、去旧，鼎是定制、成器。没有革，鼎易守旧僵化；没有鼎，革则只剩破坏而无建设。革解决‘要不要变’，鼎回答‘变完之后如何建立新秩序’。二者合看，才是完整的更新之道。",
+    "references": [
+      "《周易·鼎卦》",
+      "《彖传·鼎》",
+      "《象传·鼎》",
+      "王弼《周易注》",
+      "孔颖达《周易正义》",
+      "朱熹《周易本义》"
     ]
   },
   {
@@ -164,43 +195,73 @@
         "textZh": "初九：震来虩虩，后笑言哑哑，吉。",
         "textEn": "Nine at the beginning: Shock comes — oh, oh! Then follow laughing words — ha, ha! Good fortune.",
         "interpretationZh": "雷震到来令人恐惧，之后谈笑自若，吉利。",
-        "interpretationEn": "Shock arrives with terror, then laughter follows. Good fortune."
+        "interpretationEn": "Shock arrives with terror, then laughter follows. Good fortune.",
+        "detailZh": "初九居震之始，阳刚发动，最先承受突如其来的震惊，所以“震来虩虩”。但因其刚而能自持，故能很快由惊转定，终至“笑言哑哑，吉”。此爻说明，面对突发事件，第一反应惊惧并不可耻，关键在于能否迅速恢复秩序。越是局势初动，越要稳住心神，不可自乱阵脚。",
+        "detailEn": "The first yang line stands at the beginning of shock and is the first to encounter the sudden disturbance, hence “shock comes terrifyingly.” Yet because it possesses inner firmness, it can regain composure and eventually arrive at “laughter and easy speech—good fortune.” This line teaches that an initial reaction of fear is not shameful. What matters is the speed and integrity with which one recovers balance. At the onset of crisis, steadiness is everything."
       },
       {
         "position": 2,
         "textZh": "六二：震来厉，亿丧贝，跻于九陵，勿逐，七日得。",
         "textEn": "Six in the second place: Shock comes bringing danger. A hundred thousand times you lose your treasures and must climb the nine hills. Do not go in pursuit of them. After seven days you will get them back again.",
         "interpretationZh": "雷震带来危险，丧失财宝，登上高山避难。不必追寻，七日后自然失而复得。",
-        "interpretationEn": "Shock brings danger and loss of treasures. Climb to safety. Do not pursue; in seven days they return."
+        "interpretationEn": "Shock brings danger and loss of treasures. Climb to safety. Do not pursue; in seven days they return.",
+        "detailZh": "六二以阴居柔，处震中而近险，故曰“震来厉”。“亿丧贝，跻于九陵”象征一时损失、退避高处，以避其锋芒；“勿逐，七日得”则告诫不必仓促追索，时机一过，自可复得。此爻强调在震荡中宜先保全自身，不可因眼前损失而冒进，懂得暂退与等待，反而能守住长远利益。",
+        "detailEn": "The second line is yielding and occupies a vulnerable place within the shock, so the text says, “shock comes with danger.” Losing shells and climbing to high hills suggests temporary loss and strategic withdrawal to avoid the immediate force of danger. “Do not pursue; in seven days you will recover it” teaches patience. In times of upheaval, protecting oneself matters more than chasing immediate recovery. Wise retreat may preserve greater gain."
       },
       {
         "position": 3,
         "textZh": "六三：震苏苏，震行无眚。",
         "textEn": "Six in the third place: Shock comes and makes one distraught. If shock spurs to action, one remains free of misfortune.",
         "interpretationZh": "雷震令人心神不安，若因震动而奋起行动，则无灾祸。",
-        "interpretationEn": "Shock causes distress. If it spurs one to action, there will be no misfortune."
+        "interpretationEn": "Shock causes distress. If it spurs one to action, there will be no misfortune.",
+        "detailZh": "六三曰“震苏苏，震行无眚”。“苏苏”有不安、惕惧反复之意，表示此时人虽未完全安定，内心仍有余悸。但难得的是，在不安中仍继续前行，因此“无眚”。这不是全然无惧后的行动，而是带着警醒继续做正确的事。它提示人们，不必等到情绪彻底平复才行动，只要方向正、步伐稳，便可免于灾咎。",
+        "detailEn": "The third line says, “shock comes uneasily; if one moves forward under shock, there is no blame.” The repeated unease suggests lingering fear and instability. Yet the line’s merit is that action continues despite this emotional residue. This is not fearless action, but alert action. It teaches that one need not wait for perfect calm before proceeding; if direction is right and conduct remains careful, one can move through disturbance without fault."
       },
       {
         "position": 4,
         "textZh": "九四：震遂泥。",
         "textEn": "Nine in the fourth place: Shock is mired.",
         "interpretationZh": "雷震陷入泥沼，行动受阻，难以振作。",
-        "interpretationEn": "Shock becomes mired. Movement is impeded and one cannot rally."
+        "interpretationEn": "Shock becomes mired. Movement is impeded and one cannot rally.",
+        "detailZh": "九四曰“震遂泥”，阳刚之才陷于阴柔之地，如车马陷泥，虽有行动意志，却被环境拖滞。此爻常指人在震荡之后未能及时调整，结果被复杂局面牵制，进退失据。其教训是：危机中仅有勇气不够，还需方法与时机。若一味硬冲，反而深陷泥淖，失去原有的主动。",
+        "detailEn": "The fourth line reads, “shock leads into mud.” Though it is a strong line, it finds itself in a place where movement becomes bogged down, like a cart stuck in wet ground. This often describes the person who still wants to act after disruption but has failed to adjust to conditions, and so becomes entangled. The lesson is clear: courage alone is insufficient in crisis. Without timing and method, forceful advance turns into immobilization."
       },
       {
         "position": 5,
         "textZh": "六五：震往来厉，亿无丧，有事。",
         "textEn": "Six in the fifth place: Shock goes hither and thither. Danger. However, nothing at all is lost. Yet there are things to be done.",
         "interpretationZh": "雷震往来反复，虽有危险但不会有损失，仍有事务需要处理。",
-        "interpretationEn": "Shock comes and goes with danger. Nothing is lost, yet there is work to be done."
+        "interpretationEn": "Shock comes and goes with danger. Nothing is lost, yet there is work to be done.",
+        "detailZh": "六五居尊位而处震中，故曰“震往来厉，亿无丧，有事”。上下往来皆见危险，说明身居要位者在动荡中压力最大，须反复应对各方变化。所幸“无丧”，表示若能守中尽责，根本尚可保全；“有事”则意谓不能空谈镇定，而要实际处理事务。此爻强调领导者在危机中既要承压，也要担当，以持续作为稳定大局。",
+        "detailEn": "The fifth line occupies the ruling position in the midst of shock, so it says, “coming and going under shock brings danger; yet nothing is lost, and there is business to attend to.” A person in authority faces pressure from all directions during upheaval. Still, “nothing is lost” indicates that the essentials can be preserved if central balance is maintained. “There is business to attend to” means composure must be expressed through concrete responsibility, not empty calm."
       },
       {
         "position": 6,
         "textZh": "上六：震索索，视矍矍，征凶。震不于其躬，于其邻，无咎。婚媾有言。",
         "textEn": "Six at the top: Shock brings ruin and terrified gazing around. Going ahead brings misfortune. If it has not yet reached one's own body but has reached one's neighbor first, there is no blame. One's comrades have something to talk about.",
         "interpretationZh": "雷震令人惊恐不安，四处张望。前行则凶。若雷震尚未及身而先及邻人，则无咎。婚姻之事有口舌。",
-        "interpretationEn": "Shock brings terror and anxious gazing. Going forward is misfortune. If shock strikes the neighbor first, no blame. There will be talk about marriages."
+        "interpretationEn": "Shock brings terror and anxious gazing. Going forward is misfortune. If shock strikes the neighbor first, no blame. There will be talk about marriages.",
+        "detailZh": "上六曰“震索索，视矍矍，征凶。震不于其躬，于其邻，无咎。婚媾有言。”此爻写惊惧已极，神色惶惶，若仍强行进取则凶。好在震未直接及身，而发于邻近，故尚可借旁人之变自作警惕，免于大咎。至于“婚媾有言”，则指关系、结盟、婚姻等层面容易因风声与猜疑生出口舌。其义在于：当恐惧蔓延时，切勿贸然行动，应先观察局势，从周遭的警讯中修正自己。",
+        "detailEn": "The top line says, “shock in trembling and fearful glances; to advance brings misfortune. The shock does not strike one’s own person but one’s neighbor—no blame. In marriage alliances there is talk.” Here fear has reached an extreme. If one still pushes forward aggressively, misfortune follows. Yet because the disturbance is seen through events nearby rather than directly upon oneself, there remains a chance to learn from warning signs and avoid major fault. The mention of marriage and talk suggests tension, suspicion, or rumor in close relationships and alliances. The teaching is to refrain from rash action when fear spreads and instead correct oneself through attentive observation."
       }
+    ],
+    "overviewZh": "第51卦为震卦，重震为雷，上下皆震，象征突发的震动、惊惧、警醒与由动而生的生机。此卦并不单纯言祸患，而是指出人在骤然变局中，若能守中不乱、心神不失，便可由惊而定，由定而通。所谓“震来虩虩，笑言哑哑”，正说明初闻变动时人人惊惧，但若能迅速调整，最终反而能恢复常态，甚至更见从容。震也意味着唤醒，像春雷惊百虫，使沉滞之气重新流动。人生遇到震卦，往往表示外部环境突然变化、内部情绪受到冲击，但真正的重点不在于“有没有震动”，而在于“能否在震动中保持本心”。此卦启示人以敬畏面对无常，以警惕修正自身，以行动取代僵滞，因此是危机之卦，也是觉醒之卦。",
+    "overviewEn": "Hexagram 51, Zhen, is the doubled trigram of Thunder, with thunder above and thunder below. It signifies shock, sudden movement, alarm, awakening, and the vitality released through disturbance. This hexagram does not merely describe calamity; rather, it teaches that when unexpected upheaval arrives, one can still attain success if one does not lose inner composure. The line “shock comes terrifyingly, then laughter and words return” shows a movement from fear to recovery. Thunder startles, but it also awakens what has been dormant, much like the first spring thunder stirring all living things. In life, this hexagram often appears when circumstances shift abruptly, emotions are rattled, or old routines are broken open. Yet its real lesson is not whether change occurs, but whether one can remain centered within it. Zhen calls for reverence, alertness, and self-examination. It warns against numbness and complacency while encouraging resilient action. Thus it is both a hexagram of crisis and a hexagram of renewal: the shock that disrupts is also the force that revives, clarifies, and sets things in motion again.",
+    "judgmentDetailZh": "卦辞言“震：亨”，看似矛盾，因为震本为惊惧，何以能亨？关键正在《彖传》所释：“震，亨。震来虩虩，恐致福也；笑言哑哑，后有则也。震惊百里，惊远而惧迩也；出可以守宗庙社稷，以为祭主也。”意思是说，真正的震动使人心生敬畏，而敬畏反能导向福祉；经历惊惧之后仍能有法度、有秩序，于是笑言自然恢复。所谓“震惊百里，不丧匕鬯”，并非要求人毫无惊惶，而是强调在重大冲击下，核心责任、礼仪与担当不能丢失。此卦所赞赏的，不是麻木无感，而是虽受震动却不失其主。彖传进一步把这种能力提升到守宗庙社稷的层面，说明震卦考验的是一个人在关键时刻是否仍可靠、能主持大局。因此，震卦之“亨”来自敬慎，不来自侥幸；来自经历惊变而建立秩序，不来自逃避变化。",
+    "judgmentDetailEn": "The Judgment says, “Zhen: success,” which may seem paradoxical, since thunder and shock are usually associated with fear. The key lies in the Tuan Commentary: “Zhen, success. When shock comes terrifyingly, fear brings blessing. When laughter and speech return, there is afterward a rule to follow. It startles for a hundred miles: it alarms those far away and makes those nearby reverent. One may go forth and yet preserve the ancestral temple and the altars of state, thus becoming fit to preside over sacrifice.” The commentary explains that true shock awakens reverence, and reverence leads to order and blessing. “Laughter and words return” means that after the initial fright, one regains composure because one has recovered principle and discipline. The phrase about not dropping the sacrificial ladle and wine does not imply emotional numbness; rather, it means that even amid great disturbance, one does not lose the essential duty or sacred center. Zhen praises not the person who feels nothing, but the one who, though shaken, does not lose command of self. The commentary elevates this into a political and ritual image: only one who remains steady in crisis is worthy to protect the ancestral and civic order. Therefore the success of Zhen comes from caution, reverence, and restored structure after upheaval, not from luck or denial.",
+    "imageDetailZh": "《象传》曰：“洊雷，震；君子以恐惧修省。”洊雷，即雷声接连不断，不是一击即止，而是连续的震动。这说明震卦所象征的，并非单一事件，而是足以持续影响身心与局势的一连串扰动。君子观此，不是徒然惊慌，而是借恐惧之心进行修身反省。恐惧在这里不是软弱，而是一种对天命、规律、风险的清醒意识。人在顺境中容易怠惰、轻忽边界，唯有突如其来的“雷”，才会逼人重新审视言行、制度与关系。故震卦之象，有外在雷动，也有内在觉醒。真正有智慧的人，会把震动当成校准自身的契机，使行为更谨慎，判断更清明，根基更稳固。",
+    "imageDetailEn": "The Image Commentary says, “Repeated thunder: Zhen. Thus the noble one, in fear and trembling, cultivates self-examination.” Repeated thunder suggests not a single clap, but wave after wave of startling force. This indicates that the hexagram refers not merely to one isolated event, but to a pattern of disruption that can deeply affect both mind and circumstance. The noble person does not simply panic; instead, fear becomes the occasion for reflection and correction. Here fear is not weakness but lucid awareness of limits, consequence, and the larger order of things. In times of ease, people often become careless and complacent. Thunder breaks this numbness and forces reconsideration of conduct, structure, and relationships. Thus Zhen carries both an outer image of rumbling movement and an inner image of awakening. The wise person turns shock into calibration: becoming more careful in action, clearer in judgment, and firmer in foundation.",
+    "modernApplicationZh": "在现代应用上，震卦常对应突发变化、行业波动、情绪冲击与关系中的突然事件。事业方面，可能出现组织调整、项目危机、领导更替或市场骤变，宜先稳住节奏，迅速识别核心任务，不可在惊慌中乱决策；谁能在混乱中保持秩序，谁就更容易脱颖而出。感情方面，此卦提示双方可能因意外消息、旧问题爆发或情绪失控而受到冲击，关键不是压抑，而是诚实面对，避免在惊惧中说出不可挽回的话。财运方面，不利追涨杀跌，尤其要防范因恐慌导致的错误投资或现金流失；守住本金、保留弹性，比急于翻盘更重要。健康方面，多与神经紧张、睡眠不稳、心悸焦虑、肝气上逆等有关，应减少刺激，规律作息，并重视压力管理。总体而言，震卦不是叫人逃避风雷，而是提醒人在剧烈变化时先定神、后行动，以敬畏与自省化解风险，将震荡转为重整的机会。",
+    "modernApplicationEn": "In modern life, Hexagram 51 often points to sudden change, market volatility, emotional shocks, and unexpected events in relationships or work. In career matters, it may indicate restructuring, project crises, leadership changes, or abrupt shifts in the environment. The proper response is to stabilize first, identify the essential priorities, and avoid making chaotic decisions in a state of panic. The person who can maintain order amid confusion often gains trust and influence. In relationships, Zhen can signal disruptive conversations, the eruption of buried problems, or emotional overreaction. The task is not suppression but honest, measured response, especially avoiding words spoken in fear that cannot be taken back. Financially, this is not a favorable time for impulsive speculation or panic-driven trading. Protecting principal, preserving liquidity, and resisting fear-based decisions are more important than chasing quick recovery. In health, the hexagram may relate to nervous strain, disturbed sleep, palpitations, anxiety, or stress-related imbalance. Reducing overstimulation, restoring routine, and managing emotional pressure become essential. Overall, Zhen does not advise hiding from thunder; it teaches one to regain steadiness before acting, transforming instability into a chance for renewal, discipline, and clearer direction.",
+    "historicalStoryZh": "可借周武王克殷后“战战兢兢”治天下的精神来会通震卦之义。商周鼎革，本是天地大震，旧秩序崩解，新王朝初立，稍有不慎便可能重陷纷乱。武王并未因一时胜利而骄矜自满，而是谨慎安民、整饬礼制、安顿宗庙社稷，使天下由战栗转归安定。这与震卦“震惊百里，不丧匕鬯”十分相近：真正可贵者，不是没有遭逢剧变，而是在剧变之中仍能守住礼、守住责、守住根本。又如成王幼弱、周公摄政，外有流言，内有疑惧，局势如雷霆连作，但周公以敬慎自持，终使周室稳固。震卦因此也可理解为大局震荡之际，唯有持敬、守正、自省者，方能转危为安。",
+    "historicalStoryEn": "A fitting historical parallel for Hexagram 51 is the spirit with which the early Zhou rulers governed after the overthrow of the Shang. The dynastic transition was itself a great shock: an old order collapsed and a new one had only just begun. In such a moment, any arrogance or carelessness could have led to renewed chaos. Yet the Zhou founders did not indulge in triumph. They moved cautiously to settle the people, restore ritual, and secure the ancestral and civic order. This strongly echoes the phrase, “It startles for a hundred miles, yet one does not lose the sacrificial ladle and wine.” The real virtue is not avoiding upheaval, but preserving responsibility, ritual center, and clarity amid upheaval. The later regency of the Duke of Zhou also reflects this principle. Surrounded by suspicion and instability, he responded not with rash force but with disciplined reverence and moral restraint, helping stabilize the realm. In this way, Zhen may be read as the test of leadership under shock: only those who remain respectful, upright, and self-aware can turn danger into renewed order.",
+    "relatedHexagramsNote": "震与艮可对看：震主动而起，艮主止而定，一动一止构成应对变局的完整节奏。又可参丰卦，丰盛之极常伴随震动，提醒人在强势与高光之际仍须戒惧自守。若问转机，复卦亦相关，因震所唤醒者，往往正是新的生机与重新出发。",
+    "references": [
+      "《周易·震卦》",
+      "《彖传·震》",
+      "《象传·震》",
+      "王弼《周易注》",
+      "孔颖达《周易正义》"
     ]
   },
   {
@@ -222,43 +283,73 @@
         "textZh": "初六：艮其趾，无咎，利永贞。",
         "textEn": "Six at the beginning: Keeping his toes still. No blame. Continued perseverance furthers.",
         "interpretationZh": "止于脚趾，在行动之初就停下，无过失，宜长久坚守正道。",
-        "interpretationEn": "Keeping the toes still. Stopping at the very beginning brings no blame. Lasting perseverance furthers."
+        "interpretationEn": "Keeping the toes still. Stopping at the very beginning brings no blame. Lasting perseverance furthers.",
+        "detailZh": "\"艮其趾，无咎，利永贞。\"趾在下，象征行动的起点。此爻意为在事情刚开始时就能及时止住，不让错误扩大发展，因此无咎。其利在于长期守正，而不是一时克制。现实中对应念头初起、冲动初生之际，若能及早踩住刹车，后面就少很多麻烦。",
+        "detailEn": "\"Keeping his toes still. No blame. Perseverance brings benefit.\" The toes represent the very beginning of movement. This line teaches the value of stopping early, before error grows into consequence. Its blessing lies in sustained correctness, not momentary restraint. In practical life, it points to catching impulses at their first rise and preventing trouble before it forms."
       },
       {
         "position": 2,
         "textZh": "六二：艮其腓，不拯其随，其心不快。",
         "textEn": "Six in the second place: Keeping his calves still. He cannot rescue him whom he follows. His heart is not glad.",
         "interpretationZh": "止于小腿，无法拯救所追随的人，心中不快。",
-        "interpretationEn": "Keeping the calves still. He cannot save the one he follows. His heart is not glad."
+        "interpretationEn": "Keeping the calves still. He cannot save the one he follows. His heart is not glad.",
+        "detailZh": "\"艮其腓，不拯其随，其心不快。\"腓为小腿，处于欲行未行之间。此爻写一种想跟随、想介入，却又不得伸展的状态，因此内心郁结不快。提示人处在中位时，要分清哪些事不该由自己强行承担。若勉强追随他人节奏，反而失去内在安宁。",
+        "detailEn": "\"Keeping his calves still. He cannot rescue the one he follows; his heart is not glad.\" The calves suggest restrained motion—wanting to move yet unable to proceed. This line depicts frustration when one feels compelled to follow or interfere beyond one’s proper power. It advises accepting limits instead of forcing involvement, because misplaced loyalty or imitation disturbs inner peace."
       },
       {
         "position": 3,
         "textZh": "九三：艮其限，列其夤，厉薰心。",
         "textEn": "Nine in the third place: Keeping his hips still. Making his sacrum stiff. Dangerous. The heart suffocates.",
         "interpretationZh": "止于腰部，使脊骨僵硬，危险。心中如被烟熏般窒息。",
-        "interpretationEn": "Keeping the hips still. The sacrum is rigid. Danger — the heart suffocates."
+        "interpretationEn": "Keeping the hips still. The sacrum is rigid. Danger — the heart suffocates.",
+        "detailZh": "\"艮其限，列其夤，厉薰心。\"限为腰胯要节，夤指脊肉筋络。止到过于强硬，仿佛把筋骨撕裂，内心也被焦灼所熏。这是艮卦最险的一爻，说明止若失中，就会变成压抑、僵化与自我折磨。该爻告诫人：节制不等于死扛，原则也需配合疏导与通达。",
+        "detailEn": "\"Keeping his hips still, tearing the flesh along the spine. Danger smothers the heart.\" This is the most severe line of the hexagram. Stopping too forcefully creates inner fracture: restraint becomes repression, and discipline turns into pain. The warning is clear—stillness must remain balanced. Principles without flexibility can harden into self-torment and emotional suffocation."
       },
       {
         "position": 4,
         "textZh": "六四：艮其身，无咎。",
         "textEn": "Six in the fourth place: Keeping his trunk still. No blame.",
         "interpretationZh": "止于躯干，全身静止，无过失。",
-        "interpretationEn": "Keeping the trunk still. No blame."
+        "interpretationEn": "Keeping the trunk still. No blame.",
+        "detailZh": "\"艮其身，无咎。\"身为躯干主体，表示止已由局部进入整体。此时不是一时按捺，而是整个人的举止、态度与气息都趋于安定，所以无咎。现实上意味着人在复杂局面中能够稳住全局，不被外界推着走，已具备成熟的定力。",
+        "detailEn": "\"Keeping his trunk still. No blame.\" The body here signifies the central whole rather than a single part. This line describes a broader steadiness in which one’s conduct, posture, and presence all become composed. Such integrated calm avoids error and suggests a mature ability to remain unshaken amid external pressure."
       },
       {
         "position": 5,
         "textZh": "六五：艮其辅，言有序，悔亡。",
         "textEn": "Six in the fifth place: Keeping his jaws still. The words have order. Remorse disappears.",
         "interpretationZh": "止于面颊，说话有条理有分寸，悔恨消失。",
-        "interpretationEn": "Keeping the jaws still. Words are well ordered. Remorse disappears."
+        "interpretationEn": "Keeping the jaws still. Words are well ordered. Remorse disappears.",
+        "detailZh": "\"艮其辅，言有序，悔亡。\"辅指面颊口旁，关联言语。能够止住口舌之失，使表达有分寸、有次序，悔恨自然消失。很多祸患并非起于行动，而是起于说得太快、太满、太重。此爻特别强调语言节制：会说之前，先会止。",
+        "detailEn": "\"Keeping his jaws still. Words have order. Regret disappears.\" The jaws point to speech. This line teaches verbal restraint: when words are measured, timely, and well ordered, regret fades away. Many troubles begin not with action but with uncontrolled speech. The lesson is to master silence before trying to master expression."
       },
       {
         "position": 6,
         "textZh": "上九：敦艮，吉。",
         "textEn": "Nine at the top: Noblehearted keeping still. Good fortune.",
         "interpretationZh": "敦厚地止息，达到止的最高境界，吉利。",
-        "interpretationEn": "Noblehearted stillness. The highest form of keeping still. Good fortune."
+        "interpretationEn": "Noblehearted stillness. The highest form of keeping still. Good fortune.",
+        "detailZh": "\"敦艮，吉。\"敦为敦厚笃实，表示止的功夫已不再勉强，而成为稳重深厚的德性。到此并非冷硬不动，而是内心宽厚、外在安定，能守而不迫，静而有光，因此吉。此爻是艮道的完成：由克制走向从容，由止念走向成德。",
+        "detailEn": "\"Noble, solid keeping still. Good fortune.\" Here stillness has matured into a deep and genuine virtue. It is no longer forced restraint but grounded composure—firm without harshness, quiet without lifelessness. This line marks the completion of Gen: discipline ripens into character, and restraint becomes a source of dignity and good fortune."
       }
+    ],
+    "overviewZh": "艮卦，上下皆艮，象为重山相叠，主题是止、定、守界与内省。它不是消极停滞，而是在该止处止，在不宜妄动时收摄身心，使行动回到分寸与本位。卦辞从背、身、庭、人几个层次展开，说明真正的止，并非勉强压抑，而是把杂念与执著放下，做到心不逐物、意不妄驰。艮卦提醒人在局势纷扰、欲望纷陈时，先稳住自己，再决定是否前行。对于修身而言，它强调慎独、寡欲、知止；对于处世而言，它强调守边界、明角色、不逾位。能止，才能静；能静，才能明；能明，才能有下一步恰当的行动，因此艮卦是动中求定、定后再行的重要智慧。",
+    "overviewEn": "Hexagram 52, Keeping Still, is formed by Mountain over Mountain. Its central teaching is not mere inactivity, but the disciplined ability to stop at the right moment, remain centered, and respect proper boundaries. The doubled mountain image suggests firmness, composure, and containment. In times of agitation, ambition, or emotional overflow, this hexagram advises withdrawing from impulsive reaction and returning to inner stillness. The judgment speaks of stilling the back, moving through the courtyard without fixation, and finding no blame—an image of acting without entanglement in ego or restless desire. On the personal level, it encourages self-restraint, reflection, and clarity of position. On the social level, it teaches that wisdom lies in not overreaching one’s role. Keeping Still is therefore not an endpoint but a preparation: by calming the heart and stopping excess motion, one regains the insight needed for correct future action.",
+    "judgmentDetailZh": "卦辞曰：\"艮其背，不获其身，行其庭，不见其人，无咎。\"背为人所不自见之处，象征止于无执，不把注意力系缚在自我感受与外在人事之上，所以能免于过错。《彖传》说：\"艮，止也。时止则止，时行则行，动静不失其时，其道光明。\"这说明艮的核心不在僵止，而在合时。该停的时候能停，说明有定力；该动的时候能动，说明不陷于迟疑。又曰：\"艮其止，止其所也。上下敌应，不相与也。\"止于其所，就是每一层次都守住自己的位置，不妄求越界，不强求牵连。故此卦特别重视\"位\"与\"时\"：人在纷扰中若不能知止，常因多言、多欲、多事而致失；若能使心念归于本位，则虽身在庭中、事在人间，也能不为外境摇夺。无咎，并非什么都不做，而是以清明节制来化解妄动之过。",
+    "judgmentDetailEn": "The Judgment says: \"Keeping his back still, he no longer feels his body. He goes into his courtyard and does not see his people. No blame.\" The back symbolizes a place one cannot directly see, suggesting detachment from self-conscious grasping. This is not numbness but freedom from compulsive identification. The Tuan Commentary explains: \"Gen means stopping. When it is time to stop, stop; when it is time to go, go. Thus movement and stillness do not miss their proper time, and the way becomes bright.\" This is the key: Keeping Still is not rigidity but timing. It also says: \"He keeps still in the proper place. Above and below respond as opposites and do not seek to join improperly.\" To stop in the proper place means to remain within one’s rightful role, measure, and responsibility. The hexagram therefore teaches two principles—timing and position. Errors arise when one pushes beyond the moment, speaks beyond one’s place, or acts from restless impulse. Freedom from blame comes from inward composure and restraint. By returning the mind to its center, one can move through worldly space without being consumed by agitation or attachment.",
+    "imageDetailZh": "《象传》曰：\"兼山，艮；君子以思不出其位。\"两山相重，一山止于一山，形成稳定、厚重、不可轻动之象。山本就象征静定、界限与承载，重山则更强调内外皆止，不仅外在行为有所节制，内在思虑也不越轨。君子观此卦象，明白真正的修养不只是不乱动手脚，更重要的是思想不出本分，不在不属于自己的位置上妄议、妄谋、妄争。山不逐物，却能镇守四方；人若得艮之道，也能在复杂环境中保持沉稳，不因诱惑而失守，不因压力而乱阵。故艮的卦象既有静态的安定，也暗含动态的蓄势：止，是为了守住结构，让后续行动更稳健有力。",
+    "imageDetailEn": "The Image says: \"Mountains joined together: the image of Keeping Still. Thus the noble person does not let his thoughts go beyond his place.\" A single mountain already signifies stillness, boundary, and solidity; two mountains doubled intensify these qualities. The image points not only to physical restraint but to mental discipline. The superior person learns that true steadiness begins in thought: one should not scheme beyond one’s station, meddle beyond one’s responsibility, or let desire wander without limit. Mountains do not chase after things, yet they stabilize the landscape. In the same way, a person grounded in Gen remains calm amid pressure, temptation, and noise. This stillness is not lifelessness. It is stored strength, a settled foundation from which later movement can become reliable and effective. The doubled mountain therefore symbolizes inner and outer composure—conduct held in check, mind kept within rightful bounds.",
+    "modernApplicationZh": "事业：艮卦提示职场中宜先稳后动，尤其在组织变动、决策混乱或个人情绪起伏时，不宜贸然跳槽、硬推项目或与上级正面冲突。守住职责边界、整理节奏、把基本盘稳住，反而更容易赢得信任。感情：此卦强调克制情绪与尊重空间，关系中的冷静不是冷漠，而是避免在激烈时刻说重话、做绝事。适合先停下争执，回到各自位置思考，再恢复沟通。财运：不利冲动投资与高频冒险，更适合保守理财、止损、控制消费欲。健康：对应脾胃、背部、筋骨与因压力造成的紧绷问题，宜减少过劳，重视睡眠、静坐、拉伸与规律作息。总体而言，艮卦适合\"暂停校准\"：不在焦躁中做重大决定，不在欲望高涨时扩大投入。把生活中的界限重新建立起来，包括时间边界、情绪边界、金钱边界与人际边界，反而会迎来更清晰稳定的发展。",
+    "modernApplicationEn": "Career: Hexagram 52 advises restraint before action. During workplace turbulence, leadership uncertainty, or emotional instability, do not rush to resign, force initiatives, or confront authority impulsively. Secure your responsibilities, refine your pace, and stabilize the essentials first. This often builds credibility. Relationships: Keeping Still emphasizes emotional control and respect for space. Calmness in love is not indifference; it means not saying irreversible things in heated moments. Pause conflict, return to your own center, then resume communication with order. Wealth: This is not a favorable sign for speculative investment or thrill-driven financial risk. It supports conservative planning, expense control, and disciplined loss-cutting. Health: The hexagram points toward tension-related conditions, especially involving the back, muscles, digestion, and stress accumulation. Rest, sleep regulation, stretching, meditation, and reduced overwork are beneficial. Overall, Gen is the wisdom of recalibration. Do not make major decisions while agitated, and do not expand commitments while desire is inflamed. Reestablish boundaries around time, money, emotional energy, and social obligations; from that still point, clearer and more sustainable progress becomes possible.",
+    "historicalStoryZh": "可借诸葛亮晚年治蜀之道来说明艮卦精神。诸葛亮北伐虽有壮志，但在内政上极重法度与节制，凡军国之务皆讲求秩序，不使人臣越位，不使制度废弛。他本人更以克己闻名，衣食简约，赏罚分明，处理事务时往往先求稳固根本，再图进取。这正合艮之\"止其所也\"：先守其位，再谋其动。又如《大学》所言\"知止而后有定\"，亦与艮卦相通。真正的强者，并非时时外放锋芒，而是能在欲动时自守，在局乱时定心。历史中凡能成大事者，多半都有这种\"止而不乱\"的功夫。",
+    "historicalStoryEn": "The spirit of Hexagram 52 may be illustrated through Zhuge Liang’s later governance of Shu. Though famous for his northern campaigns and strategic ambition, he was equally known for discipline, order, and self-restraint in administration. He insisted on proper ranks, clear laws, and measured conduct, preventing officials from overstepping their roles. Personally austere and highly self-controlled, he sought first to secure the foundation before pressing forward. This reflects Gen’s principle of \"stopping in the proper place\"—guard the position before seeking motion. It also echoes the Great Learning’s teaching: \"Only after knowing where to stop can one become settled.\" History often shows that those who achieve lasting results are not simply aggressive or brilliant; they know how to hold themselves steady in times of pressure. Their strength lies in not becoming chaotic when action is possible, and not becoming reckless when ambition is stirred.",
+    "relatedHexagramsNote": "艮与第51卦震互为综卦，一动一止，构成行动节律的两端：震教人因时而起，艮教人因时而止。又与第31卦咸相关，咸重感应，艮重收摄；能感而不乱、止而不僵，方为成熟之道。",
+    "references": [
+      "《周易·艮卦》",
+      "《彖传》：艮，止也。时止则止，时行则行，动静不失其时，其道光明。",
+      "《象传》：兼山，艮；君子以思不出其位。",
+      "《大学》：知止而后有定。",
+      "王弼《周易注》相关艮卦诠释"
     ]
   }
 ]
