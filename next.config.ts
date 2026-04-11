@@ -5,6 +5,20 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ['@xenova/transformers', 'onnxruntime-node'],
+  async redirects() {
+    return [
+      {
+        source: '/divine',
+        destination: '/zh',
+        permanent: true,
+      },
+      {
+        source: '/:locale(zh|zh-TW|en)/divine',
+        destination: '/:locale',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
