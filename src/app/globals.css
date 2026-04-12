@@ -74,448 +74,452 @@
   --theme-skeleton-shine: #f0ead8;
 }
 
-/* ── Dark theme overrides ── */
-[data-theme="dark"] {
-  --theme-bg: #1c1710;
-  --theme-bg-card: #252018;
-  --theme-bg-card-solid: #252018;
-  --theme-bg-elevated: #302820;
-  --theme-text-primary: #f0e8d5;
-  --theme-text-secondary: #c8b898;
-  --theme-text-muted: #8a7a65;
-  --theme-border: rgba(184,146,74,0.15);
-  --theme-border-hover: rgba(184,146,74,0.35);
-  --theme-nav-bg: rgba(28,23,16,0.88);
-  --theme-dropdown-bg: rgba(28,23,16,0.98);
-  --theme-skeleton-base: #252018;
-  --theme-skeleton-shine: #302820;
-}
+@layer base {
 
-/* ── Dark theme body ── */
-[data-theme="dark"] body {
-  background-color: #1c1710;
-  color: #f0e8d5;
-  background-image:
-    radial-gradient(ellipse 800px 600px at 15% 25%, rgba(184,146,74,0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 600px at 80% 55%, rgba(192,57,43,0.03) 0%, transparent 70%),
-    radial-gradient(1.5px 1.5px at 10% 20%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.25) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 30% 70%, rgba(255,255,255,0.2) 0%, transparent 100%),
-    radial-gradient(ellipse at 50% 0%, rgba(184,146,74,0.15) 0%, transparent 60%);
-}
+  /* ── Dark theme overrides ── */
+  [data-theme="dark"] {
+    --theme-bg: #1c1710;
+    --theme-bg-card: #252018;
+    --theme-bg-card-solid: #252018;
+    --theme-bg-elevated: #302820;
+    --theme-text-primary: #f0e8d5;
+    --theme-text-secondary: #c8b898;
+    --theme-text-muted: #8a7a65;
+    --theme-border: rgba(184,146,74,0.15);
+    --theme-border-hover: rgba(184,146,74,0.35);
+    --theme-nav-bg: rgba(28,23,16,0.88);
+    --theme-dropdown-bg: rgba(28,23,16,0.98);
+    --theme-skeleton-base: #252018;
+    --theme-skeleton-shine: #302820;
+  }
 
-[data-theme="dark"] body::after {
-  background: radial-gradient(ellipse at center, rgba(184,146,74,0.06) 0%, transparent 70%);
-}
+  /* ── Dark theme body ── */
+  [data-theme="dark"] body {
+    background-color: #1c1710;
+    color: #f0e8d5;
+    background-image:
+      radial-gradient(ellipse 800px 600px at 15% 25%, rgba(184,146,74,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 600px 600px at 80% 55%, rgba(192,57,43,0.03) 0%, transparent 70%),
+      radial-gradient(1.5px 1.5px at 10% 20%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.25) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 70%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(ellipse at 50% 0%, rgba(184,146,74,0.15) 0%, transparent 60%);
+  }
 
-/* ── Dark theme nav ── */
-[data-theme="dark"] nav,
-[data-theme="dark"] .mobile-top-bar {
-  background-color: var(--theme-nav-bg) !important;
-  border-color: rgba(184, 146, 74, 0.2) !important;
-}
+  [data-theme="dark"] body::after {
+    background: radial-gradient(ellipse at center, rgba(184,146,74,0.06) 0%, transparent 70%);
+  }
 
-/* ── Dark theme text ── */
-[data-theme="dark"] .text-gray-400,
-[data-theme="dark"] .text-gray-500 {
-  color: #c8b898 !important;
-}
+  /* ── Dark theme nav ── */
+  [data-theme="dark"] nav,
+  [data-theme="dark"] .mobile-top-bar {
+    background-color: var(--theme-nav-bg) !important;
+    border-color: rgba(184, 146, 74, 0.2) !important;
+  }
 
-/* ── Dark theme cards ── */
-[data-theme="dark"] .card-mystic {
-  background: rgba(184, 146, 74, 0.05);
-  border-color: rgba(184, 146, 74, 0.15);
-}
+  /* ── Dark theme text ── */
+  [data-theme="dark"] .text-gray-400,
+  [data-theme="dark"] .text-gray-500 {
+    color: #c8b898 !important;
+  }
 
-/* ── Dark theme dropdown ── */
-[data-theme="dark"] .theme-dropdown {
-  background: var(--theme-dropdown-bg) !important;
-  border-color: rgba(184, 146, 74, 0.25) !important;
-}
+  /* ── Dark theme cards ── */
+  [data-theme="dark"] .card-mystic {
+    background: rgba(184, 146, 74, 0.05);
+    border-color: rgba(184, 146, 74, 0.15);
+  }
 
-html { scroll-behavior: smooth; }
+  /* ── Dark theme dropdown ── */
+  [data-theme="dark"] .theme-dropdown {
+    background: var(--theme-dropdown-bg) !important;
+    border-color: rgba(184, 146, 74, 0.25) !important;
+  }
 
-/* ── 宣纸背景 + 水墨晕染 ── */
-body {
-  background-color: var(--theme-bg);
-  color: var(--theme-text-primary);
-  font-family: var(--font-body);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  background-attachment: fixed;
-  background-image:
-    radial-gradient(ellipse 800px 600px at 15% 25%, rgba(184,146,74,0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 600px at 80% 55%, rgba(192,57,43,0.03) 0%, transparent 70%),
-    radial-gradient(ellipse at 50% 0%, rgba(184,146,74,0.06) 0%, transparent 60%);
-}
+  html { scroll-behavior: smooth; }
 
-body::after {
-  content: '';
-  position: fixed;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120%;
-  height: 60%;
-  background: radial-gradient(ellipse at center, rgba(184,146,74,0.04) 0%, transparent 70%);
-  z-index: -1;
-  pointer-events: none;
-}
+  /* ── 宣纸背景 + 水墨晕染 ── */
+  body {
+    background-color: var(--theme-bg);
+    color: var(--theme-text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    background-attachment: fixed;
+    background-image:
+      radial-gradient(ellipse 800px 600px at 15% 25%, rgba(184,146,74,0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 600px 600px at 80% 55%, rgba(192,57,43,0.03) 0%, transparent 70%),
+      radial-gradient(ellipse at 50% 0%, rgba(184,146,74,0.06) 0%, transparent 60%);
+  }
 
-::selection {
-  background-color: rgba(184, 146, 74, 0.3);
-  color: #1a1208;
-}
+  body::after {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 60%;
+    background: radial-gradient(ellipse at center, rgba(184,146,74,0.04) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+  }
 
-/* ── 全局 placeholder 国风暖色 ── */
-::placeholder {
-  color: var(--color-text-muted) !important;
-  opacity: 0.6;
-}
+  ::selection {
+    background-color: rgba(184, 146, 74, 0.3);
+    color: #1a1208;
+  }
 
-/* ── 金色渐变文字 ── */
-.text-gold-glow {
-  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-bright) 50%, var(--color-gold) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
-  filter: drop-shadow(0 0 30px rgba(184, 146, 74, 0.5)) drop-shadow(0 0 60px rgba(212, 170, 106, 0.2));
-}
+  /* ── 全局 placeholder 国风暖色 ── */
+  ::placeholder {
+    color: var(--color-text-muted) !important;
+    opacity: 0.6;
+  }
 
-.text-gold-gradient {
-  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-bright) 50%, var(--color-gold) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+  /* ── 金色渐变文字 ── */
+  .text-gold-glow {
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-bright) 50%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 0 30px rgba(184, 146, 74, 0.5)) drop-shadow(0 0 60px rgba(212, 170, 106, 0.2));
+  }
 
-.text-gold-breathe {
-  animation: gold-breathe 3s ease-in-out infinite;
-}
-@keyframes gold-breathe {
-  0%, 100% { opacity: 0.85; }
-  50% { opacity: 1; }
-}
+  .text-gold-gradient {
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-bright) 50%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-/* ── 金色发光文字（非渐变版） ── */
-.glow-text {
-  color: var(--gold);
-  text-shadow:
-    0 0 10px rgba(184, 146, 74, 0.5),
-    0 0 30px rgba(184, 146, 74, 0.3),
-    0 0 60px rgba(184, 146, 74, 0.15);
-}
+  .text-gold-breathe {
+    animation: gold-breathe 3s ease-in-out infinite;
+  }
+  @keyframes gold-breathe {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+  }
 
-/* ── 太极旋转 ── */
-@keyframes taichi-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.taichi-rotate {
-  animation: taichi-spin 20s linear infinite;
-}
+  /* ── 金色发光文字（非渐变版） ── */
+  .glow-text {
+    color: var(--gold);
+    text-shadow:
+      0 0 10px rgba(184, 146, 74, 0.5),
+      0 0 30px rgba(184, 146, 74, 0.3),
+      0 0 60px rgba(184, 146, 74, 0.15);
+  }
 
-/* ── 太极符号样式 ── */
-.taichi-symbol {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background:
-    linear-gradient(to right, #e8e0d4 50%, #1a1a2e 50%);
-  position: relative;
-  box-shadow:
-    0 0 50px rgba(184, 146, 74, 0.25),
-    0 0 100px rgba(184, 146, 74, 0.1);
-}
-.taichi-symbol::before,
-.taichi-symbol::after {
-  content: '';
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.taichi-symbol::before {
-  background: radial-gradient(circle at center, #1a1a2e 16px, #e8e0d4 16px);
-  top: 0;
-}
-.taichi-symbol::after {
-  background: radial-gradient(circle at center, #e8e0d4 16px, #1a1a2e 16px);
-  top: auto;
-  bottom: 0;
-}
+  /* ── 太极旋转 ── */
+  @keyframes taichi-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .taichi-rotate {
+    animation: taichi-spin 20s linear infinite;
+  }
 
-/* ── 呼吸灯 ── */
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 8px rgba(184,146,74,0.2)); }
-  50% { opacity: 1; filter: drop-shadow(0 0 20px rgba(184,146,74,0.5)); }
-}
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-/* ── 卡片光晕 ── */
-.card-mystic {
-  background: rgba(240, 234, 216, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--theme-border);
-  border-radius: 12px;
-  transition: all 0.6s ease-in-out;
-}
-.card-mystic:hover {
-  transform: translateY(-4px);
-  border-color: var(--theme-border-hover);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 0 20px rgba(184,146,74,0.08);
-}
-
-/* ── 金色渐变分割线 ── */
-.divider-gold {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(184,146,74,0.4) 30%, rgba(184,146,74,0.6) 50%, rgba(184,146,74,0.4) 70%, transparent 100%);
-}
-
-/* ── CTA 按钮 ── */
-.btn-divine {
-  border: 1px solid rgba(184, 146, 74, 0.5);
-  color: var(--gold);
-  background: rgba(184, 146, 74, 0.06);
-  transition: all 0.4s ease-in-out;
-  position: relative;
-  overflow: hidden;
-}
-.btn-divine::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(184,146,74,0.15), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
-}
-.btn-divine:hover {
-  border-color: var(--gold);
-  box-shadow:
-    0 0 20px rgba(184, 146, 74, 0.25),
-    0 0 50px rgba(184, 146, 74, 0.1);
-  color: var(--gold-bright);
-  transform: scale(1.03);
-}
-.btn-divine:hover::before { opacity: 1; }
-
-/* ── 导航链接 ── */
-.nav-link {
-  color: var(--theme-text-muted);
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-  font-size: 0.875rem;
-  letter-spacing: 0.1em;
-}
-.nav-link:hover {
-  color: var(--gold);
-  text-shadow: 0 0 12px rgba(184, 146, 74, 0.3);
-}
-
-/* ── 微光闪烁 ── */
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
-}
-.animate-twinkle { animation: twinkle 4s ease-in-out infinite; }
-.animate-twinkle-slow { animation: twinkle 6s ease-in-out infinite; }
-
-/* ── 卦象滚动 ── */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-/* ── 标题衬线字体 ── */
-.font-title {
-  font-family: var(--font-display);
-}
-
-/* ── 触控反馈 ── */
-.touch-feedback {
-  @apply active:scale-[0.97] transition-transform;
-}
-
-/* ── 摇卦背景光晕脉冲 ── */
-@keyframes aura-pulse {
-  0%, 100% {
+  /* ── 太极符号样式 ── */
+  .taichi-symbol {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background:
+      linear-gradient(to right, #e8e0d4 50%, #1a1a2e 50%);
+    position: relative;
     box-shadow:
-      0 0 60px rgba(184, 146, 74, 0.05),
-      0 0 120px rgba(45, 27, 78, 0.08);
+      0 0 50px rgba(184, 146, 74, 0.25),
+      0 0 100px rgba(184, 146, 74, 0.1);
   }
-  50% {
-    box-shadow:
-      0 0 100px rgba(184, 146, 74, 0.18),
-      0 0 200px rgba(45, 27, 78, 0.2);
+  .taichi-symbol::before,
+  .taichi-symbol::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
-}
-.aura-pulse {
-  animation: aura-pulse 1.5s ease-in-out;
-}
-
-/* ── Hero 网格纹理 ── */
-.hero-grid {
-  background-image:
-    linear-gradient(rgba(184,146,74,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(184,146,74,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* ── Hero Spotlight 光效 ── */
-.hero-spotlight {
-  position: absolute;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 600px;
-  background: radial-gradient(ellipse, rgba(184,146,74,0.15) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ── 卡片边框光效 (Aceternity 风格) ── */
-.card-glow {
-  position: relative;
-  overflow: hidden;
-}
-.card-glow::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(184,146,74,0.3) 0%, transparent 50%, rgba(184,146,74,0.1) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-  opacity: 0.5;
-  z-index: 1;
-}
-.card-glow:hover::before {
-  opacity: 1;
-  background: linear-gradient(135deg, rgba(184,146,74,0.5) 0%, rgba(184,146,74,0.1) 50%, rgba(184,146,74,0.3) 100%);
-}
-
-/* ── 完成时金色光芒扩散 ── */
-@keyframes golden-burst {
-  0% {
-    opacity: 0.8;
-    transform: scale(0.5);
-    box-shadow: 0 0 40px rgba(212, 170, 106, 0.6);
+  .taichi-symbol::before {
+    background: radial-gradient(circle at center, #1a1a2e 16px, #e8e0d4 16px);
+    top: 0;
   }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.2);
-    box-shadow: 0 0 100px rgba(212, 170, 106, 0.4);
+  .taichi-symbol::after {
+    background: radial-gradient(circle at center, #e8e0d4 16px, #1a1a2e 16px);
+    top: auto;
+    bottom: 0;
   }
-  100% {
+
+  /* ── 呼吸灯 ── */
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 8px rgba(184,146,74,0.2)); }
+    50% { opacity: 1; filter: drop-shadow(0 0 20px rgba(184,146,74,0.5)); }
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* ── 卡片光晕 ── */
+  .card-mystic {
+    background: rgba(240, 234, 216, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--theme-border);
+    border-radius: 12px;
+    transition: all 0.6s ease-in-out;
+  }
+  .card-mystic:hover {
+    transform: translateY(-4px);
+    border-color: var(--theme-border-hover);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 0 20px rgba(184,146,74,0.08);
+  }
+
+  /* ── 金色渐变分割线 ── */
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(184,146,74,0.4) 30%, rgba(184,146,74,0.6) 50%, rgba(184,146,74,0.4) 70%, transparent 100%);
+  }
+
+  /* ── CTA 按钮 ── */
+  .btn-divine {
+    border: 1px solid rgba(184, 146, 74, 0.5);
+    color: var(--gold);
+    background: rgba(184, 146, 74, 0.06);
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-divine::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(184,146,74,0.15), transparent 60%);
     opacity: 0;
-    transform: scale(2);
-    box-shadow: 0 0 0 rgba(212, 170, 106, 0);
+    transition: opacity 0.4s ease-in-out;
   }
-}
-.golden-burst {
-  animation: golden-burst 1.2s ease-out forwards;
-  pointer-events: none;
-}
+  .btn-divine:hover {
+    border-color: var(--gold);
+    box-shadow:
+      0 0 20px rgba(184, 146, 74, 0.25),
+      0 0 50px rgba(184, 146, 74, 0.1);
+    color: var(--gold-bright);
+    transform: scale(1.03);
+  }
+  .btn-divine:hover::before { opacity: 1; }
 
-/* ── 内容区约束 ── */
-.content-area {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+  /* ── 导航链接 ── */
+  .nav-link {
+    color: var(--theme-text-muted);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+  }
+  .nav-link:hover {
+    color: var(--gold);
+    text-shadow: 0 0 12px rgba(184, 146, 74, 0.3);
+  }
 
-/* ── Hide scrollbar for scenario cards ── */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
+  /* ── 微光闪烁 ── */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+  .animate-twinkle { animation: twinkle 4s ease-in-out infinite; }
+  .animate-twinkle-slow { animation: twinkle 6s ease-in-out infinite; }
 
-/* ═══════════════════════════════════════════
-   骨架屏 Shimmer 动画
-   ═══════════════════════════════════════════ */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
+  /* ── 卦象滚动 ── */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
 
-.skeleton-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--theme-skeleton-base) 25%,
-    var(--theme-skeleton-shine) 50%,
-    var(--theme-skeleton-base) 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.8s ease-in-out infinite;
-}
+  /* ── 标题衬线字体 ── */
+  .font-title {
+    font-family: var(--font-display);
+  }
 
-/* ═══════════════════════════════════════════
-   微交互增强
-   ═══════════════════════════════════════════ */
+  /* ── 触控反馈 ── */
+  .touch-feedback {
+    @apply active:scale-[0.97] transition-transform;
+  }
 
-/* 按钮 hover 放大 + 金色光晕 */
-.btn-micro {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.btn-micro:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 16px rgba(184, 146, 74, 0.3);
-}
+  /* ── 摇卦背景光晕脉冲 ── */
+  @keyframes aura-pulse {
+    0%, 100% {
+      box-shadow:
+        0 0 60px rgba(184, 146, 74, 0.05),
+        0 0 120px rgba(45, 27, 78, 0.08);
+    }
+    50% {
+      box-shadow:
+        0 0 100px rgba(184, 146, 74, 0.18),
+        0 0 200px rgba(45, 27, 78, 0.2);
+    }
+  }
+  .aura-pulse {
+    animation: aura-pulse 1.5s ease-in-out;
+  }
 
-/* 卡片 hover 浮起 */
-.card-hover-lift {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.card-hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 12px rgba(184, 146, 74, 0.08);
-}
+  /* ── Hero 网格纹理 ── */
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(184,146,74,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,146,74,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
 
-/* 列表项淡入 */
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.stagger-item {
-  animation: fade-in-up 0.4s ease both;
-}
+  /* ── Hero Spotlight 光效 ── */
+  .hero-spotlight {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(184,146,74,0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* ═══════════════════════════════════════════
-   主题感知工具类
-   ═══════════════════════════════════════════ */
-.theme-bg { background-color: var(--theme-bg); }
-.theme-text { color: var(--theme-text-primary); }
-.theme-text-secondary { color: var(--theme-text-secondary); }
-.theme-card {
-  background: var(--theme-bg-card);
-  border-color: var(--theme-border);
-}
-.theme-card:hover {
-  border-color: var(--theme-border-hover);
-}
+  /* ── 卡片边框光效 (Aceternity 风格) ── */
+  .card-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(184,146,74,0.3) 0%, transparent 50%, rgba(184,146,74,0.1) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+    opacity: 0.5;
+    z-index: 1;
+  }
+  .card-glow:hover::before {
+    opacity: 1;
+    background: linear-gradient(135deg, rgba(184,146,74,0.5) 0%, rgba(184,146,74,0.1) 50%, rgba(184,146,74,0.3) 100%);
+  }
 
-/* CTA 按钮脉冲发光动画 */
-@keyframes cta-pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(184,146,74,0.3); }
-  50% { box-shadow: 0 0 35px rgba(184,146,74,0.5); }
+  /* ── 完成时金色光芒扩散 ── */
+  @keyframes golden-burst {
+    0% {
+      opacity: 0.8;
+      transform: scale(0.5);
+      box-shadow: 0 0 40px rgba(212, 170, 106, 0.6);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.2);
+      box-shadow: 0 0 100px rgba(212, 170, 106, 0.4);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2);
+      box-shadow: 0 0 0 rgba(212, 170, 106, 0);
+    }
+  }
+  .golden-burst {
+    animation: golden-burst 1.2s ease-out forwards;
+    pointer-events: none;
+  }
+
+  /* ── 内容区约束 ── */
+  .content-area {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ── Hide scrollbar for scenario cards ── */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ═══════════════════════════════════════════
+     骨架屏 Shimmer 动画
+     ═══════════════════════════════════════════ */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--theme-skeleton-base) 25%,
+      var(--theme-skeleton-shine) 50%,
+      var(--theme-skeleton-base) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+
+  /* ═══════════════════════════════════════════
+     微交互增强
+     ═══════════════════════════════════════════ */
+
+  /* 按钮 hover 放大 + 金色光晕 */
+  .btn-micro {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-micro:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 16px rgba(184, 146, 74, 0.3);
+  }
+
+  /* 卡片 hover 浮起 */
+  .card-hover-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 12px rgba(184, 146, 74, 0.08);
+  }
+
+  /* 列表项淡入 */
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .stagger-item {
+    animation: fade-in-up 0.4s ease both;
+  }
+
+  /* ═══════════════════════════════════════════
+     主题感知工具类
+     ═══════════════════════════════════════════ */
+  .theme-bg { background-color: var(--theme-bg); }
+  .theme-text { color: var(--theme-text-primary); }
+  .theme-text-secondary { color: var(--theme-text-secondary); }
+  .theme-card {
+    background: var(--theme-bg-card);
+    border-color: var(--theme-border);
+  }
+  .theme-card:hover {
+    border-color: var(--theme-border-hover);
+  }
+
+  /* CTA 按钮脉冲发光动画 */
+  @keyframes cta-pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(184,146,74,0.3); }
+    50% { box-shadow: 0 0 35px rgba(184,146,74,0.5); }
+  }
+
 }
