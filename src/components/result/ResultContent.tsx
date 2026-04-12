@@ -113,13 +113,13 @@ function BaziCard({ birthInfo }: { birthInfo: BirthInfo }) {
   ];
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl">
-      <h3 className="text-lg font-title text-amber-300 mb-4">🌙 {t("baziTitle")}</h3>
+    <div className="bg-[var(--theme-bg-card)] border border-[var(--theme-border)] backdrop-blur-sm p-6 rounded-xl">
+      <h3 className="text-lg font-title text-gold mb-4">🌙 {t("baziTitle")}</h3>
       <div className="grid grid-cols-4 gap-3 text-center mb-4">
         {pillars.map(({ label, pillar }) => (
           <div key={label}>
-            <p className="text-xs text-zinc-500 mb-1">{label}</p>
-            <p className="text-lg font-title text-amber-400">
+            <p className="text-xs text-[var(--theme-text-muted)] mb-1">{label}</p>
+            <p className="text-lg font-title text-gold-bright">
               {pillar.gan}{pillar.zhi}
             </p>
           </div>
@@ -131,15 +131,15 @@ function BaziCard({ birthInfo }: { birthInfo: BirthInfo }) {
             key={element}
             className={`text-xs px-2 py-0.5 rounded-full border ${
               count === 0
-                ? "border-zinc-700 text-zinc-600"
-                : "border-amber-600/30 text-amber-400/80"
+                ? "border-[var(--theme-border)] text-[var(--theme-text-muted)]"
+                : "border-gold-dim/30 text-gold/80"
             }`}
           >
             {element} {count}
           </span>
         ))}
       </div>
-      <p className="text-xs text-zinc-500 text-center">
+      <p className="text-xs text-[var(--theme-text-muted)] text-center">
         {t("dayMasterLabel")} {bazi.dayMaster}（{bazi.dayMasterElement}）· {bazi.strength}
       </p>
     </div>
@@ -370,25 +370,25 @@ function AISection({
 
   return (
     <Card variant="default" padding="lg">
-      <h3 className="text-xl font-title text-amber-300 mb-4">🤖 {title}</h3>
-      <p className="text-sm text-zinc-600 mb-6">{disclaimer}</p>
+      <h3 className="text-xl font-title text-gold mb-4">✍️ {title}</h3>
+      <p className="text-sm text-[var(--theme-text-muted)] mb-6">{disclaimer}</p>
 
       <DepthSelector value={depth} onChange={handleDepthChange} disabled={loading} />
 
       {loading && !content && <Skeleton variant="text" lines={3} />}
 
       {error && (
-        <p className="text-sm text-red-400">{error}</p>
+        <p className="text-sm text-vermilion">{error}</p>
       )}
 
       {content && (
         <div
           ref={contentRef}
-          className="prose prose-invert prose-base max-w-none text-zinc-300 whitespace-pre-wrap leading-loose max-h-[60vh] overflow-y-auto"
+          className="prose prose-base max-w-none text-[var(--theme-text-secondary)] whitespace-pre-wrap leading-loose max-h-[60vh] overflow-y-auto"
         >
           {displayText}
           {showCursor && (
-            <span className="inline-block animate-pulse text-amber-400 ml-0.5">▌</span>
+            <span className="inline-block animate-pulse text-gold ml-0.5">▌</span>
           )}
         </div>
       )}
@@ -627,10 +627,10 @@ function ResultInner() {
     return (
       <PageLayout navItems={navItems} maxWidth="max-w-[800px]">
         <div className="text-center py-20 px-6">
-          <p className="text-zinc-500 mb-4">{t("noHexagram")}</p>
+          <p className="text-[var(--theme-text-muted)] mb-4">{t("noHexagram")}</p>
           <a
             href="/divination"
-            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
+            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_color-mix(in_srgb,var(--color-gold)_40%,transparent)] inline-flex items-center justify-center"
           >
             {t("goToDivination")}
           </a>
@@ -661,32 +661,32 @@ function ResultInner() {
           initial="hidden"
           animate="visible"
         >
-          <p className="text-sm tracking-[0.3em] text-amber-400/30 mb-3">
+          <p className="text-sm tracking-[0.3em] text-gold/30 mb-3">
             {t("hexagramNumber", { num: hexNum })}
           </p>
-          <h1 className="font-title text-4xl text-center text-gold mb-2">
+          <h1 className="font-title text-4xl text-center text-gold mb-2" style={{ fontFamily: 'var(--font-display)' }}>
             {hexInfo?.cn ?? t("noHexagram")}
           </h1>
-          <p className="text-base text-zinc-500 tracking-widest mb-3">
+          <p className="text-base text-[var(--theme-text-muted)] tracking-widest mb-3">
             {hexInfo?.en ?? ""}
           </p>
           {upperTrigram && lowerTrigram && (
-            <p className="text-base text-center text-zinc-400">
+            <p className="text-base text-center text-[var(--theme-text-secondary)]">
               {t("upperTrigram")}：{upperTrigram.cn}　{t("lowerTrigram")}：{lowerTrigram.cn}
             </p>
           )}
           {changingLines.length > 0 && (
-            <p className="text-red-400/80 text-sm mt-2">
+            <p className="text-vermilion/80 text-sm mt-2">
               {t("changingYao")}：{changingLines.map((i) => t(`yaoLabel${i}` as any)).join("、")}
             </p>
           )}
           {changedHexInfo && (
-            <p className="text-xs text-zinc-500 mt-1">
+            <p className="text-xs text-[var(--theme-text-muted)] mt-1">
               {t("originalHex")}：{hexInfo?.cn} → {t("changedHex")}：{changedHexInfo.cn}
             </p>
           )}
           {question && (
-            <p className="text-xs text-amber-400/40 mt-3 truncate max-w-md mx-auto">
+            <p className="text-xs text-gold/40 mt-3 truncate max-w-md mx-auto">
               {t("question", { q: question })}
             </p>
           )}
@@ -717,41 +717,41 @@ function ResultInner() {
           animate="visible"
         >
         <Card variant="elevated" padding="lg">
-          <h3 className="text-xl font-title text-amber-300 mb-5">📜 {t("classicTitle")}</h3>
+          <h3 className="text-xl font-title text-gold mb-5">📜 {t("classicTitle")}</h3>
 
           {hexLoading && <ResultSkeleton />}
 
           {hexError && (
-            <p className="text-sm text-red-400">{hexError}</p>
+            <p className="text-sm text-vermilion">{hexError}</p>
           )}
 
           {hexData && (
             <div className="space-y-4">
               {/* 卦辞 */}
               <div>
-                <h4 className="text-sm font-semibold text-amber-400/70 mb-1">{t("guaCi")}</h4>
-                <p className="text-base text-zinc-300 leading-relaxed">{hexData.judgmentZh}</p>
+                <h4 className="text-sm font-semibold text-gold/70 mb-1">{t("guaCi")}</h4>
+                <p className="text-base text-[var(--theme-text-primary)] leading-relaxed border-l-3 border-gold/50 pl-3">{hexData.judgmentZh}</p>
               </div>
 
               {/* 象辞 */}
               {hexData.imageZh && (
                 <div>
-                  <h4 className="text-sm font-semibold text-amber-400/70 mb-1">{t("imageText")}</h4>
-                  <p className="text-base text-zinc-300 leading-relaxed">{hexData.imageZh}</p>
+                  <h4 className="text-sm font-semibold text-gold/70 mb-1">{t("imageText")}</h4>
+                  <p className="text-base text-[var(--theme-text-primary)] leading-relaxed border-l-3 border-gold/50 pl-3">{hexData.imageZh}</p>
                 </div>
               )}
 
               {/* 综合解读 */}
               {hexData.interpretationZh && (
                 <div>
-                  <p className="text-sm text-zinc-400 leading-relaxed">{hexData.interpretationZh}</p>
+                  <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed">{hexData.interpretationZh}</p>
                 </div>
               )}
 
               {/* 六爻爻辞 */}
               {hexData.lines && hexData.lines.length > 0 && (
                 <div>
-                  <h4 className="text-sm font-semibold text-amber-400/70 mb-2">{t("yaoCi")}</h4>
+                  <h4 className="text-sm font-semibold text-gold/70 mb-2">{t("yaoCi")}</h4>
                   <div className="space-y-2">
                     {hexData.lines
                       .sort((a, b) => a.position - b.position)
@@ -761,15 +761,15 @@ function ResultInner() {
                           <Card key={line.position} variant="default" padding="sm">
                             <div className="flex items-start gap-2">
                               <span className={`text-xs font-mono shrink-0 mt-0.5 ${
-                                isChanging ? "text-red-400" : "text-amber-400/60"
+                                isChanging ? "text-vermilion" : "text-gold/60"
                               }`}>
                                 {t(`yaoLabel${line.position - 1}` as any)}
                                 {isChanging && " 🔴"}
                               </span>
                               <div className="min-w-0">
-                                <p className="text-sm text-zinc-300">{line.textZh}</p>
+                                <p className="text-sm text-[var(--theme-text-primary)]">{line.textZh}</p>
                                 {line.interpretationZh && (
-                                  <p className="text-xs text-zinc-500 mt-1">{line.interpretationZh}</p>
+                                  <p className="text-xs text-[var(--theme-text-muted)] mt-1">{line.interpretationZh}</p>
                                 )}
                               </div>
                             </div>
@@ -812,26 +812,26 @@ function ResultInner() {
         >
           <a
             href="/divination"
-            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
+            className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
           >
             {t("divinationAgain")}
           </a>
           <a
             href="/"
-            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
+            className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
           >
             {t("backHome")}
           </a>
           <button
             onClick={handleSaveHistory}
             disabled={isSaving}
-            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSaving ? t("saving") : (session?.user ? t("saveHistory") : t("saveHistoryLogin"))}
           </button>
           <button
             onClick={handleShare}
-            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
+            className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
           >
             {t("share")}
           </button>
@@ -851,7 +851,7 @@ function ResultInner() {
                 <h3 className="text-xl font-title text-gold mb-2">
                   {t("loginToSave")}
                 </h3>
-                <p className="text-gray-400 text-sm">
+                <p className="text-[var(--theme-text-muted)] text-sm">
                   {t("loginToSaveDescription")}
                 </p>
               </div>
@@ -859,7 +859,7 @@ function ResultInner() {
               <div className="space-y-4">
                 <button
                   onClick={() => handleLogin("google")}
-                  className="w-full flex items-center justify-center gap-3 px-4 h-12 bg-white hover:bg-gray-50 text-gray-700 font-medium text-base rounded-xl border border-gray-200 transition-all duration-200 shadow-sm hover:shadow"
+                  className="w-full flex items-center justify-center gap-3 px-4 h-12 bg-[var(--theme-bg-card-solid)] hover:bg-[var(--theme-bg-elevated)] text-[var(--theme-text-primary)] font-medium text-base rounded-xl border border-[var(--theme-border)] transition-all duration-200 shadow-sm hover:shadow"
                 >
                   <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
@@ -872,14 +872,14 @@ function ResultInner() {
 
                 <button
                   onClick={() => handleLogin("credentials")}
-                  className="w-full h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_rgba(201,169,110,0.4)]"
+                  className="btn-divine w-full h-12 text-base font-title tracking-wider rounded-lg"
                 >
                   {t("emailLogin")}
                 </button>
 
                 <button
                   onClick={handleContinueAnonymous}
-                  className="w-full h-10 text-sm text-gray-400 hover:text-gray-300 transition-colors"
+                  className="w-full h-10 text-sm text-[var(--theme-text-muted)] hover:text-[var(--theme-text-secondary)] transition-colors"
                 >
                   {t("continueAnonymous")}
                 </button>
