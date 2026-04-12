@@ -224,8 +224,8 @@ export default function ReportContent() {
   }
 
   return (
-    <PageLayout navItems={navItems} maxWidth="max-w-4xl">
-      <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+    <PageLayout navItems={navItems} maxWidth="max-w-6xl">
+      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         {/* Header */}
         <div className="text-center mb-10">
           <h1 className="font-title text-4xl sm:text-5xl text-gold-glow tracking-wider mb-3">

@@ -104,8 +104,8 @@ export default function AboutContent() {
   ];
 
   return (
-    <PageLayout navItems={navItems} maxWidth="max-w-4xl">
-      <div className="max-w-2xl mx-auto">
+    <PageLayout navItems={navItems} maxWidth="max-w-6xl">
+      <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <span className="text-4xl mb-4 block">☯</span>

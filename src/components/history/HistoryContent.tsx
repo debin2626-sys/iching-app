@@ -282,7 +282,7 @@ export default function HistoryContent() {
   }
 
   return (
-    <PageLayout navItems={navItems} maxWidth="max-w-4xl">
+    <PageLayout navItems={navItems} maxWidth="max-w-6xl">
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
       {/* Title */}
       <div className="text-center mb-10">

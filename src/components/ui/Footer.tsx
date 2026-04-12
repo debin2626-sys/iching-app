@@ -21,7 +21,7 @@ export default function Footer() {
       className="w-full border-t mt-auto"
       style={{ borderColor: 'var(--theme-border)' }}
     >
-      <div className="max-w-4xl mx-auto px-6 py-6 text-center">
+      <div className="max-w-6xl mx-auto px-6 py-6 text-center">
         {/* Footer Links */}
         <nav className="mb-4 flex flex-wrap items-center justify-center gap-x-1 gap-y-1">
           {links.map((link) => (

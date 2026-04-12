@@ -132,7 +132,7 @@ export default function HexagramsContent() {
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-7xl">
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-3">
           <span className="text-[var(--color-gold)]">{t("title")}</span>{" "}
           <span className="text-gray-400">/ {t("subtitle")}</span>
