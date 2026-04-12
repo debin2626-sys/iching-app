@@ -127,7 +127,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
 
   if (loading) {
     return (
-      <PageLayout navItems={navItems} maxWidth="max-w-4xl">
+      <PageLayout navItems={navItems} maxWidth="max-w-6xl">
         <div className="flex justify-center items-center min-h-[400px]">
           <div className="animate-pulse text-[var(--color-gold)]/60 text-lg">
             {isZh ? "加载中..." : "Loading..."}
@@ -139,7 +139,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
 
   if (!data) {
     return (
-      <PageLayout navItems={navItems} maxWidth="max-w-4xl">
+      <PageLayout navItems={navItems} maxWidth="max-w-6xl">
         <div className="text-center text-gray-500 mt-20">
           {isZh ? "卦象未找到" : "Hexagram not found"}
         </div>
@@ -151,8 +151,8 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
   const lower = TRIGRAM_MAP[data.symbol.slice(0, 3)] || "?";
 
   return (
-    <PageLayout navItems={navItems} maxWidth="max-w-4xl">
-      <div className="max-w-2xl mx-auto">
+    <PageLayout navItems={navItems} maxWidth="max-w-6xl">
+      <div>
         {/* Back to list */}
         <Link
           href="/hexagrams"
