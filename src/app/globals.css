@@ -133,7 +133,6 @@
   border-color: rgba(184, 146, 74, 0.25) !important;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 /* ── 宣纸背景 + 水墨晕染 ── */
