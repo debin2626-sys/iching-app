@@ -20,7 +20,7 @@
   --color-inauspicious: #3d4f7a;
   --color-border: rgba(26,18,8,0.12);
   --color-border-hover: rgba(26,18,8,0.25);
-  --color-border-light: rgba(26,18,8,0.06);
+  --color-border-light: rgba(26,18,8,0.12);
 
   /* ── 兼容旧变量 ── */
   --color-purple-deep: #2d1b4e;
@@ -166,6 +166,12 @@ body::after {
 ::selection {
   background-color: rgba(184, 146, 74, 0.3);
   color: #1a1208;
+}
+
+/* ── 全局 placeholder 国风暖色 ── */
+::placeholder {
+  color: var(--color-text-muted) !important;
+  opacity: 0.6;
 }
 
 /* ── 金色渐变文字 ── */

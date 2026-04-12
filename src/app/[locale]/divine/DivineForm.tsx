@@ -7,7 +7,7 @@ import ScenarioSelector from "@/components/divination/ScenarioSelector";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import { DailyLimitBanner, useLocalDailyLimit } from "@/components/divination/DailyLimitBanner";
 import { Button } from "@/components/ui/Button";
-import { TaichiWatermark } from "@/components/decorative";
+import { TaichiWatermark, CloudPattern } from "@/components/decorative";
 import {
   trackScenarioSelect,
   trackFunnelHomeView,
@@ -122,9 +122,12 @@ export default function DivineForm() {
 
   return (
     <div className="relative w-full">
+      {/* Cloud Pattern Decoration */}
+      <CloudPattern position="top" className="mb-4" />
+
       {/* Taichi Watermark */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
-        <TaichiWatermark size={400} opacity={0.03} />
+        <TaichiWatermark size={400} opacity={0.07} />
       </div>
 
       {/* Title */}

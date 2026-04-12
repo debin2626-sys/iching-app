@@ -125,15 +125,15 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
               {/* 标题 */}
               <div className="text-center mb-4">
                 <div className="text-3xl mb-3">🔮</div>
-                <h3 className="text-xl font-title text-amber-300 mb-3">
+                <h3 className="text-xl font-title text-[var(--color-gold-bright)] mb-3">
                   今日免费次数已用尽
                 </h3>
 
                 {/* 内容说明 */}
-                <p className="text-sm text-zinc-400 leading-relaxed">
+                <p className="text-sm text-[var(--theme-text-muted)] leading-relaxed">
                   感谢你的使用！我们为每位用户提供每日 {FREE_LIMIT} 次的免费占卜体验。
                 </p>
-                <p className="text-sm text-zinc-400 leading-relaxed mt-2">
+                <p className="text-sm text-[var(--theme-text-muted)] leading-relaxed mt-2">
                   如果你觉得这个工具对你有帮助，并希望获得无限次占卜机会，可以考虑升级到 Pro 版本。你的支持是我们持续改进的最大动力！
                 </p>
               </div>
@@ -143,7 +143,7 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
                 {/* 主按钮：升级到 Pro */}
                 <button
                   onClick={handleUpgradePro}
-                  className="w-full h-12 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-amber-900/30"
+                  className="w-full h-12 rounded-xl bg-[var(--color-vermilion)] hover:bg-[var(--color-vermilion-bright)] text-white font-bold font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2 shadow-lg border border-[var(--color-gold)]"
                 >
                   ✨ 升级到 Pro (无限次)
                 </button>
@@ -151,7 +151,7 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
                 {/* 次按钮：Ko-fi 打赏 */}
                 <button
                   onClick={handleKofiDonate}
-                  className="w-full h-12 rounded-xl border border-amber-600/40 text-amber-400 hover:border-amber-500/60 hover:text-amber-300 font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2"
+                  className="w-full h-12 rounded-xl border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:border-[var(--color-gold)]/60 hover:text-[var(--color-gold-bright)] font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2"
                 >
                   ☕️ 去 Ko-fi 打赏
                 </button>

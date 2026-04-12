@@ -18,6 +18,7 @@ import {
 } from "@/lib/iching/hexagram";
 import { getChangingLines } from "@/lib/iching/coins";
 import HexagramReveal from "@/components/divination/HexagramReveal";
+import { CloudPattern } from "@/components/decorative";
 import { DailyLimitBanner, incrementLocalDivinationCount } from "@/components/divination/DailyLimitBanner";
 import { useSession, signIn } from "next-auth/react";
 import { trackAIInterpretStart, trackAIInterpretComplete, trackFunnelResultView, trackFunnelAIInterpretStart, trackFunnelAIInterpretComplete } from "@/lib/analytics";
@@ -654,6 +655,9 @@ function ResultInner() {
         userId={session?.user?.id ?? null}
       />
       <div className="py-8 space-y-8 px-6">
+        {/* ── 云纹装饰 ── */}
+        <CloudPattern position="top" className="mb-2" />
+
         {/* ── 卦象头部 ── */}
         <motion.div
           className="text-center"

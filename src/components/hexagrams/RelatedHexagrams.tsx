@@ -32,10 +32,10 @@ function RelatedLink({
   return (
     <Link
       href={`/hexagrams/${num}`}
-      className="flex items-center gap-2 px-4 py-3 rounded-lg bg-[var(--theme-bg-card)] border border-[var(--theme-border)] hover:border-amber-400/40 hover:bg-[var(--theme-bg-elevated)] transition-all duration-300"
+      className="flex items-center gap-2 px-4 py-3 rounded-lg bg-[var(--theme-bg-card)] border border-[var(--theme-border)] hover:border-[var(--color-gold)]/40 hover:bg-[var(--theme-bg-elevated)] transition-all duration-300"
     >
       <span className="text-xs text-gray-500 shrink-0">{label}</span>
-      <span className="text-amber-400 font-medium">
+      <span className="text-[var(--color-gold)] font-medium">
         {isZh ? `${hex.nameZh}卦` : hex.nameEn}
       </span>
       <span className="text-xs text-gray-600">#{num}</span>
@@ -60,7 +60,7 @@ export default function RelatedHexagrams({ hexagramNumber, symbol }: RelatedHexa
   return (
     <div className="mt-10">
       {/* Related hexagrams */}
-      <h2 className="text-lg font-bold text-amber-400/80 mb-4 border-b border-amber-400/20 pb-2">
+      <h2 className="text-lg font-bold text-[var(--color-gold)]/80 mb-4 border-b border-[var(--color-gold)]/20 pb-2">
         {isZh ? "相关卦象" : "Related Hexagrams"}
       </h2>
 
@@ -89,14 +89,14 @@ export default function RelatedHexagrams({ hexagramNumber, symbol }: RelatedHexa
       <div className="flex justify-between items-center pt-6 border-t border-gray-800">
         <Link
           href={`/hexagrams/${prevNum}`}
-          className="flex items-center gap-1 text-sm text-gray-500 hover:text-amber-400 transition-colors"
+          className="flex items-center gap-1 text-sm text-gray-500 hover:text-[var(--color-gold)] transition-colors"
         >
           <ChevronLeft size={16} />
           {isZh ? `第${prevNum}卦` : `Hexagram ${prevNum}`}
         </Link>
         <Link
           href={`/hexagrams/${nextNum}`}
-          className="flex items-center gap-1 text-sm text-gray-500 hover:text-amber-400 transition-colors"
+          className="flex items-center gap-1 text-sm text-gray-500 hover:text-[var(--color-gold)] transition-colors"
         >
           {isZh ? `第${nextNum}卦` : `Hexagram ${nextNum}`}
           <ChevronRight size={16} />

@@ -67,12 +67,12 @@ export default function ReviewPanel({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
-      className="relative rounded-2xl border border-amber-600/20 bg-[var(--theme-bg-card-solid)] p-6 shadow-2xl"
+      className="relative rounded-2xl border border-[var(--color-gold)]/20 bg-[var(--theme-bg-card-solid)] p-6 shadow-2xl"
       style={{ boxShadow: "0 0 40px rgba(201,169,110,0.08)" }}
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h3 className="font-title text-xl text-amber-300 tracking-wider">
+        <h3 className="font-title text-xl text-[var(--color-gold-bright)] tracking-wider">
           {t("title")}
         </h3>
         {onClose && (
@@ -123,7 +123,7 @@ export default function ReviewPanel({
           onChange={(e) => setNote(e.target.value.slice(0, 500))}
           placeholder={t("notePlaceholder")}
           rows={4}
-          className="w-full rounded-xl border border-zinc-800 bg-[var(--theme-bg)] px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 resize-none focus:outline-none focus:border-amber-600/50 transition-colors"
+          className="w-full rounded-xl border border-[var(--theme-border)] bg-[var(--theme-bg)] px-4 py-3 text-sm text-[var(--theme-text-primary)] resize-none focus:outline-none focus:border-[var(--color-gold)]/50 transition-colors"
         />
         <p className="text-right text-xs text-zinc-700 mt-1">{note.length}/500</p>
       </div>
@@ -172,7 +172,7 @@ export default function ReviewPanel({
             key="success"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex items-center justify-center gap-2 py-3 text-amber-400"
+            className="flex items-center justify-center gap-2 py-3 text-[var(--color-gold)]"
           >
             <span className="text-lg">✓</span>
             <span className="text-sm">{t("submitSuccess")}</span>
@@ -185,7 +185,7 @@ export default function ReviewPanel({
             className={[
               "w-full py-3 rounded-xl text-sm font-medium transition-all duration-300",
               score > 0 && !submitting
-                ? "bg-cinnabar hover:bg-cinnabar-bright text-amber-100 shadow-[0_0_20px_rgba(139,37,0,0.3)]"
+                ? "bg-cinnabar hover:bg-cinnabar-bright text-white shadow-[0_0_20px_rgba(139,37,0,0.3)]"
                 : "bg-zinc-800 text-zinc-600 cursor-not-allowed",
             ].join(" ")}
           >

@@ -130,17 +130,17 @@ export default function AuthPage() {
           </svg>
         </div>
         {/* Decorative elements */}
-        <div className="absolute top-20 left-[15%] text-amber-500/10 text-5xl animate-twinkle select-none hidden md:block">
+        <div className="absolute top-20 left-[15%] text-[var(--color-gold)]/10 text-5xl animate-twinkle select-none hidden md:block">
           ☲
         </div>
-        <div className="absolute bottom-20 right-[15%] text-amber-500/10 text-5xl animate-twinkle-slow select-none hidden md:block">
+        <div className="absolute bottom-20 right-[15%] text-[var(--color-gold)]/10 text-5xl animate-twinkle-slow select-none hidden md:block">
           ☵
         </div>
 
         {/* Back to home */}
         <Link
           href="/"
-          className="absolute top-6 left-6 text-sm text-amber-400/50 hover:text-amber-400 transition-colors tracking-wider"
+          className="absolute top-6 left-6 text-sm text-[var(--color-gold)]/50 hover:text-[var(--color-gold)] transition-colors tracking-wider"
         >
           {t("backHome")}
         </Link>

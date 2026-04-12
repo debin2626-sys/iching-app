@@ -180,7 +180,7 @@ export default function ProfileContent() {
       <PageLayout navItems={navItems}>
         <div className="flex flex-col items-center justify-center" style={{ minHeight: "60vh" }}>
           <div className="text-gold/10 text-[120px] mb-8">☯</div>
-          <h2 className="text-2xl font-title text-amber-300 mb-3">{t("title")}</h2>
+          <h2 className="text-2xl font-title text-[var(--color-gold-bright)] mb-3">{t("title")}</h2>
           <p className="text-zinc-500 text-base mb-8">{t("loginRequired")}</p>
           <Button href="/auth" variant="ghost" className="w-[200px] h-12 border border-gold/40 hover:border-gold/70 text-gold">
             {t("loginButton")}
@@ -200,7 +200,7 @@ export default function ProfileContent() {
           <h1 className="font-title text-4xl sm:text-5xl text-gold-glow tracking-wider mb-3">
             {t("title")}
           </h1>
-          <p className="text-amber-400/40 text-base tracking-[0.3em]">{t("subtitle")}</p>
+          <p className="text-[var(--color-gold)]/40 text-base tracking-[0.3em]">{t("subtitle")}</p>
           <div className="divider-gold w-24 mx-auto mt-5" />
         </div>
 
@@ -232,7 +232,7 @@ export default function ProfileContent() {
                         onKeyDown={(e) => e.key === "Enter" && saveName()}
                         placeholder={t("namePlaceholder")}
                         maxLength={50}
-                        className="flex-1 bg-white/5 border border-gold/30 rounded-lg px-3 py-1.5 text-base text-amber-100 placeholder-zinc-600 focus:outline-none focus:border-gold/60"
+                        className="flex-1 bg-[var(--theme-bg-card)] border border-[var(--color-gold)]/30 rounded-lg px-3 py-1.5 text-base text-[var(--theme-text-primary)] focus:outline-none focus:border-[var(--color-gold)]/60"
                         autoFocus
                       />
                       <button
@@ -251,7 +251,7 @@ export default function ProfileContent() {
                     </div>
                   ) : (
                     <>
-                      <span className="text-xl font-title text-amber-200 truncate">
+                      <span className="text-xl font-title text-[var(--color-gold-bright)] truncate">
                         {profile?.name || session.user?.email?.split("@")[0] || "—"}
                       </span>
                       <button
@@ -281,12 +281,12 @@ export default function ProfileContent() {
         {/* Subscription Status Card */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 }}>
           <Card variant="elevated" padding="lg" className="mb-6">
-            <h2 className="text-base text-amber-400/60 tracking-widest mb-4 uppercase">{tSub("title")}</h2>
+            <h2 className="text-base text-[var(--color-gold)]/60 tracking-widest mb-4 uppercase">{tSub("title")}</h2>
             {subscription ? (
               <div className="flex items-center justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-lg font-title text-amber-200">
+                    <span className="text-lg font-title text-[var(--color-gold-bright)]">
                       {tSub(`tierNames.${subscription.tier}`)}
                     </span>
                     <span className="px-2 py-0.5 rounded-full bg-green-900/40 text-green-400 text-xs border border-green-700/40">
@@ -326,7 +326,7 @@ export default function ProfileContent() {
         {/* Stats */}
         {profile?.stats && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}>
-            <h2 className="text-base text-amber-400/60 tracking-widest mb-4 uppercase">{t("statsTitle")}</h2>
+            <h2 className="text-base text-[var(--color-gold)]/60 tracking-widest mb-4 uppercase">{t("statsTitle")}</h2>
             <div className="grid grid-cols-3 gap-4 mb-8">
               {[
                 { label: t("totalDivinations"), value: profile.stats.totalDivinations },
@@ -344,7 +344,7 @@ export default function ProfileContent() {
 
         {/* Favorites */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}>
-          <h2 className="text-base text-amber-400/60 tracking-widest mb-4 uppercase">{t("favoritesTitle")}</h2>
+          <h2 className="text-base text-[var(--color-gold)]/60 tracking-widest mb-4 uppercase">{t("favoritesTitle")}</h2>
           {favorites.length === 0 ? (
             <Card variant="default" padding="md" className="text-center py-10 mb-8">
               <div className="text-5xl mb-4 opacity-20">☯</div>
@@ -370,7 +370,7 @@ export default function ProfileContent() {
                       <Link href={`/hexagrams/${fav.hexagram.number}` as "/hexagrams/[id]"}>
                         <div className="text-center">
                           <div className="text-3xl mb-1">{fav.hexagram.symbol}</div>
-                          <div className="text-sm font-title text-amber-300">
+                          <div className="text-sm font-title text-[var(--color-gold-bright)]">
                             {isZh ? fav.hexagram.nameZh : fav.hexagram.nameEn}
                           </div>
                           <div className="text-xs text-zinc-600 mt-0.5">

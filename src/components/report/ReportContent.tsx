@@ -213,7 +213,7 @@ export default function ReportContent() {
       <PageLayout navItems={navItems}>
         <div className="flex flex-col items-center justify-center" style={{ minHeight: "60vh" }}>
           <div className="text-gold/10 text-[120px] mb-8">☯</div>
-          <h2 className="text-2xl font-title text-amber-300 mb-3">{t("title")}</h2>
+          <h2 className="text-2xl font-title text-[var(--color-gold-bright)] mb-3">{t("title")}</h2>
           <p className="text-zinc-500 text-base mb-8">{t("loginRequired")}</p>
           <Button href="/auth" variant="ghost" className="w-[200px] h-12 border border-gold/40 hover:border-gold/70 text-gold">
             {t("loginButton")}
@@ -231,7 +231,7 @@ export default function ReportContent() {
           <h1 className="font-title text-4xl sm:text-5xl text-gold-glow tracking-wider mb-3">
             {t("title")}
           </h1>
-          <p className="text-amber-400/40 text-base tracking-[0.3em]">{t("subtitle")}</p>
+          <p className="text-[var(--color-gold)]/40 text-base tracking-[0.3em]">{t("subtitle")}</p>
           <div className="divider-gold w-24 mx-auto mt-5" />
         </div>
 
@@ -248,7 +248,7 @@ export default function ReportContent() {
           >
             ‹
           </button>
-          <span className="text-xl font-title text-amber-200 min-w-[140px] text-center">
+          <span className="text-xl font-title text-[var(--color-gold-bright)] min-w-[140px] text-center">
             {isZh ? `${year}年${month}月` : `${new Date(year, month - 1).toLocaleString("en-US", { month: "long", year: "numeric" })}`}
           </span>
           <button
@@ -299,7 +299,7 @@ export default function ReportContent() {
 
             {/* Top hexagrams */}
             <div>
-              <h2 className="text-sm text-amber-400/60 tracking-widest mb-3 uppercase">{t("topHexagrams")}</h2>
+              <h2 className="text-sm text-[var(--color-gold)]/60 tracking-widest mb-3 uppercase">{t("topHexagrams")}</h2>
               <div className="grid grid-cols-3 gap-3">
                 {report.topHexagrams.map((h, i) => (
                   <Link key={h.number} href={`/hexagrams/${h.number}` as "/hexagrams/[id]"}>
@@ -308,7 +308,7 @@ export default function ReportContent() {
                         <div className="absolute top-2 right-2 text-xs text-gold/60">★</div>
                       )}
                       <div className="text-3xl mb-1">{h.symbol}</div>
-                      <div className="text-sm font-title text-amber-300 truncate">
+                      <div className="text-sm font-title text-[var(--color-gold-bright)] truncate">
                         {isZh ? h.nameZh : h.nameEn}
                       </div>
                       <div className="text-xs text-zinc-600 mt-0.5">
@@ -324,13 +324,13 @@ export default function ReportContent() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Weekly trend */}
               <Card variant="default" padding="md">
-                <h3 className="text-xs text-amber-400/60 tracking-widest uppercase mb-4">{t("weeklyTrend")}</h3>
+                <h3 className="text-xs text-[var(--color-gold)]/60 tracking-widest uppercase mb-4">{t("weeklyTrend")}</h3>
                 <BarChart data={report.weeklyTrend} />
               </Card>
 
               {/* Scenario breakdown */}
               <Card variant="default" padding="md">
-                <h3 className="text-xs text-amber-400/60 tracking-widest uppercase mb-4">{t("scenarioBreakdown")}</h3>
+                <h3 className="text-xs text-[var(--color-gold)]/60 tracking-widest uppercase mb-4">{t("scenarioBreakdown")}</h3>
                 <div className="flex items-center gap-4">
                   <PieChart data={report.scenarioBreakdown} />
                   <div className="flex flex-col gap-1.5 flex-1">
@@ -354,7 +354,7 @@ export default function ReportContent() {
 
             {/* AI Summary */}
             <Card variant="elevated" padding="lg">
-              <h3 className="text-sm text-amber-400/60 tracking-widest uppercase mb-4">{t("aiSummary")}</h3>
+              <h3 className="text-sm text-[var(--color-gold)]/60 tracking-widest uppercase mb-4">{t("aiSummary")}</h3>
               {report.aiSummary ? (
                 <p className="text-zinc-300 text-sm leading-relaxed whitespace-pre-wrap">{report.aiSummary}</p>
               ) : (

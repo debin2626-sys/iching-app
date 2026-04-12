@@ -142,11 +142,11 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
           onClick={() => setShowBirth(!showBirth)}
           className="w-full flex items-center justify-between px-2 py-2 hover:bg-white/5 transition rounded-lg"
         >
-          <span className="flex items-center gap-2 text-sm text-amber-400/70 font-title">
+          <span className="flex items-center gap-2 text-sm text-[var(--color-gold)]/70 font-title">
             🌙 {t("birthLabel")}
-            <span className="text-xs text-gray-500">{t("birthHint")}</span>
+            <span className="text-xs text-[var(--theme-text-muted)]">{t("birthHint")}</span>
           </span>
-          <span className={`text-amber-400/40 text-xs transition-transform duration-300 ${showBirth ? "rotate-180" : ""}`}>▼</span>
+          <span className={`text-[var(--color-gold)]/40 text-xs transition-transform duration-300 ${showBirth ? "rotate-180" : ""}`}>▼</span>
         </button>
         {showBirth && (
           <div className="px-2 pb-3 pt-2">
@@ -194,8 +194,8 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
                   onClick={() => setGender(gender === "male" ? "" : "male")}
                   className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
                     gender === "male"
-                      ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
-                      : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
+                      ? "border-[var(--color-gold)]/60 bg-[var(--color-gold)]/10 text-[var(--color-gold)]"
+                      : "border-[var(--theme-border)] bg-transparent text-[var(--theme-text-muted)] hover:border-[var(--theme-border-hover)]"
                   }`}
                 >
                   ♂ {t("genderMale")}
@@ -205,8 +205,8 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
                   onClick={() => setGender(gender === "female" ? "" : "female")}
                   className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
                     gender === "female"
-                      ? "border-amber-400/60 bg-amber-400/10 text-amber-400"
-                      : "border-white/10 bg-white/5 text-gray-500 hover:border-white/20"
+                      ? "border-[var(--color-gold)]/60 bg-[var(--color-gold)]/10 text-[var(--color-gold)]"
+                      : "border-[var(--theme-border)] bg-transparent text-[var(--theme-text-muted)] hover:border-[var(--theme-border-hover)]"
                   }`}
                 >
                   ♀ {t("genderFemale")}
@@ -215,7 +215,7 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
             </div>
 
             {hasBirthInfo && (
-              <p className="text-xs text-amber-400/50 mt-3 tracking-wide">
+              <p className="text-xs text-[var(--color-gold)]/50 mt-3 tracking-wide">
                 {t("birthRecorded")}
               </p>
             )}
@@ -446,7 +446,7 @@ function DivinationInner() {
         </m.div>
 
         {/* 问题回显 */}
-        <p className="text-sm text-amber-400/40 mb-8 tracking-wide max-w-md text-center truncate">
+        <p className="text-sm text-[var(--color-gold)]/40 mb-8 tracking-wide max-w-md text-center truncate">
           「{question}」
         </p>
 
@@ -488,7 +488,7 @@ function DivinationInner() {
             >
               {/* 太极水印 */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-                <TaichiWatermark size={400} opacity={0.03} animate />
+                <TaichiWatermark size={400} opacity={0.07} animate />
               </div>
 
               {/* 金色光芒庆祝效果 */}

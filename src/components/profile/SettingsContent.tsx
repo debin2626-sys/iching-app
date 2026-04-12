@@ -111,7 +111,7 @@ export default function SettingsContent() {
       <PageLayout navItems={navItems}>
         <div className="flex flex-col items-center justify-center" style={{ minHeight: "60vh" }}>
           <div className="text-gold/10 text-[120px] mb-8">☯</div>
-          <h2 className="text-2xl font-title text-amber-300 mb-3">{t("title")}</h2>
+          <h2 className="text-2xl font-title text-[var(--color-gold-bright)] mb-3">{t("title")}</h2>
           <p className="text-zinc-500 text-base mb-8">{t("loginRequired")}</p>
           <Button href="/auth" variant="ghost" className="w-[200px] h-12 border border-gold/40 hover:border-gold/70 text-gold">
             {t("loginButton")}
@@ -129,7 +129,7 @@ export default function SettingsContent() {
           <h1 className="font-title text-4xl sm:text-5xl text-gold-glow tracking-wider mb-3">
             {t("title")}
           </h1>
-          <p className="text-amber-400/40 text-base tracking-[0.3em]">{t("subtitle")}</p>
+          <p className="text-[var(--color-gold)]/40 text-base tracking-[0.3em]">{t("subtitle")}</p>
           <div className="divider-gold w-24 mx-auto mt-5" />
         </div>
 
@@ -137,7 +137,7 @@ export default function SettingsContent() {
           {/* AI Depth */}
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
             <Card variant="elevated" padding="lg">
-              <h3 className="text-sm text-amber-400/60 tracking-widest uppercase mb-5">{t("aiDepthTitle")}</h3>
+              <h3 className="text-sm text-[var(--color-gold)]/60 tracking-widest uppercase mb-5">{t("aiDepthTitle")}</h3>
               <div className="space-y-3">
                 {AI_DEPTHS.map((depth) => {
                   const labelKey = `aiDepth${depth.charAt(0).toUpperCase() + depth.slice(1)}` as
@@ -156,7 +156,7 @@ export default function SettingsContent() {
                       className={[
                         "w-full text-left px-4 py-3 rounded-lg border transition-all duration-300",
                         active
-                          ? "border-gold/50 bg-gold/10 text-amber-200"
+                          ? "border-gold/50 bg-gold/10 text-[var(--color-gold-bright)]"
                           : "border-zinc-800 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200",
                       ].join(" ")}
                     >
@@ -175,7 +175,7 @@ export default function SettingsContent() {
           {/* Language */}
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: 0.08 }}>
             <Card variant="elevated" padding="lg">
-              <h3 className="text-sm text-amber-400/60 tracking-widest uppercase mb-5">{t("languageTitle")}</h3>
+              <h3 className="text-sm text-[var(--color-gold)]/60 tracking-widest uppercase mb-5">{t("languageTitle")}</h3>
               <div className="flex gap-3 flex-wrap">
                 {LANGUAGES.map((lang) => {
                   const labelKey = `language${lang.charAt(0).toUpperCase() + lang.slice(1)}` as
@@ -207,7 +207,7 @@ export default function SettingsContent() {
             <Card variant="elevated" padding="lg">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm text-amber-400/60 tracking-widest uppercase mb-1">{t("notificationsTitle")}</h3>
+                  <h3 className="text-sm text-[var(--color-gold)]/60 tracking-widest uppercase mb-1">{t("notificationsTitle")}</h3>
                   <p className="text-xs text-zinc-500">{t("notificationsDesc")}</p>
                 </div>
                 <button

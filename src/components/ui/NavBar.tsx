@@ -312,7 +312,7 @@ function MobileTabBar({ items }: NavBarProps) {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-50 flex h-18 items-end justify-around border-t pb-[env(safe-area-inset-bottom)] md:hidden"
+      className="fixed inset-x-0 bottom-0 z-50 flex h-16 items-end justify-around border-t pb-[env(safe-area-inset-bottom)] md:hidden"
       style={{
         backgroundColor: 'var(--theme-nav-bg)',
         borderColor: 'var(--theme-border)',

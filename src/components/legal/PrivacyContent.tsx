@@ -113,7 +113,7 @@ export default function PrivacyContent() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <span className="text-4xl mb-4 block">🔒</span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-amber-400 mb-3">
+          <h1 className="text-3xl sm:text-4xl font-bold text-[var(--color-gold)] mb-3">
             {content.title}
           </h1>
           <p className="text-gray-500 text-sm">{content.lastUpdated}</p>
@@ -125,7 +125,7 @@ export default function PrivacyContent() {
               key={i}
               className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.12)] rounded-xl p-6"
             >
-              <h2 className="text-lg font-bold text-amber-400/90 mb-3">
+              <h2 className="text-lg font-bold text-[var(--color-gold)]/90 mb-3">
                 {section.heading}
               </h2>
               <p className="text-gray-300 leading-relaxed whitespace-pre-line">
@@ -138,7 +138,7 @@ export default function PrivacyContent() {
         <div className="text-center mt-12">
           <Link
             href="/"
-            className="inline-block px-8 py-3 rounded-full border border-amber-400/40 text-amber-400 hover:bg-amber-400/10 transition-all duration-300"
+            className="inline-block px-8 py-3 rounded-full border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 transition-all duration-300"
           >
             {locale === "en" ? "Back to Home" : "返回首页"}
           </Link>

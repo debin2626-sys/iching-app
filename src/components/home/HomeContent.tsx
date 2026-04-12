@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Coins, Sparkles, BookOpen } from "lucide-react";
 import { AnimatedTaichi } from "@/components/home/HeroAnimations";
-import { NavBar } from "@/components/ui";
+import { NavBar, Button } from "@/components/ui";
 import { SHI_CHEN_LABELS } from "@/lib/iching/bazi";
 import ScenarioSelector from "@/components/divination/ScenarioSelector";
 import SampleReading from "@/components/home/SampleReading";
@@ -343,14 +343,15 @@ export default function HomeContent() {
         <p className="text-center text-xs text-gold/50 mb-2">
           {t("tossingHint")}
         </p>
-        <button
+        <Button
+          variant="primary"
+          size="lg"
           onClick={handleStart}
           disabled={!question.trim()}
-          className="w-full h-[56px] bg-gradient-to-br from-gold to-gold-dim text-bg text-lg rounded-[14px] font-bold font-title tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(201,169,110,0.3)] hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(201,169,110,0.4)] disabled:opacity-35 disabled:shadow-none disabled:cursor-not-allowed"
-          style={question.trim() ? { animation: 'pulse-glow 2.5s ease-in-out infinite' } : undefined}
+          className="w-full"
         >
           {t("startButton")}
-        </button>
+        </Button>
       </div>
 
       {/* 三大核心功能标题 */}

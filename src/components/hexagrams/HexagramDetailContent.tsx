@@ -87,11 +87,11 @@ function HexagramLines({ symbol, nameZh, nameEn, number }: { symbol: string; nam
       {symbol.split("").reverse().map((b, i) => (
         <div key={i} className="flex gap-[4px] justify-center w-16">
           {b === "1" ? (
-            <div className="h-[6px] w-16 bg-amber-400 rounded-sm" />
+            <div className="h-[6px] w-16 bg-[var(--color-gold)] rounded-sm" />
           ) : (
             <>
-              <div className="h-[6px] w-[28px] bg-amber-400 rounded-sm" />
-              <div className="h-[6px] w-[28px] bg-amber-400 rounded-sm" />
+              <div className="h-[6px] w-[28px] bg-[var(--color-gold)] rounded-sm" />
+              <div className="h-[6px] w-[28px] bg-[var(--color-gold)] rounded-sm" />
             </>
           )}
         </div>
@@ -129,7 +129,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
     return (
       <PageLayout navItems={navItems} maxWidth="max-w-4xl">
         <div className="flex justify-center items-center min-h-[400px]">
-          <div className="animate-pulse text-amber-400/60 text-lg">
+          <div className="animate-pulse text-[var(--color-gold)]/60 text-lg">
             {isZh ? "加载中..." : "Loading..."}
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
         {/* Back to list */}
         <Link
           href="/hexagrams"
-          className="inline-flex items-center text-sm text-gray-500 hover:text-amber-400 transition-colors mb-6"
+          className="inline-flex items-center text-sm text-gray-500 hover:text-[var(--color-gold)] transition-colors mb-6"
         >
           <ChevronLeft size={16} />
           {isZh ? "返回卦典" : "Back to Hexagrams"}
@@ -167,12 +167,12 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
           <span className="text-sm text-gray-600">
             #{data.number}
           </span>
-          <div className="flex items-center justify-center gap-2 text-amber-500/60 text-xl mt-2">
+          <div className="flex items-center justify-center gap-2 text-[var(--color-gold)]/60 text-xl mt-2">
             <span>{upper}</span>
             <span>{lower}</span>
           </div>
           <HexagramLines symbol={data.symbol} nameZh={data.nameZh} nameEn={data.nameEn} number={data.number} />
-          <h1 className="text-4xl font-bold text-amber-400 mt-3">
+          <h1 className="text-4xl font-bold text-[var(--color-gold)] mt-3">
             {data.nameZh}
           </h1>
           <p className="text-lg text-gray-400 mt-1">
@@ -188,7 +188,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
         {/* Overview */}
         {(data.overviewZh || data.overviewEn) && (
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+            <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
               {isZh ? "卦象概述" : "Overview"}
             </h2>
             <p className="text-gray-300 leading-relaxed">
@@ -199,7 +199,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
 
         {/* Judgment */}
         <section className="mb-8">
-          <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+          <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
             {isZh ? "卦辞" : "Judgment"}
           </h2>
           <p className="text-[var(--theme-text-primary)] leading-relaxed text-lg">
@@ -210,7 +210,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
         {/* Judgment Detail */}
         {(data.judgmentDetailZh || data.judgmentDetailEn) && (
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+            <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
               {isZh ? "卦辞详解" : "Judgment Commentary"}
             </h2>
             <p className="text-gray-300 leading-relaxed">
@@ -221,7 +221,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
 
         {/* Image */}
         <section className="mb-8">
-          <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+          <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
             {isZh ? "象辞" : "Image"}
           </h2>
           <p className="text-[var(--theme-text-primary)] leading-relaxed text-lg">
@@ -232,7 +232,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
         {/* Image Detail */}
         {(data.imageDetailZh || data.imageDetailEn) && (
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+            <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
               {isZh ? "象辞详解" : "Image Commentary"}
             </h2>
             <p className="text-gray-300 leading-relaxed">
@@ -243,7 +243,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
 
         {/* Interpretation */}
         <section className="mb-8">
-          <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+          <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
             {isZh ? "解读" : "Interpretation"}
           </h2>
           <p className="text-gray-300 leading-relaxed">
@@ -254,7 +254,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
         {/* Lines */}
         {data.lines && data.lines.length > 0 && (
           <section className="mb-10">
-            <h2 className="text-xl font-bold text-amber-400/90 mb-4 border-b border-amber-400/20 pb-2">
+            <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-4 border-b border-[var(--color-gold)]/20 pb-2">
               {isZh ? "爻辞" : "Line Texts"}
             </h2>
             <div className="space-y-4">
@@ -291,7 +291,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
           const cards = parseModernApplication(text);
           return (
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+              <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
                 {isZh ? "现代应用" : "Modern Application"}
               </h2>
               {cards.length > 0 ? (
@@ -303,7 +303,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-lg">{card.icon}</span>
-                        <span className="text-amber-400/80 font-medium">{card.title}</span>
+                        <span className="text-[var(--color-gold)]/80 font-medium">{card.title}</span>
                       </div>
                       <p className="text-gray-300 leading-relaxed text-sm">
                         {card.content}
@@ -321,7 +321,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
         {/* Historical Story */}
         {(data.historicalStoryZh || data.historicalStoryEn) && (
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+            <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
               {isZh ? "历史典故" : "Historical Story"}
             </h2>
             <p className="text-gray-300 leading-relaxed">
@@ -333,7 +333,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
         {/* Related Hexagrams Note */}
         {data.relatedHexagramsNote && (
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+            <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
               {isZh ? "互卦·综卦·错卦" : "Related Trigrams"}
             </h2>
             <p className="text-gray-300 leading-relaxed">
@@ -345,7 +345,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
         {/* References */}
         {data.references && data.references.length > 0 && (
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
+            <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
               {isZh ? "引用来源" : "References"}
             </h2>
             <div className="flex flex-wrap gap-2">

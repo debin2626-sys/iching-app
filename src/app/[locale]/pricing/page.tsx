@@ -51,7 +51,7 @@ export default function PricingPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="text-amber-400/50 text-base tracking-widest"
+            className="text-[var(--color-gold)]/50 text-base tracking-widest"
           >
             {t("subtitle")}
           </motion.p>
@@ -83,7 +83,7 @@ export default function PricingPage() {
               <div className="text-3xl mb-3 mt-1">{t(`tiers.${tier.key}.icon`)}</div>
 
               {/* Name */}
-              <h3 className="font-title text-lg text-amber-200 mb-1">
+              <h3 className="font-title text-lg text-[var(--color-gold-bright)] mb-1">
                 {t(`tiers.${tier.key}.name`)}
               </h3>
 

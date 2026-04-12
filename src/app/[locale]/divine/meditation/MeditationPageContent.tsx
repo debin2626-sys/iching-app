@@ -90,7 +90,7 @@ export default function MeditationPageContent() {
     >
       {/* Taichi watermark — centered, slow rotation */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <TaichiWatermark size={500} opacity={0.04} animate />
+        <TaichiWatermark size={500} opacity={0.07} animate />
       </div>
 
       {/* Skip button — desktop: top-right */}

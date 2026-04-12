@@ -1,20 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Serif_SC } from "next/font/google";
+import { Noto_Serif_SC } from "next/font/google";
 import AuthProvider from "@/components/AuthProvider";
 import { WebVitalsReporter } from "@/components/WebVitalsReporter";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const notoSerifSC = Noto_Serif_SC({
   variable: "--font-noto-serif-sc",
@@ -94,7 +84,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${notoSerifSC.variable} antialiased`}
+        className={`${notoSerifSC.variable} antialiased`}
       >
         <GoogleAnalytics />
         <WebVitalsReporter />

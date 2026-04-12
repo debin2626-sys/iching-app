@@ -35,7 +35,7 @@ export default function Error({
 
       <button
         onClick={reset}
-        className="px-8 py-3 rounded-xl border border-amber-500/30 text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/50 transition-all duration-300 tracking-wider font-title cursor-pointer"
+        className="px-8 py-3 rounded-xl border border-amber-500/30 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 hover:border-amber-500/50 transition-all duration-300 tracking-wider font-title cursor-pointer"
       >
         {t("retry")}
       </button>

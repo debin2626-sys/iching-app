@@ -8,7 +8,7 @@ import TodayCounter from '@/components/home/TodayCounter';
 import SampleReadingClient from '@/components/home/SampleReading';
 import { SampleReadingSectionHeader, SampleReadingCardContent } from '@/components/home/SampleReadingContent';
 import UserReviews from '@/components/home/UserReviews';
-import { TaichiWatermark, BrushDivider } from '@/components/decorative';
+import { TaichiWatermark, BrushDivider, CloudPattern } from '@/components/decorative';
 import Card from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 
@@ -89,9 +89,11 @@ export default async function HomePage({
 
           {/* Hero Section */}
           <section className="relative flex flex-col items-center text-center">
+            {/* Cloud Pattern Decoration */}
+            <CloudPattern position="top" className="absolute top-0 left-0 right-0" />
             {/* Taichi Watermark Background */}
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-              <TaichiWatermark size={500} opacity={0.04} />
+              <TaichiWatermark size={500} opacity={0.07} />
             </div>
 
             {/* Brand Name */}

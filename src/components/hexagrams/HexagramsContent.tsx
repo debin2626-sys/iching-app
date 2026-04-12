@@ -85,11 +85,11 @@ function Lines({ s, nameZh, nameEn, number }: { s: string; nameZh?: string; name
       {s.split("").reverse().map((b, i) => (
         <div key={i} className="flex gap-[3px] justify-center w-8">
           {b === "1" ? (
-            <div className="h-[4px] w-8 bg-amber-400 rounded-sm" />
+            <div className="h-[4px] w-8 bg-[var(--color-gold)] rounded-sm" />
           ) : (
             <>
-              <div className="h-[4px] w-[14px] bg-amber-400 rounded-sm" />
-              <div className="h-[4px] w-[14px] bg-amber-400 rounded-sm" />
+              <div className="h-[4px] w-[14px] bg-[var(--color-gold)] rounded-sm" />
+              <div className="h-[4px] w-[14px] bg-[var(--color-gold)] rounded-sm" />
             </>
           )}
         </div>
@@ -134,7 +134,7 @@ export default function HexagramsContent() {
     <PageLayout navItems={navItems} maxWidth="max-w-7xl">
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-3">
-          <span className="text-amber-400">{t("title")}</span>{" "}
+          <span className="text-[var(--color-gold)]">{t("title")}</span>{" "}
           <span className="text-gray-400">/ {t("subtitle")}</span>
         </h1>
         <p className="text-center text-gray-500 text-lg mb-8">{t("clickHint")}</p>
@@ -170,12 +170,12 @@ export default function HexagramsContent() {
                 >
                   <Link href={`/hexagrams/${num}`}>
                   <div
-                    className="group relative flex flex-col items-center rounded-[12px] bg-[var(--theme-bg-card)] border border-gold/15 backdrop-blur-[12px] p-6 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:border-amber-400/50 hover:shadow-[0_0_24px_rgba(201,169,110,0.18),0_8px_24px_rgba(0,0,0,0.3)]"
+                    className="group relative flex flex-col items-center rounded-[12px] bg-[var(--theme-bg-card)] border border-gold/15 backdrop-blur-[12px] p-6 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:border-[var(--color-gold)]/50 hover:shadow-[0_0_24px_rgba(201,169,110,0.18),0_8px_24px_rgba(0,0,0,0.3)]"
                   >
                     <span className="text-xs text-gray-600 mb-1.5">#{num}</span>
 
                     {/* Trigram icons */}
-                    <div className="flex items-center gap-1.5 text-amber-500/60 text-base mb-1.5">
+                    <div className="flex items-center gap-1.5 text-[var(--color-gold)]/60 text-base mb-1.5">
                       <span>{upper}</span>
                       <span>{lower}</span>
                     </div>
@@ -185,7 +185,7 @@ export default function HexagramsContent() {
                       <Lines s={sym} nameZh={zh} nameEn={en} number={num} />
                     </div>
 
-                    <span className="text-xl font-semibold text-amber-400 mt-2 group-hover:text-amber-300 transition-colors duration-300">
+                    <span className="text-xl font-semibold text-[var(--color-gold)] mt-2 group-hover:text-[var(--color-gold-bright)] transition-colors duration-300">
                       {zh}
                     </span>
                     <span className="text-sm text-gray-500 leading-tight mt-0.5 text-center">

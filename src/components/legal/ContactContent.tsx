@@ -51,7 +51,7 @@ export default function ContactContent() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <span className="text-4xl mb-4 block">✉️</span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-amber-400 mb-3">
+          <h1 className="text-3xl sm:text-4xl font-bold text-[var(--color-gold)] mb-3">
             {content.title}
           </h1>
           <p className="text-gray-400 text-lg">{content.subtitle}</p>
@@ -60,11 +60,11 @@ export default function ContactContent() {
         <div className="space-y-8">
           {/* Email Card */}
           <section className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.12)] rounded-xl p-6 text-center">
-            <Mail size={32} className="text-amber-400/80 mx-auto mb-4" />
+            <Mail size={32} className="text-[var(--color-gold)]/80 mx-auto mb-4" />
             <p className="text-gray-500 text-sm mb-2">{content.emailLabel}</p>
             <a
               href="mailto:contact@51yijing.com"
-              className="text-xl text-amber-400 hover:text-amber-300 transition-colors"
+              className="text-xl text-[var(--color-gold)] hover:text-[var(--color-gold-bright)] transition-colors"
             >
               contact@51yijing.com
             </a>
@@ -72,7 +72,7 @@ export default function ContactContent() {
 
           {/* Feedback Section */}
           <section className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.12)] rounded-xl p-6">
-            <h2 className="text-lg font-bold text-amber-400/90 mb-3">
+            <h2 className="text-lg font-bold text-[var(--color-gold)]/90 mb-3">
               {content.feedbackTitle}
             </h2>
             <p className="text-gray-300 leading-relaxed mb-6">
@@ -81,7 +81,7 @@ export default function ContactContent() {
             <div className="text-center">
               <a
                 href="mailto:contact@51yijing.com?subject=Feedback%20-%2051yijing.com"
-                className="inline-block px-8 py-3 rounded-full border border-amber-400/40 text-amber-400 hover:bg-amber-400/10 transition-all duration-300"
+                className="inline-block px-8 py-3 rounded-full border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 transition-all duration-300"
               >
                 {content.sendEmail}
               </a>
@@ -95,7 +95,7 @@ export default function ContactContent() {
         <div className="text-center mt-12">
           <Link
             href="/"
-            className="inline-block px-8 py-3 rounded-full border border-amber-400/40 text-amber-400 hover:bg-amber-400/10 transition-all duration-300"
+            className="inline-block px-8 py-3 rounded-full border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 transition-all duration-300"
           >
             {locale === "en" ? "Back to Home" : "返回首页"}
           </Link>
