@@ -85,7 +85,7 @@ function PieChart({ data }: { data: Record<string, number> }) {
   return (
     <svg viewBox="0 0 160 160" className="w-full max-w-[160px]">
       {slices.map((s) => (
-        <path key={s.key} d={s.d} fill={s.color} opacity={0.85} stroke="#0a0a12" strokeWidth={1.5} />
+        <path key={s.key} d={s.d} fill={s.color} opacity={0.85} stroke="var(--theme-bg)" strokeWidth={1.5} />
       ))}
     </svg>
   );

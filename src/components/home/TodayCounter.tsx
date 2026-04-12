@@ -52,9 +52,9 @@ export default function TodayCounter() {
   }
 
   return (
-    <p className="text-xs text-[#a0978a] text-center mt-2">
+    <p className="text-xs text-[var(--theme-text-secondary)] text-center mt-2">
       {t("todayCounterPrefix")}
-      <span className="text-[#c9a96e] font-bold">{stats.todayCount}</span>
+      <span className="text-gold font-bold">{stats.todayCount}</span>
       {t("todayCounterSuffix")}
     </p>
   );

@@ -15,8 +15,8 @@ function HexagramDisplay() {
           key={i}
           className="w-20 h-[5px] rounded-sm"
           style={{
-            background: "linear-gradient(90deg, #c9a96e, #e8d5a3, #c9a96e)",
-            boxShadow: "0 0 6px rgba(201,169,110,0.3)",
+            background: "linear-gradient(90deg, var(--color-gold), var(--color-gold-bright), var(--color-gold))",
+            boxShadow: "0 0 6px rgba(184,146,74,0.3)",
           }}
         />
       ))}
@@ -34,10 +34,10 @@ export function SampleReadingSectionHeader({ locale }: { locale: string }) {
 
   return (
     <div className="text-center mb-8">
-      <h2 className="text-xl text-[#c9a96e] font-title font-bold">
+      <h2 className="text-xl text-gold font-title font-bold">
         {content.sectionTitle}
       </h2>
-      <p className="text-sm text-[#a0978a] mt-2">
+      <p className="text-sm text-[var(--theme-text-secondary)] mt-2">
         {content.sectionSubtitle}
       </p>
     </div>
@@ -58,12 +58,12 @@ export function SampleReadingCardContent({ locale }: { locale: string }) {
       {/* Header: Hexagram name + scenario badge */}
       <div className="flex items-center justify-between mb-2">
         <div>
-          <h3 className="text-2xl font-bold text-[#c9a96e] font-title">
+          <h3 className="text-2xl font-bold text-gold font-title">
             {content.hexName}
           </h3>
-          <p className="text-sm text-[#a0978a]">{content.hexSubname}</p>
+          <p className="text-sm text-[var(--theme-text-secondary)]">{content.hexSubname}</p>
         </div>
-        <span className="px-3 py-1 text-xs rounded-full border border-[rgba(201,169,110,0.3)] text-[#c9a96e] bg-[rgba(201,169,110,0.08)]">
+        <span className="px-3 py-1 text-xs rounded-full border border-gold/30 text-gold bg-gold/8">
           {content.scenario}
         </span>
       </div>
@@ -72,18 +72,18 @@ export function SampleReadingCardContent({ locale }: { locale: string }) {
       <HexagramDisplay />
 
       {/* Original quote */}
-      <blockquote className="my-6 pl-4 border-l-2 border-[rgba(201,169,110,0.3)]">
-        <p className="text-[#c9a96e] text-sm italic leading-relaxed">
+      <blockquote className="my-6 pl-4 border-l-2 border-gold/30">
+        <p className="text-gold text-sm italic leading-relaxed">
           {content.originalQuote}
         </p>
-        <p className="text-[#a0978a] text-xs mt-1">
+        <p className="text-[var(--theme-text-secondary)] text-xs mt-1">
           {content.originalSource}
         </p>
       </blockquote>
 
       {/* AI interpretation — ALL paragraphs in DOM for SEO */}
       <div className="space-y-4">
-        <p className="text-[#d4cfc5] text-sm leading-relaxed">
+        <p className="text-[var(--theme-text-primary)] text-sm leading-relaxed">
           {content.paragraphs[0]}
         </p>
       </div>
@@ -99,7 +99,7 @@ export function SampleReadingCardContent({ locale }: { locale: string }) {
               {content.paragraphs.slice(1).map((p, i) => (
                 <p
                   key={i}
-                  className="text-[#d4cfc5] text-sm leading-relaxed"
+                  className="text-[var(--theme-text-primary)] text-sm leading-relaxed"
                 >
                   {p}
                 </p>

@@ -163,7 +163,11 @@
     "signInWithGoogle": "Sign in with Google",
     "emailLogin": "Email Login",
     "continueAnonymous": "Continue Anonymously",
-    "continueAnonymousMessage": "Records saved locally, login to sync to cloud"
+    "continueAnonymousMessage": "Records saved locally, login to sync to cloud",
+    "copyLink": "Copy Link",
+    "copied": "Copied",
+    "shareWeibo": "Share Weibo",
+    "divinationAgainShort": "Cast Again"
   },
   "Hexagrams": {
     "title": "64 Hexagrams",
@@ -189,7 +193,12 @@
     "hold": "Hold...",
     "exhale": "Breathe out...",
     "skip": "Skip",
-    "tapToSkip": "Tap to skip"
+    "tapToSkip": "Tap to skip",
+    "guide1": "Clear your mind, focus on your question",
+    "guide2": "Breathe deeply, connect with the universe",
+    "guide3": "When your mind is set, the hexagram reveals itself",
+    "meditationTitle": "Meditation Guide",
+    "meditationDescription": "Clear your mind and focus with sincerity for the hexagram to reveal its true meaning"
   },
   "Auth": {
     "signInWithGoogle": "Sign in with Google",

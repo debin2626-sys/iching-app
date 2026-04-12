@@ -163,7 +163,11 @@
     "signInWithGoogle": "使用 Google 登录",
     "emailLogin": "邮箱登录",
     "continueAnonymous": "继续匿名体验",
-    "continueAnonymousMessage": "记录已保存在本地，登录后可同步到云端"
+    "continueAnonymousMessage": "记录已保存在本地，登录后可同步到云端",
+    "copyLink": "复制链接",
+    "copied": "已复制",
+    "shareWeibo": "分享微博",
+    "divinationAgainShort": "再占一卦"
   },
   "Hexagrams": {
     "title": "六十四卦典",
@@ -189,7 +193,12 @@
     "hold": "屏住...",
     "exhale": "缓缓呼出...",
     "skip": "跳过",
-    "tapToSkip": "轻触跳过"
+    "tapToSkip": "轻触跳过",
+    "guide1": "静心凝神，诚心所问",
+    "guide2": "呼吸吐纳，天人合一",
+    "guide3": "心念既定，卦象自显",
+    "meditationTitle": "静心引导",
+    "meditationDescription": "静心凝神，诚意正心，方可得卦象之真意"
   },
   "Auth": {
     "signInWithGoogle": "使用 Google 登录",

@@ -67,7 +67,7 @@ export default function ReviewPanel({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
-      className="relative rounded-2xl border border-amber-600/20 bg-[#0f0f1a] p-6 shadow-2xl"
+      className="relative rounded-2xl border border-amber-600/20 bg-[var(--theme-bg-card-solid)] p-6 shadow-2xl"
       style={{ boxShadow: "0 0 40px rgba(201,169,110,0.08)" }}
     >
       {/* Header */}
@@ -103,8 +103,8 @@ export default function ReviewPanel({
                   width="32"
                   height="32"
                   viewBox="0 0 24 24"
-                  fill={active ? "#c9a96e" : "none"}
-                  stroke={active ? "#c9a96e" : "#3f3f46"}
+                  fill={active ? "var(--color-gold)" : "none"}
+                  stroke={active ? "var(--color-gold)" : "#3f3f46"}
                   strokeWidth="1.5"
                 >
                   <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
@@ -123,7 +123,7 @@ export default function ReviewPanel({
           onChange={(e) => setNote(e.target.value.slice(0, 500))}
           placeholder={t("notePlaceholder")}
           rows={4}
-          className="w-full rounded-xl border border-zinc-800 bg-[#0a0a12] px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 resize-none focus:outline-none focus:border-amber-600/50 transition-colors"
+          className="w-full rounded-xl border border-zinc-800 bg-[var(--theme-bg)] px-4 py-3 text-sm text-zinc-300 placeholder-zinc-700 resize-none focus:outline-none focus:border-amber-600/50 transition-colors"
         />
         <p className="text-right text-xs text-zinc-700 mt-1">{note.length}/500</p>
       </div>
@@ -141,7 +141,7 @@ export default function ReviewPanel({
             <div
               className={[
                 "w-10 h-6 rounded-full transition-colors duration-300",
-                fulfilled ? "bg-[#8b2500]" : "bg-zinc-800",
+                fulfilled ? "bg-cinnabar" : "bg-zinc-800",
               ].join(" ")}
             />
             <div
@@ -185,7 +185,7 @@ export default function ReviewPanel({
             className={[
               "w-full py-3 rounded-xl text-sm font-medium transition-all duration-300",
               score > 0 && !submitting
-                ? "bg-[#8b2500] hover:bg-[#a02c00] text-amber-100 shadow-[0_0_20px_rgba(139,37,0,0.3)]"
+                ? "bg-cinnabar hover:bg-cinnabar-bright text-amber-100 shadow-[0_0_20px_rgba(139,37,0,0.3)]"
                 : "bg-zinc-800 text-zinc-600 cursor-not-allowed",
             ].join(" ")}
           >

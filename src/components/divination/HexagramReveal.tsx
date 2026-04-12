@@ -30,13 +30,13 @@ interface HexagramRevealProps {
 
 /** 阳爻（实线）组件 */
 function YangLine({ isChanging }: { isChanging: boolean }) {
-  const bgColor = isChanging ? "bg-[#8b2500]" : "bg-[#c9a96e]";
+  const bgColor = isChanging ? "bg-cinnabar" : "bg-gold";
   return <span className={`block w-full h-[10px] rounded-sm ${bgColor}`} />;
 }
 
 /** 阴爻（虚线）组件 */
 function YinLine({ isChanging }: { isChanging: boolean }) {
-  const bgColor = isChanging ? "bg-[#8b2500]" : "bg-[#c9a96e]";
+  const bgColor = isChanging ? "bg-cinnabar" : "bg-gold";
   return (
     <div className="flex w-full items-center">
       <span className={`block flex-1 h-[10px] rounded-sm ${bgColor}`} />
@@ -216,7 +216,7 @@ export default function HexagramReveal({
                   transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                   {hexagramName && (
-                    <p className="text-2xl font-title text-[#c9a96e]">{hexagramName}</p>
+                    <p className="text-2xl font-title text-gold">{hexagramName}</p>
                   )}
                   {hexagramNameEn && (
                     <p className="text-sm text-zinc-500 mt-1">{hexagramNameEn}</p>
@@ -227,7 +227,7 @@ export default function HexagramReveal({
           ) : (
             <>
               {hexagramName && (
-                <p className="text-2xl font-title text-[#c9a96e]">{hexagramName}</p>
+                <p className="text-2xl font-title text-gold">{hexagramName}</p>
               )}
               {hexagramNameEn && (
                 <p className="text-sm text-zinc-500 mt-1">{hexagramNameEn}</p>

@@ -301,7 +301,7 @@ export default function ProfileContent() {
                 </div>
                 <Link
                   href={"/pricing" as any}
-                  className="px-4 py-2 rounded-lg border border-[#c9a96e]/40 text-[#c9a96e] text-sm hover:border-[#c9a96e]/70 hover:bg-[#c9a96e]/10 transition-all"
+                  className="px-4 py-2 rounded-lg border border-gold/40 text-gold text-sm hover:border-gold/70 hover:bg-gold/10 transition-all"
                 >
                   {tSub("renewButton")}
                 </Link>
@@ -314,7 +314,7 @@ export default function ProfileContent() {
                 </div>
                 <Link
                   href={"/pricing" as any}
-                  className="px-4 py-2 rounded-lg bg-[#c9a96e] text-[#0a0a12] text-sm font-bold hover:bg-[#d4b87e] transition-all"
+                  className="px-4 py-2 rounded-lg bg-gold text-bg text-sm font-bold hover:bg-gold-bright transition-all"
                 >
                   {tSub("upgradeButton")}
                 </Link>

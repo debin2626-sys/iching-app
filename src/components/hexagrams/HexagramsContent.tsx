@@ -146,7 +146,7 @@ export default function HexagramsContent() {
             placeholder={t("searchPlaceholder")}
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            className="h-12 border-[rgba(201,169,110,0.3)]"
+            className="h-12 border-gold/30"
           />
         </div>
 
@@ -170,7 +170,7 @@ export default function HexagramsContent() {
                 >
                   <Link href={`/hexagrams/${num}`}>
                   <div
-                    className="group relative flex flex-col items-center rounded-[12px] bg-[var(--bg-card)] border border-gold/15 backdrop-blur-[12px] p-6 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:border-amber-400/50 hover:shadow-[0_0_24px_rgba(201,169,110,0.18),0_8px_24px_rgba(0,0,0,0.3)]"
+                    className="group relative flex flex-col items-center rounded-[12px] bg-[var(--theme-bg-card)] border border-gold/15 backdrop-blur-[12px] p-6 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:border-amber-400/50 hover:shadow-[0_0_24px_rgba(201,169,110,0.18),0_8px_24px_rgba(0,0,0,0.3)]"
                   >
                     <span className="text-xs text-gray-600 mb-1.5">#{num}</span>
 

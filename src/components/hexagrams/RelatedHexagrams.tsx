@@ -32,7 +32,7 @@ function RelatedLink({
   return (
     <Link
       href={`/hexagrams/${num}`}
-      className="flex items-center gap-2 px-4 py-3 rounded-lg bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.12)] hover:border-amber-400/40 hover:bg-[rgba(201,169,110,0.05)] transition-all duration-300"
+      className="flex items-center gap-2 px-4 py-3 rounded-lg bg-[var(--theme-bg-card)] border border-[var(--theme-border)] hover:border-amber-400/40 hover:bg-[var(--theme-bg-elevated)] transition-all duration-300"
     >
       <span className="text-xs text-gray-500 shrink-0">{label}</span>
       <span className="text-amber-400 font-medium">

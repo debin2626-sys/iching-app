@@ -40,14 +40,14 @@ function DesktopPanel({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
       animate={{ opacity: 1, height: "auto" }}
       exit={{ opacity: 0, height: 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="mt-3 overflow-hidden rounded-xl bg-[#12121e] border border-[rgba(201,169,110,0.2)]"
+      className="mt-3 overflow-hidden rounded-xl bg-[var(--theme-dropdown-bg)] border border-[var(--theme-border)]"
     >
       <div className="p-4 flex flex-wrap gap-2">
         {scenario.subScenarios.map((sub) => (
           <button
             key={sub.id}
             onClick={() => onSelect(sub)}
-            className="px-4 py-2 rounded-full text-sm text-[#f5f0e8] bg-[#1a1a2e] border border-[rgba(201,169,110,0.4)] transition-all duration-200 hover:bg-[#2a2035] hover:border-[#c9a96e] hover:text-[#c9a96e] active:scale-95"
+            className="px-4 py-2 rounded-full text-sm text-[var(--theme-text-primary)] bg-[var(--theme-bg-card-solid)] border border-gold/40 transition-all duration-200 hover:bg-[var(--theme-bg-elevated)] hover:border-gold hover:text-gold active:scale-95"
           >
             {getScenarioText(sub.name, locale)}
           </button>
@@ -104,7 +104,7 @@ function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
         dragConstraints={{ top: 0 }}
         dragElastic={0.2}
         onDragEnd={handleDragEnd}
-        className="fixed bottom-0 left-0 right-0 z-50 bg-[#12121e] rounded-t-2xl max-h-[60vh] flex flex-col"
+        className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--theme-dropdown-bg)] rounded-t-2xl max-h-[60vh] flex flex-col"
         style={{ touchAction: "pan-x" }}
       >
         {/* Drag handle — only this area triggers drag */}
@@ -113,12 +113,12 @@ function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
           onPointerDown={(e) => dragControls.start(e)}
           style={{ touchAction: "none" }}
         >
-          <div className="w-10 h-1 rounded-full bg-[rgba(201,169,110,0.4)]" />
+          <div className="w-10 h-1 rounded-full bg-gold/40" />
         </div>
 
         {/* Title */}
-        <div className="px-4 pb-3 border-b border-[#2a2a3a]">
-          <h3 className="text-base font-semibold text-[#f5f0e8]">
+        <div className="px-4 pb-3 border-b border-[var(--theme-border)]">
+          <h3 className="text-base font-semibold text-[var(--theme-text-primary)]">
             {scenario.emoji} {getScenarioText(scenario.name, locale)}
           </h3>
         </div>
@@ -143,12 +143,12 @@ function MobileSheet({ scenario, onSelect, onClose }: SubScenarioPanelProps) {
               }}
               className={[
                 "w-full flex items-center justify-between px-4 h-14 text-left transition-colors",
-                "text-[#f5f0e8] hover:bg-[rgba(201,169,110,0.08)] active:bg-[rgba(201,169,110,0.12)]",
-                i < scenario.subScenarios.length - 1 ? "border-b border-[#2a2a3a]" : "",
+                "text-[var(--theme-text-primary)] hover:bg-gold/8 active:bg-gold/12",
+                i < scenario.subScenarios.length - 1 ? "border-b border-[var(--theme-border)]" : "",
               ].join(" ")}
             >
               <span className="text-sm">{getScenarioText(sub.name, locale)}</span>
-              <span className="text-[#a08050] text-xs">›</span>
+              <span className="text-[var(--color-gold-dim)] text-xs">›</span>
             </button>
           ))}
         </div>

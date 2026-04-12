@@ -119,7 +119,16 @@ export default function AuthPage() {
 
   return (
     <PageLayout showNav={false}>
-      <main className="min-h-screen flex flex-col items-center justify-center px-4 relative">
+      <main className="min-h-screen flex flex-col items-center justify-center px-4 relative" style={{ background: 'var(--theme-bg)' }}>
+        {/* Taichi watermark decoration */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ opacity: 0.03 }}>
+          <svg width="400" height="400" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="1"/>
+            <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/>
+            <circle cx="50" cy="26" r="6" fill="var(--theme-bg)"/>
+            <circle cx="50" cy="74" r="6" fill="currentColor"/>
+          </svg>
+        </div>
         {/* Decorative elements */}
         <div className="absolute top-20 left-[15%] text-amber-500/10 text-5xl animate-twinkle select-none hidden md:block">
           ☲
@@ -226,7 +235,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-gold-bright disabled:opacity-50 disabled:cursor-not-allowed"
+                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold/80 hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-gold-bright disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? t("loggingIn") : t("loginButton")}
               </button>
@@ -266,7 +275,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-gold-bright disabled:opacity-50 disabled:cursor-not-allowed"
+                className="mt-2 w-full font-title tracking-wider h-12 rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold/80 hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-gold-bright disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? t("registering") : t("registerButton")}
               </button>

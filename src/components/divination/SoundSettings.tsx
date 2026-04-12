@@ -64,7 +64,7 @@ export default function SoundSettings({ sound }: SoundSettingsProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-12 right-0 w-56 bg-[#12121e]/95 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-xl"
+            className="absolute top-12 right-0 w-56 bg-[var(--theme-dropdown-bg)] backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-xl"
           >
             {/* 标题 */}
             <p className="text-xs text-[var(--color-gold)]/70 font-title tracking-wider mb-3">

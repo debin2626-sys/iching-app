@@ -13,7 +13,10 @@ import { PageLayout, Button, TextArea, Select } from "@/components/ui";
 import Card from "@/components/ui/Card";
 import MeditationGuide from "@/components/divination/MeditationGuide";
 import CoinToss from "@/components/divination/CoinToss";
+import CastingProgress from "@/components/divination/CastingProgress";
+import HexagramBuilder from "@/components/divination/HexagramBuilder";
 import SoundSettings from "@/components/divination/SoundSettings";
+import { TaichiWatermark } from "@/components/decorative";
 import { useSoundEffect } from "@/hooks/useSoundEffect";
 import { trackDivinationStart, trackCoinToss, trackDivinationComplete, trackFunnelCoinToss, trackFunnelHexagramFormed, trackFunnelQuestionSubmit, trackFunnelBirthFill, trackFunnelStartClick } from "@/lib/analytics";
 
@@ -43,13 +46,13 @@ const DAYS = Array.from({ length: 31 }, (_, i) => i + 1);
 const YAO_LABELS = ["初爻", "二爻", "三爻", "四爻", "五爻", "上爻"];
 
 
-/* 爻线组件 */
-function YaoLine({ value, label, isChanging }: { value: LineValue; label: string; isChanging: boolean }) {
+/* Inline YaoLine for done phase (non-animated) */
+function InlineYaoLine({ value, label, isChanging }: { value: LineValue; label: string; isChanging: boolean }) {
   const isYang = value === 7 || value === 9;
-  const color = isChanging ? "#ef4444" : "var(--color-gold)";
+  const color = isChanging ? "var(--color-vermilion)" : "var(--color-gold)";
   return (
     <div className="flex items-center gap-3">
-      <span className="text-base w-12 text-right opacity-50">{label}</span>
+      <span className="text-base w-12 text-right" style={{ color: 'var(--theme-text-muted)' }}>{label}</span>
       <div className="flex items-center gap-1 w-[200px] justify-center">
         {isYang ? (
           <span className="block w-[200px] h-2 rounded-sm" style={{ background: color }} />
@@ -61,7 +64,11 @@ function YaoLine({ value, label, isChanging }: { value: LineValue; label: string
           </>
         )}
       </div>
-      {isChanging && <span className="text-red-500 text-xs">🔴</span>}
+      {isChanging && (
+        <svg width={12} height={12} viewBox="0 0 12 12" aria-hidden="true">
+          <circle cx={6} cy={6} r={5} fill="none" stroke="var(--color-vermilion)" strokeWidth={1.5} />
+        </svg>
+      )}
     </div>
   );
 }
@@ -219,7 +226,7 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
       <button
         onClick={handleSubmit}
         disabled={!question.trim()}
-        className="w-full font-title tracking-wider h-14 px-12 text-lg rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] disabled:opacity-40 disabled:cursor-not-allowed"
+        className="w-full font-title tracking-wider h-14 px-12 text-lg rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold/80 hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {t("startButton")}
       </button>
@@ -479,6 +486,11 @@ function DivinationInner() {
               transition={{ duration: 0.5 }}
               className="w-full max-w-[600px] mx-auto text-center relative"
             >
+              {/* 太极水印 */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+                <TaichiWatermark size={400} opacity={0.03} animate />
+              </div>
+
               {/* 金色光芒庆祝效果 */}
               {showGoldenBurst && (
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
@@ -486,32 +498,19 @@ function DivinationInner() {
                 </div>
               )}
 
-              {/* 进度指示 */}
-              <p className="text-lg font-bold text-gold mb-3 tracking-wide text-center">
-                {currentYao < 6 ? tDiv("tossProgress", { current: currentYao + 1 }) : tDiv("allDone")}
+              {/* 进度指示器 */}
+              <CastingProgress current={currentYao} total={6} />
+
+              {/* 提示文字 */}
+              <p
+                className="text-sm font-title tracking-wider mt-4 mb-2"
+                style={{ color: "var(--theme-text-muted)" }}
+              >
+                {currentYao < 6 ? "请诚心抛掷铜钱六次" : ""}
               </p>
 
-              {/* 进度条 */}
-              <div className="flex justify-center gap-2 mb-8 max-w-[400px] w-full mx-auto">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <m.div
-                    key={i}
-                    className="h-1.5 rounded-full"
-                    initial={false}
-                    animate={{
-                      width: i < currentYao ? 24 : 12,
-                      backgroundColor:
-                        i < currentYao
-                          ? "var(--color-gold)"
-                          : "rgba(255,255,255,0.1)",
-                    }}
-                    transition={{ duration: 0.4 }}
-                  />
-                ))}
-              </div>
-
               {/* 铜钱抛掷动画 */}
-              <Card variant="elevated" className="mb-8 my-10 overflow-visible">
+              <Card variant="elevated" className="mb-6 my-6 overflow-visible">
                 <div className="py-8">
                   <CoinToss
                     currentYao={currentYao}
@@ -521,25 +520,13 @@ function DivinationInner() {
                 </div>
               </Card>
 
-              {/* 已完成的爻（从下往上） */}
+              {/* 六爻逐步构建显示 */}
               {lines.length > 0 && (
-                <Card className="mb-8 mt-10">
-                  <div className="flex flex-col items-center gap-2">
-                    {[...lines].reverse().map((v, ri) => {
-                      const i = lines.length - 1 - ri;
-                      const isChanging = v === 6 || v === 9;
-                      return (
-                        <m.div
-                          key={i}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.1 }}
-                        >
-                          <YaoLine value={v} label={yaoLabels[i]} isChanging={isChanging} />
-                        </m.div>
-                      );
-                    })}
-                  </div>
+                <Card className="mb-8 mt-6">
+                  <HexagramBuilder
+                    yaoResults={lines.map((v) => ({ value: v }))}
+                    currentToss={currentYao}
+                  />
                 </Card>
               )}
             </m.div>
@@ -576,7 +563,7 @@ function DivinationInner() {
                   {isEn ? `Hexagram ${hexNum}` : `${hexInfo?.en ?? ""} · 第${hexNum}卦`}
                 </p>
                 {changingLines.length > 0 && (
-                  <p className="text-red-400/80 text-sm mt-2">
+                  <p style={{ color: 'var(--color-vermilion)' }} className="text-sm mt-2 opacity-80">
                     {tDiv("changingLinesLabel", { lines: changingLines.map((i) => yaoLabels[i]).join(isEn ? ", " : "、") })}
                   </p>
                 )}
@@ -603,7 +590,7 @@ function DivinationInner() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.7 + ri * 0.1 }}
                         >
-                          <YaoLine value={v} label={yaoLabels[i]} isChanging={isChanging} />
+                          <InlineYaoLine value={v} label={yaoLabels[i]} isChanging={isChanging} />
                         </m.div>
                       );
                     })}
@@ -614,7 +601,7 @@ function DivinationInner() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button
                   onClick={goToResult}
-                  className="h-12 px-8 text-lg font-title tracking-wider rounded-lg bg-transparent border border-[rgba(201,169,110,0.5)] text-gold transition-all duration-300 hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
+                  className="h-12 px-8 text-lg font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold/80 hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] inline-flex items-center justify-center"
                 >
                   {tDiv("viewResult")}
                 </button>

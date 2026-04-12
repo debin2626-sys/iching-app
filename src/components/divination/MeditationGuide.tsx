@@ -140,7 +140,7 @@ export default function MeditationGuide({ onComplete, duration = 15 }: Meditatio
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0a0a12] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[var(--theme-bg)] overflow-hidden">
       {/* Skip button - desktop: top-right, mobile: bottom */}
       <AnimatePresence>
         {canSkip && (
@@ -151,7 +151,7 @@ export default function MeditationGuide({ onComplete, duration = 15 }: Meditatio
             transition={{ duration: 0.5 }}
             whileHover={{ opacity: 1 }}
             onClick={handleSkip}
-            className="hidden sm:block fixed top-6 right-6 text-sm text-[#a0978a] hover:text-[#c9a96e] transition-colors z-50 font-title tracking-wider"
+            className="hidden sm:block fixed top-6 right-6 text-sm text-[var(--theme-text-secondary)] hover:text-[var(--color-gold)] transition-colors z-50 font-title tracking-wider"
           >
             {t("skip")}
           </m.button>
@@ -169,7 +169,7 @@ export default function MeditationGuide({ onComplete, duration = 15 }: Meditatio
               animate={{ opacity: 0.8, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="text-lg sm:text-xl text-[#f5f0e8] font-title tracking-[0.15em] text-center"
+              className="text-lg sm:text-xl text-[var(--theme-text-primary)] font-title tracking-[0.15em] text-center"
             >
               {currentLine}
             </m.p>
@@ -246,7 +246,7 @@ export default function MeditationGuide({ onComplete, duration = 15 }: Meditatio
               animate={{ opacity: 0.6 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative z-10 text-base sm:text-lg text-[#c9a96e] font-title tracking-[0.2em]"
+              className="relative z-10 text-base sm:text-lg text-[var(--color-gold)] font-title tracking-[0.2em]"
             >
               {breathText}
             </m.span>
@@ -275,7 +275,7 @@ export default function MeditationGuide({ onComplete, duration = 15 }: Meditatio
             animate={{ opacity: 0.5 }}
             transition={{ duration: 0.5 }}
             onClick={handleSkip}
-            className="sm:hidden text-sm text-[#a0978a] font-title tracking-wider active:text-[#c9a96e] transition-colors"
+            className="sm:hidden text-sm text-[var(--theme-text-secondary)] font-title tracking-wider active:text-[var(--color-gold)] transition-colors"
           >
             {t("tapToSkip")}
           </m.button>

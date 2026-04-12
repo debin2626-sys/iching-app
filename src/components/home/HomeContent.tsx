@@ -140,7 +140,7 @@ export default function HomeContent() {
   };
 
   const inputStyle =
-    "bg-[rgba(255,255,255,0.04)] border border-[rgba(201,169,110,0.2)] rounded-xl text-[#f5f0e8] outline-none focus:border-[rgba(201,169,110,0.5)] transition-colors";
+    "bg-[var(--theme-bg-card)] border border-[var(--theme-border)] rounded-xl text-[var(--theme-text-primary)] outline-none focus:border-gold/50 transition-colors";
 
   const features = [
     {
@@ -163,7 +163,7 @@ export default function HomeContent() {
   return (
     <>
       <NavBar items={navItems} />
-      <main className="min-h-screen w-full bg-[#0a0a12]">
+      <main className="min-h-screen w-full" style={{ backgroundColor: 'var(--theme-bg)' }}>
         <div className="w-full px-6" style={{ maxWidth: '768px', margin: '0 auto', paddingTop: '220px', paddingBottom: '80px' }}>
       {/* 太极图 */}
       <div className="flex justify-center">
@@ -180,7 +180,7 @@ export default function HomeContent() {
       </h1>
 
       {/* 副标题 */}
-      <p className="mt-4 text-xl text-[#a0978a] text-center">
+      <p className="mt-4 text-xl text-[var(--theme-text-secondary)] text-center">
         {t("subtitle")}
       </p>
 
@@ -191,7 +191,7 @@ export default function HomeContent() {
 
       {/* 场景化入口 */}
       <div className="mt-10">
-        <p className="text-sm text-[#a0978a] text-center mb-3">{t("scenarioGuide")}</p>
+        <p className="text-sm text-[var(--theme-text-secondary)] text-center mb-3">{t("scenarioGuide")}</p>
         <ScenarioSelector onSelect={handleScenarioSelect} />
       </div>
 
@@ -205,7 +205,7 @@ export default function HomeContent() {
         >
           {question.split(/(\[[^\]]*\])/).map((part, idx) =>
             /^\[.*\]$/.test(part) ? (
-              <span key={idx} className="text-[#c9a96e] font-semibold">
+              <span key={idx} className="text-gold font-semibold">
                 {part}
               </span>
             ) : (
@@ -227,8 +227,8 @@ export default function HomeContent() {
             }
           }}
           placeholder={t("questionPlaceholder")}
-          className={`w-full h-[120px] md:h-[140px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
-          style={{ caretColor: "#c9a96e" }}
+          className={`w-full h-[120px] md:h-[140px] p-5 text-base resize-none ${inputStyle} placeholder:text-[var(--theme-text-secondary)]/50`}
+          style={{ caretColor: "var(--color-gold)" }}
         />
       </div>
 
@@ -239,24 +239,24 @@ export default function HomeContent() {
           onClick={() => setShowBirth(!showBirth)}
           className={`w-full h-12 px-4 flex items-center justify-between ${inputStyle} cursor-pointer`}
         >
-          <span className="text-sm text-[#a0978a]">
+          <span className="text-sm text-[var(--theme-text-secondary)]">
             🌙 {t("birthLabel")}
             <span className="text-xs text-gray-500 ml-2">{t("birthHint")}</span>
           </span>
           <span
-            className={`text-[#a0978a]/40 text-xs transition-transform duration-300 ${showBirth ? "rotate-180" : ""}`}
+            className={`text-[var(--theme-text-secondary)]/40 text-xs transition-transform duration-300 ${showBirth ? "rotate-180" : ""}`}
           >
             ▼
           </span>
         </button>
 
         {showBirth && (
-          <div className="mt-2 p-4 bg-[rgba(255,255,255,0.04)] border border-[rgba(201,169,110,0.2)] rounded-xl">
+          <div className="mt-2 p-4 bg-[var(--theme-bg-card)] border border-[var(--theme-border)] rounded-xl">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <select
                 value={birthYear}
                 onChange={(e) => setBirthYear(e.target.value)}
-                className={`h-10 px-3 text-sm ${inputStyle} ${!birthYear ? "text-[#a0978a]/50" : ""}`}
+                className={`h-10 px-3 text-sm ${inputStyle} ${!birthYear ? "text-[var(--theme-text-secondary)]/50" : ""}`}
               >
                 <option value="">{t("yearPlaceholder")}</option>
                 {YEARS.map((y) => (
@@ -268,7 +268,7 @@ export default function HomeContent() {
               <select
                 value={birthMonth}
                 onChange={(e) => setBirthMonth(e.target.value)}
-                className={`h-10 px-3 text-sm ${inputStyle} ${!birthMonth ? "text-[#a0978a]/50" : ""}`}
+                className={`h-10 px-3 text-sm ${inputStyle} ${!birthMonth ? "text-[var(--theme-text-secondary)]/50" : ""}`}
               >
                 <option value="">{t("monthPlaceholder")}</option>
                 {MONTHS.map((m) => (
@@ -280,7 +280,7 @@ export default function HomeContent() {
               <select
                 value={birthDay}
                 onChange={(e) => setBirthDay(e.target.value)}
-                className={`h-10 px-3 text-sm ${inputStyle} ${!birthDay ? "text-[#a0978a]/50" : ""}`}
+                className={`h-10 px-3 text-sm ${inputStyle} ${!birthDay ? "text-[var(--theme-text-secondary)]/50" : ""}`}
               >
                 <option value="">{t("dayPlaceholder")}</option>
                 {DAYS.map((d) => (
@@ -292,7 +292,7 @@ export default function HomeContent() {
               <select
                 value={birthHour}
                 onChange={(e) => setBirthHour(e.target.value)}
-                className={`h-10 px-3 text-sm ${inputStyle} ${!birthHour ? "text-[#a0978a]/50" : ""}`}
+                className={`h-10 px-3 text-sm ${inputStyle} ${!birthHour ? "text-[var(--theme-text-secondary)]/50" : ""}`}
               >
                 <option value="">{t("hourPlaceholder")}</option>
                 {SHI_CHEN_LABELS.map((label, i) => (
@@ -310,7 +310,7 @@ export default function HomeContent() {
                 onClick={() => setGender(gender === "male" ? "" : "male")}
                 className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
                   gender === "male"
-                    ? "border-[rgba(201,169,110,0.6)] bg-[rgba(201,169,110,0.1)] text-[#c9a96e]"
+                    ? "border-gold/60 bg-gold/10 text-gold"
                     : "border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] text-gray-500 hover:border-[rgba(255,255,255,0.2)]"
                 }`}
               >
@@ -321,7 +321,7 @@ export default function HomeContent() {
                 onClick={() => setGender(gender === "female" ? "" : "female")}
                 className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
                   gender === "female"
-                    ? "border-[rgba(201,169,110,0.6)] bg-[rgba(201,169,110,0.1)] text-[#c9a96e]"
+                    ? "border-gold/60 bg-gold/10 text-gold"
                     : "border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] text-gray-500 hover:border-[rgba(255,255,255,0.2)]"
                 }`}
               >
@@ -330,7 +330,7 @@ export default function HomeContent() {
             </div>
 
             {hasBirthInfo && (
-              <p className="text-xs text-[#c9a96e]/50 mt-3 tracking-wide">
+              <p className="text-xs text-gold/50 mt-3 tracking-wide">
                 {t("birthRecorded")}
               </p>
             )}
@@ -340,13 +340,13 @@ export default function HomeContent() {
 
       {/* 开始摇卦按钮 */}
       <div className="mt-6 relative">
-        <p className="text-center text-xs text-[#c9a96e]/50 mb-2">
+        <p className="text-center text-xs text-gold/50 mb-2">
           {t("tossingHint")}
         </p>
         <button
           onClick={handleStart}
           disabled={!question.trim()}
-          className="w-full h-[56px] bg-gradient-to-br from-[#c9a96e] to-[#b8943d] text-[#0a0a12] text-lg rounded-[14px] font-bold font-title tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(201,169,110,0.3)] hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(201,169,110,0.4)] disabled:opacity-35 disabled:shadow-none disabled:cursor-not-allowed"
+          className="w-full h-[56px] bg-gradient-to-br from-gold to-gold-dim text-bg text-lg rounded-[14px] font-bold font-title tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(201,169,110,0.3)] hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(201,169,110,0.4)] disabled:opacity-35 disabled:shadow-none disabled:cursor-not-allowed"
           style={question.trim() ? { animation: 'pulse-glow 2.5s ease-in-out infinite' } : undefined}
         >
           {t("startButton")}
@@ -364,11 +364,11 @@ export default function HomeContent() {
         {features.map((f) => (
           <div
             key={f.title}
-            className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.15)] rounded-2xl py-8 px-5 min-h-[180px] text-center flex flex-col items-center"
+            className="bg-[var(--theme-bg-card)] border border-[var(--theme-border)] rounded-2xl py-8 px-5 min-h-[180px] text-center flex flex-col items-center"
           >
             {f.icon}
-            <h3 className="text-lg font-bold text-[#f5f0e8] mb-2">{f.title}</h3>
-            <p className="text-sm text-[#a0978a] leading-relaxed whitespace-pre-line">
+            <h3 className="text-lg font-bold text-[var(--theme-text-primary)] mb-2">{f.title}</h3>
+            <p className="text-sm text-[var(--theme-text-secondary)] leading-relaxed whitespace-pre-line">
               {f.desc.replace(/\\n/g, '\n')}
             </p>
           </div>
@@ -385,7 +385,7 @@ export default function HomeContent() {
       <UserReviews />
 
       {/* 底部引言 */}
-      <p className="mt-16 text-xl text-[#a0978a] text-center">
+      <p className="mt-16 text-xl text-[var(--theme-text-secondary)] text-center">
         {t("footerQuote")}
       </p>
 
@@ -397,25 +397,25 @@ export default function HomeContent() {
       />
 
       {/* 免责声明 */}
-      <p className="mt-5 text-xs text-[#555] text-center">
+      <p className="mt-5 text-xs text-[var(--theme-text-muted)] text-center">
                 {t("disclaimer")}
       </p>
 
       {/* SEO Content Sections */}
       <div className="mt-20 space-y-12">
         <section>
-          <h2 className="text-lg text-[#a08050] font-title font-semibold mb-4">
+          <h2 className="text-lg text-[var(--color-gold-dim)] font-title font-semibold mb-4">
             {t("seoSection1Title")}
           </h2>
-          <p className="text-sm text-[#706860] leading-relaxed">
+          <p className="text-sm text-[var(--theme-text-muted)] leading-relaxed">
             {t("seoSection1Content")}
           </p>
         </section>
         <section>
-          <h2 className="text-lg text-[#a08050] font-title font-semibold mb-4">
+          <h2 className="text-lg text-[var(--color-gold-dim)] font-title font-semibold mb-4">
             {t("seoSection2Title")}
           </h2>
-          <p className="text-sm text-[#706860] leading-relaxed">
+          <p className="text-sm text-[var(--theme-text-muted)] leading-relaxed">
             {t("seoSection2Content")}
           </p>
         </section>

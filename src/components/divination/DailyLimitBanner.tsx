@@ -111,7 +111,7 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
               className="relative w-full max-w-md rounded-2xl border border-amber-700/40 p-6 shadow-2xl pointer-events-auto"
-              style={{ background: "rgba(10,10,18,0.97)" }}
+              style={{ background: "var(--theme-dropdown-bg)" }}
             >
               {/* X 关闭按钮 */}
               <button

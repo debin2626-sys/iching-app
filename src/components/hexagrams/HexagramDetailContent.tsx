@@ -202,7 +202,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
           <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
             {isZh ? "卦辞" : "Judgment"}
           </h2>
-          <p className="text-[#f5f0e8] leading-relaxed text-lg">
+          <p className="text-[var(--theme-text-primary)] leading-relaxed text-lg">
             {isZh ? data.judgmentZh : data.judgmentEn}
           </p>
         </section>
@@ -224,7 +224,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
           <h2 className="text-xl font-bold text-amber-400/90 mb-3 border-b border-amber-400/20 pb-2">
             {isZh ? "象辞" : "Image"}
           </h2>
-          <p className="text-[#f5f0e8] leading-relaxed text-lg">
+          <p className="text-[var(--theme-text-primary)] leading-relaxed text-lg">
             {isZh ? data.imageZh : data.imageEn}
           </p>
         </section>
@@ -263,16 +263,16 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
                 return (
                   <div
                     key={line.position}
-                    className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.12)] rounded-xl p-4"
+                    className="bg-[var(--theme-bg-card)] border border-[var(--theme-border)] rounded-xl p-4"
                   >
-                    <p className="text-[#f5f0e8] font-medium">
+                    <p className="text-[var(--theme-text-primary)] font-medium">
                       {isZh ? line.textZh : line.textEn}
                     </p>
                     <p className="text-gray-500 text-sm mt-2">
                       {isZh ? line.interpretationZh : line.interpretationEn}
                     </p>
                     {detail && (
-                      <div className="mt-3 pt-3 border-t border-[rgba(201,169,110,0.08)]">
+                      <div className="mt-3 pt-3 border-t border-[var(--theme-border)]">
                         <p className="text-sm text-gray-400 leading-relaxed">
                           {detail}
                         </p>
@@ -299,7 +299,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
                   {cards.map((card) => (
                     <div
                       key={card.title}
-                      className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.12)] rounded-xl p-4"
+                      className="bg-[var(--theme-bg-card)] border border-[var(--theme-border)] rounded-xl p-4"
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-lg">{card.icon}</span>
@@ -352,7 +352,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
               {data.references.map((ref, i) => (
                 <span
                   key={i}
-                  className="text-sm text-gray-500 bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.08)] rounded-lg px-3 py-1"
+                  className="text-sm text-gray-500 bg-[var(--theme-bg-card)] border border-[var(--theme-border)] rounded-lg px-3 py-1"
                 >
                   {ref}
                 </span>

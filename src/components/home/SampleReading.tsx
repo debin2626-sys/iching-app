@@ -53,17 +53,17 @@ export default function SampleReadingClient({
         className="relative rounded-2xl overflow-hidden"
         style={{
           background:
-            "linear-gradient(145deg, rgba(20,20,30,0.95), rgba(15,15,22,0.98))",
-          border: "1px solid rgba(201,169,110,0.3)",
+            "linear-gradient(145deg, var(--theme-bg-card), var(--theme-bg-card-solid))",
+          border: "1px solid var(--theme-border-hover)",
           boxShadow:
-            "0 0 40px rgba(201,169,110,0.06), inset 0 1px 0 rgba(201,169,110,0.1)",
+            "0 0 40px rgba(184,146,74,0.06), inset 0 1px 0 rgba(184,146,74,0.1)",
         }}
       >
         {/* Corner decorations */}
-        <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[rgba(201,169,110,0.4)]" />
-        <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[rgba(201,169,110,0.4)]" />
-        <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[rgba(201,169,110,0.4)]" />
-        <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[rgba(201,169,110,0.4)]" />
+        <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-gold/40" />
+        <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-gold/40" />
+        <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-gold/40" />
+        <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-gold/40" />
 
         <div className="p-6 sm:p-8">
           {/* Server-rendered card content (hex name, quote, paragraphs) */}
@@ -73,7 +73,7 @@ export default function SampleReadingClient({
           {content.paragraphs.length > 1 && (
             <button
               onClick={() => setExpanded((prev) => !prev)}
-              className="flex items-center gap-1 mx-auto mt-4 text-sm text-[#c9a96e] hover:text-[#e8d5a3] transition-colors"
+              className="flex items-center gap-1 mx-auto mt-4 text-sm text-gold hover:text-gold-bright transition-colors"
             >
               {expanded ? content.collapseLabel : content.expandLabel}
               <ChevronDown
@@ -83,13 +83,13 @@ export default function SampleReadingClient({
           )}
 
           {/* Divider */}
-          <div className="my-6 h-px bg-gradient-to-r from-transparent via-[rgba(201,169,110,0.2)] to-transparent" />
+          <div className="my-6 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
           {/* CTA */}
           <div className="text-center">
             <button
               onClick={() => router.push("/")}
-              className="px-8 py-3 bg-gradient-to-br from-[#c9a96e] to-[#b8943d] text-[#0a0a12] text-base rounded-[14px] font-bold font-title tracking-wider transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_20px_rgba(201,169,110,0.3)]"
+              className="px-8 py-3 bg-gradient-to-br from-gold to-gold-dim text-bg text-base rounded-[14px] font-bold font-title tracking-wider transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_20px_rgba(201,169,110,0.3)]"
             >
               {content.cta}
             </button>

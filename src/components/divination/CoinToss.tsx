@@ -64,7 +64,7 @@ function CoinFront({ size }: { size: number }) {
         width: size,
         height: size,
         background:
-          "radial-gradient(ellipse at 35% 30%, #f5e6a3 0%, #d4b96a 30%, #b8943f 60%, #8a6d2f 100%)",
+          "radial-gradient(ellipse at 35% 30%, var(--color-coin-highlight, #f5e6a3) 0%, var(--color-gold-bright, #d4b96a) 30%, var(--color-gold, #b8943f) 60%, var(--color-gold-dim, #8a6d2f) 100%)",
         boxShadow:
           "inset 0 2px 6px rgba(255,255,255,0.4), inset 0 -2px 6px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.5)",
         backfaceVisibility: "hidden",
@@ -76,7 +76,7 @@ function CoinFront({ size }: { size: number }) {
         style={{
           width: size * 0.2,
           height: size * 0.2,
-          borderColor: "#6b5020",
+          borderColor: "var(--color-gold-dim, #6b5020)",
           background: "linear-gradient(135deg, #3a2a10 0%, #1a1a2e 100%)",
         }}
       />
@@ -107,7 +107,7 @@ function CoinFront({ size }: { size: number }) {
       <div
         className="absolute inset-0 rounded-full"
         style={{
-          border: `${size * 0.03}px solid rgba(138,109,47,0.6)`,
+          border: `${size * 0.03}px solid color-mix(in srgb, var(--color-gold-dim) 60%, transparent)`,
           boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.1)",
         }}
       />
@@ -124,7 +124,7 @@ function CoinBack({ size }: { size: number }) {
         width: size,
         height: size,
         background:
-          "radial-gradient(ellipse at 65% 70%, #c9a050 0%, #a07830 40%, #7a5a20 70%, #5a4018 100%)",
+          "radial-gradient(ellipse at 65% 70%, var(--color-gold-bright, #c9a050) 0%, var(--color-gold, #a07830) 40%, var(--color-gold-dim, #7a5a20) 70%, #5a4018 100%)",
         boxShadow:
           "inset 0 2px 6px rgba(255,255,255,0.2), inset 0 -2px 6px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.5)",
         backfaceVisibility: "hidden",
@@ -137,7 +137,7 @@ function CoinBack({ size }: { size: number }) {
         style={{
           width: size * 0.2,
           height: size * 0.2,
-          borderColor: "#5a4018",
+          borderColor: "var(--color-gold-dim, #5a4018)",
           background: "linear-gradient(135deg, #3a2a10 0%, #1a1a2e 100%)",
         }}
       />
@@ -166,7 +166,7 @@ function CoinBack({ size }: { size: number }) {
       <div
         className="absolute inset-0 rounded-full"
         style={{
-          border: `${size * 0.03}px solid rgba(90,64,24,0.6)`,
+          border: `${size * 0.03}px solid color-mix(in srgb, var(--color-gold-dim) 60%, transparent)`,
           boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.05)",
         }}
       />
@@ -330,7 +330,7 @@ function ResultLabel({ lineValue }: { lineValue: LineValue }) {
     8: { text: tDiv("youngYin"), sub: tDiv("youngYinSub"), isChanging: false },
   };
   const info = labels[lineValue];
-  const color = info.isChanging ? "#a63000" : "var(--color-gold)";
+  const color = info.isChanging ? "var(--color-vermilion)" : "var(--color-gold)";
 
   return (
     <m.div
