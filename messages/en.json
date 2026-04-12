@@ -49,14 +49,27 @@
     "sampleReadingCollapse": "Collapse ←",
     "reviewsTitle": "User Reviews",
     "loadingStats": "Loading statistics...",
-    "loadingReviews": "Loading reviews..."
+    "loadingReviews": "Loading reviews...",
+    "ctaButton": "Start Now",
+    "heroTitle": "I Ching",
+    "heroSubtitle": "Observe the Way of Heaven, Follow its Course",
+    "coreFeatures": "Core Features"
   },
   "Nav": {
     "home": "Home",
     "divination": "Divination",
     "hexagrams": "Hexagrams",
     "history": "History",
+    "divine": "Divine",
     "about": "About"
+  },
+  "Divine": {
+    "title": "Start Divination",
+    "subtitle": "Focus on your question",
+    "startButton": "Cast Hexagram",
+    "description": "Clear your mind, focus with sincerity, and the hexagram will reveal its true meaning.",
+    "metaTitle": "Online Divination | I Ching - 51yijing.com",
+    "metaDescription": "Use the traditional three-coin divination method with AI-powered interpretation for professional I Ching readings."
   },
   "Divination": {
     "noQuestion": "Please enter your question on the home page first",

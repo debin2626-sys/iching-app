@@ -59,7 +59,12 @@ function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-8 items-center gap-1 rounded-full border border-gold/30 bg-white/5 px-3 text-xs text-gold transition-all duration-300 hover:border-gold/60"
+        className="flex h-8 items-center gap-1 rounded-full border px-3 text-xs transition-all duration-300"
+        style={{
+          borderColor: 'rgba(184,146,74,0.3)',
+          backgroundColor: 'rgba(184,146,74,0.05)',
+          color: 'var(--color-gold)',
+        }}
         aria-label="Switch language"
       >
         <span>{LOCALE_LABELS[locale] || locale}</span>
@@ -74,16 +79,35 @@ function LanguageSwitcher() {
         </svg>
       </button>
       {open && (
-        <div className="absolute right-0 top-full mt-1 min-w-[120px] overflow-hidden rounded-lg border border-gold/20 bg-[rgba(10,10,18,0.95)] shadow-lg backdrop-blur-xl z-[100]">
+        <div
+          className="absolute right-0 top-full mt-1 min-w-[120px] overflow-hidden rounded-lg border shadow-lg z-[100]"
+          style={{
+            borderColor: 'rgba(184,146,74,0.2)',
+            backgroundColor: 'var(--theme-dropdown-bg)',
+            backdropFilter: 'blur(24px)',
+          }}
+        >
           {LOCALE_OPTIONS.map((opt) => (
             <button
               key={opt.value}
               onClick={() => switchTo(opt.value)}
-              className={`flex w-full items-center px-4 py-2.5 text-sm transition-colors duration-200 ${
-                locale === opt.value
-                  ? "bg-gold/10 text-gold"
-                  : "text-gray-400 hover:bg-white/5 hover:text-gold"
-              }`}
+              className="flex w-full items-center px-4 py-2.5 text-sm transition-colors duration-200"
+              style={{
+                backgroundColor: locale === opt.value ? 'rgba(184,146,74,0.1)' : 'transparent',
+                color: locale === opt.value ? 'var(--color-gold)' : 'var(--theme-text-muted)',
+              }}
+              onMouseEnter={(e) => {
+                if (locale !== opt.value) {
+                  e.currentTarget.style.color = 'var(--color-gold)';
+                  e.currentTarget.style.backgroundColor = 'rgba(184,146,74,0.05)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (locale !== opt.value) {
+                  e.currentTarget.style.color = 'var(--theme-text-muted)';
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                }
+              }}
             >
               {locale === opt.value && (
                 <span className="mr-2 text-xs">✓</span>
@@ -104,7 +128,7 @@ function UserButton() {
 
   if (status === "loading") {
     return (
-      <div className="h-8 w-8 rounded-full bg-white/5 animate-pulse" />
+      <div className="h-8 w-8 rounded-full animate-pulse" style={{ backgroundColor: 'rgba(184,146,74,0.1)' }} />
     );
   }
 
@@ -114,17 +138,18 @@ function UserButton() {
         href="/auth"
         style={{
           padding: '6px 20px',
-          border: '1px solid rgba(201,169,110,0.4)',
+          border: '1px solid var(--color-gold)',
           borderRadius: '20px',
-          color: '#c9a96e',
+          color: 'var(--color-gold)',
           backgroundColor: 'transparent',
           fontSize: '14px',
           cursor: 'pointer',
           transition: 'all 0.3s',
           letterSpacing: '0.05em',
           textDecoration: 'none',
+          fontFamily: 'var(--font-display)',
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(201,169,110,0.1)')}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(184,146,74,0.1)')}
         onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
       >
         {tHome("loginButton")}
@@ -137,7 +162,12 @@ function UserButton() {
   return (
     <Link
       href="/profile"
-      className="flex h-8 w-8 items-center justify-center rounded-full bg-gold/20 border border-gold/30 text-gold text-sm font-semibold hover:bg-gold/30 transition-all duration-300"
+      className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold transition-all duration-300"
+      style={{
+        backgroundColor: 'rgba(184,146,74,0.2)',
+        border: '1px solid rgba(184,146,74,0.3)',
+        color: 'var(--color-gold)',
+      }}
       title={session.user.name || session.user.email || ""}
     >
       {session.user.image ? (
@@ -161,12 +191,28 @@ function DesktopNav({ items }: NavBarProps) {
   const brandName = locale === "en" ? "I Ching" : "易經";
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 hidden items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.8)] px-8 backdrop-blur-[12px] md:flex" style={{ height: '64px' }}>
+    <nav
+      className="fixed inset-x-0 top-0 z-50 hidden items-center justify-between border-b px-8 md:flex"
+      style={{
+        height: '64px',
+        backgroundColor: 'var(--theme-nav-bg)',
+        borderColor: 'var(--theme-border)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+      }}
+    >
       {/* Logo / brand */}
       <Link
         href="/"
-        className="text-lg font-title font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
-        style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)', display: 'flex', alignItems: 'center', gap: '6px' }}
+        className="text-lg font-semibold tracking-widest transition-colors duration-300"
+        style={{
+          fontFamily: 'var(--font-display)',
+          color: 'var(--color-gold)',
+          textShadow: '0 0 20px rgba(184,146,74,0.3)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+        }}
       >
         <span style={{ fontSize: '20px' }}>☯</span>
         {brandName}
@@ -180,11 +226,16 @@ function DesktopNav({ items }: NavBarProps) {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className={`relative flex items-center gap-1.5 text-base tracking-wide transition-all duration-300 ${
-                  active
-                    ? "text-gold"
-                    : "text-gray-400 hover:text-gold hover:-translate-y-0.5"
+                className={`relative flex items-center gap-1.5 text-base transition-all duration-300 ${
+                  active ? "" : "hover:-translate-y-0.5"
                 }`}
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  letterSpacing: '0.08em',
+                  color: active ? 'var(--color-gold)' : 'var(--theme-text-muted)',
+                }}
+                onMouseEnter={(e) => { if (!active) e.currentTarget.style.color = 'var(--color-gold)'; }}
+                onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = 'var(--theme-text-muted)'; }}
               >
                 {item.icon && (
                   <span className="text-lg">{item.icon}</span>
@@ -193,7 +244,8 @@ function DesktopNav({ items }: NavBarProps) {
                 {active && (
                   <motion.span
                     layoutId="nav-underline"
-                    className="absolute -bottom-1 left-0 h-px w-full bg-gold"
+                    className="absolute -bottom-1 left-0 w-full"
+                    style={{ height: '2px', backgroundColor: 'var(--color-gold)' }}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -220,11 +272,26 @@ function MobileTopBar() {
   const brandName = locale === "en" ? "I Ching" : "易經";
 
   return (
-    <div className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.9)] px-4 backdrop-blur-[12px] md:hidden">
+    <div
+      className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b px-4 md:hidden"
+      style={{
+        backgroundColor: 'var(--theme-nav-bg)',
+        borderColor: 'var(--theme-border)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+      }}
+    >
       <Link
         href="/"
-        className="text-lg font-title font-semibold tracking-widest text-gold transition-colors duration-300 hover:text-gold-bright"
-        style={{ textShadow: '0 0 20px rgba(201,169,110,0.3)', display: 'flex', alignItems: 'center', gap: '6px' }}
+        className="text-lg font-semibold tracking-widest transition-colors duration-300"
+        style={{
+          fontFamily: 'var(--font-display)',
+          color: 'var(--color-gold)',
+          textShadow: '0 0 20px rgba(184,146,74,0.3)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+        }}
       >
         <span style={{ fontSize: '20px' }}>☯</span>
         {brandName}
@@ -244,31 +311,41 @@ function MobileTabBar({ items }: NavBarProps) {
   const tabs = items.slice(0, 5);
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 flex h-18 items-end justify-around border-t border-[rgba(201,169,110,0.15)] bg-[rgba(10,10,18,0.9)] pb-[env(safe-area-inset-bottom)] backdrop-blur-[12px] md:hidden">
+    <nav
+      className="fixed inset-x-0 bottom-0 z-50 flex h-18 items-end justify-around border-t pb-[env(safe-area-inset-bottom)] md:hidden"
+      style={{
+        backgroundColor: 'var(--theme-nav-bg)',
+        borderColor: 'var(--theme-border)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+      }}
+    >
       {tabs.map((item) => {
         const active = pathname === item.href;
         return (
           <Link
             key={item.href}
             href={item.href}
-            className={`flex flex-1 flex-col items-center gap-1 pb-2 pt-2 text-xs transition-all duration-300 ${
-              active ? "text-gold" : "text-gray-500"
-            }`}
+            className="flex flex-1 flex-col items-center gap-1 pb-2 pt-2 text-xs transition-all duration-300"
+            style={{ color: active ? 'var(--color-gold)' : 'var(--theme-text-muted)' }}
           >
             {item.icon ? (
               <span className="text-2xl">{item.icon}</span>
             ) : (
               <span
-                className={`h-6 w-6 rounded-full border ${
-                  active ? "border-gold bg-gold/20" : "border-gray-600"
-                }`}
+                className="h-6 w-6 rounded-full border"
+                style={{
+                  borderColor: active ? 'var(--color-gold)' : 'var(--theme-border)',
+                  backgroundColor: active ? 'rgba(184,146,74,0.2)' : 'transparent',
+                }}
               />
             )}
             <span>{item.label}</span>
             {active && (
               <motion.span
                 layoutId="tab-dot"
-                className="absolute top-1 h-0.5 w-4 rounded-full bg-gold"
+                className="absolute top-1 h-0.5 w-4 rounded-full"
+                style={{ backgroundColor: 'var(--color-gold)' }}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
             )}

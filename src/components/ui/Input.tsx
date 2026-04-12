@@ -27,7 +27,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-sm text-[var(--gold)] opacity-80"
+            className="text-sm"
+            style={{ color: "var(--color-gold)", opacity: 0.8 }}
           >
             {label}
           </label>
@@ -37,16 +38,21 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={[
-            "bg-[rgba(255,255,255,0.02)] rounded-[8px] border outline-none w-full min-h-[48px]",
+            "w-full min-h-[48px] border-0 border-b outline-none rounded-none",
             "transition-all duration-[400ms] ease-in-out",
-            "placeholder:text-[#a0978a]/50",
             error
-              ? "border-red-500 focus:border-red-400 focus:shadow-[0_0_20px_rgba(239,68,68,0.1)]"
-              : "border-[rgba(201,169,110,0.3)] focus:border-[rgba(201,169,110,0.6)] focus:shadow-[0_0_15px_rgba(201,169,110,0.15)]",
-            "text-[#f5f0e8]",
+              ? "border-b-red-500 focus:border-b-red-400"
+              : "focus:border-b-[var(--color-gold)]",
             sizeClasses[size],
             className,
           ].join(" ")}
+          style={{
+            backgroundColor: "var(--color-bg-sunken)",
+            borderBottomColor: error ? undefined : "var(--theme-border)",
+            borderBottomWidth: "1px",
+            color: "var(--theme-text-primary)",
+          }}
+          placeholder={rest.placeholder}
           aria-invalid={error ? true : undefined}
           aria-describedby={
             error
@@ -64,7 +70,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </p>
         )}
         {!error && hint && (
-          <p id={`${inputId}-hint`} className="text-xs text-gray-500">
+          <p id={`${inputId}-hint`} className="text-xs" style={{ color: "var(--color-text-muted)" }}>
             {hint}
           </p>
         )}

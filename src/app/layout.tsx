@@ -86,6 +86,13 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerifSC.variable} antialiased`}
       >

@@ -7,19 +7,21 @@ import { m, type HTMLMotionProps } from "framer-motion";
 /* ── Variants & sizes ── */
 const variantStyles = {
   primary: [
-    "border border-[rgba(201,169,110,0.5)] text-[#c9a96e] bg-transparent",
-    "hover:border-[rgba(201,169,110,0.8)] hover:shadow-[0_0_15px_rgba(201,169,110,0.4)] hover:text-[#e8d5a3]",
-    "disabled:border-[rgba(201,169,110,0.2)] disabled:text-[rgba(201,169,110,0.4)] disabled:shadow-none",
+    "border bg-[var(--color-vermilion)] border-[var(--color-gold)] text-white",
+    "hover:bg-[var(--color-gold)] hover:text-[var(--theme-text-primary)] hover:border-[var(--color-gold-bright)]",
+    "hover:shadow-[0_0_20px_rgba(184,146,74,0.3)]",
+    "disabled:opacity-50 disabled:shadow-none",
   ].join(" "),
   secondary: [
-    "border border-[rgba(201,169,110,0.3)] text-[#a0978a] bg-transparent",
-    "hover:border-[rgba(201,169,110,0.6)] hover:text-[#c9a96e] hover:shadow-[0_0_12px_rgba(201,169,110,0.25)]",
-    "disabled:border-[rgba(201,169,110,0.15)] disabled:text-[rgba(160,151,138,0.4)]",
+    "border border-[var(--color-gold)] text-[var(--color-gold)] bg-transparent",
+    "hover:bg-[rgba(184,146,74,0.12)] hover:text-[var(--color-gold-bright)]",
+    "hover:shadow-[0_0_15px_rgba(184,146,74,0.2)]",
+    "disabled:opacity-50",
   ].join(" "),
   ghost: [
-    "border border-transparent text-[#a0978a] bg-transparent",
-    "hover:text-[#c9a96e] hover:border-[rgba(201,169,110,0.3)]",
-    "disabled:text-[rgba(160,151,138,0.3)]",
+    "border border-transparent text-[var(--theme-text-secondary)] bg-transparent",
+    "hover:text-[var(--color-gold)]",
+    "disabled:opacity-50",
   ].join(" "),
 } as const;
 
@@ -97,15 +99,21 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     } = props as AsButton & { href?: string };
 
     const base = [
-      "inline-flex items-center justify-center rounded-lg font-medium tracking-wide",
+      "inline-flex items-center justify-center font-medium",
+      "rounded-[4px]",
       "transition-all duration-[400ms] ease-in-out",
       "hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(201,169,110,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a12]",
-      "disabled:pointer-events-none disabled:opacity-50",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--theme-bg)]",
+      "disabled:pointer-events-none",
       variantStyles[variant],
       sizeStyles[size],
       className,
     ].join(" ");
+
+    const fontStyle = {
+      fontFamily: "var(--font-display)",
+      letterSpacing: "0.1em",
+    };
 
     const content = (
       <>
@@ -116,7 +124,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (href && !disabled) {
       return (
-        <Link href={href} className={base}>
+        <Link href={href} className={base} style={fontStyle}>
           {content}
         </Link>
       );
@@ -128,6 +136,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         whileTap={{ scale: 0.97 }}
         disabled={disabled || loading}
         className={base}
+        style={fontStyle}
         {...(rest as HTMLMotionProps<"button">)}
       >
         {content}

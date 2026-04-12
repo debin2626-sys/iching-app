@@ -71,10 +71,9 @@ export default function ProfileContent() {
   const [subscription, setSubscription] = useState<SubscriptionInfo | null>(null);
 
   const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>☯</span> },
-    { label: tNav("divination"), href: "/divination", icon: <span>🔮</span> },
+    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
+    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-    { label: tNav("history"), href: "/history", icon: <span>📜</span> },
   ];
 
   const fetchData = useCallback(async () => {

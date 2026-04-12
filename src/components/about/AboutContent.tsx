@@ -98,10 +98,9 @@ export default function AboutContent() {
   const text = ABOUT_TEXT[locale as keyof typeof ABOUT_TEXT] || ABOUT_TEXT.en;
 
   const navItems = [
-    { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
+    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
+    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-    { label: tNav("history"), href: "/history", icon: <span>📜</span> },
-    { label: tNav("about"), href: "/about", icon: <span>ℹ️</span> },
   ];
 
   return (

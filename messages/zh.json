@@ -49,14 +49,27 @@
     "sampleReadingCollapse": "收起 ←",
     "reviewsTitle": "用户评价",
     "loadingStats": "正在加载统计数据...",
-    "loadingReviews": "正在加载评价..."
+    "loadingReviews": "正在加载评价...",
+    "ctaButton": "立即占卜",
+    "heroTitle": "易经",
+    "heroSubtitle": "观天之道，执天之行，尽矣",
+    "coreFeatures": "核心功能"
   },
   "Nav": {
     "home": "首页",
     "divination": "占卜",
     "hexagrams": "卦典",
     "history": "历史",
+    "divine": "占卜",
     "about": "关于"
+  },
+  "Divine": {
+    "title": "开始占卜",
+    "subtitle": "诚心默想您的问题",
+    "startButton": "起卦",
+    "description": "静心凝神，诚意正心，方可得卦象之真意",
+    "metaTitle": "在线占卜 | 易经 - 51yijing.com",
+    "metaDescription": "使用传统三币占卜法，结合AI智能解读，为您提供专业的易经占卜服务。"
   },
   "Divination": {
     "noQuestion": "请先在首页输入您的问题",

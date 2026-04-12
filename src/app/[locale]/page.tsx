@@ -2,14 +2,15 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Coins, Sparkles, BookOpen } from 'lucide-react';
 import { HomeJsonLd } from '@/components/seo/JsonLd';
-import { SITE_URL, SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW, getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
-import { AnimatedTaichi } from '@/components/home/HeroAnimations';
+import { SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW, getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
 import HomeNavBar from '@/components/home/HomeNavBar';
 import TodayCounter from '@/components/home/TodayCounter';
-import StartDivinationButton from '@/components/home/StartDivinationButton';
 import SampleReadingClient from '@/components/home/SampleReading';
 import { SampleReadingSectionHeader, SampleReadingCardContent } from '@/components/home/SampleReadingContent';
 import UserReviews from '@/components/home/UserReviews';
+import { TaichiWatermark, BrushDivider } from '@/components/decorative';
+import Card from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
 
 export async function generateMetadata({
   params,
@@ -63,17 +64,17 @@ export default async function HomePage({
 
   const features = [
     {
-      icon: <Coins size={36} strokeWidth={1.5} className="text-gold mb-4" />,
+      icon: <Coins size={36} strokeWidth={1.5} style={{ color: 'var(--color-gold)' }} className="mb-4" />,
       title: t('feature1Title'),
       desc: t('feature1Desc'),
     },
     {
-      icon: <Sparkles size={36} strokeWidth={1.5} className="text-gold mb-4" />,
+      icon: <Sparkles size={36} strokeWidth={1.5} style={{ color: 'var(--color-gold)' }} className="mb-4" />,
       title: t('feature2Title'),
       desc: t('feature2Desc'),
     },
     {
-      icon: <BookOpen size={36} strokeWidth={1.5} className="text-gold mb-4" />,
+      icon: <BookOpen size={36} strokeWidth={1.5} style={{ color: 'var(--color-gold)' }} className="mb-4" />,
       title: t('feature3Title'),
       desc: t('feature3Desc'),
     },
@@ -83,59 +84,90 @@ export default async function HomePage({
     <>
       <HomeJsonLd locale={locale} />
       <HomeNavBar />
-      <main className="min-h-screen w-full bg-[#0a0a12]">
-        <div className="w-full px-6" style={{ maxWidth: '768px', margin: '0 auto', paddingTop: '220px', paddingBottom: '80px' }}>
-          {/* 太极图 */}
-          <div className="flex justify-center">
-            <AnimatedTaichi>
-              <div className="taichi-rotate">
-                <div className="taichi-symbol w-[80px] h-[80px] md:w-[100px] md:h-[100px]" />
-              </div>
-            </AnimatedTaichi>
-          </div>
+      <main className="min-h-screen w-full" style={{ backgroundColor: 'var(--theme-bg)' }}>
+        <div className="w-full px-6" style={{ maxWidth: '768px', margin: '0 auto', paddingTop: '120px', paddingBottom: '80px' }}>
 
-          {/* 主标题 — server rendered for SEO */}
-          <h1 className="mt-5 text-2xl md:text-3xl text-gold-gradient font-title font-bold text-center leading-tight">
-            {t('title')}
-          </h1>
+          {/* Hero Section */}
+          <section className="relative flex flex-col items-center text-center">
+            {/* Taichi Watermark Background */}
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+              <TaichiWatermark size={500} opacity={0.04} />
+            </div>
 
-          {/* 副标题 — server rendered for SEO */}
-          <p className="mt-4 text-xl text-[#a0978a] text-center">
-            {t('subtitle')}
-          </p>
+            {/* Brand Name */}
+            <h1
+              className="relative text-5xl md:text-7xl font-bold tracking-wider"
+              style={{
+                fontFamily: 'var(--font-display)',
+                color: 'var(--theme-text-primary)',
+              }}
+            >
+              {t('heroTitle')}
+            </h1>
 
-          {/* 今日咨询计数器 (client) */}
-          <div className="mt-8">
+            {/* Subtitle */}
+            <p
+              className="relative mt-4 text-lg md:text-xl"
+              style={{
+                fontFamily: 'var(--font-display)',
+                color: 'var(--theme-text-secondary)',
+              }}
+            >
+              {t('heroSubtitle')}
+            </p>
+
+            {/* Brush Divider */}
+            <div className="relative mt-8 w-48">
+              <BrushDivider />
+            </div>
+
+            {/* CTA Button */}
+            <div className="relative mt-8">
+              <Button href="/divine" variant="primary" size="lg">
+                {t('ctaButton')}
+              </Button>
+            </div>
+          </section>
+
+          {/* Today Counter */}
+          <div className="mt-16">
             <TodayCounter />
           </div>
 
-          {/* 交互区域：场景选择 + 输入框 + 出生时辰 + 摇卦按钮 (client) */}
-          <StartDivinationButton />
-
-          {/* 三大核心功能标题 — server rendered for SEO */}
-          <div className="mt-32">
-            <h2 className="text-xl text-gold font-title text-center">
-              {t('featuresSectionTitle')}
+          {/* Core Features Section */}
+          <section className="mt-20">
+            <h2
+              className="text-xl text-center"
+              style={{
+                fontFamily: 'var(--font-display)',
+                color: 'var(--color-gold)',
+              }}
+            >
+              {t('coreFeatures')}
             </h2>
 
-            {/* 三张功能卡片 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mt-8">
               {features.map((f) => (
-                <div
-                  key={f.title}
-                  className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.15)] rounded-2xl py-8 px-5 min-h-[180px] text-center flex flex-col items-center"
-                >
+                <Card key={f.title} variant="default" padding="lg" className="text-center flex flex-col items-center min-h-[180px]">
                   {f.icon}
-                  <h3 className="text-lg font-bold text-[#f5f0e8] mb-2">{f.title}</h3>
-                  <p className="text-sm text-[#a0978a] leading-relaxed whitespace-pre-line">
+                  <h3
+                    className="text-lg font-bold mb-2"
+                    style={{ color: 'var(--theme-text-primary)' }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed whitespace-pre-line"
+                    style={{ color: 'var(--theme-text-secondary)' }}
+                  >
                     {f.desc.replace(/\\n/g, '\n')}
                   </p>
-                </div>
+                </Card>
               ))}
             </div>
-          </div>
+          </section>
 
-          {/* 占卜结果示例: server content + client interactivity */}
+          {/* Sample Reading */}
           <SampleReadingClient
             locale={locale}
             header={<SampleReadingSectionHeader locale={locale} />}
@@ -143,34 +175,58 @@ export default async function HomePage({
             <SampleReadingCardContent locale={locale} />
           </SampleReadingClient>
 
-          {/* 用户评价展示区 (client) */}
+          {/* User Reviews */}
           <UserReviews />
 
-          {/* 底部引言 — server rendered for SEO */}
-          <p className="mt-16 text-xl text-[#a0978a] text-center">
+          {/* Footer Quote */}
+          <p
+            className="mt-16 text-xl text-center"
+            style={{ color: 'var(--theme-text-secondary)' }}
+          >
             {t('footerQuote')}
           </p>
 
-          {/* 免责声明 — server rendered */}
-          <p className="mt-5 text-xs text-[#555] text-center">
+          {/* Disclaimer */}
+          <p
+            className="mt-5 text-xs text-center"
+            style={{ color: 'var(--theme-text-muted)' }}
+          >
             {t('disclaimer')}
           </p>
 
-          {/* SEO Content Sections — server rendered for SEO */}
+          {/* SEO Content Sections */}
           <div className="mt-20 space-y-12">
             <section>
-              <h2 className="text-lg text-[#a08050] font-title font-semibold mb-4">
+              <h2
+                className="text-lg font-semibold mb-4"
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  color: 'var(--color-gold)',
+                }}
+              >
                 {t('seoSection1Title')}
               </h2>
-              <p className="text-sm text-[#706860] leading-relaxed">
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: 'var(--theme-text-muted)' }}
+              >
                 {t('seoSection1Content')}
               </p>
             </section>
             <section>
-              <h2 className="text-lg text-[#a08050] font-title font-semibold mb-4">
+              <h2
+                className="text-lg font-semibold mb-4"
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  color: 'var(--color-gold)',
+                }}
+              >
                 {t('seoSection2Title')}
               </h2>
-              <p className="text-sm text-[#706860] leading-relaxed">
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: 'var(--theme-text-muted)' }}
+              >
                 {t('seoSection2Content')}
               </p>
             </section>

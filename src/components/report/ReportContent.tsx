@@ -128,10 +128,9 @@ export default function ReportContent() {
   const [copied, setCopied] = useState(false);
 
   const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>☯</span> },
-    { label: tNav("divination"), href: "/divination", icon: <span>🔮</span> },
+    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
+    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-    { label: tNav("history"), href: "/history", icon: <span>📜</span> },
   ];
 
   const fetchReport = useCallback(async () => {

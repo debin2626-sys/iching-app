@@ -17,19 +17,25 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full border-t border-[rgba(201,169,110,0.1)] mt-auto">
+    <footer
+      className="w-full border-t mt-auto"
+      style={{ borderColor: 'var(--theme-border)' }}
+    >
       <div className="max-w-4xl mx-auto px-6 py-6 text-center">
         {/* Footer Links */}
         <nav className="mb-4 flex flex-wrap items-center justify-center gap-x-1 gap-y-1">
-          {links.map((link, i) => (
+          {links.map((link) => (
             <span key={link.href} className="flex items-center">
               <Link
                 href={link.href as any}
-                className="text-[11px] text-gray-600 hover:text-[#c9a96e] transition-colors"
+                className="text-[11px] transition-colors"
+                style={{ color: 'var(--theme-text-muted)' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-gold)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--theme-text-muted)')}
               >
                 {link.label}
               </Link>
-              <span className="text-gray-700 text-[11px] mx-2">|</span>
+              <span className="text-[11px] mx-2" style={{ color: 'var(--theme-border-hover)' }}>|</span>
             </span>
           ))}
           {/* Ko-fi support link */}
@@ -37,16 +43,19 @@ export default function Footer() {
             href={KOFI_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[11px] text-[#c9a96e]/70 hover:text-[#c9a96e] transition-colors"
+            className="text-[11px] transition-colors"
+            style={{ color: 'var(--color-gold)', opacity: 0.7 }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.7')}
           >
             {t("kofiSupport")}
           </a>
         </nav>
 
-        <p className="text-[11px] leading-relaxed text-gray-600 mb-2">
+        <p className="text-[11px] leading-relaxed mb-2" style={{ color: 'var(--theme-text-muted)' }}>
           {t("disclaimer")}
         </p>
-        <p className="text-[11px] text-gray-700">
+        <p className="text-[11px]" style={{ color: 'var(--theme-text-secondary)' }}>
           © {year} 51yijing.com
         </p>
       </div>

@@ -18,21 +18,21 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  mode: "dark",
+  mode: "light",
   setMode: () => {},
-  resolved: "dark",
+  resolved: "light",
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [mode, setModeState] = useState<ThemeMode>("dark");
-  const [resolved, setResolved] = useState<"dark" | "light">("dark");
+  const [mode, setModeState] = useState<ThemeMode>("light");
+  const [resolved, setResolved] = useState<"dark" | "light">("light");
 
   /* ── Resolve system preference ── */
   function resolve(m: ThemeMode): "dark" | "light" {
     if (m === "system") {
-      return window.matchMedia("(prefers-color-scheme: light)").matches
-        ? "light"
-        : "dark";
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
     }
     return m;
   }
@@ -40,8 +40,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   /* ── Apply theme to <html> ── */
   function applyTheme(r: "dark" | "light") {
     const html = document.documentElement;
-    if (r === "light") {
-      html.setAttribute("data-theme", "light");
+    if (r === "dark") {
+      html.setAttribute("data-theme", "dark");
     } else {
       html.removeAttribute("data-theme");
     }
@@ -50,15 +50,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   /* ── Init from localStorage ── */
   useEffect(() => {
-    const saved = (localStorage.getItem("theme") as ThemeMode) || "dark";
+    const saved = (localStorage.getItem("theme") as ThemeMode) || "light";
     setModeState(saved);
     const r = resolve(saved);
     applyTheme(r);
 
     /* Listen for system preference changes */
-    const mq = window.matchMedia("(prefers-color-scheme: light)");
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const handler = () => {
-      if (saved === "system") applyTheme(mq.matches ? "light" : "dark");
+      if (saved === "system") applyTheme(mq.matches ? "dark" : "light");
     };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);

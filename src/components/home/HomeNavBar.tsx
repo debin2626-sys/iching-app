@@ -7,9 +7,9 @@ export default function HomeNavBar() {
   const tNav = useTranslations("Nav");
 
   const navItems = [
-    { label: tNav("divination"), href: "/", icon: <span>🔮</span> },
+    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
+    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-    { label: tNav("history"), href: "/history", icon: <span>📜</span> },
   ];
 
   return <NavBar items={navItems} />;
