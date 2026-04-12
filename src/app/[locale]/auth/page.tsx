@@ -4,7 +4,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useRouter, Link } from "@/i18n/navigation";
-import { PageLayout, Input } from "@/components/ui";
+import { Input } from "@/components/ui";
 import { hasAnonymousDivinations, migrateAnonymousDivinations } from "@/lib/anonymous-session";
 
 function GoogleIcon() {
@@ -118,7 +118,7 @@ export default function AuthPage() {
   };
 
   return (
-    <PageLayout showNav={false}>
+    <>
       <main className="min-h-screen flex flex-col items-center justify-center px-4 relative" style={{ background: 'var(--theme-bg)' }}>
         {/* Taichi watermark decoration */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ opacity: 0.03 }}>
@@ -157,7 +157,7 @@ export default function AuthPage() {
         </div>
 
         {/* Card */}
-        <div className="card-mystic rounded-2xl w-full max-w-md p-8 sm:p-10">
+        <div className="card-mystic rounded-2xl w-full max-w-md p-8 sm:p-10" style={{ width: "100%", maxWidth: "28rem", padding: "2rem" }}>
           {/* Google Login Button */}
           <button
             type="button"
@@ -290,6 +290,6 @@ export default function AuthPage() {
           </span>
         </div>
       </main>
-    </PageLayout>
+    </>
   );
 }
