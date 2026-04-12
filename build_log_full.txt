@@ -1,0 +1,24 @@
+
+> iching-app@0.1.0 build
+> rm -rf .next && next build
+
+▲ Next.js 16.1.7 (Turbopack)
+- Environments: .env
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 17.1s
+  Running TypeScript ...
+Failed to compile.
+
+./src/components/result/ResultContent.tsx:291:19
+Type error: Cannot find name 'locale'.
+
+[0m [90m 289 |[39m           question[33m,[39m
+ [90m 290 |[39m           depth[33m:[39m selectedDepth[33m,[39m
+[31m[1m>[22m[39m[90m 291 |[39m           locale[33m:[39m locale[33m,[39m
+ [90m     |[39m                   [31m[1m^[22m[39m
+ [90m 292 |[39m           birthInfo[33m,[39m
+ [90m 293 |[39m           gender[33m:[39m gender [33m||[39m undefined[33m,[39m
+ [90m 294 |[39m           scenarioId[33m:[39m scenarioId [33m||[39m undefined[33m,[39m[0m
+Next.js build worker exited with code: 1 and signal: null
