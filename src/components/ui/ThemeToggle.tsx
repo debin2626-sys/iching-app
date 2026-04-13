@@ -64,7 +64,7 @@ export function ThemeToggle() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/30 bg-white/5 text-gold transition-all duration-300 hover:border-gold/60 hover:bg-white/10"
+        className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/30 bg-[var(--theme-border)] text-gold transition-all duration-300 hover:border-gold/60 hover:bg-[var(--theme-bg-card)]"
         aria-label={t("theme")}
         title={t("theme")}
       >
@@ -72,7 +72,7 @@ export function ThemeToggle() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1 min-w-[120px] overflow-hidden rounded-lg border border-gold/20 bg-[rgba(10,10,18,0.95)] shadow-lg backdrop-blur-xl z-[100] theme-dropdown">
+        <div className="absolute right-0 top-full mt-1 min-w-[120px] overflow-hidden rounded-lg border border-gold/20 bg-[var(--theme-dropdown-bg)] shadow-lg backdrop-blur-xl z-[100] theme-dropdown">
           {options.map((opt) => (
             <button
               key={opt.value}
@@ -80,7 +80,7 @@ export function ThemeToggle() {
               className={`flex w-full items-center gap-2 px-4 py-2.5 text-sm transition-colors duration-200 ${
                 mode === opt.value
                   ? "bg-gold/10 text-gold"
-                  : "text-gray-400 hover:bg-white/5 hover:text-gold"
+                  : "text-[var(--theme-text-muted)] hover:bg-[var(--theme-bg-card)] hover:text-gold"
               }`}
             >
               {opt.icon}

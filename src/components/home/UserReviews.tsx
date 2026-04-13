@@ -16,6 +16,7 @@ interface Review {
 
 export default function UserReviews() {
   const t = useTranslations("Home");
+  const tReviews = useTranslations("UserReviews");
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -82,8 +83,8 @@ export default function UserReviews() {
     const diffMins = Math.floor(diffMs / (1000 * 60));
     const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
     
-    if (diffMins < 60) return `${diffMins} minutes ago`;
-    if (diffHours < 24) return `${diffHours} hours ago`;
+    if (diffMins < 60) return tReviews("minutesAgo", { count: diffMins });
+    if (diffHours < 24) return tReviews("hoursAgo", { count: diffHours });
     return time.toLocaleDateString();
   };
 

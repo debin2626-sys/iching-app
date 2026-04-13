@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   trackDivinationLimitReached,
   trackViewLimitPopup,
@@ -67,6 +68,8 @@ interface DailyLimitModalProps {
  * PRD: 居中显示，背景半透明置灰，X 图标关闭，升级到 Pro + Ko-fi 打赏两个按钮
  */
 export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps) {
+  const t = useTranslations("DailyLimit");
+
   // Track popup view when shown
   useEffect(() => {
     if (show) {
@@ -117,7 +120,7 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
               <button
                 onClick={handleClose}
                 className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-zinc-400 hover:text-zinc-200 hover:bg-white/10 transition-colors text-lg"
-                aria-label="关闭"
+                aria-label={t("close")}
               >
                 ✕
               </button>
@@ -126,15 +129,15 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
               <div className="text-center mb-4">
                 <div className="text-3xl mb-3">🔮</div>
                 <h3 className="text-xl font-title text-[var(--color-gold-bright)] mb-3">
-                  今日免费次数已用尽
+                  {t("title")}
                 </h3>
 
                 {/* 内容说明 */}
                 <p className="text-sm text-[var(--theme-text-muted)] leading-relaxed">
-                  感谢你的使用！我们为每位用户提供每日 {FREE_LIMIT} 次的免费占卜体验。
+                  {t("description", { limit: FREE_LIMIT })}
                 </p>
                 <p className="text-sm text-[var(--theme-text-muted)] leading-relaxed mt-2">
-                  如果你觉得这个工具对你有帮助，并希望获得无限次占卜机会，可以考虑升级到 Pro 版本。你的支持是我们持续改进的最大动力！
+                  {t("upgradeHint")}
                 </p>
               </div>
 
@@ -145,7 +148,7 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
                   onClick={handleUpgradePro}
                   className="w-full h-12 rounded-xl bg-[var(--color-vermilion)] hover:bg-[var(--color-vermilion-bright)] text-white font-bold font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2 shadow-lg border border-[var(--color-gold)]"
                 >
-                  ✨ 升级到 Pro (无限次)
+                  ✨ {t("upgradePro")}
                 </button>
 
                 {/* 次按钮：Ko-fi 打赏 */}
@@ -153,7 +156,7 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
                   onClick={handleKofiDonate}
                   className="w-full h-12 rounded-xl border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:border-[var(--color-gold)]/60 hover:text-[var(--color-gold-bright)] font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2"
                 >
-                  ☕️ 去 Ko-fi 打赏
+                  ☕️ {t("kofiDonate")}
                 </button>
               </div>
             </motion.div>

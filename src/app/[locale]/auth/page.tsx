@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useRouter, Link } from "@/i18n/navigation";
 import { Input } from "@/components/ui";
 import { hasAnonymousDivinations, migrateAnonymousDivinations } from "@/lib/anonymous-session";
+import { TaichiWatermark } from "@/components/decorative";
 
 function GoogleIcon() {
   return (
@@ -121,13 +122,8 @@ export default function AuthPage() {
     <>
       <main className="min-h-screen flex flex-col items-center justify-center px-4 relative" style={{ background: 'var(--theme-bg)' }}>
         {/* Taichi watermark decoration */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ opacity: 0.03 }}>
-          <svg width="400" height="400" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="1"/>
-            <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/>
-            <circle cx="50" cy="26" r="6" fill="var(--theme-bg)"/>
-            <circle cx="50" cy="74" r="6" fill="currentColor"/>
-          </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <TaichiWatermark opacity={0.07} size={400} />
         </div>
         {/* Decorative elements */}
         <div className="absolute top-20 left-[15%] text-[var(--color-gold)]/10 text-5xl animate-twinkle select-none hidden md:block">
@@ -151,7 +147,7 @@ export default function AuthPage() {
           <h1 className="font-title text-3xl sm:text-4xl font-bold text-gold-glow tracking-wider">
             易 · YiChing
           </h1>
-          <p className="text-gray-500 text-sm tracking-[0.3em] mt-3">
+          <p className="text-[var(--theme-text-muted)] text-sm tracking-[0.3em] mt-3">
             {tab === "login" ? t("welcomeBack") : t("registerWelcome")}
           </p>
         </div>
@@ -163,10 +159,10 @@ export default function AuthPage() {
             type="button"
             onClick={handleGoogleLogin}
             disabled={googleLoading}
-            className="w-full flex items-center justify-center gap-3 px-4 h-12 bg-white hover:bg-gray-50 text-gray-700 font-medium text-base rounded-xl border border-gray-200 transition-all duration-200 shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-3 px-4 h-12 bg-[var(--theme-bg-card-solid)] hover:bg-[var(--theme-bg-card)] text-[var(--theme-text-secondary)] font-medium text-base rounded-xl border border-[var(--theme-border)] transition-all duration-200 shadow-sm hover:shadow disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {googleLoading ? (
-              <div className="w-[18px] h-[18px] border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
+              <div className="w-[18px] h-[18px] border-2 border-[var(--theme-border)] border-t-[var(--theme-text-secondary)] rounded-full animate-spin" />
             ) : (
               <GoogleIcon />
             )}
@@ -175,19 +171,19 @@ export default function AuthPage() {
 
           {/* Divider */}
           <div className="flex items-center gap-4 my-8">
-            <div className="flex-1 h-px bg-white/10" />
-            <span className="text-xs text-gray-500 tracking-wider">{t("or")}</span>
-            <div className="flex-1 h-px bg-white/10" />
+            <div className="flex-1 h-px bg-[var(--theme-border)]" />
+            <span className="text-xs text-[var(--theme-text-muted)] tracking-wider">{t("or")}</span>
+            <div className="flex-1 h-px bg-[var(--theme-border)]" />
           </div>
 
           {/* Tab switcher */}
-          <div className="flex mb-8 border-b border-white/5">
+          <div className="flex mb-8 border-b border-[var(--theme-border)]">
             <button
               onClick={() => { setTab("login"); setError(""); }}
               className={`flex-1 pb-3 text-base tracking-wider font-title transition-all duration-300 ${
                 tab === "login"
                   ? "text-gold border-b-2 border-gold/60"
-                  : "text-gray-500 hover:text-gray-400"
+                  : "text-[var(--theme-text-muted)] hover:text-[var(--theme-text-primary)]"
               }`}
             >
               {t("emailLogin")}
@@ -197,7 +193,7 @@ export default function AuthPage() {
               className={`flex-1 pb-3 text-base tracking-wider font-title transition-all duration-300 ${
                 tab === "register"
                   ? "text-gold border-b-2 border-gold/60"
-                  : "text-gray-500 hover:text-gray-400"
+                  : "text-[var(--theme-text-muted)] hover:text-[var(--theme-text-primary)]"
               }`}
             >
               {t("emailRegister")}
@@ -285,7 +281,7 @@ export default function AuthPage() {
 
         {/* Bottom decoration */}
         <div className="mt-10 flex items-center gap-3 animate-pulse-glow">
-          <span className="text-amber-600/40 text-xs tracking-[0.5em]">
+          <span className="text-[var(--color-gold)]/40 text-xs tracking-[0.5em]">
             ䷀ ䷁ ䷂
           </span>
         </div>

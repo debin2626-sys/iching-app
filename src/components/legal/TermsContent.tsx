@@ -103,9 +103,9 @@ export default function TermsContent() {
   const content = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
 
   const navItems = [
-    { label: tNav("divination"), href: "/" as const, icon: <span>🔮</span> },
+    { label: tNav("home"), href: "/" as const, icon: <span>🏠</span> },
+    { label: tNav("divination"), href: "/divine" as const, icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams" as const, icon: <span>📖</span> },
-    { label: tNav("history"), href: "/history" as const, icon: <span>📜</span> },
   ];
 
   return (

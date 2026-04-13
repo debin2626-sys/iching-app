@@ -32,11 +32,11 @@ export function Empty({
       )}
 
       <div className="space-y-2">
-        <h3 className="text-lg font-medium tracking-wide text-gray-200">
+        <h3 className="text-lg font-medium tracking-wide text-[var(--theme-text-primary)]">
           {title}
         </h3>
         {description && (
-          <p className="max-w-xs text-sm leading-relaxed text-gray-500">
+          <p className="max-w-xs text-sm leading-relaxed text-[var(--theme-text-muted)]">
             {description}
           </p>
         )}

@@ -78,11 +78,11 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           className={[
             "bg-[rgba(255,255,255,0.02)] rounded-[8px] border outline-none resize-y w-full min-h-[48px]",
             "transition-all duration-[400ms] ease-in-out",
-            "placeholder:text-[#a0978a]/50",
+            "placeholder:text-[var(--theme-text-muted)]/50",
             error
               ? "border-red-500 focus:border-red-400 focus:shadow-[0_0_20px_rgba(239,68,68,0.1)]"
-              : "border-[rgba(201,169,110,0.3)] focus:border-[rgba(201,169,110,0.6)] focus:shadow-[0_0_15px_rgba(201,169,110,0.15)]",
-            "text-[#f5f0e8]",
+              : "border-[var(--color-gold)]/30 focus:border-[var(--color-gold)]/60 focus:shadow-[0_0_15px_rgba(201,169,110,0.15)]",
+            "text-[var(--theme-text-primary)]",
             autoResize ? "resize-none overflow-hidden" : "",
             sizeClasses[size],
             className,
@@ -108,7 +108,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           </p>
         )}
         {!error && hint && (
-          <p id={`${textareaId}-hint`} className="text-xs text-gray-500">
+          <p id={`${textareaId}-hint`} className="text-xs text-[var(--theme-text-muted)]">
             {hint}
           </p>
         )}

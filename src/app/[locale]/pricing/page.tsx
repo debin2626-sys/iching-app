@@ -29,8 +29,8 @@ export default function PricingPage() {
   const tNav = useTranslations("Nav");
 
   const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>☯</span> },
-    { label: tNav("divination"), href: "/divination", icon: <span>🔮</span> },
+    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
+    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
     { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
   ];
 

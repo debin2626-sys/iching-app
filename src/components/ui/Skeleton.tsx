@@ -30,7 +30,7 @@ function TextSkeleton({
 function CardSkeleton({ className = "" }: SkeletonBaseProps) {
   return (
     <div
-      className={`rounded-xl border border-white/5 bg-white/[0.02] p-6 space-y-4 ${className}`}
+      className={`rounded-xl border border-[var(--theme-border)] bg-[var(--theme-skeleton-base)] p-6 space-y-4 ${className}`}
     >
       <div className={`${pulse} h-5 w-2/5 rounded-md`} />
       <div className="space-y-2.5">

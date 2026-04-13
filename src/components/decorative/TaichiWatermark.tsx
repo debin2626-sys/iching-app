@@ -9,7 +9,7 @@ interface TaichiWatermarkProps {
 
 export function TaichiWatermark({
   size = 600,
-  opacity = 0.04,
+  opacity = 0.07,
   className = "",
   animate = true,
 }: TaichiWatermarkProps) {

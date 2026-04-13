@@ -112,7 +112,7 @@ export default function AboutContent() {
           <h1 className="text-3xl sm:text-4xl font-bold text-[var(--color-gold)] mb-3">
             {text.heading}
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-[var(--theme-text-muted)] text-lg">
             {text.sub}
           </p>
         </div>
@@ -128,7 +128,7 @@ export default function AboutContent() {
                 <span>{section.icon}</span>
                 {section.title}
               </h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-[var(--theme-text-primary)] leading-relaxed">
                 {section.content}
               </p>
             </section>

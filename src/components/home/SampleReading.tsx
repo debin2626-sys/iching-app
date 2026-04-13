@@ -88,7 +88,7 @@ export default function SampleReadingClient({
           {/* CTA */}
           <div className="text-center">
             <button
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/divine")}
               className="px-8 py-3 bg-gradient-to-br from-gold to-gold-dim text-bg text-base rounded-[14px] font-bold font-title tracking-wider transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_20px_rgba(201,169,110,0.3)]"
             >
               {content.cta}

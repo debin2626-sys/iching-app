@@ -135,9 +135,9 @@ export default function HexagramsContent() {
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-3">
           <span className="text-[var(--color-gold)]">{t("title")}</span>{" "}
-          <span className="text-gray-400">/ {t("subtitle")}</span>
+          <span className="text-[var(--theme-text-muted)]">/ {t("subtitle")}</span>
         </h1>
-        <p className="text-center text-gray-500 text-lg mb-8">{t("clickHint")}</p>
+        <p className="text-center text-[var(--theme-text-muted)] text-lg mb-8">{t("clickHint")}</p>
 
         <div style={{ maxWidth: '600px', width: '100%', margin: '0 auto 40px auto' }}>
           <Input
@@ -172,7 +172,7 @@ export default function HexagramsContent() {
                   <div
                     className="group relative flex flex-col items-center rounded-[12px] bg-[var(--theme-bg-card)] border border-gold/15 backdrop-blur-[12px] p-6 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:border-[var(--color-gold)]/50 hover:shadow-[0_0_24px_rgba(201,169,110,0.18),0_8px_24px_rgba(0,0,0,0.3)]"
                   >
-                    <span className="text-xs text-gray-600 mb-1.5">#{num}</span>
+                    <span className="text-xs text-[var(--theme-text-secondary)] mb-1.5">#{num}</span>
 
                     {/* Trigram icons */}
                     <div className="flex items-center gap-1.5 text-[var(--color-gold)]/60 text-base mb-1.5">
@@ -188,7 +188,7 @@ export default function HexagramsContent() {
                     <span className="text-xl font-semibold text-[var(--color-gold)] mt-2 group-hover:text-[var(--color-gold-bright)] transition-colors duration-300">
                       {zh}
                     </span>
-                    <span className="text-sm text-gray-500 leading-tight mt-0.5 text-center">
+                    <span className="text-sm text-[var(--theme-text-muted)] leading-tight mt-0.5 text-center">
                       {displayName}
                     </span>
                   </div>

@@ -129,13 +129,13 @@ export default function StartDivinationButton() {
   };
 
   const inputStyle =
-    "bg-[rgba(255,255,255,0.04)] border border-[rgba(201,169,110,0.2)] rounded-xl text-[#f5f0e8] outline-none focus:border-[rgba(201,169,110,0.5)] transition-colors";
+    "bg-[rgba(255,255,255,0.04)] border border-[var(--color-gold)]/20 rounded-xl text-[var(--theme-text-primary)] outline-none focus:border-[var(--color-gold)]/50 transition-colors";
 
   return (
     <>
       {/* 场景化入口 */}
       <div className="mt-10">
-        <p className="text-sm text-[#a0978a] text-center mb-3">
+        <p className="text-sm text-[var(--theme-text-muted)] text-center mb-3">
           {t("scenarioGuide")}
         </p>
         <ScenarioSelector onSelect={handleScenarioSelect} />
@@ -173,7 +173,7 @@ export default function StartDivinationButton() {
             }
           }}
           placeholder={t("questionPlaceholder")}
-          className={`w-full h-[120px] md:h-[140px] p-5 text-base resize-none ${inputStyle} placeholder:text-[#a0978a]/50`}
+          className={`w-full h-[120px] md:h-[140px] p-5 text-base resize-none ${inputStyle} placeholder:text-[var(--theme-text-muted)]/50`}
           style={{ caretColor: "#c9a96e" }}
         />
       </div>
@@ -185,14 +185,14 @@ export default function StartDivinationButton() {
           onClick={() => setShowBirth(!showBirth)}
           className={`w-full h-12 px-4 flex items-center justify-between ${inputStyle} cursor-pointer`}
         >
-          <span className="text-sm text-[#a0978a]">
+          <span className="text-sm text-[var(--theme-text-muted)]">
             🌙 {t("birthLabel")}
-            <span className="text-xs text-gray-500 ml-2">
+            <span className="text-xs text-[var(--theme-text-muted)] ml-2">
               {t("birthHint")}
             </span>
           </span>
           <span
-            className={`text-[#a0978a]/40 text-xs transition-transform duration-300 ${showBirth ? "rotate-180" : ""}`}
+            className={`text-[var(--theme-text-muted)]/40 text-xs transition-transform duration-300 ${showBirth ? "rotate-180" : ""}`}
           >
             ▼
           </span>
@@ -204,7 +204,7 @@ export default function StartDivinationButton() {
               <select
                 value={birthYear}
                 onChange={(e) => setBirthYear(e.target.value)}
-                className={`h-10 px-3 text-sm ${inputStyle} ${!birthYear ? "text-[#a0978a]/50" : ""}`}
+                className={`h-10 px-3 text-sm ${inputStyle} ${!birthYear ? "text-[var(--theme-text-muted)]/50" : ""}`}
               >
                 <option value="">{t("yearPlaceholder")}</option>
                 {YEARS.map((y) => (
@@ -216,7 +216,7 @@ export default function StartDivinationButton() {
               <select
                 value={birthMonth}
                 onChange={(e) => setBirthMonth(e.target.value)}
-                className={`h-10 px-3 text-sm ${inputStyle} ${!birthMonth ? "text-[#a0978a]/50" : ""}`}
+                className={`h-10 px-3 text-sm ${inputStyle} ${!birthMonth ? "text-[var(--theme-text-muted)]/50" : ""}`}
               >
                 <option value="">{t("monthPlaceholder")}</option>
                 {MONTHS.map((m) => (
@@ -228,7 +228,7 @@ export default function StartDivinationButton() {
               <select
                 value={birthDay}
                 onChange={(e) => setBirthDay(e.target.value)}
-                className={`h-10 px-3 text-sm ${inputStyle} ${!birthDay ? "text-[#a0978a]/50" : ""}`}
+                className={`h-10 px-3 text-sm ${inputStyle} ${!birthDay ? "text-[var(--theme-text-muted)]/50" : ""}`}
               >
                 <option value="">{t("dayPlaceholder")}</option>
                 {DAYS.map((d) => (
@@ -240,7 +240,7 @@ export default function StartDivinationButton() {
               <select
                 value={birthHour}
                 onChange={(e) => setBirthHour(e.target.value)}
-                className={`h-10 px-3 text-sm ${inputStyle} ${!birthHour ? "text-[#a0978a]/50" : ""}`}
+                className={`h-10 px-3 text-sm ${inputStyle} ${!birthHour ? "text-[var(--theme-text-muted)]/50" : ""}`}
               >
                 <option value="">{t("hourPlaceholder")}</option>
                 {SHI_CHEN_LABELS.map((label, i) => (
@@ -259,7 +259,7 @@ export default function StartDivinationButton() {
                 className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
                   gender === "male"
                     ? "border-[rgba(201,169,110,0.6)] bg-[rgba(201,169,110,0.1)] text-[#c9a96e]"
-                    : "border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] text-gray-500 hover:border-[rgba(255,255,255,0.2)]"
+                    : "border-[var(--theme-border)] bg-[var(--theme-border)] text-[var(--theme-text-muted)] hover:border-[var(--theme-border-hover)]"
                 }`}
               >
                 ♂ {t("genderMale")}
@@ -272,7 +272,7 @@ export default function StartDivinationButton() {
                 className={`flex-1 py-1.5 rounded-lg text-sm font-title tracking-wide transition-all duration-300 border ${
                   gender === "female"
                     ? "border-[rgba(201,169,110,0.6)] bg-[rgba(201,169,110,0.1)] text-[#c9a96e]"
-                    : "border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] text-gray-500 hover:border-[rgba(255,255,255,0.2)]"
+                    : "border-[var(--theme-border)] bg-[var(--theme-border)] text-[var(--theme-text-muted)] hover:border-[var(--theme-border-hover)]"
                 }`}
               >
                 ♀ {t("genderFemale")}

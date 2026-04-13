@@ -140,7 +140,7 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
       <Card className="overflow-hidden mb-8" padding="sm">
         <button
           onClick={() => setShowBirth(!showBirth)}
-          className="w-full flex items-center justify-between px-2 py-2 hover:bg-white/5 transition rounded-lg"
+          className="w-full flex items-center justify-between px-2 py-2 hover:bg-[var(--theme-bg-card)] transition rounded-lg"
         >
           <span className="flex items-center gap-2 text-sm text-[var(--color-gold)]/70 font-title">
             🌙 {t("birthLabel")}
@@ -187,7 +187,7 @@ function QuestionForm({ onSubmit }: { onSubmit: (params: URLSearchParams) => voi
 
             {/* 性别选择 */}
             <div className="mt-3">
-              <p className="text-xs text-gray-500 mb-2">{t("genderLabel")}</p>
+              <p className="text-xs text-[var(--theme-text-muted)] mb-2">{t("genderLabel")}</p>
               <div className="flex gap-3">
                 <button
                   type="button"
@@ -458,12 +458,12 @@ function DivinationInner() {
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
                   (s === 1 && phase === "shaking") || (s <= 2 && phase === "done")
                     ? "bg-[var(--gold)] shadow-[0_0_10px_color-mix(in_srgb,var(--color-gold)_50%,transparent)]"
-                    : "bg-white/10"
+                    : "bg-[var(--theme-border)]"
                 }`}
               />
               {s < 2 && (
                 <div className={`w-8 h-px transition-all duration-500 ${
-                  phase === "done" ? "bg-[var(--gold)]/40" : "bg-white/10"
+                  phase === "done" ? "bg-[var(--gold)]/40" : "bg-[var(--theme-border)]"
                 }`} />
               )}
             </div>

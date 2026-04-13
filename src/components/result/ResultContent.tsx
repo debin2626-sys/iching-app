@@ -4,7 +4,7 @@
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { calculateBazi, type BirthInfo } from "@/lib/iching/bazi";
 import { PageLayout, Skeleton, Button, useToast } from "@/components/ui";
 import { ResultSkeleton } from "@/components/ui/PageSkeletons";
@@ -23,7 +23,7 @@ import { DailyLimitBanner, incrementLocalDivinationCount } from "@/components/di
 import { useSession, signIn } from "next-auth/react";
 import { trackAIInterpretStart, trackAIInterpretComplete, trackFunnelResultView, trackFunnelAIInterpretStart, trackFunnelAIInterpretComplete } from "@/lib/analytics";
 import { getOrCreateAnonymousSession, saveAnonymousDivination, hasAnonymousDivinations, migrateAnonymousDivinations } from "@/lib/anonymous-session";
-import { useRouter } from "@/i18n/navigation";
+import { useRouter, Link } from "@/i18n/navigation";
 
 /* ── 卦象名称映射 ── */
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
@@ -246,6 +246,7 @@ function AISection({
   subScenarioId: string;
 }) {
   const t = useTranslations("Result");
+  const locale = useLocale();
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
   const [streamDone, setStreamDone] = useState(false);
@@ -288,7 +289,7 @@ function AISection({
           changingLines,
           question,
           depth: selectedDepth,
-          locale: "zh",
+          locale: locale,
           birthInfo,
           gender: gender || undefined,
           scenarioId: scenarioId || undefined,
@@ -402,6 +403,7 @@ function ResultInner() {
   const searchParams = useSearchParams();
   const t = useTranslations("Result");
   const tNav = useTranslations("Nav");
+  const locale = useLocale();
 
   const navItems = [
     { label: tNav("home"), href: "/", icon: <span>🏠</span> },
@@ -629,12 +631,9 @@ function ResultInner() {
       <PageLayout navItems={navItems} maxWidth="max-w-[800px]">
         <div className="text-center py-20 px-6">
           <p className="text-[var(--theme-text-muted)] mb-4">{t("noHexagram")}</p>
-          <a
-            href="/divination"
-            className="w-[180px] h-12 text-base font-title tracking-wider rounded-lg bg-transparent border border-gold/50 text-gold transition-all duration-300 hover:border-gold hover:shadow-[0_0_15px_color-mix(in_srgb,var(--color-gold)_40%,transparent)] inline-flex items-center justify-center"
-          >
-            {t("goToDivination")}
-          </a>
+          <Link href="/divine" className="btn-divine inline-flex items-center justify-center h-12 px-6 text-base font-title tracking-wider rounded-lg">
+            {t("startDivination")}
+          </Link>
         </div>
       </PageLayout>
     );
@@ -814,18 +813,18 @@ function ResultInner() {
           initial="hidden"
           animate="visible"
         >
-          <a
-            href="/divination"
+          <Link
+            href="/divine"
             className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
           >
             {t("divinationAgain")}
-          </a>
-          <a
+          </Link>
+          <Link
             href="/"
             className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
           >
             {t("backHome")}
-          </a>
+          </Link>
           <button
             onClick={handleSaveHistory}
             disabled={isSaving}
