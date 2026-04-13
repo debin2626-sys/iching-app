@@ -315,13 +315,17 @@
     "backToProfile": "返回个人中心"
   },
   "DailyLimit": {
-    "title": "今日占卜次数已达上限",
+    "title": "今日免费次数已用尽",
     "message": "免费用户每天可占卜 {limit} 次，明日可继续。",
+    "description": "感谢你的使用！我们为每位用户提供每日 {limit} 次的免费占卜体验。",
     "loginHint": "登录账号以追踪你的占卜记录",
-    "upgradeHint": "升级会员享受无限次占卜",
+    "upgradeHint": "如果你觉得这个工具对你有帮助，并希望获得无限次占卜机会，可以考虑升级到 Pro 版本。你的支持是我们持续改进的最大动力！",
     "loginButton": "登录",
     "understood": "知道了",
-    "localCount": "今日已占卜 {used}/{limit} 次"
+    "localCount": "今日已占卜 {used}/{limit} 次",
+    "close": "关闭",
+    "upgradePro": "升级到 Pro (无限次)",
+    "kofiDonate": "去 Ko-fi 打赏"
   },
   "Error": {
     "title": "天机不可泄露",
@@ -431,5 +435,20 @@
       "QUARTERLY": "季度会员",
       "ANNUAL": "年度会员"
     }
+  },
+  "UserReviews": {
+    "minutesAgo": "{count} 分钟前",
+    "hoursAgo": "{count} 小时前"
+  },
+  "SoundSettings": {
+    "soundSettings": "音效设置",
+    "muted": "已静音",
+    "enabled": "已开启",
+    "soundType": "音效类型",
+    "volume": "音量",
+    "clickToEnable": "点击开启音效体验",
+    "themeAmbient": "白噪音",
+    "themeBell": "钟磬",
+    "themeWater": "流水"
   }
 }

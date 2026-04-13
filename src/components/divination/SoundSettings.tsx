@@ -2,13 +2,14 @@
 
 import { useState, useRef, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import type { UseSoundEffect } from "@/hooks/useSoundEffect";
 import type { SoundTheme } from "@/lib/sound-synth";
 
-const THEMES: { key: SoundTheme; icon: string; label: string; labelEn: string }[] = [
-  { key: "ambient", icon: "🌫️", label: "白噪音", labelEn: "Ambient" },
-  { key: "bell", icon: "🔔", label: "钟磬", labelEn: "Bell" },
-  { key: "water", icon: "💧", label: "流水", labelEn: "Water" },
+const THEMES: { key: SoundTheme; icon: string; labelKey: string }[] = [
+  { key: "ambient", icon: "🌫️", labelKey: "themeAmbient" },
+  { key: "bell", icon: "🔔", labelKey: "themeBell" },
+  { key: "water", icon: "💧", labelKey: "themeWater" },
 ];
 
 interface SoundSettingsProps {
@@ -16,6 +17,7 @@ interface SoundSettingsProps {
 }
 
 export default function SoundSettings({ sound }: SoundSettingsProps) {
+  const t = useTranslations("SoundSettings");
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -36,9 +38,9 @@ export default function SoundSettings({ sound }: SoundSettingsProps) {
       {/* 触发按钮 */}
       <button
         onClick={() => setOpen(!open)}
-        className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 border border-white/10 bg-black/40 backdrop-blur-sm hover:border-[var(--color-gold)]/40 hover:bg-black/60"
-        aria-label="音效设置"
-        title="音效设置"
+        className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 border border-[var(--theme-border)] bg-black/40 backdrop-blur-sm hover:border-[var(--color-gold)]/40 hover:bg-black/60"
+        aria-label={t("soundSettings")}
+        title={t("soundSettings")}
       >
         <span className="text-lg">{sound.muted ? "🔇" : "🔊"}</span>
       </button>
@@ -51,7 +53,7 @@ export default function SoundSettings({ sound }: SoundSettingsProps) {
           exit={{ opacity: 0 }}
           className="absolute top-12 right-0 bg-black/80 backdrop-blur-sm border border-[var(--color-gold)]/30 rounded-lg px-3 py-2 text-xs text-[var(--color-gold)] whitespace-nowrap"
         >
-          🎵 点击开启音效体验
+          🎵 {t("clickToEnable")}
           <div className="absolute -top-1 right-4 w-2 h-2 bg-black/80 border-l border-t border-[var(--color-gold)]/30 rotate-45" />
         </m.div>
       )}
@@ -64,11 +66,11 @@ export default function SoundSettings({ sound }: SoundSettingsProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-12 right-0 w-56 bg-[var(--theme-dropdown-bg)] backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-xl"
+            className="absolute top-12 right-0 w-56 bg-[var(--theme-dropdown-bg)] backdrop-blur-md border border-[var(--theme-border)] rounded-xl p-4 shadow-xl"
           >
             {/* 标题 */}
             <p className="text-xs text-[var(--color-gold)]/70 font-title tracking-wider mb-3">
-              🎵 音效设置
+              🎵 {t("soundSettings")}
             </p>
 
             {/* 静音开关 */}
@@ -76,14 +78,14 @@ export default function SoundSettings({ sound }: SoundSettingsProps) {
               onClick={sound.toggleMute}
               className={`w-full flex items-center justify-between px-3 py-2 rounded-lg mb-3 transition-all duration-200 border ${
                 sound.muted
-                  ? "border-white/10 bg-white/5 text-gray-400"
+                  ? "border-[var(--theme-border)] bg-[var(--theme-border)] text-[var(--theme-text-muted)]"
                   : "border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-[var(--color-gold)]"
               }`}
             >
-              <span className="text-sm">{sound.muted ? "🔇 已静音" : "🔊 已开启"}</span>
+              <span className="text-sm">{sound.muted ? `🔇 ${t("muted")}` : `🔊 ${t("enabled")}`}</span>
               <div
                 className={`w-8 h-4 rounded-full relative transition-colors duration-200 ${
-                  sound.muted ? "bg-white/10" : "bg-[var(--color-gold)]/40"
+                  sound.muted ? "bg-[var(--theme-border)]" : "bg-[var(--color-gold)]/40"
                 }`}
               >
                 <div
@@ -98,20 +100,20 @@ export default function SoundSettings({ sound }: SoundSettingsProps) {
 
             {/* 音效类型选择 */}
             <div className="mb-3">
-              <p className="text-xs text-gray-500 mb-2">音效类型</p>
+              <p className="text-xs text-[var(--theme-text-muted)] mb-2">{t("soundType")}</p>
               <div className="flex gap-1.5">
-                {THEMES.map((t) => (
+                {THEMES.map((theme) => (
                   <button
-                    key={t.key}
-                    onClick={() => sound.setTheme(t.key)}
+                    key={theme.key}
+                    onClick={() => sound.setTheme(theme.key)}
                     className={`flex-1 flex flex-col items-center gap-1 py-2 rounded-lg text-xs transition-all duration-200 border ${
-                      sound.theme === t.key
+                      sound.theme === theme.key
                         ? "border-[var(--color-gold)]/50 bg-[var(--color-gold)]/10 text-[var(--color-gold)]"
-                        : "border-white/5 bg-white/5 text-gray-500 hover:border-white/15"
+                        : "border-[var(--theme-border)] bg-[var(--theme-border)] text-[var(--theme-text-muted)] hover:border-[var(--theme-border-hover)]"
                     }`}
                   >
-                    <span className="text-base">{t.icon}</span>
-                    <span>{t.label}</span>
+                    <span className="text-base">{theme.icon}</span>
+                    <span>{t(theme.labelKey)}</span>
                   </button>
                 ))}
               </div>
@@ -120,8 +122,8 @@ export default function SoundSettings({ sound }: SoundSettingsProps) {
             {/* 音量滑块 */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <p className="text-xs text-gray-500">音量</p>
-                <p className="text-xs text-gray-500">{Math.round(sound.volume * 100)}%</p>
+                <p className="text-xs text-[var(--theme-text-muted)]">{t("volume")}</p>
+                <p className="text-xs text-[var(--theme-text-muted)]">{Math.round(sound.volume * 100)}%</p>
               </div>
               <input
                 type="range"
@@ -144,7 +146,7 @@ export default function SoundSettings({ sound }: SoundSettingsProps) {
                   [&::-moz-range-thumb]:border-0
                   [&::-moz-range-thumb]:cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${sound.volume * 100}%, rgba(255,255,255,0.1) ${sound.volume * 100}%, rgba(255,255,255,0.1) 100%)`,
+                  background: `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${sound.volume * 100}%, var(--theme-border) ${sound.volume * 100}%, var(--theme-border) 100%)`,
                 }}
               />
             </div>

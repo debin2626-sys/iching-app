@@ -284,13 +284,17 @@
     "backToProfile": "Back to Profile"
   },
   "DailyLimit": {
-    "title": "Daily Reading Limit Reached",
+    "title": "Daily Free Readings Used Up",
     "message": "Free accounts include {limit} readings per day. Come back tomorrow to continue.",
+    "description": "Thank you for using our service! We provide {limit} free divination readings per day for each user.",
     "loginHint": "Sign in to track your divination history",
-    "upgradeHint": "Upgrade for unlimited daily readings",
+    "upgradeHint": "If you find this tool helpful and want unlimited readings, consider upgrading to Pro. Your support drives our continuous improvement!",
     "loginButton": "Sign In",
     "understood": "Got it",
-    "localCount": "{used} of {limit} readings used today"
+    "localCount": "{used} of {limit} readings used today",
+    "close": "Close",
+    "upgradePro": "Upgrade to Pro (Unlimited)",
+    "kofiDonate": "Donate on Ko-fi"
   },
   "Error": {
     "title": "The Oracle is Silent",
@@ -431,5 +435,20 @@
       "QUARTERLY": "Quarterly",
       "ANNUAL": "Annual"
     }
+  },
+  "UserReviews": {
+    "minutesAgo": "{count} minutes ago",
+    "hoursAgo": "{count} hours ago"
+  },
+  "SoundSettings": {
+    "soundSettings": "Sound Settings",
+    "muted": "Muted",
+    "enabled": "Enabled",
+    "soundType": "Sound Type",
+    "volume": "Volume",
+    "clickToEnable": "Tap to enable sound",
+    "themeAmbient": "Ambient",
+    "themeBell": "Bell",
+    "themeWater": "Water"
   }
 }
