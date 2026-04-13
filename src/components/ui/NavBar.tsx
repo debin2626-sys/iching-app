@@ -312,8 +312,10 @@ function MobileTabBar({ items }: NavBarProps) {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-50 flex h-16 items-end justify-around border-t pb-[env(safe-area-inset-bottom)] md:hidden"
+      className="fixed inset-x-0 bottom-0 z-50 flex items-stretch justify-around border-t md:hidden"
       style={{
+        height: 'calc(64px + env(safe-area-inset-bottom, 0px))',
+        paddingBottom: 'env(safe-area-inset-bottom, 0px)',
         backgroundColor: 'var(--theme-nav-bg)',
         borderColor: 'var(--theme-border)',
         backdropFilter: 'blur(12px)',
@@ -326,7 +328,7 @@ function MobileTabBar({ items }: NavBarProps) {
           <Link
             key={item.href}
             href={item.href}
-            className="flex flex-1 flex-col items-center gap-1 pb-2 pt-2 text-xs transition-all duration-300"
+            className="flex flex-1 flex-col items-center justify-center gap-1 text-xs transition-all duration-300 min-h-[44px]"
             style={{ color: active ? 'var(--color-gold)' : 'var(--theme-text-muted)' }}
           >
             {item.icon ? (

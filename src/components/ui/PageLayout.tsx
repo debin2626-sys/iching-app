@@ -24,6 +24,7 @@ export function PageLayout({
       {showNav && <NavBar items={navItems} />}
 
       <main
+        className="pb-safe-bottom"
         style={{
           maxWidth: maxWidth === "max-w-lg" ? '32rem'
             : maxWidth === "max-w-4xl" ? '56rem'
@@ -36,7 +37,7 @@ export function PageLayout({
           paddingLeft: '24px',
           paddingRight: '24px',
           ...(showNav
-            ? { paddingTop: '96px', paddingBottom: '96px' }
+            ? { paddingTop: '96px', paddingBottom: '88px' }
             : { paddingTop: '24px', paddingBottom: '24px' }),
         }}
       >

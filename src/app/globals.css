@@ -285,7 +285,7 @@
   .btn-divine {
     border: 1px solid rgba(184, 146, 74, 0.5);
     color: var(--gold);
-    background: rgba(184, 146, 74, 0.06);
+    background: rgba(184, 146, 74, 0.12);
     transition: all 0.4s ease-in-out;
     position: relative;
     overflow: hidden;
