@@ -48,16 +48,16 @@ export function ScenarioSection({ locale }: ScenarioSectionProps) {
             whileInView="show"
             viewport={{ once: true, margin: '-50px' }}
             transition={{ delay: index * 0.08 }}
-            className={index === 4 ? 'col-span-2 md:col-span-1 flex justify-center' : ''}
+            className={index === 4 ? 'col-span-2 md:col-span-1 flex justify-center h-full' : 'h-full'}
           >
             <Link
               href={s.href}
               aria-label={`${t(s.labelKey)} - ${t(s.descKey)}`}
-              className={index === 4 ? 'w-[calc(50%-6px)] md:w-full' : 'block'}
+              className={index === 4 ? 'w-[calc(50%-6px)] md:w-full h-full' : 'block h-full'}
               onClick={() => trackScenarioSelect(s.id)}
             >
               <div
-                className="flex flex-col items-center text-center p-4 rounded-xl border cursor-pointer
+                className="h-full flex flex-col items-center text-center p-4 rounded-xl border cursor-pointer
                            hover:border-[var(--color-gold)] transition-colors duration-200
                            active:scale-95"
                 style={{
