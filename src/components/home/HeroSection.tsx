@@ -40,7 +40,7 @@ export function HeroSection({ locale, totalCount = 0 }: HeroSectionProps) {
         <motion.h1
           id="hero-heading"
           variants={item}
-          className="text-3xl md:text-5xl font-bold leading-tight tracking-wide max-w-xl w-full"
+          className="text-3xl md:text-5xl font-bold leading-tight tracking-wide max-w-[36rem] w-full"
           style={{ fontFamily: 'var(--font-display)', color: 'var(--theme-text-primary)' }}
         >
           {t('heroHeadline')}
@@ -48,7 +48,7 @@ export function HeroSection({ locale, totalCount = 0 }: HeroSectionProps) {
 
         <motion.p
           variants={item}
-          className="relative mt-4 text-base md:text-lg max-w-md"
+          className="relative mt-4 text-base md:text-lg max-w-[28rem]"
           style={{ color: 'var(--theme-text-secondary)' }}
         >
           {t('heroSub')}

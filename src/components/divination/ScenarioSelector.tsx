@@ -3,8 +3,17 @@
 import { useState, useRef } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { useLocale } from "next-intl";
+import { Briefcase, Heart, Coins, GraduationCap, Leaf, type LucideIcon } from "lucide-react";
 import { scenarios, type Scenario, type SubScenario } from "@/data/scenarios";
 import SubScenarioPanel from "./SubScenarioPanel";
+
+const SCENARIO_ICONS: Record<string, LucideIcon> = {
+  career: Briefcase,
+  love: Heart,
+  wealth: Coins,
+  study: GraduationCap,
+  health: Leaf,
+};
 
 interface ScenarioSelectorProps {
   onSelect: (template: string, scenarioId: string, subScenarioId: string) => void;
@@ -63,7 +72,7 @@ export default function ScenarioSelector({ onSelect }: ScenarioSelectorProps) {
               ].join(" ")}
             >
               <span className="text-[28px] leading-none">
-                {scenario.emoji}
+                {(() => { const Icon = SCENARIO_ICONS[scenario.id]; return Icon ? <Icon size={28} strokeWidth={1.5} style={{ color: 'var(--color-gold)' }} /> : null; })()}
               </span>
               <span className="mt-2 text-sm font-semibold text-[var(--theme-text-primary)]">
                 {getText(scenario.name)}
@@ -111,7 +120,7 @@ export default function ScenarioSelector({ onSelect }: ScenarioSelectorProps) {
             ].join(" ")}
           >
             <span className="text-[28px] md:text-[32px] leading-none">
-              {scenario.emoji}
+              {(() => { const Icon = SCENARIO_ICONS[scenario.id]; return Icon ? <Icon size={32} strokeWidth={1.5} style={{ color: 'var(--color-gold)' }} /> : null; })()}
             </span>
             <span className="mt-2 text-sm md:text-base font-semibold text-[var(--theme-text-primary)]">
               {getText(scenario.name)}
