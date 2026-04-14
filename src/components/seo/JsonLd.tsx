@@ -1,4 +1,4 @@
-import { SITE_URL, SITE_NAME, SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW, getLocalizedText } from '@/lib/seo';
+import { SITE_URL, SITE_NAME, SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW, getLocalizedText, getLocalePrefix } from '@/lib/seo';
 import { HEXAGRAM_DATA, type HexagramSEOData } from '@/data/hexagrams';
 
 interface JsonLdProps {
@@ -208,7 +208,48 @@ export function HexagramFaqJsonLd({
   return <JsonLdScript data={data} />;
 }
 
-/** Article schema for individual hexagram page */
+/** BreadcrumbList schema for individual hexagram pages */
+export function HexagramBreadcrumbJsonLd({ hexagram, locale }: { hexagram: HexagramSEOData; locale: string }) {
+  const prefix = getLocalePrefix(locale);
+  const isEn = locale === 'en';
+  const isZhTW = locale === 'zh-TW';
+
+  const hexagramName = isEn
+    ? `Hexagram ${hexagram.number}: ${hexagram.nameEn}`
+    : isZhTW
+      ? `${hexagram.nameZhTW || hexagram.nameZh}卦`
+      : `${hexagram.nameZh}卦`;
+
+  const catalogName = isEn ? 'Hexagrams' : '卦典';
+
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `${SITE_URL}${prefix}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: catalogName,
+        item: `${SITE_URL}${prefix}/hexagrams`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: hexagramName,
+        item: `${SITE_URL}${prefix}/hexagrams/${hexagram.number}`,
+      },
+    ],
+  };
+
+  return <JsonLdScript data={data} />;
+}
+
 export function HexagramArticleJsonLd({
   hexagram,
   locale,

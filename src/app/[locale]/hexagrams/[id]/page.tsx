@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { HEXAGRAM_DATA, getHexagramByNumber } from '@/data/hexagrams';
 import { getHexagramFullData } from '@/lib/hexagram-data';
-import { HexagramArticleJsonLd, HexagramFaqJsonLd } from '@/components/seo/JsonLd';
+import { HexagramArticleJsonLd, HexagramFaqJsonLd, HexagramBreadcrumbJsonLd } from '@/components/seo/JsonLd';
 import { SITE_URL, getLocalePrefix, getAlternateLanguages } from '@/lib/seo';
 import HexagramDetailContent from '@/components/hexagrams/HexagramDetailContent';
 
@@ -98,6 +98,7 @@ export default async function HexagramDetailPage({
     <>
       <HexagramArticleJsonLd hexagram={hex} locale={locale} />
       <HexagramFaqJsonLd hexagram={hex} locale={locale} />
+      <HexagramBreadcrumbJsonLd hexagram={hex} locale={locale} />
       <HexagramDetailContent hexagramNumber={num} initialData={fullData ?? null} />
     </>
   );

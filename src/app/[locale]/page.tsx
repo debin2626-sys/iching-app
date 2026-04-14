@@ -10,6 +10,8 @@ import { HeroSection } from '@/components/home/HeroSection';
 import { ScenarioSection } from '@/components/home/ScenarioSection';
 import { TrustSection } from '@/components/home/TrustSection';
 import { FaqCtaSection } from '@/components/home/FaqCtaSection';
+import { GuideLinksSection } from '@/components/home/GuideLinksSection';
+import { PopularHexagramsSection } from '@/components/home/PopularHexagramsSection';
 import { StickyCtaBar } from '@/components/home/StickyCtaBar';
 import { HowItWorksSection } from '@/components/home/HowItWorksSection';
 import { prisma } from '@/lib/prisma';
@@ -103,6 +105,12 @@ export default async function HomePage({
 
           {/* 用户评价 */}
           <UserReviews />
+
+          {/* 入门指南内链 */}
+          <GuideLinksSection locale={locale} />
+
+          {/* 热门卦象内链 */}
+          <PopularHexagramsSection locale={locale} />
 
           {/* 模块6: FAQ + 最终CTA */}
           <FaqCtaSection locale={locale} />
