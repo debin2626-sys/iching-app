@@ -99,6 +99,8 @@ model Divination {
   aiInterpretations   AIInterpretation[]
   
   @@index([anonymousSessionId])
+  @@index([createdAt])
+  @@index([userId])
 }
 
 

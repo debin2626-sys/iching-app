@@ -1,16 +1,26 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { Coins, Sparkles, BookOpen } from 'lucide-react';
 import { HomeJsonLd } from '@/components/seo/JsonLd';
 import { SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW, getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
 import HomeNavBar from '@/components/home/HomeNavBar';
-import TodayCounter from '@/components/home/TodayCounter';
 import SampleReadingClient from '@/components/home/SampleReading';
 import { SampleReadingSectionHeader, SampleReadingCardContent } from '@/components/home/SampleReadingContent';
 import UserReviews from '@/components/home/UserReviews';
-import { TaichiWatermark, BrushDivider, CloudPattern } from '@/components/decorative';
-import Card from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import { HeroSection } from '@/components/home/HeroSection';
+import { ScenarioSection } from '@/components/home/ScenarioSection';
+import { TrustSection } from '@/components/home/TrustSection';
+import { FaqCtaSection } from '@/components/home/FaqCtaSection';
+import { StickyCtaBar } from '@/components/home/StickyCtaBar';
+import { HowItWorksSection } from '@/components/home/HowItWorksSection';
+import { prisma } from '@/lib/prisma';
+
+async function getTotalCount(): Promise<number> {
+  try {
+    return await prisma.divination.count();
+  } catch {
+    return 0;
+  }
+}
 
 export async function generateMetadata({
   params,
@@ -61,24 +71,7 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'Home' });
-
-  const features = [
-    {
-      icon: <Coins size={36} strokeWidth={1.5} style={{ color: 'var(--color-gold)' }} className="mb-4" />,
-      title: t('feature1Title'),
-      desc: t('feature1Desc'),
-    },
-    {
-      icon: <Sparkles size={36} strokeWidth={1.5} style={{ color: 'var(--color-gold)' }} className="mb-4" />,
-      title: t('feature2Title'),
-      desc: t('feature2Desc'),
-    },
-    {
-      icon: <BookOpen size={36} strokeWidth={1.5} style={{ color: 'var(--color-gold)' }} className="mb-4" />,
-      title: t('feature3Title'),
-      desc: t('feature3Desc'),
-    },
-  ];
+  const totalCount = await getTotalCount();
 
   return (
     <>
@@ -87,89 +80,16 @@ export default async function HomePage({
       <main className="min-h-screen w-full" style={{ backgroundColor: 'var(--theme-bg)' }}>
         <div className="w-full px-6" style={{ maxWidth: '768px', margin: '0 auto', paddingTop: '120px', paddingBottom: '80px' }}>
 
-          {/* Hero Section */}
-          <section className="relative flex flex-col items-center text-center">
-            {/* Cloud Pattern Decoration */}
-            <CloudPattern position="top" className="absolute top-0 left-0 right-0" />
-            {/* Taichi Watermark Background */}
-            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-              <TaichiWatermark size={500} opacity={0.07} />
-            </div>
+          {/* 模块1: Hero */}
+          <HeroSection locale={locale} totalCount={totalCount} />
 
-            {/* Brand Name */}
-            <h1
-              className="relative text-5xl md:text-7xl font-bold tracking-wider"
-              style={{
-                fontFamily: 'var(--font-display)',
-                color: 'var(--theme-text-primary)',
-              }}
-            >
-              {t('heroTitle')}
-            </h1>
+          {/* 模块2: 场景 */}
+          <ScenarioSection locale={locale} />
 
-            {/* Subtitle */}
-            <p
-              className="relative mt-4 text-lg md:text-xl"
-              style={{
-                fontFamily: 'var(--font-display)',
-                color: 'var(--theme-text-secondary)',
-              }}
-            >
-              {t('heroSubtitle')}
-            </p>
+          {/* 模块3: 三步流程 (P1) */}
+          <HowItWorksSection locale={locale} />
 
-            {/* Brush Divider */}
-            <div className="relative mt-8 w-48">
-              <BrushDivider />
-            </div>
-
-            {/* CTA Button */}
-            <div className="relative mt-8">
-              <Button href="/divine" variant="primary" size="lg">
-                {t('ctaButton')}
-              </Button>
-            </div>
-          </section>
-
-          {/* Today Counter */}
-          <div className="mt-16">
-            <TodayCounter />
-          </div>
-
-          {/* Core Features Section */}
-          <section className="mt-20">
-            <h2
-              className="text-xl text-center"
-              style={{
-                fontFamily: 'var(--font-display)',
-                color: 'var(--color-gold)',
-              }}
-            >
-              {t('coreFeatures')}
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mt-8">
-              {features.map((f) => (
-                <Card key={f.title} variant="default" padding="lg" className="text-center flex flex-col items-center min-h-[180px]">
-                  {f.icon}
-                  <h3
-                    className="text-lg font-bold mb-2"
-                    style={{ color: 'var(--theme-text-primary)' }}
-                  >
-                    {f.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed whitespace-pre-line"
-                    style={{ color: 'var(--theme-text-secondary)' }}
-                  >
-                    {f.desc.replace(/\\n/g, '\n')}
-                  </p>
-                </Card>
-              ))}
-            </div>
-          </section>
-
-          {/* Sample Reading */}
+          {/* 示例解读 (P1 保留) */}
           <SampleReadingClient
             locale={locale}
             header={<SampleReadingSectionHeader locale={locale} />}
@@ -177,8 +97,14 @@ export default async function HomePage({
             <SampleReadingCardContent locale={locale} />
           </SampleReadingClient>
 
-          {/* User Reviews */}
+          {/* 模块5: 信任 */}
+          <TrustSection locale={locale} />
+
+          {/* 用户评价 */}
           <UserReviews />
+
+          {/* 模块6: FAQ + 最终CTA */}
+          <FaqCtaSection locale={locale} />
 
           {/* Footer Quote */}
           <p
@@ -201,40 +127,32 @@ export default async function HomePage({
             <section>
               <h2
                 className="text-lg font-semibold mb-4"
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  color: 'var(--color-gold)',
-                }}
+                style={{ fontFamily: 'var(--font-display)', color: 'var(--color-gold)' }}
               >
                 {t('seoSection1Title')}
               </h2>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: 'var(--theme-text-muted)' }}
-              >
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--theme-text-muted)' }}>
                 {t('seoSection1Content')}
               </p>
             </section>
             <section>
               <h2
                 className="text-lg font-semibold mb-4"
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  color: 'var(--color-gold)',
-                }}
+                style={{ fontFamily: 'var(--font-display)', color: 'var(--color-gold)' }}
               >
                 {t('seoSection2Title')}
               </h2>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: 'var(--theme-text-muted)' }}
-              >
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--theme-text-muted)' }}>
                 {t('seoSection2Content')}
               </p>
             </section>
           </div>
+
         </div>
       </main>
+
+      {/* 移动端 Sticky Bar */}
+      <StickyCtaBar locale={locale} />
     </>
   );
 }
