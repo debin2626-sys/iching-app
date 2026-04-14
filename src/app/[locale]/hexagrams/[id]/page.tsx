@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { HEXAGRAM_DATA, getHexagramByNumber } from '@/data/hexagrams';
 import { getHexagramFullData } from '@/lib/hexagram-data';
-import { HexagramArticleJsonLd } from '@/components/seo/JsonLd';
+import { HexagramArticleJsonLd, HexagramFaqJsonLd } from '@/components/seo/JsonLd';
 import { SITE_URL, getLocalePrefix, getAlternateLanguages } from '@/lib/seo';
 import HexagramDetailContent from '@/components/hexagrams/HexagramDetailContent';
 
@@ -33,7 +33,7 @@ export async function generateMetadata({
 
   if (isEn) {
     title = `Hexagram ${num}: ${hex.nameEn} (${hex.symbol}) — I Ching | 51yijing.com`;
-    description = `Hexagram ${num} - ${hex.nameEn}: ${hex.judgmentEn} ${hex.interpretationEn}`;
+    description = `Hexagram ${num} ${hex.nameEn} (${hex.symbol}): Complete guide with judgment, line readings, and plain-language translation. Discover ${hex.nameEn}'s guidance for career, love, and wealth.`;
     keywords = `hexagram ${num},${hex.nameEn},I Ching,Yi Jing,divination,judgment,image`;
   } else if (isZhTW) {
     const nameZhTW = hex.nameZhTW || hex.nameZh;
@@ -42,11 +42,11 @@ export async function generateMetadata({
     const interpretationTW = hex.interpretationZhTW || hex.interpretationZh;
     const imageTW = hex.imageZhTW || hex.imageZh;
     title = `${nameZhTW}卦 第${num}卦 | 易經線上占卜 51yijing.com`;
-    description = `${traditionalNameTW}（第${num}卦）：${judgmentTW} ${interpretationTW}`;
+    description = `${nameZhTW}卦（${traditionalNameTW}）完整解讀：卦辭、六爻詳解、白話翻譯。了解${nameZhTW}卦在事業、感情、財運中的指引含義。`;
     keywords = `${nameZhTW}卦,${traditionalNameTW},第${num}卦,易經,周易,卦辭,爻辭,${imageTW.slice(0, 10)}`;
   } else {
     title = `${hex.nameZh}卦 第${num}卦 | 易经在线占卜 51yijing.com`;
-    description = `${hex.traditionalName}（第${num}卦）：${hex.judgmentZh} ${hex.interpretationZh}`;
+    description = `${hex.nameZh}卦（${hex.traditionalName}）完整解读：卦辞、六爻详解、白话翻译。了解${hex.nameZh}卦在事业、感情、财运中的指引含义。`;
     keywords = `${hex.nameZh}卦,${hex.traditionalName},第${num}卦,易经,周易,卦辞,爻辞,${hex.imageZh.slice(0, 10)}`;
   }
 
@@ -97,6 +97,7 @@ export default async function HexagramDetailPage({
   return (
     <>
       <HexagramArticleJsonLd hexagram={hex} locale={locale} />
+      <HexagramFaqJsonLd hexagram={hex} locale={locale} />
       <HexagramDetailContent hexagramNumber={num} initialData={fullData ?? null} />
     </>
   );
