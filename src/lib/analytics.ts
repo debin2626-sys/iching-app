@@ -382,3 +382,23 @@ export function trackCloseLimitPopup(userId?: string | null) {
     userId: userId ?? undefined,
   });
 }
+
+// ── 注册 / 登录事件 ──
+
+/** 用户注册成功 */
+export function trackSignUp(method: "email" | "google") {
+  sendEvent({
+    action: "sign_up",
+    category: "auth",
+    method,
+  });
+}
+
+/** 用户登录成功 */
+export function trackLogin(method: "email" | "google") {
+  sendEvent({
+    action: "login",
+    category: "auth",
+    method,
+  });
+}

@@ -1,6 +1,43 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+// ─── Upstash Redis rate limiting (shared across instances) ───────────────────
+// Falls back to in-memory when Upstash is not configured.
+
+let upstashRatelimit: {
+  limit: (key: string) => Promise<{ success: boolean; reset: number }>;
+} | null = null;
+
+function getUpstashLimiter(windowMs: number, max: number) {
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (
+    !url ||
+    !token ||
+    url.includes("placeholder") ||
+    token.includes("placeholder")
+  ) {
+    return null;
+  }
+  // Lazy import to avoid errors when env vars are missing
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { Ratelimit } = require("@upstash/ratelimit");
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { Redis } = require("@upstash/redis");
+    const redis = new Redis({ url, token });
+    return new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(max, `${windowMs / 1000} s`),
+      analytics: false,
+    });
+  } catch {
+    return null;
+  }
+}
+
+// ─── In-memory fallback ───────────────────────────────────────────────────────
+
 interface RateLimitEntry {
   timestamps: number[];
 }
@@ -10,10 +47,7 @@ interface RateLimitConfig {
   max: number;
 }
 
-// In-memory store keyed by identifier
 const store = new Map<string, RateLimitEntry>();
-
-// Periodic cleanup to prevent memory leaks (every 5 minutes)
 const CLEANUP_INTERVAL = 5 * 60 * 1000;
 let lastCleanup = Date.now();
 
@@ -21,68 +55,75 @@ function cleanup(windowMs: number) {
   const now = Date.now();
   if (now - lastCleanup < CLEANUP_INTERVAL) return;
   lastCleanup = now;
-
   for (const [key, entry] of store) {
     entry.timestamps = entry.timestamps.filter((t) => now - t < windowMs);
-    if (entry.timestamps.length === 0) {
-      store.delete(key);
-    }
+    if (entry.timestamps.length === 0) store.delete(key);
   }
 }
 
-/**
- * Check rate limit for a given identifier.
- * Returns { limited: false, remaining } or { limited: true, retryAfter }.
- */
-function checkLimit(
+function checkLimitMemory(
   identifier: string,
   config: RateLimitConfig
 ): { limited: false; remaining: number } | { limited: true; retryAfter: number } {
   const now = Date.now();
   cleanup(config.windowMs);
-
   let entry = store.get(identifier);
   if (!entry) {
     entry = { timestamps: [] };
     store.set(identifier, entry);
   }
-
-  // Sliding window: keep only timestamps within the window
   entry.timestamps = entry.timestamps.filter((t) => now - t < config.windowMs);
-
   if (entry.timestamps.length >= config.max) {
     const oldest = entry.timestamps[0];
     const retryAfter = Math.ceil((oldest + config.windowMs - now) / 1000);
     return { limited: true, retryAfter: Math.max(retryAfter, 1) };
   }
-
   entry.timestamps.push(now);
   return { limited: false, remaining: config.max - entry.timestamps.length };
 }
 
-/**
- * Check if a user has a valid (active, non-expired) subscription.
- */
+// ─── Unified check (Upstash → memory fallback) ───────────────────────────────
+
+async function checkLimit(
+  identifier: string,
+  config: RateLimitConfig
+): Promise<{ limited: false; remaining: number } | { limited: true; retryAfter: number }> {
+  const limiter = getUpstashLimiter(config.windowMs, config.max);
+  if (limiter) {
+    try {
+      const result = await limiter.limit(identifier);
+      if (!result.success) {
+        const retryAfter = Math.max(
+          Math.ceil((result.reset - Date.now()) / 1000),
+          1
+        );
+        return { limited: true, retryAfter };
+      }
+      return { limited: false, remaining: 0 };
+    } catch {
+      // Upstash error — fall through to memory
+    }
+  }
+  return checkLimitMemory(identifier, config);
+}
+
+// ─── Subscription / daily limit helpers ──────────────────────────────────────
+
 export async function hasValidSubscription(userId: string): Promise<boolean> {
   const subscription = await prisma.subscription.findFirst({
     where: {
       userId,
-      status: 'ACTIVE',
+      status: "ACTIVE",
       endDate: { gt: new Date() },
     },
   });
   return !!subscription;
 }
 
-/**
- * Check daily divination limit for a given user.
- * Users with an active subscription bypass the daily limit.
- */
 export async function checkDailyDivinationLimit(
   userId?: string | null,
   anonymousSessionId?: string | null
 ): Promise<boolean> {
-  // Subscribed users skip the daily limit entirely
   if (userId) {
     const subscribed = await hasValidSubscription(userId);
     if (subscribed) return false;
@@ -91,27 +132,22 @@ export async function checkDailyDivinationLimit(
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
 
-  const where: any = {
-    createdAt: { gte: startOfDay },
-  };
-
+  const where: Record<string, unknown> = { createdAt: { gte: startOfDay } };
   if (userId) {
     where.userId = userId;
   } else if (anonymousSessionId) {
     where.anonymousSessionId = anonymousSessionId;
   } else {
-    return false; // Cannot limit if no identity
+    return false;
   }
 
   const DAILY_LIMIT = 3;
-
   const count = await prisma.divination.count({ where });
   return count >= DAILY_LIMIT;
 }
 
-/**
- * Extract client IP from request headers (works behind proxies).
- */
+// ─── IP extraction ────────────────────────────────────────────────────────────
+
 function getClientIp(request: NextRequest): string {
   return (
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -120,139 +156,70 @@ function getClientIp(request: NextRequest): string {
   );
 }
 
-// ─── Pre-configured rate limiters ───
+// ─── Pre-configured rate limiters ────────────────────────────────────────────
 
 const RATE_LIMITS = {
-  /** AI interpret endpoints: strict per-user + per-IP */
   aiInterpret: {
     perUser: { windowMs: 60_000, max: 5 },
     perIp: { windowMs: 60_000, max: 10 },
   },
-  /** Auth endpoints: per-IP only */
   auth: {
     perIp: { windowMs: 60_000, max: 10 },
   },
-  /** Divination endpoints: per-user */
   divination: {
     perUser: { windowMs: 60_000, max: 10 },
     perIp: { windowMs: 60_000, max: 20 },
   },
-  /** General API: per-IP */
   general: {
     perIp: { windowMs: 60_000, max: 60 },
   },
 } as const;
 
-/**
- * Apply rate limiting to an AI interpret request.
- * Checks both per-user and per-IP limits.
- * Returns a 429 Response if limited, or null if allowed.
- */
-export function rateLimitAiInterpret(
+function limitedResponse(retryAfter: number): NextResponse {
+  return NextResponse.json(
+    { error: "请求过于频繁，请稍后再试" },
+    { status: 429, headers: { "Retry-After": String(retryAfter) } }
+  );
+}
+
+export async function rateLimitAiInterpret(
   request: NextRequest,
   userId?: string | null
-): NextResponse | null {
+): Promise<NextResponse | null> {
   const ip = getClientIp(request);
-
-  // Per-IP check
-  const ipResult = checkLimit(`ai:ip:${ip}`, RATE_LIMITS.aiInterpret.perIp);
-  if (ipResult.limited) {
-    return NextResponse.json(
-      { error: "请求过于频繁，请稍后再试" },
-      {
-        status: 429,
-        headers: { "Retry-After": String(ipResult.retryAfter) },
-      }
-    );
-  }
-
-  // Per-user check (if authenticated)
+  const ipResult = await checkLimit(`ai:ip:${ip}`, RATE_LIMITS.aiInterpret.perIp);
+  if (ipResult.limited) return limitedResponse(ipResult.retryAfter);
   if (userId) {
-    const userResult = checkLimit(`ai:user:${userId}`, RATE_LIMITS.aiInterpret.perUser);
-    if (userResult.limited) {
-      return NextResponse.json(
-        { error: "请求过于频繁，请稍后再试" },
-        {
-          status: 429,
-          headers: { "Retry-After": String(userResult.retryAfter) },
-        }
-      );
-    }
+    const userResult = await checkLimit(`ai:user:${userId}`, RATE_LIMITS.aiInterpret.perUser);
+    if (userResult.limited) return limitedResponse(userResult.retryAfter);
   }
-
   return null;
 }
 
-/**
- * Apply rate limiting to auth endpoints (login/register).
- * Per-IP only.
- */
-export function rateLimitAuth(request: NextRequest): NextResponse | null {
+export async function rateLimitAuth(request: NextRequest): Promise<NextResponse | null> {
   const ip = getClientIp(request);
-  const result = checkLimit(`auth:ip:${ip}`, RATE_LIMITS.auth.perIp);
-  if (result.limited) {
-    return NextResponse.json(
-      { error: "请求过于频繁，请稍后再试" },
-      {
-        status: 429,
-        headers: { "Retry-After": String(result.retryAfter) },
-      }
-    );
-  }
+  const result = await checkLimit(`auth:ip:${ip}`, RATE_LIMITS.auth.perIp);
+  if (result.limited) return limitedResponse(result.retryAfter);
   return null;
 }
 
-/**
- * Apply rate limiting to divination endpoints.
- * Checks per-user and per-IP.
- */
-export function rateLimitDivination(
+export async function rateLimitDivination(
   request: NextRequest,
   userId?: string | null
-): NextResponse | null {
+): Promise<NextResponse | null> {
   const ip = getClientIp(request);
-
-  const ipResult = checkLimit(`div:ip:${ip}`, RATE_LIMITS.divination.perIp);
-  if (ipResult.limited) {
-    return NextResponse.json(
-      { error: "请求过于频繁，请稍后再试" },
-      {
-        status: 429,
-        headers: { "Retry-After": String(ipResult.retryAfter) },
-      }
-    );
-  }
-
+  const ipResult = await checkLimit(`div:ip:${ip}`, RATE_LIMITS.divination.perIp);
+  if (ipResult.limited) return limitedResponse(ipResult.retryAfter);
   if (userId) {
-    const userResult = checkLimit(`div:user:${userId}`, RATE_LIMITS.divination.perUser);
-    if (userResult.limited) {
-      return NextResponse.json(
-        { error: "请求过于频繁，请稍后再试" },
-        {
-          status: 429,
-          headers: { "Retry-After": String(userResult.retryAfter) },
-        }
-      );
-    }
+    const userResult = await checkLimit(`div:user:${userId}`, RATE_LIMITS.divination.perUser);
+    if (userResult.limited) return limitedResponse(userResult.retryAfter);
   }
-
   return null;
 }
 
-/**
- * Apply general rate limiting (per-IP).
- */
-export function rateLimitGeneral(request: NextRequest): NextResponse | null {
+export async function rateLimitGeneral(request: NextRequest): Promise<NextResponse | null> {
   const ip = getClientIp(request);
-  const result = checkLimit(`gen:ip:${ip}`, RATE_LIMITS.general.perIp);
-  if (result.limited) {
-    return NextResponse.json(
-      { error: "请求过于频繁，请稍后再试" },
-      {
-        status: 429,
-        headers: { "Retry-After": String(result.retryAfter) },
-      }
-    );
-  }
+  const result = await checkLimit(`gen:ip:${ip}`, RATE_LIMITS.general.perIp);
+  if (result.limited) return limitedResponse(result.retryAfter);
   return null;
 }

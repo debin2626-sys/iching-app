@@ -56,7 +56,7 @@ export async function GET() {
 // PUT /api/user/profile
 export async function PUT(request: NextRequest) {
   try {
-    const limited = rateLimitGeneral(request);
+    const limited = await rateLimitGeneral(request);
     if (limited) return limited;
 
     const session = await auth();

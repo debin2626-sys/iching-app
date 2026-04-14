@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
 // POST /api/user/favorites
 export async function POST(request: NextRequest) {
   try {
-    const limited = rateLimitGeneral(request);
+    const limited = await rateLimitGeneral(request);
     if (limited) return limited;
 
     const session = await auth();

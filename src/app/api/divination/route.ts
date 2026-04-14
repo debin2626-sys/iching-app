@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Rate limit: per-user + per-IP
-    const limited = rateLimitDivination(request, userId);
+    const limited = await rateLimitDivination(request, userId);
     if (limited) return limited;
 
     const body = await request.json();

@@ -7,6 +7,7 @@ import { useRouter, Link } from "@/i18n/navigation";
 import { Input } from "@/components/ui";
 import { hasAnonymousDivinations, migrateAnonymousDivinations } from "@/lib/anonymous-session";
 import { TaichiWatermark } from "@/components/decorative";
+import { trackSignUp, trackLogin } from "@/lib/analytics";
 
 function GoogleIcon() {
   return (
@@ -38,6 +39,7 @@ export default function AuthPage() {
     // 设置回调URL，如果有匿名记录，则跳转到迁移页面
     const callbackUrl = hasAnonymousRecords ? "/auth/migrate" : "/";
     
+    trackLogin("google");
     await signIn("google", { callbackUrl });
   };
 
@@ -54,6 +56,7 @@ export default function AuthPage() {
       if (res?.error) {
         setError(t("errorInvalidCredentials"));
       } else {
+        trackLogin("email");
         // 检查并迁移匿名记录
         if (hasAnonymousDivinations()) {
           try {
@@ -108,6 +111,7 @@ export default function AuthPage() {
         setTab("login");
         setError(t("errorRegisterSuccessLogin"));
       } else {
+        trackSignUp("email");
         router.push("/");
         router.refresh();
       }

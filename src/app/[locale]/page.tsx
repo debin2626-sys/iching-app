@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { HomeJsonLd } from '@/components/seo/JsonLd';
+import { HomeJsonLd, HomeFaqJsonLd } from '@/components/seo/JsonLd';
 import { SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW, getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
 import HomeNavBar from '@/components/home/HomeNavBar';
 import SampleReadingClient from '@/components/home/SampleReading';
@@ -76,6 +76,7 @@ export default async function HomePage({
   return (
     <>
       <HomeJsonLd locale={locale} />
+      <HomeFaqJsonLd locale={locale} />
       <HomeNavBar />
       <main className="min-h-screen w-full" style={{ backgroundColor: 'var(--theme-bg)' }}>
         <div className="w-full px-6" style={{ maxWidth: '768px', margin: '0 auto', paddingTop: '120px', paddingBottom: '80px' }}>

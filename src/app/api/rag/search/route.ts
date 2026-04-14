@@ -11,7 +11,7 @@ const SearchSchema = z.object({
 
 export async function POST(req: NextRequest) {
   // Rate limit
-  const limited = rateLimitGeneral(req);
+  const limited = await rateLimitGeneral(req);
   if (limited) return limited;
 
   try {

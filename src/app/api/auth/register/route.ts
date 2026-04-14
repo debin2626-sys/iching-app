@@ -7,7 +7,7 @@ import { registerSchema, validateBody } from "@/lib/validations";
 export async function POST(req: NextRequest) {
   try {
     // Rate limit: per-IP
-    const limited = rateLimitAuth(req);
+    const limited = await rateLimitAuth(req);
     if (limited) return limited;
 
     const body = await req.json();

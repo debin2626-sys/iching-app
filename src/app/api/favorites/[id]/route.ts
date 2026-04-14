@@ -43,7 +43,7 @@ export async function PATCH(
 ) {
   try {
     // Rate limit
-    const limited = rateLimitGeneral(request);
+    const limited = await rateLimitGeneral(request);
     if (limited) return limited;
 
     const session = await auth();

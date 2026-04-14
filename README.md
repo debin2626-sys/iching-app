@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## 📋 发布流程文档
+
+| 文档 | 用途 |
+|------|------|
+| [发布前 Checklist & 回滚 SOP](docs/release-checklist-and-rollback-sop.md) | 每次上线必须执行 |
+| [全站回归测试清单](docs/regression-test-checklist.md) | 发布前测试标准 |
+
+> ⚠️ 所有推送到 `main` 的代码必须先完成回归测试，CI 会自动执行 lint + build + 部署后健康检查。
+
 ## Getting Started
 
 First, run the development server:
