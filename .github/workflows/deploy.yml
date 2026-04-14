@@ -1,12 +1,19 @@
 name: Deploy to Tencent Cloud
 
 on:
-  push:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
     branches: [main]
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
+    # 只在 CI 通过 + push 事件时部署（PR 不触发）
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push'
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
@@ -15,9 +22,84 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -e
             cd /home/ubuntu/iching-app
+
+            # 记录回滚点
+            PREV_COMMIT=$(git rev-parse HEAD)
+            echo "Previous commit: $PREV_COMMIT"
+
+            # 备份当前可用的 .next
+            if [ -f .next/BUILD_ID ]; then
+              echo "Backing up current .next ..."
+              rm -rf .next.bak
+              cp -r .next .next.bak
+            fi
+
             git pull origin main
             npm install --production=false
-            npm run build
-            pm2 restart iching-app
-            echo "Deploy complete at $(date)"
+
+            # 构建 — 失败则回滚
+            if ! npm run build; then
+              echo "❌ Build failed! Rolling back to $PREV_COMMIT ..."
+
+              git checkout "$PREV_COMMIT"
+              npm install --production=false
+
+              # 恢复备份的 .next（如果有）
+              if [ -d .next.bak ]; then
+                echo "Restoring .next backup ..."
+                rm -rf .next
+                mv .next.bak .next
+              else
+                echo "No .next backup, rebuilding previous version ..."
+                npm run build
+              fi
+
+              pm2 restart iching-app || pm2 start npm --name iching-app -- start
+              echo "⚠️ Rolled back to $PREV_COMMIT"
+              exit 1
+            fi
+
+            # 构建成功，清理备份
+            rm -rf .next.bak
+
+            pm2 restart iching-app || pm2 start npm --name iching-app -- start
+
+            echo "✅ Deploy complete at $(date)"
+
+      - name: Health Check (post-deploy)
+        if: success()
+        run: |
+          echo "Waiting 30s for service to stabilize..."
+          sleep 30
+
+          HEALTH_URL="http://43.163.4.94:3000/api/health"
+          HTTP_STATUS=$(curl -s -o /tmp/health_response.json -w "%{http_code}" "$HEALTH_URL")
+
+          echo "HTTP Status: $HTTP_STATUS"
+          cat /tmp/health_response.json
+
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "❌ Health check FAILED (status: $HTTP_STATUS)"
+            echo "⚠️  Deployment may need rollback. See docs/release-checklist-and-rollback-sop.md"
+            exit 1
+          fi
+
+          STATUS=$(cat /tmp/health_response.json | python3 -c "import sys,json; print(json.load(sys.stdin).get('status',''))")
+          if [ "$STATUS" != "ok" ]; then
+            echo "❌ Health check returned unexpected status: $STATUS"
+            exit 1
+          fi
+
+          echo "✅ Health check passed"
+
+  notify-failure:
+    name: Deploy Skipped (CI Failed)
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'failure'
+    steps:
+      - run: |
+          echo "❌ CI failed — deployment blocked."
+          echo "Fix the build/lint errors and push again."
+          exit 1
