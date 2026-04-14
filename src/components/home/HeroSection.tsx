@@ -32,7 +32,7 @@ export function HeroSection({ locale, totalCount = 0 }: HeroSectionProps) {
       aria-labelledby="hero-heading"
     >
       <motion.div
-        className="relative flex flex-col items-center"
+        className="relative flex flex-col items-center w-full"
         variants={container}
         initial="hidden"
         animate="show"
@@ -40,7 +40,7 @@ export function HeroSection({ locale, totalCount = 0 }: HeroSectionProps) {
         <motion.h1
           id="hero-heading"
           variants={item}
-          className="text-3xl md:text-5xl font-bold leading-tight tracking-wide max-w-xl"
+          className="text-3xl md:text-5xl font-bold leading-tight tracking-wide max-w-xl w-full"
           style={{ fontFamily: 'var(--font-display)', color: 'var(--theme-text-primary)' }}
         >
           {t('heroHeadline')}
