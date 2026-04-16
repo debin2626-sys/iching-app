@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useTranslations, useLocale } from "next-intl";
+import { useNavItems } from "@/hooks/useNavItems";
 import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageLayout, Card, Button, Skeleton } from "@/components/ui";
@@ -53,7 +54,6 @@ function formatDate(dateStr: string, locale: string): string {
 
 export default function ProfileContent() {
   const t = useTranslations("Profile");
-  const tNav = useTranslations("Nav");
   const tReport = useTranslations("Report");
   const tSub = useTranslations("Subscription");
   const locale = useLocale();
@@ -70,11 +70,7 @@ export default function ProfileContent() {
   const [removingId, setRemovingId] = useState<string | null>(null);
   const [subscription, setSubscription] = useState<SubscriptionInfo | null>(null);
 
-  const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
-    { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-  ];
+  const navItems = useNavItems();
 
   const fetchData = useCallback(async () => {
     setLoading(true);

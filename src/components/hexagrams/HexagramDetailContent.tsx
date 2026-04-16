@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTranslations, useLocale } from "next-intl";
+import { useLocale } from "next-intl";
+import { useNavItems } from "@/hooks/useNavItems";
 import { Link } from "@/i18n/navigation";
-import { ChevronLeft, Sparkles } from "lucide-react";
-import { PageLayout } from "@/components/ui";
+import { Sparkles } from "lucide-react";
+import { PageLayout, Breadcrumb } from "@/components/ui";
 import RelatedHexagrams from "@/components/hexagrams/RelatedHexagrams";
 import { SCENARIO_IDS, SCENARIO_HEXAGRAMS, SCENARIO_META, type ScenarioId } from "@/data/scenarios";
 
@@ -102,7 +103,6 @@ function HexagramLines({ symbol, nameZh, nameEn, number }: { symbol: string; nam
 }
 
 export default function HexagramDetailContent({ hexagramNumber, initialData }: { hexagramNumber: number; initialData?: HexagramData | null }) {
-  const tNav = useTranslations("Nav");
   const locale = useLocale();
   const isZh = locale === "zh" || locale === "zh-TW";
   const [data, setData] = useState<HexagramData | null>(initialData ?? null);
@@ -120,11 +120,7 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
       .catch(() => setLoading(false));
   }, [hexagramNumber, initialData]);
 
-  const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
-    { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-  ];
+  const navItems = useNavItems();
 
   if (loading) {
     return (
@@ -160,14 +156,14 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-6xl">
       <div>
-        {/* Back to list */}
-        <Link
-          href="/hexagrams"
-          className="inline-flex items-center text-sm text-[var(--theme-text-muted)] hover:text-[var(--color-gold)] transition-colors mb-6"
-        >
-          <ChevronLeft size={16} />
-          {isZh ? "返回卦典" : "Back to Hexagrams"}
-        </Link>
+        {/* Breadcrumb */}
+        <Breadcrumb
+          className="mb-6"
+          items={[
+            { label: isZh ? "六十四卦" : "Hexagrams", href: "/hexagrams" },
+            { label: isZh ? `第${data.number}卦 ${data.nameZh}` : `#${data.number} ${data.nameEn}` },
+          ]}
+        />
 
         {/* Header */}
         <div className="text-center mb-10">

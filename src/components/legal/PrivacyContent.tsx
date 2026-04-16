@@ -1,6 +1,7 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+import { useNavItems } from "@/hooks/useNavItems";
 import { Link } from "@/i18n/navigation";
 import { PageLayout } from "@/components/ui";
 
@@ -98,15 +99,10 @@ const CONTENT = {
 };
 
 export default function PrivacyContent() {
-  const tNav = useTranslations("Nav");
   const locale = useLocale();
   const content = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
 
-  const navItems = [
-    { label: tNav("home"), href: "/" as const, icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divine" as const, icon: <span>🔮</span> },
-    { label: tNav("hexagrams"), href: "/hexagrams" as const, icon: <span>📖</span> },
-  ];
+  const navItems = useNavItems();
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-6xl">

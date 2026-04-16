@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useTranslations, useLocale } from "next-intl";
+import { useNavItems } from "@/hooks/useNavItems";
 import { useRouter } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { PageLayout, Card, Button } from "@/components/ui";
@@ -19,7 +20,6 @@ const LANGUAGES = ["system", "zh", "en"] as const;
 
 export default function SettingsContent() {
   const t = useTranslations("Settings");
-  const tNav = useTranslations("Nav");
   const locale = useLocale();
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -34,11 +34,7 @@ export default function SettingsContent() {
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
 
-  const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
-    { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-  ];
+  const navItems = useNavItems();
 
   useEffect(() => {
     if (status === "authenticated") {

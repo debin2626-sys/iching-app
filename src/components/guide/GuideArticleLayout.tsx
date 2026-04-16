@@ -1,7 +1,12 @@
+"use client";
+
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { GUIDE_ARTICLES, type GuideSlug } from '@/data/guide';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { NavBar } from '@/components/ui/NavBar';
+import Footer from '@/components/ui/Footer';
+import { useNavItems } from '@/hooks/useNavItems';
 
 interface GuideArticleLayoutProps {
   locale: string;
@@ -10,6 +15,7 @@ interface GuideArticleLayoutProps {
 }
 
 export function GuideArticleLayout({ locale, slug, children }: GuideArticleLayoutProps) {
+  const navItems = useNavItems();
   const isEn = locale === 'en';
   const isZhTW = locale === 'zh-TW';
   const idx = GUIDE_ARTICLES.findIndex((a) => a.slug === slug);
@@ -32,7 +38,8 @@ export function GuideArticleLayout({ locale, slug, children }: GuideArticleLayou
   return (
     <>
       <JsonLd data={breadcrumbJsonLd} />
-      <main className="min-h-screen bg-gradient-to-b from-amber-50/40 to-white py-12 px-4">
+      <NavBar items={navItems} />
+      <main className="min-h-screen bg-gradient-to-b from-amber-50/40 to-white pt-28 pb-12 px-4">
         <article className="mx-auto max-w-[42rem]">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-stone-400 mb-8">
@@ -113,6 +120,7 @@ export function GuideArticleLayout({ locale, slug, children }: GuideArticleLayou
           </div>
         </article>
       </main>
+      <Footer />
     </>
   );
 }

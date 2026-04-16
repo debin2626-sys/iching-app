@@ -111,7 +111,8 @@
     "hexagrams": "Hexagrams",
     "history": "History",
     "divine": "Divine",
-    "about": "About"
+    "about": "About",
+    "guide": "Guide"
   },
   "Divine": {
     "title": "Start Divination",
@@ -361,7 +362,12 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "contact": "Contact Us",
-    "kofiSupport": "☕ Support Us"
+    "kofiSupport": "☕ Support Us",
+    "divination": "Start Divination",
+    "hexagrams": "64 Hexagrams",
+    "history": "History",
+    "guide": "Guide",
+    "features": "Features"
   },
   "History": {
     "title": "Divination History",
@@ -510,10 +516,30 @@
     "allScenarios": "All Scenarios",
     "scenarioNav": "Scenarios",
     "relatedHexagrams": "Related Hexagrams",
-    "career": { "name": "Career", "desc": "Career development, promotion, entrepreneurship", "intro": "I Ching guidance for career — covering workplace dynamics, entrepreneurship timing, and leadership development. These hexagrams are most relevant to career and professional growth." },
-    "love": { "name": "Love & Relationships", "desc": "Romance, marriage, relationship guidance", "intro": "I Ching wisdom for relationships — covering romance, marriage harmony, and emotional bonds. These hexagrams offer the deepest insights into love and connection." },
-    "wealth": { "name": "Wealth & Finance", "desc": "Wealth, investment, business opportunities", "intro": "I Ching insights on wealth — covering financial cycles, investment timing, and business decisions. These hexagrams are most relevant to wealth and prosperity." },
-    "study": { "name": "Study & Growth", "desc": "Learning, exams, personal growth", "intro": "I Ching guidance for learning — covering academic progress, exam preparation, and knowledge accumulation. These hexagrams offer wisdom for students and lifelong learners." },
-    "health": { "name": "Health & Wellness", "desc": "Physical health, rest, life balance", "intro": "I Ching wisdom for health — covering physical and mental wellbeing, rest cycles, and life balance. These hexagrams offer guidance for maintaining harmony in body and mind." }
+    "career": {
+      "name": "Career",
+      "desc": "Career development, promotion, entrepreneurship",
+      "intro": "I Ching guidance for career — covering workplace dynamics, entrepreneurship timing, and leadership development. These hexagrams are most relevant to career and professional growth."
+    },
+    "love": {
+      "name": "Love & Relationships",
+      "desc": "Romance, marriage, relationship guidance",
+      "intro": "I Ching wisdom for relationships — covering romance, marriage harmony, and emotional bonds. These hexagrams offer the deepest insights into love and connection."
+    },
+    "wealth": {
+      "name": "Wealth & Finance",
+      "desc": "Wealth, investment, business opportunities",
+      "intro": "I Ching insights on wealth — covering financial cycles, investment timing, and business decisions. These hexagrams are most relevant to wealth and prosperity."
+    },
+    "study": {
+      "name": "Study & Growth",
+      "desc": "Learning, exams, personal growth",
+      "intro": "I Ching guidance for learning — covering academic progress, exam preparation, and knowledge accumulation. These hexagrams offer wisdom for students and lifelong learners."
+    },
+    "health": {
+      "name": "Health & Wellness",
+      "desc": "Physical health, rest, life balance",
+      "intro": "I Ching wisdom for health — covering physical and mental wellbeing, rest cycles, and life balance. These hexagrams offer guidance for maintaining harmony in body and mind."
+    }
   }
 }

@@ -3,9 +3,10 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import { useTranslations, useLocale } from "next-intl";
+import { useNavItems } from "@/hooks/useNavItems";
 import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { PageLayout, Card, Button, Empty, Skeleton } from "@/components/ui";
+import { PageLayout, Card, Button, Empty, Skeleton, Breadcrumb } from "@/components/ui";
 import { HistoryListSkeleton } from "@/components/ui/PageSkeletons";
 import ReviewPanel from "@/components/divination/ReviewPanel";
 import { getAnonymousDivinations, hasAnonymousDivinations, migrateAnonymousDivinations } from "@/lib/anonymous-session";
@@ -130,7 +131,6 @@ function StarDisplay({ score }: { score: number }) {
 export default function HistoryContent() {
   const t = useTranslations("History");
   const tReview = useTranslations("Review");
-  const tNav = useTranslations("Nav");
   const locale = useLocale();
   const { data: session, status } = useSession();
 
@@ -142,11 +142,7 @@ export default function HistoryContent() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [reviewingId, setReviewingId] = useState<string | null>(null);
 
-  const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
-    { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-  ];
+  const navItems = useNavItems();
 
   const fetchRecords = useCallback(async (page: number, append = false) => {
     if (page === 1) setLoading(true);
@@ -284,6 +280,11 @@ export default function HistoryContent() {
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-6xl">
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+      {/* Breadcrumb */}
+      <Breadcrumb
+        className="mb-6"
+        items={[{ label: locale === "zh" || locale === "zh-TW" ? "占卜历史" : "History" }]}
+      />
       {/* Title */}
       <div className="text-center mb-10">
         <h1 className="font-title text-4xl sm:text-5xl text-gold-glow tracking-wider mb-3">

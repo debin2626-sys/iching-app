@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { useNavItems } from "@/hooks/useNavItems";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageLayout, Input, Empty } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
@@ -106,7 +107,6 @@ const cardVariants = {
 
 export default function HexagramsContent() {
   const t = useTranslations("Hexagrams");
-  const tNav = useTranslations("Nav");
   const locale = useLocale();
   const [q, setQ] = useState("");
 
@@ -124,11 +124,7 @@ export default function HexagramsContent() {
     });
   }, [q]);
 
-  const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
-    { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-  ];
+  const navItems = useNavItems();
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-7xl">

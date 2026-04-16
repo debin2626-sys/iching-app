@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useTranslations, useLocale } from "next-intl";
+import { useNavItems } from "@/hooks/useNavItems";
 import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { PageLayout, Card, Button } from "@/components/ui";
@@ -127,11 +128,7 @@ export default function ReportContent() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
-    { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-  ];
+  const navItems = useNavItems();
 
   const fetchReport = useCallback(async () => {
     setLoading(true);

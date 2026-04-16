@@ -1,6 +1,7 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+import { useNavItems } from "@/hooks/useNavItems";
 import { Link } from "@/i18n/navigation";
 import { PageLayout } from "@/components/ui";
 
@@ -92,16 +93,11 @@ const ABOUT_TEXT = {
 };
 
 export default function AboutContent() {
-  const tNav = useTranslations("Nav");
   const locale = useLocale();
   const sections = locale === "en" ? SECTIONS_EN : locale === "zh-TW" ? SECTIONS_ZH_TW : SECTIONS_ZH;
   const text = ABOUT_TEXT[locale as keyof typeof ABOUT_TEXT] || ABOUT_TEXT.en;
 
-  const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
-    { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-  ];
+  const navItems = useNavItems();
 
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-6xl">

@@ -6,8 +6,9 @@ import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { useTranslations, useLocale } from "next-intl";
+import { useNavItems } from "@/hooks/useNavItems";
 import { calculateBazi, type BirthInfo } from "@/lib/iching/bazi";
-import { PageLayout, Skeleton, Button, useToast } from "@/components/ui";
+import { PageLayout, Skeleton, Button, useToast, Breadcrumb } from "@/components/ui";
 import { ResultSkeleton } from "@/components/ui/PageSkeletons";
 import Card from "@/components/ui/Card";
 import type { LineValue } from "@/lib/iching/coins";
@@ -403,14 +404,9 @@ function AISection({
 function ResultInner() {
   const searchParams = useSearchParams();
   const t = useTranslations("Result");
-  const tNav = useTranslations("Nav");
   const locale = useLocale();
 
-  const navItems = [
-    { label: tNav("home"), href: "/", icon: <span>🏠</span> },
-    { label: tNav("divination"), href: "/divine", icon: <span>🔮</span> },
-    { label: tNav("hexagrams"), href: "/hexagrams", icon: <span>📖</span> },
-  ];
+  const navItems = useNavItems();
 
   /* ── URL 参数解析 ── */
   const question = searchParams.get("question") || "";
@@ -653,6 +649,10 @@ function ResultInner() {
         show={showLimitBanner}
         onClose={() => setShowLimitBanner(false)}
         userId={session?.user?.id ?? null}
+      />
+      <Breadcrumb
+        className="px-6 pt-4"
+        items={[{ label: locale === "zh" || locale === "zh-TW" ? "占卜结果" : "Result" }]}
       />
       <div className="py-8 space-y-8 px-6">
         {/* ── 云纹装饰 ── */}

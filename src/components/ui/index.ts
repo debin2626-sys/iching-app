@@ -1,4 +1,5 @@
 export { NavBar, type NavItem } from "./NavBar";
+export { default as Breadcrumb, type BreadcrumbItem } from "./Breadcrumb";
 export { PageLayout } from "./PageLayout";
 export { Button, type ButtonProps, type ButtonVariant, type ButtonSize } from "./Button";
 export { Empty } from "./Empty";
