@@ -84,7 +84,7 @@ export default async function HomePage({
         <div className="w-full px-6" style={{ maxWidth: '768px', margin: '0 auto', paddingTop: '120px', paddingBottom: '80px' }}>
 
           {/* 模块1: Hero */}
-          <HeroSection locale={locale} totalCount={totalCount} />
+          <HeroSection totalCount={totalCount} />
 
           {/* 模块2: 场景 */}
           <ScenarioSection locale={locale} />

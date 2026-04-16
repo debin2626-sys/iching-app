@@ -1,24 +1,11 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
-import { m } from 'framer-motion';
 import StartDivinationButton from './StartDivinationButton';
 
 interface HeroSectionProps {
-  locale: string;
   totalCount?: number;
 }
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
-};
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-export function HeroSection({ locale, totalCount = 0 }: HeroSectionProps) {
+export function HeroSection({ totalCount = 0 }: HeroSectionProps) {
   const t = useTranslations('Home');
 
   const trustLine =
@@ -31,41 +18,33 @@ export function HeroSection({ locale, totalCount = 0 }: HeroSectionProps) {
       className="relative flex flex-col items-center text-center pt-8 pb-12"
       aria-labelledby="hero-heading"
     >
-      <m.div
-        className="relative flex flex-col items-center w-full"
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        <m.h1
+      <div className="relative flex flex-col items-center w-full">
+        <h1
           id="hero-heading"
-          variants={item}
-          className="text-3xl md:text-5xl font-bold leading-tight tracking-wide max-w-[36rem] w-full"
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--theme-text-primary)' }}
+          className="hero-fade-up text-3xl md:text-5xl font-bold leading-tight tracking-wide max-w-[36rem] w-full"
+          style={{ fontFamily: 'var(--font-display)', color: 'var(--theme-text-primary)', animationDelay: '0ms' }}
         >
           {t('heroHeadline')}
-        </m.h1>
+        </h1>
 
-        <m.p
-          variants={item}
-          className="relative mt-4 text-base md:text-lg max-w-[28rem]"
-          style={{ color: 'var(--theme-text-secondary)' }}
+        <p
+          className="hero-fade-up relative mt-4 text-base md:text-lg max-w-[28rem]"
+          style={{ color: 'var(--theme-text-secondary)', animationDelay: '120ms' }}
         >
           {t('heroSub')}
-        </m.p>
+        </p>
 
-        <m.div variants={item} className="relative mt-6">
+        <div className="hero-fade-up relative mt-6" style={{ animationDelay: '240ms' }}>
           <StartDivinationButton />
-        </m.div>
+        </div>
 
-        <m.p
-          variants={item}
-          className="relative mt-4 text-sm"
-          style={{ color: 'var(--theme-text-muted)' }}
+        <p
+          className="hero-fade-up relative mt-4 text-sm"
+          style={{ color: 'var(--theme-text-muted)', animationDelay: '360ms' }}
         >
           {trustLine}
-        </m.p>
-      </m.div>
+        </p>
+      </div>
     </section>
   );
 }
