@@ -8,7 +8,7 @@ import "./globals.css";
 
 const notoSerifSC = Noto_Serif_SC({
   variable: "--font-noto-serif-sc",
-  weight: ["400", "500", "700"],
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
