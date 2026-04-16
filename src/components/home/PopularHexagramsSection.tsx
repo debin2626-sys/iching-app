@@ -37,6 +37,7 @@ export function PopularHexagramsSection({ locale }: { locale: string }) {
           <Link
             key={hex.number}
             href={`${prefix}/hexagrams/${hex.number}`}
+            prefetch={false}
             className="flex items-center gap-3 p-4 rounded-xl border transition-colors hover:border-[var(--color-gold)]"
             style={{
               backgroundColor: 'var(--theme-card-bg)',

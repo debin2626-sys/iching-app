@@ -56,6 +56,7 @@ export function GuideLinksSection({ locale }: { locale: string }) {
           <Link
             key={item.path}
             href={`${prefix}${item.path}`}
+            prefetch={false}
             className="block p-5 rounded-xl border transition-colors hover:border-[var(--color-gold)]"
             style={{
               backgroundColor: 'var(--theme-card-bg)',
