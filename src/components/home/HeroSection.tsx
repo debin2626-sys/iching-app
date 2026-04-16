@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import StartDivinationButton from './StartDivinationButton';
 
 interface HeroSectionProps {
@@ -31,41 +31,41 @@ export function HeroSection({ locale, totalCount = 0 }: HeroSectionProps) {
       className="relative flex flex-col items-center text-center pt-8 pb-12"
       aria-labelledby="hero-heading"
     >
-      <motion.div
+      <m.div
         className="relative flex flex-col items-center w-full"
         variants={container}
         initial="hidden"
         animate="show"
       >
-        <motion.h1
+        <m.h1
           id="hero-heading"
           variants={item}
           className="text-3xl md:text-5xl font-bold leading-tight tracking-wide max-w-[36rem] w-full"
           style={{ fontFamily: 'var(--font-display)', color: 'var(--theme-text-primary)' }}
         >
           {t('heroHeadline')}
-        </motion.h1>
+        </m.h1>
 
-        <motion.p
+        <m.p
           variants={item}
           className="relative mt-4 text-base md:text-lg max-w-[28rem]"
           style={{ color: 'var(--theme-text-secondary)' }}
         >
           {t('heroSub')}
-        </motion.p>
+        </m.p>
 
-        <motion.div variants={item} className="relative mt-6">
+        <m.div variants={item} className="relative mt-6">
           <StartDivinationButton />
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           variants={item}
           className="relative mt-4 text-sm"
           style={{ color: 'var(--theme-text-muted)' }}
         >
           {trustLine}
-        </motion.p>
-      </motion.div>
+        </m.p>
+      </m.div>
     </section>
   );
 }

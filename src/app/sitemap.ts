@@ -6,7 +6,7 @@ const locales = ['zh', 'zh-TW', 'en'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
-  const now = new Date().toISOString();
+  const now = '2025-04-15';
 
   // Static pages — all routes under src/app/[locale]/
   const staticPages = [
@@ -27,6 +27,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/terms', changeFrequency: 'monthly' as const, priority: 0.2 },
   ];
 
+  // Helper: build hreflang alternates for a given path
+  const buildAlternates = (path: string) => {
+    const languages: Record<string, string> = {};
+    for (const loc of locales) {
+      const prefix = loc === 'zh' ? '' : `/${loc}`;
+      languages[loc] = `${SITE_URL}${prefix}${path}`;
+    }
+    // x-default points to the zh (default) URL
+    languages['x-default'] = `${SITE_URL}${path}`;
+    return { languages };
+  };
+
   for (const page of staticPages) {
     for (const locale of locales) {
       const prefix = locale === 'zh' ? '' : `/${locale}`;
@@ -35,6 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
+        alternates: buildAlternates(page.path),
       });
     }
   }
@@ -48,6 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.8,
+        alternates: buildAlternates(`/hexagrams/${hex.number}`),
       });
     }
   }

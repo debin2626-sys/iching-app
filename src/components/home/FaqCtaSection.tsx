@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 
@@ -38,7 +38,7 @@ function FaqAccordionItem({ question, answer }: { question: string; answer: stri
       </button>
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -47,7 +47,7 @@ function FaqAccordionItem({ question, answer }: { question: string; answer: stri
             style={{ color: 'var(--theme-text-secondary)' }}
           >
             {answer}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

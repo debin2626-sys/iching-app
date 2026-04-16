@@ -37,7 +37,6 @@ export const metadata: Metadata = {
     title: '易经在线占卜 | AI智能解读 - 51yijing.com',
     description: '在线易经占卜，AI智能解读卦象。三币古法摇卦，结合八字命理，给出专业解读建议。',
     url: SITE_URL,
-    locale: 'zh_CN',
     images: [
       {
         url: '/og-image.png',
@@ -81,7 +80,11 @@ export default async function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css"
+          media="print"
+          // @ts-expect-error — onLoad string is valid HTML but not typed in React
+          onLoad="this.media='all'"
         />
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" /></noscript>
       </head>
       <body
         className={`${notoSerifSC.variable} antialiased`}

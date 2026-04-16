@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
     });
 
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 30000);
+    const timeout = setTimeout(() => controller.abort(), 120000);
 
     let response;
     try {

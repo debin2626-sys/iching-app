@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { Briefcase, Heart, DollarSign, GraduationCap, Leaf } from 'lucide-react';
 import type { Metadata } from 'next';
 import { SCENARIO_IDS, SCENARIO_HEXAGRAMS, SCENARIO_META, type ScenarioId } from '@/data/scenarios';
-import { getAlternateLanguages } from '@/lib/seo';
+import { getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
 
 const ICONS = { Briefcase, Heart, DollarSign, GraduationCap, Leaf };
 
@@ -13,15 +13,20 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isEn = locale === 'en';
-  const canonical = `https://51yijing.com/${locale}/scenarios`;
+  const canonical = getBaseUrl(locale) + '/scenarios';
 
-  const title = isEn
-    ? 'I Ching by Life Scenario — Career, Love, Wealth & More | 51yijing.com'
-    : '易经场景占卜 — 事业、感情、财运、学业、健康 | 51yijing.com';
-  const description = isEn
-    ? 'Explore I Ching hexagrams organized by life scenario. Find guidance for career, love, wealth, study, and health from 3000 years of ancient wisdom.'
-    : '按生活场景浏览易经卦象。探索事业、感情、财运、学业、健康五大场景，获得三千年古老智慧的指引。';
+  const title = getLocalizedText(
+    locale,
+    '易经场景占卜 — 事业、感情、财运、学业、健康 | 51yijing.com',
+    'I Ching by Life Scenario — Career, Love, Wealth & More | 51yijing.com',
+    '易經場景占卜 — 事業、感情、財運、學業、健康 | 51yijing.com',
+  );
+  const description = getLocalizedText(
+    locale,
+    '按生活场景浏览易经卦象。探索事业、感情、财运、学业、健康五大场景，获得三千年古老智慧的指引。',
+    'Explore I Ching hexagrams organized by life scenario. Find guidance for career, love, wealth, study, and health from 3000 years of ancient wisdom.',
+    '按生活場景瀏覽易經卦象。探索事業、感情、財運、學業、健康五大場景，獲得三千年古老智慧的指引。',
+  );
 
   return {
     title,
@@ -36,6 +41,11 @@ export async function generateMetadata({
       url: canonical,
       type: 'website',
       images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
     },
   };
 }

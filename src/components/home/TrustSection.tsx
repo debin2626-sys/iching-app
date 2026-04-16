@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { History, Shield, Sparkles, ChevronRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -43,7 +43,7 @@ export function TrustSection({ locale }: TrustSectionProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {TRUST_ITEMS.map((item, i) => (
-          <motion.div
+          <m.div
             key={i}
             variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
             initial="hidden"
@@ -60,7 +60,7 @@ export function TrustSection({ locale }: TrustSectionProps) {
             <p className="text-sm leading-relaxed" style={{ color: 'var(--theme-text-secondary)' }}>
               {t(item.descKey)}
             </p>
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
@@ -70,7 +70,7 @@ export function TrustSection({ locale }: TrustSectionProps) {
         className="mt-10 flex items-center justify-center gap-2 flex-wrap list-none p-0"
       >
         {STEPS.map((step, i) => (
-          <motion.li
+          <m.li
             key={i}
             className="flex items-center gap-2"
             initial={{ opacity: 0 }}
@@ -92,7 +92,7 @@ export function TrustSection({ locale }: TrustSectionProps) {
             {i < STEPS.length - 1 && (
               <ChevronRight size={16} style={{ color: 'var(--theme-text-muted)' }} className="mb-4" />
             )}
-          </motion.li>
+          </m.li>
         ))}
       </ol>
     </section>

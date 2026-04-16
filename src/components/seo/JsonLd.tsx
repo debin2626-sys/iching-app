@@ -44,7 +44,7 @@ export function HomeJsonLd({ locale }: { locale: string }) {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${SITE_URL}/${locale}/hexagrams?q={search_term_string}`,
+        urlTemplate: `${SITE_URL}${getLocalePrefix(locale)}/hexagrams?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -55,7 +55,7 @@ export function HomeJsonLd({ locale }: { locale: string }) {
     '@type': 'Organization',
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.png`,
+    logo: `${SITE_URL}/og-image.png`,
     description,
     sameAs: ['https://github.com/debin2626-sys/iching-app'],
   };
@@ -289,7 +289,7 @@ export function HexagramArticleJsonLd({
     '@type': 'Article',
     headline,
     description,
-    image: `${SITE_URL}/icon.png`,
+    image: `${SITE_URL}/og-image.png`,
     author: {
       '@type': 'Organization',
       name: SITE_NAME,
@@ -301,7 +301,7 @@ export function HexagramArticleJsonLd({
       url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/icon.png`,
+        url: `${SITE_URL}/og-image.png`,
       },
     },
     mainEntityOfPage: {

@@ -74,27 +74,35 @@ export default function RelatedHexagrams({ hexagramNumber, symbol }: RelatedHexa
 
   return (
     <div className="mt-10 space-y-8">
-      {/* Scene tags */}
+      {/* Scene cards — prominent entry to divination scenarios */}
       {belongsToScenes.length > 0 && (
         <div>
-          <h2 className="text-sm font-semibold text-[var(--color-gold)]/70 mb-3 uppercase tracking-wide">
-            {isZh ? "所属场景" : "Life Scenarios"}
+          <h2 className="text-lg font-bold text-[var(--color-gold)]/80 mb-4 border-b border-[var(--color-gold)]/20 pb-2">
+            {isZh ? "相关场景" : "Related Scenarios"}
           </h2>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {belongsToScenes.map((s) => {
               const meta = SCENARIO_META[s];
               const Icon = SCENE_ICONS[s];
               const name = isZh
                 ? isZhTW ? meta.nameZhTW : meta.nameZh
                 : meta.nameEn;
+              const desc = isZh
+                ? isZhTW ? meta.descZhTW : meta.descZh
+                : meta.descEn;
               return (
                 <Link
                   key={s}
                   href={`/scenarios/${s}`}
-                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium ${meta.bgColor} ${meta.color} hover:opacity-80 transition-opacity`}
+                  className="flex flex-col gap-2 p-4 rounded-xl bg-[var(--theme-bg-card)] border border-[var(--theme-border)] hover:border-[var(--color-gold)]/40 hover:bg-[var(--theme-bg-elevated)] transition-all duration-300"
                 >
-                  <Icon className="w-3.5 h-3.5" />
-                  {name}
+                  <div className="flex items-center gap-2">
+                    <span className={`p-1.5 rounded-lg ${meta.bgColor}`}>
+                      <Icon className={`w-4 h-4 ${meta.color}`} />
+                    </span>
+                    <span className="text-[var(--theme-text-primary)] font-medium text-sm">{name}</span>
+                  </div>
+                  <span className="text-xs text-[var(--theme-text-muted)] leading-relaxed">{desc}</span>
                 </Link>
               );
             })}

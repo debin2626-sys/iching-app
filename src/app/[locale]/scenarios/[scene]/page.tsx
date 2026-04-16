@@ -5,7 +5,7 @@ import { Briefcase, Heart, DollarSign, GraduationCap, Leaf } from 'lucide-react'
 import type { Metadata } from 'next';
 import { SCENARIO_IDS, SCENARIO_HEXAGRAMS, SCENARIO_META, type ScenarioId } from '@/data/scenarios';
 import { HEXAGRAM_DATA } from '@/data/hexagrams';
-import { getAlternateLanguages } from '@/lib/seo';
+import { getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
 import { JsonLd } from '@/components/seo/JsonLd';
 
 const ICONS = { Briefcase, Heart, DollarSign, GraduationCap, Leaf };
@@ -26,26 +26,35 @@ export async function generateMetadata({
   const isEn = locale === 'en';
   const isZhTW = locale === 'zh-TW';
 
-  const name = isEn ? meta.nameEn : isZhTW ? meta.nameZhTW : meta.nameZh;
+  const nameZh = meta.nameZh;
+  const nameZhTW = meta.nameZhTW;
+  const nameEn = meta.nameEn;
+  const name = isEn ? nameEn : isZhTW ? nameZhTW : nameZh;
   const desc = isEn ? meta.descEn : isZhTW ? meta.descZhTW : meta.descZh;
   const count = SCENARIO_HEXAGRAMS[scene as ScenarioId].length;
 
-  const title = isEn
-    ? `${name} I Ching Hexagrams (${count} hexagrams) | 51yijing.com`
-    : `${name}易经卦象（${count}个卦象）| 51yijing.com`;
+  const title = getLocalizedText(
+    locale,
+    `${nameZh}易经卦象（${count}个卦象）| 51yijing.com`,
+    `${nameEn} I Ching Hexagrams (${count} hexagrams) | 51yijing.com`,
+    `${nameZhTW}易經卦象（${count}個卦象）| 51yijing.com`,
+  );
 
-  const description = isEn
-    ? `Explore ${count} I Ching hexagrams related to ${name.toLowerCase()}. ${desc}. Get ancient wisdom guidance for your ${name.toLowerCase()} questions.`
-    : `探索${count}个与${name}相关的易经卦象。${desc}。获得三千年古老智慧对${name}问题的指引。`;
+  const description = getLocalizedText(
+    locale,
+    `探索${count}个与${nameZh}相关的易经卦象。${meta.descZh}。获得三千年古老智慧对${nameZh}问题的指引。`,
+    `Explore ${count} I Ching hexagrams related to ${nameEn.toLowerCase()}. ${meta.descEn}. Get ancient wisdom guidance for your ${nameEn.toLowerCase()} questions.`,
+    `探索${count}個與${nameZhTW}相關的易經卦象。${meta.descZhTW}。獲得三千年古老智慧對${nameZhTW}問題的指引。`,
+  );
 
-  const canonical = `https://51yijing.com/${locale}/scenarios/${scene}`;
+  const canonical = getBaseUrl(locale) + '/scenarios/' + scene;
 
   return {
     title,
     description,
     keywords: isEn
-      ? `${meta.nameEn},I Ching,Yi Jing,hexagram,divination,${desc}`
-      : `${meta.nameZh},易经,周易,卦象,占卜,${meta.descZh}`,
+      ? `${nameEn},I Ching,Yi Jing,hexagram,divination,${meta.descEn}`
+      : `${nameZh},易经,周易,卦象,占卜,${meta.descZh}`,
     alternates: {
       canonical,
       languages: getAlternateLanguages(`/scenarios/${scene}`),
@@ -56,6 +65,11 @@ export async function generateMetadata({
       url: canonical,
       type: 'website',
       images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
     },
   };
 }

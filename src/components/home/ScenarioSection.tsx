@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Link from 'next/link';
 import { Briefcase, Heart, DollarSign, GraduationCap, Leaf, type LucideIcon } from 'lucide-react';
 import { trackScenarioSelect } from '@/lib/analytics';
@@ -41,7 +41,7 @@ export function ScenarioSection({ locale }: ScenarioSectionProps) {
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
         {SCENARIOS.map((s, index) => (
-          <motion.div
+          <m.div
             key={s.id}
             variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
             initial="hidden"
@@ -74,7 +74,7 @@ export function ScenarioSection({ locale }: ScenarioSectionProps) {
                 </p>
               </div>
             </Link>
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </section>

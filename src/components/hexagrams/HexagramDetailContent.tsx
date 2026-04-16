@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Sparkles } from "lucide-react";
 import { PageLayout } from "@/components/ui";
 import RelatedHexagrams from "@/components/hexagrams/RelatedHexagrams";
+import { SCENARIO_IDS, SCENARIO_HEXAGRAMS, SCENARIO_META, type ScenarioId } from "@/data/scenarios";
 
 interface HexagramLine {
   position: number;
@@ -150,6 +151,12 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
   const upper = TRIGRAM_MAP[data.symbol.slice(3, 6)] || "?";
   const lower = TRIGRAM_MAP[data.symbol.slice(0, 3)] || "?";
 
+  // Find primary scenario for this hexagram (for CTA)
+  const primaryScene = SCENARIO_IDS.find((s) =>
+    SCENARIO_HEXAGRAMS[s].includes(hexagramNumber)
+  );
+  const sceneMeta = primaryScene ? SCENARIO_META[primaryScene] : null;
+
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-6xl">
       <div>
@@ -205,6 +212,26 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
           <p className="text-[var(--theme-text-primary)] leading-relaxed text-lg">
             {isZh ? data.judgmentZh : data.judgmentEn}
           </p>
+        </section>
+
+        {/* Contextual CTA — after judgment, high visibility */}
+        <section className="mb-8 rounded-xl border border-[var(--color-gold)]/30 bg-gradient-to-r from-[var(--theme-bg-card)] to-[var(--color-gold)]/5 p-5">
+          <p className="text-[var(--theme-text-primary)] text-sm leading-relaxed mb-3">
+            {isZh
+              ? sceneMeta
+                ? `想知道${data.nameZh}卦对你的${sceneMeta.nameZh.replace(/运势|投资|考试|养生|姻缘/, "")}有什么具体指引？AI 结合你的问题深度解读。`
+                : `想知道${data.nameZh}卦对你意味着什么？AI 结合你的问题深度解读。`
+              : `Curious what ${data.nameEn} means for you personally? Get an AI-powered reading tailored to your question.`}
+          </p>
+          <Link
+            href="/divine"
+            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
+          >
+            <Sparkles className="w-4 h-4" />
+            {isZh
+              ? `AI 解读${data.nameZh}卦`
+              : `Get ${data.nameEn} Reading`}
+          </Link>
         </section>
 
         {/* Judgment Detail */}
@@ -317,6 +344,58 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
             </section>
           );
         })()}
+
+        {/* Related Questions — "People also ask" style for SEO + engagement */}
+        <section className="mb-8">
+          <h2 className="text-xl font-bold text-[var(--color-gold)]/90 mb-3 border-b border-[var(--color-gold)]/20 pb-2">
+            {isZh ? "常见问题" : "People Also Ask"}
+          </h2>
+          <div className="space-y-2">
+            {(isZh
+              ? [
+                  { q: `${data.nameZh}卦是什么意思？`, a: data.judgmentZh },
+                  ...(sceneMeta
+                    ? [{ q: `${data.nameZh}卦对${sceneMeta.nameZh.replace(/运势|投资|考试|养生|姻缘/, "")}的启示是什么？`, a: data.interpretationZh }]
+                    : []),
+                  { q: `${data.nameZh}卦的变爻怎么看？`, link: true },
+                  { q: `抽到${data.nameZh}卦该怎么办？`, link: true },
+                ]
+              : [
+                  { q: `What does ${data.nameEn} hexagram mean?`, a: data.judgmentEn },
+                  { q: `How to interpret ${data.nameEn} in a reading?`, link: true },
+                  { q: `What is the advice of ${data.nameEn}?`, a: data.interpretationEn },
+                ]
+            ).map((item, i) => (
+              <details
+                key={i}
+                className="group bg-[var(--theme-bg-card)] border border-[var(--theme-border)] rounded-lg"
+              >
+                <summary className="flex items-center justify-between px-4 py-3 cursor-pointer text-[var(--theme-text-primary)] text-sm font-medium hover:text-[var(--color-gold)] transition-colors">
+                  {item.q}
+                  <span className="text-[var(--theme-text-muted)] group-open:rotate-180 transition-transform">▾</span>
+                </summary>
+                <div className="px-4 pb-3 text-sm text-[var(--theme-text-muted)] leading-relaxed">
+                  {"a" in item && item.a ? (
+                    <p className="line-clamp-3">{item.a}</p>
+                  ) : (
+                    <p>
+                      {isZh
+                        ? "每个人的情况不同，建议结合自身问题进行占卜解读。"
+                        : "Every situation is unique — try a personalized reading for specific guidance."}
+                    </p>
+                  )}
+                  <Link
+                    href="/divine"
+                    className="inline-flex items-center gap-1 text-amber-500 hover:text-amber-400 mt-2 text-xs font-medium"
+                  >
+                    <Sparkles className="w-3 h-3" />
+                    {isZh ? "AI 深度解读 →" : "Get AI Reading →"}
+                  </Link>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
 
         {/* Historical Story */}
         {(data.historicalStoryZh || data.historicalStoryEn) && (

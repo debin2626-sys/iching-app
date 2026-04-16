@@ -4,6 +4,7 @@
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 import { useTranslations, useLocale } from "next-intl";
 import { calculateBazi, type BirthInfo } from "@/lib/iching/bazi";
 import { PageLayout, Skeleton, Button, useToast } from "@/components/ui";
@@ -375,7 +376,7 @@ function AISection({
       <h3 className="text-xl font-title text-gold mb-4">✍️ {title}</h3>
       <p className="text-sm text-[var(--theme-text-muted)] mb-6">{disclaimer}</p>
 
-      <DepthSelector value={depth} onChange={handleDepthChange} disabled={loading} />
+      <DepthSelector value={depth} onChange={handleDepthChange} disabled={false} />
 
       {loading && !content && <Skeleton variant="text" lines={3} />}
 
@@ -386,9 +387,9 @@ function AISection({
       {content && (
         <div
           ref={contentRef}
-          className="prose prose-base max-w-none text-[var(--theme-text-secondary)] whitespace-pre-wrap leading-loose max-h-[60vh] overflow-y-auto"
+          className="prose prose-base max-w-none text-[var(--theme-text-secondary)] leading-loose max-h-[60vh] overflow-y-auto prose-headings:text-gold prose-strong:text-[var(--theme-text-primary)] prose-li:marker:text-gold/60"
         >
-          {displayText}
+          <ReactMarkdown>{displayText}</ReactMarkdown>
           {showCursor && (
             <span className="inline-block animate-pulse text-gold ml-0.5">▌</span>
           )}

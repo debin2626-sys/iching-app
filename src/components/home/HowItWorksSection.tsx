@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const STEPS = [
   { num: '一', key: 'step1' },
@@ -31,7 +31,7 @@ export function HowItWorksSection({ locale }: { locale: string }) {
         />
 
         {STEPS.map((s, i) => (
-          <motion.div
+          <m.div
             key={s.key}
             className="flex-1 flex flex-col items-center text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ export function HowItWorksSection({ locale }: { locale: string }) {
             >
               {t(`${s.key}Desc`)}
             </p>
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </section>
