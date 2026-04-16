@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getTranslations, getLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { Briefcase, Heart, DollarSign, GraduationCap, Leaf } from 'lucide-react';
 import type { Metadata } from 'next';
 import { SCENARIO_IDS, SCENARIO_HEXAGRAMS, SCENARIO_META, type ScenarioId } from '@/data/scenarios';

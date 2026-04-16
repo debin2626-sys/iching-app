@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { PageLayout } from "@/components/ui";
 

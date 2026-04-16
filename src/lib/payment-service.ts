@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import { SubscriptionTier } from '@prisma/client';
 import { KofiService, type KofiWebhookData } from './kofi';
 
 export class PaymentService {
@@ -18,7 +19,7 @@ export class PaymentService {
     currency?: string;
     description?: string;
     tier?: 'BASIC' | 'MONTHLY' | 'QUARTERLY' | 'ANNUAL';
-    metadata?: any;
+    metadata?: Record<string, unknown>;
   }) {
     const { userId, provider, amount, currency = 'USD', description, tier = 'BASIC', metadata } = params;
     
@@ -114,7 +115,7 @@ export class PaymentService {
     }
     
     // 解析自定义数据
-    let customData = {};
+    let customData: Record<string, unknown> = {};
     try {
       if (message) {
         const match = message.match(/custom:\s*(\{.*\})/);
@@ -127,8 +128,8 @@ export class PaymentService {
     }
     
     // 确定支付层级
-    const tier = (customData as any)?.tier || 'BASIC';
-    const userId = (customData as any)?.userId || user?.id;
+    const tier = (customData?.tier as string) || 'BASIC';
+    const userId = (customData?.userId as string) || user?.id;
     
     // 创建或更新支付记录
     const payment = await prisma.payment.upsert({
@@ -253,7 +254,7 @@ export class PaymentService {
     // 更新或创建订阅记录
     if (user) {
       const startDate = new Date(timestamp);
-      let endDate = new Date(startDate);
+      const endDate = new Date(startDate);
       
       // 根据层级设置结束日期
       switch (tier) {
@@ -320,7 +321,7 @@ export class PaymentService {
     paymentId: string
   ) {
     const startDate = new Date();
-    let endDate = new Date(startDate);
+    const endDate = new Date(startDate);
     
     // 根据层级设置结束日期
     switch (tier) {
@@ -338,7 +339,7 @@ export class PaymentService {
     }
     
     await prisma.subscription.upsert({
-      where: { userId_tier: { userId, tier: tier as any } },
+      where: { userId_tier: { userId, tier: tier as SubscriptionTier } },
       update: {
         status: 'ACTIVE',
         endDate,
@@ -348,7 +349,7 @@ export class PaymentService {
       },
       create: {
         userId,
-        tier: tier as any,
+        tier: tier as SubscriptionTier,
         status: 'ACTIVE',
         paymentId,
         startDate,
@@ -386,7 +387,7 @@ export class PaymentService {
    * 检查用户是否有特定层级的有效订阅
    */
   async hasValidSubscription(userId: string, tier?: string): Promise<boolean> {
-    const where: any = {
+    const where: Record<string, unknown> = {
       userId,
       status: 'ACTIVE',
       endDate: {

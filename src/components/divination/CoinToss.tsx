@@ -11,7 +11,7 @@ const COIN_SIZE_MOBILE = 80;
 const TOSS_DURATION = 2.5; // 总动画时长
 const AUTO_INTERVAL = 1000; // 自动模式间隔
 
-const YAO_CN = ["一", "二", "三", "四", "五", "六"];
+
 
 /* ── 随机性工具函数 ── */
 /** 在 [min, max] 范围内生成随机数 */
@@ -364,7 +364,9 @@ export default function CoinToss({
   const [isLanded, setIsLanded] = useState(false);
   const [coinSize, setCoinSize] = useState(COIN_SIZE_DESKTOP);
   const tossCompleteRef = useRef(onTossComplete);
-  tossCompleteRef.current = onTossComplete;
+  useEffect(() => {
+    tossCompleteRef.current = onTossComplete;
+  });
 
   // 每次抛掷生成新的随机参数（3 枚铜钱各自独立）
   const [coinRandomParams, setCoinRandomParams] = useState(() =>
@@ -448,7 +450,7 @@ export default function CoinToss({
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3 }}
           >
-            {tDiv(`tossCount${Math.min(currentYao, 5) + 1}` as any)}
+            {tDiv(`tossCount${Math.min(currentYao, 5) + 1}` as Parameters<typeof tDiv>[0])}
           </m.p>
         )}
       </AnimatePresence>

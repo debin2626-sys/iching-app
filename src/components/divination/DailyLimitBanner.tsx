@@ -177,7 +177,9 @@ export function useLocalDailyLimit() {
 
   useEffect(() => {
     if (status === "unauthenticated") {
-      setCount(getLocalDivinationCount());
+      const count = getLocalDivinationCount();
+      // Use queueMicrotask to avoid synchronous setState in effect
+      queueMicrotask(() => setCount(count));
     }
   }, [status]);
 

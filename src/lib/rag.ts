@@ -46,11 +46,12 @@ function setCachedEmbedding(text: string, vec: number[]): void {
 
 // ─── Embedding generation ───
 
-let extractorPromise: Promise<any> | null = null;
+let extractorPromise: Promise<unknown> | null = null;
 
-function getExtractor(): Promise<any> {
+function getExtractor(): Promise<unknown> {
   if (!extractorPromise) {
     extractorPromise = (async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { pipeline } = await import('@xenova/transformers' as any);
       return pipeline('feature-extraction', 'Xenova/multilingual-e5-small');
     })();

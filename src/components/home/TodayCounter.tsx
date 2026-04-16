@@ -23,7 +23,7 @@ export default function TodayCounter() {
           throw new Error('Failed to fetch today stats');
         }
         
-        const data: any = await response.json();
+        const data: { success: boolean; data: TodayStats; error?: string } = await response.json();
         
         if (data.success) {
           setStats(data.data);

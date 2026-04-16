@@ -24,10 +24,10 @@ export default function MeditationPageContent() {
   const searchParams = useSearchParams();
 
   const [canSkip, setCanSkip] = useState(false);
-  const [showSkip, setShowSkip] = useState(false);
+  const showSkip = true;
   const [countdown, setCountdown] = useState(3);
   const completedRef = useRef(false);
-  const startTimeRef = useRef(Date.now());
+  const startTimeRef = useRef<number>(0);
 
   // Track meditation start
   useEffect(() => {
@@ -35,10 +35,8 @@ export default function MeditationPageContent() {
     startTimeRef.current = Date.now();
   }, []);
 
-  // Skip button countdown: show after 3s
+  // Skip button countdown
   useEffect(() => {
-    setShowSkip(true); // Show the button text immediately (with countdown)
-
     const countdownInterval = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {

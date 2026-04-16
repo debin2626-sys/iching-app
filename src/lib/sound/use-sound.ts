@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useState } from "react";
 import SoundManager, { type SoundName } from "./sound-manager";
 import { useSoundEnabled } from "./sound-context";
 
@@ -16,25 +16,25 @@ interface UseSoundReturn {
  */
 export function useSound(soundName: SoundName): UseSoundReturn {
   const [enabled] = useSoundEnabled();
-  const playingRef = useRef(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const play = useCallback(async () => {
     if (!enabled) return;
     const manager = SoundManager.getInstance();
     manager.setEnabled(true);
     const started = await manager.play(soundName);
-    playingRef.current = started;
+    setIsPlaying(started);
   }, [enabled, soundName]);
 
   const stop = useCallback(() => {
     const manager = SoundManager.getInstance();
     manager.stop(soundName);
-    playingRef.current = false;
+    setIsPlaying(false);
   }, [soundName]);
 
   return {
     play,
     stop,
-    isPlaying: playingRef.current,
+    isPlaying,
   };
 }

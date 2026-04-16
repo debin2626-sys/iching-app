@@ -81,13 +81,13 @@ export async function GET(
       }
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Get payment error:', error);
     
     return NextResponse.json(
       { 
         success: false, 
-        error: error.message || 'Failed to get payment'
+        error: error instanceof Error ? error.message : 'Failed to get payment'
       },
       { status: 500 }
     );

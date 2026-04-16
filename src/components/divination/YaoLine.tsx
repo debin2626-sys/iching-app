@@ -21,10 +21,7 @@ export default function YaoLine({ type, isMoving, animate }: YaoLineProps) {
   const [drawn, setDrawn] = useState(!animate);
 
   useEffect(() => {
-    if (!animate) {
-      setDrawn(true);
-      return;
-    }
+    if (!animate) return;
     // Trigger draw after mount
     const raf = requestAnimationFrame(() => setDrawn(true));
     return () => cancelAnimationFrame(raf);

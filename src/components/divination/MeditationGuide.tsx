@@ -24,8 +24,16 @@ interface MeditationGuideProps {
 export default function MeditationGuide({ onComplete, duration = 15 }: MeditationGuideProps) {
   const t = useTranslations("Meditation");
   const [elapsed, setElapsed] = useState(0);
-  const [canSkip, setCanSkip] = useState(false);
-  const [isReturningUser, setIsReturningUser] = useState(false);
+  const [canSkip, setCanSkip] = useState(() => {
+    try {
+      return typeof window !== 'undefined' && parseInt(localStorage.getItem(DIVINATION_COUNT_KEY) || '0', 10) > 0;
+    } catch { return false; }
+  });
+  const [isReturningUser] = useState(() => {
+    try {
+      return typeof window !== 'undefined' && parseInt(localStorage.getItem(DIVINATION_COUNT_KEY) || '0', 10) > 0;
+    } catch { return false; }
+  });
   const startTimeRef = useRef<number>(0);
   const rafRef = useRef<number>(0);
   const completedRef = useRef(false);
@@ -39,16 +47,6 @@ export default function MeditationGuide({ onComplete, duration = 15 }: Meditatio
   useEffect(() => {
     // ── funnel_meditation_start ──
     trackFunnelMeditationStart();
-
-    try {
-      const count = parseInt(localStorage.getItem(DIVINATION_COUNT_KEY) || "0", 10);
-      if (count > 0) {
-        setIsReturningUser(true);
-        setCanSkip(true); // 老用户直接显示跳过按钮
-      }
-    } catch {
-      // ignore
-    }
   }, []);
 
   // Main timer loop using rAF for smooth 60fps

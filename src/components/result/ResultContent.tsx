@@ -681,7 +681,7 @@ function ResultInner() {
           )}
           {changingLines.length > 0 && (
             <p className="text-vermilion/80 text-sm mt-2">
-              {t("changingYao")}：{changingLines.map((i) => t(`yaoLabel${i}` as any)).join("、")}
+              {t("changingYao")}：{changingLines.map((i) => t(`yaoLabel${i}` as Parameters<typeof t>[0])).join("、")}
             </p>
           )}
           {changedHexInfo && (
@@ -767,7 +767,7 @@ function ResultInner() {
                               <span className={`text-xs font-mono shrink-0 mt-0.5 ${
                                 isChanging ? "text-vermilion" : "text-gold/60"
                               }`}>
-                                {t(`yaoLabel${line.position - 1}` as any)}
+                                {t(`yaoLabel${line.position - 1}` as Parameters<typeof t>[0])}
                                 {isChanging && " 🔴"}
                               </span>
                               <div className="min-w-0">

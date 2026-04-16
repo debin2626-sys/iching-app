@@ -4,7 +4,6 @@ import {
   createContext,
   useContext,
   useState,
-  useEffect,
   useCallback,
   type ReactNode,
 } from "react";
@@ -30,22 +29,16 @@ function isMobile(): boolean {
 }
 
 export function SoundProvider({ children }: { children: ReactNode }) {
-  const [enabled, setEnabledState] = useState(false);
-
-  // Load preference from localStorage on mount
-  useEffect(() => {
+  const [enabled, setEnabledState] = useState(() => {
+    // Load preference from localStorage on mount
     try {
+      if (typeof window === 'undefined') return false;
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored !== null) {
-        setEnabledState(stored === "true");
-      } else {
-        // Default: mobile off, desktop on
-        setEnabledState(!isMobile());
-      }
+      return stored !== null ? stored === 'true' : !isMobile();
     } catch {
-      setEnabledState(!isMobile());
+      return !isMobile();
     }
-  }, []);
+  });
 
   const setEnabled = useCallback((value: boolean) => {
     setEnabledState(value);

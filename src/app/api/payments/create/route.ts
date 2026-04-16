@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
       data: {
         paymentUrl,
         metadata: {
-          ...(payment.metadata as any),
+          ...(payment.metadata as Record<string, unknown>),
           paymentUrl,
           generatedAt: new Date().toISOString()
         }
@@ -105,13 +105,13 @@ export async function POST(request: NextRequest) {
       expiresIn: '30 minutes' // Ko-fi 链接有效时间
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Payment creation error:', error);
     
     return NextResponse.json(
       { 
         success: false, 
-        error: error.message || 'Failed to create payment',
+        error: error instanceof Error ? error.message : 'Failed to create payment',
         timestamp: new Date().toISOString()
       },
       { status: 500 }
@@ -149,13 +149,13 @@ export async function GET(request: NextRequest) {
       timestamp: new Date().toISOString()
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Get payment items error:', error);
     
     return NextResponse.json(
       { 
         success: false, 
-        error: error.message || 'Failed to get payment items'
+        error: error instanceof Error ? error.message : 'Failed to get payment items'
       },
       { status: 500 }
     );

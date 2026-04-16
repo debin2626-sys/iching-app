@@ -4,10 +4,6 @@ import { prisma } from "@/lib/prisma";
 // ─── Upstash Redis rate limiting (shared across instances) ───────────────────
 // Falls back to in-memory when Upstash is not configured.
 
-let upstashRatelimit: {
-  limit: (key: string) => Promise<{ success: boolean; reset: number }>;
-} | null = null;
-
 function getUpstashLimiter(windowMs: number, max: number) {
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;

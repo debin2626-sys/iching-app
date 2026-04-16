@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { Briefcase, Heart, DollarSign, GraduationCap, Leaf } from 'lucide-react';
 import type { Metadata } from 'next';
-import { SCENARIO_IDS, SCENARIO_HEXAGRAMS, SCENARIO_META, type ScenarioId } from '@/data/scenarios';
+import { SCENARIO_IDS, SCENARIO_HEXAGRAMS, SCENARIO_META } from '@/data/scenarios';
 import { getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
 
 const ICONS = { Briefcase, Heart, DollarSign, GraduationCap, Leaf };

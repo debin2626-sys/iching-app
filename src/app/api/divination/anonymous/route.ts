@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import type { Prisma } from "@prisma/client";
 
 interface AnonymousDivinationRequest {
   id: string;
@@ -49,7 +50,7 @@ export async function POST(request: NextRequest) {
       where: {
         anonymousSessionId,
         hexagramId,
-        coinResults: coinResults as any,
+        coinResults: coinResults as Prisma.InputJsonValue,
         createdAt: {
           gte: new Date(new Date(createdAt).getTime() - 60000), // 1分钟误差范围
           lte: new Date(new Date(createdAt).getTime() + 60000),

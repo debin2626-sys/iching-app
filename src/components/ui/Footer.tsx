@@ -9,7 +9,7 @@ export default function Footer() {
   const t = useTranslations("Footer");
   const year = new Date().getFullYear();
 
-  const links = [
+  const links: { label: string; href: string }[] = [
     { label: t("about"), href: "/about" },
     { label: t("privacy"), href: "/privacy" },
     { label: t("terms"), href: "/terms" },
@@ -27,7 +27,7 @@ export default function Footer() {
           {links.map((link) => (
             <span key={link.href} className="flex items-center">
               <Link
-                href={link.href as any}
+                href={link.href}
                 className="text-[11px] transition-colors"
                 style={{ color: 'var(--theme-text-muted)' }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-gold)')}

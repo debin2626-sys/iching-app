@@ -19,10 +19,12 @@ interface ChunkRow {
   content: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- @xenova/transformers has no type exports
 let extractor: any = null;
 
 async function getExtractor() {
   if (!extractor) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- no types available
     const { pipeline } = await import('@xenova/transformers' as any);
     console.log('⏳ 加载 embedding 模型 (multilingual-e5-small)...');
     extractor = await pipeline('feature-extraction', 'Xenova/multilingual-e5-small');

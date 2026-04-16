@@ -38,8 +38,7 @@ export async function generateMetadata({
   } else if (isZhTW) {
     const nameZhTW = hex.nameZhTW || hex.nameZh;
     const traditionalNameTW = hex.traditionalNameTW || hex.traditionalName;
-    const judgmentTW = hex.judgmentZhTW || hex.judgmentZh;
-    const interpretationTW = hex.interpretationZhTW || hex.interpretationZh;
+
     const imageTW = hex.imageZhTW || hex.imageZh;
     title = `${nameZhTW}卦 第${num}卦 | 易經線上占卜 51yijing.com`;
     description = `${nameZhTW}卦（${traditionalNameTW}）完整解讀：卦辭、六爻詳解、白話翻譯。了解${nameZhTW}卦在事業、感情、財運中的指引含義。`;

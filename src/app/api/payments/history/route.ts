@@ -103,13 +103,13 @@ export async function GET(request: NextRequest) {
       }
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Get payment history error:', error);
     
     return NextResponse.json(
       { 
         success: false, 
-        error: error.message || 'Failed to get payment history'
+        error: error instanceof Error ? error.message : 'Failed to get payment history'
       },
       { status: 500 }
     );

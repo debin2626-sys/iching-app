@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
+import { getBaseUrl, getAlternateLanguages } from '@/lib/seo';
 import HomeNavBar from '@/components/home/HomeNavBar';
 import DivineForm from './DivineForm';
 

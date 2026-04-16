@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
             userId: session.user.id,
             hexagramId: div.hexagramId,
             coinResults: {
-              equals: div.coinResults as any,
+              equals: div.coinResults as Prisma.InputJsonValue,
             },
             createdAt: {
               gte: new Date(div.createdAt.getTime() - 60000), // 1分钟误差范围

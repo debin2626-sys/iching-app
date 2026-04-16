@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       paymentId: result?.id 
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Webhook processing error:', error);
     
     // 返回错误响应，但使用 200 状态码避免 Ko-fi 重试
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         success: false, 
-        error: error.message || 'Unknown error',
+        error: error instanceof Error ? error.message : 'Unknown error',
         timestamp: new Date().toISOString()
       },
       { status: 200 } // 使用 200 避免重试循环
