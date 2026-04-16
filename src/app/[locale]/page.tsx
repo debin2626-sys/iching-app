@@ -85,7 +85,7 @@ export default async function HomePage({
       <HomeJsonLd locale={locale} />
       <HomeFaqJsonLd locale={locale} />
       <HomeNavBar />
-      <main className="min-h-screen w-full" style={{ backgroundColor: 'var(--theme-bg)' }}>
+      <main className="min-h-screen w-full pb-20 md:pb-0" style={{ backgroundColor: 'var(--theme-bg)' }}>
         <div className="w-full px-6" style={{ maxWidth: '768px', margin: '0 auto', paddingTop: '120px', paddingBottom: '80px' }}>
 
           {/* 模块1: Hero — Suspense 让 totalCount 异步加载，不阻塞页面其余内容 */}
