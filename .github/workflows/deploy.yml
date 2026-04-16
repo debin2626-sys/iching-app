@@ -36,7 +36,8 @@ jobs:
               cp -r .next .next.bak
             fi
 
-            # 清理可能冲突的 untracked 文件
+            # 强制重置本地修改 + 清理 untracked 文件
+            git checkout -- .
             git clean -fd
             git pull origin main
             npm install --production=false
