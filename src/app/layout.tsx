@@ -80,11 +80,7 @@ export default async function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css"
-          media="print"
-          // @ts-expect-error — onLoad string is valid HTML but not typed in React
-          onLoad="this.media='all'"
         />
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" /></noscript>
       </head>
       <body
         className={`${notoSerifSC.variable} antialiased`}
