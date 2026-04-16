@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
       where: {
         anonymousSessionId,
         hexagramId,
-        coinResults: coinResults as Prisma.InputJsonValue,
+        coinResults: { equals: coinResults as Prisma.InputJsonValue },
         createdAt: {
           gte: new Date(new Date(createdAt).getTime() - 60000), // 1分钟误差范围
           lte: new Date(new Date(createdAt).getTime() + 60000),
