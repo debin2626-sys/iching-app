@@ -23,6 +23,19 @@ jobs:
     name: Build
     needs: lint
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "postgresql://user:pass@localhost:5432/db"
+      NEXTAUTH_SECRET: "ci-build-secret-placeholder-32chars!!"
+      NEXTAUTH_URL: "https://51yijing.com"
+      OPENAI_API_KEY: "sk-00000000000000000000000000000000000000000000"
+      DEEPSEEK_API_KEY: "sk-00000000000000000000000000000000000000000000"
+      STRIPE_SECRET_KEY: "sk_test_placeholder"
+      STRIPE_WEBHOOK_SECRET: "whsec_placeholder"
+      UPSTASH_REDIS_REST_URL: "https://placeholder.upstash.io"
+      UPSTASH_REDIS_REST_TOKEN: "placeholder"
+      GOOGLE_CLIENT_ID: "placeholder.apps.googleusercontent.com"
+      GOOGLE_CLIENT_SECRET: "placeholder"
+      NEXT_PUBLIC_GA_ID: "G-PLACEHOLDER"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
