@@ -1,7 +1,11 @@
 // Script to add zh-TW fields to scenarios.ts
-const OpenCC = require('opencc-js');
-const fs = require('fs');
-const path = require('path');
+import OpenCC from 'opencc-js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const converter = OpenCC.Converter({ from: 'cn', to: 'twp' });
 

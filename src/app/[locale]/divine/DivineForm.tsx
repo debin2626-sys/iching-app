@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/Button";
 import { TaichiWatermark, CloudPattern } from "@/components/decorative";
 import {
   trackScenarioSelect,
-  trackFunnelHomeView,
   trackFunnelStartClick,
   trackFunnelQuestionSubmit,
   trackFunnelBirthFill,

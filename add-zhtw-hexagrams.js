@@ -1,7 +1,12 @@
 // Script to add zh-TW fields to hexagrams.ts
-const OpenCC = require('opencc-js');
-const fs = require('fs');
-const path = require('path');
+// One-time migration script — run with: node add-zhtw-hexagrams.js
+import OpenCC from 'opencc-js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const converter = OpenCC.Converter({ from: 'cn', to: 'twp' }); // cn -> tw with phrases
 
@@ -18,7 +23,7 @@ let match;
 const replacements = [];
 
 while ((match = hexagramRegex.exec(content)) !== null) {
-  const [fullMatch, number, nameZh, nameEn, traditionalName, symbol, upperTrigram, lowerTrigram, judgmentZh, judgmentEn, imageZh, imageEn, interpretationZh, interpretationEn] = match;
+  const [fullMatch, number, nameZh, , traditionalName, , , , judgmentZh, , imageZh, , interpretationZh] = match;
   
   const nameZhTW = converter(nameZh);
   const traditionalNameTW = converter(traditionalName);
@@ -35,12 +40,6 @@ while ((match = hexagramRegex.exec(content)) !== null) {
   if (interpretationZhTW !== interpretationZh) twFields.push(`    interpretationZhTW: "${interpretationZhTW}"`);
   
   if (twFields.length > 0) {
-    // Find the interpretationEn line and add after it
-    const insertPoint = `interpretationEn: "${interpretationEn}",`;
-    const insertPointAlt = `interpretationEn: "${interpretationEn}"`;
-    
-    const newFields = '\n' + twFields.join(',\n') + ',';
-    
     replacements.push({
       search: fullMatch,
       nameZhTW, traditionalNameTW, judgmentZhTW, imageZhTW, interpretationZhTW,

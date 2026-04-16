@@ -26,13 +26,15 @@ interface ClassicEntry {
 
 // ─── Embedding (reuse e5-small from rag.ts) ───
 
-let extractorPromise: Promise<any> | null = null;
+type PipelineFn = (text: string, options: Record<string, unknown>) => Promise<{ data: ArrayLike<number> }>;
 
-function getExtractor(): Promise<any> {
+let extractorPromise: Promise<PipelineFn> | null = null;
+
+function getExtractor(): Promise<PipelineFn> {
   if (!extractorPromise) {
     extractorPromise = (async () => {
-      const { pipeline } = await import("@xenova/transformers" as any);
-      return pipeline("feature-extraction", "Xenova/multilingual-e5-small");
+      const { pipeline } = await import("@xenova/transformers");
+      return pipeline("feature-extraction", "Xenova/multilingual-e5-small") as Promise<PipelineFn>;
     })();
   }
   return extractorPromise;

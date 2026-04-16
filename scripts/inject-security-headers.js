@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 // Post-build script: inject security headers into OpenNext worker.js
 // Strategy: wrap the entire default export's fetch method
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const workerPath = path.join(__dirname, '..', '.open-next', 'worker.js');
 let code = fs.readFileSync(workerPath, 'utf8');
 
