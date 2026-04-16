@@ -67,7 +67,7 @@ export async function generateQueryEmbedding(text: string): Promise<number[]> {
   const cached = getCachedEmbedding(text);
   if (cached) return cached;
 
-  const extractor = await getExtractor();
+  const extractor = await getExtractor() as (input: string, options: Record<string, unknown>) => Promise<{ data: ArrayLike<number> }>;
   // e5 models: "query: " prefix for queries, "passage: " for documents
   const output = await extractor(`query: ${text}`, { pooling: 'mean', normalize: true });
   const vec = Array.from(output.data) as number[];

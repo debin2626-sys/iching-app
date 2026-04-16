@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { SubscriptionTier } from '@prisma/client';
+import { Prisma, SubscriptionTier } from '@prisma/client';
 import { KofiService, type KofiWebhookData } from './kofi';
 
 export class PaymentService {
@@ -164,7 +164,7 @@ export class PaymentService {
           kofiTransactionId: kofi_transaction_id,
           rawWebhookData: data,
           customData
-        }
+        } as unknown as Prisma.InputJsonValue
       }
     });
     
