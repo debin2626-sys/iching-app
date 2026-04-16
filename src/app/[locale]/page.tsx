@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { HomeJsonLd, HomeFaqJsonLd } from '@/components/seo/JsonLd';
 import { SITE_DESC_ZH, SITE_DESC_EN, SITE_DESC_ZH_TW, getBaseUrl, getAlternateLanguages, getLocalizedText } from '@/lib/seo';
@@ -15,14 +16,19 @@ import { PopularHexagramsSection } from '@/components/home/PopularHexagramsSecti
 import { StickyCtaBar } from '@/components/home/StickyCtaBar';
 import { HowItWorksSection } from '@/components/home/HowItWorksSection';
 import { prisma } from '@/lib/prisma';
+import { unstable_cache } from 'next/cache';
 
-async function getTotalCount(): Promise<number> {
-  try {
-    return await prisma.divination.count();
-  } catch {
-    return 0;
-  }
-}
+const getTotalCount = unstable_cache(
+  async (): Promise<number> => {
+    try {
+      return await prisma.divination.count();
+    } catch {
+      return 0;
+    }
+  },
+  ['total-divination-count'],
+  { revalidate: 3600 } // 缓存 1 小时
+);
 
 export async function generateMetadata({
   params,
@@ -73,7 +79,6 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'Home' });
-  const totalCount = await getTotalCount();
 
   return (
     <>
@@ -83,8 +88,10 @@ export default async function HomePage({
       <main className="min-h-screen w-full" style={{ backgroundColor: 'var(--theme-bg)' }}>
         <div className="w-full px-6" style={{ maxWidth: '768px', margin: '0 auto', paddingTop: '120px', paddingBottom: '80px' }}>
 
-          {/* 模块1: Hero */}
-          <HeroSection totalCount={totalCount} />
+          {/* 模块1: Hero — Suspense 让 totalCount 异步加载，不阻塞页面其余内容 */}
+          <Suspense fallback={<HeroSection totalCount={0} />}>
+            <HeroSectionWithCount />
+          </Suspense>
 
           {/* 模块2: 场景 */}
           <ScenarioSection locale={locale} />
@@ -164,4 +171,9 @@ export default async function HomePage({
       <StickyCtaBar locale={locale} />
     </>
   );
+}
+
+async function HeroSectionWithCount() {
+  const totalCount = await getTotalCount();
+  return <HeroSection totalCount={totalCount} />;
 }
