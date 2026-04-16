@@ -77,7 +77,7 @@ jobs:
           echo "Waiting 30s for service to stabilize..."
           sleep 30
 
-          HEALTH_URL="http://43.163.4.94:3000/api/health"
+          HEALTH_URL="https://51yijing.com/api/health"
           HTTP_STATUS=$(curl -s -o /tmp/health_response.json -w "%{http_code}" "$HEALTH_URL")
 
           echo "HTTP Status: $HTTP_STATUS"
