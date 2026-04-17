@@ -1,9 +1,6 @@
-/**
- * Shared OG image renderer for guide pages.
- * Used by each static guide route's opengraph-image.tsx.
- */
 import { ImageResponse } from 'next/og';
 import { GUIDE_ARTICLES } from '@/data/guide';
+import { loadNotoSerifSC } from '@/lib/og/load-font';
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
@@ -19,15 +16,9 @@ export async function renderGuideOG(slug: string): Promise<ImageResponse> {
   const descZh = article?.descZh ?? '传统易经智慧';
   const emoji = GUIDE_EMOJI[slug] ?? '📖';
 
-  let fontData: ArrayBuffer | null = null;
-  try {
-    const res = await fetch(
-      'https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.0.12/files/noto-serif-sc-chinese-simplified-700-normal.woff2'
-    );
-    if (res.ok) fontData = await res.arrayBuffer();
-  } catch {
-    // fallback without custom font
-  }
+  // Load subset font containing only the characters we need
+  const textForFont = `易经指南${titleZh}${descZh}51yijing.com`;
+  const fontData = await loadNotoSerifSC(textForFont);
 
   return new ImageResponse(
     (

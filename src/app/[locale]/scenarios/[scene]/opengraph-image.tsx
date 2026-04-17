@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { SCENARIO_META, SCENARIO_IDS, type ScenarioId } from '@/data/scenarios';
+import { loadNotoSerifSC } from '@/lib/og/load-font';
 
-export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -28,15 +28,9 @@ export default async function Image({
   const descZh = meta?.descZh ?? '传统易经智慧';
   const emoji = isValid ? SCENE_EMOJI[sceneId] : '☯️';
 
-  let fontData: ArrayBuffer | null = null;
-  try {
-    const res = await fetch(
-      'https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.0.12/files/noto-serif-sc-chinese-simplified-700-normal.woff2'
-    );
-    if (res.ok) fontData = await res.arrayBuffer();
-  } catch {
-    // fallback without custom font
-  }
+  // Load subset font containing only the characters we need
+  const textForFont = `${nameZh}${descZh}51yijing.com`;
+  const fontData = await loadNotoSerifSC(textForFont);
 
   return new ImageResponse(
     (

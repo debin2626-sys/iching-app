@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { getHexagramByNumber } from '@/data/hexagrams';
+import { loadNotoSerifSC } from '@/lib/og/load-font';
 
-export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -19,16 +19,9 @@ export default async function Image({
   const number = hex?.number ?? num;
   const traditionalName = hex?.traditionalName ?? '';
 
-  // Load Noto Serif SC for Chinese character rendering
-  let fontData: ArrayBuffer | null = null;
-  try {
-    const res = await fetch(
-      'https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.0.12/files/noto-serif-sc-chinese-simplified-700-normal.woff2'
-    );
-    if (res.ok) fontData = await res.arrayBuffer();
-  } catch {
-    // fallback: render without custom font
-  }
+  // Load subset font containing only the characters we need
+  const textForFont = `第${number}卦${nameZh}${traditionalName}${nameEn}51yijing.com`;
+  const fontData = await loadNotoSerifSC(textForFont);
 
   return new ImageResponse(
     (
