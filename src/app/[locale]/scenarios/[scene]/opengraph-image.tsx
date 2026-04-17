@@ -31,9 +31,9 @@ export default async function Image({
   let fontData: ArrayBuffer | null = null;
   try {
     const res = await fetch(
-      'https://fonts.gstatic.com/s/notoserifsc/v22/H4c8BXePl9DZ0Xe7gG9cyOj7mm63SzZBEtERe7U.woff2'
+      'https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.0.12/files/noto-serif-sc-chinese-simplified-700-normal.woff2'
     );
-    fontData = await res.arrayBuffer();
+    if (res.ok) fontData = await res.arrayBuffer();
   } catch {
     // fallback without custom font
   }
