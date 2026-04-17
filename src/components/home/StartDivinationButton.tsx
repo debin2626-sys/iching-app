@@ -26,7 +26,7 @@ export default function StartDivinationButton() {
   return (
     <button
       onClick={handleStart}
-      className="min-w-[200px] px-12 h-[56px] bg-gradient-to-br from-[#c9a96e] to-[#b8943d] text-[#0a0a12] text-lg rounded-[14px] font-bold font-title tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(201,169,110,0.3)] hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(201,169,110,0.4)]"
+      className="min-w-[240px] px-14 h-[60px] bg-gradient-to-br from-[#c9a96e] to-[#b8943d] text-[#0a0a12] text-xl rounded-[14px] font-bold font-title tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(201,169,110,0.3)] hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(201,169,110,0.4)]"
       style={{ animation: "pulse-glow 2.5s ease-in-out infinite" }}
     >
       {t("startButton")}
