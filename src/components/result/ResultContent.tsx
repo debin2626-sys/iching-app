@@ -26,6 +26,8 @@ import { useSession, signIn } from "next-auth/react";
 import { trackAIInterpretStart, trackAIInterpretComplete, trackFunnelResultView, trackFunnelAIInterpretStart, trackFunnelAIInterpretComplete } from "@/lib/analytics";
 import { getOrCreateAnonymousSession, saveAnonymousDivination, hasAnonymousDivinations, migrateAnonymousDivinations } from "@/lib/anonymous-session";
 import { useRouter, Link } from "@/i18n/navigation";
+import { HEXAGRAM_PINYIN } from "@/lib/hexagram-pinyin";
+import { WeChatShareGuide } from "./WeChatShareGuide";
 
 /* ── 卦象名称映射 ── */
 const HEXAGRAM_NAMES: Record<number, { cn: string; en: string }> = {
@@ -461,6 +463,8 @@ function ResultInner() {
   const { toast } = useToast();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [showWeChatGuide, setShowWeChatGuide] = useState(false);
+  const [isGeneratingImage, setIsGeneratingImage] = useState(false);
 
   /* 保存占卜记录 */
   const hasSaved = useRef(false);
@@ -617,17 +621,90 @@ function ResultInner() {
 
   /* 分享功能 */
   const handleShare = async () => {
+    // 微信内置浏览器：显示引导浮层
+    const ua = navigator.userAgent.toLowerCase();
+    if (ua.includes('micromessenger')) {
+      const guided = sessionStorage.getItem('wechat_share_guided');
+      if (!guided) {
+        setShowWeChatGuide(true);
+        return;
+      }
+    }
+
+    // 构建带 UTM 的分享 URL
+    const url = new URL(window.location.href);
+    url.searchParams.set('utm_source', 'share');
+    url.searchParams.set('utm_medium', 'social');
+    url.searchParams.set('utm_campaign', 'result_share');
+    const shareUrl = url.toString();
+
     const hexName = hexInfo?.cn ?? "";
-    const text = `${t("shareTitle")} — ${hexName}（${t("hexagramNumber", { num: hexNum ?? 0 })}）\n${t("question", { q: question })}\n${window.location.href}`;
+    const text = `${t("shareTitle", { hexName })}`;
+
     if (navigator.share) {
       try {
-        await navigator.share({ title: `${hexName}`, text, url: window.location.href });
+        await navigator.share({ title: hexName, text, url: shareUrl });
       } catch {
         // user cancelled
       }
     } else {
-      await navigator.clipboard.writeText(text);
-      alert(t("copiedToClipboard"));
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        toast(t("linkCopied"), "success");
+      } catch {
+        toast(t("shareFailed"), "error");
+      }
+    }
+  };
+
+  /* 保存卦图 */
+  const handleSaveImage = async () => {
+    if (!hexNum || isGeneratingImage) return;
+    setIsGeneratingImage(true);
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+
+    try {
+      const locale = typeof window !== 'undefined'
+        ? (document.documentElement.lang || 'zh')
+        : 'zh';
+      const res = await fetch(
+        `/api/share-image?hexagram=${hexNum}&locale=${locale}`,
+        { signal: controller.signal }
+      );
+      clearTimeout(timeout);
+
+      if (!res.ok) throw new Error('fetch failed');
+
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = `${HEXAGRAM_PINYIN[hexNum] ?? hexNum}-${hexNum}-51yijing.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(blobUrl);
+
+      // 平台引导 toast
+      const ua = navigator.userAgent.toLowerCase();
+      if (/iphone|ipad|ipod/.test(ua)) {
+        toast(t("imageDownloadedIOS"), "success");
+      } else if (/android/.test(ua)) {
+        toast(t("imageDownloadedAndroid"), "success");
+      } else {
+        toast(t("imageDownloaded"), "success");
+      }
+    } catch (err) {
+      clearTimeout(timeout);
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        toast(t("imageTimeout"), "error");
+      } else {
+        toast(t("imageGenerateFailed"), "error");
+      }
+    } finally {
+      setIsGeneratingImage(false);
     }
   };
 
@@ -835,30 +912,43 @@ function ResultInner() {
         >
           <Link
             href="/divine"
-            className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
+            className="btn-divine min-w-[140px] max-w-[180px] flex-1 h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
           >
             {t("divinationAgain")}
           </Link>
           <Link
             href="/"
-            className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
+            className="btn-divine min-w-[140px] max-w-[180px] flex-1 h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
           >
             {t("backHome")}
           </Link>
           <button
             onClick={handleSaveHistory}
             disabled={isSaving}
-            className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn-divine min-w-[140px] max-w-[180px] flex-1 h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSaving ? t("saving") : (session?.user ? t("saveHistory") : t("saveHistoryLogin"))}
           </button>
           <button
             onClick={handleShare}
-            className="btn-divine w-[180px] h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
+            className="btn-divine min-w-[140px] max-w-[180px] flex-1 h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center"
           >
-            {t("share")}
+            {t("shareHexagram")}
+          </button>
+          <button
+            onClick={handleSaveImage}
+            disabled={isGeneratingImage}
+            className="btn-divine min-w-[140px] max-w-[180px] flex-1 h-12 text-base font-title tracking-wider rounded-lg inline-flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isGeneratingImage ? t("imageGenerating") : t("saveHexagramImage")}
           </button>
         </motion.div>
+
+        {/* ── 微信分享引导 ── */}
+        <WeChatShareGuide
+          show={showWeChatGuide}
+          onClose={() => setShowWeChatGuide(false)}
+        />
 
         {/* ── 登录提示模态框 ── */}
         {showLoginModal && (
