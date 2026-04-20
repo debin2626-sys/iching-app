@@ -10,6 +10,7 @@ const notoSerifSC = Noto_Serif_SC({
   variable: "--font-noto-serif-sc",
   weight: ["400", "700"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 const SITE_URL = 'https://51yijing.com';
@@ -80,6 +81,7 @@ export default async function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css"
+          precedence="low"
         />
       </head>
       <body

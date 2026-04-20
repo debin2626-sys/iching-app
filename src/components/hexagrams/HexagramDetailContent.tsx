@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { useLocale } from "next-intl";
 import { useNavItems } from "@/hooks/useNavItems";
 import { Link } from "@/i18n/navigation";
@@ -102,7 +102,7 @@ function HexagramLines({ symbol, nameZh, nameEn, number }: { symbol: string; nam
   );
 }
 
-export default function HexagramDetailContent({ hexagramNumber, initialData }: { hexagramNumber: number; initialData?: HexagramData | null }) {
+export default function HexagramDetailContent({ hexagramNumber, initialData, heroContent }: { hexagramNumber: number; initialData?: HexagramData | null; heroContent?: ReactNode }) {
   const locale = useLocale();
   const isZh = locale === "zh" || locale === "zh-TW";
   const [data, setData] = useState<HexagramData | null>(initialData ?? null);
@@ -156,37 +156,43 @@ export default function HexagramDetailContent({ hexagramNumber, initialData }: {
   return (
     <PageLayout navItems={navItems} maxWidth="max-w-6xl">
       <div>
-        {/* Breadcrumb */}
-        <Breadcrumb
-          className="mb-6"
-          items={[
-            { label: isZh ? "六十四卦" : "Hexagrams", href: "/hexagrams" },
-            { label: isZh ? `第${data.number}卦 ${data.nameZh}` : `#${data.number} ${data.nameEn}` },
-          ]}
-        />
+        {/* Hero section — server-rendered when heroContent is provided (improves LCP),
+            falls back to inline rendering if used standalone */}
+        {heroContent ?? (
+          <>
+            {/* Breadcrumb */}
+            <Breadcrumb
+              className="mb-6"
+              items={[
+                { label: isZh ? "六十四卦" : "Hexagrams", href: "/hexagrams" },
+                { label: isZh ? `第${data.number}卦 ${data.nameZh}` : `#${data.number} ${data.nameEn}` },
+              ]}
+            />
 
-        {/* Header */}
-        <div className="text-center mb-10">
-          <span className="text-sm text-[var(--theme-text-secondary)]">
-            #{data.number}
-          </span>
-          <div className="flex items-center justify-center gap-2 text-[var(--color-gold)]/60 text-xl mt-2">
-            <span>{upper}</span>
-            <span>{lower}</span>
-          </div>
-          <HexagramLines symbol={data.symbol} nameZh={data.nameZh} nameEn={data.nameEn} number={data.number} />
-          <h1 className="text-4xl font-bold text-[var(--color-gold)] mt-3">
-            {data.nameZh}
-          </h1>
-          <p className="text-lg text-[var(--theme-text-muted)] mt-1">
-            {data.nameEn}
-          </p>
-          <p className="text-sm text-[var(--theme-text-secondary)] mt-2">
-            {isZh
-              ? `上卦：${data.upperTrigram} ｜ 下卦：${data.lowerTrigram}`
-              : `Upper: ${data.upperTrigram} | Lower: ${data.lowerTrigram}`}
-          </p>
-        </div>
+            {/* Header */}
+            <div className="text-center mb-10">
+              <span className="text-sm text-[var(--theme-text-secondary)]">
+                #{data.number}
+              </span>
+              <div className="flex items-center justify-center gap-2 text-[var(--color-gold)]/60 text-xl mt-2">
+                <span>{upper}</span>
+                <span>{lower}</span>
+              </div>
+              <HexagramLines symbol={data.symbol} nameZh={data.nameZh} nameEn={data.nameEn} number={data.number} />
+              <h1 className="text-4xl font-bold text-[var(--color-gold)] mt-3">
+                {data.nameZh}
+              </h1>
+              <p className="text-lg text-[var(--theme-text-muted)] mt-1">
+                {data.nameEn}
+              </p>
+              <p className="text-sm text-[var(--theme-text-secondary)] mt-2">
+                {isZh
+                  ? `上卦：${data.upperTrigram} ｜ 下卦：${data.lowerTrigram}`
+                  : `Upper: ${data.upperTrigram} | Lower: ${data.lowerTrigram}`}
+              </p>
+            </div>
+          </>
+        )}
 
         {/* Overview */}
         {(data.overviewZh || data.overviewEn) && (
