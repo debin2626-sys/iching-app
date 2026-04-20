@@ -493,7 +493,26 @@ function ResultInner() {
         // 保存失败静默处理
       });
     } else {
-      // 匿名用户：保存到本地存储
+      // 匿名用户：同时保存到数据库和本地存储
+      const anonymousSessionId = getOrCreateAnonymousSession();
+
+      // 1. 保存到数据库（与登录用户相同的 API，userId 为 null）
+      fetch("/api/divination", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...saveData, anonymousSessionId }),
+      }).then(async (res) => {
+        if (res.status === 429) {
+          const data = await res.json().catch(() => ({}));
+          if (data.code === "DAILY_LIMIT_EXCEEDED") {
+            setShowLimitBanner(true);
+          }
+        }
+      }).catch(() => {
+        // 保存失败静默处理，本地存储作为兜底
+      });
+
+      // 2. 同时保存到本地存储（离线兜底 + 未来登录后可迁移）
       const anonymousDivination = {
         id: `local_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         ...saveData,
