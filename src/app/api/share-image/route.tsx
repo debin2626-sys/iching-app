@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/error-boundaries */
 import { ImageResponse } from 'next/og';
 import { getHexagramByNumber } from '@/data/hexagrams';
 import { loadNotoSerifSC } from '@/lib/og/load-font';
