@@ -158,7 +158,10 @@
     "unknown": "Unknown",
     "tossProgress": "Toss {current} / 6",
     "changingLinesLabel": "Changing: {lines}",
-    "yaoNames": "1st,2nd,3rd,4th,5th,6th"
+    "yaoNames": "1st,2nd,3rd,4th,5th,6th",
+    "castingGuidance": "Focus on your question and cast the coins with sincerity",
+    "castingHint": "Each toss is a dialogue between you and the cosmos",
+    "skipRemaining": "Skip remaining, form hexagram"
   },
   "Result": {
     "hexagramNumber": "Hexagram #{num}",

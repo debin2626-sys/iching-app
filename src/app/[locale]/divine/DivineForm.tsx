@@ -116,7 +116,7 @@ export default function DivineForm() {
     if (subScenarioId) {
       params.set("sub", subScenarioId);
     }
-    router.push(`/divine/meditation?${params.toString()}`);
+    router.push(`/divination?${params.toString()}`);
   };
 
   return (

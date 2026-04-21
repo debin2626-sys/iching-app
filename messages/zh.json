@@ -158,7 +158,10 @@
     "unknown": "未知",
     "tossProgress": "第 {current} 次 / 共 6 次",
     "changingLinesLabel": "动爻：{lines}",
-    "yaoNames": "初爻,二爻,三爻,四爻,五爻,上爻"
+    "yaoNames": "初爻,二爻,三爻,四爻,五爻,上爻",
+    "castingGuidance": "心中默念所问之事，诚心抛掷铜钱",
+    "castingHint": "每一次抛掷，都是与天地的一次对话",
+    "skipRemaining": "跳过剩余，直接成卦"
   },
   "Result": {
     "hexagramNumber": "第{num}卦",

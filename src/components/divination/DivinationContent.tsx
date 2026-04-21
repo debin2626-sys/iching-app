@@ -11,7 +11,6 @@ import type { LineValue } from "@/lib/iching/coins";
 import { linesToBinary, getHexagramNumber } from "@/lib/iching/hexagram";
 import { PageLayout, Button, TextArea, Select } from "@/components/ui";
 import Card from "@/components/ui/Card";
-import MeditationGuide from "@/components/divination/MeditationGuide";
 import CoinToss from "@/components/divination/CoinToss";
 import CastingProgress from "@/components/divination/CastingProgress";
 import HexagramBuilder from "@/components/divination/HexagramBuilder";
@@ -309,21 +308,17 @@ function DivinationInner() {
     window.history.replaceState(null, "", newUrl);
   };
 
-  const [phase, setPhase] = useState<"meditation" | "shaking" | "done">("meditation");
+  const [phase, setPhase] = useState<"shaking" | "done">("shaking");
   const [lines, setLines] = useState<LineValue[]>([]);
   const [currentYao, setCurrentYao] = useState(0);
   const [showGoldenBurst, setShowGoldenBurst] = useState(false);
-  const tossStartTimeRef = useRef<number>(0);
+  const tossStartTimeRef = useRef<number>(Date.now());
 
-  const handleMeditationComplete = useCallback(() => {
-    setPhase("shaking");
-    tossStartTimeRef.current = Date.now();
-  }, []);
-
-  // 静心引导开始时播放背景音
+  // 开始摇卦时播放背景音
   useEffect(() => {
-    if (hasStarted && phase === "meditation") {
+    if (hasStarted && phase === "shaking") {
       sound.playBackground();
+      tossStartTimeRef.current = Date.now();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasStarted, phase]);
@@ -450,32 +445,9 @@ function DivinationInner() {
           「{question}」
         </p>
 
-        {/* 步骤指示器 */}
-        <div className="flex items-center gap-3 mb-12">
-          {[1, 2].map((s) => (
-            <div key={s} className="flex items-center gap-3">
-              <div
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
-                  (s === 1 && phase === "shaking") || (s <= 2 && phase === "done")
-                    ? "bg-[var(--gold)] shadow-[0_0_10px_color-mix(in_srgb,var(--color-gold)_50%,transparent)]"
-                    : "bg-[var(--theme-border)]"
-                }`}
-              />
-              {s < 2 && (
-                <div className={`w-8 h-px transition-all duration-500 ${
-                  phase === "done" ? "bg-[var(--gold)]/40" : "bg-[var(--theme-border)]"
-                }`} />
-              )}
-            </div>
-          ))}
-        </div>
+
 
         <AnimatePresence mode="wait">
-          {/* ═══ 静心引导阶段 ═══ */}
-          {phase === "meditation" && (
-            <MeditationGuide onComplete={handleMeditationComplete} duration={15} />
-          )}
-
           {/* ═══ 摇卦阶段 ═══ */}
           {phase === "shaking" && (
             <m.div
@@ -501,13 +473,16 @@ function DivinationInner() {
               {/* 进度指示器 */}
               <CastingProgress current={currentYao} total={6} />
 
-              {/* 提示文字 */}
+              {/* 引导文字 */}
               <p
-                className="text-sm font-title tracking-wider mt-4 mb-2"
+                className="text-sm font-title tracking-wider mt-4 mb-1"
                 style={{ color: "var(--theme-text-muted)" }}
               >
-                {currentYao < 6 ? "请诚心抛掷铜钱六次" : ""}
+                {currentYao < 6 ? tDiv("castingGuidance") : ""}
               </p>
+              {currentYao > 0 && currentYao < 6 && (
+                <p className="text-xs opacity-40 mb-2">{tDiv("castingHint")}</p>
+              )}
 
               {/* 铜钱抛掷动画 */}
               <Card variant="elevated" className="mb-6 my-6 overflow-visible">
@@ -519,6 +494,36 @@ function DivinationInner() {
                   />
                 </div>
               </Card>
+
+              {/* 跳过剩余按钮 */}
+              {currentYao > 0 && currentYao < 6 && (
+                <button
+                  onClick={() => {
+                    // Auto-complete remaining tosses with random values
+                    const remaining = 6 - currentYao;
+                    const newLines = [...lines];
+                    for (let i = 0; i < remaining; i++) {
+                      const coins = [2, 3].flatMap(v => [v, v]);
+                      const sum = (Math.random() < 0.5 ? 2 : 3) + (Math.random() < 0.5 ? 2 : 3) + (Math.random() < 0.5 ? 2 : 3);
+                      const lineValue = sum as LineValue;
+                      newLines.push(lineValue);
+                      trackCoinToss(currentYao + i, lineValue);
+                      trackFunnelCoinToss({
+                        yao_index: currentYao + i + 1,
+                        line_value: lineValue,
+                        is_changing: lineValue === 6 || lineValue === 9,
+                      });
+                    }
+                    setLines(newLines);
+                    setCurrentYao(6);
+                    handleAllTossComplete();
+                  }}
+                  className="mt-3 text-xs font-title tracking-wider opacity-40 hover:opacity-70 transition-opacity underline underline-offset-4"
+                  style={{ color: "var(--theme-text-muted)" }}
+                >
+                  {tDiv("skipRemaining")}
+                </button>
+              )}
 
               {/* 六爻逐步构建显示 */}
               {lines.length > 0 && (
