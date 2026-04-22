@@ -7,18 +7,11 @@ import { useTranslations } from "next-intl";
 import {
   trackDivinationLimitReached,
   trackViewLimitPopup,
-  trackClickUpgradePro,
-  trackClickKofiDonate,
   trackCloseLimitPopup,
 } from "@/lib/analytics";
 
 const STORAGE_KEY = "iching_daily_count";
 export const FREE_LIMIT = 3;
-
-// Ko-fi link (to be updated when finalized)
-const KOFI_URL = "https://ko-fi.com/51yijing";
-// Pro upgrade link (to be updated when finalized)
-const PRO_UPGRADE_URL = "/pricing";
 
 function getTodayKey(): string {
   const d = new Date();
@@ -65,7 +58,7 @@ interface DailyLimitModalProps {
 
 /**
  * 每日限制模态对话框
- * PRD: 居中显示，背景半透明置灰，X 图标关闭，升级到 Pro + Ko-fi 打赏两个按钮
+ * PRD: 居中显示，背景半透明置灰，X 图标关闭，免费注册按钮
  */
 export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps) {
   const t = useTranslations("DailyLimit");
@@ -82,14 +75,8 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
     onClose();
   };
 
-  const handleUpgradePro = () => {
-    trackClickUpgradePro();
-    window.location.href = PRO_UPGRADE_URL;
-  };
-
-  const handleKofiDonate = () => {
-    trackClickKofiDonate();
-    window.open(KOFI_URL, "_blank", "noopener,noreferrer");
+  const handleSignUp = () => {
+    window.location.href = '/auth/signin';
   };
 
   return (
@@ -136,27 +123,15 @@ export function DailyLimitBanner({ show, onClose, userId }: DailyLimitModalProps
                 <p className="text-sm text-[var(--theme-text-muted)] leading-relaxed">
                   {t("description", { limit: FREE_LIMIT })}
                 </p>
-                <p className="text-sm text-[var(--theme-text-muted)] leading-relaxed mt-2">
-                  {t("upgradeHint")}
-                </p>
               </div>
 
               {/* 操作按钮 */}
               <div className="flex flex-col gap-3 mt-5">
-                {/* 主按钮：升级到 Pro */}
                 <button
-                  onClick={handleUpgradePro}
+                  onClick={handleSignUp}
                   className="w-full h-12 rounded-xl bg-[var(--color-vermilion)] hover:bg-[var(--color-vermilion-bright)] text-white font-bold font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2 shadow-lg border border-[var(--color-gold)]"
                 >
-                  ✨ {t("upgradePro")}
-                </button>
-
-                {/* 次按钮：Ko-fi 打赏 */}
-                <button
-                  onClick={handleKofiDonate}
-                  className="w-full h-12 rounded-xl border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:border-[var(--color-gold)]/60 hover:text-[var(--color-gold-bright)] font-title tracking-wide transition-all duration-200 flex items-center justify-center gap-2"
-                >
-                  ☕️ {t("kofiDonate")}
+                  {t("continueAfterRegister")}
                 </button>
               </div>
             </motion.div>

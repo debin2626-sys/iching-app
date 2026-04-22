@@ -355,13 +355,12 @@
     "message": "Free accounts include {limit} readings per day. Come back tomorrow to continue.",
     "description": "Thank you for using our service! We provide {limit} free divination readings per day for each user.",
     "loginHint": "Sign in to track your divination history",
-    "upgradeHint": "If you find this tool helpful and want unlimited readings, consider upgrading to Pro. Your support drives our continuous improvement!",
+    "tomorrowHint": "Come back tomorrow, or sign up to remove the limit",
     "loginButton": "Sign In",
     "understood": "Got it",
     "localCount": "{used} of {limit} readings used today",
     "close": "Close",
-    "upgradePro": "Upgrade to Pro (Unlimited)",
-    "kofiDonate": "Donate on Ko-fi"
+    "continueAfterRegister": "Sign up free to continue"
   },
   "Error": {
     "title": "The Oracle is Silent",
@@ -378,7 +377,6 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "contact": "Contact Us",
-    "kofiSupport": "☕ Support Us",
     "divination": "Start Divination",
     "hexagrams": "64 Hexagrams",
     "history": "History",
@@ -433,74 +431,12 @@
     "loginRequired": "Sign in to view your monthly outlook",
     "loginButton": "Sign In"
   },
-  "Pricing": {
-    "title": "Choose Your Path",
-    "subtitle": "Unlock Unlimited Divination · Deep Insights",
-    "popular": "Most Popular",
-    "buyButton": "Get Started",
-    "note": "All payments are securely processed through Ko-fi. After payment, sign in with the same email to activate your membership automatically.",
-    "paymentNote": "Having trouble with payment? Contact us for help.",
-    "tiers": {
-      "BASIC": {
-        "icon": "🔮",
-        "name": "Single Reading",
-        "period": "/ reading",
-        "description": "Unlock one deep AI divination reading",
-        "features": [
-          "One complete reading",
-          "AI deep interpretation",
-          "Detailed hexagram analysis"
-        ]
-      },
-      "MONTHLY": {
-        "icon": "🌙",
-        "name": "Monthly",
-        "period": "/ month",
-        "description": "Unlimited readings + priority interpretation",
-        "features": [
-          "Unlimited readings",
-          "Priority AI interpretation",
-          "History saved",
-          "Member badge"
-        ]
-      },
-      "QUARTERLY": {
-        "icon": "⭐",
-        "name": "Quarterly",
-        "period": "/ quarter",
-        "description": "3 months unlimited, better value",
-        "features": [
-          "Unlimited readings",
-          "Priority AI interpretation",
-          "History saved",
-          "Member badge",
-          "Save $5"
-        ]
-      },
-      "ANNUAL": {
-        "icon": "👑",
-        "name": "Annual",
-        "period": "/ year",
-        "description": "Full year unlimited, best value",
-        "features": [
-          "Unlimited readings",
-          "Priority AI interpretation",
-          "History saved",
-          "Member badge",
-          "Save $60",
-          "Priority support"
-        ]
-      }
-    }
-  },
   "Subscription": {
     "title": "Membership",
     "freeUser": "Free User",
     "freeDesc": "3 free readings per day",
-    "upgradeButton": "Upgrade",
     "tier": "Current Plan",
     "expiresAt": "Expires",
-    "renewButton": "Renew",
     "active": "Active",
     "tierNames": {
       "MONTHLY": "Monthly",
@@ -657,5 +593,26 @@
     "posterDownloading": "Generating…",
     "posterShare": "📤 Share",
     "posterHint": "Long press to save, share to social media"
+  },
+  "Features": {
+    "title": "Ancient Wisdom, Free for Everyone",
+    "subtitle": "51 I Ching · Making millennia of wisdom accessible to all",
+    "features": {
+      "divination": { "title": "Unlimited Free Readings", "desc": "Anytime, anywhere — AI-powered deep interpretation for every hexagram" },
+      "daily": { "title": "Daily Classical Wisdom", "desc": "A daily dose of timeless insight, delivered straight to your inbox" },
+      "hexagrams": { "title": "Complete Hexagram Texts", "desc": "All 64 hexagrams with original text, modern translation, and commentary" },
+      "encyclopedia": { "title": "I Ching Encyclopedia", "desc": "A comprehensive knowledge base for learning the I Ching from beginner to advanced" },
+      "history": { "title": "Reading History", "desc": "Sign up to automatically save every reading for future reflection" }
+    },
+    "freeTitle": "Everything, completely free",
+    "supportTitle": "How to Support Us",
+    "supportDesc": "51 I Ching is and always will be free. If this ancient wisdom has been meaningful to you, consider subscribing to the author's column for deeper analysis of the I Ching in modern life.",
+    "supportLink": "Deep Analysis Column →",
+    "faqTitle": "FAQ",
+    "faq": {
+      "whyFree": { "q": "Why is it completely free?", "a": "We believe ancient wisdom should be accessible to everyone. All core features of 51 I Ching are free forever, with no barriers." },
+      "privacy": { "q": "Is my reading data safe?", "a": "Absolutely. We never share your reading content with third parties. Unregistered users' data is stored only in the local browser." },
+      "author": { "q": "About the Author", "a": "51 I Ching was created by an independent developer passionate about traditional culture, dedicated to making I Ching wisdom accessible through modern technology." }
+    }
   }
 }

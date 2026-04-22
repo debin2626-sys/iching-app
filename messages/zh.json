@@ -386,13 +386,12 @@
     "message": "免费用户每天可占卜 {limit} 次，明日可继续。",
     "description": "感谢你的使用！我们为每位用户提供每日 {limit} 次的免费占卜体验。",
     "loginHint": "登录账号以追踪你的占卜记录",
-    "upgradeHint": "如果你觉得这个工具对你有帮助，并希望获得无限次占卜机会，可以考虑升级到 Pro 版本。你的支持是我们持续改进的最大动力！",
+    "tomorrowHint": "明天再来，或注册后解除限制",
     "loginButton": "登录",
     "understood": "知道了",
     "localCount": "今日已占卜 {used}/{limit} 次",
     "close": "关闭",
-    "upgradePro": "升级到 Pro (无限次)",
-    "kofiDonate": "去 Ko-fi 打赏"
+    "continueAfterRegister": "免费注册后可继续"
   },
   "Error": {
     "title": "天机不可泄露",
@@ -426,81 +425,18 @@
     "privacy": "隐私政策",
     "terms": "服务条款",
     "contact": "联系我们",
-    "kofiSupport": "☕ 打赏支持",
     "divination": "开始占卜",
     "hexagrams": "六十四卦",
     "history": "占卜历史",
     "guide": "入门指南",
     "features": "功能"
   },
-  "Pricing": {
-    "title": "选择你的问道之路",
-    "subtitle": "解锁无限占卜 · 深度解读",
-    "popular": "最受欢迎",
-    "buyButton": "前往支付",
-    "note": "所有付费方案均通过 Ko-fi 安全支付。完成支付后，请使用相同邮箱登录以自动激活会员权益。",
-    "paymentNote": "支付遇到问题？请联系我们获取帮助。",
-    "tiers": {
-      "BASIC": {
-        "icon": "🔮",
-        "name": "单次占卜",
-        "period": "/ 次",
-        "description": "解锁一次深度 AI 占卜解读",
-        "features": [
-          "一次完整占卜体验",
-          "AI 深度解读",
-          "卦象详细分析"
-        ]
-      },
-      "MONTHLY": {
-        "icon": "🌙",
-        "name": "月度会员",
-        "period": "/ 月",
-        "description": "无限次占卜 + 优先解读",
-        "features": [
-          "无限次占卜",
-          "AI 优先解读",
-          "历史记录保存",
-          "专属会员标识"
-        ]
-      },
-      "QUARTERLY": {
-        "icon": "⭐",
-        "name": "季度会员",
-        "period": "/ 季",
-        "description": "3个月无限占卜，更划算",
-        "features": [
-          "无限次占卜",
-          "AI 优先解读",
-          "历史记录保存",
-          "专属会员标识",
-          "节省 $5"
-        ]
-      },
-      "ANNUAL": {
-        "icon": "👑",
-        "name": "年度会员",
-        "period": "/ 年",
-        "description": "全年无限占卜，最超值",
-        "features": [
-          "无限次占卜",
-          "AI 优先解读",
-          "历史记录保存",
-          "专属会员标识",
-          "节省 $60",
-          "优先客服支持"
-        ]
-      }
-    }
-  },
   "Subscription": {
     "title": "会员状态",
     "freeUser": "免费用户",
     "freeDesc": "每日 3 次免费占卜",
-    "upgradeButton": "升级会员",
     "tier": "当前方案",
     "expiresAt": "到期时间",
-    "renewButton": "续费",
     "active": "生效中",
     "tierNames": {
       "MONTHLY": "月度会员",
@@ -657,5 +593,26 @@
     "posterDownloading": "生成中…",
     "posterShare": "📤 分享",
     "posterHint": "长按图片保存，分享到朋友圈或社交平台"
+  },
+  "Features": {
+    "title": "免费为所有人提供古典智慧",
+    "subtitle": "51易经 · 让每个人都能触及千年智慧",
+    "features": {
+      "divination": { "title": "无限次免费占卜", "desc": "随时随地，不限次数，AI 深度解读每一卦" },
+      "daily": { "title": "每日古典智慧", "desc": "每天一则经典智慧，邮件订阅直达你的收件箱" },
+      "hexagrams": { "title": "完整卦辞解读", "desc": "六十四卦原文、白话译文、象辞彖辞一应俱全" },
+      "encyclopedia": { "title": "六十四卦百科", "desc": "系统学习易经，从入门到精通的完整知识库" },
+      "history": { "title": "占卜历史记录", "desc": "注册后自动保存每次占卜，随时回顾与反思" }
+    },
+    "freeTitle": "所有功能，完全免费",
+    "supportTitle": "如何支持我们",
+    "supportDesc": "51易经始终免费开放。如果这些古典智慧对你有所启发，欢迎订阅作者的深度解读专栏，获取更多易经在现代生活中的应用分析。",
+    "supportLink": "深度解读专栏 →",
+    "faqTitle": "常见问题",
+    "faq": {
+      "whyFree": { "q": "为什么完全免费？", "a": "我们相信古典智慧应该人人可及。51易经的核心功能永远免费，不设任何使用门槛。" },
+      "privacy": { "q": "我的占卜数据安全吗？", "a": "绝对安全。我们不会将你的占卜内容分享给任何第三方。未注册用户的数据仅存储在本地浏览器中。" },
+      "author": { "q": "关于作者", "a": "51易经由一位热爱传统文化的独立开发者创建，致力于用现代技术让更多人了解和受益于易经智慧。" }
+    }
   }
 }

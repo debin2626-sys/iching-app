@@ -279,41 +279,25 @@ export default function ProfileContent() {
           <Card variant="elevated" padding="lg" className="mb-6">
             <h2 className="text-base text-[var(--color-gold)]/60 tracking-widest mb-4 uppercase">{tSub("title")}</h2>
             {subscription ? (
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-lg font-title text-[var(--color-gold-bright)]">
-                      {tSub(`tierNames.${subscription.tier}`)}
-                    </span>
-                    <span className="px-2 py-0.5 rounded-full bg-green-900/40 text-green-400 text-xs border border-green-700/40">
-                      {tSub("active")}
-                    </span>
-                  </div>
-                  {subscription.endDate && (
-                    <p className="text-sm text-zinc-500">
-                      {tSub("expiresAt")}: {formatDate(subscription.endDate, locale)}
-                    </p>
-                  )}
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg font-title text-[var(--color-gold-bright)]">
+                    {tSub(`tierNames.${subscription.tier}`)}
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full bg-green-900/40 text-green-400 text-xs border border-green-700/40">
+                    {tSub("active")}
+                  </span>
                 </div>
-                <Link
-                  href="/pricing"
-                  className="px-4 py-2 rounded-lg border border-gold/40 text-gold text-sm hover:border-gold/70 hover:bg-gold/10 transition-all"
-                >
-                  {tSub("renewButton")}
-                </Link>
+                {subscription.endDate && (
+                  <p className="text-sm text-zinc-500">
+                    {tSub("expiresAt")}: {formatDate(subscription.endDate, locale)}
+                  </p>
+                )}
               </div>
             ) : (
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-lg font-title text-zinc-400 mb-1">{tSub("freeUser")}</p>
-                  <p className="text-sm text-zinc-600">{tSub("freeDesc")}</p>
-                </div>
-                <Link
-                  href="/pricing"
-                  className="px-4 py-2 rounded-lg bg-gold text-bg text-sm font-bold hover:bg-gold-bright transition-all"
-                >
-                  {tSub("upgradeButton")}
-                </Link>
+              <div>
+                <p className="text-lg font-title text-zinc-400 mb-1">{tSub("freeUser")}</p>
+                <p className="text-sm text-zinc-600">{tSub("freeDesc")}</p>
               </div>
             )}
           </Card>

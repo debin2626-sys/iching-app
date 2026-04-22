@@ -356,24 +356,6 @@ export function trackViewLimitPopup(userId?: string | null) {
   });
 }
 
-/** 用户点击"升级到 Pro"按钮时 */
-export function trackClickUpgradePro() {
-  sendEvent({
-    action: "click_upgrade_pro",
-    category: "monetization",
-    source: "limit_popup",
-  });
-}
-
-/** 用户点击"去 Ko-fi 打赏"按钮时 */
-export function trackClickKofiDonate() {
-  sendEvent({
-    action: "click_kofi_donate",
-    category: "monetization",
-    source: "limit_popup",
-  });
-}
-
 /** 用户通过 "X" 图标关闭弹窗时 */
 export function trackCloseLimitPopup(userId?: string | null) {
   sendEvent({
