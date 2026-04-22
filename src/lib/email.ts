@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-const FROM_EMAIL = process.env.EMAIL_FROM || '51易经 <noreply@51yijing.cn>'
+const FROM_EMAIL = process.env.EMAIL_FROM || '51易经 <no-reply@51yijing.com>'
 const SITE_URL = process.env.NEXTAUTH_URL || 'https://51yijing.com'
 
 export async function sendVerificationEmail({

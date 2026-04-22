@@ -37,3 +37,28 @@ Safe to run multiple times (idempotent).
 ```bash
 npx tsx scripts/seed-hexagram-nature.ts
 ```
+
+### `seed-daily-lessons.ts`
+Seeds the `DailyLesson` table from pre-generated JSON files in `scripts/data/`.
+
+Reads from:
+- `scripts/data/yijing-lessons.json` — I Ching line-by-line lessons (384 records)
+- `scripts/data/daoist-lessons.json` — Daoist philosophy lessons
+
+Upserts are idempotent via the `(school, slug, locale)` unique constraint — safe to re-run.
+
+```bash
+# Seed all schools
+npx tsx scripts/seed-daily-lessons.ts --school=all
+
+# Seed a specific school
+npx tsx scripts/seed-daily-lessons.ts --school=yijing
+npx tsx scripts/seed-daily-lessons.ts --school=daoist
+
+# Preview without writing
+npx tsx scripts/seed-daily-lessons.ts --school=all --dry-run
+```
+
+**JSON file format** (`scripts/data/*.json`): array of objects with fields:
+`school`, `dayIndex`, `slug`, `title`, `subtitle`, `classicText`, `wisdom`, `action`,
+and optionally `caution`, `meditation`, `hexagramId`, `sourceRef`, `locale` (defaults to `zh`).
