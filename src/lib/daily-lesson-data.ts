@@ -56,3 +56,20 @@ export async function getDailyLessonByDayIndex(school: School, dayIndex: number,
     include: { hexagram: true },
   });
 }
+
+/**
+ * 获取归档列表（分页）
+ */
+export async function getDailyLessonArchive(school: School, locale = 'zh', page = 1, pageSize = 20) {
+  const [lessons, total] = await Promise.all([
+    prisma.dailyLesson.findMany({
+      where: { school, locale },
+      select: { slug: true, title: true, subtitle: true, dayIndex: true },
+      orderBy: { dayIndex: 'desc' },
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+    }),
+    prisma.dailyLesson.count({ where: { school, locale } }),
+  ]);
+  return { lessons, total, totalPages: Math.ceil(total / pageSize) };
+}
