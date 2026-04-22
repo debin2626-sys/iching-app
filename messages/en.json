@@ -649,6 +649,13 @@
     "breadcrumbArchive": "Lesson Archive",
     "yijingMetaSuffix": "Daily Classical Wisdom — 51yijing.com",
     "daoistMetaSuffix": "Daily Classical Wisdom — 51yijing.com",
-    "sharePoster": "📤 Share Today's Wisdom"
+    "sharePoster": "📤 Share Today's Wisdom",
+    "shareButton": "Share Today's Wisdom",
+    "shareTitle": "Daily Classical Wisdom — 51yijing.com",
+    "posterAlt": "Daily classical wisdom share poster",
+    "posterDownload": "💾 Save Image",
+    "posterDownloading": "Generating…",
+    "posterShare": "📤 Share",
+    "posterHint": "Long press to save, share to social media"
   }
 }

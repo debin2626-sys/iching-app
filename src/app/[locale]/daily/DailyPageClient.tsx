@@ -12,6 +12,7 @@ import ComingSoonGrid from "@/components/daily/ComingSoonGrid";
 import { Skeleton } from "@/components/ui/Skeleton";
 import DailyLessonCard from "@/components/daily/DailyLessonCard";
 import type { LessonData } from "@/components/daily/DailyLessonCard";
+import DailySharePoster from "@/components/daily/DailySharePoster";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
@@ -162,6 +163,13 @@ function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarD
       ) : lesson ? (
         <>
           <DailyLessonCard lesson={lesson} school={school} dayIndex={dayIndex} />
+
+          {/* Share poster */}
+          <DailySharePoster
+            lesson={lesson}
+            date={lunar.solarDisplay.replace(/[年月]/g, ".").replace("日", "")}
+          />
+
           {/* Link to permanent page */}
           <div className="text-center">
             <Link

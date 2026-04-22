@@ -663,6 +663,13 @@
     "breadcrumbArchive": "日課歸檔",
     "yijingMetaSuffix": "每日古典智慧 — 51yijing.com",
     "daoistMetaSuffix": "每日古典智慧 — 51yijing.com",
-    "sharePoster": "📤 分享今日智慧"
+    "sharePoster": "📤 分享今日智慧",
+    "shareButton": "分享今日智慧",
+    "shareTitle": "每日古典智慧 — 51yijing.com",
+    "posterAlt": "今日古典智慧分享海報",
+    "posterDownload": "💾 儲存圖片",
+    "posterDownloading": "生成中…",
+    "posterShare": "📤 分享",
+    "posterHint": "長按圖片儲存，分享到社群平台"
   }
 }
