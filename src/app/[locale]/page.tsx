@@ -13,6 +13,7 @@ import { TrustSection } from '@/components/home/TrustSection';
 import { FaqCtaSection } from '@/components/home/FaqCtaSection';
 import { GuideLinksSection } from '@/components/home/GuideLinksSection';
 import { PopularHexagramsSection } from '@/components/home/PopularHexagramsSection';
+import { DailyLessonEntrySection } from '@/components/home/DailyLessonEntrySection';
 import { StickyCtaBar } from '@/components/home/StickyCtaBar';
 import { HowItWorksSection } from '@/components/home/HowItWorksSection';
 import { prisma } from '@/lib/prisma';
@@ -112,6 +113,9 @@ export default async function HomePage({
 
           {/* 用户评价 */}
           <UserReviews />
+
+          {/* 日课入口 */}
+          <DailyLessonEntrySection />
 
           {/* 入门指南内链 */}
           <GuideLinksSection locale={locale} />
