@@ -70,10 +70,12 @@ model Hexagram {
   relatedHexagramsNote String?
   references         Json?
   lines              Json
+  nature             String?      // "ji" | "xiong" | "ping" | "mixed"
   divinations        Divination[] @relation("PrimaryHexagram")
   changedDivinations Divination[] @relation("ChangedHexagram")
   favorites          Favorite[]
   knowledgeChunks    KnowledgeChunk[]
+  dailyLessons       DailyLesson[]
 }
 
 model Divination {
@@ -276,3 +278,43 @@ model Subscription {
 //   subscriptions Subscription[]
 //   totalDonated Decimal  @default(0)
 // }
+
+// ========== Daily Lesson Models ==========
+
+model DailyLesson {
+  id          String   @id @default(cuid())
+  school      String   // "yijing" | "daoist"
+  dayIndex    Int      // 轮转序号: 1-384 (卦序) 或 1-120 (清静)
+  slug        String   // URL slug: "qian-chujiu", "daodejing-01"
+  title       String   // "乾卦 · 初九"
+  subtitle    String   // "潜龙勿用"
+  classicText String   @db.Text  // 经典原文
+  wisdom      String   @db.Text  // 今日智慧 / 一日一悟
+  action      String   // 行动建议（一句话，动词开头）
+  caution     String?  // 风险提醒（反 sycophancy）
+  meditation  String?  @db.Text  // 静心引导（仅清静派）
+  hexagramId  Int?     // 关联卦象（仅卦序派）
+  sourceRef   String?  // 出处: "道德经第十六章"
+  locale      String   @default("zh")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  hexagram    Hexagram? @relation(fields: [hexagramId], references: [number])
+
+  @@unique([school, slug, locale])
+  @@unique([school, dayIndex, locale])
+  @@index([school, dayIndex])
+}
+
+model EmailSubscription {
+  id          String   @id @default(cuid())
+  email       String
+  school      String   // "yijing" | "daoist" | "all"
+  verified    Boolean  @default(false)
+  verifyToken String?
+  unsubToken  String   @default(cuid())
+  createdAt   DateTime @default(now())
+
+  @@unique([email, school])
+  @@index([verified])
+}
