@@ -31,6 +31,13 @@ export async function generateMetadata({
   const canonical = `${SITE_URL}${prefix}/daily/yijing/${slug}`;
   const title = `${lesson.title} · ${lesson.subtitle} | ${t('yijingMetaSuffix')}`;
   const description = lesson.wisdom.slice(0, 160);
+  const ogImageUrl = `${SITE_URL}/api/daily-share-image?${new URLSearchParams({
+    quote: lesson.classicText.slice(0, 100),
+    source: lesson.sourceRef || lesson.title,
+    book: '易经',
+    advice: lesson.action || '',
+    date: lesson.slug,
+  }).toString()}`;
 
   return {
     title,
@@ -44,13 +51,13 @@ export async function generateMetadata({
       description,
       url: canonical,
       type: 'article',
-      images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+      images: [{ url: ogImageUrl, width: 1242, height: 1656 }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/og-image.png'],
+      images: [ogImageUrl],
     },
   };
 }
@@ -113,7 +120,7 @@ export default async function YijingDailyLessonPage({
 
       <BrushDivider />
 
-      <EmailSubscribeForm />
+      <EmailSubscribeForm school="yijing" />
     </PageLayout>
   );
 }

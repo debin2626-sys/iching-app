@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { randomBytes } from 'crypto'
+import { sendVerificationEmail } from '@/lib/email'
 
 /**
  * POST /api/daily/subscribe
@@ -49,8 +50,18 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    // TODO: Send verification email via Resend
-    // For now, return the token in dev mode for testing
+    // Send verification email via Resend
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('[subscribe] RESEND_API_KEY is not set — skipping email send')
+    } else {
+      try {
+        await sendVerificationEmail({ to: email, verifyToken, school: selectedSchool })
+      } catch (emailError) {
+        // Subscription is saved; email can be retried — don't fail the request
+        console.error('[subscribe] Email send failed (subscription saved):', emailError)
+      }
+    }
+
     const response: Record<string, string> = {
       status: 'pending_verification',
       message: '验证邮件已发送，请查收邮箱完成订阅。',

@@ -10,11 +10,13 @@ interface EmailSubscribeFormProps {
   cta?: string;
   /** Compact single-row layout */
   inline?: boolean;
+  school?: "yijing" | "daoist" | "all";
 }
 
 export default function EmailSubscribeForm({
   cta,
   inline = true,
+  school,
 }: EmailSubscribeFormProps) {
   const t = useTranslations("Daily");
   const [email, setEmail] = useState("");
@@ -44,7 +46,7 @@ export default function EmailSubscribeForm({
       const res = await fetch("/api/daily/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, school: "yijing" }),
+        body: JSON.stringify({ email, school: school ?? "all" }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));

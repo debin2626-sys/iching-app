@@ -32,17 +32,34 @@ export async function generateMetadata({
   const localePrefix = getLocalePrefix(locale);
   const canonical = `${SITE_URL}${localePrefix}/daily/daoist/${slug}`;
   const title = `${lesson.title} · ${lesson.subtitle} | ${t('daoistMetaSuffix')}`;
+  const description = lesson.wisdom.slice(0, 160);
+  const ogImageUrl = `${SITE_URL}/api/daily-share-image?${new URLSearchParams({
+    quote: lesson.classicText.slice(0, 100),
+    source: lesson.sourceRef || lesson.title,
+    book: '道德经',
+    advice: lesson.action || '',
+    date: lesson.slug,
+  }).toString()}`;
 
   return {
     title,
+    description,
     alternates: {
       canonical,
       languages: getAlternateLanguages(`/daily/daoist/${slug}`),
     },
     openGraph: {
       title,
+      description,
       url: canonical,
       type: 'article',
+      images: [{ url: ogImageUrl, width: 1242, height: 1656 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImageUrl],
     },
   };
 }
@@ -101,7 +118,7 @@ export default async function DaoistLessonPage({
         totalLessons={totalLessons}
       />
       <BrushDivider />
-      <EmailSubscribeForm />
+      <EmailSubscribeForm school="daoist" />
     </PageLayout>
   );
 }
