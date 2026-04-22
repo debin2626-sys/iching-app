@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 interface CountdownTimerProps {
   targetDate: string; // ISO date string e.g. "2026-05-01"
@@ -25,13 +26,14 @@ function calcTimeLeft(target: string): TimeLeft | null {
 }
 
 const UNITS = [
-  { key: "days", label: "天" },
-  { key: "hours", label: "时" },
-  { key: "minutes", label: "分" },
-  { key: "seconds", label: "秒" },
+  { key: "days", labelKey: "countdownDays" },
+  { key: "hours", labelKey: "countdownHours" },
+  { key: "minutes", labelKey: "countdownMinutes" },
+  { key: "seconds", labelKey: "countdownSeconds" },
 ] as const;
 
 export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
+  const t = useTranslations("Daily");
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -49,7 +51,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
         className="flex justify-center gap-3"
         role="timer"
         aria-live="polite"
-        aria-label="倒计时"
+        aria-label={t("countdownLabel")}
       >
         {UNITS.map((u) => (
           <div key={u.key} className="flex flex-col items-center gap-1">
@@ -60,7 +62,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
               --
             </span>
             <span className="text-xs" style={{ color: "var(--theme-text-muted)" }}>
-              {u.label}
+              {t(u.labelKey)}
             </span>
           </div>
         ))}
@@ -73,7 +75,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
       className="flex justify-center gap-3"
       role="timer"
       aria-live="polite"
-      aria-label="倒计时"
+      aria-label={t("countdownLabel")}
     >
       {UNITS.map((u) => (
         <div key={u.key} className="flex flex-col items-center gap-1">
@@ -89,7 +91,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
             {String(timeLeft[u.key]).padStart(2, "0")}
           </span>
           <span className="text-xs" style={{ color: "var(--theme-text-muted)" }}>
-            {u.label}
+            {t(u.labelKey)}
           </span>
         </div>
       ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 
@@ -12,9 +13,10 @@ interface EmailSubscribeFormProps {
 }
 
 export default function EmailSubscribeForm({
-  cta = "免费订阅",
+  cta,
   inline = true,
 }: EmailSubscribeFormProps) {
+  const t = useTranslations("Daily");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -25,7 +27,7 @@ export default function EmailSubscribeForm({
         className="text-sm text-center py-3"
         style={{ color: "var(--color-gold)" }}
       >
-        ✅ 查看邮箱，点击验证链接即可完成订阅
+        {t("subscribeSuccess")}
       </p>
     );
   }
@@ -33,7 +35,7 @@ export default function EmailSubscribeForm({
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setErrorMsg("请输入有效的邮箱地址");
+      setErrorMsg(t("subscribeInvalidEmail"));
       return;
     }
     setStatus("loading");
@@ -46,12 +48,12 @@ export default function EmailSubscribeForm({
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || "订阅失败，请稍后重试");
+        throw new Error(data.error || t("subscribeFailed"));
       }
       setStatus("success");
     } catch (err) {
       setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "订阅失败，请稍后重试");
+      setErrorMsg(err instanceof Error ? err.message : t("subscribeFailed"));
     }
   }
 
@@ -69,7 +71,7 @@ export default function EmailSubscribeForm({
           error={errorMsg || undefined}
           size="md"
           disabled={status === "loading"}
-          aria-label="邮箱地址"
+          aria-label={t("subscribeEmailLabel")}
         />
       </div>
       <Button
@@ -79,7 +81,7 @@ export default function EmailSubscribeForm({
         loading={status === "loading"}
         className="shrink-0"
       >
-        {cta}
+        {cta ?? t("subscribeCta")}
       </Button>
     </form>
   );

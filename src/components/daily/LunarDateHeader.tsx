@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { LunarDateInfo } from "@/lib/daily-lesson";
 
 interface LunarDateHeaderProps {
@@ -7,6 +8,7 @@ interface LunarDateHeaderProps {
 }
 
 export default function LunarDateHeader({ lunar }: LunarDateHeaderProps) {
+  const t = useTranslations("Daily");
   return (
     <div className="text-center space-y-1">
       <p
@@ -16,7 +18,7 @@ export default function LunarDateHeader({ lunar }: LunarDateHeaderProps) {
         📅 {lunar.solarDisplay}
       </p>
       <p className="text-sm" style={{ color: "var(--theme-text-secondary)" }}>
-        农历{lunar.lunarDisplay}
+        {t("lunarPrefix")}{lunar.lunarDisplay}
         {lunar.solarTerm && (
           <span style={{ color: "var(--color-gold)" }}> · {lunar.solarTerm}</span>
         )}

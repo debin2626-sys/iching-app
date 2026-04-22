@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Card from "@/components/ui/Card";
 import BrushDivider from "@/components/ui/BrushDivider";
@@ -6,7 +7,8 @@ import BrushDivider from "@/components/ui/BrushDivider";
  * 首页日课入口卡片 — 引导用户进入 /daily
  * 纯 server component，无状态
  */
-export function DailyLessonEntrySection() {
+export async function DailyLessonEntrySection({ locale }: { locale: string }) {
+  const t = await getTranslations({ locale, namespace: "Daily" });
   return (
     <section className="mt-16">
       <BrushDivider />
@@ -17,10 +19,10 @@ export function DailyLessonEntrySection() {
           className="text-lg"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-gold)" }}
         >
-          每日古典智慧
+          {t("title")}
         </h2>
         <p className="text-sm" style={{ color: "var(--theme-text-secondary)" }}>
-          每天一条来自《周易》或道家经典的智慧，免费订阅
+          {t("subtitle")}
         </p>
       </div>
 
@@ -31,10 +33,10 @@ export function DailyLessonEntrySection() {
             className="text-base text-center mt-2"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-gold)" }}
           >
-            易经卦序
+            {t("yijingSchool")}
           </p>
           <p className="text-xs text-center mt-1" style={{ color: "var(--theme-text-muted)" }}>
-            384天完整周期
+            {t("yijingCycle")}
           </p>
         </Card>
         <Card variant="default" padding="md">
@@ -43,10 +45,10 @@ export function DailyLessonEntrySection() {
             className="text-base text-center mt-2"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-gold)" }}
           >
-            道家清静
+            {t("daoistSchool")}
           </p>
           <p className="text-xs text-center mt-1" style={{ color: "var(--theme-text-muted)" }}>
-            120天静心引导
+            {t("daoistCycle")}
           </p>
         </Card>
       </div>
@@ -61,7 +63,7 @@ export function DailyLessonEntrySection() {
             fontFamily: "var(--font-display)",
           }}
         >
-          免费开始 →
+          {t("startFree")}
         </Link>
       </div>
     </section>

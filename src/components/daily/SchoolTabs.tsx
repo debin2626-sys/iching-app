@@ -1,6 +1,7 @@
 "use client";
 
 import { m, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import type { School } from "@/lib/daily-lesson";
 
 interface SchoolTabsProps {
@@ -8,17 +9,19 @@ interface SchoolTabsProps {
   onChange: (school: School) => void;
 }
 
-const TABS: { key: School; label: string }[] = [
-  { key: "yijing", label: "今日一卦" },
-  { key: "daoist", label: "每日静心" },
-];
-
 export default function SchoolTabs({ active, onChange }: SchoolTabsProps) {
+  const t = useTranslations("Daily");
+
+  const TABS: { key: School; label: string }[] = [
+    { key: "yijing", label: t("tabYijing") },
+    { key: "daoist", label: t("tabDaoist") },
+  ];
+
   return (
     <div
       className="flex justify-center gap-6"
       role="tablist"
-      aria-label="流派切换"
+      aria-label={t("tabListLabel")}
     >
       {TABS.map((tab) => {
         const isActive = active === tab.key;

@@ -7,6 +7,7 @@ import SchoolTabs from '@/components/daily/SchoolTabs';
 import Card from '@/components/ui/Card';
 import BrushDivider from '@/components/ui/BrushDivider';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface ArchiveLesson {
   slug: string;
@@ -24,6 +25,7 @@ interface Props {
 }
 
 export default function ArchiveClient({ school, lessons, total, totalPages, currentPage }: Props) {
+  const t = useTranslations('Daily');
   const router = useRouter();
 
   function handleSchoolChange(s: School) {
@@ -36,10 +38,10 @@ export default function ArchiveClient({ school, lessons, total, totalPages, curr
     <div className="space-y-6">
       <div className="text-center space-y-2">
         <h1 className="text-xl" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-gold)' }}>
-          📚 日课归档
+          {t('archiveHeading')}
         </h1>
         <p className="text-sm" style={{ color: 'var(--theme-text-muted)' }}>
-          共 {total} 篇已发布
+          {t('archiveTotal', { total })}
         </p>
       </div>
 
@@ -48,7 +50,7 @@ export default function ArchiveClient({ school, lessons, total, totalPages, curr
       {lessons.length === 0 ? (
         <Card variant="default" padding="lg">
           <p className="text-center text-sm" style={{ color: 'var(--theme-text-muted)' }}>
-            暂无内容
+            {t('archiveEmpty')}
           </p>
         </Card>
       ) : (
@@ -59,7 +61,7 @@ export default function ArchiveClient({ school, lessons, total, totalPages, curr
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-base" style={{ fontFamily: 'var(--font-display)', color: 'var(--theme-text-primary)' }}>
-                      第 {l.dayIndex} 天 · {l.title}
+                      {t('archiveItem', { dayIndex: l.dayIndex, title: l.title })}
                     </p>
                     <p className="text-sm mt-0.5" style={{ color: 'var(--theme-text-secondary)' }}>
                       「{l.subtitle}」
@@ -77,18 +79,18 @@ export default function ArchiveClient({ school, lessons, total, totalPages, curr
       {totalPages > 1 && (
         <>
           <BrushDivider />
-          <nav aria-label="分页" className="flex items-center justify-center gap-4">
+          <nav aria-label={t('paginationLabel')} className="flex items-center justify-center gap-4">
             {currentPage > 1 ? (
               <Link
                 href={`/daily/archive?school=${school}&page=${currentPage - 1}`}
                 className="flex items-center gap-1 text-sm transition-colors hover:text-[var(--color-gold)]"
                 style={{ color: 'var(--theme-text-secondary)' }}
               >
-                <ChevronLeft size={16} /> 上一页
+                <ChevronLeft size={16} /> {t('paginationPrev')}
               </Link>
             ) : (
               <span className="text-sm" style={{ color: 'var(--theme-text-muted)', opacity: 0.4 }}>
-                <ChevronLeft size={16} className="inline" /> 上一页
+                <ChevronLeft size={16} className="inline" /> {t('paginationPrev')}
               </span>
             )}
 
@@ -102,11 +104,11 @@ export default function ArchiveClient({ school, lessons, total, totalPages, curr
                 className="flex items-center gap-1 text-sm transition-colors hover:text-[var(--color-gold)]"
                 style={{ color: 'var(--theme-text-secondary)' }}
               >
-                下一页 <ChevronRight size={16} />
+                {t('paginationNext')} <ChevronRight size={16} />
               </Link>
             ) : (
               <span className="text-sm" style={{ color: 'var(--theme-text-muted)', opacity: 0.4 }}>
-                下一页 <ChevronRight size={16} className="inline" />
+                {t('paginationNext')} <ChevronRight size={16} className="inline" />
               </span>
             )}
           </nav>

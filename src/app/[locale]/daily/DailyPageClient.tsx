@@ -13,6 +13,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import DailyLessonCard from "@/components/daily/DailyLessonCard";
 import type { LessonData } from "@/components/daily/DailyLessonCard";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 interface Props {
   initialStatus: "active" | "not_launched";
@@ -39,6 +40,7 @@ export default function DailyPageClient({
 /* ── Pre-launch 倒计时页 ── */
 
 function PreLaunchView({ launchDate, lunar }: { launchDate: string; lunar: LunarDateInfo }) {
+  const t = useTranslations('Daily');
   return (
     <div className="space-y-10">
       {/* Hero */}
@@ -48,10 +50,10 @@ function PreLaunchView({ launchDate, lunar }: { launchDate: string; lunar: Lunar
           className="text-2xl"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-gold)" }}
         >
-          每日古典智慧
+          {t('preLaunchTitle')}
         </h1>
         <p className="text-lg" style={{ color: "var(--theme-text-secondary)" }}>
-          即将开播
+          {t('preLaunchSubtitle')}
         </p>
       </div>
 
@@ -61,7 +63,7 @@ function PreLaunchView({ launchDate, lunar }: { launchDate: string; lunar: Lunar
           className="text-center text-sm mb-4"
           style={{ color: "var(--theme-text-secondary)" }}
         >
-          距离开播还有
+          {t('preLaunchCountdown')}
         </p>
         <CountdownTimer targetDate={launchDate} />
       </Card>
@@ -75,15 +77,13 @@ function PreLaunchView({ launchDate, lunar }: { launchDate: string; lunar: Lunar
             className="text-base"
             style={{ fontFamily: "var(--font-display)", color: "var(--theme-text-primary)" }}
           >
-            🔔 抢先订阅
+            {t('preLaunchSubscribeTitle')}
           </p>
           <p className="text-sm" style={{ color: "var(--theme-text-secondary)" }}>
-            免费订阅，{launchDate.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$1年$2月$3日")}起
-            <br />
-            每天早上 8:00 收到一条古典智慧
+            {t('preLaunchSubscribeDesc', { date: launchDate.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$1年$2月$3日") })}
           </p>
         </div>
-        <EmailSubscribeForm cta="抢先订阅" />
+        <EmailSubscribeForm cta={t('preLaunchSubscribeCta')} />
       </div>
 
       <BrushDivider />
@@ -96,10 +96,10 @@ function PreLaunchView({ launchDate, lunar }: { launchDate: string; lunar: Lunar
             className="text-base text-center mt-2"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-gold)" }}
           >
-            易经卦序
+            {t('previewYijing')}
           </p>
           <p className="text-xs text-center mt-1" style={{ color: "var(--theme-text-muted)" }}>
-            384天完整 · 卦辞+爻辞 · 决策智慧
+            {t('previewYijingDesc')}
           </p>
         </Card>
         <Card variant="default" padding="md">
@@ -108,10 +108,10 @@ function PreLaunchView({ launchDate, lunar }: { launchDate: string; lunar: Lunar
             className="text-base text-center mt-2"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-gold)" }}
           >
-            道家清静
+            {t('previewDaoist')}
           </p>
           <p className="text-xs text-center mt-1" style={{ color: "var(--theme-text-muted)" }}>
-            120天完整 · 经典+冥想 · 静心引导
+            {t('previewDaoistDesc')}
           </p>
         </Card>
       </div>
@@ -127,6 +127,7 @@ function PreLaunchView({ launchDate, lunar }: { launchDate: string; lunar: Lunar
 /* ── Active 日课页（有内容后） ── */
 
 function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarDateInfo; dayIndex: number; school: School; onSchoolChange: (s: School) => void }) {
+  const t = useTranslations('Daily');
   const [lesson, setLesson] = useState<LessonData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -153,7 +154,7 @@ function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarD
         <Card variant="default" padding="lg">
           <div className="text-center space-y-4">
             <p className="text-lg" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-gold)' }}>
-              ☰ 第 {dayIndex} 天
+              {t('loadingHeader', { dayIndex })}
             </p>
             <Skeleton variant="text" lines={5} />
           </div>
@@ -168,7 +169,7 @@ function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarD
               className="text-sm transition-colors hover:text-[var(--color-gold)]"
               style={{ color: 'var(--theme-text-secondary)' }}
             >
-              🔗 永久链接 · 分享此页
+              {t('permalink')}
             </Link>
           </div>
         </>
@@ -176,10 +177,10 @@ function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarD
         <Card variant="default" padding="lg">
           <div className="text-center space-y-4">
             <p className="text-lg" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-gold)' }}>
-              ☰ 第 {dayIndex} 天
+              {t('errorHeader', { dayIndex })}
             </p>
             <p className="text-sm" style={{ color: 'var(--theme-text-muted)' }}>
-              {school === 'yijing' ? '易经卦序' : '道家清静'} · 内容准备中
+              {school === 'yijing' ? t('errorYijing') : t('errorDaoist')}{t('errorPreparing')}
             </p>
             <Skeleton variant="text" lines={5} />
           </div>
@@ -190,7 +191,7 @@ function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarD
 
       <div className="space-y-3">
         <p className="text-sm text-center" style={{ color: 'var(--theme-text-secondary)' }}>
-          🔔 免费订阅，每天早上 8:00 收到一条古典智慧
+          {t('subscribePrompt')}
         </p>
         <EmailSubscribeForm />
       </div>

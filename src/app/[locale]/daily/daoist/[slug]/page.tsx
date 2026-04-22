@@ -8,7 +8,7 @@ import BrushDivider from '@/components/ui/BrushDivider';
 import EmailSubscribeForm from '@/components/daily/EmailSubscribeForm';
 import type { School } from '@/lib/daily-lesson';
 import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 
 const SCHOOL: School = 'daoist';
@@ -28,9 +28,10 @@ export async function generateMetadata({
   if (!data) return {};
 
   const { lesson } = data;
+  const t = await getTranslations({ locale, namespace: 'Daily' });
   const localePrefix = getLocalePrefix(locale);
   const canonical = `${SITE_URL}${localePrefix}/daily/daoist/${slug}`;
-  const title = `${lesson.title} · ${lesson.subtitle} | 每日古典智慧 — 51yijing.com`;
+  const title = `${lesson.title} · ${lesson.subtitle} | ${t('daoistMetaSuffix')}`;
 
   return {
     title,
@@ -53,6 +54,7 @@ export default async function DaoistLessonPage({
 }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'Daily' });
 
   const data = await getDailyLessonBySlug(SCHOOL, slug, locale);
   if (!data) notFound();
@@ -73,9 +75,9 @@ export default async function DaoistLessonPage({
   };
 
   const breadcrumbItems = [
-    { label: '首页', href: '/' },
-    { label: '每日古典智慧', href: '/daily' },
-    { label: '道家清静', href: '/daily/daoist' },
+    { label: t('breadcrumbHome'), href: '/' },
+    { label: t('breadcrumbDaily'), href: '/daily' },
+    { label: t('breadcrumbDaoist'), href: '/daily/daoist' },
     { label: lesson.title },
   ];
 

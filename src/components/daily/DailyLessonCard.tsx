@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { School } from "@/lib/daily-lesson";
 import Card from "@/components/ui/Card";
 
@@ -26,35 +27,37 @@ interface DailyLessonCardProps {
 
 /* ── Nature badge config ── */
 
-const NATURE_CONFIG: Record<string, {
+function getNatureConfig(t: ReturnType<typeof useTranslations<"Daily">>): Record<string, {
   emoji: string;
   label: string;
   borderColor: string;
   bgColor: string;
   text: string;
-}> = {
-  ji: {
-    emoji: "⚠️",
-    label: "过盛则衰",
-    borderColor: "var(--color-gold)",
-    bgColor: "rgba(184,146,74,0.08)",
-    text: "顺势而为固然好，但也要警惕盛极而衰。保持谦逊，不因一时顺利而忘形。",
-  },
-  xiong: {
-    emoji: "🛡️",
-    label: "化险为夷",
-    borderColor: "#f87171",
-    bgColor: "rgba(220,38,38,0.06)",
-    text: "困境中蕴含转机。不必恐惧，关键在于识别风险、主动调整，化被动为主动。",
-  },
-  mixed: {
-    emoji: "⚖️",
-    label: "吉凶参半",
-    borderColor: "#f59e0b",
-    bgColor: "rgba(245,158,11,0.06)",
-    text: "吉凶并存，关键在于把握分寸。趋吉避凶，需要你在行动中保持觉察。",
-  },
-};
+}> {
+  return {
+    ji: {
+      emoji: "⚠️",
+      label: t("natureJi"),
+      borderColor: "var(--color-gold)",
+      bgColor: "rgba(184,146,74,0.08)",
+      text: t("natureJiDesc"),
+    },
+    xiong: {
+      emoji: "🛡️",
+      label: t("natureXiong"),
+      borderColor: "#f87171",
+      bgColor: "rgba(220,38,38,0.06)",
+      text: t("natureXiongDesc"),
+    },
+    mixed: {
+      emoji: "⚖️",
+      label: t("natureMixed"),
+      borderColor: "#f59e0b",
+      bgColor: "rgba(245,158,11,0.06)",
+      text: t("natureMixedDesc"),
+    },
+  };
+}
 
 /* ── Reading time estimate ── */
 
@@ -66,9 +69,11 @@ function estimateReadingTime(text: string): number {
 /* ── Component ── */
 
 export default function DailyLessonCard({ lesson, school, dayIndex }: DailyLessonCardProps) {
+  const t = useTranslations("Daily");
   const fullText = lesson.classicText + lesson.wisdom + lesson.action + (lesson.caution ?? "") + (lesson.meditation ?? "");
   const readMin = estimateReadingTime(fullText);
   const nature = lesson.hexagram?.nature;
+  const NATURE_CONFIG = getNatureConfig(t);
   const natureInfo = nature && nature !== "ping" ? NATURE_CONFIG[nature] : null;
 
   return (
@@ -81,7 +86,7 @@ export default function DailyLessonCard({ lesson, school, dayIndex }: DailyLesso
               className="text-xl"
               style={{ fontFamily: "var(--font-display)", color: "var(--color-gold)" }}
             >
-              ☰ 第 {dayIndex} 天 · {lesson.title}
+              {t("cardHeader", { dayIndex, title: lesson.title })}
             </p>
             {lesson.subtitle && (
               <p
@@ -96,7 +101,7 @@ export default function DailyLessonCard({ lesson, school, dayIndex }: DailyLesso
             className="text-xs whitespace-nowrap mt-1"
             style={{ color: "var(--theme-text-muted)" }}
           >
-            约 {readMin} 分钟
+            {t("readingTime", { readMin })}
           </span>
         </div>
 
@@ -104,9 +109,9 @@ export default function DailyLessonCard({ lesson, school, dayIndex }: DailyLesso
         <div className="divider-gold" />
 
         {school === "yijing" ? (
-          <YijingContent lesson={lesson} />
+          <YijingContent lesson={lesson} t={t} />
         ) : (
-          <DaoistContent lesson={lesson} />
+          <DaoistContent lesson={lesson} t={t} />
         )}
 
         {/* Nature warning */}
@@ -114,7 +119,7 @@ export default function DailyLessonCard({ lesson, school, dayIndex }: DailyLesso
           <div
             className="rounded-lg p-4"
             role="note"
-            aria-label="吉凶提醒"
+            aria-label={t("natureLabel")}
             style={{
               borderLeft: `2px solid ${natureInfo.borderColor}`,
               backgroundColor: natureInfo.bgColor,
@@ -145,25 +150,25 @@ export default function DailyLessonCard({ lesson, school, dayIndex }: DailyLesso
 
 /* ── Yijing layout ── */
 
-function YijingContent({ lesson }: { lesson: LessonData }) {
+function YijingContent({ lesson, t }: { lesson: LessonData; t: ReturnType<typeof useTranslations<"Daily">> }) {
   return (
     <div className="space-y-5">
       {/* Classic text */}
-      <Section emoji="📜" title="经典原文">
+      <Section emoji="📜" title={t("sectionOriginal")}>
         <p className="text-sm leading-relaxed whitespace-pre-line" style={{ color: "var(--theme-text-primary)" }}>
           {lesson.classicText}
         </p>
       </Section>
 
       {/* Wisdom */}
-      <Section emoji="💡" title="今日智慧">
+      <Section emoji="💡" title={t("sectionWisdom")}>
         <p className="text-sm leading-relaxed whitespace-pre-line" style={{ color: "var(--theme-text-primary)" }}>
           {lesson.wisdom}
         </p>
       </Section>
 
       {/* Action */}
-      <Section emoji="🎯" title="行动建议">
+      <Section emoji="🎯" title={t("sectionAction")}>
         <p className="text-sm leading-relaxed" style={{ color: "var(--theme-text-primary)" }}>
           {lesson.action}
         </p>
@@ -171,7 +176,7 @@ function YijingContent({ lesson }: { lesson: LessonData }) {
 
       {/* Caution */}
       {lesson.caution && (
-        <Section emoji="🔍" title="今日认知盲点">
+        <Section emoji="🔍" title={t("sectionBlindSpot")}>
           <p className="text-sm leading-relaxed" style={{ color: "var(--theme-text-primary)" }}>
             {lesson.caution}
           </p>
@@ -183,11 +188,11 @@ function YijingContent({ lesson }: { lesson: LessonData }) {
 
 /* ── Daoist layout ── */
 
-function DaoistContent({ lesson }: { lesson: LessonData }) {
+function DaoistContent({ lesson, t }: { lesson: LessonData; t: ReturnType<typeof useTranslations<"Daily">> }) {
   return (
     <div className="space-y-5">
       {/* Classic text */}
-      <Section emoji="📜" title="经典原文">
+      <Section emoji="📜" title={t("sectionOriginal")}>
         <p className="text-sm leading-relaxed whitespace-pre-line" style={{ color: "var(--theme-text-primary)" }}>
           {lesson.classicText}
         </p>
@@ -203,7 +208,7 @@ function DaoistContent({ lesson }: { lesson: LessonData }) {
             className="text-sm font-semibold mb-3"
             style={{ color: "var(--color-gold)" }}
           >
-            🧘 静心引导（约 2 分钟）
+            {t("sectionMeditation")}
           </p>
           <p
             className="text-sm leading-loose italic whitespace-pre-line"
@@ -215,14 +220,14 @@ function DaoistContent({ lesson }: { lesson: LessonData }) {
       )}
 
       {/* Daily insight */}
-      <Section emoji="🌿" title="一日一悟">
+      <Section emoji="🌿" title={t("sectionInsight")}>
         <p className="text-sm leading-relaxed whitespace-pre-line" style={{ color: "var(--theme-text-primary)" }}>
           {lesson.wisdom}
         </p>
       </Section>
 
       {/* Action */}
-      <Section emoji="🎯" title="行动建议">
+      <Section emoji="🎯" title={t("sectionAction")}>
         <p className="text-sm leading-relaxed" style={{ color: "var(--theme-text-primary)" }}>
           {lesson.action}
         </p>

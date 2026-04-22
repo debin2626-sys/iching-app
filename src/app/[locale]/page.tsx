@@ -115,7 +115,7 @@ export default async function HomePage({
           <UserReviews />
 
           {/* 日课入口 */}
-          <DailyLessonEntrySection />
+          <DailyLessonEntrySection locale={locale} />
 
           {/* 入门指南内链 */}
           <GuideLinksSection locale={locale} />
