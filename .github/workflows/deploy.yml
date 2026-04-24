@@ -40,14 +40,17 @@ jobs:
             git checkout -- .
             git clean -fd
             git pull origin main
-            npm install --production=false
+            # 确保 pnpm 可用
+            command -v pnpm >/dev/null 2>&1 || npm install -g pnpm
+
+            pnpm install --frozen-lockfile
 
             # 构建 — 失败则回滚
-            if ! npm run build; then
+            if ! pnpm run build; then
               echo "❌ Build failed! Rolling back to $PREV_COMMIT ..."
 
               git checkout "$PREV_COMMIT"
-              npm install --production=false
+              pnpm install --frozen-lockfile
 
               # 恢复备份的 .next（如果有）
               if [ -d .next.bak ]; then
@@ -56,7 +59,7 @@ jobs:
                 mv .next.bak .next
               else
                 echo "No .next backup, rebuilding previous version ..."
-                npm run build
+                pnpm run build
               fi
 
               pm2 restart iching-app || pm2 start npm --name iching-app -- start
