@@ -201,7 +201,7 @@ function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarD
         <p className="text-sm text-center" style={{ color: 'var(--theme-text-secondary)' }}>
           {t('subscribePrompt')}
         </p>
-        <EmailSubscribeForm />
+        <EmailSubscribeForm school={school} />
       </div>
 
       <BrushDivider />

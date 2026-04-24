@@ -101,7 +101,7 @@ async function generateOne(dayIndex: number): Promise<Record<string, unknown> | 
     if (anthropicClient) {
       const response = await anthropicClient.messages.create({
         model: modelName,
-        max_tokens: 1500,
+        max_tokens: 2500,
         temperature: 0.7,
         messages: [{ role: 'user', content: prompt }],
       })
