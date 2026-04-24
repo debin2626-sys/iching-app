@@ -7,6 +7,7 @@ import { HexagramArticleJsonLd, HexagramFaqJsonLd, HexagramBreadcrumbJsonLd } fr
 import { SITE_URL, getLocalePrefix, getAlternateLanguages } from '@/lib/seo';
 import HexagramDetailContent from '@/components/hexagrams/HexagramDetailContent';
 import HexagramHero from '@/components/hexagrams/HexagramHero';
+import hexEssenceEn from '@/data/hex-essence-en.json';
 
 export function generateStaticParams() {
   return HEXAGRAM_DATA.map((h) => ({ id: String(h.number) }));
@@ -33,8 +34,9 @@ export async function generateMetadata({
   let keywords: string;
 
   if (isEn) {
+    const essence = hexEssenceEn.find((e: { number: number }) => e.number === num);
     title = `Hexagram ${num}: ${hex.nameEn} (${hex.symbol}) — I Ching | 51yijing.com`;
-    description = `Hexagram ${num} ${hex.nameEn} (${hex.symbol}): Complete guide with judgment, line readings, and plain-language translation. Discover ${hex.nameEn}'s guidance for career, love, and wealth.`;
+    description = essence?.description ?? `Hexagram ${num} ${hex.nameEn}: judgment, line readings, and guidance for career, relationships, and money.`;
     keywords = `hexagram ${num},${hex.nameEn},I Ching,Yi Jing,divination,judgment,image`;
   } else if (isZhTW) {
     const nameZhTW = hex.nameZhTW || hex.nameZh;
