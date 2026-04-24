@@ -39,6 +39,9 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
     setTimeLeft(calcTimeLeft(targetDate));
     const id = setInterval(() => setTimeLeft(calcTimeLeft(targetDate)), 1000);
     return () => clearInterval(id);

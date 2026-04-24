@@ -133,18 +133,24 @@ function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarD
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+    let cancelled = false;
     setLesson(null);
-    fetch(`/api/daily?school=${school}`)
-      .then(r => r.json())
-      .then(data => {
-        if (data.lesson) {
-          setLesson(data.lesson);
-        }
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false));
+    const load = async () => {
+      try {
+        const r = await fetch(`/api/daily?school=${school}`);
+        const data = await r.json();
+        if (!cancelled && data.lesson) setLesson(data.lesson);
+      } catch {}
+      if (!cancelled) setLoading(false);
+    };
+    load();
+    return () => { cancelled = true; };
   }, [school]);
+
+  useEffect(() => {
+    if (lesson !== null || !loading) return;
+    setLoading(true);
+  }, [lesson, loading]);
 
   return (
     <div className="space-y-8">
