@@ -43,6 +43,7 @@ jobs:
             # 确保 pnpm 可用（用户级安装，无需 sudo）
             export PNPM_HOME="/home/ubuntu/.local/share/pnpm"
             export PATH="$PNPM_HOME:$PATH"
+            export CI=true
 
             pnpm install --frozen-lockfile
 
