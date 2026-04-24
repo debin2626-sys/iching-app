@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 interface CountdownTimerProps {
@@ -34,21 +34,16 @@ const UNITS = [
 
 export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   const t = useTranslations("Daily");
-  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
-    setMounted(true);
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
   }, []);
 
-  useEffect(() => {
-    setTimeLeft(calcTimeLeft(targetDate));
-    const id = setInterval(() => setTimeLeft(calcTimeLeft(targetDate)), 1000);
-    return () => clearInterval(id);
-  }, [targetDate]);
+  const timeLeft = calcTimeLeft(targetDate);
 
-  // SSR / hydration: render placeholder to avoid mismatch
-  if (!mounted || !timeLeft) {
+  if (!timeLeft) {
     return (
       <div
         className="flex justify-center gap-3"
@@ -72,6 +67,8 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
       </div>
     );
   }
+
+  void now;
 
   return (
     <div

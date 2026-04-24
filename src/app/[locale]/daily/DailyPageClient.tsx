@@ -35,7 +35,7 @@ export default function DailyPageClient({
     return <PreLaunchView launchDate={launchDate} lunar={lunar} />;
   }
 
-  return <ActiveView lunar={lunar} dayIndex={dayIndex} school={school} onSchoolChange={setSchool} />;
+  return <ActiveView key={school} lunar={lunar} dayIndex={dayIndex} school={school} onSchoolChange={setSchool} />;
 }
 
 /* ── Pre-launch 倒计时页 ── */
@@ -134,23 +134,24 @@ function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarD
 
   useEffect(() => {
     let cancelled = false;
-    setLesson(null);
-    const load = async () => {
-      try {
-        const r = await fetch(`/api/daily?school=${school}`);
-        const data = await r.json();
-        if (!cancelled && data.lesson) setLesson(data.lesson);
-      } catch {}
-      if (!cancelled) setLoading(false);
-    };
-    load();
-    return () => { cancelled = true; };
-  }, [school]);
 
-  useEffect(() => {
-    if (lesson !== null || !loading) return;
-    setLoading(true);
-  }, [lesson, loading]);
+    fetch(`/api/daily?school=${school}`)
+      .then(r => r.json())
+      .then(data => {
+        if (cancelled) return;
+        setLesson(data.lesson ?? null);
+      })
+      .catch(() => {
+        if (!cancelled) setLesson(null);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [school]);
 
   return (
     <div className="space-y-8">
