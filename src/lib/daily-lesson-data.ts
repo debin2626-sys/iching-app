@@ -39,12 +39,17 @@ export async function getDailyLessonBySlug(school: School, slug: string, locale 
  * 获取所有已发布的 slug（用于 generateStaticParams）
  */
 export async function getAllDailyLessonSlugs(school: School) {
-  const lessons = await prisma.dailyLesson.findMany({
-    where: { school },
-    select: { slug: true },
-    orderBy: { dayIndex: "asc" },
-  });
-  return lessons.map((l) => l.slug);
+  try {
+    const lessons = await prisma.dailyLesson.findMany({
+      where: { school },
+      select: { slug: true },
+      orderBy: { dayIndex: "asc" },
+    });
+    return lessons.map((l) => l.slug);
+  } catch {
+    // CI has no database — return empty so build succeeds (pages render via SSR)
+    return [];
+  }
 }
 
 /**
