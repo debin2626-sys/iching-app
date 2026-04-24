@@ -44,6 +44,7 @@ jobs:
       DEEPSEEK_API_KEY: "sk-00000000000000000000000000000000000000000000"
       STRIPE_SECRET_KEY: "sk_test_placeholder"
       STRIPE_WEBHOOK_SECRET: "whsec_placeholder"
+      RESEND_API_KEY: "re_placeholder"
       UPSTASH_REDIS_REST_URL: "https://placeholder.upstash.io"
       UPSTASH_REDIS_REST_TOKEN: "placeholder"
       GOOGLE_CLIENT_ID: "placeholder.apps.googleusercontent.com"
