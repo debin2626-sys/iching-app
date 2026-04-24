@@ -15,21 +15,21 @@ export async function generateMetadata({
   const title = getLocalizedText(
     locale,
     '六十四卦典 | 完整卦辞爻辞 - 51yijing.com',
-    'The 64 Hexagrams | Complete I Ching Guide - 51yijing.com',
+    '64 I Ching Hexagrams — Career, Love & Money Readings | 51yijing.com',
     '六十四卦典 | 完整卦辭爻辭 - 51yijing.com'
   );
 
   const description = getLocalizedText(
     locale,
     '易经六十四卦完整列表，包含卦辞、爻辞及详细解读。乾坤屯蒙需讼师比，小畜履泰否同人大有。',
-    'Complete list of 64 I Ching hexagrams with judgments, line texts, and detailed interpretations.',
+    'Browse all 64 I Ching hexagrams with judgments, line texts, and practical guidance for career decisions, relationships, and finances.',
     '易經六十四卦完整列表，包含卦辭、爻辭及詳細解讀。乾坤屯蒙需訟師比，小畜履泰否同人大有。'
   );
 
   const shortDesc = getLocalizedText(
     locale,
     '易经六十四卦完整列表，包含卦辞、爻辞及详细解读。',
-    'Complete list of 64 I Ching hexagrams with judgments and interpretations.',
+    'Browse all 64 I Ching hexagrams with practical guidance for career, relationships, and finances.',
     '易經六十四卦完整列表，包含卦辭、爻辭及詳細解讀。'
   );
 
@@ -52,7 +52,7 @@ export async function generateMetadata({
       title: getLocalizedText(
         locale,
         '六十四卦典 | 完整卦辞爻辞',
-        'The 64 Hexagrams | I Ching Guide',
+        '64 I Ching Hexagrams — Career, Love & Money Readings',
         '六十四卦典 | 完整卦辭爻辭'
       ),
       description: shortDesc,

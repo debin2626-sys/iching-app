@@ -2,25 +2,60 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { randomBytes } from 'crypto'
 import { sendVerificationEmail } from '@/lib/email'
+import { normalizeEmail } from '@/lib/normalizeEmail'
+
+/**
+ * Verify Turnstile token server-side.
+ */
+async function verifyTurnstile(token: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY
+  if (!secret) {
+    console.warn('[subscribe] TURNSTILE_SECRET_KEY not set — skipping verification')
+    return true
+  }
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ secret, response: token }),
+    })
+    const data = await res.json()
+    return data.success === true
+  } catch (err) {
+    console.error('[subscribe] Turnstile verification error:', err)
+    return false
+  }
+}
 
 /**
  * POST /api/daily/subscribe
- * Body: { email: string, school: "yijing" | "daoist" | "all" }
- * 创建订阅 + 生成验证 token（邮件发送由 cron 或后续集成处理）
+ * Body: { email: string, school: "yijing" | "daoist" | "all", turnstileToken: string }
  */
 export async function POST(request: NextRequest) {
-  let body: { email?: string; school?: string }
+  let body: { email?: string; school?: string; turnstileToken?: string }
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 })
   }
 
-  const { email, school } = body
+  const { email, school, turnstileToken } = body
+
+  // Turnstile verification
+  if (!turnstileToken) {
+    return NextResponse.json({ error: '请完成人机验证' }, { status: 400 })
+  }
+  const turnstileOk = await verifyTurnstile(turnstileToken)
+  if (!turnstileOk) {
+    return NextResponse.json({ error: '人机验证失败，请重试' }, { status: 403 })
+  }
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
   }
+
+  // Normalize email before storing
+  const normalized = normalizeEmail(email)
 
   const validSchools = ['yijing', 'daoist', 'all']
   const selectedSchool = school && validSchools.includes(school) ? school : 'all'
@@ -28,7 +63,7 @@ export async function POST(request: NextRequest) {
   try {
     // Check if already subscribed
     const existing = await prisma.emailSubscription.findUnique({
-      where: { email_school: { email, school: selectedSchool } },
+      where: { email_school: { email: normalized, school: selectedSchool } },
     })
 
     if (existing?.verified) {
@@ -41,10 +76,10 @@ export async function POST(request: NextRequest) {
     const verifyToken = randomBytes(32).toString('hex')
 
     await prisma.emailSubscription.upsert({
-      where: { email_school: { email, school: selectedSchool } },
+      where: { email_school: { email: normalized, school: selectedSchool } },
       update: { verifyToken },
       create: {
-        email,
+        email: normalized,
         school: selectedSchool,
         verifyToken,
       },
@@ -55,7 +90,7 @@ export async function POST(request: NextRequest) {
       console.warn('[subscribe] RESEND_API_KEY is not set — skipping email send')
     } else {
       try {
-        await sendVerificationEmail({ to: email, verifyToken, school: selectedSchool })
+        await sendVerificationEmail({ to: normalized, verifyToken, school: selectedSchool })
       } catch (emailError) {
         // Subscription is saved; email can be retried — don't fail the request
         console.error('[subscribe] Email send failed (subscription saved):', emailError)

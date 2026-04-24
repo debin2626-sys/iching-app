@@ -307,13 +307,17 @@ model DailyLesson {
 }
 
 model EmailSubscription {
-  id          String   @id @default(cuid())
-  email       String
-  school      String   // "yijing" | "daoist" | "all"
-  verified    Boolean  @default(false)
-  verifyToken String?
-  unsubToken  String   @default(cuid())
-  createdAt   DateTime @default(now())
+  id              String    @id @default(cuid())
+  email           String
+  school          String    // "yijing" | "daoist" | "all"
+  verified        Boolean   @default(false)
+  verifyToken     String?
+  unsubToken      String    @default(cuid())
+  lastEmailSentAt DateTime?
+  unsubscribedAt  DateTime?
+  bounced         Boolean   @default(false)
+  bouncedAt       DateTime?
+  createdAt       DateTime  @default(now())
 
   @@unique([email, school])
   @@index([verified])
