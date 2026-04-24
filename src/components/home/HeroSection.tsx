@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import StartDivinationButton from './StartDivinationButton';
+import EmailSubscribeForm from '@/components/daily/EmailSubscribeForm';
 
 interface HeroSectionProps {
   totalCount?: number;
@@ -36,6 +37,20 @@ export function HeroSection({ totalCount = 0 }: HeroSectionProps) {
 
         <div className="hero-fade-up relative mt-6" style={{ animationDelay: '240ms' }}>
           <StartDivinationButton />
+        </div>
+
+        {/* Inline email subscribe */}
+        <div
+          className="hero-fade-up relative mt-6 w-full max-w-[22rem]"
+          style={{ animationDelay: '300ms' }}
+        >
+          <p
+            className="text-xs mb-2"
+            style={{ color: 'var(--theme-text-muted)' }}
+          >
+            {t('heroSubscribeHint')}
+          </p>
+          <EmailSubscribeForm inline school="all" />
         </div>
 
         <p
