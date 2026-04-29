@@ -212,6 +212,18 @@ function ActiveView({ lunar, dayIndex, school, onSchoolChange }: { lunar: LunarD
       </div>
 
       <BrushDivider />
+
+      <div className="text-center">
+        <Link
+          href="/daily/archive"
+          className="text-sm transition-colors hover:text-[var(--color-gold)]"
+          style={{ color: 'var(--theme-text-secondary)' }}
+        >
+          {t('archiveLink')}
+        </Link>
+      </div>
+
+      <BrushDivider />
       <ComingSoonGrid />
     </div>
   );

@@ -60,7 +60,9 @@ function parseModernApplication(text: string): ModernAppCard[] {
     "财运": "💰",
     "健康": "🏥",
   };
-  const parts = text.split(/【(事业|感情|财运|健康)】/).filter(Boolean);
+  const parts = (typeof text === 'string' ? text : '')
+    .split(/【(事业|感情|财运|健康)】/)
+    .filter(Boolean);
   const cards: ModernAppCard[] = [];
   for (let i = 0; i < parts.length - 1; i += 2) {
     const title = parts[i];
@@ -80,13 +82,14 @@ const TRIGRAM_MAP: Record<string, string> = {
 function HexagramLines({ symbol, nameZh, nameEn, number }: { symbol: string; nameZh?: string; nameEn?: string; number?: number }) {
   const altZh = nameZh && number ? `${nameZh}卦卦象 - 第${number}卦` : "卦象";
   const altEn = nameEn && number ? `Hexagram ${number} ${nameEn} - I Ching symbol` : "Hexagram symbol";
+  const safeSymbol = typeof symbol === 'string' && symbol.length === 6 ? symbol : '111111';
   return (
     <div
       className="flex flex-col gap-[5px] items-center my-3"
       role="img"
       aria-label={`${altZh} / ${altEn}`}
     >
-      {symbol.split("").reverse().map((b, i) => (
+      {safeSymbol.split("").reverse().map((b, i) => (
         <div key={i} className="flex gap-[4px] justify-center w-16">
           {b === "1" ? (
             <div className="h-[6px] w-16 bg-[var(--color-gold)] rounded-sm" />

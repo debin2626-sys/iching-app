@@ -593,7 +593,8 @@
     "posterDownload": "💾 Save Image",
     "posterDownloading": "Generating…",
     "posterShare": "📤 Share",
-    "posterHint": "Long press to save, share to social media"
+    "posterHint": "Long press to save, share to social media",
+    "archiveLink": "📚 Browse past lessons"
   },
   "Features": {
     "title": "Ancient Wisdom, Free for Everyone",

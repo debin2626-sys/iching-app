@@ -22,9 +22,10 @@ interface Props {
   total: number;
   totalPages: number;
   currentPage: number;
+  currentDayIndex?: number;
 }
 
-export default function ArchiveClient({ school, lessons, total, totalPages, currentPage }: Props) {
+export default function ArchiveClient({ school, lessons, total, totalPages, currentPage, currentDayIndex }: Props) {
   const t = useTranslations('Daily');
   const router = useRouter();
 
@@ -57,15 +58,20 @@ export default function ArchiveClient({ school, lessons, total, totalPages, curr
         <div className="space-y-3">
           {lessons.map((l) => (
             <Link key={l.slug} href={`${prefix}/${l.slug}`}>
-              <Card variant="default" padding="md" className="transition-colors hover:border-[var(--color-gold)]">
+              <Card variant="default" padding="md" className={`transition-colors hover:border-[var(--color-gold)]${l.dayIndex === currentDayIndex ? ' border-[var(--color-gold)]' : ''}`}>
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-base" style={{ fontFamily: 'var(--font-display)', color: 'var(--theme-text-primary)' }}>
-                      {t('archiveItem', { dayIndex: l.dayIndex, title: l.title })}
-                    </p>
-                    <p className="text-sm mt-0.5" style={{ color: 'var(--theme-text-secondary)' }}>
-                      「{l.subtitle}」
-                    </p>
+                  <div className="flex items-center gap-2">
+                    {l.dayIndex === currentDayIndex && (
+                      <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: 'var(--color-gold)' }} />
+                    )}
+                    <div>
+                      <p className="text-base" style={{ fontFamily: 'var(--font-display)', color: 'var(--theme-text-primary)' }}>
+                        {t('archiveItem', { dayIndex: l.dayIndex, title: l.title })}
+                      </p>
+                      <p className="text-sm mt-0.5" style={{ color: 'var(--theme-text-secondary)' }}>
+                        「{l.subtitle}」
+                      </p>
+                    </div>
                   </div>
                   <ChevronRight size={16} style={{ color: 'var(--theme-text-muted)' }} />
                 </div>

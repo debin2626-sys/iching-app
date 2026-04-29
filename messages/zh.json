@@ -593,7 +593,8 @@
     "posterDownload": "💾 保存图片",
     "posterDownloading": "生成中…",
     "posterShare": "📤 分享",
-    "posterHint": "长按图片保存，分享到朋友圈或社交平台"
+    "posterHint": "长按图片保存，分享到朋友圈或社交平台",
+    "archiveLink": "📚 查看往期日课"
   },
   "Features": {
     "title": "免费为所有人提供古典智慧",

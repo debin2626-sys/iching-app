@@ -5,6 +5,7 @@ import { getDailyLessonArchive } from '@/lib/daily-lesson-data';
 import { PageLayout } from '@/components/ui/PageLayout';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import ArchiveClient from './ArchiveClient';
+import { getDayIndex } from '@/lib/daily-lesson';
 import type { School } from '@/lib/daily-lesson';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -34,6 +35,8 @@ export default async function ArchivePage({ params, searchParams }: {
   const page = Math.max(1, parseInt(query.page ?? '1', 10) || 1);
 
   const data = await getDailyLessonArchive(school, locale, page);
+  const dayResult = getDayIndex(new Date(), school);
+  const currentDayIndex = dayResult.status === 'active' ? dayResult.dayIndex : undefined;
 
   return (
     <PageLayout maxWidth="max-w-[800px]">
@@ -48,6 +51,7 @@ export default async function ArchivePage({ params, searchParams }: {
         total={data.total}
         totalPages={data.totalPages}
         currentPage={page}
+        currentDayIndex={currentDayIndex}
       />
     </PageLayout>
   );
